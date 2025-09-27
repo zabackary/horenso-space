@@ -7,8 +7,7 @@ create table "absence_reports" (
   event_id uuid references "calendar_events"(id) on delete set null,
   data jsonb not null,
 
-  assigned_to uuid references auth.users(id) on delete set null,
-  review_finished boolean default false not null
+  assigned_to uuid references auth.users(id) on delete set null
 );
 
 create index on "absence_reports" (user_id);
