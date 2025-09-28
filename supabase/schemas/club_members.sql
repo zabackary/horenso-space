@@ -16,17 +16,6 @@ create trigger set_joined_at
   execute function extensions.moddatetime('joined_at');
 
 -- RLS Policies for club_members table
--- Club members can view all members of clubs they belong to
-create policy "Club members can view other members" on club_members
-  for select
-    using (exists (
-      select
-        1
-      from
-        joined_clubs
-      where
-        joined_clubs.club_id = club_members.club_id));
-
 -- Users can view their own membership records (including pending invitations)
 create policy "Users can view their own membership records" on club_members
   for select
@@ -40,22 +29,6 @@ create policy "Users can accept their own invitations" on club_members
       and accepted = false)
       with check (user_id = auth.uid()
       and accepted = true);
-
--- Users with canManageClub permission can insert new memberships (invite users)
-create policy "Club managers can invite new members" on club_members
-  for insert
-    with check (auth.user_has_club_permission(cm.club_id, 'canManageClub')
-    and NEW.accepted = false);
-
--- Users with canManageClub permission can update member roles and remove members
-create policy "Club managers can manage memberships" on club_members
-  for update
-    using (auth.user_has_club_permission(club_members.club_id, 'canManageClub'));
-
--- Users with canManageClub permission can remove members
-create policy "Club managers can remove members" on club_members
-  for delete
-    using (auth.user_has_club_permission(club_members.club_id, 'canManageClub'));
 
 -- Users can remove themselves from clubs
 create policy "Users can leave clubs" on "club_members"

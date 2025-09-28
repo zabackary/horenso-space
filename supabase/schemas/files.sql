@@ -35,22 +35,34 @@ create policy "Users can view their own files" on files
 create policy "Authorized users can view club files" on files
   for select
     using (club_id is not null
-      and auth.user_has_club_permission(club_id, 'canReadFiles'));
+      and public.user_has_club_permission(club_id, 'canReadFiles'));
 
 -- Users with canWriteFiles permission can upload files to their clubs
 create policy "Authorized users can upload files" on files
   for insert
-    using (auth.user_has_club_permission(club_id, 'canWriteFiles'))
-    with check (user_id = auth.uid()
-      and club_id is not null);
+    with check (public.user_has_club_permission(club_id, 'canWriteFiles')
+    and user_id = auth.uid()
+    and club_id is not null);
 
 -- Users with canWriteFiles permission can update files
 create policy "Authorized users can update club files" on files
   for update
-    using (auth.user_has_club_permission(club_id, 'canWriteFiles'));
+    using (public.user_has_club_permission(club_id, 'canWriteFiles'));
 
 -- Users with canWriteFiles permission can delete files
 create policy "Authorized users can delete club files" on files
   for delete
-    using (auth.user_has_club_permission(club_id, 'canWriteFiles'));
+    using (public.user_has_club_permission(club_id, 'canWriteFiles'));
+
+-- Club members can view profiles of other members in their clubs
+create policy "Club members can view other member profiles" on profiles
+  for select
+    using (exists (
+      select
+        1
+      from
+        club_members cm1
+        inner join club_members cm2 on cm1.club_id = cm2.club_id
+      where
+        cm1.user_id = auth.uid() and cm2.user_id = profiles.id and cm1.accepted = true and cm2.accepted = true));
 

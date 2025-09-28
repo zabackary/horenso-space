@@ -1,5 +1,4 @@
-CREATE EXTENSION IF NOT EXISTS moddatetime
-	SCHEMA "extensions";
+create extension if not exists moddatetime schema "extensions";
 
-CREATE EXTENSION IF NOT EXISTS pg_jsonschema
-	SCHEMA "extensions";
+create extension if not exists pg_jsonschema schema "extensions";
+

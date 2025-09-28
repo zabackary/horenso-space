@@ -57,10 +57,13 @@ schema_paths = [
   "./schemas/extensions.sql",
   "./schemas/profiles.sql",
   "./schemas/clubs.sql",
-  "./schemas/calendar_events.sql",
   "./schemas/roles.sql",
+  "./schemas/club_members.sql",
+  "./schemas/auth_helpers.sql",
+  "./schemas/calendar_events.sql",
   "./schemas/absence_reports.sql",
   "./schemas/*.sql",
+  "./schemas/permission_validation.sql",
 ]
 
 [db.seed]

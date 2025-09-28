@@ -5,8 +5,7 @@ create table roles(
   description text,
   permissions jsonb not null,
   created_at timestamp with time zone default now() not null,
-  updated_at timestamp with time zone default now() not null,
-  check (extensions.json_matches_schema('{
+  updated_at timestamp with time zone default now() not null check (extensions.jsonb_matches_schema('{
         "$schema": "https://json-schema.org/draft-07/schema",
         "$comment": "Permissions schema for roles; please keep in sync with supabase/schemas/roles.sql",
         "type": "object",
@@ -53,7 +52,7 @@ create table roles(
           "canReadCalendar",
           "canManageClub"
         ]
-      }'::jsonb, permissions))
+      }'::json, permissions))
 );
 
 create index on roles(club_id);
@@ -65,32 +64,3 @@ create trigger set_updated_at
 alter table roles enable row level security;
 
 -- RLS Policies for roles table
--- Club members can view roles in their clubs
-create policy "Club members can view club roles" on roles
-  for select
-    using (exists (
-      select
-        1
-      from
-        joined_clubs
-      where
-        joined_clubs.club_id = roles.club_id));
-
--- Users with canManageClub permission can manage roles
-create policy "Club managers can manage roles" on roles
-  for all
-    using (auth.user_has_club_permission(roles.club_id, 'canManageClub'))
-    with check (auth.user_has_club_permission(roles.club_id, 'canManageClub')
-    -- ensure the current user can still manage the club with the new permissions
-      and not (
-      -- this role applies to the current user
-(exists (
-        select
-          1
-        from
-          club_members
-        where
-          club_members.role_id = roles.id and club_members.user_id = auth.uid() and club_members.accepted = true) and
-          -- the new permissions don't allow managing the club
-(permissions ->> 'canManageClub')::boolean = false)));
-

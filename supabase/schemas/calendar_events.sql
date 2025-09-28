@@ -23,20 +23,20 @@ alter table calendar_events enable row level security;
 -- Users with canReadCalendar permission can view events in their clubs
 create policy "Authorized users can view club calendar events" on calendar_events
   for select
-    using (auth.user_has_club_permission(club_id, 'canReadCalendar'));
+    using (public.user_has_club_permission(club_id, 'canReadCalendar'));
 
 -- Users with canWriteCalendar permission can create events
 create policy "Authorized users can create calendar events" on calendar_events
   for insert
     with check (calendar_events.created_by = auth.uid()
-    and auth.user_has_club_permission(club_id, 'canWriteCalendar'));
+    and public.user_has_club_permission(club_id, 'canWriteCalendar'));
 
 -- Users with canWriteCalendar permission can update and delete events
 create policy "Authorized users can update calendar events" on calendar_events
   for update
-    using (auth.user_has_club_permission(club_id, 'canWriteCalendar'));
+    using (public.user_has_club_permission(club_id, 'canWriteCalendar'));
 
 create policy "Authorized users can delete calendar events" on calendar_events
   for delete
-    using (auth.user_has_club_permission(club_id, 'canWriteCalendar'));
+    using (public.user_has_club_permission(club_id, 'canWriteCalendar'));
 

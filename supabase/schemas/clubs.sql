@@ -77,29 +77,8 @@ select
 from
   clubs;
 
-alter view public_clubs enable row level security;
-
-create policy "Public data for clubs can be viewed" on public_clubs
-  for select
-    using (true);
-
+-- No RLS on public_clubs view by default
 -- RLS Policies for clubs table
--- Club members can view clubs they belong to
-create policy "Club members can view their clubs" on clubs
-  for select
-    using (exists (
-      select
-        1
-      from
-        club_members
-      where
-        club_members.club_id = clubs.id and club_members.user_id = auth.uid() and club_members.accepted = true));
-
--- Users with canManageClub permission can update club details
-create policy "Club managers can update clubs" on clubs
-  for update
-    using (auth.user_has_club_permission(clubs.id, "canManageClub"));
-
 -- Users with canManageClub permission can create new clubs
 create policy "Authenticated users can create clubs" on clubs
   for insert

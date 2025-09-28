@@ -24,7 +24,7 @@ alter table absence_report_reviews enable row level security;
 create policy "Authorized users can create report reviews" on absence_report_reviews
   for insert
     with check (reviewer_id = auth.uid()
-    and auth.user_has_club_permission((
+    and public.user_has_club_permission((
       select
         ar.club_id
       from
@@ -64,7 +64,7 @@ create policy "Report authors can view reviews of their reports" on absence_repo
 -- Users with canReadAllReports permission can view all reviews in their clubs
 create policy "Authorized users can view all club reviews" on "absence_report_reviews"
   for select
-    using (auth.user_has_club_permission((
+    using (public.user_has_club_permission((
       select
         ar.club_id
       from
