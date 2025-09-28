@@ -946,20 +946,20 @@ to public
 using ((auth.uid() = id));
 
 
-CREATE TRIGGER set_updated_at BEFORE UPDATE ON public.absence_report_reviews FOR EACH ROW EXECUTE FUNCTION moddatetime('updated_at');
+CREATE TRIGGER set_updated_at BEFORE UPDATE ON public.absence_report_reviews FOR EACH ROW EXECUTE FUNCTION extensions.moddatetime('updated_at');
 
-CREATE TRIGGER set_updated_at BEFORE UPDATE ON public.absence_reports FOR EACH ROW EXECUTE FUNCTION moddatetime('updated_at');
+CREATE TRIGGER set_updated_at BEFORE UPDATE ON public.absence_reports FOR EACH ROW EXECUTE FUNCTION extensions.moddatetime('updated_at');
 
-CREATE TRIGGER set_updated_at BEFORE UPDATE ON public.calendar_events FOR EACH ROW EXECUTE FUNCTION moddatetime('updated_at');
+CREATE TRIGGER set_updated_at BEFORE UPDATE ON public.calendar_events FOR EACH ROW EXECUTE FUNCTION extensions.moddatetime('updated_at');
 
-CREATE TRIGGER set_joined_at BEFORE UPDATE ON public.club_members FOR EACH ROW WHEN (((old.accepted = false) AND (new.accepted = true))) EXECUTE FUNCTION moddatetime('joined_at');
+CREATE TRIGGER set_joined_at BEFORE UPDATE ON public.club_members FOR EACH ROW WHEN (((old.accepted = false) AND (new.accepted = true))) EXECUTE FUNCTION extensions.moddatetime('joined_at');
 
 CREATE TRIGGER add_creator_as_club_member AFTER INSERT ON public.clubs FOR EACH ROW EXECUTE FUNCTION add_creator_as_club_member();
 
-CREATE TRIGGER set_updated_at BEFORE UPDATE ON public.files FOR EACH ROW EXECUTE FUNCTION moddatetime('updated_at');
+CREATE TRIGGER set_updated_at BEFORE UPDATE ON public.files FOR EACH ROW EXECUTE FUNCTION extensions.moddatetime('updated_at');
 
-CREATE TRIGGER set_updated_at BEFORE UPDATE ON public.profiles FOR EACH ROW EXECUTE FUNCTION moddatetime('updated_at');
+CREATE TRIGGER set_updated_at BEFORE UPDATE ON public.profiles FOR EACH ROW EXECUTE FUNCTION extensions.moddatetime('updated_at');
 
-CREATE TRIGGER set_updated_at BEFORE UPDATE ON public.roles FOR EACH ROW EXECUTE FUNCTION moddatetime('updated_at');
+CREATE TRIGGER set_updated_at BEFORE UPDATE ON public.roles FOR EACH ROW EXECUTE FUNCTION extensions.moddatetime('updated_at');
 
 

@@ -1,4 +1,4 @@
-alter table "public"."roles" add constraint "roles_permissions_check" CHECK (jsonb_matches_schema('{
+alter table "public"."roles" add constraint "roles_permissions_check" CHECK (extensions.jsonb_matches_schema('{
         "$schema": "https://json-schema.org/draft-07/schema",
         "$comment": "Permissions schema for roles; please keep in sync with supabase/schemas/roles.sql",
         "type": "object",
