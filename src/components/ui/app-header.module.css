@@ -1,0 +1,42 @@
+.header {
+  width: 100%;
+  background-color: var(--accent-a3);
+  backdrop-filter: blur(10px);
+}
+
+.logo-link {
+  text-decoration: none;
+}
+
+.header-text {
+  /* switch between first and second span, animated on hover */
+  display: grid;
+  grid-template-areas: "a";
+  overflow: hidden;
+  cursor: pointer;
+  color: var(--accent-11);
+
+  span {
+    grid-area: a;
+    display: block;
+    transition: transform 0.3s ease-in-out;
+
+    &:nth-child(1) {
+      transform: translateY(0%);
+    }
+
+    &:nth-child(2) {
+      transform: translateY(100%);
+    }
+  }
+
+  &:hover {
+    span:nth-child(1) {
+      transform: translateY(-100%);
+    }
+
+    span:nth-child(2) {
+      transform: translateY(0%);
+    }
+  }
+}
