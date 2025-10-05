@@ -1,4 +1,4 @@
-create table notifications(
+create table private.notifications(
   id uuid primary key default gen_random_uuid(),
   user_id uuid references auth.users(id) on delete cascade,
   created_at timestamp with time zone default now() not null,
@@ -7,16 +7,16 @@ create table notifications(
   content text not null
 );
 
-alter table notifications enable row level security;
+alter table private.notifications enable row level security;
 
 -- RLS Policies for notifications table
 -- Users can only view their own notifications
-create policy "Users can view their own notifications" on notifications
+create policy "Users can view their own notifications" on private.notifications
   for select
     using (user_id = auth.uid());
 
 -- Users can delete their own notifications
-create policy "Users can delete their own notifications" on notifications
+create policy "Users can delete their own notifications" on private.notifications
   for delete
     using (user_id = auth.uid());
 
