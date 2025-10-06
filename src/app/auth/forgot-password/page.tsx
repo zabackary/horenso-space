@@ -1,5 +1,9 @@
 import { ForgotPasswordForm } from "@/components/forgot-password-form";
-import { Flex } from "@radix-ui/themes";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Forgot Password",
+};
 
 export default function Page() {
   return <ForgotPasswordForm />;

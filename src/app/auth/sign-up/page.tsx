@@ -1,5 +1,9 @@
 import { SignupForm } from "@/components/signup-form";
-import { Flex } from "@radix-ui/themes";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Sign up",
+};
 
 export default function Page() {
   return <SignupForm />;

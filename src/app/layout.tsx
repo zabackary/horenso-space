@@ -1,3 +1,6 @@
+import { AppHeader } from "@/components/ui/app-header";
+import { Theme } from "@radix-ui/themes";
+import "@radix-ui/themes/styles.css";
 import type { Metadata } from "next";
 import {
   Gloria_Hallelujah,
@@ -5,8 +8,6 @@ import {
   Noto_Sans,
   Noto_Sans_JP,
 } from "next/font/google";
-import { Theme } from "@radix-ui/themes";
-import "@radix-ui/themes/styles.css";
 import "./layout.module.css";
 
 const hachiMaruPop = Hachi_Maru_Pop({
@@ -30,8 +31,11 @@ const notoSans = Noto_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "報連相SPACE",
-  description: "部活の報連相をもっと",
+  title: {
+    template: "%s | 報連相SPACE",
+    default: "報連相SPACE",
+  },
+  description: "部活の報連相をUP",
 };
 
 export default function RootLayout({
@@ -45,6 +49,7 @@ export default function RootLayout({
         <body
           className={`${hachiMaruPop.variable} ${notoSansJP.variable} ${gloriaHallelujah.variable} ${notoSans.variable}`}
         >
+          <AppHeader />
           {children}
         </body>
       </Theme>

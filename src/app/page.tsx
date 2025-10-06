@@ -1,13 +1,17 @@
-import Image from "next/image";
-import styles from "./page.module.css";
 import { Button, Card, Flex, Grid, Heading, Text } from "@radix-ui/themes";
-import { AppHeader } from "@/components/ui/app-header";
+import { Metadata } from "next";
 import Link from "next/link";
+import styles from "./page.module.css";
+
+export const metadata: Metadata = {
+  title: {
+    absolute: "報連相SPACE: 部活の報連相をUP",
+  },
+};
 
 export default function Home() {
   return (
     <Flex direction="column" minHeight="100%">
-      <AppHeader className={styles.header} />
       <Flex direction="column" p="2">
         <Card className={styles.banner} variant="surface" asChild>
           <main>
@@ -34,7 +38,7 @@ export default function Home() {
           <main>
             <Card>
               <Heading size="7" as="h2">
-                いない時も、遅い時も。
+                誰がいないか、はっきりわかる
               </Heading>
               <Text size="4" mt="2" mb="4">
                 lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
@@ -43,7 +47,7 @@ export default function Home() {
             </Card>
             <Card>
               <Heading size="7" as="h2">
-                いない時も、遅い時も。
+                必要なドキュメントを簡単に共有
               </Heading>
               <Text size="4" mt="2" mb="4">
                 lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
@@ -52,7 +56,7 @@ export default function Home() {
             </Card>
             <Card>
               <Heading size="7" as="h2">
-                いない時も、遅い時も。
+                どんな部活でも。
               </Heading>
               <Text size="4" mt="2" mb="4">
                 lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
@@ -61,6 +65,14 @@ export default function Home() {
             </Card>
           </main>
         </Grid>
+        <Flex direction="column" p="2">
+          <Text size="2" align="center" mt="4" mb="2">
+            札幌光星中学高等学校吹奏楽部とクリスチャン・アカデミー・イン・ジャパンロボティクス部の作品
+          </Text>
+          <Text size="2" align="center" mb="2">
+            ©{new Date().getFullYear()} Horenso SPACE
+          </Text>
+        </Flex>
       </Flex>
     </Flex>
   );

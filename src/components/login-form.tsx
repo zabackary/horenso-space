@@ -6,16 +6,15 @@ import {
   Callout,
   Flex,
   Heading,
+  Link as RadixLink,
   Text,
   TextField,
-  Link as RadixLink,
 } from "@radix-ui/themes";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { AuthCard } from "./ui/auth-card";
 
-export function LoginForm({ ...props }: React.ComponentPropsWithoutRef<"div">) {
+export function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -44,7 +43,7 @@ export function LoginForm({ ...props }: React.ComponentPropsWithoutRef<"div">) {
   };
 
   return (
-    <AuthCard {...props}>
+    <>
       <Heading as="h1" size="7" align="center">
         Welcome back
       </Heading>
@@ -89,6 +88,6 @@ export function LoginForm({ ...props }: React.ComponentPropsWithoutRef<"div">) {
           </RadixLink>
         </Text>
       </form>
-    </AuthCard>
+    </>
   );
 }

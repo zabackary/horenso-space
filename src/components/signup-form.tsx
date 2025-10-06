@@ -6,18 +6,15 @@ import {
   Callout,
   Flex,
   Heading,
+  Link as RadixLink,
   Text,
   TextField,
-  Link as RadixLink,
 } from "@radix-ui/themes";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { AuthCard } from "./ui/auth-card";
 
-export function SignupForm({
-  ...props
-}: React.ComponentPropsWithoutRef<"div">) {
+export function SignupForm() {
   const [email, setEmail] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [password, setPassword] = useState("");
@@ -47,7 +44,7 @@ export function SignupForm({
   };
 
   return (
-    <AuthCard {...props}>
+    <>
       <Heading as="h1" size="7" align="center">
         Welcome!
       </Heading>
@@ -95,6 +92,6 @@ export function SignupForm({
           </RadixLink>
         </Text>
       </form>
-    </AuthCard>
+    </>
   );
 }

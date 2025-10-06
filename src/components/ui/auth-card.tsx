@@ -11,7 +11,6 @@ export function AuthCard({ ...props }: ComponentPropsWithoutRef<"div">) {
       align="center"
       {...props}
     >
-      <AppHeader />
       <Box className={styles["card-wrapper"]}>
         <Card className={styles.card}>{props.children}</Card>
       </Box>

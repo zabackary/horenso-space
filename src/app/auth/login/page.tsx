@@ -1,5 +1,9 @@
 import { LoginForm } from "@/components/login-form";
-import { Flex } from "@radix-ui/themes";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Login",
+};
 
 export default function Page() {
   return <LoginForm />;

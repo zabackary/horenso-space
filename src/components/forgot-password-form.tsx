@@ -12,7 +12,6 @@ import {
 } from "@radix-ui/themes";
 import Link from "next/link";
 import { useState } from "react";
-import { AuthCard } from "./ui/auth-card";
 
 export function ForgotPasswordForm({
   ...props
@@ -42,62 +41,54 @@ export function ForgotPasswordForm({
     }
   };
 
-  return (
-    <AuthCard {...props}>
-      {success ? (
-        <>
-          <Heading as="h1" size="7" align="center">
-            Check your email
-          </Heading>
-          <Text as="p" size="3" my="2" align="center">
-            We emailed you a password reset link.
-          </Text>
-          <Text as="p" align="center">
-            If you registered using your email and password, you will receive a
-            password reset email.
-          </Text>
-        </>
-      ) : (
-        <>
-          <Heading as="h1" size="7" align="center">
-            Reset your password
-          </Heading>
-          <Text as="p" size="3" my="2" align="center">
-            Type in your email and we&apos;ll send you a link to reset your
-            password
-          </Text>
-          <form onSubmit={handleForgotPassword}>
-            <Flex direction="column" gap="2" my="4">
-              {error && (
-                <Callout.Root color="red">
-                  <Callout.Text>{error}</Callout.Text>
-                </Callout.Root>
-              )}
-              <TextField.Root
-                placeholder="Email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                type="email"
-              ></TextField.Root>
-              <Button type="submit" loading={isLoading}>
-                Send reset email
-              </Button>
-            </Flex>
-            <Text align="center" color="gray" as="p">
-              Already have an account?{" "}
-              <RadixLink asChild>
-                <Link
-                  href="/auth/login"
-                  className="underline underline-offset-4"
-                >
-                  Login
-                </Link>
-              </RadixLink>
-            </Text>
-          </form>
-        </>
-      )}
-    </AuthCard>
+  return success ? (
+    <>
+      <Heading as="h1" size="7" align="center">
+        Check your email
+      </Heading>
+      <Text as="p" size="3" my="2" align="center">
+        We emailed you a password reset link.
+      </Text>
+      <Text as="p" align="center">
+        If you registered using your email and password, you will receive a
+        password reset email.
+      </Text>
+    </>
+  ) : (
+    <>
+      <Heading as="h1" size="7" align="center">
+        Reset your password
+      </Heading>
+      <Text as="p" size="3" my="2" align="center">
+        Type in your email and we&apos;ll send you a link to reset your password
+      </Text>
+      <form onSubmit={handleForgotPassword}>
+        <Flex direction="column" gap="2" my="4">
+          {error && (
+            <Callout.Root color="red">
+              <Callout.Text>{error}</Callout.Text>
+            </Callout.Root>
+          )}
+          <TextField.Root
+            placeholder="Email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            type="email"
+          ></TextField.Root>
+          <Button type="submit" loading={isLoading}>
+            Send reset email
+          </Button>
+        </Flex>
+        <Text align="center" color="gray" as="p">
+          Already have an account?{" "}
+          <RadixLink asChild>
+            <Link href="/auth/login" className="underline underline-offset-4">
+              Login
+            </Link>
+          </RadixLink>
+        </Text>
+      </form>
+    </>
   );
 }

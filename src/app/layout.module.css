@@ -6,3 +6,8 @@ body {
   width: 100%;
   font-family: var(--font-noto-sans), var(--font-noto-sans-jp), sans-serif;
 }
+
+body {
+  display: flex;
+  flex-direction: column;
+}
