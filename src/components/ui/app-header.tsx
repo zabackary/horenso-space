@@ -1,10 +1,16 @@
-import { Box, Button, Card, Flex, Grid, Heading } from "@radix-ui/themes";
+import { createClient } from "@/lib/supabase/server";
+import { Box, Button, Flex, Heading } from "@radix-ui/themes";
+import clsx from "clsx";
 import Link from "next/link";
 import { ComponentPropsWithoutRef } from "react";
 import styles from "./app-header.module.css";
-import clsx from "clsx";
 
-export function AppHeader({ ...props }: ComponentPropsWithoutRef<"header">) {
+export async function AppHeader({
+  ...props
+}: ComponentPropsWithoutRef<"header">) {
+  const supabase = await createClient();
+  const user = await supabase.auth.getUser();
+
   return (
     <Flex
       p="4"
@@ -22,12 +28,20 @@ export function AppHeader({ ...props }: ComponentPropsWithoutRef<"header">) {
           </Heading>
         </Link>
         <Box flexGrow="1" />
-        <Button asChild size="3" variant="soft">
-          <Link href="/auth/login">Login</Link>
-        </Button>
-        <Button asChild size="3" variant="solid">
-          <Link href="/auth/sign-up">Sign up</Link>
-        </Button>
+        {user ? (
+          <>
+            <Button asChild size="3" variant="soft">
+              <Link href="/auth/login">Login</Link>
+            </Button>
+            <Button asChild size="3" variant="solid">
+              <Link href="/auth/sign-up">Sign up</Link>
+            </Button>
+          </>
+        ) : (
+          <Button asChild size="3" variant="solid">
+            <Link href="/app">Go to App</Link>
+          </Button>
+        )}
       </header>
     </Flex>
   );
