@@ -1,5 +1,6 @@
+import getProfile from "@/lib/auth/getProfile";
 import { createClient } from "@/lib/supabase/server";
-import { Box, Button, Flex, Heading } from "@radix-ui/themes";
+import { Avatar, Box, Button, Flex, Heading } from "@radix-ui/themes";
 import clsx from "clsx";
 import Link from "next/link";
 import { ComponentPropsWithoutRef } from "react";
@@ -9,7 +10,7 @@ export async function AppHeader({
   ...props
 }: ComponentPropsWithoutRef<"header">) {
   const supabase = await createClient();
-  const user = await supabase.auth.getUser();
+  const profile = await getProfile(supabase);
 
   return (
     <Flex
@@ -28,7 +29,18 @@ export async function AppHeader({
           </Heading>
         </Link>
         <Box flexGrow="1" />
-        {user ? (
+        {profile ? (
+          <>
+            <Button asChild size="3" variant="solid">
+              <Link href="/app">Go to App</Link>
+            </Button>
+            <Avatar
+              src={profile.avatar_url ?? undefined}
+              alt={profile.full_name}
+              fallback={profile.full_name.charAt(0)}
+            />
+          </>
+        ) : (
           <>
             <Button asChild size="3" variant="soft">
               <Link href="/auth/login">Login</Link>
@@ -37,10 +49,6 @@ export async function AppHeader({
               <Link href="/auth/sign-up">Sign up</Link>
             </Button>
           </>
-        ) : (
-          <Button asChild size="3" variant="solid">
-            <Link href="/app">Go to App</Link>
-          </Button>
         )}
       </header>
     </Flex>

@@ -1,23 +1,19 @@
 "use client";
 
 import { createClient } from "@/lib/supabase/client";
-import {
-  Button,
-  Callout,
-  Flex,
-  Heading,
-  Link as RadixLink,
-  Text,
-  TextField,
-} from "@radix-ui/themes";
-import Link from "next/link";
+import { Button, Callout, Flex, Text, TextField } from "@radix-ui/themes";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-export function SignupForm() {
+export interface SignupFormProps {
+  next?: string;
+}
+
+export function SignupForm(props: SignupFormProps) {
   const [email, setEmail] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [password, setPassword] = useState("");
+  const [fullName, setFullName] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
@@ -29,13 +25,29 @@ export function SignupForm() {
     setError(null);
 
     try {
-      const { error } = await supabase.auth.signUp({
+      const {
+        data: { user },
+        error,
+      } = await supabase.auth.signUp({
         email,
         password,
       });
       if (error) throw error;
-      // Update this route to redirect to an authenticated route. The user already has an active session.
-      router.push("/app");
+      // At this point there should be a profile created by the DB trigger
+      if (user) {
+        const { error } = await supabase
+          .from("profiles")
+          .update({ full_name: fullName })
+          .eq("id", user.id);
+        if (error) {
+          console.warn("Failed to update full name:", error);
+        }
+      }
+      if (props.next) {
+        router.push(props.next);
+      } else {
+        router.push("/app");
+      }
     } catch (error: unknown) {
       setError(error instanceof Error ? error.message : "An error occurred");
     } finally {
@@ -44,54 +56,51 @@ export function SignupForm() {
   };
 
   return (
-    <>
-      <Heading as="h1" size="7" align="center">
-        Welcome!
-      </Heading>
-      <Text as="p" size="3" my="2" align="center">
-        Sign up to get started.
-      </Text>
-      <form onSubmit={handleLogin}>
-        <Flex direction="column" gap="2" my="4">
-          {error && (
-            <Callout.Root color="red">
-              <Callout.Text>{error}</Callout.Text>
-            </Callout.Root>
-          )}
-          <TextField.Root
-            placeholder="Email"
-            required
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <TextField.Root
-            id="password"
-            type="password"
-            required
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-          />
-          <TextField.Root
-            id="confirm-password"
-            type="password"
-            required
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            placeholder="Confirm password"
-          />
-          <Button type="submit" loading={isLoading}>
-            Sign up
-          </Button>
-        </Flex>
-        <Text color="gray" align="center" as="p">
-          Already have an account?{" "}
-          <RadixLink asChild>
-            <Link href="/auth/login">Login</Link>
-          </RadixLink>
+    <form onSubmit={handleLogin}>
+      <Flex direction="column" gap="2" my="4">
+        {error && (
+          <Callout.Root color="red">
+            <Callout.Text>{error}</Callout.Text>
+          </Callout.Root>
+        )}
+        <TextField.Root
+          placeholder="Email"
+          required
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <TextField.Root
+          id="password"
+          type="password"
+          required
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+        />
+        <TextField.Root
+          id="confirm-password"
+          type="password"
+          required
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          placeholder="Confirm password"
+        />
+        <TextField.Root
+          placeholder="Full name"
+          required
+          type="text"
+          value={fullName}
+          onChange={(e) => setFullName(e.target.value)}
+        />
+        <Text size="1" color="gray" as="p">
+          Your full name will not be shared with people outside of your clubs
+          unless you choose to at a later time.
         </Text>
-      </form>
-    </>
+        <Button type="submit" loading={isLoading}>
+          Sign up
+        </Button>
+      </Flex>
+    </form>
   );
 }
