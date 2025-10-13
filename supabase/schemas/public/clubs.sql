@@ -19,13 +19,15 @@ create index on clubs(name);
 create function add_creator_as_club_member()
   returns trigger
   language plpgsql
+  security definer
+  set search_path = ''
   as $$
 declare
   new_role_id uuid;
 begin
   if new.created_by is not null then
     -- Create a new role with all permissions
-    insert into roles(club_id, name, permissions)
+    insert into public.roles(club_id, name, permissions)
       values (new.id, 'Default role', '{
       "canWriteFiles": true,
       "canReadFiles": true,
@@ -39,7 +41,7 @@ begin
     returning
       id into new_role_id;
     -- Add the creator as a member with the new role
-    insert into club_members(club_id, user_id, role_id, accepted)
+    insert into public.club_members(club_id, user_id, role_id, accepted)
       values (new.id, new.created_by, new_role_id, true);
   end if;
   return new;

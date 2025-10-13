@@ -8,7 +8,7 @@ create table private.profiles(
   bio text,
   school text,
   notifications_enabled boolean default true not null,
-  notification_device_tokens text[] default array[] ::text[] not null,
+  notification_device_tokens text[] default array[]::text[] not null,
   is_banned boolean default false not null,
   private_profile boolean default false not null
 );
@@ -18,6 +18,24 @@ create index on private.profiles(full_name);
 create trigger set_updated_at
   before update on private.profiles for each row
   execute function extensions.moddatetime("updated_at");
+
+-- When a user is created, we create the corresponding profile with a blank full_name
+create function create_user_profile()
+  returns trigger
+  language plpgsql
+  set search_path = ''
+  security definer
+  as $$
+begin
+  insert into private.profiles(id, full_name)
+    values(new.id, '');
+  return new;
+end;
+$$;
+
+create trigger create_user_profile
+  after insert on auth.users for each row
+  execute function create_user_profile();
 
 alter table private.profiles enable row level security;
 

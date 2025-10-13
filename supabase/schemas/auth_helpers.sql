@@ -5,14 +5,15 @@ create function public.user_has_club_permission(p_club_id uuid, p_permission tex
   returns boolean
   language sql
   security definer stable
+  set search_path = ''
   as $$
   select
     exists(
       select
         1
       from
-        "club_members" cm
-        inner join "roles" r on cm.role_id = r.id
+        public.club_members cm
+        inner join public.roles r on cm.role_id = r.id
       where
         cm.club_id = p_club_id
         and cm.user_id = auth.uid()

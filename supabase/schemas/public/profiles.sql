@@ -26,8 +26,20 @@ create view public.profiles as (
       null
     else
       p.school
-    end as school,
-    p.notifications_enabled
+    end as school
   from
     private.profiles p);
+
+-- proxy updates to the private schema
+create rule profiles_update as on update
+  to public.profiles
+    do instead
+    update
+      private.profiles set
+      full_name = new.full_name,
+      nickname = new.nickname,
+      avatar_url = new.avatar_url,
+      bio = new.bio,
+      school = new.school where
+      id = new.id;
 
