@@ -9,7 +9,6 @@ export interface Profile {
   full_name: string;
   id: string | null;
   nickname: string | null;
-  notifications_enabled: boolean | null;
   school: string | null;
 }
 

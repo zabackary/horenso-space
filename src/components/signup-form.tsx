@@ -1,5 +1,6 @@
 "use client";
 
+import { revalidateRoot } from "@/actions/auth";
 import { createClient } from "@/lib/supabase/client";
 import { Button, Callout, Flex, Text, TextField } from "@radix-ui/themes";
 import { useRouter } from "next/navigation";
@@ -43,6 +44,7 @@ export function SignupForm(props: SignupFormProps) {
           console.warn("Failed to update full name:", error);
         }
       }
+      revalidateRoot();
       if (props.next) {
         router.push(props.next);
       } else {

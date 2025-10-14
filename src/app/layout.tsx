@@ -45,7 +45,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Theme accentColor="red" grayColor="mauve" radius="large" asChild>
+      <Theme accentColor="red" grayColor="mauve" radius="full" asChild>
         <body
           className={`${hachiMaruPop.variable} ${notoSansJP.variable} ${gloriaHallelujah.variable} ${notoSans.variable}`}
         >
