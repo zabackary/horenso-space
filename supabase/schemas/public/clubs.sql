@@ -1,7 +1,7 @@
 create table clubs(
   id uuid primary key default gen_random_uuid(),
   created_at timestamp with time zone default now() not null,
-  created_by uuid references auth.users(id) on delete set null,
+  created_by uuid references auth.users(id) on delete set null default auth.uid(),
   name text not null,
   description text,
   school text,

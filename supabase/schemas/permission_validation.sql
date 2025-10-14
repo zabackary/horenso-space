@@ -50,6 +50,11 @@ create policy "Club members can view their clubs" on clubs
       where
         club_members.club_id = clubs.id and club_members.user_id = auth.uid() and club_members.accepted = true));
 
+-- The club creator can always view their club
+create policy "Club creators can view their clubs" on clubs
+  for select
+    using (clubs.created_by = auth.uid());
+
 -- Users with canManageClub permission can update club details
 create policy "Club managers can update clubs" on clubs
   for update
