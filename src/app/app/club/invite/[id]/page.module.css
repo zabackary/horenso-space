@@ -1,0 +1,27 @@
+@keyframes plane {
+  0% {
+    transform: translateX(-40px) translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(0px) translateY(-10px) rotate(10deg);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(40px) translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+}
+
+.plane {
+  animation: plane 3s linear infinite;
+}
+
+.card {
+  width: 100%;
+}

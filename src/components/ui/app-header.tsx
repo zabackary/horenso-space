@@ -1,15 +1,16 @@
 import { logout } from "@/actions/auth";
 import getProfile from "@/lib/auth/getProfile";
 import { createClient } from "@/lib/supabase/server";
+import { HomeIcon } from "@radix-ui/react-icons";
 import {
   Avatar,
+  Badge,
   Box,
   Button,
   DropdownMenu,
   Flex,
   Heading,
   IconButton,
-  Select,
 } from "@radix-ui/themes";
 import clsx from "clsx";
 import Link from "next/link";
@@ -23,8 +24,7 @@ export async function AppHeader({
   const profile = await getProfile(supabase);
   const { data: clubs } = await supabase
     .from("joined_clubs")
-    .select("id, name, school")
-    .throwOnError();
+    .select("id, name, school");
 
   return (
     <Flex
@@ -43,25 +43,28 @@ export async function AppHeader({
           </Heading>
         </Link>
         <Box flexGrow="1" />
-        {profile ? (
+        {profile && clubs ? (
           <>
-            {clubs.length > 0 ? (
-              <Select.Root
-                defaultValue={clubs[0].id ?? ""}
-                onValueChange={(value) => {
-                  // Navigate to the selected club's page
-                  window.location.href = `/app/club/${value}`;
-                }}
-              >
-                <Select.Trigger aria-label="Select Club" />
-                <Select.Content>
+            {clubs.length > 1 ? (
+              <DropdownMenu.Root>
+                <DropdownMenu.Trigger>
+                  <Button size="3" variant="outline">
+                    <HomeIcon />
+                    <Badge>{clubs.length}</Badge>
+                  </Button>
+                </DropdownMenu.Trigger>
+                <DropdownMenu.Content align="center">
                   {clubs.map((club) => (
-                    <Select.Item key={club.id} value={club.id ?? ""}>
-                      {club.name} ({club.school})
-                    </Select.Item>
+                    <DropdownMenu.Item asChild key={club.id}>
+                      <Link href={`/app/${club.id}`}>{club.name}</Link>
+                    </DropdownMenu.Item>
                   ))}
-                </Select.Content>
-              </Select.Root>
+                </DropdownMenu.Content>
+              </DropdownMenu.Root>
+            ) : clubs.length > 0 ? (
+              <Button asChild size="3" variant="outline">
+                <Link href={`/app/${clubs[0].id}`}>{clubs[0].name}</Link>
+              </Button>
             ) : (
               <Button asChild size="3" variant="outline">
                 <Link href="/app/club/create">Join a Club</Link>

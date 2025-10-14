@@ -7,7 +7,7 @@ export interface Profile {
   bio: string | null;
   created_at: string | null;
   full_name: string;
-  id: string | null;
+  id: string;
   nickname: string | null;
   school: string | null;
 }
@@ -34,6 +34,7 @@ export default async function getProfile(
   return {
     user,
     ...data,
+    id: data?.id || "", // to satisfy the non-null constraint (it should be non-null in practice)
     full_name: data?.full_name || "", // to satisfy the non-null constraint (it should be non-null in practice, since it is only null for other users)
   };
 }
