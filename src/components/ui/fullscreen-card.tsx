@@ -1,9 +1,8 @@
 import { Box, Card, Flex } from "@radix-ui/themes";
-import styles from "./auth-card.module.css";
-import { AppHeader } from "./app-header";
 import { ComponentPropsWithoutRef } from "react";
+import styles from "./fullscreen-card.module.css";
 
-export function AuthCard({ ...props }: ComponentPropsWithoutRef<"div">) {
+export function FullscreenCard({ ...props }: ComponentPropsWithoutRef<"div">) {
   return (
     <Flex
       direction="column"

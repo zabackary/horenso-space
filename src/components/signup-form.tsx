@@ -2,6 +2,7 @@
 
 import { revalidateRoot } from "@/actions/auth";
 import { createClient } from "@/lib/supabase/client";
+import { CrossCircledIcon } from "@radix-ui/react-icons";
 import { Button, Callout, Flex, Text, TextField } from "@radix-ui/themes";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -62,6 +63,9 @@ export function SignupForm(props: SignupFormProps) {
       <Flex direction="column" gap="2" my="4">
         {error && (
           <Callout.Root color="red">
+            <Callout.Icon>
+              <CrossCircledIcon />
+            </Callout.Icon>
             <Callout.Text>{error}</Callout.Text>
           </Callout.Root>
         )}
