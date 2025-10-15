@@ -11,6 +11,7 @@ import {
   Flex,
   Heading,
   IconButton,
+  Tooltip,
 } from "@radix-ui/themes";
 import clsx from "clsx";
 import Link from "next/link";
@@ -45,15 +46,21 @@ export async function AppHeader({
         <Box flexGrow="1" />
         {profile && clubs ? (
           <>
-            {clubs.length > 1 ? (
+            {clubs ? (
               <DropdownMenu.Root>
-                <DropdownMenu.Trigger>
-                  <Button size="3" variant="outline">
-                    <HomeIcon />
-                    <Badge>{clubs.length}</Badge>
-                  </Button>
-                </DropdownMenu.Trigger>
+                <Tooltip content="Select a club">
+                  <DropdownMenu.Trigger>
+                    <Button size="3" variant="outline">
+                      <HomeIcon />
+                      <Badge>{clubs.length}</Badge>
+                    </Button>
+                  </DropdownMenu.Trigger>
+                </Tooltip>
                 <DropdownMenu.Content align="center">
+                  <DropdownMenu.Item asChild>
+                    <Link href="/app">Home</Link>
+                  </DropdownMenu.Item>
+                  <DropdownMenu.Separator />
                   {clubs.map((club) => (
                     <DropdownMenu.Item asChild key={club.id}>
                       <Link href={`/app/${club.id}`}>{club.name}</Link>
@@ -61,13 +68,9 @@ export async function AppHeader({
                   ))}
                 </DropdownMenu.Content>
               </DropdownMenu.Root>
-            ) : clubs.length > 0 ? (
-              <Button asChild size="3" variant="outline">
-                <Link href={`/app/${clubs[0].id}`}>{clubs[0].name}</Link>
-              </Button>
             ) : (
               <Button asChild size="3" variant="outline">
-                <Link href="/app/club/create">Join a Club</Link>
+                <Link href="/app/club/create">Create a Club</Link>
               </Button>
             )}
 

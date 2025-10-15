@@ -28,16 +28,23 @@
 
     &:nth-child(2) {
       transform: translateY(100%);
+      display: none;
     }
   }
 
-  &:hover {
-    span:nth-child(1) {
-      transform: translateY(-100%);
+  @media (min-width: 600px) {
+    span:nth-child(2) {
+      display: unset;
     }
 
-    span:nth-child(2) {
-      transform: translateY(0%);
+    &:hover {
+      span:nth-child(1) {
+        transform: translateY(-100%);
+      }
+
+      span:nth-child(2) {
+        transform: translateY(0%);
+      }
     }
   }
 }
