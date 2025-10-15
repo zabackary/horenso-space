@@ -1,0 +1,16 @@
+.club-card {
+  width: 300px;
+  padding-top: 20px;
+
+  &::after {
+    border-top: 8px solid var(--card-header-background);
+  }
+
+  & > div {
+    height: 100%;
+  }
+}
+
+.club-card__button {
+  width: 100%;
+}
