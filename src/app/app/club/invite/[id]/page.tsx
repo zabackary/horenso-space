@@ -7,19 +7,10 @@ import { redirect } from "next/navigation";
 import { joinClub } from "./actions";
 import styles from "./page.module.css";
 
-interface JoinClubPageProps {
-  params: Promise<{
-    id: string;
-  }>;
-  searchParams: Promise<{
-    error?: string;
-  }>;
-}
-
 export default async function JoinClubPage({
   params,
   searchParams,
-}: JoinClubPageProps) {
+}: PageProps<"/app/club/invite/[id]">) {
   const { id } = await params;
   const { error: searchError } = await searchParams;
 

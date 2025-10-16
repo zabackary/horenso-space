@@ -87,10 +87,7 @@ export async function AppHeader({
               <DropdownMenu.Content align="end" sideOffset={5}>
                 <form>
                   <DropdownMenu.Item asChild>
-                    <Link href="/app/profile">Profile</Link>
-                  </DropdownMenu.Item>
-                  <DropdownMenu.Item asChild>
-                    <Link href="/app/settings">Settings</Link>
+                    <Link href="/app/users/me">Profile and Settings</Link>
                   </DropdownMenu.Item>
                   <DropdownMenu.Separator />
                   <DropdownMenu.Item asChild>
