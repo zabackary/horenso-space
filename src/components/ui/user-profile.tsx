@@ -1,5 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
-import { Avatar, Flex, Heading } from "@radix-ui/themes";
+import { Avatar, Flex, Heading, Text } from "@radix-ui/themes";
 import styles from "./user-profile.module.css";
 
 export interface UserProfileProps {
@@ -17,61 +17,47 @@ export default async function UserProfile({ id, className }: UserProfileProps) {
     .eq("id", id)
     .maybeSingle();
 
-  if (error) {
-    // Fail quietly in the UI — render a minimal placeholder
-    console.error("Failed to load profile", error);
+  if (!profile || error) {
     return (
-      <div className={className}>
-        <div className={styles.container}>
-          <div className={styles.avatar} />
-          <div className={styles.meta}>
-            <div className={styles.name}>Unknown user</div>
-          </div>
-        </div>
-      </div>
+      <Flex gap="4" align="center">
+        <Avatar fallback=" " size="7" className={styles.avatar} />
+        <Flex direction="column" gap="1">
+          <Heading as="h2" size="6">
+            Unknown user
+          </Heading>
+        </Flex>
+      </Flex>
     );
   }
 
-  if (!profile) {
-    return (
-      <div className={className}>
-        <div className={styles.container}>
-          <div className={styles.avatar} />
-          <div className={styles.meta}>
-            <div className={styles.name}>User not found</div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  const { avatar_url, full_name, nickname, bio, school, created_at } =
-    profile as any;
+  const { avatar_url, full_name, nickname, bio, school, created_at } = profile;
 
   return (
-    <div className={className}>
-      <Flex gap="4" align="center">
-        <Avatar
-          src={avatar_url ?? undefined}
-          alt={full_name ?? nickname ?? "Avatar"}
-          fallback={(full_name ?? nickname ?? "?").charAt(0)}
-          size="7"
-          className={styles.avatar}
-        />
-        <div className={styles.meta}>
-          <Heading as="h2" size="6">
-            {full_name ?? nickname ?? "Unknown"}
-            {nickname ? <>({nickname})</> : null}
+    <Flex gap="4" align="center" className={className}>
+      <Avatar
+        src={avatar_url ?? undefined}
+        alt={full_name ?? nickname ?? "Avatar"}
+        fallback={(full_name ?? nickname ?? "?").charAt(0)}
+        size="7"
+        className={styles.avatar}
+      />
+      <Flex direction="column" gap="1">
+        <Heading as="h2" size="6">
+          {full_name ?? "Unknown"}
+          {nickname ? <>({nickname})</> : null}
+        </Heading>
+        {school ? (
+          <Heading size="3" color="gray">
+            {school}
           </Heading>
-          {school ? <div className={styles.small}>{school}</div> : null}
-          {created_at ? (
-            <div className={styles.small}>
-              Joined {new Date(created_at).toLocaleDateString()}
-            </div>
-          ) : null}
-          {bio ? <div className={styles.bio}>{bio}</div> : null}
-        </div>
+        ) : null}
+        {created_at ? (
+          <Heading size="3" color="gray">
+            Joined {new Date(created_at).toLocaleDateString()}
+          </Heading>
+        ) : null}
+        {bio ? <Text size="3">{bio}</Text> : null}
       </Flex>
-    </div>
+    </Flex>
   );
 }
