@@ -1,0 +1,24 @@
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.name {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.nickname {
+  color: var(--muted, #666);
+}
+
+.bio {
+  margin-top: 0.5rem;
+  color: var(--muted, #666);
+}
+
+.small {
+  font-size: 0.9rem;
+  color: var(--muted, #666);
+}
