@@ -44,7 +44,7 @@ export default async function UserProfile({ id, className }: UserProfileProps) {
       <Flex direction="column" gap="1">
         <Heading as="h2" size="6">
           {full_name ?? "Unknown"}
-          {nickname ? <>({nickname})</> : null}
+          {nickname ? <> ({nickname})</> : null}
         </Heading>
         {school ? (
           <Heading size="3" color="gray">

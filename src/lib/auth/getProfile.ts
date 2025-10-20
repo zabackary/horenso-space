@@ -13,7 +13,8 @@ export interface Profile {
 }
 
 export default async function getProfile(
-  supabase: SupabaseClient<Database>
+  supabase: SupabaseClient<Database>,
+  signal?: AbortSignal
 ): Promise<Profile | null> {
   const {
     data: { user },
@@ -27,6 +28,7 @@ export default async function getProfile(
     .from("profiles")
     .select("*")
     .eq("id", user.id)
+    .abortSignal(signal ?? new AbortController().signal)
     .single();
   if (error) {
     throw error;
