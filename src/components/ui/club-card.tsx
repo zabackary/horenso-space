@@ -6,9 +6,9 @@ import {
   Card,
   Flex,
   Heading,
-  Link,
   Text,
 } from "@radix-ui/themes";
+import Link from "next/link";
 import styles from "./club-card.module.css";
 
 /**
