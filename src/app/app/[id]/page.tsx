@@ -1,12 +1,90 @@
-import { notFound } from "next/navigation";
+import HomeCard from "@/components/ui/home-card";
+import getPermissionsForClub from "@/lib/auth/getPermissionsForClub";
+import { createClient } from "@/lib/supabase/server";
+import { Box, Card, Grid, Heading, Text } from "@radix-ui/themes";
 
 export default async function ClubPage({ params }: PageProps<"/app/[id]">) {
   const { id } = await params;
-  const uuidRegex =
-    /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-  if (!uuidRegex.test(id)) {
-    notFound();
-  }
 
-  return <div>Club Page: {id}</div>;
+  const supabase = await createClient();
+  const permissions = await getPermissionsForClub(supabase, id);
+  console.info("Permissions:", permissions);
+
+  return (
+    <Grid
+      gap="4"
+      p="4"
+      columns={{
+        xs: "1",
+        sm: "2",
+        md: "3",
+      }}
+    >
+      <Box
+        asChild
+        gridColumn={{
+          xs: "span 1",
+          sm: "span 2",
+          md: "span 3",
+        }}
+      >
+        <Card variant="ghost">
+          <Heading>最近のお知らせ</Heading>
+          <Text>お知らせの内容がここに入ります。</Text>
+        </Card>
+      </Box>
+      <HomeCard
+        title="カレンダー"
+        description="クラブのイベントやミーティングを確認しましょう。"
+        href={`/app/${id}/calendar`}
+        action={
+          permissions.permissions.includes("canWriteCalendar")
+            ? {
+                label: "イベントを追加する",
+                href: `/app/${id}/calendar/create`,
+              }
+            : undefined
+        }
+      />
+      <HomeCard
+        title="欠席連絡"
+        description="lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        href={`/app/${id}/members`}
+        action={
+          permissions.permissions.includes("canWriteOwnReport")
+            ? {
+                label: "欠席を連絡する",
+                href: `/app/${id}/absences/new`,
+              }
+            : undefined
+        }
+      />
+      <HomeCard
+        title="ドキュメント"
+        description="クラブの共有ドキュメントにアクセスします。"
+        href={`/app/${id}/documents`}
+        action={
+          permissions.permissions.includes("canWriteFiles")
+            ? {
+                label: "アップロードする",
+                href: `/app/${id}/documents/upload`,
+              }
+            : undefined
+        }
+      />
+      <HomeCard
+        title="通知"
+        description="最近の通知を確認します。"
+        href={`/app/${id}/notifications`}
+        action={
+          permissions.permissions.includes("canWriteCalendar")
+            ? {
+                label: "新しい通知を投稿する",
+                href: `/app/${id}/notifications/post`,
+              }
+            : undefined
+        }
+      />
+    </Grid>
+  );
 }

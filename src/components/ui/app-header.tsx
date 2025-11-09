@@ -18,9 +18,14 @@ import Link from "next/link";
 import { ComponentPropsWithoutRef } from "react";
 import styles from "./app-header.module.css";
 
-export async function AppHeader({
-  ...props
-}: ComponentPropsWithoutRef<"header">) {
+export interface AppHeaderProps extends ComponentPropsWithoutRef<"header"> {
+  header?: {
+    text: string;
+    href: string;
+  };
+}
+
+export async function AppHeader({ header, ...props }: AppHeaderProps) {
   const supabase = await createClient();
   const profile = await getProfile(supabase);
   const { data: clubs } = await supabase
@@ -37,10 +42,19 @@ export async function AppHeader({
       className={clsx(styles.header, props.className)}
     >
       <header>
-        <Link href="/" className={styles["logo-link"]}>
+        <Link
+          href={header?.href ?? "/"}
+          className={clsx(styles["logo-link"], header ? "" : styles.animated)}
+        >
           <Heading as="h1" className={styles["header-text"]}>
-            <span>報連相SPACE</span>
-            <span>ほうれん草SPACE 🥬</span>
+            {header ? (
+              header.text
+            ) : (
+              <>
+                <span>報連相SPACE</span>
+                <span>ほうれん草SPACE 🥬</span>
+              </>
+            )}
           </Heading>
         </Link>
         <Box flexGrow="1" />
@@ -85,7 +99,7 @@ export async function AppHeader({
                 </IconButton>
               </DropdownMenu.Trigger>
               <DropdownMenu.Content align="end" sideOffset={5}>
-                <form>
+                <form style={{ display: "contents" }}>
                   <DropdownMenu.Item asChild>
                     <Link href="/app/users/me">Profile and Settings</Link>
                   </DropdownMenu.Item>
