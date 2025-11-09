@@ -1,26 +1,20 @@
 "use client";
 
-import getProfile, { Profile } from "@/lib/auth/getProfile";
+import { Profile } from "@/lib/auth/getProfile";
 import { useDebounceCallback } from "@/lib/debounce";
 import { createClient } from "@/lib/supabase/client";
 import { CheckCircledIcon } from "@radix-ui/react-icons";
 import { Callout, Spinner, Text, TextArea, TextField } from "@radix-ui/themes";
-import { useEffect, useId, useState } from "react";
+import { use, useId, useState } from "react";
 
-export default function ProfileEditor() {
+export default function ProfileEditor({
+  profilePromise,
+}: {
+  profilePromise: Promise<Profile>;
+}) {
   const a11yId = useId();
 
-  const [profile, setProfile] = useState<Profile | null>(null);
-
-  useEffect(() => {
-    const abortController = new AbortController();
-    (async () => {
-      const supabase = createClient();
-      const profile = await getProfile(supabase, abortController.signal);
-      setProfile(profile);
-    })();
-    return () => abortController.abort();
-  }, []);
+  const profile = use(profilePromise);
 
   const [showFormSaving, setShowFormSaving] = useState<boolean | null>(null);
   const debounceFormUpdate = useDebounceCallback((event: React.FormEvent) => {
@@ -70,13 +64,12 @@ export default function ProfileEditor() {
       </Text>
       <TextField.Root
         name="full_name"
-        defaultValue={profile?.full_name ?? ""}
+        defaultValue={profile.full_name}
         placeholder="Your full name"
         type="text"
         required
         autoComplete="name"
         id={`${a11yId}-name`}
-        disabled={!profile}
       />
 
       <Text as="p" mt="4" mb="1">
@@ -86,12 +79,11 @@ export default function ProfileEditor() {
       </Text>
       <TextField.Root
         name="nickname"
-        defaultValue={profile?.nickname ?? ""}
+        defaultValue={profile.nickname ?? ""}
         placeholder="Your nickname"
         type="text"
         autoComplete="name"
         id={`${a11yId}-nickname`}
-        disabled={!profile}
       />
 
       <Text as="p" mt="4" mb="1">
@@ -101,11 +93,10 @@ export default function ProfileEditor() {
       </Text>
       <TextField.Root
         name="school"
-        defaultValue={profile?.school ?? ""}
+        defaultValue={profile.school ?? ""}
         placeholder="通っている学校名"
         type="text"
         id={`${a11yId}-school`}
-        disabled={!profile}
       />
 
       <Text as="p" mt="4" mb="1">
@@ -115,10 +106,9 @@ export default function ProfileEditor() {
       </Text>
       <TextArea
         name="bio"
-        defaultValue={profile?.bio ?? ""}
-        placeholder="〇〇市出身。"
+        defaultValue={profile.bio ?? ""}
+        placeholder="〇〇出身。"
         id={`${a11yId}-bio`}
-        disabled={!profile}
       />
     </form>
   );
