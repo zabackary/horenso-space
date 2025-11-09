@@ -20,7 +20,7 @@ export default async function JoinClubPage({
     // redirect user to login if they are not signed in
     // The user will be redirected back to this page after login
     const searchParams = new URLSearchParams({
-      next: `/app/club/join/${id}`,
+      next: `/app/club/invite/${id}`,
     });
     redirect(`/auth/login?${searchParams.toString()}`);
   }
