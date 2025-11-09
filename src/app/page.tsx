@@ -1,3 +1,4 @@
+import { AppHeader } from "@/components/ui/app-header";
 import { Button, Card, Flex, Grid, Heading, Text } from "@radix-ui/themes";
 import { Metadata } from "next";
 import Link from "next/link";
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <Flex direction="column" minHeight="100%">
+      <AppHeader />
       <Flex direction="column" p="2">
         <Card className={styles.banner} variant="surface" asChild>
           <main>
@@ -22,7 +24,7 @@ export default function Home() {
               <Button asChild size="4" variant="solid">
                 <Link href="/auth/sign-up">始めよう</Link>
               </Button>
-              <Button asChild size="4" variant="soft">
+              <Button asChild size="4" variant="surface">
                 <Link href="/auth/login">ログイン</Link>
               </Button>
             </Flex>

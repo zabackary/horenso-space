@@ -1,4 +1,3 @@
-import { AppHeader } from "@/components/ui/app-header";
 import { Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
 import type { Metadata } from "next";
@@ -49,13 +48,12 @@ export default function RootLayout({
         accentColor="red"
         grayColor="mauve"
         radius="full"
-        appearance="dark"
+        appearance="light"
         asChild
       >
         <body
           className={`${hachiMaruPop.variable} ${notoSansJP.variable} ${gloriaHallelujah.variable} ${notoSans.variable}`}
         >
-          <AppHeader />
           {children}
         </body>
       </Theme>

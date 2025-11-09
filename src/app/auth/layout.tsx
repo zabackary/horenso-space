@@ -1,3 +1,4 @@
+import { AppHeader } from "@/components/ui/app-header";
 import { FullscreenCard } from "@/components/ui/fullscreen-card";
 
 export default function AuthLayout({
@@ -5,5 +6,10 @@ export default function AuthLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <FullscreenCard>{children}</FullscreenCard>;
+  return (
+    <>
+      <AppHeader />
+      <FullscreenCard>{children}</FullscreenCard>
+    </>
+  );
 }
