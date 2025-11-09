@@ -103,7 +103,7 @@ to public
 using ((auth.uid() = id));
 
 
-CREATE TRIGGER set_updated_at BEFORE UPDATE ON private.profiles FOR EACH ROW EXECUTE FUNCTION moddatetime('updated_at');
+CREATE TRIGGER set_updated_at BEFORE UPDATE ON private.profiles FOR EACH ROW EXECUTE FUNCTION extensions.moddatetime('updated_at');
 
 
 drop trigger if exists "set_updated_at" on "public"."profiles";

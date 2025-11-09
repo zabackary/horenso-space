@@ -1,7 +1,7 @@
 import ProfileEditor from "@/components/profile-editor";
 import getProfile from "@/lib/auth/getProfile";
 import { createClient } from "@/lib/supabase/server";
-import { Box, Heading } from "@radix-ui/themes";
+import { Box } from "@radix-ui/themes";
 import { useId } from "react";
 import { MeTabNav } from "../layout";
 
@@ -15,7 +15,6 @@ export default async function ProfileSettingsPage() {
     <>
       <MeTabNav active="profile" />
       <Box p="4">
-        <Heading as="h2">Profile</Heading>
         <ProfileEditor />
       </Box>
     </>

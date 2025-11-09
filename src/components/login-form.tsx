@@ -43,9 +43,49 @@ export function LoginForm(props: LoginFormProps) {
     }
   };
 
+  const handleOauthLogin = async (provider: "google" | "github") => {
+    const supabase = createClient();
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider,
+
+        options: {
+          redirectTo: props.next
+            ? `${
+                window.location.origin
+              }/auth/callback?next=${encodeURIComponent(props.next)}`
+            : `${window.location.origin}/auth/callback`,
+        },
+      });
+      if (error) throw error;
+    } catch (error: unknown) {
+      setError(error instanceof Error ? error.message : "An error occurred");
+      setIsLoading(false);
+    }
+  };
+
   return (
     <form onSubmit={handleLogin}>
       <Flex direction="column" gap="2" my="4">
+        <Flex direction="row" gap="2" align="stretch" justify="center">
+          <Button
+            variant="outline"
+            onClick={() => handleOauthLogin("google")}
+            loading={isLoading}
+          >
+            Sign in with Google
+          </Button>
+          <Button
+            variant="outline"
+            onClick={() => handleOauthLogin("github")}
+            loading={isLoading}
+          >
+            Sign in with GitHub
+          </Button>
+        </Flex>
         {error && (
           <Callout.Root color="red">
             <Callout.Icon>

@@ -1,15 +1,24 @@
-import { Box, Heading, Text } from "@radix-ui/themes";
+import LoginAuthProvidersSettings from "@/components/login-auth-providers-settings";
+import { createClient } from "@/lib/supabase/server";
+import { Box } from "@radix-ui/themes";
 import { MeTabNav } from "../layout";
 
-export default function LoginSettingsPage() {
+export default async function LoginSettingsPage() {
+  const supabase = await createClient();
+  const identitiesPromise = supabase.auth
+    .getUserIdentities()
+    .then(({ data, error }) => {
+      if (error) {
+        throw error;
+      }
+      return data.identities;
+    });
+
   return (
     <>
       <MeTabNav active="login" />
       <Box p="4">
-        <Heading as="h2">Login & Authentication</Heading>
-        <Text>
-          You can manage OAuth providers and reset your password here.
-        </Text>
+        <LoginAuthProvidersSettings identitiesPromise={identitiesPromise} />
       </Box>
     </>
   );
