@@ -3,6 +3,7 @@ import { Button, Flex, Heading, Text } from "@radix-ui/themes";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import styles from "./not-found.module.css";
 
 export const metadata: Metadata = {
   title: "404",
@@ -14,14 +15,21 @@ export default function Home() {
       <AppHeader />
       <Flex
         direction="column"
-        minHeight="100%"
         align="center"
         justify="center"
         gap="4"
         p="4"
+        flexGrow="1"
       >
         {/* 16:9 aspect ratio */}
-        <Image src="/status/404.png" alt="" width={640} height={360} />
+        <Image
+          className={styles.hero}
+          src="/status/404.png"
+          alt=""
+          width={640}
+          height={360}
+          priority
+        />
         <Heading size="7" as="h2" style={{ textAlign: "center" }}>
           お探しのページは見つかりませんでした
         </Heading>
