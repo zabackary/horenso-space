@@ -1,6 +1,7 @@
 import { Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
 import type { Metadata } from "next";
+import { ThemeProvider } from "next-themes";
 import {
   Gloria_Hallelujah,
   Hachi_Maru_Pop,
@@ -43,18 +44,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <Theme
-        accentColor="red"
-        grayColor="mauve"
-        radius="full"
-        appearance="light"
-        asChild
-      >
+    <html lang="en" suppressHydrationWarning>
+      <Theme accentColor="red" grayColor="mauve" radius="full" asChild>
         <body
           className={`${hachiMaruPop.variable} ${notoSansJP.variable} ${gloriaHallelujah.variable} ${notoSans.variable}`}
         >
-          {children}
+          <ThemeProvider attribute="class">{children}</ThemeProvider>
         </body>
       </Theme>
     </html>

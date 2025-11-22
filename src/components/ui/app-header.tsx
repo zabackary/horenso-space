@@ -23,9 +23,14 @@ export interface AppHeaderProps extends ComponentPropsWithoutRef<"header"> {
     text: string;
     href: string;
   };
+  disableSticky?: boolean;
 }
 
-export async function AppHeader({ header, ...props }: AppHeaderProps) {
+export async function AppHeader({
+  header,
+  disableSticky,
+  ...props
+}: AppHeaderProps) {
   const supabase = await createClient();
   const profile = await getProfile(supabase);
   const { data: clubs } = await supabase
@@ -39,7 +44,11 @@ export async function AppHeader({ header, ...props }: AppHeaderProps) {
       gap="2"
       asChild
       {...props}
-      className={clsx(styles.header, props.className)}
+      className={clsx(
+        styles.header,
+        props.className,
+        disableSticky ? "" : styles.sticky
+      )}
     >
       <header>
         <Link
@@ -62,7 +71,7 @@ export async function AppHeader({ header, ...props }: AppHeaderProps) {
           <>
             {clubs ? (
               <DropdownMenu.Root>
-                <Tooltip content="Select a club">
+                <Tooltip content="Select a club" style={{ zIndex: 1 }}>
                   <DropdownMenu.Trigger>
                     <Button size="3" variant="outline">
                       <HomeIcon />
@@ -70,7 +79,7 @@ export async function AppHeader({ header, ...props }: AppHeaderProps) {
                     </Button>
                   </DropdownMenu.Trigger>
                 </Tooltip>
-                <DropdownMenu.Content align="center">
+                <DropdownMenu.Content align="center" style={{ zIndex: 1 }}>
                   <DropdownMenu.Item asChild>
                     <Link href="/app">Home</Link>
                   </DropdownMenu.Item>
@@ -98,7 +107,11 @@ export async function AppHeader({ header, ...props }: AppHeaderProps) {
                   />
                 </IconButton>
               </DropdownMenu.Trigger>
-              <DropdownMenu.Content align="end" sideOffset={5}>
+              <DropdownMenu.Content
+                align="end"
+                sideOffset={5}
+                style={{ zIndex: 1 }}
+              >
                 <form style={{ display: "contents" }}>
                   <DropdownMenu.Item asChild>
                     <Link href="/app/users/me">Profile and Settings</Link>
