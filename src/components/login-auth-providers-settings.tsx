@@ -13,7 +13,7 @@ import {
 } from "@radix-ui/themes";
 import { Provider, UserIdentity } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
-import { use, useState } from "react";
+import { use, useEffect, useState } from "react";
 
 const OAUTH_NAME_PROVIDERS: Partial<Record<Provider, string>> = {
   google: "Google",
@@ -52,7 +52,6 @@ export default function LoginAuthProvidersSettings({
     const { error } = await supabase.auth.unlinkIdentity(identity);
     setUnlinking(null);
     if (error) {
-      console.error("Error unlinking identity:", error.message);
       setLinkingError(error.message);
     } else {
       router.refresh();
@@ -89,6 +88,22 @@ export default function LoginAuthProvidersSettings({
       setResetPasswordSuccess(true);
     }
   };
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const error = searchParams.get("error");
+    if (error) {
+      setLinkingError(
+        decodeURIComponent(
+          searchParams.get("error_description") ||
+            searchParams.get("error_code") ||
+            "An error occurred."
+        )
+      );
+      // Clean up the URL to remove error params
+      router.replace(window.location.pathname);
+    }
+  }, []);
 
   const identities = use(identitiesPromise);
 
@@ -139,7 +154,7 @@ export default function LoginAuthProvidersSettings({
           Update password
         </Button>
       </form>
-      <Heading as="h3">OAuth providers</Heading>
+      <Heading as="h3">Login methods</Heading>
       {linkingError && (
         <Callout.Root color="red">
           <Callout.Text>{linkingError}</Callout.Text>
@@ -151,7 +166,9 @@ export default function LoginAuthProvidersSettings({
           <DataList.Item key={identity.id}>
             <DataList.Label title={identity.id}>
               {OAUTH_NAME_PROVIDERS[identity.provider as Provider] ||
-                identity.provider}
+              identity.provider === "email"
+                ? "Email"
+                : identity.provider}
             </DataList.Label>
             <DataList.Value>
               <Box>
@@ -183,7 +200,7 @@ export default function LoginAuthProvidersSettings({
                     onClick={() => handleOauthLink(provider as Provider)}
                     loading={linking === provider}
                   >
-                    {linking
+                    {linking === provider
                       ? "Linking..."
                       : `Link ${
                           OAUTH_NAME_PROVIDERS[provider as Provider] || provider
