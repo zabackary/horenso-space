@@ -17,13 +17,15 @@ export function SignupForm(props: SignupFormProps) {
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
   const [error, setError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState<
+    "google" | "github" | "email" | null
+  >(null);
   const router = useRouter();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     const supabase = createClient();
-    setIsLoading(true);
+    setIsLoading("email");
     setError(null);
 
     try {
@@ -54,13 +56,13 @@ export function SignupForm(props: SignupFormProps) {
     } catch (error: unknown) {
       setError(error instanceof Error ? error.message : "An error occurred");
     } finally {
-      setIsLoading(false);
+      setIsLoading(null);
     }
   };
 
   const handleOauthLogin = async (provider: "google" | "github") => {
     const supabase = createClient();
-    setIsLoading(true);
+    setIsLoading(provider);
     setError(null);
 
     try {
@@ -78,7 +80,7 @@ export function SignupForm(props: SignupFormProps) {
       if (error) throw error;
     } catch (error: unknown) {
       setError(error instanceof Error ? error.message : "An error occurred");
-      setIsLoading(false);
+      setIsLoading(null);
     }
   };
 
@@ -89,14 +91,14 @@ export function SignupForm(props: SignupFormProps) {
           <Button
             variant="outline"
             onClick={() => handleOauthLogin("google")}
-            loading={isLoading}
+            loading={isLoading === "google"}
           >
             Sign up with Google
           </Button>
           <Button
             variant="outline"
             onClick={() => handleOauthLogin("github")}
-            loading={isLoading}
+            loading={isLoading === "github"}
           >
             Sign up with GitHub
           </Button>
@@ -143,7 +145,7 @@ export function SignupForm(props: SignupFormProps) {
           Your full name will not be shared with people outside of your clubs
           unless you choose to at a later time.
         </Text>
-        <Button type="submit" loading={isLoading}>
+        <Button type="submit" loading={isLoading === "email"}>
           Sign up
         </Button>
       </Flex>

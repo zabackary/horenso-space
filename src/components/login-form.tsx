@@ -15,13 +15,15 @@ export function LoginForm(props: LoginFormProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState<
+    "google" | "github" | "email" | null
+  >(null);
   const router = useRouter();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     const supabase = createClient();
-    setIsLoading(true);
+    setIsLoading("email");
     setError(null);
 
     try {
@@ -39,13 +41,13 @@ export function LoginForm(props: LoginFormProps) {
     } catch (error: unknown) {
       setError(error instanceof Error ? error.message : "An error occurred");
     } finally {
-      setIsLoading(false);
+      setIsLoading(null);
     }
   };
 
   const handleOauthLogin = async (provider: "google" | "github") => {
     const supabase = createClient();
-    setIsLoading(true);
+    setIsLoading(provider);
     setError(null);
 
     try {
@@ -63,7 +65,7 @@ export function LoginForm(props: LoginFormProps) {
       if (error) throw error;
     } catch (error: unknown) {
       setError(error instanceof Error ? error.message : "An error occurred");
-      setIsLoading(false);
+      setIsLoading(null);
     }
   };
 
@@ -74,14 +76,14 @@ export function LoginForm(props: LoginFormProps) {
           <Button
             variant="outline"
             onClick={() => handleOauthLogin("google")}
-            loading={isLoading}
+            loading={isLoading === "google"}
           >
             Sign in with Google
           </Button>
           <Button
             variant="outline"
             onClick={() => handleOauthLogin("github")}
-            loading={isLoading}
+            loading={isLoading === "github"}
           >
             Sign in with GitHub
           </Button>
@@ -109,7 +111,7 @@ export function LoginForm(props: LoginFormProps) {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
         />
-        <Button type="submit" loading={isLoading}>
+        <Button type="submit" loading={isLoading === "email"}>
           Login
         </Button>
       </Flex>
