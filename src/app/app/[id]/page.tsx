@@ -8,7 +8,6 @@ export default async function ClubPage({ params }: PageProps<"/app/[id]">) {
 
   const supabase = await createClient();
   const permissions = await getPermissionsForClub(supabase, id);
-  console.info("Permissions:", permissions);
 
   return (
     <Grid
