@@ -2,19 +2,13 @@
 
 import getProfile from "@/lib/auth/getProfile";
 import { createClient } from "@/lib/supabase/client";
-import {
-  ArrowLeftIcon,
-  CalendarIcon,
-  GlobeIcon,
-  TextIcon,
-} from "@radix-ui/react-icons";
+import { CalendarIcon, GlobeIcon, TextIcon } from "@radix-ui/react-icons";
 import {
   Box,
   Button,
   Callout,
   Flex,
   Grid,
-  Heading,
   TextArea,
   TextField,
 } from "@radix-ui/themes";
@@ -28,10 +22,6 @@ export interface CreateEventCardProps {
 
 export default function CreateEventCard({ clubId }: CreateEventCardProps) {
   const router = useRouter();
-  const handleBack = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    router.back();
-  };
   const [startDate, setStartDate] = useState("");
   const [startTime, setStartTime] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -84,20 +74,8 @@ export default function CreateEventCard({ clubId }: CreateEventCardProps) {
   };
 
   return (
-    <Flex direction="column" gap="2" asChild>
+    <Flex direction="column" gap="2" p="1" asChild>
       <form onSubmit={handleSubmit} className={styles["form"]}>
-        <Flex direction="row" align="center" gap="2">
-          <Button
-            className={styles["close-button"]}
-            variant="soft"
-            size="2"
-            onClick={handleBack}
-            type="button"
-          >
-            <ArrowLeftIcon /> Back
-          </Button>
-          <Heading size="3">Create event</Heading>
-        </Flex>
         <TextField.Root
           placeholder="Event Name"
           size="3"
