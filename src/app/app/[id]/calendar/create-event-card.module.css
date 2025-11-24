@@ -23,15 +23,18 @@
   width: 100%;
 }
 
-.save-button {
+.buttons {
   position: sticky;
   bottom: 16px;
   width: 100%;
   margin-top: 16px;
+
+  button {
+    flex-grow: 1;
+  }
 }
 
 .form {
   width: 100%;
-  padding: 16px;
   flex-grow: 1;
 }

@@ -12,16 +12,22 @@ import {
   TextArea,
   TextField,
 } from "@radix-ui/themes";
-import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import styles from "./create-event-card.module.css";
 
 export interface CreateEventCardProps {
   clubId: string;
+  withPadding?: boolean;
+  onCancel?: () => void;
+  onCreate?: (eventId: string) => void;
 }
 
-export default function CreateEventCard({ clubId }: CreateEventCardProps) {
-  const router = useRouter();
+export default function CreateEventCard({
+  clubId,
+  withPadding,
+  onCancel,
+  onCreate,
+}: CreateEventCardProps) {
   const [startDate, setStartDate] = useState("");
   const [startTime, setStartTime] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -65,6 +71,9 @@ export default function CreateEventCard({ clubId }: CreateEventCardProps) {
         .throwOnError()
         .select("id")
         .single();
+      if (onCreate && data) {
+        onCreate(data.id);
+      }
     } catch (error) {
       setError((error as Error).message);
       console.error(error);
@@ -74,10 +83,10 @@ export default function CreateEventCard({ clubId }: CreateEventCardProps) {
   };
 
   return (
-    <Flex direction="column" gap="2" p="1" asChild>
+    <Flex direction="column" gap="2" p={withPadding ? "1" : "0"} asChild>
       <form onSubmit={handleSubmit} className={styles["form"]}>
         <TextField.Root
-          placeholder="Event Name"
+          placeholder="New event name"
           size="3"
           name="title"
           required
@@ -150,9 +159,27 @@ export default function CreateEventCard({ clubId }: CreateEventCardProps) {
             <Callout.Text>{error}</Callout.Text>
           </Callout.Root>
         )}
-        <Button type="submit" size="3" className={styles["save-button"]}>
-          Save
-        </Button>
+        <Flex
+          direction="row"
+          gap="2"
+          className={styles.buttons}
+          align="stretch"
+        >
+          <Button type="submit" size="3" loading={loading}>
+            Save
+          </Button>
+          {onCancel && (
+            <Button
+              type="button"
+              size="3"
+              variant="soft"
+              onClick={onCancel}
+              disabled={loading}
+            >
+              Cancel
+            </Button>
+          )}
+        </Flex>
       </form>
     </Flex>
   );
