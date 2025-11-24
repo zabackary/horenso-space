@@ -77,6 +77,7 @@ export function LoginForm(props: LoginFormProps) {
             variant="outline"
             onClick={() => handleOauthLogin("google")}
             loading={isLoading === "google"}
+            type="button"
           >
             Sign in with Google
           </Button>
@@ -84,6 +85,7 @@ export function LoginForm(props: LoginFormProps) {
             variant="outline"
             onClick={() => handleOauthLogin("github")}
             loading={isLoading === "github"}
+            type="button"
           >
             Sign in with GitHub
           </Button>

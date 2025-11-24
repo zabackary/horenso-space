@@ -92,6 +92,7 @@ export function SignupForm(props: SignupFormProps) {
             variant="outline"
             onClick={() => handleOauthLogin("google")}
             loading={isLoading === "google"}
+            type="button"
           >
             Sign up with Google
           </Button>
@@ -99,6 +100,7 @@ export function SignupForm(props: SignupFormProps) {
             variant="outline"
             onClick={() => handleOauthLogin("github")}
             loading={isLoading === "github"}
+            type="button"
           >
             Sign up with GitHub
           </Button>
