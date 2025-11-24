@@ -20,6 +20,7 @@ export interface CreateEventCardProps {
   withPadding?: boolean;
   onCancel?: () => void;
   onCreate?: (eventId: string) => void;
+  initialStartDate?: () => string;
 }
 
 export default function CreateEventCard({
@@ -27,10 +28,15 @@ export default function CreateEventCard({
   withPadding,
   onCancel,
   onCreate,
+  initialStartDate,
 }: CreateEventCardProps) {
-  const [startDate, setStartDate] = useState("");
+  const [startDate, setStartDate] = useState(() => {
+    return initialStartDate ? initialStartDate() : "";
+  });
   const [startTime, setStartTime] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const [endDate, setEndDate] = useState(() => {
+    return initialStartDate ? initialStartDate() : "";
+  });
   const [endTime, setEndTime] = useState("");
   const handleStartDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setStartDate(e.target.value);

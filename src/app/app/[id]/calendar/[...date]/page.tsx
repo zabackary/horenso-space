@@ -26,9 +26,43 @@ export default async function CalendarYearPage({
       </>
     );
   }
-  if (isNaN(Number(date[0]))) {
-    notFound();
-  }
 
-  return <Calendar mode="year" date={date[0]} clubId={id} />;
+  switch (date.length) {
+    case 1: {
+      // Year view
+      if (isNaN(Number(date[0]))) {
+        notFound();
+      }
+
+      return <Calendar initialMode="year" initialDate={date[0]} clubId={id} />;
+    }
+    case 2: {
+      // Month view
+      const [year, month] = date;
+      if (isNaN(Number(year)) || isNaN(Number(month))) {
+        notFound();
+      }
+
+      return (
+        <Calendar
+          initialMode="month"
+          initialDate={date.join("-")}
+          clubId={id}
+        />
+      );
+    }
+    case 3: {
+      // Day view
+      const [year, month, day] = date;
+      if (isNaN(Number(year)) || isNaN(Number(month)) || isNaN(Number(day))) {
+        notFound();
+      }
+
+      return (
+        <Calendar initialMode="day" initialDate={date.join("-")} clubId={id} />
+      );
+    }
+    default:
+      notFound();
+  }
 }
