@@ -75,7 +75,7 @@ export default function Calendar({
       .toString()
       .padStart(2, "0")}-${(initialDay || day).toString().padStart(2, "0")}`;
   });
-  const [displayMode, setDisplayMode] = useState<"list" | "grid">("list");
+  const [displayMode, setDisplayMode] = useState<"list" | "grid">("grid");
 
   const [createDrawerOpen, setCreateDrawerOpen] = useState(false);
 
@@ -281,6 +281,7 @@ export default function Calendar({
                 : "year";
             setMode(newMode);
           }}
+          direction="vertical"
         >
           <SwiperSlide>
             <YearCalendar
@@ -307,6 +308,7 @@ export default function Calendar({
                 setMode("day");
                 setDate(date);
               }}
+              clubId={clubId}
             />
           </SwiperSlide>
           <SwiperSlide>Month</SwiperSlide>
