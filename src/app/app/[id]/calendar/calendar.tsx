@@ -17,14 +17,20 @@ import {
   Separator,
   VisuallyHidden,
 } from "@radix-ui/themes";
-import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
+import { memo, useEffect, useRef, useState } from "react";
 import "swiper/css";
 import "swiper/css/virtual";
 import { A11y } from "swiper/modules";
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 import styles from "./calendar.module.css";
 import CreateEventCard from "./create-event-card";
-import YearCalendar from "./year";
+import DayCalendar from "./day";
+import MonthCalendarRaw from "./month";
+import YearCalendarRaw from "./year";
+
+const YearCalendar = memo(YearCalendarRaw);
+const MonthCalendar = memo(MonthCalendarRaw);
 
 interface ModePickerProps {
   mode: "year" | "month" | "day";
@@ -52,13 +58,16 @@ export interface CalendarProps {
   initialMode: "year" | "month" | "day";
   initialDate: string;
   clubId: string;
+  canWrite?: boolean;
 }
 
 export default function Calendar({
   initialMode,
   initialDate,
   clubId,
+  canWrite = false,
 }: CalendarProps) {
+  const router = useRouter();
   const [mode, setMode] = useState<"year" | "month" | "day">(initialMode);
   const [date, setDate] = useState(() => {
     // Normalize date format, using today's date's less significant parts if missing
@@ -80,6 +89,8 @@ export default function Calendar({
   const [createDrawerOpen, setCreateDrawerOpen] = useState(false);
 
   const modeSwiperRef = useRef<SwiperRef>(null);
+
+  const [refreshKey, setRefreshKey] = useState(0);
 
   useEffect(() => {
     history.replaceState(
@@ -311,72 +322,85 @@ export default function Calendar({
               clubId={clubId}
             />
           </SwiperSlide>
-          <SwiperSlide>Month</SwiperSlide>
           <SwiperSlide>
-            {/* <Swiper virtual slidesPerView={1} modules={[Virtual]}>
-              <SwiperSlide virtualIndex={0}>test 0 </SwiperSlide>
-              <SwiperSlide virtualIndex={1}>test 1 </SwiperSlide>
-              <SwiperSlide virtualIndex={2}>test 2 </SwiperSlide>
-              <SwiperSlide virtualIndex={3}>test 3 </SwiperSlide>
-              <SwiperSlide virtualIndex={4}>test 4 </SwiperSlide>
-            </Swiper>
-            <Flex direction="row" align="center" gap="2">
-              <Flex direction="column" align="center" gap="1">
-                <Heading size="7" as="h2">
-                  {new Date(date).toLocaleDateString(undefined, {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                </Heading>
-                <Badge size="2" variant="soft">
-                  {new Date(date).toLocaleDateString(undefined, {
-                    weekday: "long",
-                  })}
-                </Badge>
-              </Flex>
-            </Flex> */}
+            <MonthCalendar
+              grid={displayMode === "grid"}
+              month={date.substring(0, 7)}
+              onMonthChange={(month) => {
+                setDate((date) => {
+                  const parts = date.split("-");
+                  return `${month}-${parts[2]}`;
+                });
+              }}
+              onSelectDate={(date) => {
+                setMode("day");
+                setDate(date);
+              }}
+              clubId={clubId}
+              onCreateEvent={(date) => {
+                setDate(date);
+                setCreateDrawerOpen(true);
+              }}
+              canCreateEvent={canWrite}
+              refreshKey={refreshKey.toString()}
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <DayCalendar
+              date={date}
+              onDateChange={setDate}
+              clubId={clubId}
+              refreshKey={refreshKey.toString()}
+            />
           </SwiperSlide>
         </Swiper>
-        <IconButton
-          variant="solid"
-          size="4"
-          aria-label="Create event"
-          className={styles.createEventFAB}
-          onClick={() => setCreateDrawerOpen(true)}
-        >
-          <PlusIcon />
-        </IconButton>
+        {canWrite && (
+          <IconButton
+            variant="solid"
+            size="4"
+            aria-label="Create event"
+            className={styles.createEventFAB}
+            onClick={() => setCreateDrawerOpen(true)}
+          >
+            <PlusIcon />
+          </IconButton>
+        )}
       </Flex>
-      <Drawer.Root
-        snapPoints={[420, "100%"]}
-        modal={false}
-        open={createDrawerOpen}
-        onOpenChange={setCreateDrawerOpen}
-      >
-        <Drawer.Portal>
-          <Drawer.Overlay />
-          <Drawer.Content>
-            <VisuallyHidden>
-              <Drawer.Title>Create event</Drawer.Title>
-            </VisuallyHidden>
-            <VisuallyHidden>
-              <Drawer.Description>
-                Create a new event for your club.
-              </Drawer.Description>
-            </VisuallyHidden>
-            <CreateEventCard
-              clubId={clubId}
-              onCancel={() => {
-                setCreateDrawerOpen(false);
-              }}
-              initialStartDate={() => {
-                return date;
-              }}
-            />
-          </Drawer.Content>
-        </Drawer.Portal>
-      </Drawer.Root>
+      {canWrite && (
+        <Drawer.Root
+          snapPoints={[420, "100%"]}
+          modal={false}
+          open={createDrawerOpen}
+          onOpenChange={setCreateDrawerOpen}
+        >
+          <Drawer.Portal>
+            <Drawer.Overlay />
+            <Drawer.Content>
+              <VisuallyHidden>
+                <Drawer.Title>Create event</Drawer.Title>
+              </VisuallyHidden>
+              <VisuallyHidden>
+                <Drawer.Description>
+                  Create a new event for your club.
+                </Drawer.Description>
+              </VisuallyHidden>
+              <CreateEventCard
+                clubId={clubId}
+                onCancel={() => {
+                  setCreateDrawerOpen(false);
+                }}
+                onCreate={() => {
+                  setCreateDrawerOpen(false);
+                  setRefreshKey((key) => key + 1);
+                }}
+                initialStartDate={() => {
+                  return date;
+                }}
+              />
+            </Drawer.Content>
+          </Drawer.Portal>
+        </Drawer.Root>
+      )}
     </>
   );
 }

@@ -1,3 +1,5 @@
+import getPermissionsForClub from "@/lib/auth/getPermissionsForClub";
+import { createClient } from "@/lib/supabase/server";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { Button, Flex, Heading } from "@radix-ui/themes";
 import Link from "next/link";
@@ -27,6 +29,9 @@ export default async function CalendarYearPage({
     );
   }
 
+  const supabase = await createClient();
+  const { permissions } = await getPermissionsForClub(supabase, id);
+
   switch (date.length) {
     case 1: {
       // Year view
@@ -34,7 +39,14 @@ export default async function CalendarYearPage({
         notFound();
       }
 
-      return <Calendar initialMode="year" initialDate={date[0]} clubId={id} />;
+      return (
+        <Calendar
+          initialMode="year"
+          initialDate={date[0]}
+          clubId={id}
+          canWrite={permissions.includes("canWriteCalendar")}
+        />
+      );
     }
     case 2: {
       // Month view
@@ -48,6 +60,7 @@ export default async function CalendarYearPage({
           initialMode="month"
           initialDate={date.join("-")}
           clubId={id}
+          canWrite={permissions.includes("canWriteCalendar")}
         />
       );
     }
@@ -59,7 +72,12 @@ export default async function CalendarYearPage({
       }
 
       return (
-        <Calendar initialMode="day" initialDate={date.join("-")} clubId={id} />
+        <Calendar
+          initialMode="day"
+          initialDate={date.join("-")}
+          clubId={id}
+          canWrite={permissions.includes("canWriteCalendar")}
+        />
       );
     }
     default:

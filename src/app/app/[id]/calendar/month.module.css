@@ -1,0 +1,80 @@
+.swiper {
+  width: 100%;
+  flex-grow: 1;
+  height: 100%;
+}
+
+.slide {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: start;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.monthCard {
+  flex-grow: 1;
+
+  h3 {
+    text-align: center;
+    margin-top: var(--space-3);
+  }
+}
+
+.monthGrid {
+  flex-grow: 1;
+}
+
+.dayCell {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
+  flex-direction: column;
+
+  border-radius: 8px;
+  padding: var(--space-2);
+  gap: var(--space-1);
+
+  &.dayCellHighlight {
+    background-color: var(--accent-a3);
+  }
+
+  &:not(.dayCellDimmed):hover {
+    background-color: var(--accent-a4);
+    cursor: pointer;
+
+    .dayCellCreate {
+      opacity: 1;
+    }
+  }
+
+  &:not(.dayCellDimmed):not(:has(.dayCellCreate:active)):active {
+    background-color: var(--accent-a6);
+  }
+
+  h4 {
+    border-radius: 9999px;
+    background-color: var(--accent-a3);
+    padding: var(--space-2);
+    aspect-ratio: 1/1;
+  }
+
+  .dayCellEvent {
+    border-radius: 8px;
+    padding: var(--space-1);
+    background-color: var(--accent-a5);
+    width: 100%;
+  }
+
+  .dayCellCreate {
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    border-radius: 8px;
+    padding: var(--space-1);
+    background-color: var(--accent-5);
+    width: 100%;
+    border: 1px dashed var(--accent-8);
+  }
+}
