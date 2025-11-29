@@ -17,14 +17,14 @@ import {
   Separator,
   VisuallyHidden,
 } from "@radix-ui/themes";
-import { useEffect, useState } from "react";
-import { default as SwiperImpl } from "swiper";
+import { useEffect, useRef, useState } from "react";
 import "swiper/css";
 import "swiper/css/virtual";
 import { A11y } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 import styles from "./calendar.module.css";
 import CreateEventCard from "./create-event-card";
+import YearCalendar from "./year";
 
 interface ModePickerProps {
   mode: "year" | "month" | "day";
@@ -79,7 +79,7 @@ export default function Calendar({
 
   const [createDrawerOpen, setCreateDrawerOpen] = useState(false);
 
-  const [swiperImpl, setSwiperImpl] = useState<SwiperImpl | null>(null);
+  const modeSwiperRef = useRef<SwiperRef>(null);
 
   useEffect(() => {
     history.replaceState(
@@ -99,26 +99,29 @@ export default function Calendar({
 
   const handleModeChange = (newMode: "year" | "month" | "day") => {
     setMode(newMode);
-    if (swiperImpl) {
-      const targetIndex =
-        newMode === "year"
-          ? 0
-          : newMode === "month"
-          ? 1
-          : newMode === "day"
-          ? 2
-          : 0;
-      swiperImpl.enable();
-      swiperImpl.slideTo(targetIndex);
-      swiperImpl.disable();
-    }
   };
+
+  useEffect(() => {
+    if (modeSwiperRef.current && modeSwiperRef.current.swiper) {
+      const targetIndex =
+        mode === "year" ? 0 : mode === "month" ? 1 : mode === "day" ? 2 : 0;
+      modeSwiperRef.current.swiper.enable();
+      modeSwiperRef.current.swiper.slideTo(targetIndex);
+      modeSwiperRef.current.swiper.disable();
+    }
+  }, [mode]);
 
   const isSmall = useMediaQuery("(max-width: 600px)");
 
   return (
     <>
-      <Flex direction="column" align="stretch" justify="center" height="100%">
+      <Flex
+        direction="column"
+        align="stretch"
+        justify="start"
+        height="100%"
+        className={styles.container}
+      >
         <Flex direction="row" align="center" width="100%" p="4" gap="2">
           <Heading size="6" as="h1" className={styles.header}>
             Calendar
@@ -154,10 +157,104 @@ export default function Calendar({
           </IconButton>
           {!isSmall && (
             <>
-              <IconButton variant="surface" size="3">
+              <IconButton
+                variant="surface"
+                size="3"
+                onClick={() => {
+                  if (mode === "year") {
+                    // decrement the year
+                    setDate((date) => {
+                      const parts = date.split("-");
+                      const newYear = (parseInt(parts[0], 10) - 1)
+                        .toString()
+                        .padStart(4, "0");
+                      return `${newYear}-${parts[1]}-${parts[2]}`;
+                    });
+                  } else if (mode === "month") {
+                    // decrement the month
+                    setDate((date) => {
+                      const parts = date.split("-");
+                      let year = parseInt(parts[0], 10);
+                      let month = parseInt(parts[1], 10) - 1;
+                      if (month < 1) {
+                        month = 12;
+                        year -= 1;
+                      }
+                      return `${year.toString().padStart(4, "0")}-${month
+                        .toString()
+                        .padStart(2, "0")}-${parts[2]}`;
+                    });
+                  } else if (mode === "day") {
+                    // decrement the day
+                    setDate((date) => {
+                      const currentDate = new Date(date);
+                      currentDate.setDate(currentDate.getDate() - 1);
+                      const year = currentDate
+                        .getFullYear()
+                        .toString()
+                        .padStart(4, "0");
+                      const month = (currentDate.getMonth() + 1)
+                        .toString()
+                        .padStart(2, "0");
+                      const day = currentDate
+                        .getDate()
+                        .toString()
+                        .padStart(2, "0");
+                      return `${year}-${month}-${day}`;
+                    });
+                  }
+                }}
+              >
                 <ArrowLeftIcon />
               </IconButton>
-              <IconButton variant="surface" size="3">
+              <IconButton
+                variant="surface"
+                size="3"
+                onClick={() => {
+                  if (mode === "year") {
+                    // increment the year
+                    setDate((date) => {
+                      const parts = date.split("-");
+                      const newYear = (parseInt(parts[0], 10) + 1)
+                        .toString()
+                        .padStart(4, "0");
+                      return `${newYear}-${parts[1]}-${parts[2]}`;
+                    });
+                  } else if (mode === "month") {
+                    // increment the month
+                    setDate((date) => {
+                      const parts = date.split("-");
+                      let year = parseInt(parts[0], 10);
+                      let month = parseInt(parts[1], 10) + 1;
+                      if (month > 12) {
+                        month = 1;
+                        year += 1;
+                      }
+                      return `${year.toString().padStart(4, "0")}-${month
+                        .toString()
+                        .padStart(2, "0")}-${parts[2]}`;
+                    });
+                  } else if (mode === "day") {
+                    // increment the day
+                    setDate((date) => {
+                      const currentDate = new Date(date);
+                      currentDate.setDate(currentDate.getDate() + 1);
+                      const year = currentDate
+                        .getFullYear()
+                        .toString()
+                        .padStart(4, "0");
+                      const month = (currentDate.getMonth() + 1)
+                        .toString()
+                        .padStart(2, "0");
+                      const day = currentDate
+                        .getDate()
+                        .toString()
+                        .padStart(2, "0");
+                      return `${year}-${month}-${day}`;
+                    });
+                  }
+                }}
+              >
                 <ArrowRightIcon />
               </IconButton>
             </>
@@ -169,9 +266,7 @@ export default function Calendar({
           initialSlide={
             mode === "year" ? 0 : mode === "month" ? 1 : mode === "day" ? 2 : 0
           }
-          onSwiper={(swiper) => {
-            setSwiperImpl(swiper);
-          }}
+          ref={modeSwiperRef}
           modules={[A11y]}
           enabled={false}
           className={styles.swiper}
@@ -187,7 +282,33 @@ export default function Calendar({
             setMode(newMode);
           }}
         >
-          <SwiperSlide>Year</SwiperSlide>
+          <SwiperSlide>
+            <YearCalendar
+              grid={displayMode === "grid"}
+              year={parseInt(date.split("-")[0], 10)}
+              onYearChange={(newYear) => {
+                setDate((date) => {
+                  const parts = date.split("-");
+                  return `${newYear.toString().padStart(4, "0")}-${parts[1]}-${
+                    parts[2]
+                  }`;
+                });
+              }}
+              onSelectMonth={(month) => {
+                setMode("month");
+                setDate((date) => {
+                  const parts = date.split("-");
+                  return `${parts[0]}-${month.toString().padStart(2, "0")}-${
+                    parts[2]
+                  }`;
+                });
+              }}
+              onSelectDate={(date) => {
+                setMode("day");
+                setDate(date);
+              }}
+            />
+          </SwiperSlide>
           <SwiperSlide>Month</SwiperSlide>
           <SwiperSlide>
             {/* <Swiper virtual slidesPerView={1} modules={[Virtual]}>

@@ -6,6 +6,10 @@
 }
 
 .content {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: var(--scroll-bar-shift, 0px);
   background-color: var(--color-panel-translucent);
   backdrop-filter: blur(64px);
   box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);

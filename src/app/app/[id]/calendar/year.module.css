@@ -1,0 +1,27 @@
+.swiper {
+  width: 100%;
+  flex-grow: 1;
+  height: 100%;
+}
+
+.slide {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: start;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.yearCard {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.dayCell {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
