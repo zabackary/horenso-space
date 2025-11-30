@@ -1,0 +1,30 @@
+.card {
+  margin-bottom: 12px;
+  padding: 16px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.card :global(h4) {
+  margin: 0 0 8px 0;
+}
+
+.timeField {
+  width: auto;
+}
+
+.childrenInset {
+  margin-top: 8px;
+  width: 100%;
+
+  .card {
+    margin: 0;
+  }
+}
+
+.textArea {
+  width: 100%;
+  resize: vertical;
+}
