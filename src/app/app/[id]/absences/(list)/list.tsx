@@ -1,6 +1,6 @@
 "use client";
 
-import { DataList, Flex, Spinner } from "@radix-ui/themes";
+import { DataList, Flex, Spinner, Text } from "@radix-ui/themes";
 import { Suspense, use } from "react";
 
 interface AbsenceReportReview {
@@ -38,6 +38,7 @@ export default function AbsenceReportList({
   const reportsData = use(reports);
   return (
     <Suspense fallback={<Spinner />}>
+      {reportsData.length === 0 && <Text>No reports found.</Text>}
       <DataList.Root>
         {reportsData.map((report) => (
           <DataList.Item key={report.id}>
