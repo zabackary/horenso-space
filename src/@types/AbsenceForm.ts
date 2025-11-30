@@ -1,5 +1,6 @@
 export interface AbsenceForm {
   items: AbsenceFormItem[];
+  description?: string;
 }
 
 export interface MultipleChoiceItem {

@@ -55,7 +55,7 @@ export default async function ClubPage({ params }: PageProps<"/app/[id]">) {
       <HomeCard
         title="欠席連絡"
         description="lorem ipsum dolor sit amet, consectetur adipiscing elit."
-        href={`/app/${id}/members`}
+        href={`/app/${id}/absences`}
         action={
           permissions.permissions.includes("canWriteOwnReport")
             ? {
