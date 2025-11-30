@@ -65,7 +65,7 @@ export default async function ClubPage({ params }: PageProps<"/app/[id]">) {
             : undefined
         }
       />
-      <HomeCard
+      {/* <HomeCard
         title="ドキュメント"
         description="クラブの共有ドキュメントにアクセスします。"
         href={`/app/${id}/documents`}
@@ -90,7 +90,7 @@ export default async function ClubPage({ params }: PageProps<"/app/[id]">) {
               }
             : undefined
         }
-      />
+      /> */}
     </Grid>
   );
 }
