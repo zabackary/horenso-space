@@ -4,14 +4,15 @@
 
 Club management platform built with Next.js 15 + Supabase. Manages clubs, members, absence reports, and permissions.
 
+The UI layer is built in Radix Themes with CSS Modules. Do not use global CSS or especially Tailwind.
+
 ## Architecture & Technology Stack
 
 ### Core Technologies
 
 - **Framework**: Next.js 15 (App Router) with TypeScript
 - **Database**: Supabase (PostgreSQL + Auth + RLS)
-- **UI**: Radix UI Themes + CSS Modules
-- **Tooling**: Biome (linting/formatting), Turbopack (dev server)
+- **UI**: **Radix UI Themes** + CSS Modules
 
 ### Key Architectural Patterns
 
@@ -56,7 +57,7 @@ const supabase = createClient();
 
 - Permissions stored as JSONB in `roles.permissions`
 - Schema defined in `supabase/schemas/public/permissions-schema.json`
-- Examples: `canWriteFiles`, `canReadAllReports`, `canManageMembers`
+- Examples: `canWriteFiles`, `canReadFiles`, `canWriteOwnReport`, `canReadAllReports`, `canWriteReportReview`, `canWriteCalendar`, `canReadCalendar`, `canManageClub`
 
 ### Schema Management
 
@@ -81,20 +82,12 @@ pnpm lint
 pnpm format
 ```
 
-### Database Development
-
-- Local Supabase via `supabase/` directory
-- Migrations in `supabase/migrations/`
-- Schema files in `supabase/schemas/` (organized by schema/table)
-- Use `@postgrestools/postgrestools` for enhanced PostgreSQL development
-
 ## Code Conventions
 
 ### Styling
 
 - **CSS Modules**: `.module.css` files co-located with components
 - **Radix Themes**: Primary UI system, avoid custom CSS where possible
-- **Fonts**: Japanese support via Noto Sans JP, decorative fonts for branding
 
 ### TypeScript Patterns
 
@@ -134,9 +127,8 @@ src/
 
 ### Auth State Management
 
-- Use `revalidatePath("/", "layout")` after auth changes
-- Redirect to `/app` after successful login
-- Handle `next` parameter for redirect flows
+- In order to get the profile, use `getProfile()` on the server side. In order
+  to get the permissions, call `getPermissionsForClub()` with the club ID.
 
 ### Database Queries
 
@@ -148,4 +140,5 @@ src/
 
 - Use CSS Modules for component-specific styles
 - Leverage Radix Themes for consistent design system
-- Japanese text requires Noto Sans JP font family
+- When creating flexbox and grid layouts, prefer Radix utilities (`Flex`, `Grid`) over custom CSS
+- Try to avoid normal HTML elements for layout purposes; use Radix components instead (use `Box` if necessary)
