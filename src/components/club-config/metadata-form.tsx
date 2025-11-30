@@ -1,5 +1,6 @@
 "use client";
 
+import type { Database } from "@/@types/database.types";
 import { createClient } from "@/lib/supabase/client";
 import { CrossCircledIcon } from "@radix-ui/react-icons";
 import {
@@ -10,55 +11,44 @@ import {
   Text,
   TextField,
 } from "@radix-ui/themes";
-import { useEffect, useId, useState } from "react";
+import { use, useId, useState } from "react";
+import styles from "./metadata-form.module.css";
 
-export default function MetadataForm({ clubId }: { clubId: string }) {
+type ClubRow = Database["public"]["Tables"]["clubs"]["Row"];
+
+export default function MetadataForm({
+  clubPromise,
+}: {
+  clubPromise: Promise<ClubRow | null>;
+}) {
   const a11yId = useId();
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [website, setWebsite] = useState("");
-  const [isPublic, setIsPublic] = useState(true);
+  const club = use(clubPromise);
 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    let mounted = true;
-    const load = async () => {
-      const supabase = createClient();
-      try {
-        const { data } = await supabase
-          .from("clubs")
-          .select("name, description, website, public")
-          .eq("id", clubId)
-          .single();
-        if (!mounted) return;
-        if (data) {
-          setName(data.name ?? "");
-          setDescription(data.description ?? "");
-          setWebsite(data.website ?? "");
-          setIsPublic(Boolean(data.public));
-        }
-      } catch (e) {
-        // ignore; show nothing
-      }
-    };
-    load();
-    return () => {
-      mounted = false;
-    };
-  }, [clubId]);
+  const [isPublic, setIsPublic] = useState<boolean>(Boolean(club?.public));
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setError(null);
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+    const data = Object.fromEntries(
+      Array.from(formData.entries()).map(([k, v]) => [k, v === "" ? null : v])
+    ) as Record<string, FormDataEntryValue | null>;
     const supabase = createClient();
     try {
+      if (!club) throw new Error("Club not found");
       await supabase
         .from("clubs")
-        .update({ name, description, website, public: isPublic })
-        .eq("id", clubId)
+        .update({
+          name: (data["name"] as string) ?? "",
+          description: (data["description"] as string) ?? null,
+          website: (data["website"] as string) ?? null,
+          public: data["public"] === "on" || data["public"] === "true",
+        })
+        .eq("id", club.id)
         .throwOnError();
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : "An error occurred");
@@ -68,45 +58,59 @@ export default function MetadataForm({ clubId }: { clubId: string }) {
   };
 
   return (
-    <form onSubmit={handleSave}>
-      <Flex direction="column" gap="2" my="4">
-        <Text as="label" htmlFor={`${a11yId}-name`} size="2">
-          Club name
-        </Text>
-        <TextField.Root
-          id={`${a11yId}-name`}
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
+    <form onSubmit={handleSave} className={styles.form}>
+      <Flex direction="column" gap="2">
+        <Flex direction="column" className={styles.field}>
+          <Text as="label" htmlFor={`${a11yId}-name`} size="2">
+            Club name
+          </Text>
+          <TextField.Root
+            name="name"
+            id={`${a11yId}-name`}
+            defaultValue={club?.name ?? ""}
+            required
+          />
+        </Flex>
 
-        <Text as="label" htmlFor={`${a11yId}-description`} size="2">
-          Club description
-        </Text>
-        <TextField.Root
-          id={`${a11yId}-description`}
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
+        <Flex direction="column" className={styles.field}>
+          <Text as="label" htmlFor={`${a11yId}-description`} size="2">
+            Club description
+          </Text>
+          <TextField.Root
+            name="description"
+            id={`${a11yId}-description`}
+            defaultValue={club?.description ?? ""}
+          />
+        </Flex>
 
-        <Text as="label" htmlFor={`${a11yId}-website`} size="2">
-          Website
-        </Text>
-        <TextField.Root
-          id={`${a11yId}-website`}
-          type="url"
-          value={website}
-          onChange={(e) => setWebsite(e.target.value)}
-        />
+        <Flex direction="column" className={styles.field}>
+          <Text as="label" htmlFor={`${a11yId}-website`} size="2">
+            Website
+          </Text>
+          <TextField.Root
+            name="website"
+            id={`${a11yId}-website`}
+            type="url"
+            defaultValue={club?.website ?? ""}
+          />
+        </Flex>
 
-        <Text as="label" htmlFor={`${a11yId}-is-public`} size="2">
-          Club privacy: {isPublic ? "Public" : "Private"}
-        </Text>
-        <Switch
-          id={`${a11yId}-is-public`}
-          checked={isPublic}
-          onCheckedChange={setIsPublic}
-        />
+        <Flex align="center" gap="2" className={styles.field}>
+          <Text as="label" htmlFor={`${a11yId}-is-public`} size="2">
+            Club privacy: {isPublic ? "Public" : "Private"}
+          </Text>
+          <input
+            id={`${a11yId}-hidden-public`}
+            type="hidden"
+            name="public"
+            value={isPublic ? "true" : "false"}
+          />
+          <Switch
+            id={`${a11yId}-is-public`}
+            checked={isPublic}
+            onCheckedChange={(v) => setIsPublic(Boolean(v))}
+          />
+        </Flex>
 
         {error && (
           <Callout.Root color="red">
@@ -117,9 +121,11 @@ export default function MetadataForm({ clubId }: { clubId: string }) {
           </Callout.Root>
         )}
 
-        <Button type="submit" loading={isLoading}>
-          Save
-        </Button>
+        <Flex className={styles.actions}>
+          <Button type="submit" loading={isLoading}>
+            Save
+          </Button>
+        </Flex>
       </Flex>
     </form>
   );

@@ -1,5 +1,6 @@
 "use client";
 
+import type { Database } from "@/@types/database.types";
 import { createClient } from "@/lib/supabase/client";
 import { CrossCircledIcon } from "@radix-ui/react-icons";
 import {
@@ -12,7 +13,7 @@ import {
   Text,
   TextField,
 } from "@radix-ui/themes";
-import { useEffect, useState } from "react";
+import { use, useState } from "react";
 import styles from "./roles-manager.module.css";
 
 const PERMISSION_KEYS = [
@@ -33,9 +34,25 @@ type Role = {
   permissions: Record<string, boolean>;
 };
 
-export default function RolesManager({ clubId }: { clubId: string }) {
-  const [roles, setRoles] = useState<Role[]>([]);
-  const [loading, setLoading] = useState(false);
+export default function RolesManager({
+  clubId,
+  rolesPromise,
+}: {
+  clubId: string;
+  rolesPromise: Promise<Database["public"]["Tables"]["roles"]["Row"][]>;
+}) {
+  type RoleRow = Database["public"]["Tables"]["roles"]["Row"];
+
+  const initial = (use(rolesPromise) ?? []) as RoleRow[];
+  const [roles, setRoles] = useState<Role[]>(
+    () =>
+      initial.map((r) => ({
+        id: r.id,
+        name: r.name,
+        description: r.description,
+        permissions: normalizePermissions(r.permissions),
+      })) ?? []
+  );
   const [error, setError] = useState<string | null>(null);
 
   const [newName, setNewName] = useState("");
@@ -44,36 +61,22 @@ export default function RolesManager({ clubId }: { clubId: string }) {
     () => Object.fromEntries(PERMISSION_KEYS.map((k) => [k, false]))
   );
 
-  useEffect(() => {
-    loadRoles();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [clubId]);
-
-  async function loadRoles() {
-    setLoading(true);
-    setError(null);
-    const supabase = createClient();
-    try {
-      const { data } = await supabase
-        .from("roles")
-        .select("id, name, description, permissions")
-        .eq("club_id", clubId)
-        .order("created_at", { ascending: true });
-      setRoles(
-        (data ?? []).map((r: any) => ({
-          id: r.id,
-          name: r.name,
-          description: r.description,
-          permissions: r.permissions,
-        }))
-      );
-    } catch (e: unknown) {
-      setError(e instanceof Error ? e.message : String(e));
-    } finally {
-      setLoading(false);
-    }
+  function normalizePermissions(
+    p: Database["public"]["Tables"]["roles"]["Row"]["permissions"]
+  ): Record<string, boolean> {
+    if (!p || typeof p !== "object" || Array.isArray(p)) return {};
+    const entries = Object.entries(
+      p as Record<
+        string,
+        Database["public"]["Tables"]["roles"]["Row"]["permissions"]
+      >
+    );
+    const out: Record<string, boolean> = {};
+    entries.forEach(([k, v]) => {
+      out[k] = Boolean(v);
+    });
+    return out;
   }
-
   async function saveRole(role: Role) {
     setError(null);
     const supabase = createClient();
@@ -87,7 +90,6 @@ export default function RolesManager({ clubId }: { clubId: string }) {
         })
         .eq("id", role.id)
         .throwOnError();
-      await loadRoles();
     } catch (e: unknown) {
       setError(e instanceof Error ? e.message : String(e));
     }
@@ -99,7 +101,6 @@ export default function RolesManager({ clubId }: { clubId: string }) {
     const supabase = createClient();
     try {
       await supabase.from("roles").delete().eq("id", roleId).throwOnError();
-      await loadRoles();
     } catch (e: unknown) {
       setError(e instanceof Error ? e.message : String(e));
     }
@@ -110,21 +111,33 @@ export default function RolesManager({ clubId }: { clubId: string }) {
     setError(null);
     const supabase = createClient();
     try {
-      await supabase
+      const { data } = await supabase
         .from("roles")
         .insert({
           club_id: clubId,
           name: newName.trim(),
           description: newDescription,
-          permissions: newPermissions,
+          permissions: normalizePermissions(newPermissions),
         })
-        .throwOnError();
+        .throwOnError()
+        .select()
+        .single();
+      if (data) {
+        setRoles((prev) => [
+          ...prev,
+          {
+            id: data.id,
+            name: data.name,
+            description: data.description,
+            permissions: normalizePermissions(data.permissions),
+          },
+        ]);
+      }
       setNewName("");
       setNewDescription("");
       setNewPermissions(
         Object.fromEntries(PERMISSION_KEYS.map((k) => [k, false]))
       );
-      await loadRoles();
     } catch (e: unknown) {
       setError(e instanceof Error ? e.message : String(e));
     }
@@ -145,7 +158,9 @@ export default function RolesManager({ clubId }: { clubId: string }) {
 
   return (
     <Flex direction="column" className={styles.root}>
-      <Heading size="5">Roles</Heading>
+      <Heading size="5" as="h3">
+        Roles
+      </Heading>
 
       {error && (
         <Callout.Root color="red">
@@ -157,8 +172,8 @@ export default function RolesManager({ clubId }: { clubId: string }) {
       )}
 
       <Flex direction="column" gap="3">
-        {loading ? (
-          <Text>Loading roles…</Text>
+        {roles.length === 0 ? (
+          <Text>No roles created yet.</Text>
         ) : (
           roles.map((role) => (
             <Flex key={role.id} direction="column" className={styles.roleCard}>
@@ -198,9 +213,7 @@ export default function RolesManager({ clubId }: { clubId: string }) {
                 <Text size="2">Permissions</Text>
                 <DropdownMenu.Root>
                   <DropdownMenu.Trigger>
-                    <Button variant="soft">
-                      Permissions <DropdownMenu.TriggerIcon />
-                    </Button>
+                    <Button variant="soft">Permissions</Button>
                   </DropdownMenu.Trigger>
                   <DropdownMenu.Content>
                     {PERMISSION_KEYS.map((k) => (
@@ -229,7 +242,7 @@ export default function RolesManager({ clubId }: { clubId: string }) {
           </Dialog.Trigger>
           <Dialog.Content>
             <Heading size="6">Create new role</Heading>
-            <Flex direction="column" gap="2" style={{ marginTop: 8 }}>
+            <Flex direction="column" gap="2" className={styles.dialogBody}>
               <TextField.Root
                 placeholder="Role name"
                 value={newName}

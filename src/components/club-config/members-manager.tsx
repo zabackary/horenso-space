@@ -1,67 +1,68 @@
 "use client";
 
+import type { Database } from "@/@types/database.types";
 import { createClient } from "@/lib/supabase/client";
-import { Select, Text } from "@radix-ui/themes";
-import { useEffect, useState } from "react";
+import { Box, Flex, Heading, Select, Text } from "@radix-ui/themes";
+import { use, useState } from "react";
 import styles from "./members-manager.module.css";
 
-type Member = {
-  user_id: string;
-  role_id: string;
-};
+type ClubMemberRow = Database["public"]["Tables"]["club_members"]["Row"];
+type ProfileRow = Database["public"]["Views"]["profiles"]["Row"];
+type RoleRow = Database["public"]["Tables"]["roles"]["Row"];
+
+type MemberWithProfile = ClubMemberRow & { profile: ProfileRow | null };
 
 type Role = { id: string; name: string };
 
-export default function MembersManager({ clubId }: { clubId: string }) {
-  const [members, setMembers] = useState<Member[]>([]);
-  const [roles, setRoles] = useState<Role[]>([]);
-  const [loading, setLoading] = useState(false);
+export default function MembersManager({
+  membersPromise,
+  rolesPromise,
+  clubId,
+}: {
+  membersPromise: Promise<MemberWithProfile[]>;
+  rolesPromise: Promise<{ id: string; name: string }[]>;
+  clubId: string;
+}) {
+  const initialMembers = (use(membersPromise) ?? []) as MemberWithProfile[];
+  const initialRoles = (use(rolesPromise) ?? []) as RoleRow[];
+
+  type MemberClient = {
+    key: string;
+    user_id: string;
+    role_id: string | null;
+    profile: ProfileRow | null;
+  };
+
+  const [members, setMembers] = useState<MemberClient[]>(
+    () =>
+      initialMembers.map((m) => ({
+        key: m.user_id,
+        user_id: m.user_id,
+        role_id: (m.role_id as string) ?? null,
+        profile: m.profile,
+      })) ?? []
+  );
+  const [roles, setRoles] = useState<Role[]>(
+    () =>
+      initialRoles.map((r) => ({
+        id: r.id,
+        name: (r as { id: string; name: string }).name,
+      })) ?? []
+  );
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    load();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [clubId]);
-
-  async function load() {
-    setLoading(true);
-    setError(null);
-    const supabase = createClient();
-    try {
-      const [{ data: membersData }, { data: rolesData }] = await Promise.all([
-        supabase
-          .from("club_members")
-          .select("user_id, role_id, public:profiles(display_name, email)")
-          .eq("club_id", clubId),
-        supabase.from("roles").select("id, name").eq("club_id", clubId),
-      ]);
-
-      setMembers(
-        (membersData ?? []).map((m) => ({
-          user_id: m.user_id,
-          role_id: m.role_id,
-        }))
-      );
-      setRoles((rolesData ?? []).map((r) => ({ id: r.id, name: r.name })));
-    } catch (e: unknown) {
-      setError(e instanceof Error ? e.message : String(e));
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  async function changeRole(memberId: string, newRoleId: string) {
+  async function changeRole(memberUserId: string, newRoleId: string | null) {
     setError(null);
     const supabase = createClient();
     try {
       await supabase
         .from("club_members")
-        .update({ role_id: newRoleId })
-        .eq("user_id", memberId)
+        .update({ role_id: newRoleId ?? "" })
+        .match({ club_id: clubId, user_id: memberUserId })
         .throwOnError();
       setMembers((prev) =>
         prev.map((m) =>
-          m.user_id === memberId ? { ...m, role_id: newRoleId } : m
+          m.user_id === memberUserId ? { ...m, role_id: newRoleId } : m
         )
       );
     } catch (e: unknown) {
@@ -70,28 +71,38 @@ export default function MembersManager({ clubId }: { clubId: string }) {
   }
 
   return (
-    <div className={styles.root}>
-      <Text size="5">Members</Text>
+    <Flex direction="column" gap="4">
+      <Heading size="5" as="h3">
+        Members
+      </Heading>
       {error && <Text color="red">{error}</Text>}
-      {loading ? (
-        <Text>Loading…</Text>
-      ) : members.length === 0 ? (
-        <div className={styles.empty}>No members found.</div>
+
+      {members.length === 0 ? (
+        <Box className={styles.empty}>No members found.</Box>
       ) : (
-        <div>
+        <Box>
           {members.map((m) => (
-            <div key={m.user_id} className={styles.memberRow}>
-              {/* <div className={styles.memberInfo}>
+            <Flex
+              key={m.key}
+              className={styles.memberRow}
+              align="center"
+              justify="between"
+            >
+              <Flex className={styles.memberInfo} align="center">
                 <Text>
-                  {m.profile?.display_name ?? m.profile?.email ?? m.user_id}
+                  {m.profile?.full_name ?? m.profile?.nickname ?? m.user_id}
                 </Text>
-              </div> */}
-              <div className={styles.controls}>
+              </Flex>
+              <Flex className={styles.controls} align="center">
                 <Select.Root
-                  value={m.role_id}
-                  onValueChange={(val) => changeRole(m.user_id, val)}
+                  value={m.role_id ?? ""}
+                  onValueChange={(val) => changeRole(m.user_id, val || null)}
                 >
-                  <Select.Trigger content="Select role" value={m.role_id} />
+                  <Select.Trigger>
+                    <Text>
+                      {roles.find((r) => r.id === m.role_id)?.name ?? "No role"}
+                    </Text>
+                  </Select.Trigger>
                   <Select.Content>
                     {roles.map((r) => (
                       <Select.Item key={r.id} value={r.id}>
@@ -100,11 +111,11 @@ export default function MembersManager({ clubId }: { clubId: string }) {
                     ))}
                   </Select.Content>
                 </Select.Root>
-              </div>
-            </div>
+              </Flex>
+            </Flex>
           ))}
-        </div>
+        </Box>
       )}
-    </div>
+    </Flex>
   );
 }

@@ -1,18 +1,38 @@
 import MetadataForm from "@/components/club-config/metadata-form";
-import { Box } from "@radix-ui/themes";
+import { createClient } from "@/lib/supabase/server";
+import { Box, Spinner } from "@radix-ui/themes";
+import React from "react";
 import { ClubConfigTabNav } from "../layout";
+
+import type { Database } from "@/@types/database.types";
+
+type ClubRow = Database["public"]["Tables"]["clubs"]["Row"];
 
 export default async function ClubMetadataPage({
   params,
-}: PageProps<"/app/[id]/club/config/metadata">) {
+}: {
+  params: { id: string };
+}) {
   // permission check handled in layout
   const { id } = await params;
+  const supabase = await createClient();
+
+  const clubRes = await supabase
+    .from("clubs")
+    .select("id, name, description, website, public")
+    .eq("id", id)
+    .single();
+  const club: ClubRow | null = (clubRes.data ?? null) as ClubRow | null;
+
+  const clubPromise = Promise.resolve(club);
+
   return (
     <>
       <ClubConfigTabNav active="metadata" clubId={id} />
       <Box p="4">
-        {/* client component handles fetching/updating */}
-        <MetadataForm clubId={id} />
+        <React.Suspense fallback={<Spinner />}>
+          <MetadataForm clubPromise={clubPromise} />
+        </React.Suspense>
       </Box>
     </>
   );

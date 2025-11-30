@@ -17,6 +17,9 @@
   border-top: 1px solid var(--gray-2, #eee);
   padding-top: 12px;
 }
+.dialogBody {
+  margin-top: 8px;
+}
 .permissionLabel {
   display: flex;
   align-items: center;
