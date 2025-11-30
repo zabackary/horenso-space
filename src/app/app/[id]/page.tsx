@@ -32,6 +32,13 @@ export default async function ClubPage({ params }: PageProps<"/app/[id]">) {
           <Text>お知らせの内容がここに入ります。</Text>
         </Card>
       </Box>
+      {permissions.permissions.includes("canManageClub") ? (
+        <HomeCard
+          title="クラブ設定"
+          description="クラブのメタデータ、役割、メンバーを管理します。"
+          href={`/app/${id}/club/config/metadata`}
+        />
+      ) : null}
       <HomeCard
         title="カレンダー"
         description="クラブのイベントやミーティングを確認しましょう。"

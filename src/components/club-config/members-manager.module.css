@@ -1,0 +1,24 @@
+.root {
+  max-width: 920px;
+}
+.memberRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+  border-bottom: 1px solid var(--gray-3, #e6e6e6);
+}
+.memberInfo {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.empty {
+  padding: 12px;
+  color: var(--gray-9, #666);
+}
