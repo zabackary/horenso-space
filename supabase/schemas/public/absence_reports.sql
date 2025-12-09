@@ -13,7 +13,7 @@ create index on absence_reports(user_id);
 
 create index on absence_reports(club_id);
 
-create index on absence_reports(assigned_to);
+create index on absence_reports(assigned_to_role);
 
 create trigger set_updated_at
   before update on absence_reports for each row
@@ -41,5 +41,8 @@ create policy "Authorized users can view all club reports" on absence_reports
 -- Users assigned to review reports can view them
 create policy "Assigned reviewers can view reports" on absence_reports
   for select
-    using (assigned_to = auth.uid());
-
+    using (exists (
+      select r.id from roles r
+      join club_members m on m.role_id = r.id
+      where m.user_id = auth.uid() and r.id = absence_reports.assigned_to_role
+    ));

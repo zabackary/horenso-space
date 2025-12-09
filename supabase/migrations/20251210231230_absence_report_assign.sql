@@ -1,12 +1,20 @@
--- Add absence report approval workflow columns to roles table
-alter table roles
-add column absence_report_approval_required boolean default true not null,
-add column absence_report_reviewer_role uuid references roles(id) on delete set null;
+-- Rename assigned_to to assigned_to_role in absence_reports table
+alter table public.absence_reports
+rename column assigned_to to assigned_to_role;
 
--- Change assigned_to column in absence_reports from user to role
-alter table absence_reports
-drop column assigned_to,
-add column assigned_to_role uuid references roles(id) on delete set null;
+-- Drop old index
+drop index if exists public.absence_reports_assigned_to_idx;
 
--- Create index for querying reports by assigned role
-create index on absence_reports(assigned_to_role);
+-- Create new index
+create index on public.absence_reports(assigned_to_role);
+
+-- Update RLS policy for assigned reviewers
+drop policy if exists "Assigned reviewers can view reports" on public.absence_reports;
+
+create policy "Assigned reviewers can view reports" on public.absence_reports
+  for select
+  using (exists (
+    select r.id from public.roles r
+    join public.club_members m on m.role_id = r.id
+    where m.user_id = auth.uid() and r.id = absence_reports.assigned_to_role
+  ));
