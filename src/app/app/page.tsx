@@ -25,6 +25,7 @@ export default async function App() {
         height="100vh"
         gap="4"
         p="4"
+        style={{ zIndex: -1 }}
       >
         <Heading size="7" as="h1">
           部活をお選びください。

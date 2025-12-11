@@ -18,6 +18,7 @@ export default async function ClubPage({ params }: PageProps<"/app/[id]">) {
         sm: "2",
         md: "3",
       }}
+      style={{ zIndex: -1 }}
     >
       <Box
         asChild
