@@ -42,34 +42,22 @@ export default function Home() {
               <Heading size="7" as="h2">
                 誰がいないか、はっきりわかる
               </Heading>
-              <Text size="4" mt="2" mb="4">
-                lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </Text>
             </Card>
             <Card>
               <Heading size="7" as="h2">
                 必要なドキュメントを簡単に共有
               </Heading>
-              <Text size="4" mt="2" mb="4">
-                lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </Text>
             </Card>
             <Card>
               <Heading size="7" as="h2">
                 どんな部活でも。
               </Heading>
-              <Text size="4" mt="2" mb="4">
-                lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </Text>
             </Card>
           </main>
         </Grid>
         <Flex direction="column" p="2">
           <Text size="2" align="center" mt="4" mb="2">
-            札幌光星中学高等学校吹奏楽部とクリスチャン・アカデミー・イン・ジャパンロボティクス部の作品
+            札幌光星中学高等学校吹奏楽部とクリスチャン・アカデミー・イン・ジャパンロボティクス部のが制作
           </Text>
           <Text size="2" align="center" mb="2">
             ©{new Date().getFullYear()} Horenso SPACE
