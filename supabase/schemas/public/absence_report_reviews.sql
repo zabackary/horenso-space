@@ -42,7 +42,7 @@ create policy "Users can create reviews for reports assigned to them" on absence
         absence_reports
         inner join club_members on absence_reports.club_id = club_members.club_id
         inner join roles on club_members.role_id = roles.id
-      where (absence_reports.id = absence_report_reviews.absence_report_id and club_members.user_id = auth.uid() and club_members.accepted = true and absence_reports.assigned_to = auth.uid())));
+      where (absence_reports.id = absence_report_reviews.absence_report_id and club_members.user_id = auth.uid() and club_members.accepted = true and absence_reports.assigned_to_role = club_members.role_id)));
 
 -- Reviewers can view and update their own reviews
 create policy "Reviewers can manage their own reviews" on absence_report_reviews
