@@ -4,7 +4,7 @@ import getProfile from "@/lib/auth/getProfile";
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/dist/client/components/navigation";
 
-export async function joinClub(clubId: string) {
+export async function joinClub(invitationId: string) {
   const supabase = await createClient();
   const profile = await getProfile(supabase);
   if (!profile) {
@@ -13,15 +13,12 @@ export async function joinClub(clubId: string) {
 
   try {
     await supabase
-      .from("club_members")
-      .update({ accepted: true })
-      .eq("user_id", profile.id)
-      .eq("club_id", clubId)
+      .rpc("accept_invitation", { invitation_id: invitationId })
       .throwOnError();
   } catch (error) {
     console.error("Failed to join club:", error);
     redirect("?error");
   }
 
-  redirect(`/app/${clubId}`);
+  redirect(`/app/`);
 }

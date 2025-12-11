@@ -74,7 +74,7 @@ export type Database = {
       }
       absence_reports: {
         Row: {
-          assigned_to: string | null
+          assigned_to_role: string | null
           club_id: string
           created_at: string
           data: Json
@@ -84,7 +84,7 @@ export type Database = {
           user_id: string | null
         }
         Insert: {
-          assigned_to?: string | null
+          assigned_to_role?: string | null
           club_id: string
           created_at?: string
           data: Json
@@ -94,7 +94,7 @@ export type Database = {
           user_id?: string | null
         }
         Update: {
-          assigned_to?: string | null
+          assigned_to_role?: string | null
           club_id?: string
           created_at?: string
           data?: Json
@@ -104,6 +104,13 @@ export type Database = {
           user_id?: string | null
         }
         Relationships: [
+          {
+            foreignKeyName: "absence_reports_assigned_to_role_fkey"
+            columns: ["assigned_to_role"]
+            isOneToOne: false
+            referencedRelation: "roles"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "absence_reports_club_id_fkey"
             columns: ["club_id"]
@@ -353,6 +360,8 @@ export type Database = {
       }
       roles: {
         Row: {
+          absence_report_approval_required: boolean
+          absence_report_reviewer_role: string | null
           club_id: string | null
           created_at: string
           description: string | null
@@ -362,6 +371,8 @@ export type Database = {
           updated_at: string
         }
         Insert: {
+          absence_report_approval_required?: boolean
+          absence_report_reviewer_role?: string | null
           club_id?: string | null
           created_at?: string
           description?: string | null
@@ -371,6 +382,8 @@ export type Database = {
           updated_at?: string
         }
         Update: {
+          absence_report_approval_required?: boolean
+          absence_report_reviewer_role?: string | null
           club_id?: string | null
           created_at?: string
           description?: string | null
@@ -380,6 +393,13 @@ export type Database = {
           updated_at?: string
         }
         Relationships: [
+          {
+            foreignKeyName: "roles_absence_report_reviewer_role_fkey"
+            columns: ["absence_report_reviewer_role"]
+            isOneToOne: false
+            referencedRelation: "roles"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "roles_club_id_fkey"
             columns: ["club_id"]
@@ -561,9 +581,23 @@ export type Database = {
       }
     }
     Functions: {
+      accept_invitation: { Args: { invitation_id: string }; Returns: undefined }
+      create_invitation: {
+        Args: { club_id: string; expires_at: string; role_id: string }
+        Returns: string
+      }
       user_has_club_permission: {
         Args: { p_club_id: string; p_permission: string }
         Returns: boolean
+      }
+      verify_invitation: {
+        Args: { invitation_id: string }
+        Returns: {
+          club_name: string
+          expires_at: string
+          invited_by_name: string
+          role_name: string
+        }[]
       }
     }
     Enums: {

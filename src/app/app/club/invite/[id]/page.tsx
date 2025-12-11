@@ -25,11 +25,9 @@ export default async function JoinClubPage({
     redirect(`/auth/login?${searchParams.toString()}`);
   }
   const { data: invite, error } = await supabase
-    .from("club_members")
-    .select("roles(name), public_clubs(name, school)")
-    .eq("accepted", false)
-    .eq("user_id", profile.id)
-    .eq("club_id", id)
+    .rpc("verify_invitation", {
+      invitation_id: id,
+    })
     .single();
   if (error || !invite) {
     // If there was an error fetching the invite, or if no invite exists, show an empty page
@@ -56,15 +54,17 @@ export default async function JoinClubPage({
             >
               <PaperPlaneIcon width={36} height={36} className={styles.plane} />
               <Heading as="h1" size="7" align="center">
-                {invite.public_clubs.name}
+                {invite.club_name}
               </Heading>
-              {invite.public_clubs.school ? (
-                <Heading as="h3" size="5" align="center" color="gray">
-                  at {invite.public_clubs.school}
-                </Heading>
-              ) : null}
+              <Heading as="h3" size="5" align="center" color="gray">
+                by {invite.invited_by_name}
+              </Heading>
             </Flex>
           </Card>
+          <Text as="p" size="4" align="center">
+            You will be joining as: <strong>{invite.role_name}</strong>. Expires
+            at: <strong>{new Date(invite.expires_at).toLocaleString()}</strong>
+          </Text>
           {searchError !== undefined && (
             <Callout.Root color="red">
               <Callout.Icon>
