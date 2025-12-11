@@ -1,13 +1,15 @@
 "use client";
 
 import type { Database } from "@/@types/database.types";
+import { useDebounceCallback } from "@/lib/debounce";
 import { createClient } from "@/lib/supabase/client";
-import { CrossCircledIcon } from "@radix-ui/react-icons";
+import { CrossCircledIcon, TrashIcon } from "@radix-ui/react-icons";
 import {
   Button,
   Callout,
+  Card,
+  CheckboxCards,
   Dialog,
-  DropdownMenu,
   Flex,
   Heading,
   Text,
@@ -61,6 +63,11 @@ export default function RolesManager({
     () => Object.fromEntries(PERMISSION_KEYS.map((k) => [k, false]))
   );
 
+  const [createRoleDialogOpen, setCreateRoleDialogOpen] = useState(false);
+  const [permissionDialogRoleId, setPermissionDialogRoleId] = useState<
+    string | null
+  >(null);
+
   function normalizePermissions(
     p: Database["public"]["Tables"]["roles"]["Row"]["permissions"]
   ): Record<string, boolean> {
@@ -77,7 +84,9 @@ export default function RolesManager({
     });
     return out;
   }
-  async function saveRole(role: Role) {
+  async function saveRole(roleId: string) {
+    const role = roles.find((r) => r.id === roleId);
+    if (!role) return;
     setError(null);
     const supabase = createClient();
     try {
@@ -94,6 +103,8 @@ export default function RolesManager({
       setError(e instanceof Error ? e.message : String(e));
     }
   }
+
+  const saveRoleDebounced = useDebounceCallback(saveRole, 1000);
 
   async function deleteRole(roleId: string) {
     if (!confirm("Delete this role? This cannot be undone.")) return;
@@ -140,20 +151,9 @@ export default function RolesManager({
       );
     } catch (e: unknown) {
       setError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setCreateRoleDialogOpen(false);
     }
-  }
-
-  function togglePermissionForRole(roleId: string, key: string) {
-    setRoles((prev) =>
-      prev.map((r) =>
-        r.id === roleId
-          ? {
-              ...r,
-              permissions: { ...r.permissions, [key]: !r.permissions[key] },
-            }
-          : r
-      )
-    );
   }
 
   return (
@@ -176,20 +176,27 @@ export default function RolesManager({
           <Text>No roles created yet.</Text>
         ) : (
           roles.map((role) => (
-            <Flex key={role.id} direction="column" className={styles.roleCard}>
+            <Card key={role.id}>
               <Flex align="center" gap="2">
                 <TextField.Root
                   value={role.name}
-                  onChange={(e) =>
+                  onChange={(e) => {
                     setRoles((prev) =>
                       prev.map((p) =>
                         p.id === role.id ? { ...p, name: e.target.value } : p
                       )
-                    )
-                  }
+                    );
+                    saveRoleDebounced(role.id);
+                  }}
                 />
-                <Button onClick={() => saveRole(role)}>Save</Button>
-                <Button color="red" onClick={() => deleteRole(role.id)}>
+                <Button
+                  variant="outline"
+                  onClick={() => setPermissionDialogRoleId(role.id)}
+                >
+                  Edit permissions
+                </Button>
+                <Button variant="soft" onClick={() => deleteRole(role.id)}>
+                  <TrashIcon />
                   Delete
                 </Button>
               </Flex>
@@ -197,93 +204,158 @@ export default function RolesManager({
               <Flex direction="column" className={styles.descriptionField}>
                 <TextField.Root
                   value={role.description ?? ""}
-                  onChange={(e) =>
+                  placeholder="Description"
+                  onChange={(e) => {
                     setRoles((prev) =>
                       prev.map((p) =>
                         p.id === role.id
                           ? { ...p, description: e.target.value }
                           : p
                       )
-                    )
-                  }
+                    );
+                    saveRoleDebounced(role.id);
+                  }}
                 />
               </Flex>
-
-              <Flex direction="column" className={styles.permissions}>
-                <Text size="2">Permissions</Text>
-                <DropdownMenu.Root>
-                  <DropdownMenu.Trigger>
-                    <Button variant="soft">Permissions</Button>
-                  </DropdownMenu.Trigger>
-                  <DropdownMenu.Content>
-                    {PERMISSION_KEYS.map((k) => (
-                      <DropdownMenu.CheckboxItem
-                        key={k}
-                        checked={Boolean(role.permissions[k])}
-                        onCheckedChange={() =>
-                          togglePermissionForRole(role.id, k)
-                        }
-                      >
-                        {k}
-                      </DropdownMenu.CheckboxItem>
-                    ))}
-                  </DropdownMenu.Content>
-                </DropdownMenu.Root>
-              </Flex>
-            </Flex>
+            </Card>
           ))
         )}
       </Flex>
 
-      <Flex direction="column" className={styles.createSection} gap="2">
-        <Dialog.Root>
+      <Flex
+        direction="row"
+        className={styles.createSection}
+        gap="2"
+        align="center"
+      >
+        <Dialog.Root
+          open={createRoleDialogOpen}
+          onOpenChange={setCreateRoleDialogOpen}
+        >
           <Dialog.Trigger>
             <Button>Create role</Button>
           </Dialog.Trigger>
-          <Dialog.Content>
-            <Heading size="6">Create new role</Heading>
-            <Flex direction="column" gap="2" className={styles.dialogBody}>
-              <TextField.Root
-                placeholder="Role name"
-                value={newName}
-                onChange={(e) => setNewName(e.target.value)}
-              />
-              <TextField.Root
-                placeholder="Description"
-                value={newDescription}
-                onChange={(e) => setNewDescription(e.target.value)}
-              />
+          <Dialog.Content asChild>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                createRole();
+              }}
+            >
+              <Dialog.Title>Create new role</Dialog.Title>
+              <Dialog.Description>
+                Fill in the details for the new role.
+              </Dialog.Description>
+              <Flex direction="column" gap="2" className={styles.dialogBody}>
+                <TextField.Root
+                  placeholder="Role name"
+                  value={newName}
+                  onChange={(e) => setNewName(e.target.value)}
+                  required
+                />
+                <TextField.Root
+                  placeholder="Description"
+                  value={newDescription}
+                  onChange={(e) => setNewDescription(e.target.value)}
+                  required
+                />
 
-              <Text size="2">Permissions</Text>
-              <DropdownMenu.Root>
-                <DropdownMenu.Trigger>
-                  <Button variant="soft">Choose permissions</Button>
-                </DropdownMenu.Trigger>
-                <DropdownMenu.Content>
+                <Text size="2">Permissions</Text>
+                <CheckboxCards.Root
+                  value={Object.entries(newPermissions)
+                    .filter(([_, v]) => v)
+                    .map(([k, _]) => k)}
+                  onValueChange={(values) => {
+                    const newPerms: Record<string, boolean> = {};
+                    PERMISSION_KEYS.forEach((k) => {
+                      newPerms[k] = values.includes(k);
+                    });
+                    setNewPermissions(newPerms);
+                  }}
+                >
                   {PERMISSION_KEYS.map((k) => (
-                    <DropdownMenu.CheckboxItem
-                      key={k}
-                      checked={Boolean(newPermissions[k])}
-                      onCheckedChange={(v) =>
-                        setNewPermissions((p) => ({ ...p, [k]: Boolean(v) }))
-                      }
-                    >
+                    <CheckboxCards.Item key={k} value={k}>
                       {k}
-                    </DropdownMenu.CheckboxItem>
+                    </CheckboxCards.Item>
                   ))}
-                </DropdownMenu.Content>
-              </DropdownMenu.Root>
+                </CheckboxCards.Root>
 
-              <Flex gap="2">
-                <Button onClick={createRole}>Create</Button>
-                <Dialog.Close>
-                  <Button variant="soft">Cancel</Button>
-                </Dialog.Close>
+                <Flex gap="2">
+                  <Button type="submit">Create</Button>
+                  <Button
+                    variant="soft"
+                    type="button"
+                    onClick={() => setCreateRoleDialogOpen(false)}
+                  >
+                    Cancel
+                  </Button>
+                </Flex>
               </Flex>
-            </Flex>
+            </form>
           </Dialog.Content>
         </Dialog.Root>
       </Flex>
+
+      <Dialog.Root
+        open={permissionDialogRoleId !== null}
+        onOpenChange={(open) => {
+          if (!open) setPermissionDialogRoleId(null);
+        }}
+      >
+        <Dialog.Content>
+          <Dialog.Title>Edit Permissions</Dialog.Title>
+          <Dialog.Description>
+            Toggle permissions for{" "}
+            {roles.find((r) => r.id === permissionDialogRoleId)?.name}
+          </Dialog.Description>
+          <CheckboxCards.Root
+            my="2"
+            value={Object.entries(
+              roles.find((r) => r.id === permissionDialogRoleId)?.permissions ??
+                {}
+            )
+              .filter(([_, v]) => v)
+              .map(([k, _]) => k)}
+            onValueChange={(values) => {
+              if (!permissionDialogRoleId) return;
+              const newPerms: Record<string, boolean> = {};
+              PERMISSION_KEYS.forEach((k) => {
+                newPerms[k] = values.includes(k);
+              });
+              setRoles((prev) =>
+                prev.map((r) =>
+                  r.id === permissionDialogRoleId
+                    ? { ...r, permissions: newPerms }
+                    : r
+                )
+              );
+            }}
+          >
+            {PERMISSION_KEYS.map((k) => (
+              <CheckboxCards.Item key={k} value={k}>
+                {k}
+              </CheckboxCards.Item>
+            ))}
+          </CheckboxCards.Root>
+          <Flex justify="end" gap="2" className={styles.dialogFooter}>
+            <Button
+              variant="soft"
+              onClick={() => setPermissionDialogRoleId(null)}
+            >
+              Close
+            </Button>
+            <Button
+              onClick={() => {
+                if (!permissionDialogRoleId) return;
+                saveRole(permissionDialogRoleId);
+                setPermissionDialogRoleId(null);
+              }}
+            >
+              Save
+            </Button>
+          </Flex>
+        </Dialog.Content>
+      </Dialog.Root>
     </Flex>
   );
 }
