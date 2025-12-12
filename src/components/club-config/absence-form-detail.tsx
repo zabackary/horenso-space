@@ -1,5 +1,9 @@
 "use client";
 
+import type { AbsenceForm } from "@/@types/AbsenceForm";
+import type { Database } from "@/@types/database.types";
+import { useTranslation } from "@/lib/i18n/useTranslation";
+import { createClient } from "@/lib/supabase/client";
 import { CrossCircledIcon, TrashIcon } from "@radix-ui/react-icons";
 import {
   Button,
@@ -11,9 +15,6 @@ import {
 } from "@radix-ui/themes";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
-import type { AbsenceForm } from "@/@types/AbsenceForm";
-import type { Database } from "@/@types/database.types";
-import { createClient } from "@/lib/supabase/client";
 import AbsenceFormEditor from "./absence-form-editor";
 
 type AbsenceFormRow =
@@ -46,13 +47,14 @@ export default function AbsenceFormDetail({
   initial: AbsenceFormRow;
   clubId: string;
 }) {
+  const { t } = useTranslation("absenceForms");
   const router = useRouter();
   const [state, setState] = useState(() => toClient(initial));
   const [error, setError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [savedSnapshot, setSavedSnapshot] = useState(() =>
-    JSON.stringify({ name: initial.name, questions: initial.questions }),
+    JSON.stringify({ name: initial.name, questions: initial.questions })
   );
 
   const isDirty = useMemo(() => {
@@ -75,7 +77,7 @@ export default function AbsenceFormDetail({
         .eq("club_id", clubId);
       if (updateError) throw updateError;
       setSavedSnapshot(
-        JSON.stringify({ name: state.name, questions: state.questions }),
+        JSON.stringify({ name: state.name, questions: state.questions })
       );
       router.refresh();
     } catch (e: unknown) {
@@ -86,7 +88,7 @@ export default function AbsenceFormDetail({
   }
 
   async function remove() {
-    if (!confirm("Delete this template? This cannot be undone.")) return;
+    if (!confirm(t("deleteConfirm"))) return;
     setError(null);
     setDeleting(true);
     const supabase = createClient();
@@ -111,9 +113,7 @@ export default function AbsenceFormDetail({
       <Heading size="4">Template</Heading>
       {isDirty && !error && (
         <Callout.Root color="amber">
-          <Callout.Text>
-            Unsaved changes. Save to keep this template.
-          </Callout.Text>
+          <Callout.Text>{t("unsavedChanges")}</Callout.Text>
         </Callout.Root>
       )}
       {error && (
@@ -126,7 +126,7 @@ export default function AbsenceFormDetail({
       )}
       <Flex align="center" gap="2">
         <TextField.Root
-          placeholder="Template name"
+          placeholder={t("templateName")}
           value={state.name}
           onChange={(e) => setState((s) => ({ ...s, name: e.target.value }))}
           style={{ flexGrow: 1 }}
@@ -136,12 +136,18 @@ export default function AbsenceFormDetail({
             <Spinner />
           ) : (
             <>
-              <TrashIcon /> Delete
+              <TrashIcon /> {t("common:delete")}
             </>
           )}
         </Button>
         <Button onClick={save} disabled={saving || !isDirty} variant="solid">
-          {saving ? <Spinner /> : isDirty ? "Save changes" : "Saved"}
+          {saving ? (
+            <Spinner />
+          ) : isDirty ? (
+            t("common:save") + " changes"
+          ) : (
+            "Saved"
+          )}
         </Button>
       </Flex>
 

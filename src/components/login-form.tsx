@@ -1,17 +1,19 @@
 "use client";
 
+import { revalidateRoot } from "@/actions/auth";
+import { useTranslation } from "@/lib/i18n/useTranslation";
+import { createClient } from "@/lib/supabase/client";
 import { CrossCircledIcon } from "@radix-ui/react-icons";
 import { Button, Callout, Flex, TextField } from "@radix-ui/themes";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { revalidateRoot } from "@/actions/auth";
-import { createClient } from "@/lib/supabase/client";
 
 export interface LoginFormProps {
   next?: string;
 }
 
 export function LoginForm(props: LoginFormProps) {
+  const { t } = useTranslation("auth");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -39,7 +41,7 @@ export function LoginForm(props: LoginFormProps) {
         router.push("/app");
       }
     } catch (error: unknown) {
-      setError(error instanceof Error ? error.message : "An error occurred");
+      setError(error instanceof Error ? error.message : t("common:error"));
     } finally {
       setIsLoading(null);
     }
@@ -64,7 +66,7 @@ export function LoginForm(props: LoginFormProps) {
       });
       if (error) throw error;
     } catch (error: unknown) {
-      setError(error instanceof Error ? error.message : "An error occurred");
+      setError(error instanceof Error ? error.message : t("common:error"));
       setIsLoading(null);
     }
   };
@@ -79,7 +81,7 @@ export function LoginForm(props: LoginFormProps) {
             loading={isLoading === "google"}
             type="button"
           >
-            Sign in with Google
+            {t("signIn", { provider: "Google" })}
           </Button>
           <Button
             variant="outline"
@@ -87,7 +89,7 @@ export function LoginForm(props: LoginFormProps) {
             loading={isLoading === "github"}
             type="button"
           >
-            Sign in with GitHub
+            {t("signIn", { provider: "GitHub" })}
           </Button>
         </Flex>
         {error && (
@@ -99,7 +101,7 @@ export function LoginForm(props: LoginFormProps) {
           </Callout.Root>
         )}
         <TextField.Root
-          placeholder="Email"
+          placeholder={t("email")}
           required
           type="email"
           value={email}
@@ -111,10 +113,10 @@ export function LoginForm(props: LoginFormProps) {
           required
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
+          placeholder={t("password")}
         />
         <Button type="submit" loading={isLoading === "email"}>
-          Login
+          {t("login")}
         </Button>
       </Flex>
     </form>

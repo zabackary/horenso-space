@@ -1,17 +1,19 @@
 "use client";
 
+import { revalidateRoot } from "@/actions/auth";
+import { useTranslation } from "@/lib/i18n/useTranslation";
+import { createClient } from "@/lib/supabase/client";
 import { CrossCircledIcon } from "@radix-ui/react-icons";
 import { Button, Callout, Flex, Text, TextField } from "@radix-ui/themes";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { revalidateRoot } from "@/actions/auth";
-import { createClient } from "@/lib/supabase/client";
 
 export interface SignupFormProps {
   next?: string;
 }
 
 export function SignupForm(props: SignupFormProps) {
+  const { t } = useTranslation("auth");
   const [email, setEmail] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [password, setPassword] = useState("");
@@ -54,7 +56,7 @@ export function SignupForm(props: SignupFormProps) {
         router.push("/app");
       }
     } catch (error: unknown) {
-      setError(error instanceof Error ? error.message : "An error occurred");
+      setError(error instanceof Error ? error.message : t("common:error"));
     } finally {
       setIsLoading(null);
     }
@@ -79,7 +81,7 @@ export function SignupForm(props: SignupFormProps) {
       });
       if (error) throw error;
     } catch (error: unknown) {
-      setError(error instanceof Error ? error.message : "An error occurred");
+      setError(error instanceof Error ? error.message : t("common:error"));
       setIsLoading(null);
     }
   };
@@ -94,7 +96,7 @@ export function SignupForm(props: SignupFormProps) {
             loading={isLoading === "google"}
             type="button"
           >
-            Sign up with Google
+            {t("signUp", { provider: "Google" })}
           </Button>
           <Button
             variant="outline"
@@ -102,7 +104,7 @@ export function SignupForm(props: SignupFormProps) {
             loading={isLoading === "github"}
             type="button"
           >
-            Sign up with GitHub
+            {t("signUp", { provider: "GitHub" })}
           </Button>
         </Flex>
         {error && (
@@ -114,7 +116,7 @@ export function SignupForm(props: SignupFormProps) {
           </Callout.Root>
         )}
         <TextField.Root
-          placeholder="Email"
+          placeholder={t("email")}
           required
           type="email"
           value={email}
@@ -126,7 +128,7 @@ export function SignupForm(props: SignupFormProps) {
           required
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
+          placeholder={t("password")}
         />
         <TextField.Root
           id="confirm-password"
@@ -134,18 +136,17 @@ export function SignupForm(props: SignupFormProps) {
           required
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
-          placeholder="Confirm password"
+          placeholder={t("confirmPassword")}
         />
         <TextField.Root
-          placeholder="Full name"
+          placeholder={t("fullName")}
           required
           type="text"
           value={fullName}
           onChange={(e) => setFullName(e.target.value)}
         />
         <Text size="1" color="gray" as="p">
-          Your full name will not be shared with people outside of your clubs
-          unless you choose to at a later time.
+          {t("privacyNotice")}
         </Text>
         <Button type="submit" loading={isLoading === "email"}>
           Sign up

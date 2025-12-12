@@ -1,3 +1,4 @@
+import { I18nProvider } from "@/components/providers/i18n-provider";
 import { Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
 import type { Metadata } from "next";
@@ -49,7 +50,9 @@ export default function RootLayout({
         <body
           className={`${hachiMaruPop.variable} ${notoSansJP.variable} ${gloriaHallelujah.variable} ${notoSans.variable}`}
         >
-          <ThemeProvider attribute="class">{children}</ThemeProvider>
+          <ThemeProvider attribute="class">
+            <I18nProvider>{children}</I18nProvider>
+          </ThemeProvider>
         </body>
       </Theme>
     </html>

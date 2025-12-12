@@ -1,0 +1,105 @@
+{
+  "common": {
+    "error": "An error occurred",
+    "loading": "Loading...",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "save": "Save",
+    "submit": "Submit",
+    "ok": "OK",
+    "back": "Back"
+  },
+  "auth": {
+    "signIn": "Sign in with {{provider}}",
+    "signUp": "Sign up with {{provider}}",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "fullName": "Full name",
+    "login": "Login",
+    "logout": "Logout",
+    "forgotPassword": "Forgot password?",
+    "resetPassword": "Reset your password",
+    "resetPasswordDescription": "Type in your email and we'll send you a link to reset your password",
+    "sendResetEmail": "Send reset email",
+    "checkEmail": "Check your email",
+    "resetEmailSent": "We emailed you a password reset link.",
+    "resetEmailInfo": "If you registered using your email and password, you will receive a password reset email.",
+    "alreadyHaveAccount": "Already have an account?",
+    "dontHaveAccount": "Don't have an account?",
+    "privacyNotice": "Your full name will not be shared with people outside of your clubs unless you choose to at a later time.",
+    "failedToJoinClub": "Failed to join club"
+  },
+  "home": {
+    "title": "Club Report Sharing UP",
+    "subtitle": "部活の報連相をUP",
+    "getStarted": "始めよう",
+    "feature1": "誰がいないか、はっきりわかる",
+    "feature2": "必要なドキュメントを簡単に共有",
+    "feature3": "どんな部活でも。",
+    "credit": "札幌光星中学高等学校吹奏楽部とクリスチャン・アカデミー・イン・ジャパンロボティクス部のが制作",
+    "copyright": "© {{year}} Horenso SPACE",
+    "notFound": "Page not found",
+    "selectSetting": "Select a setting to change."
+  },
+  "club": {
+    "joinClub": "Join Club",
+    "invitedToJoin": "You are invited to join a club",
+    "joiningAs": "You will be joining as: {{role}}",
+    "expiresAt": "Expires at: {{date}}",
+    "invalidInvite": "Invalid or expired invite link.",
+    "clubName": "Club name",
+    "description": "Club description",
+    "school": "School",
+    "website": "Website",
+    "public": "Public",
+    "settings": "Club Settings",
+    "settingsDescription": "クラブのメタデータ、役割、メンバーを管理します。",
+    "calendar": "Calendar",
+    "calendarDescription": "クラブのイベントやミーティングを確認しましょう。",
+    "addEvent": "イベントを追加する",
+    "absence": "Absence Reports",
+    "absenceDescription": "lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "reportAbsence": "欠席を連絡する",
+    "recentNews": "最近のお知らせ",
+    "newsContent": "お知らせの内容がここに入ります。"
+  },
+  "invite": {
+    "title": "Invites",
+    "generateInvite": "Generate invite",
+    "generateInviteDescription": "Create an invite link to invite a new member to your club.",
+    "noInvites": "No invites created yet.",
+    "roleWhenJoining": "Role when joining",
+    "copyLink": "Copy link",
+    "role": "Role: {{role}}",
+    "invitedBy": "Invited by: {{name}}",
+    "expiresAt": "Expires at: {{date}}",
+    "usedCount": "Used {{count}} times"
+  },
+  "members": {
+    "title": "Members",
+    "role": "Role: {{role}}",
+    "remove": "Remove"
+  },
+  "absenceForms": {
+    "title": "Absence Report Templates",
+    "noTemplates": "No templates yet",
+    "createFirst": "Create your first absence report template.",
+    "createTemplate": "Create template",
+    "createNew": "Create new",
+    "templateName": "Template name",
+    "updated": "Updated {{date}}",
+    "unsavedChanges": "Unsaved changes. Save to keep this template.",
+    "deleteConfirm": "Delete this template? This cannot be undone."
+  },
+  "user": {
+    "userSettings": "User settings",
+    "login": "Login",
+    "profile": "Profile",
+    "joined": "Joined {{date}}"
+  },
+  "absenceFormRenderer": {
+    "pleaseProvidemoreDetails": "Please provide more details",
+    "pleaseSpecify": "Please specify"
+  }
+}
