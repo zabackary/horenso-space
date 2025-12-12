@@ -17,27 +17,13 @@ import {
 } from "@radix-ui/themes";
 import { useEffect, useState } from "react";
 import styles from "./detail.module.css";
-
-type Report = {
-  id: string;
-  user_id: string | null;
-  user_name: string | null;
-  event_id: string | null;
-  event_name: string | null;
-  event_start_time: string | null;
-  event_end_time: string | null;
-  assigned_to_role_id: string | null;
-  assigned_to_role_name: string | null;
-  reviews: any;
-  data: any;
-  form_id: string | null;
-};
+import { AssignedReport } from "./list";
 
 export default function ReportDetail({
   report,
   clubId,
 }: {
-  report: Report;
+  report: AssignedReport;
   clubId: string;
 }) {
   const [comments, setComments] = useState("");
@@ -148,6 +134,15 @@ export default function ReportDetail({
             <DataList.Label>Event</DataList.Label>
             <DataList.Value>{report.event_name || "No event"}</DataList.Value>
           </DataList.Item>
+
+          {report.report_date && (
+            <DataList.Item>
+              <DataList.Label>Date</DataList.Label>
+              <DataList.Value>
+                {new Date(report.report_date).toLocaleDateString()}
+              </DataList.Value>
+            </DataList.Item>
+          )}
 
           {report.event_start_time && (
             <DataList.Item>

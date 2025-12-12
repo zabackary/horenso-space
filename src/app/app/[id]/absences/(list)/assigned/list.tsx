@@ -6,7 +6,7 @@ import { useState } from "react";
 import ReportDetail from "./detail";
 import styles from "./list.module.css";
 
-type AssignedReport =
+export type AssignedReport =
   Database["public"]["Functions"]["get_assigned_absence_reports"]["Returns"][number];
 
 export default function AssignedReportsList({
@@ -42,12 +42,20 @@ export default function AssignedReportsList({
                 >
                   <Flex direction="column" gap="1">
                     <Text weight="bold">{report.user_name}</Text>
-                    <Text size="2">{report.event_name || "No event"}</Text>
-                    <Text size="1" className={styles.reportMeta}>
-                      {report.event_start_time
-                        ? new Date(report.event_start_time).toLocaleDateString()
-                        : "No date"}
+                    <Text size="2">
+                      {report.event_name ??
+                        new Date(report.report_date).toLocaleDateString() ??
+                        "No event"}
                     </Text>
+                    {report.event_start_time && (
+                      <Text size="1" className={styles.reportMeta}>
+                        {report.event_start_time
+                          ? new Date(
+                              report.event_start_time
+                            ).toLocaleDateString()
+                          : "No date"}
+                      </Text>
+                    )}
                     {(report.reviews as any[]).length > 0 && (
                       <Text size="1" className={styles.reviewed}>
                         ✓ Reviewed
