@@ -1,7 +1,7 @@
+import { createClient } from "@/lib/supabase/client";
 import { GlobeIcon, TextIcon } from "@radix-ui/react-icons";
 import { Box, Card, Flex, Heading, Separator, Text } from "@radix-ui/themes";
 import { useEffect, useMemo, useState } from "react";
-import { createClient } from "@/lib/supabase/client";
 
 export interface DayCalendarProps {
   date: string;
@@ -36,12 +36,16 @@ export default function DayCalendar({
     const abortController = new AbortController();
 
     async function fetchEvents() {
+      const startOfDay = new Date(date);
+      startOfDay.setHours(0, 0, 0, 0);
+      const endOfDay = new Date(date);
+      endOfDay.setHours(23, 59, 59, 999);
       const { data, error } = await supabase
         .from("calendar_events")
         .select("*")
         .eq("club_id", clubId)
-        .gte("start_time", `${date}T00:00:00Z`)
-        .lte("end_time", `${date}T23:59:59Z`)
+        .gte("start_time", startOfDay.toISOString())
+        .lte("end_time", endOfDay.toISOString())
         .order("start_time", { ascending: true })
         .abortSignal(abortController.signal);
 
@@ -56,7 +60,7 @@ export default function DayCalendar({
             endDate: event.end_time,
             description: event.description || undefined,
             location: event.location || undefined,
-          })),
+          }))
         );
       }
     }
