@@ -1,48 +1,82 @@
+-- When an absence report is created, assign it to the appropriate role if
+-- the creator's role has an absence_report_reviewer_role set
+create or replace function public.handle_report_creation()
+  returns trigger
+  language plpgsql
+  security definer -- runs with max privileges, so we need to validate inputs
+  set search_path to ''
+  as $$
+declare
+  v_reviewer_role uuid;
+begin
+  select
+    r.absence_report_reviewer_role into v_reviewer_role
+  from
+    public.roles r
+  where
+    r.id =(
+      select
+        cm.role_id
+      from
+        public.club_members cm
+      where
+        cm.user_id = new.user_id
+        and cm.club_id = new.club_id
+        and cm.accepted = true);
+  if v_reviewer_role is not null then
+    new.assigned_to_role := v_reviewer_role;
+  end if;
+  return new;
+end;
+$$;
+
+create trigger handle_report_creation
+  before insert on absence_reports for each row
+  execute function public.handle_report_creation();
+
 -- When an absence report review is created and is accepted, if the person creating the review's
 -- role has an absence_report_reviewer_role and absence_report_approval_required
 -- is true, then set the absence report's assigned_to_role to that role.
 create or replace function public.handle_review_creation()
-returns trigger
-language plpgsql
-security definer -- runs with max privileges, so we need to validate inputs
-set search_path to ''
-as $$
+  returns trigger
+  language plpgsql
+  security definer -- runs with max privileges, so we need to validate inputs
+  set search_path to ''
+  as $$
 begin
-  if new.accepted then
-    if (
+  if(new.accepted) then
+    if(
       select
         r.absence_report_approval_required
       from
         public.roles r
       where
-        r.id = (
-          select
-            cm.role_id
-          from
-            public.club_members cm
-          where
-            cm.user_id = new.reviewer_id
-            and cm.accepted = true
-        )
-    ) then
-      update public.absence_reports
-      set assigned_to_role = (
+        r.id =(
         select
-          r.absence_report_reviewer_role
+          cm.role_id
         from
-          public.roles r
+          public.club_members cm
         where
-          r.id = (
-            select
-              cm.role_id
-            from
-              public.club_members cm
-            where
-              cm.user_id = new.reviewer_id
-              and cm.accepted = true
-          )
-      )
-      where id = new.absence_report_id;
+          cm.user_id = new.reviewer_id and cm.accepted = true)) then
+      update
+        public.absence_reports
+      set
+        assigned_to_role =(
+          select
+            r.absence_report_reviewer_role
+          from
+            public.roles r
+          where
+            r.id =(
+              select
+                cm.role_id
+              from
+                public.club_members cm
+              where
+                cm.user_id = new.reviewer_id
+                and cm.accepted = true))
+        where
+          id = new.absence_report_id;
     end if;
   end if;
   return new;
@@ -50,68 +84,82 @@ end;
 $$;
 
 create trigger handle_review_creation
-  after insert on absence_report_reviews
-  for each row
+  after insert on absence_report_reviews for each row
   execute function public.handle_review_creation();
 
--- checks whether a review is approved.
--- that means that the review's creator's role's absence_report_approval_required is true
--- and their reviewer role has approved the review, repeating until a role with absence_report_approval_required = false is found
+-- checks whether a report is approved.
+-- that means starting from the report creator's role, we recurse up the reviewer hierarchy
+-- checking that each role that requires approval has an accepted review from their reviewer role
+-- repeating until a role with absence_report_approval_required = false is found
 -- or a reviewer role has already been checked (to prevent recursion loops)
-create or replace function public.is_review_approved(p_review_id uuid)
-returns boolean
-language plpgsql
-security definer stable
-set search_path to ''
-as $$
+create or replace function public.is_report_approved(p_report_id uuid)
+  returns boolean
+  language plpgsql
+  security definer stable
+  set search_path to ''
+  as $$
 declare
   v_checked_roles uuid[] := array[]::uuid[];
-  v_current_report_id uuid;
   v_current_role_id uuid;
   v_approval_required boolean;
   v_reviewer_role_id uuid;
 begin
-  -- Get the initial absence report and reviewer's role
-  select arr.absence_report_id, cm.role_id
-  into v_current_report_id, v_current_role_id
-  from absence_report_reviews arr
-  join public.club_members cm on cm.user_id = arr.reviewer_id and cm.accepted = true
-  where arr.id = p_review_id;
-
+  -- Get the report creator's role
+  select
+    cm.role_id into v_current_role_id
+  from
+    public.absence_reports ar
+    join public.club_members cm on cm.user_id = ar.user_id
+      and cm.club_id = ar.club_id
+      and cm.accepted = true
+  where
+    ar.id = p_report_id;
+  -- If no role found for report creator, report cannot be approved
+  if v_current_role_id is null then
+    return false;
+  end if;
   loop
     -- Check if we've already checked this role (prevent recursion loops)
-    if v_current_role_id = any(v_checked_roles) then
+    if v_current_role_id = any (v_checked_roles) then
       return false;
     end if;
-
     v_checked_roles := array_append(v_checked_roles, v_current_role_id);
-
-    -- Check if this role requires approval
-    select absence_report_approval_required into v_approval_required
-    from public.roles where id = v_current_role_id;
-
+    -- Check if this role requires approval and get the reviewer role
+    select
+      absence_report_approval_required,
+      absence_report_reviewer_role into v_approval_required,
+      v_reviewer_role_id
+    from
+      public.roles
+    where
+      id = v_current_role_id;
     -- If approval not required, the chain is complete - return true
     if not v_approval_required then
       return true;
     end if;
-
-    -- Get the reviewer role that should approve next
-    select absence_report_reviewer_role into v_reviewer_role_id
-    from public.roles where id = v_current_role_id;
-
+    -- If approval is required but there's no reviewer role set, cannot be approved
+    if v_reviewer_role_id is null then
+      return false;
+    end if;
     -- Check if someone with the reviewer role has accepted a review for this report
-    select cm.role_id
-    into v_current_role_id
-    from absence_report_reviews arr
-    join public.club_members cm on cm.user_id = arr.reviewer_id and cm.accepted = true
-    where arr.absence_report_id = v_current_report_id 
-      and cm.role_id = v_reviewer_role_id 
-      and arr.accepted = true;
-
+    select
+      cm.role_id into v_current_role_id
+    from
+      public.absence_report_reviews arr
+      join public.club_members cm on cm.user_id = arr.reviewer_id
+        and cm.accepted = true
+    where
+      arr.absence_report_id = p_report_id
+      and cm.role_id = v_reviewer_role_id
+      and arr.accepted = true
+    limit 1;
     -- If no review found from the next role, not fully approved
     if v_current_role_id is null then
       return false;
     end if;
+    -- Move up to the reviewer role for next iteration
+    v_current_role_id := v_reviewer_role_id;
   end loop;
 end;
 $$;
+

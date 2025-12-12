@@ -89,7 +89,6 @@ export type Database = {
           accepted: boolean
           comments: string | null
           created_at: string
-          form: string | null
           id: string
           reviewer_id: string | null
           updated_at: string
@@ -99,7 +98,6 @@ export type Database = {
           accepted: boolean
           comments?: string | null
           created_at?: string
-          form?: string | null
           id?: string
           reviewer_id?: string | null
           updated_at?: string
@@ -109,7 +107,6 @@ export type Database = {
           accepted?: boolean
           comments?: string | null
           created_at?: string
-          form?: string | null
           id?: string
           reviewer_id?: string | null
           updated_at?: string
@@ -120,13 +117,6 @@ export type Database = {
             columns: ["absence_report_id"]
             isOneToOne: false
             referencedRelation: "absence_reports"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "absence_report_reviews_form_fkey"
-            columns: ["form"]
-            isOneToOne: false
-            referencedRelation: "absence_report_forms"
             referencedColumns: ["id"]
           },
         ]
@@ -712,6 +702,7 @@ export type Database = {
           usage_count: number
         }[]
       }
+      is_report_approved: { Args: { p_report_id: string }; Returns: boolean }
       user_has_club_permission: {
         Args: { p_club_id: string; p_permission: string }
         Returns: boolean

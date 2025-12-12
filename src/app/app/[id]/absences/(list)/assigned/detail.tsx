@@ -73,6 +73,28 @@ export default function ReportDetail({
     };
   }, [report.form_id, clubId]);
 
+  const [isAccepted, setIsAccepted] = useState<boolean | null>(null);
+  useEffect(() => {
+    const abortController = new AbortController();
+    async function fetchAcceptedStatus() {
+      const supabase = createClient();
+      const { data, error } = await supabase
+        .rpc("is_report_approved", {
+          p_report_id: report.id,
+        })
+        .abortSignal(abortController.signal);
+      if (error) {
+        console.error("Failed to fetch accepted status:", error);
+        return;
+      }
+      setIsAccepted(data as boolean);
+    }
+    fetchAcceptedStatus();
+    return () => {
+      abortController.abort();
+    };
+  }, [report.id]);
+
   const handleSubmit = async (accepted: boolean) => {
     setIsSubmitting(true);
     setError(null);
@@ -92,6 +114,16 @@ export default function ReportDetail({
   return (
     <Card>
       <Flex direction="column" gap="4">
+        {isAccepted !== null && (
+          <Callout.Root color={isAccepted ? "green" : "yellow"}>
+            <Callout.Text>
+              {isAccepted
+                ? "This report has been accepted."
+                : "This report has not been accepted."}
+            </Callout.Text>
+          </Callout.Root>
+        )}
+
         <Heading size="4">Report Review</Heading>
 
         {error && (

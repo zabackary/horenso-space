@@ -5,7 +5,6 @@ create table absence_report_reviews(
   created_at timestamp with time zone default now() not null,
   updated_at timestamp with time zone default now() not null,
   accepted boolean not null,
-  form uuid references absence_report_forms(id) on delete set null,
   comments text
 );
 

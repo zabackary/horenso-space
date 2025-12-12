@@ -66,6 +66,7 @@ schema_paths = [
   "./schemas/private/*.sql",
   "./schemas/public/*.sql",
   "./schemas/permission_validation.sql",
+  "./schemas/*.sql",
 ]
 
 [db.seed]
