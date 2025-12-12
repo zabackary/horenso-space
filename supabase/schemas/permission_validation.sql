@@ -89,3 +89,28 @@ create policy "Club managers can manage roles" on roles
           -- the new permissions don't allow managing the club
 (permissions ->> 'canManageClub')::boolean = false)));
 
+-- MARK: absence_report_forms permissions policies
+-- Club members can view absence report forms in their clubs
+create policy "Club members can view absence report forms in their clubs" on absence_report_forms
+  for select
+    using (exists (
+      select
+        1
+      from
+        joined_clubs
+      where
+        joined_clubs.id = absence_report_forms.club_id));
+
+-- Club admins can create absence report forms for their clubs
+create policy "Club admins can create absence report forms for their clubs" on absence_report_forms
+  for insert
+    with check (public.user_has_club_permission(absence_report_forms.club_id, 'canManageClub'));
+
+create policy "Club admins can modify absence report forms for their clubs" on absence_report_forms
+  for update
+    with check (public.user_has_club_permission(absence_report_forms.club_id, 'canManageClub'));
+
+create policy "Club admins can delete absence report forms for their clubs" on absence_report_forms
+  for delete
+    using (public.user_has_club_permission(absence_report_forms.club_id, 'canManageClub'));
+

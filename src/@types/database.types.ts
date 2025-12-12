@@ -420,6 +420,7 @@ export type Database = {
       roles: {
         Row: {
           absence_report_approval_required: boolean
+          absence_report_form: string | null
           absence_report_reviewer_role: string | null
           club_id: string | null
           created_at: string
@@ -431,6 +432,7 @@ export type Database = {
         }
         Insert: {
           absence_report_approval_required?: boolean
+          absence_report_form?: string | null
           absence_report_reviewer_role?: string | null
           club_id?: string | null
           created_at?: string
@@ -442,6 +444,7 @@ export type Database = {
         }
         Update: {
           absence_report_approval_required?: boolean
+          absence_report_form?: string | null
           absence_report_reviewer_role?: string | null
           club_id?: string | null
           created_at?: string
@@ -452,6 +455,13 @@ export type Database = {
           updated_at?: string
         }
         Relationships: [
+          {
+            foreignKeyName: "roles_absence_report_form_fkey"
+            columns: ["absence_report_form"]
+            isOneToOne: false
+            referencedRelation: "absence_report_forms"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "roles_absence_report_reviewer_role_fkey"
             columns: ["absence_report_reviewer_role"]

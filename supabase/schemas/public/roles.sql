@@ -6,6 +6,7 @@ create table roles(
   permissions jsonb not null,
   absence_report_approval_required boolean default true not null,
   absence_report_reviewer_role uuid references roles(id) on delete set null,
+  absence_report_form uuid references absence_report_forms(id) on delete set null,
   created_at timestamp with time zone default now() not null,
   updated_at timestamp with time zone default now() not null check (extensions.jsonb_matches_schema('{
         "$schema": "https://json-schema.org/draft-07/schema",

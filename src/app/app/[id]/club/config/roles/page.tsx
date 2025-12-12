@@ -14,8 +14,15 @@ export default async function ClubRolesPage({
   const rolesPromise = supabase
     .from("roles")
     .select(
-      "id, name, description, permissions, absence_report_reviewer_role, absence_report_approval_required"
+      "id, name, description, permissions, absence_report_reviewer_role, absence_report_approval_required, absence_report_form"
     )
+    .eq("club_id", id)
+    .order("created_at", { ascending: true })
+    .then((res) => res.data ?? []);
+
+  const formsPromise = supabase
+    .from("absence_report_forms")
+    .select("id, name")
     .eq("club_id", id)
     .order("created_at", { ascending: true })
     .then((res) => res.data ?? []);
@@ -25,7 +32,7 @@ export default async function ClubRolesPage({
       <ClubConfigTabNav active="roles" clubId={id} />
       <Box p="4">
         <React.Suspense fallback={<Spinner />}>
-          <RolesManager clubId={id} rolesPromise={rolesPromise} />
+          <RolesManager clubId={id} rolesPromise={rolesPromise} formsPromise={formsPromise} />
         </React.Suspense>
       </Box>
     </>

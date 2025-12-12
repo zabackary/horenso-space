@@ -57,6 +57,7 @@ schema_paths = [
   "./schemas/extensions.sql",
   "./schemas/private/profiles.sql",
   "./schemas/public/clubs.sql",
+  "./schemas/public/absence_report_forms.sql",
   "./schemas/public/roles.sql",
   "./schemas/public/club_members.sql",
   "./schemas/auth_helpers.sql",

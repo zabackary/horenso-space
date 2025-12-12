@@ -2,7 +2,11 @@
 
 import type { Database } from "@/@types/database.types";
 import { createClient } from "@/lib/supabase/client";
-import { CrossCircledIcon, TrashIcon } from "@radix-ui/react-icons";
+import {
+  CrossCircledIcon,
+  Pencil1Icon,
+  TrashIcon,
+} from "@radix-ui/react-icons";
 import {
   Button,
   Callout,
@@ -11,11 +15,14 @@ import {
   Dialog,
   Flex,
   Heading,
+  IconButton,
   Select,
   Switch,
   Text,
   TextField,
+  Tooltip,
 } from "@radix-ui/themes";
+import Link from "next/link";
 import { use, useState } from "react";
 import styles from "./roles-manager.module.css";
 
@@ -37,11 +44,13 @@ type Role = {
   permissions: Record<string, boolean>;
   absenceReportReviewerRole: string | null;
   absenceReportApprovalRequired: boolean;
+  absenceReportFormId: string | null;
 };
 
 export default function RolesManager({
   clubId,
   rolesPromise,
+  formsPromise,
 }: {
   clubId: string;
   rolesPromise: PromiseLike<
@@ -53,10 +62,18 @@ export default function RolesManager({
       | "permissions"
       | "absence_report_reviewer_role"
       | "absence_report_approval_required"
+      | "absence_report_form"
+    >[]
+  >;
+  formsPromise: PromiseLike<
+    Pick<
+      Database["public"]["Tables"]["absence_report_forms"]["Row"],
+      "id" | "name"
     >[]
   >;
 }) {
   const initial = use(rolesPromise) ?? [];
+  const formsInitial = use(formsPromise) ?? [];
   const [roles, setRoles] = useState<Role[]>(
     () =>
       initial.map((r) => ({
@@ -66,9 +83,13 @@ export default function RolesManager({
         permissions: normalizePermissions(r.permissions),
         absenceReportReviewerRole: r.absence_report_reviewer_role ?? null,
         absenceReportApprovalRequired: r.absence_report_approval_required,
+        absenceReportFormId: (r as any).absence_report_form ?? null,
       })) ?? []
   );
   const [error, setError] = useState<string | null>(null);
+  const [forms] = useState<{ id: string; name: string }[]>(() =>
+    (formsInitial ?? []).map((f) => ({ id: f.id, name: f.name }))
+  );
 
   const [editDialogRoleId, setEditDialogRoleId] = useState<string | null>(null);
   const [editName, setEditName] = useState("");
@@ -82,6 +103,9 @@ export default function RolesManager({
     editAbsenceReportApprovalRequired,
     setEditAbsenceReportApprovalRequired,
   ] = useState(false);
+  const [editAbsenceReportFormId, setEditAbsenceReportFormId] = useState<
+    string | null
+  >(null);
 
   function normalizePermissions(
     p: Database["public"]["Tables"]["roles"]["Row"]["permissions"]
@@ -103,6 +127,10 @@ export default function RolesManager({
     const role = roles.find((r) => r.id === roleId);
     if (!role) return;
     setError(null);
+    if (role.absenceReportFormId === null) {
+      setError("Absence report template must be selected");
+      return;
+    }
     const supabase = createClient();
     try {
       await supabase
@@ -113,9 +141,11 @@ export default function RolesManager({
           permissions: role.permissions,
           absence_report_approval_required: role.absenceReportApprovalRequired,
           absence_report_reviewer_role: role.absenceReportReviewerRole,
+          absence_report_form: role.absenceReportFormId,
         })
         .eq("id", role.id)
         .throwOnError();
+      resetEditDialog();
     } catch (e: unknown) {
       setError(e instanceof Error ? e.message : String(e));
     }
@@ -135,6 +165,10 @@ export default function RolesManager({
   async function createRole() {
     if (!editName.trim()) return setError("Role name required");
     setError(null);
+    if (editAbsenceReportFormId === null) {
+      setError("Absence report template must be selected");
+      return;
+    }
     const supabase = createClient();
     try {
       const { data } = await supabase
@@ -146,6 +180,7 @@ export default function RolesManager({
           permissions: editPermissions,
           absence_report_reviewer_role: editAbsenceReportReviewerRole,
           absence_report_approval_required: editAbsenceReportApprovalRequired,
+          absence_report_form: editAbsenceReportFormId,
         })
         .throwOnError()
         .select()
@@ -162,6 +197,7 @@ export default function RolesManager({
               data.absence_report_reviewer_role ?? null,
             absenceReportApprovalRequired:
               data.absence_report_approval_required,
+            absenceReportFormId: (data as any).absence_report_form ?? null,
           },
         ]);
       }
@@ -180,6 +216,8 @@ export default function RolesManager({
     );
     setEditAbsenceReportReviewerRole(null);
     setEditAbsenceReportApprovalRequired(false);
+    setEditAbsenceReportFormId(null);
+    setError(null);
   }
 
   function openEditDialog(roleId: string) {
@@ -191,6 +229,8 @@ export default function RolesManager({
     setEditPermissions(role.permissions);
     setEditAbsenceReportReviewerRole(role.absenceReportReviewerRole);
     setEditAbsenceReportApprovalRequired(role.absenceReportApprovalRequired);
+    setEditAbsenceReportFormId(role.absenceReportFormId);
+    setError(null);
   }
 
   function openCreateDialog() {
@@ -202,6 +242,7 @@ export default function RolesManager({
     );
     setEditAbsenceReportReviewerRole(null);
     setEditAbsenceReportApprovalRequired(false);
+    setEditAbsenceReportFormId(null);
   }
 
   return (
@@ -268,7 +309,6 @@ export default function RolesManager({
                 createRole();
               } else if (editDialogRoleId) {
                 saveRole(editDialogRoleId);
-                resetEditDialog();
               }
             }}
           >
@@ -281,6 +321,14 @@ export default function RolesManager({
                 : `Edit details for ${editName}`}
             </Dialog.Description>
             <Flex direction="column" gap="2" className={styles.dialogBody}>
+              {error && (
+                <Callout.Root color="red">
+                  <Callout.Icon>
+                    <CrossCircledIcon />
+                  </Callout.Icon>
+                  <Callout.Text>{error}</Callout.Text>
+                </Callout.Root>
+              )}
               <TextField.Root
                 placeholder="Role name"
                 value={editName}
@@ -315,6 +363,12 @@ export default function RolesManager({
 
               <Heading size="2">Absence reports</Heading>
               <Flex direction="column" gap="2">
+                <Flex direction="row" align="center" justify="between">
+                  <Text size="2" color="gray">
+                    Configure reviewer/approval and choose the template used for
+                    this role.
+                  </Text>
+                </Flex>
                 <Flex direction="row" align="center" gap="2">
                   <Text style={{ flexGrow: 1 }}>Reviewer role</Text>
                   <Select.Root
@@ -324,6 +378,7 @@ export default function RolesManager({
                         value === "~" ? null : value
                       )
                     }
+                    required
                   >
                     <Select.Trigger />
                     <Select.Content>
@@ -343,7 +398,51 @@ export default function RolesManager({
                     onCheckedChange={(checked) =>
                       setEditAbsenceReportApprovalRequired(Boolean(checked))
                     }
+                    required
                   />
+                </Flex>
+
+                <Flex direction="row" align="center" gap="2">
+                  <Text style={{ flexGrow: 1 }}>Template</Text>
+                  <Tooltip content="Open template editor">
+                    <IconButton
+                      variant="soft"
+                      aria-label="Edit selected template"
+                      disabled={!editAbsenceReportFormId}
+                      asChild
+                    >
+                      <Link
+                        href={
+                          editAbsenceReportFormId
+                            ? `/app/${clubId}/club/config/absence-forms/${editAbsenceReportFormId}`
+                            : "#"
+                        }
+                        target="_blank"
+                        onClick={(e) => {
+                          if (!editAbsenceReportFormId) e.preventDefault();
+                        }}
+                      >
+                        <Pencil1Icon />
+                      </Link>
+                    </IconButton>
+                  </Tooltip>
+                  <Select.Root
+                    value={editAbsenceReportFormId ?? ""}
+                    onValueChange={(value) =>
+                      setEditAbsenceReportFormId(value === "" ? null : value)
+                    }
+                    name="absenceReportForm"
+                    required
+                  >
+                    <Select.Trigger />
+                    <Select.Content>
+                      {forms.map((f) => (
+                        <Select.Item key={f.id} value={f.id}>
+                          {f.name}
+                        </Select.Item>
+                      ))}
+                    </Select.Content>
+                  </Select.Root>
                 </Flex>
               </Flex>
 
