@@ -1,13 +1,13 @@
 import { Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
 import type { Metadata } from "next";
+import { ThemeProvider } from "next-themes";
 import {
   Gloria_Hallelujah,
   Hachi_Maru_Pop,
   Noto_Sans,
   Noto_Sans_JP,
 } from "next/font/google";
-import { ThemeProvider } from "next-themes";
 import "./layout.module.css";
 
 const hachiMaruPop = Hachi_Maru_Pop({
@@ -45,7 +45,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <Theme accentColor="red" grayColor="mauve" radius="full" asChild>
+      <Theme accentColor="lime" grayColor="mauve" radius="full" asChild>
         <body
           className={`${hachiMaruPop.variable} ${notoSansJP.variable} ${gloriaHallelujah.variable} ${notoSans.variable}`}
         >

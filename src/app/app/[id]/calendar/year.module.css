@@ -10,7 +10,7 @@
   scroll-snap-type: x mandatory;
 
   [data-index] {
-    scroll-snap-align: start;
+    scroll-snap-align: end;
   }
 }
 

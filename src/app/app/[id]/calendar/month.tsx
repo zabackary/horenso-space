@@ -1,16 +1,15 @@
 "use client";
 
+import type { Database } from "@/@types/database.types";
+import { createClient } from "@/lib/supabase/client";
 import { Box, Button, Flex, Grid, Heading } from "@radix-ui/themes";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import clsx from "clsx";
 import { memo, useEffect, useMemo, useRef, useState } from "react";
 import { Virtuoso, type VirtuosoHandle } from "react-virtuoso";
-import type { Database } from "@/@types/database.types";
-import { createClient } from "@/lib/supabase/client";
 import styles from "./month.module.css";
 
 export interface MonthCalendarProps {
-  grid: boolean;
   month: string;
   clubId: string;
   onMonthChange?: (month: string) => void;
@@ -22,7 +21,6 @@ export interface MonthCalendarProps {
 }
 
 export default function MonthCalendar({
-  grid: _grid,
   month,
   onMonthChange,
   onSelectDate,
@@ -33,6 +31,8 @@ export default function MonthCalendar({
   refreshKey,
 }: MonthCalendarProps) {
   const ref = useRef<VirtuosoHandle>(null);
+  const scrollingFromCallback = useRef(false);
+  const currentlyAutoScrolling = useRef(false);
   const [isScrolling, setIsScrolling] = useState(false);
   const months = useMemo(() => {
     const currentYear = new Date().getFullYear();
@@ -43,14 +43,14 @@ export default function MonthCalendar({
         (_, i) =>
           `${year.toString().padStart(4, "0")}-${(i + 1)
             .toString()
-            .padStart(2, "0")}`,
+            .padStart(2, "0")}`
       );
     }).flat();
   }, []);
   useEffect(() => {
     if (ref.current) {
       const index = months.indexOf(month);
-      if (index !== -1) {
+      if (index !== -1 && !scrollingFromCallback.current) {
         setIsScrolling(true);
         setTimeout(() => {
           ref.current?.scrollToIndex({
@@ -58,10 +58,7 @@ export default function MonthCalendar({
             align: "start",
             behavior: "smooth",
           });
-        });
-        setTimeout(() => {
-          setIsScrolling(false);
-        }, 500);
+        }, 0);
       }
     }
   }, [month, months]);
@@ -91,10 +88,27 @@ export default function MonthCalendar({
         />
       )}
       rangeChanged={(range) => {
-        if (isScrolling) return;
         const firstMonth = months[range.startIndex];
-        if (firstMonth !== undefined && firstMonth !== month) {
+        if (
+          firstMonth !== undefined &&
+          firstMonth !== month &&
+          !currentlyAutoScrolling.current
+        ) {
+          scrollingFromCallback.current = true;
           onMonthChange?.(firstMonth);
+          setTimeout(() => {
+            scrollingFromCallback.current = false;
+          }, 0);
+        }
+      }}
+      isScrolling={(scrolling) => {
+        if (!scrolling && isScrolling) {
+          if (!currentlyAutoScrolling.current) {
+            currentlyAutoScrolling.current = true;
+          } else {
+            currentlyAutoScrolling.current = false;
+            setIsScrolling(false);
+          }
         }
       }}
     />
@@ -159,7 +173,7 @@ function MonthCard({
                 return result;
               }
               return [];
-            }),
+            })
           ),
         ]);
       });
@@ -172,12 +186,12 @@ function MonthCard({
   // Render a grid of dates for the month
   const daysInMonth = useMemo(
     () => new Date(year, month, 0).getDate(),
-    [year, month],
+    [year, month]
   );
 
   const firstDayOfMonth = useMemo(
     () => new Date(year, month - 1, 1).getDay(),
-    [year, month],
+    [year, month]
   );
 
   const totalCells = useMemo(() => {
@@ -192,6 +206,7 @@ function MonthCard({
       <Heading size="5" as="h3">
         {new Date(year, month - 1).toLocaleDateString(undefined, {
           month: "long",
+          year: "numeric",
         })}
       </Heading>
       <Grid
@@ -225,7 +240,7 @@ function MonthCard({
                 key={day}
                 className={clsx(
                   styles.dayCell,
-                  highlights.length > 0 && styles.dayCellHighlight,
+                  highlights.length > 0 && styles.dayCellHighlight
                 )}
                 onClick={(e) => {
                   if (onSelectDate) {
@@ -256,7 +271,7 @@ function MonthCard({
                             .toString()
                             .padStart(2, "0")}-${day
                             .toString()
-                            .padStart(2, "0")}`,
+                            .padStart(2, "0")}`
                         );
                       }
                     }}

@@ -1,10 +1,11 @@
 "use client";
 
+import { Drawer } from "@/components/ui/drawer";
+import { useMediaQuery } from "@/lib/useMediaQuery";
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
   CalendarIcon,
-  ListBulletIcon,
   PlusIcon,
 } from "@radix-ui/react-icons";
 import {
@@ -17,8 +18,6 @@ import {
 } from "@radix-ui/themes";
 import { useRouter } from "next/navigation";
 import { memo, useEffect, useState } from "react";
-import { Drawer } from "@/components/ui/drawer";
-import { useMediaQuery } from "@/lib/useMediaQuery";
 import styles from "./calendar.module.css";
 import CreateEventCard from "./create-event-card";
 import DayCalendar from "./day";
@@ -80,7 +79,6 @@ export default function Calendar({
       .toString()
       .padStart(2, "0")}-${(initialDay || day).toString().padStart(2, "0")}`;
   });
-  const [displayMode, setDisplayMode] = useState<"list" | "grid">("grid");
 
   const [createDrawerOpen, setCreateDrawerOpen] = useState(false);
 
@@ -94,11 +92,11 @@ export default function Calendar({
         mode === "year"
           ? date.split("-")[0]
           : mode === "month"
-            ? date.split("-").slice(0, 2).join("/")
-            : mode === "day"
-              ? date.split("-").join("/")
-              : ""
-      }`,
+          ? date.split("-").slice(0, 2).join("/")
+          : mode === "day"
+          ? date.split("-").join("/")
+          : ""
+      }`
     );
   }, [date, mode]);
 
@@ -122,16 +120,6 @@ export default function Calendar({
             Calendar
           </Heading>
           <ModePicker mode={mode} setMode={handleModeChange} />
-          <IconButton
-            variant={displayMode === "list" ? "soft" : "outline"}
-            size="3"
-            aria-label="Switch display mode"
-            onClick={() => {
-              setDisplayMode(displayMode === "list" ? "grid" : "list");
-            }}
-          >
-            <ListBulletIcon />
-          </IconButton>
           <IconButton
             variant={
               date === new Date().toISOString().split("T")[0]
@@ -256,32 +244,8 @@ export default function Calendar({
           )}
         </Flex>
         <Separator className={styles.divider} />
-        {/* <Swiper
-          spaceBetween={50}
-          initialSlide={
-            mode === "year" ? 0 : mode === "month" ? 1 : mode === "day" ? 2 : 0
-          }
-          ref={modeSwiperRef}
-          modules={[A11y]}
-          enabled={false}
-          className={styles.swiper}
-          onSlideChange={(swiper) => {
-            const newMode =
-              swiper.activeIndex === 0
-                ? "year"
-                : swiper.activeIndex === 1
-                ? "month"
-                : swiper.activeIndex === 2
-                ? "day"
-                : "year";
-            setMode(newMode);
-          }}
-          direction="vertical"
-        >
-          <SwiperSlide> */}
         {mode === "year" && (
           <YearCalendar
-            grid={displayMode === "grid"}
             year={parseInt(date.split("-")[0], 10)}
             onYearChange={(newYear) => {
               setDate((date) => {
@@ -309,7 +273,6 @@ export default function Calendar({
         )}
         {mode === "month" && (
           <MonthCalendar
-            grid={displayMode === "grid"}
             month={date.substring(0, 7)}
             onMonthChange={(month) => {
               setDate((date) => {

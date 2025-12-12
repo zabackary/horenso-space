@@ -81,6 +81,7 @@
     border-radius: 8px;
     padding: var(--space-1);
     background-color: var(--accent-5);
+    color: var(--accent-11);
     width: 100%;
     border: 1px dashed var(--accent-8);
   }

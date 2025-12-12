@@ -1,16 +1,15 @@
 "use client";
 
+import type { Database } from "@/@types/database.types";
+import { createClient } from "@/lib/supabase/client";
 import { Box, Flex, Grid, Heading, Link } from "@radix-ui/themes";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import clsx from "clsx";
 import { memo, useEffect, useMemo, useRef, useState } from "react";
 import { Virtuoso, type VirtuosoHandle } from "react-virtuoso";
-import type { Database } from "@/@types/database.types";
-import { createClient } from "@/lib/supabase/client";
 import styles from "./year.module.css";
 
 export interface YearCalendarProps {
-  grid: boolean;
   year: number;
   clubId: string;
   onYearChange?: (year: number) => void;
@@ -19,7 +18,6 @@ export interface YearCalendarProps {
 }
 
 export default function YearCalendar({
-  grid,
   year,
   onYearChange,
   onSelectMonth,
@@ -31,11 +29,14 @@ export default function YearCalendar({
     return Array.from({ length: 200 }, (_, i) => currentYear - 100 + i);
   }, []);
   const ref = useRef<VirtuosoHandle>(null);
+  const scrollingFromCallback = useRef(false);
+  const currentlyAutoScrolling = useRef(false);
   const [isScrolling, setIsScrolling] = useState(false);
   useEffect(() => {
     if (ref.current) {
       const index = years.indexOf(year);
-      if (index !== -1) {
+      if (index !== -1 && !scrollingFromCallback.current) {
+        console.log("initiated scroll", scrollingFromCallback.current);
         setIsScrolling(true);
         setTimeout(() => {
           ref.current?.scrollToIndex({
@@ -43,13 +44,10 @@ export default function YearCalendar({
             align: "start",
             behavior: "smooth",
           });
-        });
-        setTimeout(() => {
-          setIsScrolling(false);
-        }, 500);
+        }, 0);
       }
     }
-  }, [year, years, ref, setIsScrolling]);
+  }, [year, years, ref]);
   const supabase = useMemo(() => {
     return createClient();
   }, []);
@@ -64,7 +62,6 @@ export default function YearCalendar({
       itemContent={(_, itemYear) => (
         <MemorizedYearCard
           year={itemYear}
-          grid={grid}
           onSelectMonth={onSelectMonth}
           onSelectDate={onSelectDate}
           supabase={supabase}
@@ -72,10 +69,27 @@ export default function YearCalendar({
         />
       )}
       rangeChanged={(range) => {
-        if (isScrolling) return;
         const firstYear = years[range.startIndex];
-        if (firstYear !== undefined && firstYear !== year) {
+        if (
+          firstYear !== undefined &&
+          firstYear !== year &&
+          !currentlyAutoScrolling.current
+        ) {
+          scrollingFromCallback.current = true;
           onYearChange?.(firstYear);
+          setTimeout(() => {
+            scrollingFromCallback.current = false;
+          }, 0);
+        }
+      }}
+      isScrolling={(scrolling) => {
+        if (!scrolling && isScrolling) {
+          if (!currentlyAutoScrolling.current) {
+            currentlyAutoScrolling.current = true;
+          } else {
+            currentlyAutoScrolling.current = false;
+            setIsScrolling(false);
+          }
         }
       }}
     />
@@ -86,14 +100,12 @@ const MemorizedYearCard = memo(YearCard);
 
 function YearCard({
   year,
-  grid,
   onSelectMonth,
   onSelectDate,
   supabase,
   clubId,
 }: {
   year: number;
-  grid: boolean;
   onSelectMonth?: (month: number) => void;
   onSelectDate?: (date: string) => void;
   supabase: SupabaseClient<Database>;
@@ -129,7 +141,7 @@ function YearCard({
                 return result;
               }
               return [];
-            }),
+            })
           ),
         ]);
       });
@@ -142,60 +154,56 @@ function YearCard({
   return (
     <Flex p="4" className={styles.yearCard}>
       <Heading size="4">{year}</Heading>
-      {grid ? (
-        <Grid
-          columns={{
-            xs: "2",
-            sm: "3",
-            md: "4",
-          }}
-          gap="4"
-          mt="4"
-          width="100%"
-          flexGrow="1"
-        >
-          {Array.from({ length: 12 }, (_, i) => i + 1).map((month, i) => (
-            <Box
-              key={month}
-              className={styles.monthCard}
-              onClick={() => {
-                if (onSelectMonth) {
-                  onSelectMonth(month);
-                }
-              }}
-            >
-              <Flex direction="column" align="center" justify="center">
-                <Heading size="2" mb="2" asChild>
-                  <Link
-                    href={`${year}/${month.toString().padStart(2, "0")}`}
-                    onClick={(e) => e.preventDefault()}
-                  >
-                    {new Date(year, month - 1).toLocaleDateString(undefined, {
-                      month: "long",
-                    })}
-                  </Link>
-                </Heading>
-                <MemorizedMonthPreview
-                  year={year}
-                  month={month}
-                  onSelectDate={onSelectDate}
-                  highlightDates={highlightDates
-                    .filter((x) =>
-                      x.startsWith(
-                        `${year.toString().padStart(4, "0")}-${month
-                          .toString()
-                          .padStart(2, "0")}`,
-                      ),
+      <Grid
+        columns={{
+          xs: "2",
+          sm: "3",
+          md: "4",
+        }}
+        gap="4"
+        mt="4"
+        width="100%"
+        flexGrow="1"
+      >
+        {Array.from({ length: 12 }, (_, i) => i + 1).map((month, i) => (
+          <Box
+            key={month}
+            className={styles.monthCard}
+            onClick={() => {
+              if (onSelectMonth) {
+                onSelectMonth(month);
+              }
+            }}
+          >
+            <Flex direction="column" align="center" justify="center">
+              <Heading size="2" mb="2" asChild>
+                <Link
+                  href={`${year}/${month.toString().padStart(2, "0")}`}
+                  onClick={(e) => e.preventDefault()}
+                >
+                  {new Date(year, month - 1).toLocaleDateString(undefined, {
+                    month: "long",
+                  })}
+                </Link>
+              </Heading>
+              <MemorizedMonthPreview
+                year={year}
+                month={month}
+                onSelectDate={onSelectDate}
+                highlightDates={highlightDates
+                  .filter((x) =>
+                    x.startsWith(
+                      `${year.toString().padStart(4, "0")}-${month
+                        .toString()
+                        .padStart(2, "0")}`
                     )
-                    .map((x) => Number.parseInt(x.substring(8), 10))}
-                />
-              </Flex>
-            </Box>
-          ))}
-        </Grid>
-      ) : (
-        " (list view to be implemented)"
-      )}
+                  )
+                  .map((x) => Number.parseInt(x.substring(8), 10))}
+              />
+            </Flex>
+          </Box>
+        ))}
+      </Grid>
     </Flex>
   );
 }
@@ -216,12 +224,12 @@ function MonthPreview({
   // Render a grid of dates for the month
   const daysInMonth = useMemo(
     () => new Date(year, month, 0).getDate(),
-    [year, month],
+    [year, month]
   );
 
   const firstDayOfMonth = useMemo(
     () => new Date(year, month - 1, 1).getDay(),
-    [year, month],
+    [year, month]
   );
 
   const totalCells = useMemo(() => {
@@ -255,7 +263,7 @@ function MonthPreview({
               key={day}
               className={clsx(
                 styles.dayCell,
-                highlightDates.includes(day) && styles.dayCellHighlight,
+                highlightDates.includes(day) && styles.dayCellHighlight
               )}
               title={
                 highlightDates.includes(day)
