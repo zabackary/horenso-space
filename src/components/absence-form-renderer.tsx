@@ -8,9 +8,11 @@ import type {
   TextItem,
   TimeItem,
 } from "@/@types/AbsenceForm";
+import { CrossCircledIcon } from "@radix-ui/react-icons";
 import {
   Box,
   Button,
+  Callout,
   Card,
   Flex,
   Heading,
@@ -41,6 +43,7 @@ export function AbsenceFormRenderer({
 }: AbsenceFormRendererProps) {
   const [values, setValues] = useState<AbsenceFormValues>({});
   const isReadOnly = onChange === undefined;
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   function updateValue(key: string, value: unknown) {
     const next = { ...values, [key]: value };
@@ -141,13 +144,17 @@ export function AbsenceFormRenderer({
 
         {t.type === "multipleChoice" && (
           <Select.Root
-            required
-            value={(values[key] as string) ?? ""}
+            // Keep controlled for lifetime of component
+            value={
+              typeof values[key] === "string"
+                ? (values[key] as string) ?? ""
+                : ""
+            }
             onValueChange={(val) => updateValue(key, val)}
           >
             <Select.Trigger placeholder="Select..." />
             <Select.Content>
-              {t.options.map((opt, i) => (
+              {t.options.map((opt, _i) => (
                 <Select.Item key={opt.label} value={opt.label}>
                   <Text>{opt.label}</Text>
                 </Select.Item>
@@ -208,10 +215,46 @@ export function AbsenceFormRenderer({
       <form
         onSubmit={(e) => {
           e.preventDefault();
+          setSubmitError(null);
+          // Validate all visible required fields (multipleChoice/time/text all required in current schema)
+          const missing: string[] = [];
+          for (const { item, path } of visibleItems) {
+            const key = makeKey(path);
+            const t = item.item as
+              | MultipleChoiceItem
+              | TimeItem
+              | TextItem
+              | SimpleTextItem;
+            // Only validate interactive fields when not read-only
+            if (
+              t.type === "multipleChoice" ||
+              t.type === "time" ||
+              t.type === "text"
+            ) {
+              const v = values[key];
+              if (!v || (typeof v === "string" && v.trim() === "")) {
+                missing.push(item.title);
+              }
+            }
+          }
+
+          if (missing.length > 0) {
+            setSubmitError(`Please complete: ${missing.join(", ")}`);
+            return;
+          }
+
           onSubmit?.(values);
         }}
       >
         {content}
+        {submitError && (
+          <Callout.Root color="red">
+            <Callout.Icon>
+              <CrossCircledIcon />
+            </Callout.Icon>
+            <Callout.Text>{submitError}</Callout.Text>
+          </Callout.Root>
+        )}
       </form>
     </Flex>
   );

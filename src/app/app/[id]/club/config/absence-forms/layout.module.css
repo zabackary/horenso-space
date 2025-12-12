@@ -2,10 +2,27 @@
   max-width: 1200px;
 }
 
+.mobileMenuWrapper {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobileMenuWrapper {
+    display: block;
+  }
+}
+
 .layout {
   display: flex;
   align-items: flex-start;
   gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .layout {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
 
 .sidebar {
@@ -14,6 +31,28 @@
   position: sticky;
   top: 88px; /* app bar plus spacing without extra padding */
   height: fit-content;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+}
+
+.menuButton {
+  display: none;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+@media (max-width: 768px) {
+  .menuButton {
+    display: inline-flex;
+  }
+}
+
+.drawerContent {
+  padding: 16px;
 }
 
 .templateCard {
@@ -31,6 +70,13 @@
 
 .detailCard {
   flex: 1;
+}
+
+@media (max-width: 768px) {
+  .detailCard {
+    width: 100%;
+    min-width: 0;
+  }
 }
 
 .empty {

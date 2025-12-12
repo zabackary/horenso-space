@@ -1,6 +1,10 @@
 "use client";
 
-import { CrossCircledIcon, TrashIcon } from "@radix-ui/react-icons";
+import type { AbsenceForm } from "@/@types/AbsenceForm";
+import { DEFAULT_ABSENCE_FORM } from "@/@types/AbsenceForm";
+import type { Database } from "@/@types/database.types";
+import { createClient } from "@/lib/supabase/client";
+import { CrossCircledIcon, TrashIcon, ChevronDownIcon } from \"@radix-ui/react-icons\";
 import {
   Badge,
   Button,
@@ -8,16 +12,13 @@ import {
   Card,
   Flex,
   Heading,
+  Popover,
   Separator,
   Spinner,
   Text,
   TextField,
 } from "@radix-ui/themes";
 import { use, useMemo, useState } from "react";
-import type { AbsenceForm } from "@/@types/AbsenceForm";
-import { DEFAULT_ABSENCE_FORM } from "@/@types/AbsenceForm";
-import type { Database } from "@/@types/database.types";
-import { createClient } from "@/lib/supabase/client";
 import AbsenceFormEditor from "./absence-form-editor";
 import styles from "./absence-forms-manager.module.css";
 
@@ -81,6 +82,7 @@ export default function AbsenceFormsManager({
   const [error, setError] = useState<string | null>(null);
   const [isSaving, setIsSaving] = useState(false);
   const [isCreating, setIsCreating] = useState(false);
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
   const selected = useMemo(
     () => forms.find((f) => f.id === selectedId) ?? null,

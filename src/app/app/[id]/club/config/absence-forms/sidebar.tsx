@@ -1,23 +1,27 @@
 "use client";
 
+import { Drawer } from "@/components/ui/drawer";
+import { useMediaQuery } from "@/lib/useMediaQuery";
+import { ChevronDownIcon } from "@radix-ui/react-icons";
 import { Button, Card, Flex, Heading, Text } from "@radix-ui/themes";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { useState } from "react";
 import styles from "./layout.module.css";
 
 type FormItem = { id: string; name: string; updated_at: string };
 
-export default function Sidebar({
+function FormsList({
   clubId,
   forms,
+  selectedId,
+  onSelect,
 }: {
   clubId: string;
   forms: FormItem[];
+  selectedId: string | undefined;
+  onSelect?: () => void;
 }) {
-  const params = useParams<{ id: string; formId?: string }>();
-  const currentFormId = params?.formId as string | undefined;
-  const selectedId = currentFormId ?? forms[0]?.id;
-
   return (
     <Flex direction="column" gap="3">
       <Heading size="3">Templates</Heading>
@@ -35,7 +39,12 @@ export default function Sidebar({
                 }`}
                 asChild
               >
-                <Link href={`/app/${clubId}/club/config/absence-forms/${f.id}`}>
+                <Link
+                  href={`/app/${clubId}/club/config/absence-forms/${f.id}`}
+                  onClick={(e) => {
+                    onSelect?.();
+                  }}
+                >
                   <Flex direction="column" gap="1">
                     <Text weight="bold">{f.name}</Text>
                     <Text size="1" className={styles.templateMeta}>
@@ -55,4 +64,59 @@ export default function Sidebar({
       </Button>
     </Flex>
   );
+}
+
+export default function Sidebar({
+  clubId,
+  forms,
+}: {
+  clubId: string;
+  forms: FormItem[];
+}) {
+  const params = useParams<{ id: string; formId?: string }>();
+  const currentFormId = params?.formId as string | undefined;
+  const selectedId = currentFormId ?? forms[0]?.id;
+  const isMobile = useMediaQuery("(max-width: 768px)");
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const selectedForm = forms.find((f) => f.id === selectedId);
+
+  if (isMobile) {
+    return (
+      <Drawer.Root open={drawerOpen} onOpenChange={setDrawerOpen}>
+        <Button asChild className={styles.menuButton}>
+          <Drawer.Trigger
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              width: "100%",
+            }}
+          >
+            <span>{selectedForm?.name || "Select template"}</span>
+            <ChevronDownIcon />
+          </Drawer.Trigger>
+        </Button>
+        <Drawer.Portal>
+          <Drawer.Overlay />
+          <Drawer.Content>
+            <Drawer.Title>Templates</Drawer.Title>
+            <Drawer.Description style={{ display: "none" }}>
+              Select an absence form template
+            </Drawer.Description>
+            <div className={styles.drawerContent}>
+              <FormsList
+                clubId={clubId}
+                forms={forms}
+                selectedId={selectedId}
+                onSelect={() => setDrawerOpen(false)}
+              />
+            </div>
+          </Drawer.Content>
+        </Drawer.Portal>
+      </Drawer.Root>
+    );
+  }
+
+  return <FormsList clubId={clubId} forms={forms} selectedId={selectedId} />;
 }
