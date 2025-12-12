@@ -34,12 +34,62 @@ export type Database = {
   }
   public: {
     Tables: {
+      absence_report_forms: {
+        Row: {
+          club_id: string
+          created_at: string
+          id: string
+          name: string
+          questions: Json
+          updated_at: string
+        }
+        Insert: {
+          club_id: string
+          created_at?: string
+          id?: string
+          name: string
+          questions: Json
+          updated_at?: string
+        }
+        Update: {
+          club_id?: string
+          created_at?: string
+          id?: string
+          name?: string
+          questions?: Json
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "absence_report_forms_club_id_fkey"
+            columns: ["club_id"]
+            isOneToOne: false
+            referencedRelation: "clubs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "absence_report_forms_club_id_fkey"
+            columns: ["club_id"]
+            isOneToOne: false
+            referencedRelation: "joined_clubs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "absence_report_forms_club_id_fkey"
+            columns: ["club_id"]
+            isOneToOne: false
+            referencedRelation: "public_clubs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       absence_report_reviews: {
         Row: {
           absence_report_id: string
           accepted: boolean
           comments: string | null
           created_at: string
+          form: string | null
           id: string
           reviewer_id: string | null
           updated_at: string
@@ -49,6 +99,7 @@ export type Database = {
           accepted: boolean
           comments?: string | null
           created_at?: string
+          form?: string | null
           id?: string
           reviewer_id?: string | null
           updated_at?: string
@@ -58,6 +109,7 @@ export type Database = {
           accepted?: boolean
           comments?: string | null
           created_at?: string
+          form?: string | null
           id?: string
           reviewer_id?: string | null
           updated_at?: string
@@ -68,6 +120,13 @@ export type Database = {
             columns: ["absence_report_id"]
             isOneToOne: false
             referencedRelation: "absence_reports"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "absence_report_reviews_form_fkey"
+            columns: ["form"]
+            isOneToOne: false
+            referencedRelation: "absence_report_forms"
             referencedColumns: ["id"]
           },
         ]
