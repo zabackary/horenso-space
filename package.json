@@ -7,6 +7,7 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "biome check",
+    "lint-types": "tsc --noEmit",
     "format": "biome format --write",
     "gen-types": "supabase gen types typescript --local > src/@types/database.types.ts"
   },
