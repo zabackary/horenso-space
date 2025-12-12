@@ -40,6 +40,7 @@ export function AbsenceFormRenderer({
   onSubmit,
 }: AbsenceFormRendererProps) {
   const [values, setValues] = useState<AbsenceFormValues>({});
+  const isReadOnly = onChange === undefined;
 
   function updateValue(key: string, value: unknown) {
     const next = { ...values, [key]: value };
@@ -47,7 +48,56 @@ export function AbsenceFormRenderer({
     onChange?.(next);
   }
 
-  function renderItem(item: AbsenceFormItem, path: number[] = []) {
+  // Flatten all items including nested children into a single list
+  function flattenItems(items: AbsenceFormItem[], basePath: number[] = []): Array<{
+    item: AbsenceFormItem;
+    path: number[];
+    parentKey?: string;
+    parentValue?: string;
+  }> {
+    const result: Array<{
+      item: AbsenceFormItem;
+      path: number[];
+      parentKey?: string;
+      parentValue?: string;
+    }> = [];
+
+    for (let i = 0; i < items.length; i++) {
+      const item = items[i];
+      const path = [...basePath, i];
+      result.push({ item, path });
+
+      const t = item.item as MultipleChoiceItem | TimeItem | TextItem | SimpleTextItem;
+      
+      // For multipleChoice items, flatten all possible children
+      if (t.type === "multipleChoice") {
+        const parentKey = makeKey(path);
+        for (const opt of t.options) {
+          if (opt.children) {
+            const children = flattenItems(opt.children, path);
+            for (const child of children) {
+              result.push({ ...child, parentKey, parentValue: opt.label });
+            }
+          }
+        }
+      }
+    }
+
+    return result;
+  }
+
+  const flatItems = flattenItems(form.items);
+
+  // Filter visible items based on parent selections
+  const visibleItems = flatItems.filter(({ item, path, parentKey, parentValue }) => {
+    if (!parentKey) return true;
+    
+    // Check if parent multipleChoice has selected the option that includes this child
+    const selectedValue = values[parentKey] as string;
+    return selectedValue === parentValue;
+  });
+
+  function renderItem(item: AbsenceFormItem, path: number[]) {
     const key = makeKey(path);
 
     const t = item.item as
@@ -56,6 +106,24 @@ export function AbsenceFormRenderer({
       | TextItem
       | SimpleTextItem;
 
+    if (isReadOnly) {
+      // Read-only compact rendering
+      return (
+        <Box key={key} className={styles.readOnlyItem}>
+          <Text size="2" weight="medium" className={styles.readOnlyLabel}>
+            {item.title}
+          </Text>
+          <Text size="2" className={styles.readOnlyValue}>
+            {t.type === "multipleChoice" && (values[key] as string || "—")}
+            {t.type === "time" && (values[key] as string || "—")}
+            {t.type === "text" && (values[key] as string || "—")}
+            {t.type === "simpleText" && (t as SimpleTextItem).text}
+          </Text>
+        </Box>
+      );
+    }
+
+    // Editable rendering
     return (
       <Card key={key} className={styles.card}>
         <Heading size="4" as="h4">
@@ -103,22 +171,26 @@ export function AbsenceFormRenderer({
         )}
 
         {t.type === "simpleText" && <Text>{(t as SimpleTextItem).text}</Text>}
-
-        {/* Render dependent children for multipleChoice if selected */}
-        {t.type === "multipleChoice" &&
-          (() => {
-            const selected = (values[key] as string) ?? "";
-            const opt = t.options.find((o) => o.label === selected);
-            if (!opt?.children) return null;
-            return (
-              <Box className={styles.childrenInset}>
-                {opt.children.map((child, i) =>
-                  renderItem(child, [...path, i + 1])
-                )}
-              </Box>
-            );
-          })()}
       </Card>
+    );
+  }
+
+  const content = (
+    <>
+      {visibleItems.map(({ item, path }) => renderItem(item, path))}
+      {!isReadOnly && (
+        <Flex justify="end">
+          <Button type="submit">Submit</Button>
+        </Flex>
+      )}
+    </>
+  );
+
+  if (isReadOnly) {
+    return (
+      <Flex direction="column" gap="2" className={styles.readOnlyForm}>
+        {content}
+      </Flex>
     );
   }
 
@@ -130,11 +202,7 @@ export function AbsenceFormRenderer({
           onSubmit?.(values);
         }}
       >
-        {form.items.map((it, i) => renderItem(it, [i]))}
-
-        <Flex justify="end">
-          <Button type="submit">Submit</Button>
-        </Flex>
+        {content}
       </form>
     </Flex>
   );

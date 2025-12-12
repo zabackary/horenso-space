@@ -14,16 +14,35 @@
   width: auto;
 }
 
-.childrenInset {
-  margin-top: 8px;
-  width: 100%;
-
-  .card {
-    margin: 0;
-  }
-}
-
 .textArea {
   width: 100%;
   resize: vertical;
+}
+
+.readOnlyForm {
+  padding: 8px 0;
+}
+
+.readOnlyItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 6px 0;
+  gap: 16px;
+  border-bottom: 1px solid var(--gray-a3);
+}
+
+.readOnlyItem:last-child {
+  border-bottom: none;
+}
+
+.readOnlyLabel {
+  color: var(--gray-11);
+  flex-shrink: 0;
+}
+
+.readOnlyValue {
+  color: var(--gray-12);
+  text-align: right;
+  word-break: break-word;
 }
