@@ -44,11 +44,19 @@ export default function RolesManager({
   rolesPromise,
 }: {
   clubId: string;
-  rolesPromise: Promise<Database["public"]["Tables"]["roles"]["Row"][]>;
+  rolesPromise: PromiseLike<
+    Pick<
+      Database["public"]["Tables"]["roles"]["Row"],
+      | "id"
+      | "name"
+      | "description"
+      | "permissions"
+      | "absence_report_reviewer_role"
+      | "absence_report_approval_required"
+    >[]
+  >;
 }) {
-  type RoleRow = Database["public"]["Tables"]["roles"]["Row"];
-
-  const initial = (use(rolesPromise) ?? []) as RoleRow[];
+  const initial = use(rolesPromise) ?? [];
   const [roles, setRoles] = useState<Role[]>(
     () =>
       initial.map((r) => ({

@@ -42,7 +42,7 @@ export function ClubConfigTabNav({
   active,
   clubId,
 }: {
-  active?: "metadata" | "roles" | "members";
+  active?: "metadata" | "roles" | "members" | "invites";
   clubId: string;
 }) {
   return (
@@ -55,6 +55,9 @@ export function ClubConfigTabNav({
       </TabNav.Link>
       <TabNav.Link asChild active={active === "members"}>
         <Link href={`/app/${clubId}/club/config/members`}>Members</Link>
+      </TabNav.Link>
+      <TabNav.Link asChild active={active === "invites"}>
+        <Link href={`/app/${clubId}/club/config/invites`}>Invites</Link>
       </TabNav.Link>
     </TabNav.Root>
   );

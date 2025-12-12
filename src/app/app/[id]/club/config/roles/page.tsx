@@ -4,10 +4,6 @@ import { Box, Spinner } from "@radix-ui/themes";
 import React from "react";
 import { ClubConfigTabNav } from "../layout";
 
-import type { Database } from "@/@types/database.types";
-
-type RoleRow = Database["public"]["Tables"]["roles"]["Row"];
-
 export default async function ClubRolesPage({
   params,
 }: PageProps<"/app/[id]/club/config/roles">) {
@@ -15,14 +11,14 @@ export default async function ClubRolesPage({
   const { id } = await params;
   const supabase = await createClient();
 
-  const rolesRes = await supabase
+  const rolesPromise = supabase
     .from("roles")
-    .select("id, name, description, permissions")
+    .select(
+      "id, name, description, permissions, absence_report_reviewer_role, absence_report_approval_required"
+    )
     .eq("club_id", id)
-    .order("created_at", { ascending: true });
-  const roles: RoleRow[] = (rolesRes.data ?? []) as RoleRow[];
-
-  const rolesPromise = Promise.resolve(roles);
+    .order("created_at", { ascending: true })
+    .then((res) => res.data ?? []);
 
   return (
     <>

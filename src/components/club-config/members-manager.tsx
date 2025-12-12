@@ -2,7 +2,8 @@
 
 import type { Database } from "@/@types/database.types";
 import { createClient } from "@/lib/supabase/client";
-import { Box, Flex, Heading, Select, Text } from "@radix-ui/themes";
+import { TrashIcon } from "@radix-ui/react-icons";
+import { Box, Button, Flex, Heading, Select, Text } from "@radix-ui/themes";
 import { use, useState } from "react";
 import styles from "./members-manager.module.css";
 
@@ -70,6 +71,21 @@ export default function MembersManager({
     }
   }
 
+  async function removeMember(memberUserId: string) {
+    setError(null);
+    const supabase = createClient();
+    try {
+      await supabase
+        .from("club_members")
+        .delete()
+        .match({ club_id: clubId, user_id: memberUserId })
+        .throwOnError();
+      setMembers((prev) => prev.filter((m) => m.user_id !== memberUserId));
+    } catch (e: unknown) {
+      setError(e instanceof Error ? e.message : String(e));
+    }
+  }
+
   return (
     <Flex direction="column" gap="4">
       <Heading size="5" as="h3">
@@ -94,6 +110,9 @@ export default function MembersManager({
                 </Text>
               </Flex>
               <Flex className={styles.controls} align="center">
+                <Button onClick={() => removeMember(m.user_id)} variant="soft">
+                  <TrashIcon /> Remove
+                </Button>
                 <Select.Root
                   value={m.role_id ?? ""}
                   onValueChange={(val) => changeRole(m.user_id, val || null)}
