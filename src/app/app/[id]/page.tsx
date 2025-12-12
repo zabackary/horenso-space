@@ -1,7 +1,7 @@
-import { Box, Card, Grid, Heading, Text } from "@radix-ui/themes";
 import HomeCard from "@/components/ui/home-card";
 import getPermissionsForClub from "@/lib/auth/getPermissionsForClub";
 import { createClient } from "@/lib/supabase/server";
+import { Box, Card, Grid, Heading, Text } from "@radix-ui/themes";
 
 export default async function ClubPage({ params }: PageProps<"/app/[id]">) {
   const { id } = await params;
@@ -55,13 +55,13 @@ export default async function ClubPage({ params }: PageProps<"/app/[id]">) {
       />
       <HomeCard
         title="欠席連絡"
-        description="lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        description="欠席報告フォームにアクセスします。"
         href={`/app/${id}/absences`}
         action={
           permissions.permissions.includes("canWriteOwnReport")
             ? {
                 label: "欠席を連絡する",
-                href: `/app/${id}/absences/new`,
+                href: `/app/${id}/absences/create`,
               }
             : undefined
         }
