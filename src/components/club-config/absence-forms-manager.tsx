@@ -4,7 +4,7 @@ import type { AbsenceForm } from "@/@types/AbsenceForm";
 import { DEFAULT_ABSENCE_FORM } from "@/@types/AbsenceForm";
 import type { Database } from "@/@types/database.types";
 import { createClient } from "@/lib/supabase/client";
-import { CrossCircledIcon, TrashIcon, ChevronDownIcon } from \"@radix-ui/react-icons\";
+import { CrossCircledIcon, TrashIcon } from "@radix-ui/react-icons";
 import {
   Badge,
   Button,
@@ -12,7 +12,6 @@ import {
   Card,
   Flex,
   Heading,
-  Popover,
   Separator,
   Spinner,
   Text,
@@ -74,10 +73,10 @@ export default function AbsenceFormsManager({
 }) {
   const initialRows = use(formsPromise) ?? [];
   const [forms, setForms] = useState<ClientForm[]>(() =>
-    initialRows.map(mapRow),
+    initialRows.map(mapRow)
   );
   const [selectedId, setSelectedId] = useState<string | null>(
-    () => initialRows[0]?.id ?? null,
+    () => initialRows[0]?.id ?? null
   );
   const [error, setError] = useState<string | null>(null);
   const [isSaving, setIsSaving] = useState(false);
@@ -86,7 +85,7 @@ export default function AbsenceFormsManager({
 
   const selected = useMemo(
     () => forms.find((f) => f.id === selectedId) ?? null,
-    [forms, selectedId],
+    [forms, selectedId]
   );
 
   function updateForm(id: string, updater: (form: ClientForm) => ClientForm) {
@@ -111,8 +110,8 @@ export default function AbsenceFormsManager({
       if (updateError) throw updateError;
       setForms((prev) =>
         prev.map((f) =>
-          f.id === id ? { ...f, updatedAt: new Date().toISOString() } : f,
-        ),
+          f.id === id ? { ...f, updatedAt: new Date().toISOString() } : f
+        )
       );
     } catch (e: unknown) {
       setError(e instanceof Error ? e.message : String(e));
