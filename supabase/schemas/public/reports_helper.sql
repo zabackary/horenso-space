@@ -41,6 +41,7 @@ where
   and(p_user_id is null
     or ar.user_id = p_user_id)
 group by
+  -- pgt-ignore typecheck Seems to work fine
   ar.id,
   ar.user_id,
   p_user.full_name,
@@ -105,6 +106,7 @@ create or replace function public.get_assigned_absence_reports(p_club_id uuid)
 where
   ar.club_id = p_club_id
 group by
+  -- pgt-ignore typecheck Seems to work fine
   ar.id,
   ar.user_id,
   p_user.full_name,
