@@ -46,8 +46,6 @@ export default function Form({
   const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async () => {
-    console.log("Submitting absence report for event:", event);
-    console.log("Form data:", data);
     const supabase = createClient();
     const user = await getProfile(supabase);
     const { data: res, error } = await supabase.from("absence_reports").insert([
