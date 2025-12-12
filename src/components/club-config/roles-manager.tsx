@@ -205,7 +205,7 @@ export default function RolesManager({
   }
 
   return (
-    <Flex direction="column" className={styles.root}>
+    <Flex direction="column" className={styles.root} gap="3">
       <Heading size="5" as="h3">
         Roles
       </Heading>
@@ -250,12 +250,7 @@ export default function RolesManager({
         )}
       </Flex>
 
-      <Flex
-        direction="row"
-        className={styles.createSection}
-        gap="2"
-        align="center"
-      >
+      <Flex direction="row" gap="2" align="center">
         <Button onClick={() => openCreateDialog()}>Create role</Button>
       </Flex>
 

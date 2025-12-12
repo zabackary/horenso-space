@@ -2,8 +2,18 @@
 
 import type { Database } from "@/@types/database.types";
 import { createClient } from "@/lib/supabase/client";
-import { TrashIcon } from "@radix-ui/react-icons";
-import { Box, Button, Flex, Heading, Select, Text } from "@radix-ui/themes";
+import { CrossCircledIcon, TrashIcon } from "@radix-ui/react-icons";
+import {
+  Button,
+  Callout,
+  Card,
+  Flex,
+  Heading,
+  Link as RadixLink,
+  Select,
+  Text,
+} from "@radix-ui/themes";
+import Link from "next/link";
 import { use, useState } from "react";
 import styles from "./members-manager.module.css";
 
@@ -43,7 +53,7 @@ export default function MembersManager({
         profile: m.profile,
       })) ?? []
   );
-  const [roles, setRoles] = useState<Role[]>(
+  const [roles] = useState<Role[]>(
     () =>
       initialRoles.map((r) => ({
         id: r.id,
@@ -52,13 +62,13 @@ export default function MembersManager({
   );
   const [error, setError] = useState<string | null>(null);
 
-  async function changeRole(memberUserId: string, newRoleId: string | null) {
+  async function changeRole(memberUserId: string, newRoleId: string) {
     setError(null);
     const supabase = createClient();
     try {
       await supabase
         .from("club_members")
-        .update({ role_id: newRoleId ?? "" })
+        .update({ role_id: newRoleId })
         .match({ club_id: clubId, user_id: memberUserId })
         .throwOnError();
       setMembers((prev) =>
@@ -87,54 +97,71 @@ export default function MembersManager({
   }
 
   return (
-    <Flex direction="column" gap="4">
+    <Flex direction="column" className={styles.root} gap="3">
       <Heading size="5" as="h3">
         Members
       </Heading>
-      {error && <Text color="red">{error}</Text>}
-
-      {members.length === 0 ? (
-        <Box className={styles.empty}>No members found.</Box>
-      ) : (
-        <Box>
-          {members.map((m) => (
-            <Flex
-              key={m.key}
-              className={styles.memberRow}
-              align="center"
-              justify="between"
-            >
-              <Flex className={styles.memberInfo} align="center">
-                <Text>
-                  {m.profile?.full_name ?? m.profile?.nickname ?? m.user_id}
-                </Text>
-              </Flex>
-              <Flex className={styles.controls} align="center">
-                <Button onClick={() => removeMember(m.user_id)} variant="soft">
-                  <TrashIcon /> Remove
-                </Button>
-                <Select.Root
-                  value={m.role_id ?? ""}
-                  onValueChange={(val) => changeRole(m.user_id, val || null)}
-                >
-                  <Select.Trigger>
-                    <Text>
-                      {roles.find((r) => r.id === m.role_id)?.name ?? "No role"}
-                    </Text>
-                  </Select.Trigger>
-                  <Select.Content>
-                    {roles.map((r) => (
-                      <Select.Item key={r.id} value={r.id}>
-                        <Text>{r.name}</Text>
-                      </Select.Item>
-                    ))}
-                  </Select.Content>
-                </Select.Root>
-              </Flex>
-            </Flex>
-          ))}
-        </Box>
+      {error && (
+        <Callout.Root color="red">
+          <Callout.Icon>
+            <CrossCircledIcon />
+          </Callout.Icon>
+          <Callout.Text>{error}</Callout.Text>
+        </Callout.Root>
       )}
+
+      <Flex direction="column" gap="3">
+        {members.length === 0 ? (
+          <Text className={styles.empty}>No members found.</Text>
+        ) : (
+          members.map((m) => {
+            const displayName =
+              m.profile?.full_name ?? m.profile?.nickname ?? m.user_id;
+            const effectiveRoleId = m.role_id ?? roles[0]?.id ?? "";
+            const currentRoleLabel =
+              roles.find((r) => r.id === effectiveRoleId)?.name ?? "";
+
+            return (
+              <Card key={m.key}>
+                <Flex align="center" gap="3" justify="between" width="100%">
+                  <Flex direction="column" style={{ flexGrow: 1 }} gap="1">
+                    <RadixLink weight="bold" size="3" asChild>
+                      <Link href={`/app/users/${m.user_id}`}>
+                        {displayName}
+                      </Link>
+                    </RadixLink>
+                    <Text size="2" color="gray">
+                      Role: {currentRoleLabel}
+                    </Text>
+                  </Flex>
+                  <Flex align="center" gap="2">
+                    <Select.Root
+                      value={effectiveRoleId}
+                      onValueChange={(val) => changeRole(m.user_id, val)}
+                    >
+                      <Select.Trigger />
+                      <Select.Content>
+                        {roles.map((r) => (
+                          <Select.Item key={r.id} value={r.id}>
+                            {r.name}
+                          </Select.Item>
+                        ))}
+                      </Select.Content>
+                    </Select.Root>
+                    <Button
+                      onClick={() => removeMember(m.user_id)}
+                      variant="soft"
+                      color="red"
+                    >
+                      <TrashIcon /> Remove
+                    </Button>
+                  </Flex>
+                </Flex>
+              </Card>
+            );
+          })
+        )}
+      </Flex>
     </Flex>
   );
 }

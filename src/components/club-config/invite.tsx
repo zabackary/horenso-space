@@ -101,7 +101,7 @@ export default function InvitesManager({
   }
 
   return (
-    <Flex direction="column" className={styles.root}>
+    <Flex direction="column" className={styles.root} gap="3">
       <Heading size="5" as="h3">
         Invites
       </Heading>
