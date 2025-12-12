@@ -1,5 +1,13 @@
 "use client";
 
+import type {
+  AbsenceForm,
+  AbsenceFormItem,
+  MultipleChoiceItem,
+  SimpleTextItem,
+  TextItem,
+  TimeItem,
+} from "@/@types/AbsenceForm";
 import {
   Box,
   Button,
@@ -12,14 +20,6 @@ import {
   TextField,
 } from "@radix-ui/themes";
 import { useState } from "react";
-import type {
-  AbsenceForm,
-  AbsenceFormItem,
-  MultipleChoiceItem,
-  SimpleTextItem,
-  TextItem,
-  TimeItem,
-} from "@/@types/AbsenceForm";
 import styles from "./absence-form-renderer.module.css";
 
 export type AbsenceFormValues = Record<string, unknown>;
@@ -42,11 +42,9 @@ export function AbsenceFormRenderer({
   const [values, setValues] = useState<AbsenceFormValues>({});
 
   function updateValue(key: string, value: unknown) {
-    setValues((prev) => {
-      const next = { ...prev, [key]: value };
-      onChange?.(next);
-      return next;
-    });
+    const next = { ...values, [key]: value };
+    setValues(next);
+    onChange?.(next);
   }
 
   function renderItem(item: AbsenceFormItem, path: number[] = []) {
@@ -115,7 +113,7 @@ export function AbsenceFormRenderer({
             return (
               <Box className={styles.childrenInset}>
                 {opt.children.map((child, i) =>
-                  renderItem(child, [...path, i + 1]),
+                  renderItem(child, [...path, i + 1])
                 )}
               </Box>
             );
