@@ -14,7 +14,7 @@ export default async function Page({
   const { permissions } = await getPermissionsForClub(supabase, id);
 
   return (
-    <Flex direction="column" gap="4" p="4">
+    <Flex direction="column" gap="4" p="4" align="start">
       <Heading size="5" as="h2">
         Absences
       </Heading>
@@ -40,7 +40,7 @@ export function AbsencesTabNav({
   permissions: string[];
 }) {
   return (
-    <TabNav.Root>
+    <TabNav.Root style={{ width: "100%" }}>
       <TabNav.Link asChild active={active === "my"}>
         <Link href={`/app/${clubId}/absences/my`}>My reports</Link>
       </TabNav.Link>

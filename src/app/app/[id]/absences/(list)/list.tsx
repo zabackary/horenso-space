@@ -1,54 +1,65 @@
 "use client";
 
-import { DataList, Flex, Spinner, Text } from "@radix-ui/themes";
+import { Card, Flex, Spinner, Text } from "@radix-ui/themes";
+import Link from "next/link";
 import { Suspense, use } from "react";
 import { AbsenceReport } from "./getReports";
+import styles from "./list.module.css";
+
+type AbsenceReportListProps = {
+  reports: PromiseLike<AbsenceReport[]>;
+  clubId: string;
+  linkPathPrefix: string;
+};
 
 export default function AbsenceReportList({
   reports,
-}: {
-  reports: PromiseLike<AbsenceReport[]>;
-}) {
+  clubId,
+  linkPathPrefix,
+}: AbsenceReportListProps) {
   const reportsData = use(reports);
   return (
     <Suspense fallback={<Spinner />}>
       {reportsData.length === 0 && <Text>No reports found.</Text>}
-      <DataList.Root>
+      <Flex direction="column" gap="3" width="100%">
         {reportsData.map((report) => (
-          <DataList.Item key={report.id}>
-            <DataList.Label>
-              {report.event?.name} - {report.event?.startTime.toDateString()}
-            </DataList.Label>
-            <DataList.Value>
+          <Link
+            key={report.id}
+            href={`/app/${clubId}${linkPathPrefix}/${report.id}`}
+            className={styles.reportCardLink}
+          >
+            <Card className={styles.reportCard}>
               <Flex direction="column" gap="2">
-                <DataList.Root>
-                  <DataList.Item>
-                    <DataList.Label>Submitted by</DataList.Label>
-                    <DataList.Value>{report.userName}</DataList.Value>
-                  </DataList.Item>
-                  <DataList.Item>
-                    <DataList.Label>Assigned to</DataList.Label>
-                    <DataList.Value>
-                      {report.assignedToRole?.roleName || "Unassigned"}
-                    </DataList.Value>
-                  </DataList.Item>
-                  {report.reviews.map((review) => (
-                    <DataList.Item key={review.id}>
-                      <DataList.Label>
-                        Review by {review.reviewer.fullName}
-                      </DataList.Label>
-                      <DataList.Value>
-                        {review.accepted ? "Accepted" : "Rejected"}
-                        {review.comments && ` - Comments: ${review.comments}`}
-                      </DataList.Value>
-                    </DataList.Item>
-                  ))}
-                </DataList.Root>
+                <Flex direction="column" gap="1">
+                  <Text weight="bold">
+                    {report.event?.name ??
+                      report.date?.toDateString() ??
+                      "No event"}
+                  </Text>
+                  <Text size="2">Submitted by {report.userName}</Text>
+                  <Text size="1" color="gray">
+                    {report.event?.startTime.toDateString() ??
+                      report.date?.toDateString() ??
+                      "No date"}
+                  </Text>
+                </Flex>
+                <Flex justify="between" align="center">
+                  <Text size="2">
+                    Assigned to:{" "}
+                    {report.assignedToRole?.roleName || "Unassigned"}
+                  </Text>
+                  {report.reviews.length > 0 && (
+                    <Text size="1" className={styles.reviewIndicator}>
+                      ✓ {report.reviews.length} review
+                      {report.reviews.length !== 1 ? "s" : ""}
+                    </Text>
+                  )}
+                </Flex>
               </Flex>
-            </DataList.Value>
-          </DataList.Item>
+            </Card>
+          </Link>
         ))}
-      </DataList.Root>
+      </Flex>
     </Suspense>
   );
 }

@@ -5,6 +5,7 @@ create or replace function public.get_absence_reports(p_club_id uuid, p_user_id 
     id uuid,
     user_id uuid,
     user_name text,
+    report_date date,
     event_id uuid,
     event_name text,
     event_start_time timestamp with time zone,
@@ -19,6 +20,7 @@ create or replace function public.get_absence_reports(p_club_id uuid, p_user_id 
     ar.id,
     ar.user_id,
     coalesce(p_user.full_name, 'Unknown') as user_name,
+    ar.date as report_date,
     ce.id as event_id,
     ce.title as event_name,
     ce.start_time as event_start_time,
@@ -42,6 +44,7 @@ group by
   ar.id,
   ar.user_id,
   p_user.full_name,
+  ar.date,
   ce.id,
   ce.title,
   ce.start_time,
@@ -49,7 +52,7 @@ group by
   ar.assigned_to_role,
   r.name
 order by
-  ce.start_time desc nulls last;
+  ar.date desc nulls last;
 $$;
 
 grant execute on function public.get_absence_reports(uuid, uuid) to authenticated;
@@ -61,6 +64,7 @@ create or replace function public.get_assigned_absence_reports(p_club_id uuid)
     id uuid,
     user_id uuid,
     user_name text,
+    report_date date,
     event_id uuid,
     event_name text,
     event_start_time timestamp with time zone,
@@ -77,6 +81,7 @@ create or replace function public.get_assigned_absence_reports(p_club_id uuid)
     ar.id,
     ar.user_id,
     coalesce(p_user.full_name, 'Unknown') as user_name,
+    ar.date as report_date,
     ce.id as event_id,
     ce.title as event_name,
     ce.start_time as event_start_time,
@@ -103,6 +108,7 @@ group by
   ar.id,
   ar.user_id,
   p_user.full_name,
+  ar.date,
   ce.id,
   ce.title,
   ce.start_time,
@@ -112,7 +118,7 @@ group by
   ar.data,
   ar.form_id
 order by
-  ce.start_time desc nulls last;
+  ar.date desc nulls last;
 $$;
 
 grant execute on function public.get_assigned_absence_reports(uuid) to authenticated;

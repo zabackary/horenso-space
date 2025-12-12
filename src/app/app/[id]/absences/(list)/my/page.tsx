@@ -7,7 +7,7 @@ import AbsenceReportList from "../list";
 
 export default async function Page({
   params,
-}: PageProps<"/app/[id]/absences/all">) {
+}: PageProps<"/app/[id]/absences/my">) {
   const { id } = await params;
 
   const supabase = await createClient();
@@ -19,7 +19,11 @@ export default async function Page({
   return (
     <>
       <AbsencesTabNav active="my" clubId={id} permissions={permissions} />
-      <AbsenceReportList reports={reports} />
+      <AbsenceReportList
+        reports={reports}
+        clubId={id}
+        linkPathPrefix="/absences/my"
+      />
     </>
   );
 }

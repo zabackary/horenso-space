@@ -4,6 +4,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 export interface AbsenceReport {
   id: string;
   userName: string;
+  date: Date | null;
   event: {
     id: string;
     name: string;
@@ -54,6 +55,7 @@ export default async function getReports(
             endTime: new Date(report.event_end_time),
           }
         : null,
+      date: report.report_date ? new Date(report.report_date) : null,
       assignedToRole: report.assigned_to_role_id
         ? {
             roleId: report.assigned_to_role_id,

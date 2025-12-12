@@ -669,6 +669,7 @@ export type Database = {
           event_name: string
           event_start_time: string
           id: string
+          report_date: string
           reviews: Json
           user_id: string
           user_name: string
@@ -686,6 +687,7 @@ export type Database = {
           event_start_time: string
           form_id: string
           id: string
+          report_date: string
           reviews: Json
           user_id: string
           user_name: string
