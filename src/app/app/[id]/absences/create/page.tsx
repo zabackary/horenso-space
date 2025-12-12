@@ -1,6 +1,6 @@
-import { Heading } from "@radix-ui/themes";
 import { FullscreenCard } from "@/components/ui/fullscreen-card";
 import { createClient } from "@/lib/supabase/server";
+import { Heading } from "@radix-ui/themes";
 import Form from "./form";
 
 export default async function Page({
@@ -14,6 +14,7 @@ export default async function Page({
     .from("calendar_events")
     .select("id, title, start_time, end_time")
     .eq("club_id", id)
+    .lt("start_time", new Date().toISOString())
     .order("start_time", { ascending: false })
     .limit(100)
     .then(
@@ -23,7 +24,7 @@ export default async function Page({
           title: event.title,
           startTime: new Date(event.start_time),
           endTime: new Date(event.end_time),
-        })) || [],
+        })) || []
     );
 
   return (
