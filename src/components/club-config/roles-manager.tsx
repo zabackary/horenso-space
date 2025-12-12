@@ -1,7 +1,6 @@
 "use client";
 
 import type { Database } from "@/@types/database.types";
-import { useDebounceCallback } from "@/lib/debounce";
 import { createClient } from "@/lib/supabase/client";
 import { CrossCircledIcon, TrashIcon } from "@radix-ui/react-icons";
 import {
@@ -12,6 +11,8 @@ import {
   Dialog,
   Flex,
   Heading,
+  Select,
+  Switch,
   Text,
   TextField,
 } from "@radix-ui/themes";
@@ -34,6 +35,8 @@ type Role = {
   name: string;
   description?: string | null;
   permissions: Record<string, boolean>;
+  absenceReportReviewerRole: string | null;
+  absenceReportApprovalRequired: boolean;
 };
 
 export default function RolesManager({
@@ -53,20 +56,24 @@ export default function RolesManager({
         name: r.name,
         description: r.description,
         permissions: normalizePermissions(r.permissions),
+        absenceReportReviewerRole: r.absence_report_reviewer_role ?? null,
+        absenceReportApprovalRequired: r.absence_report_approval_required,
       })) ?? []
   );
   const [error, setError] = useState<string | null>(null);
 
-  const [newName, setNewName] = useState("");
-  const [newDescription, setNewDescription] = useState("");
-  const [newPermissions, setNewPermissions] = useState<Record<string, boolean>>(
-    () => Object.fromEntries(PERMISSION_KEYS.map((k) => [k, false]))
-  );
-
-  const [createRoleDialogOpen, setCreateRoleDialogOpen] = useState(false);
-  const [permissionDialogRoleId, setPermissionDialogRoleId] = useState<
-    string | null
-  >(null);
+  const [editDialogRoleId, setEditDialogRoleId] = useState<string | null>(null);
+  const [editName, setEditName] = useState("");
+  const [editDescription, setEditDescription] = useState("");
+  const [editPermissions, setEditPermissions] = useState<
+    Record<string, boolean>
+  >(() => Object.fromEntries(PERMISSION_KEYS.map((k) => [k, false])));
+  const [editAbsenceReportReviewerRole, setEditAbsenceReportReviewerRole] =
+    useState<string | null>(null);
+  const [
+    editAbsenceReportApprovalRequired,
+    setEditAbsenceReportApprovalRequired,
+  ] = useState(false);
 
   function normalizePermissions(
     p: Database["public"]["Tables"]["roles"]["Row"]["permissions"]
@@ -96,6 +103,8 @@ export default function RolesManager({
           name: role.name,
           description: role.description,
           permissions: role.permissions,
+          absence_report_approval_required: role.absenceReportApprovalRequired,
+          absence_report_reviewer_role: role.absenceReportReviewerRole,
         })
         .eq("id", role.id)
         .throwOnError();
@@ -103,8 +112,6 @@ export default function RolesManager({
       setError(e instanceof Error ? e.message : String(e));
     }
   }
-
-  const saveRoleDebounced = useDebounceCallback(saveRole, 1000);
 
   async function deleteRole(roleId: string) {
     if (!confirm("Delete this role? This cannot be undone.")) return;
@@ -118,7 +125,7 @@ export default function RolesManager({
   }
 
   async function createRole() {
-    if (!newName.trim()) return setError("Role name required");
+    if (!editName.trim()) return setError("Role name required");
     setError(null);
     const supabase = createClient();
     try {
@@ -126,9 +133,11 @@ export default function RolesManager({
         .from("roles")
         .insert({
           club_id: clubId,
-          name: newName.trim(),
-          description: newDescription,
-          permissions: normalizePermissions(newPermissions),
+          name: editName.trim(),
+          description: editDescription,
+          permissions: editPermissions,
+          absence_report_reviewer_role: editAbsenceReportReviewerRole,
+          absence_report_approval_required: editAbsenceReportApprovalRequired,
         })
         .throwOnError()
         .select()
@@ -141,19 +150,50 @@ export default function RolesManager({
             name: data.name,
             description: data.description,
             permissions: normalizePermissions(data.permissions),
+            absenceReportReviewerRole:
+              data.absence_report_reviewer_role ?? null,
+            absenceReportApprovalRequired:
+              data.absence_report_approval_required,
           },
         ]);
       }
-      setNewName("");
-      setNewDescription("");
-      setNewPermissions(
-        Object.fromEntries(PERMISSION_KEYS.map((k) => [k, false]))
-      );
+      resetEditDialog();
     } catch (e: unknown) {
       setError(e instanceof Error ? e.message : String(e));
-    } finally {
-      setCreateRoleDialogOpen(false);
     }
+  }
+
+  function resetEditDialog() {
+    setEditDialogRoleId(null);
+    setEditName("");
+    setEditDescription("");
+    setEditPermissions(
+      Object.fromEntries(PERMISSION_KEYS.map((k) => [k, false]))
+    );
+    setEditAbsenceReportReviewerRole(null);
+    setEditAbsenceReportApprovalRequired(false);
+  }
+
+  function openEditDialog(roleId: string) {
+    const role = roles.find((r) => r.id === roleId);
+    if (!role) return;
+    setEditDialogRoleId(roleId);
+    setEditName(role.name);
+    setEditDescription(role.description ?? "");
+    setEditPermissions(role.permissions);
+    setEditAbsenceReportReviewerRole(role.absenceReportReviewerRole);
+    setEditAbsenceReportApprovalRequired(role.absenceReportApprovalRequired);
+  }
+
+  function openCreateDialog() {
+    setEditDialogRoleId("new");
+    setEditName("");
+    setEditDescription("");
+    setEditPermissions(
+      Object.fromEntries(PERMISSION_KEYS.map((k) => [k, false]))
+    );
+    setEditAbsenceReportReviewerRole(null);
+    setEditAbsenceReportApprovalRequired(false);
   }
 
   return (
@@ -178,44 +218,24 @@ export default function RolesManager({
           roles.map((role) => (
             <Card key={role.id}>
               <Flex align="center" gap="2">
-                <TextField.Root
-                  value={role.name}
-                  onChange={(e) => {
-                    setRoles((prev) =>
-                      prev.map((p) =>
-                        p.id === role.id ? { ...p, name: e.target.value } : p
-                      )
-                    );
-                    saveRoleDebounced(role.id);
-                  }}
-                />
+                <Flex direction="column" style={{ flexGrow: 1 }}>
+                  <Text weight="bold">{role.name}</Text>
+                  {role.description && (
+                    <Text color="gray" size="2">
+                      {role.description}
+                    </Text>
+                  )}
+                </Flex>
                 <Button
                   variant="outline"
-                  onClick={() => setPermissionDialogRoleId(role.id)}
+                  onClick={() => openEditDialog(role.id)}
                 >
-                  Edit permissions
+                  Edit
                 </Button>
                 <Button variant="soft" onClick={() => deleteRole(role.id)}>
                   <TrashIcon />
                   Delete
                 </Button>
-              </Flex>
-
-              <Flex direction="column" className={styles.descriptionField}>
-                <TextField.Root
-                  value={role.description ?? ""}
-                  placeholder="Description"
-                  onChange={(e) => {
-                    setRoles((prev) =>
-                      prev.map((p) =>
-                        p.id === role.id
-                          ? { ...p, description: e.target.value }
-                          : p
-                      )
-                    );
-                    saveRoleDebounced(role.id);
-                  }}
-                />
               </Flex>
             </Card>
           ))
@@ -228,132 +248,116 @@ export default function RolesManager({
         gap="2"
         align="center"
       >
-        <Dialog.Root
-          open={createRoleDialogOpen}
-          onOpenChange={setCreateRoleDialogOpen}
-        >
-          <Dialog.Trigger>
-            <Button>Create role</Button>
-          </Dialog.Trigger>
-          <Dialog.Content asChild>
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                createRole();
-              }}
-            >
-              <Dialog.Title>Create new role</Dialog.Title>
-              <Dialog.Description>
-                Fill in the details for the new role.
-              </Dialog.Description>
-              <Flex direction="column" gap="2" className={styles.dialogBody}>
-                <TextField.Root
-                  placeholder="Role name"
-                  value={newName}
-                  onChange={(e) => setNewName(e.target.value)}
-                  required
-                />
-                <TextField.Root
-                  placeholder="Description"
-                  value={newDescription}
-                  onChange={(e) => setNewDescription(e.target.value)}
-                  required
-                />
-
-                <Text size="2">Permissions</Text>
-                <CheckboxCards.Root
-                  value={Object.entries(newPermissions)
-                    .filter(([_, v]) => v)
-                    .map(([k, _]) => k)}
-                  onValueChange={(values) => {
-                    const newPerms: Record<string, boolean> = {};
-                    PERMISSION_KEYS.forEach((k) => {
-                      newPerms[k] = values.includes(k);
-                    });
-                    setNewPermissions(newPerms);
-                  }}
-                >
-                  {PERMISSION_KEYS.map((k) => (
-                    <CheckboxCards.Item key={k} value={k}>
-                      {k}
-                    </CheckboxCards.Item>
-                  ))}
-                </CheckboxCards.Root>
-
-                <Flex gap="2">
-                  <Button type="submit">Create</Button>
-                  <Button
-                    variant="soft"
-                    type="button"
-                    onClick={() => setCreateRoleDialogOpen(false)}
-                  >
-                    Cancel
-                  </Button>
-                </Flex>
-              </Flex>
-            </form>
-          </Dialog.Content>
-        </Dialog.Root>
+        <Button onClick={() => openCreateDialog()}>Create role</Button>
       </Flex>
 
       <Dialog.Root
-        open={permissionDialogRoleId !== null}
+        open={editDialogRoleId !== null}
         onOpenChange={(open) => {
-          if (!open) setPermissionDialogRoleId(null);
+          if (!open) resetEditDialog();
         }}
       >
-        <Dialog.Content>
-          <Dialog.Title>Edit Permissions</Dialog.Title>
-          <Dialog.Description>
-            Toggle permissions for{" "}
-            {roles.find((r) => r.id === permissionDialogRoleId)?.name}
-          </Dialog.Description>
-          <CheckboxCards.Root
-            my="2"
-            value={Object.entries(
-              roles.find((r) => r.id === permissionDialogRoleId)?.permissions ??
-                {}
-            )
-              .filter(([_, v]) => v)
-              .map(([k, _]) => k)}
-            onValueChange={(values) => {
-              if (!permissionDialogRoleId) return;
-              const newPerms: Record<string, boolean> = {};
-              PERMISSION_KEYS.forEach((k) => {
-                newPerms[k] = values.includes(k);
-              });
-              setRoles((prev) =>
-                prev.map((r) =>
-                  r.id === permissionDialogRoleId
-                    ? { ...r, permissions: newPerms }
-                    : r
-                )
-              );
+        <Dialog.Content asChild>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              if (editDialogRoleId === "new") {
+                createRole();
+              } else if (editDialogRoleId) {
+                saveRole(editDialogRoleId);
+                resetEditDialog();
+              }
             }}
           >
-            {PERMISSION_KEYS.map((k) => (
-              <CheckboxCards.Item key={k} value={k}>
-                {k}
-              </CheckboxCards.Item>
-            ))}
-          </CheckboxCards.Root>
-          <Flex justify="end" gap="2" className={styles.dialogFooter}>
-            <Button
-              variant="soft"
-              onClick={() => setPermissionDialogRoleId(null)}
-            >
-              Close
-            </Button>
-            <Button
-              onClick={() => {
-                if (!permissionDialogRoleId) return;
-                saveRole(permissionDialogRoleId);
-                setPermissionDialogRoleId(null);
-              }}
-            >
-              Save
-            </Button>
-          </Flex>
+            <Dialog.Title>
+              {editDialogRoleId === "new" ? "Create new role" : "Edit role"}
+            </Dialog.Title>
+            <Dialog.Description>
+              {editDialogRoleId === "new"
+                ? "Fill in the details for the new role."
+                : `Edit details for ${editName}`}
+            </Dialog.Description>
+            <Flex direction="column" gap="2" className={styles.dialogBody}>
+              <TextField.Root
+                placeholder="Role name"
+                value={editName}
+                onChange={(e) => setEditName(e.target.value)}
+                required
+              />
+              <TextField.Root
+                placeholder="Description"
+                value={editDescription}
+                onChange={(e) => setEditDescription(e.target.value)}
+              />
+
+              <Heading size="2">Permissions</Heading>
+              <CheckboxCards.Root
+                value={Object.entries(editPermissions)
+                  .filter(([_, v]) => v)
+                  .map(([k, _]) => k)}
+                onValueChange={(values) => {
+                  const newPerms: Record<string, boolean> = {};
+                  PERMISSION_KEYS.forEach((k) => {
+                    newPerms[k] = values.includes(k);
+                  });
+                  setEditPermissions(newPerms);
+                }}
+              >
+                {PERMISSION_KEYS.map((k) => (
+                  <CheckboxCards.Item key={k} value={k}>
+                    {k}
+                  </CheckboxCards.Item>
+                ))}
+              </CheckboxCards.Root>
+
+              <Heading size="2">Absence reports</Heading>
+              <Flex direction="column" gap="2">
+                <Flex direction="row" align="center" gap="2">
+                  <Text style={{ flexGrow: 1 }}>Reviewer role</Text>
+                  <Select.Root
+                    value={editAbsenceReportReviewerRole ?? "~"}
+                    onValueChange={(value) =>
+                      setEditAbsenceReportReviewerRole(
+                        value === "~" ? null : value
+                      )
+                    }
+                  >
+                    <Select.Trigger />
+                    <Select.Content>
+                      <Select.Item value="~">(None)</Select.Item>
+                      {roles.map((r) => (
+                        <Select.Item key={r.id} value={r.id}>
+                          {r.name}
+                        </Select.Item>
+                      ))}
+                    </Select.Content>
+                  </Select.Root>
+                </Flex>
+                <Flex direction="row" align="center" gap="2">
+                  <Text style={{ flexGrow: 1 }}>Approval required</Text>
+                  <Switch
+                    checked={editAbsenceReportApprovalRequired}
+                    onCheckedChange={(checked) =>
+                      setEditAbsenceReportApprovalRequired(Boolean(checked))
+                    }
+                  />
+                </Flex>
+              </Flex>
+
+              <Flex gap="2">
+                <Button type="submit">
+                  {editDialogRoleId === "new" ? "Create" : "Save"}
+                </Button>
+                <Button
+                  variant="soft"
+                  type="button"
+                  onClick={() => resetEditDialog()}
+                >
+                  Cancel
+                </Button>
+              </Flex>
+            </Flex>
+          </form>
         </Dialog.Content>
       </Dialog.Root>
     </Flex>
