@@ -1,3 +1,7 @@
 .reportButton {
   max-width: 200px;
 }
+.root {
+  z-index: -1;
+  max-width: 1200px;
+}

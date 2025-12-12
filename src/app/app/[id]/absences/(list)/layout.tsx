@@ -14,16 +14,24 @@ export default async function Page({
   const { permissions } = await getPermissionsForClub(supabase, id);
 
   return (
-    <Flex direction="column" gap="4" p="4" align="start">
-      <Heading size="5" as="h2">
-        Absences
-      </Heading>
+    <Flex
+      direction="column"
+      gap="4"
+      p="4"
+      align="start"
+      className={styles.root}
+    >
+      <Flex direction="row" align="center" gap="4">
+        <Heading size="5" as="h2">
+          Absences
+        </Heading>
 
-      {permissions.includes("canWriteOwnReport") && (
-        <Button asChild className={styles.reportButton}>
-          <Link href={`/app/${id}/absences/create`}>Report absence</Link>
-        </Button>
-      )}
+        {permissions.includes("canWriteOwnReport") && (
+          <Button asChild className={styles.reportButton}>
+            <Link href={`/app/${id}/absences/create`}>Report absence</Link>
+          </Button>
+        )}
+      </Flex>
 
       {children}
     </Flex>
