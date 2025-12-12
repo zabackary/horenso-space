@@ -642,8 +642,20 @@ export type Database = {
     Functions: {
       accept_invitation: { Args: { invitation_id: string }; Returns: undefined }
       create_invitation: {
-        Args: { club_id: string; expires_at: string; role_id: string }
+        Args: { expires_at: string; new_club_id: string; role_id: string }
         Returns: string
+      }
+      delete_invitation: { Args: { invitation_id: string }; Returns: undefined }
+      get_invitations: {
+        Args: { club_id: string }
+        Returns: {
+          created_at: string
+          expires_at: string
+          id: string
+          invited_by_name: string
+          role_name: string
+          usage_count: number
+        }[]
       }
       user_has_club_permission: {
         Args: { p_club_id: string; p_permission: string }
