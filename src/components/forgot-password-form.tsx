@@ -1,6 +1,5 @@
 "use client";
 
-import { createClient } from "@/lib/supabase/client";
 import {
   Button,
   Callout,
@@ -12,6 +11,7 @@ import {
 } from "@radix-ui/themes";
 import Link from "next/link";
 import { useState } from "react";
+import { createClient } from "@/lib/supabase/client";
 
 export function ForgotPasswordForm({
   ...props

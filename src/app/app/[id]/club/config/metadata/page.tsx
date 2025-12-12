@@ -1,10 +1,9 @@
-import MetadataForm from "@/components/club-config/metadata-form";
-import { createClient } from "@/lib/supabase/server";
 import { Box, Spinner } from "@radix-ui/themes";
 import React from "react";
-import { ClubConfigTabNav } from "../layout";
-
 import type { Database } from "@/@types/database.types";
+import MetadataForm from "@/components/club-config/metadata-form";
+import { createClient } from "@/lib/supabase/server";
+import { ClubConfigTabNav } from "../layout";
 
 type ClubRow = Database["public"]["Tables"]["clubs"]["Row"];
 

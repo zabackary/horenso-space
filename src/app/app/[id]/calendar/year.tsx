@@ -1,14 +1,12 @@
 "use client";
 
-import { memo, useEffect, useMemo, useRef, useState } from "react";
-
 import { Box, Flex, Grid, Heading, Link } from "@radix-ui/themes";
-import { Virtuoso, VirtuosoHandle } from "react-virtuoso";
-
-import { Database } from "@/@types/database.types";
-import { createClient } from "@/lib/supabase/client";
-import { SupabaseClient } from "@supabase/supabase-js";
+import type { SupabaseClient } from "@supabase/supabase-js";
 import clsx from "clsx";
+import { memo, useEffect, useMemo, useRef, useState } from "react";
+import { Virtuoso, type VirtuosoHandle } from "react-virtuoso";
+import type { Database } from "@/@types/database.types";
+import { createClient } from "@/lib/supabase/client";
 import styles from "./year.module.css";
 
 export interface YearCalendarProps {
@@ -131,7 +129,7 @@ function YearCard({
                 return result;
               }
               return [];
-            })
+            }),
           ),
         ]);
       });
@@ -186,8 +184,8 @@ function YearCard({
                       x.startsWith(
                         `${year.toString().padStart(4, "0")}-${month
                           .toString()
-                          .padStart(2, "0")}`
-                      )
+                          .padStart(2, "0")}`,
+                      ),
                     )
                     .map((x) => Number.parseInt(x.substring(8), 10))}
                 />
@@ -218,12 +216,12 @@ function MonthPreview({
   // Render a grid of dates for the month
   const daysInMonth = useMemo(
     () => new Date(year, month, 0).getDate(),
-    [year, month]
+    [year, month],
   );
 
   const firstDayOfMonth = useMemo(
     () => new Date(year, month - 1, 1).getDay(),
-    [year, month]
+    [year, month],
   );
 
   const totalCells = useMemo(() => {
@@ -257,7 +255,7 @@ function MonthPreview({
               key={day}
               className={clsx(
                 styles.dayCell,
-                highlightDates.includes(day) && styles.dayCellHighlight
+                highlightDates.includes(day) && styles.dayCellHighlight,
               )}
               title={
                 highlightDates.includes(day)

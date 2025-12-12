@@ -1,5 +1,5 @@
-import { Database } from "@/@types/database.types";
-import { SupabaseClient } from "@supabase/supabase-js";
+import type { SupabaseClient } from "@supabase/supabase-js";
+import type { Database } from "@/@types/database.types";
 
 /**
  * Get the permissions for the current user in a specific club.
@@ -13,7 +13,7 @@ import { SupabaseClient } from "@supabase/supabase-js";
 export default async function getPermissionsForClub(
   supabase: SupabaseClient<Database>,
   clubId: string,
-  signal?: AbortSignal
+  signal?: AbortSignal,
 ): Promise<{
   permissions: string[];
   roleName: string;
@@ -41,7 +41,7 @@ export default async function getPermissionsForClub(
   }
   return {
     permissions: Object.entries(
-      data.roles.permissions as Record<string, boolean>
+      data.roles.permissions as Record<string, boolean>,
     )
       .filter(([_role, hasRole]) => hasRole)
       .map(([role, _]) => role),

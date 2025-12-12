@@ -1,6 +1,6 @@
+import { Heading } from "@radix-ui/themes";
 import { FullscreenCard } from "@/components/ui/fullscreen-card";
 import { createClient } from "@/lib/supabase/server";
-import { Heading } from "@radix-ui/themes";
 import Form from "./form";
 
 export default async function Page({
@@ -23,7 +23,7 @@ export default async function Page({
           title: event.title,
           startTime: new Date(event.start_time),
           endTime: new Date(event.end_time),
-        })) || []
+        })) || [],
     );
 
   return (

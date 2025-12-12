@@ -1,8 +1,8 @@
-import { AppHeader } from "@/components/ui/app-header";
 import { Button, Flex, Heading, Text } from "@radix-ui/themes";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { AppHeader } from "@/components/ui/app-header";
 import styles from "./not-found.module.css";
 
 export const metadata: Metadata = {

@@ -1,7 +1,5 @@
 "use client";
 
-import type { Database } from "@/@types/database.types";
-import { createClient } from "@/lib/supabase/client";
 import {
   CrossCircledIcon,
   Pencil1Icon,
@@ -24,6 +22,8 @@ import {
 } from "@radix-ui/themes";
 import Link from "next/link";
 import { use, useState } from "react";
+import type { Database } from "@/@types/database.types";
+import { createClient } from "@/lib/supabase/client";
 import styles from "./roles-manager.module.css";
 
 const PERMISSION_KEYS = [
@@ -84,11 +84,11 @@ export default function RolesManager({
         absenceReportReviewerRole: r.absence_report_reviewer_role ?? null,
         absenceReportApprovalRequired: r.absence_report_approval_required,
         absenceReportFormId: (r as any).absence_report_form ?? null,
-      })) ?? []
+      })) ?? [],
   );
   const [error, setError] = useState<string | null>(null);
   const [forms] = useState<{ id: string; name: string }[]>(() =>
-    (formsInitial ?? []).map((f) => ({ id: f.id, name: f.name }))
+    (formsInitial ?? []).map((f) => ({ id: f.id, name: f.name })),
   );
 
   const [editDialogRoleId, setEditDialogRoleId] = useState<string | null>(null);
@@ -108,14 +108,14 @@ export default function RolesManager({
   >(null);
 
   function normalizePermissions(
-    p: Database["public"]["Tables"]["roles"]["Row"]["permissions"]
+    p: Database["public"]["Tables"]["roles"]["Row"]["permissions"],
   ): Record<string, boolean> {
     if (!p || typeof p !== "object" || Array.isArray(p)) return {};
     const entries = Object.entries(
       p as Record<
         string,
         Database["public"]["Tables"]["roles"]["Row"]["permissions"]
-      >
+      >,
     );
     const out: Record<string, boolean> = {};
     entries.forEach(([k, v]) => {
@@ -212,7 +212,7 @@ export default function RolesManager({
     setEditName("");
     setEditDescription("");
     setEditPermissions(
-      Object.fromEntries(PERMISSION_KEYS.map((k) => [k, false]))
+      Object.fromEntries(PERMISSION_KEYS.map((k) => [k, false])),
     );
     setEditAbsenceReportReviewerRole(null);
     setEditAbsenceReportApprovalRequired(false);
@@ -238,7 +238,7 @@ export default function RolesManager({
     setEditName("");
     setEditDescription("");
     setEditPermissions(
-      Object.fromEntries(PERMISSION_KEYS.map((k) => [k, false]))
+      Object.fromEntries(PERMISSION_KEYS.map((k) => [k, false])),
     );
     setEditAbsenceReportReviewerRole(null);
     setEditAbsenceReportApprovalRequired(false);
@@ -375,7 +375,7 @@ export default function RolesManager({
                     value={editAbsenceReportReviewerRole ?? "~"}
                     onValueChange={(value) =>
                       setEditAbsenceReportReviewerRole(
-                        value === "~" ? null : value
+                        value === "~" ? null : value,
                       )
                     }
                     required

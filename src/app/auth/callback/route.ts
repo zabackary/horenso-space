@@ -1,5 +1,5 @@
-import { createClient } from "@/lib/supabase/server";
 import { NextResponse } from "next/server";
+import { createClient } from "@/lib/supabase/server";
 
 /**
  * https://supabase.com/docs/guides/auth/social-login/auth-github?queryGroups=environment&environment=client#add-login-code-to-your-client-app

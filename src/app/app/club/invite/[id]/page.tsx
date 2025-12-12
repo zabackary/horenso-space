@@ -1,9 +1,9 @@
-import { FullscreenCard } from "@/components/ui/fullscreen-card";
-import getProfile from "@/lib/auth/getProfile";
-import { createClient } from "@/lib/supabase/server";
 import { CrossCircledIcon, PaperPlaneIcon } from "@radix-ui/react-icons";
 import { Button, Callout, Card, Flex, Heading, Text } from "@radix-ui/themes";
 import { redirect } from "next/navigation";
+import { FullscreenCard } from "@/components/ui/fullscreen-card";
+import getProfile from "@/lib/auth/getProfile";
+import { createClient } from "@/lib/supabase/server";
 import { joinClub } from "./actions";
 import styles from "./page.module.css";
 

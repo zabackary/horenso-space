@@ -10,7 +10,7 @@
     "enabled": true
   },
   "plpgsqlCheck": {
-    "enabled" : true
+    "enabled": true
   },
   "db": {
     "host": "127.0.0.1",

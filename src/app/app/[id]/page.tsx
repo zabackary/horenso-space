@@ -1,7 +1,7 @@
+import { Box, Card, Grid, Heading, Text } from "@radix-ui/themes";
 import HomeCard from "@/components/ui/home-card";
 import getPermissionsForClub from "@/lib/auth/getPermissionsForClub";
 import { createClient } from "@/lib/supabase/server";
-import { Box, Card, Grid, Heading, Text } from "@radix-ui/themes";
 
 export default async function ClubPage({ params }: PageProps<"/app/[id]">) {
   const { id } = await params;

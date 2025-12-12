@@ -1,7 +1,7 @@
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { Button, Card, Flex, Heading, Text } from "@radix-ui/themes";
 import Link from "next/link";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import styles from "./home-card.module.css";
 
 export interface HomeCardProps {

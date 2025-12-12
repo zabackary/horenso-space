@@ -1,10 +1,10 @@
-import { Database } from "@/@types/database.types";
-import { SupabaseClient } from "@supabase/supabase-js";
+import type { SupabaseClient } from "@supabase/supabase-js";
+import type { Database } from "@/@types/database.types";
 
 export default async function getReports(
   supabase: SupabaseClient<Database>,
   id: string,
-  userId?: string
+  userId?: string,
 ) {
   const query = supabase
     .from("absence_reports")
@@ -26,7 +26,7 @@ export default async function getReports(
         created_at,
         reviewer_id
       )
-    `
+    `,
     )
     .eq("club_id", id)
     .order("created_at", { referencedTable: "event", ascending: false });

@@ -25,7 +25,7 @@ export const useDebounce = <T>(value: T, delay: number) => {
 
 export function useDebounceCallback<T extends (...args: any[]) => void>(
   callback: T,
-  delay: number
+  delay: number,
 ) {
   const timeoutRef = useRef<number | null>(null);
   const callbackRef = useRef(callback);
@@ -44,7 +44,7 @@ export function useDebounceCallback<T extends (...args: any[]) => void>(
         callbackRef.current(...args);
       }, delay);
     },
-    [delay]
+    [delay],
   );
 
   // Clean up the timeout when the component unmounts or dependencies change

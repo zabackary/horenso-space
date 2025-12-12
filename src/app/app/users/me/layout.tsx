@@ -1,10 +1,10 @@
+import { Flex, Heading, TabNav } from "@radix-ui/themes";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 import UserProfile from "@/components/ui/user-profile";
 import UserShareActions from "@/components/user-share-actions";
 import getProfile from "@/lib/auth/getProfile";
 import { createClient } from "@/lib/supabase/server";
-import { Flex, Heading, TabNav } from "@radix-ui/themes";
-import Link from "next/link";
-import { notFound } from "next/navigation";
 
 export default async function MeLayout({
   children,

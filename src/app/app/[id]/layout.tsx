@@ -1,6 +1,6 @@
+import { notFound } from "next/navigation";
 import { AppHeader } from "@/components/ui/app-header";
 import { createClient } from "@/lib/supabase/server";
-import { notFound } from "next/navigation";
 
 export default async function ClubIdLayout({
   params,

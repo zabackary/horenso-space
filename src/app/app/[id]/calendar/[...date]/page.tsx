@@ -1,9 +1,9 @@
-import getPermissionsForClub from "@/lib/auth/getPermissionsForClub";
-import { createClient } from "@/lib/supabase/server";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { Button, Flex, Heading } from "@radix-ui/themes";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import getPermissionsForClub from "@/lib/auth/getPermissionsForClub";
+import { createClient } from "@/lib/supabase/server";
 import Calendar from "../calendar";
 import CreateEventCard from "../create-event-card";
 

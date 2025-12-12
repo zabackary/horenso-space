@@ -1,5 +1,5 @@
-import { createClient } from "@/lib/supabase/server";
 import { Avatar, Flex, Heading, Text } from "@radix-ui/themes";
+import { createClient } from "@/lib/supabase/server";
 import styles from "./user-profile.module.css";
 
 export interface UserProfileProps {

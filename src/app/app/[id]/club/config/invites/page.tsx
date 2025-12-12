@@ -1,9 +1,8 @@
-import { createClient } from "@/lib/supabase/server";
 import { Box, Spinner } from "@radix-ui/themes";
 import React from "react";
-import { ClubConfigTabNav } from "../layout";
-
 import InvitesManager from "@/components/club-config/invite";
+import { createClient } from "@/lib/supabase/server";
+import { ClubConfigTabNav } from "../layout";
 
 export default async function ClubInvitesPage({
   params,
@@ -18,7 +17,7 @@ export default async function ClubInvitesPage({
   const rolesPromise = supabase
     .from("roles")
     .select(
-      "id, name, description, permissions, absence_report_reviewer_role, absence_report_approval_required"
+      "id, name, description, permissions, absence_report_reviewer_role, absence_report_approval_required",
     )
     .eq("club_id", id)
     .order("created_at", { ascending: true })

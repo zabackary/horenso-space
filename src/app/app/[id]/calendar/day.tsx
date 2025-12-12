@@ -1,7 +1,7 @@
-import { createClient } from "@/lib/supabase/client";
 import { GlobeIcon, TextIcon } from "@radix-ui/react-icons";
 import { Box, Card, Flex, Heading, Separator, Text } from "@radix-ui/themes";
 import { useEffect, useMemo, useState } from "react";
+import { createClient } from "@/lib/supabase/client";
 
 export interface DayCalendarProps {
   date: string;
@@ -56,7 +56,7 @@ export default function DayCalendar({
             endDate: event.end_time,
             description: event.description || undefined,
             location: event.location || undefined,
-          }))
+          })),
         );
       }
     }

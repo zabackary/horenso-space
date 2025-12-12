@@ -1,6 +1,6 @@
+import { notFound } from "next/navigation";
 import getPermissionsForClub from "@/lib/auth/getPermissionsForClub";
 import { createClient } from "@/lib/supabase/server";
-import { notFound } from "next/navigation";
 import getReports from "../getReports";
 import { AbsencesTabNav } from "../layout";
 import AbsenceReportList from "../list";

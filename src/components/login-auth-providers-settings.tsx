@@ -1,6 +1,5 @@
 "use client";
 
-import { createClient } from "@/lib/supabase/client";
 import {
   Box,
   Button,
@@ -11,9 +10,10 @@ import {
   Text,
   TextField,
 } from "@radix-ui/themes";
-import { Provider, UserIdentity } from "@supabase/supabase-js";
+import type { Provider, UserIdentity } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
 import { use, useEffect, useState } from "react";
+import { createClient } from "@/lib/supabase/client";
 
 const OAUTH_NAME_PROVIDERS: Partial<Record<Provider, string>> = {
   google: "Google",
@@ -59,7 +59,7 @@ export default function LoginAuthProvidersSettings({
   };
 
   const [resetPasswordError, setResetPasswordError] = useState<string | null>(
-    null
+    null,
   );
   const [resetPasswordSuccess, setResetPasswordSuccess] = useState<
     boolean | null
@@ -97,8 +97,8 @@ export default function LoginAuthProvidersSettings({
         decodeURIComponent(
           searchParams.get("error_description") ||
             searchParams.get("error_code") ||
-            "An error occurred."
-        )
+            "An error occurred.",
+        ),
       );
       // Clean up the URL to remove error params
       router.replace(window.location.pathname);

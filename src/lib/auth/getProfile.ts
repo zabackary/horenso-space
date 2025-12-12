@@ -1,5 +1,5 @@
-import { Database } from "@/@types/database.types";
-import { SupabaseClient, User } from "@supabase/supabase-js";
+import type { SupabaseClient, User } from "@supabase/supabase-js";
+import type { Database } from "@/@types/database.types";
 
 export interface Profile {
   user: User;
@@ -14,7 +14,7 @@ export interface Profile {
 
 export default async function getProfile(
   supabase: SupabaseClient<Database>,
-  signal?: AbortSignal
+  signal?: AbortSignal,
 ): Promise<Profile | null> {
   const {
     data: { user },

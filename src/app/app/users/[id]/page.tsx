@@ -1,9 +1,9 @@
+import { Flex } from "@radix-ui/themes";
+import { redirect } from "next/navigation";
 import ClubCard from "@/components/ui/club-card";
 import UserProfile from "@/components/ui/user-profile";
 import getProfile from "@/lib/auth/getProfile";
 import { createClient } from "@/lib/supabase/server";
-import { Flex } from "@radix-ui/themes";
-import { redirect } from "next/navigation";
 
 export default async function UserPage({
   params,

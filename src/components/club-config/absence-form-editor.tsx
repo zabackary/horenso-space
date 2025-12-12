@@ -1,13 +1,5 @@
 "use client";
 
-import type {
-  AbsenceForm,
-  AbsenceFormItem,
-  MultipleChoiceItem,
-  SimpleTextItem,
-  TextItem,
-  TimeItem,
-} from "@/@types/AbsenceForm";
 import {
   CaretDownIcon,
   CaretRightIcon,
@@ -25,6 +17,14 @@ import {
   TextField,
 } from "@radix-ui/themes";
 import { useEffect, useState } from "react";
+import type {
+  AbsenceForm,
+  AbsenceFormItem,
+  MultipleChoiceItem,
+  SimpleTextItem,
+  TextItem,
+  TimeItem,
+} from "@/@types/AbsenceForm";
 import styles from "./absence-form-editor.module.css";
 
 const DEFAULT_TEXT_ITEM: AbsenceFormItem = {
@@ -37,7 +37,7 @@ const DEFAULT_TEXT_ITEM: AbsenceFormItem = {
 
 function coerceType(
   item: AbsenceFormItem,
-  type: AbsenceFormItem["item"]["type"]
+  type: AbsenceFormItem["item"]["type"],
 ): AbsenceFormItem {
   if (type === "text") {
     return {
@@ -129,7 +129,7 @@ function ItemEditor({
   function updateOptionLabel(index: number, label: string) {
     if (inner.type !== "multipleChoice") return;
     const options = inner.options.map((opt, i) =>
-      i === index ? { ...opt, label } : opt
+      i === index ? { ...opt, label } : opt,
     );
     updateMultipleChoice(options);
   }
@@ -171,13 +171,13 @@ function ItemEditor({
   function updateChildOption(
     index: number,
     childIndex: number,
-    next: AbsenceFormItem
+    next: AbsenceFormItem,
   ) {
     if (inner.type !== "multipleChoice") return;
     const options = inner.options.map((opt, i) => {
       if (i !== index) return opt;
       const nextChildren = normalizeChildren(opt.children).map((child, j) =>
-        j === childIndex ? next : child
+        j === childIndex ? next : child,
       );
       return {
         ...opt,
@@ -192,7 +192,7 @@ function ItemEditor({
     const options = inner.options.map((opt, i) => {
       if (i !== index) return opt;
       const nextChildren = normalizeChildren(opt.children).filter(
-        (_, j) => j !== childIndex
+        (_, j) => j !== childIndex,
       );
       return {
         ...opt,
@@ -403,7 +403,7 @@ function ItemEditor({
                                   }
                                   expandAllFollowups={expandAllFollowups}
                                 />
-                              )
+                              ),
                             )}
                             <Button
                               variant="outline"

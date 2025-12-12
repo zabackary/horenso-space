@@ -1,9 +1,9 @@
-import { AppHeader } from "@/components/ui/app-header";
-import ClubCard from "@/components/ui/club-card";
-import { createClient } from "@/lib/supabase/server";
 import { CrossCircledIcon } from "@radix-ui/react-icons";
 import { Button, Callout, Flex, Heading } from "@radix-ui/themes";
 import Link from "next/link";
+import { AppHeader } from "@/components/ui/app-header";
+import ClubCard from "@/components/ui/club-card";
+import { createClient } from "@/lib/supabase/server";
 
 export default async function App() {
   const supabase = await createClient();

@@ -1,6 +1,3 @@
-import { logout } from "@/actions/auth";
-import getProfile from "@/lib/auth/getProfile";
-import { createClient } from "@/lib/supabase/server";
 import { HomeIcon } from "@radix-ui/react-icons";
 import {
   Avatar,
@@ -15,7 +12,10 @@ import {
 } from "@radix-ui/themes";
 import clsx from "clsx";
 import Link from "next/link";
-import { ComponentPropsWithoutRef } from "react";
+import type { ComponentPropsWithoutRef } from "react";
+import { logout } from "@/actions/auth";
+import getProfile from "@/lib/auth/getProfile";
+import { createClient } from "@/lib/supabase/server";
 import styles from "./app-header.module.css";
 
 export interface AppHeaderProps extends ComponentPropsWithoutRef<"header"> {
@@ -47,7 +47,7 @@ export async function AppHeader({
       className={clsx(
         styles.header,
         props.className,
-        disableSticky ? "" : styles.sticky
+        disableSticky ? "" : styles.sticky,
       )}
     >
       <header>

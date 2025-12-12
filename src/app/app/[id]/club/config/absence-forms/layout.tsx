@@ -1,5 +1,5 @@
-import { createClient } from "@/lib/supabase/server";
 import { Card, Flex } from "@radix-ui/themes";
+import { createClient } from "@/lib/supabase/server";
 import { ClubConfigTabNav } from "../layout";
 import styles from "./layout.module.css";
 import Sidebar from "./sidebar";

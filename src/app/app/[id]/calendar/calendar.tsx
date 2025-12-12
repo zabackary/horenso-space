@@ -1,7 +1,5 @@
 "use client";
 
-import { Drawer } from "@/components/ui/drawer";
-import { useMediaQuery } from "@/lib/useMediaQuery";
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
@@ -19,6 +17,8 @@ import {
 } from "@radix-ui/themes";
 import { useRouter } from "next/navigation";
 import { memo, useEffect, useState } from "react";
+import { Drawer } from "@/components/ui/drawer";
+import { useMediaQuery } from "@/lib/useMediaQuery";
 import styles from "./calendar.module.css";
 import CreateEventCard from "./create-event-card";
 import DayCalendar from "./day";
@@ -94,11 +94,11 @@ export default function Calendar({
         mode === "year"
           ? date.split("-")[0]
           : mode === "month"
-          ? date.split("-").slice(0, 2).join("/")
-          : mode === "day"
-          ? date.split("-").join("/")
-          : ""
-      }`
+            ? date.split("-").slice(0, 2).join("/")
+            : mode === "day"
+              ? date.split("-").join("/")
+              : ""
+      }`,
     );
   }, [date, mode]);
 

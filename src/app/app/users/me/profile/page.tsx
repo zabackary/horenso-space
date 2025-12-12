@@ -1,7 +1,7 @@
+import { Box } from "@radix-ui/themes";
 import ProfileEditor from "@/components/profile-editor";
 import getProfile from "@/lib/auth/getProfile";
 import { createClient } from "@/lib/supabase/server";
-import { Box } from "@radix-ui/themes";
 import { MeTabNav } from "../layout";
 
 export default async function ProfileSettingsPage() {

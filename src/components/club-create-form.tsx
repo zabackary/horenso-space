@@ -1,6 +1,5 @@
 "use client";
 
-import { createClient } from "@/lib/supabase/client";
 import { CrossCircledIcon } from "@radix-ui/react-icons";
 import {
   Button,
@@ -12,6 +11,7 @@ import {
 } from "@radix-ui/themes";
 import { useRouter } from "next/navigation";
 import { useId, useState } from "react";
+import { createClient } from "@/lib/supabase/client";
 
 export function ClubCreateForm() {
   const a11yId = useId();

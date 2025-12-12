@@ -1,8 +1,8 @@
-import getPermissionsForClub from "@/lib/auth/getPermissionsForClub";
-import { createClient } from "@/lib/supabase/server";
 import { Flex, Heading, TabNav } from "@radix-ui/themes";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import getPermissionsForClub from "@/lib/auth/getPermissionsForClub";
+import { createClient } from "@/lib/supabase/server";
 import styles from "./page.module.css";
 
 export default async function ClubConfigLayout({

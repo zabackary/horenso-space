@@ -1,7 +1,5 @@
 "use client";
 
-import type { Database } from "@/@types/database.types";
-import { createClient } from "@/lib/supabase/client";
 import { CrossCircledIcon } from "@radix-ui/react-icons";
 import {
   Button,
@@ -12,6 +10,8 @@ import {
   TextField,
 } from "@radix-ui/themes";
 import { use, useId, useState } from "react";
+import type { Database } from "@/@types/database.types";
+import { createClient } from "@/lib/supabase/client";
 import styles from "./metadata-form.module.css";
 
 type ClubRow = Database["public"]["Tables"]["clubs"]["Row"];
@@ -35,7 +35,7 @@ export default function MetadataForm({
     const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
     const data = Object.fromEntries(
-      Array.from(formData.entries()).map(([k, v]) => [k, v === "" ? null : v])
+      Array.from(formData.entries()).map(([k, v]) => [k, v === "" ? null : v]),
     ) as Record<string, FormDataEntryValue | null>;
     const supabase = createClient();
     try {

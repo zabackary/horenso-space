@@ -1,11 +1,11 @@
+import { Heading, Link as RadixLink, Text } from "@radix-ui/themes";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { RedirectType, redirect } from "next/navigation";
+import type { PropsWithChildren } from "react";
 import { LoginForm } from "@/components/login-form";
 import getProfile from "@/lib/auth/getProfile";
 import { createClient } from "@/lib/supabase/server";
-import { Heading, Link as RadixLink, Text } from "@radix-ui/themes";
-import { Metadata } from "next";
-import Link from "next/link";
-import { redirect, RedirectType } from "next/navigation";
-import { PropsWithChildren } from "react";
 
 export const metadata: Metadata = {
   title: "Login",
@@ -16,7 +16,7 @@ interface LoginPageSearchParams {
 }
 
 export default async function LoginPage(
-  props: PropsWithChildren<{ searchParams: Promise<LoginPageSearchParams> }>
+  props: PropsWithChildren<{ searchParams: Promise<LoginPageSearchParams> }>,
 ) {
   const supabase = await createClient();
   const profile = await getProfile(supabase);

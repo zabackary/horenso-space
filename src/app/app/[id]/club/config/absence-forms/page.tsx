@@ -1,8 +1,8 @@
-import AbsenceFormDetail from "@/components/club-config/absence-form-detail";
-import { createClient } from "@/lib/supabase/server";
 import { Button, Card, Flex, Heading, Spinner, Text } from "@radix-ui/themes";
 import Link from "next/link";
 import React from "react";
+import AbsenceFormDetail from "@/components/club-config/absence-form-detail";
+import { createClient } from "@/lib/supabase/server";
 
 export default async function ClubAbsenceFormsPage({
   params,

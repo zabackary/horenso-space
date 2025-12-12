@@ -1,7 +1,7 @@
-import RolesManager from "@/components/club-config/roles-manager";
-import { createClient } from "@/lib/supabase/server";
 import { Box, Spinner } from "@radix-ui/themes";
 import React from "react";
+import RolesManager from "@/components/club-config/roles-manager";
+import { createClient } from "@/lib/supabase/server";
 import { ClubConfigTabNav } from "../layout";
 
 export default async function ClubRolesPage({
@@ -14,7 +14,7 @@ export default async function ClubRolesPage({
   const rolesPromise = supabase
     .from("roles")
     .select(
-      "id, name, description, permissions, absence_report_reviewer_role, absence_report_approval_required, absence_report_form"
+      "id, name, description, permissions, absence_report_reviewer_role, absence_report_approval_required, absence_report_form",
     )
     .eq("club_id", id)
     .order("created_at", { ascending: true })

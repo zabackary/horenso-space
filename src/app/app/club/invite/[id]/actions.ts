@@ -1,8 +1,8 @@
 "use server";
 
+import { redirect } from "next/dist/client/components/navigation";
 import getProfile from "@/lib/auth/getProfile";
 import { createClient } from "@/lib/supabase/server";
-import { redirect } from "next/dist/client/components/navigation";
 
 export async function joinClub(invitationId: string) {
   const supabase = await createClient();

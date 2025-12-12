@@ -1,8 +1,8 @@
 "use client";
 
-import { Profile } from "@/lib/auth/getProfile";
 import { AlertDialog, Button, Flex } from "@radix-ui/themes";
 import { useState } from "react";
+import type { Profile } from "@/lib/auth/getProfile";
 
 export interface UserShareActionsProps {
   profile: Profile;
@@ -43,7 +43,7 @@ export default function UserShareActions({ profile }: UserShareActionsProps) {
           .catch((error) => {
             console.error("Error sharing profile:", error);
             setShareError(
-              error instanceof Error ? error.message : String(error)
+              error instanceof Error ? error.message : String(error),
             );
             setShareErrorOpen(true);
           });

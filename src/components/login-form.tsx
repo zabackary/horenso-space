@@ -1,11 +1,11 @@
 "use client";
 
-import { revalidateRoot } from "@/actions/auth";
-import { createClient } from "@/lib/supabase/client";
 import { CrossCircledIcon } from "@radix-ui/react-icons";
 import { Button, Callout, Flex, TextField } from "@radix-ui/themes";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { revalidateRoot } from "@/actions/auth";
+import { createClient } from "@/lib/supabase/client";
 
 export interface LoginFormProps {
   next?: string;

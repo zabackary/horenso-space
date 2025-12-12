@@ -1,10 +1,10 @@
+import { Heading, Link as RadixLink, Text } from "@radix-ui/themes";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { RedirectType, redirect } from "next/navigation";
 import { SignupForm } from "@/components/signup-form";
 import getProfile from "@/lib/auth/getProfile";
 import { createClient } from "@/lib/supabase/server";
-import { Heading, Link as RadixLink, Text } from "@radix-ui/themes";
-import { Metadata } from "next";
-import Link from "next/link";
-import { redirect, RedirectType } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Sign up",
@@ -17,7 +17,7 @@ interface SignUpPageSearchParams {
 export default async function SignUpPage(
   props: React.PropsWithChildren<{
     searchParams: Promise<SignUpPageSearchParams>;
-  }>
+  }>,
 ) {
   const supabase = await createClient();
   const profile = await getProfile(supabase);

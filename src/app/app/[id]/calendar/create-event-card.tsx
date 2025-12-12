@@ -1,7 +1,5 @@
 "use client";
 
-import getProfile from "@/lib/auth/getProfile";
-import { createClient } from "@/lib/supabase/client";
 import { CalendarIcon, GlobeIcon, TextIcon } from "@radix-ui/react-icons";
 import {
   Box,
@@ -12,7 +10,10 @@ import {
   TextArea,
   TextField,
 } from "@radix-ui/themes";
-import React, { useState } from "react";
+import type React from "react";
+import { useState } from "react";
+import getProfile from "@/lib/auth/getProfile";
+import { createClient } from "@/lib/supabase/client";
 import styles from "./create-event-card.module.css";
 
 export interface CreateEventCardProps {

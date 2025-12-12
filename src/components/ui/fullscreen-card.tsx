@@ -1,5 +1,5 @@
 import { Box, Card, Flex } from "@radix-ui/themes";
-import { ComponentPropsWithoutRef, ReactNode } from "react";
+import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import styles from "./fullscreen-card.module.css";
 
 export interface FullscreenCardProps extends ComponentPropsWithoutRef<"div"> {

@@ -1,14 +1,12 @@
 "use client";
 
-import { memo, useEffect, useMemo, useRef, useState } from "react";
-
 import { Box, Button, Flex, Grid, Heading } from "@radix-ui/themes";
-import { Virtuoso, VirtuosoHandle } from "react-virtuoso";
-
-import { Database } from "@/@types/database.types";
-import { createClient } from "@/lib/supabase/client";
-import { SupabaseClient } from "@supabase/supabase-js";
+import type { SupabaseClient } from "@supabase/supabase-js";
 import clsx from "clsx";
+import { memo, useEffect, useMemo, useRef, useState } from "react";
+import { Virtuoso, type VirtuosoHandle } from "react-virtuoso";
+import type { Database } from "@/@types/database.types";
+import { createClient } from "@/lib/supabase/client";
 import styles from "./month.module.css";
 
 export interface MonthCalendarProps {
@@ -45,7 +43,7 @@ export default function MonthCalendar({
         (_, i) =>
           `${year.toString().padStart(4, "0")}-${(i + 1)
             .toString()
-            .padStart(2, "0")}`
+            .padStart(2, "0")}`,
       );
     }).flat();
   }, []);
@@ -73,7 +71,9 @@ export default function MonthCalendar({
 
   return (
     <Virtuoso
-      className={clsx(styles.monthCalendar, { [styles.scrolling]: isScrolling })}
+      className={clsx(styles.monthCalendar, {
+        [styles.scrolling]: isScrolling,
+      })}
       data={months}
       initialTopMostItemIndex={months.indexOf(month)}
       horizontalDirection
@@ -159,7 +159,7 @@ function MonthCard({
                 return result;
               }
               return [];
-            })
+            }),
           ),
         ]);
       });
@@ -172,12 +172,12 @@ function MonthCard({
   // Render a grid of dates for the month
   const daysInMonth = useMemo(
     () => new Date(year, month, 0).getDate(),
-    [year, month]
+    [year, month],
   );
 
   const firstDayOfMonth = useMemo(
     () => new Date(year, month - 1, 1).getDay(),
-    [year, month]
+    [year, month],
   );
 
   const totalCells = useMemo(() => {
@@ -225,7 +225,7 @@ function MonthCard({
                 key={day}
                 className={clsx(
                   styles.dayCell,
-                  highlights.length > 0 && styles.dayCellHighlight
+                  highlights.length > 0 && styles.dayCellHighlight,
                 )}
                 onClick={(e) => {
                   if (onSelectDate) {
@@ -256,7 +256,7 @@ function MonthCard({
                             .toString()
                             .padStart(2, "0")}-${day
                             .toString()
-                            .padStart(2, "0")}`
+                            .padStart(2, "0")}`,
                         );
                       }
                     }}

@@ -1,12 +1,12 @@
 "use client";
 
+import { Card, Flex, Heading, Select } from "@radix-ui/themes";
+import { redirect } from "next/navigation";
+import { use, useState } from "react";
 import { DEFAULT_ABSENCE_FORM } from "@/@types/AbsenceForm";
 import AbsenceFormRenderer from "@/components/absence-form-renderer";
 import getProfile from "@/lib/auth/getProfile";
 import { createClient } from "@/lib/supabase/client";
-import { Card, Flex, Heading, Select } from "@radix-ui/themes";
-import { redirect } from "next/navigation";
-import { use, useState } from "react";
 
 export default function Form({
   clubId,

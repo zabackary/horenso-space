@@ -1,10 +1,9 @@
-import MembersManager from "@/components/club-config/members-manager";
-import { createClient } from "@/lib/supabase/server";
 import { Box, Spinner } from "@radix-ui/themes";
 import React from "react";
-import { ClubConfigTabNav } from "../layout";
-
 import type { Database } from "@/@types/database.types";
+import MembersManager from "@/components/club-config/members-manager";
+import { createClient } from "@/lib/supabase/server";
+import { ClubConfigTabNav } from "../layout";
 
 type ClubMemberRow = Database["public"]["Tables"]["club_members"]["Row"];
 type ProfileRow = Database["public"]["Views"]["profiles"]["Row"];
@@ -24,19 +23,19 @@ export default async function ClubMembersPage({
     .eq("club_id", id);
   const members: ClubMemberRow[] = membersRes.error
     ? []
-    : membersRes.data ?? [];
+    : (membersRes.data ?? []);
 
   // Fetch profiles separately since the join doesnt work reliably
   const userIds = Array.from(new Set(members.map((m) => m.user_id)));
   const profiles: ProfileRow[] = userIds.length
-    ? (
+    ? ((
         await supabase
           .from("profiles")
           .select(
-            "id, full_name, nickname, avatar_url, bio, created_at, school"
+            "id, full_name, nickname, avatar_url, bio, created_at, school",
           )
           .in("id", userIds)
-      ).data ?? []
+      ).data ?? [])
     : [];
 
   const membersWithProfiles = members.map((m) => ({

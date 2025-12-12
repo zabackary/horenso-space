@@ -1,13 +1,13 @@
 import { Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
 import type { Metadata } from "next";
-import { ThemeProvider } from "next-themes";
 import {
   Gloria_Hallelujah,
   Hachi_Maru_Pop,
   Noto_Sans,
   Noto_Sans_JP,
 } from "next/font/google";
+import { ThemeProvider } from "next-themes";
 import "./layout.module.css";
 
 const hachiMaruPop = Hachi_Maru_Pop({
