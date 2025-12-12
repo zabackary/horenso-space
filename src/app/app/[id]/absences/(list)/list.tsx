@@ -2,33 +2,7 @@
 
 import { DataList, Flex, Spinner, Text } from "@radix-ui/themes";
 import { Suspense, use } from "react";
-
-interface AbsenceReportReview {
-  id: string;
-  reviewer: {
-    userId: string;
-    fullName: string;
-  };
-  comments: string | null;
-  accepted: boolean;
-  createdAt: string;
-}
-
-interface AbsenceReport {
-  id: string;
-  userName: string;
-  reviews: AbsenceReportReview[];
-  event: {
-    id: string;
-    name: string;
-    startTime: Date;
-    endTime: Date;
-  } | null;
-  assignedTo: {
-    userId: string;
-    fullName: string;
-  } | null;
-}
+import { AbsenceReport } from "./getReports";
 
 export default function AbsenceReportList({
   reports,
@@ -55,9 +29,7 @@ export default function AbsenceReportList({
                   <DataList.Item>
                     <DataList.Label>Assigned to</DataList.Label>
                     <DataList.Value>
-                      {report.assignedTo
-                        ? report.assignedTo.fullName
-                        : "Unassigned"}
+                      {report.assignedToRole?.roleName || "Unassigned"}
                     </DataList.Value>
                   </DataList.Item>
                   {report.reviews.map((review) => (

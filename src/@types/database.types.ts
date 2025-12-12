@@ -656,6 +656,21 @@ export type Database = {
         Returns: string
       }
       delete_invitation: { Args: { invitation_id: string }; Returns: undefined }
+      get_absence_reports: {
+        Args: { p_club_id: string; p_user_id?: string }
+        Returns: {
+          assigned_to_role_id: string
+          assigned_to_role_name: string
+          event_end_time: string
+          event_id: string
+          event_name: string
+          event_start_time: string
+          id: string
+          reviews: Json
+          user_id: string
+          user_name: string
+        }[]
+      }
       get_invitations: {
         Args: { club_id: string }
         Returns: {
