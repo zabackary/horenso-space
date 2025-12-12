@@ -684,6 +684,23 @@ export type Database = {
           user_name: string
         }[]
       }
+      get_assigned_absence_reports: {
+        Args: { p_club_id: string }
+        Returns: {
+          assigned_to_role_id: string
+          assigned_to_role_name: string
+          data: Json
+          event_end_time: string
+          event_id: string
+          event_name: string
+          event_start_time: string
+          form_id: string
+          id: string
+          reviews: Json
+          user_id: string
+          user_name: string
+        }[]
+      }
       get_invitations: {
         Args: { club_id: string }
         Returns: {

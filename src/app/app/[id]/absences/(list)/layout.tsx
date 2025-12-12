@@ -1,7 +1,7 @@
-import { Button, Flex, Heading, TabNav } from "@radix-ui/themes";
-import Link from "next/link";
 import getPermissionsForClub from "@/lib/auth/getPermissionsForClub";
 import { createClient } from "@/lib/supabase/server";
+import { Button, Flex, Heading, TabNav } from "@radix-ui/themes";
+import Link from "next/link";
 import styles from "./layout.module.css";
 
 export default async function Page({
@@ -35,7 +35,7 @@ export function AbsencesTabNav({
   clubId,
   permissions,
 }: {
-  active?: "my" | "all";
+  active?: "my" | "all" | "assigned";
   clubId: string;
   permissions: string[];
 }) {
@@ -47,6 +47,11 @@ export function AbsencesTabNav({
       {permissions.includes("canReadAllReports") ? (
         <TabNav.Link asChild active={active === "all"}>
           <Link href={`/app/${clubId}/absences/all`}>All reports</Link>
+        </TabNav.Link>
+      ) : null}
+      {permissions.includes("canWriteReportReview") ? (
+        <TabNav.Link asChild active={active === "assigned"}>
+          <Link href={`/app/${clubId}/absences/assigned`}>Assigned to me</Link>
         </TabNav.Link>
       ) : null}
     </TabNav.Root>

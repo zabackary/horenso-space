@@ -1,0 +1,55 @@
+.layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  min-height: 400px;
+}
+
+.sidebar {
+  overflow-y: auto;
+  max-height: calc(100vh - 200px);
+  position: sticky;
+  top: 16px;
+}
+
+.detailCard {
+  min-width: 0;
+}
+
+.reportCard {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.reportCard:hover {
+  background-color: var(--gray-3);
+}
+
+.reportCardSelected {
+  background-color: var(--accent-3);
+  border: 1px solid var(--accent-6);
+}
+
+.reportMeta {
+  color: var(--gray-11);
+}
+
+.reviewed {
+  color: var(--green-11);
+  font-weight: 500;
+}
+
+.empty {
+  color: var(--gray-11);
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+    max-height: none;
+  }
+}

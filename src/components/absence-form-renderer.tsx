@@ -28,6 +28,7 @@ export type AbsenceFormValues = Record<string, unknown>;
 
 export interface AbsenceFormRendererProps {
   form: AbsenceForm;
+  values: AbsenceFormValues;
   onChange?: (values: AbsenceFormValues) => void;
   onSubmit?: (values: AbsenceFormValues) => void;
 }
@@ -38,16 +39,15 @@ function makeKey(path: number[]) {
 
 export function AbsenceFormRenderer({
   form,
+  values,
   onChange,
   onSubmit,
 }: AbsenceFormRendererProps) {
-  const [values, setValues] = useState<AbsenceFormValues>({});
   const isReadOnly = onChange === undefined;
   const [submitError, setSubmitError] = useState<string | null>(null);
 
   function updateValue(key: string, value: unknown) {
     const next = { ...values, [key]: value };
-    setValues(next);
     onChange?.(next);
   }
 

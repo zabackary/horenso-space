@@ -115,6 +115,7 @@ export default function Form({
         (absenceType === "general" && date)) && (
         <AbsenceFormRenderer
           form={template.questions}
+          values={data || {}}
           onChange={(values) => setData(values)}
           onSubmit={handleSubmit}
         />
