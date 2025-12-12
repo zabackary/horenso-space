@@ -18,11 +18,7 @@ import {
   VisuallyHidden,
 } from "@radix-ui/themes";
 import { useRouter } from "next/navigation";
-import { memo, useEffect, useRef, useState } from "react";
-import "swiper/css";
-import "swiper/css/virtual";
-import { A11y } from "swiper/modules";
-import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
+import { memo, useEffect, useState } from "react";
 import styles from "./calendar.module.css";
 import CreateEventCard from "./create-event-card";
 import DayCalendar from "./day";
@@ -88,8 +84,6 @@ export default function Calendar({
 
   const [createDrawerOpen, setCreateDrawerOpen] = useState(false);
 
-  const modeSwiperRef = useRef<SwiperRef>(null);
-
   const [refreshKey, setRefreshKey] = useState(0);
 
   useEffect(() => {
@@ -111,16 +105,6 @@ export default function Calendar({
   const handleModeChange = (newMode: "year" | "month" | "day") => {
     setMode(newMode);
   };
-
-  useEffect(() => {
-    if (modeSwiperRef.current && modeSwiperRef.current.swiper) {
-      const targetIndex =
-        mode === "year" ? 0 : mode === "month" ? 1 : mode === "day" ? 2 : 0;
-      modeSwiperRef.current.swiper.enable();
-      modeSwiperRef.current.swiper.slideTo(targetIndex);
-      modeSwiperRef.current.swiper.disable();
-    }
-  }, [mode]);
 
   const isSmall = useMediaQuery("(max-width: 600px)");
 
@@ -272,7 +256,7 @@ export default function Calendar({
           )}
         </Flex>
         <Separator className={styles.divider} />
-        <Swiper
+        {/* <Swiper
           spaceBetween={50}
           initialSlide={
             mode === "year" ? 0 : mode === "month" ? 1 : mode === "day" ? 2 : 0
@@ -294,66 +278,66 @@ export default function Calendar({
           }}
           direction="vertical"
         >
-          <SwiperSlide>
-            <YearCalendar
-              grid={displayMode === "grid"}
-              year={parseInt(date.split("-")[0], 10)}
-              onYearChange={(newYear) => {
-                setDate((date) => {
-                  const parts = date.split("-");
-                  return `${newYear.toString().padStart(4, "0")}-${parts[1]}-${
-                    parts[2]
-                  }`;
-                });
-              }}
-              onSelectMonth={(month) => {
-                setMode("month");
-                setDate((date) => {
-                  const parts = date.split("-");
-                  return `${parts[0]}-${month.toString().padStart(2, "0")}-${
-                    parts[2]
-                  }`;
-                });
-              }}
-              onSelectDate={(date) => {
-                setMode("day");
-                setDate(date);
-              }}
-              clubId={clubId}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <MonthCalendar
-              grid={displayMode === "grid"}
-              month={date.substring(0, 7)}
-              onMonthChange={(month) => {
-                setDate((date) => {
-                  const parts = date.split("-");
-                  return `${month}-${parts[2]}`;
-                });
-              }}
-              onSelectDate={(date) => {
-                setMode("day");
-                setDate(date);
-              }}
-              clubId={clubId}
-              onCreateEvent={(date) => {
-                setDate(date);
-                setCreateDrawerOpen(true);
-              }}
-              canCreateEvent={canWrite}
-              refreshKey={refreshKey.toString()}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <DayCalendar
-              date={date}
-              onDateChange={setDate}
-              clubId={clubId}
-              refreshKey={refreshKey.toString()}
-            />
-          </SwiperSlide>
-        </Swiper>
+          <SwiperSlide> */}
+        {mode === "year" && (
+          <YearCalendar
+            grid={displayMode === "grid"}
+            year={parseInt(date.split("-")[0], 10)}
+            onYearChange={(newYear) => {
+              setDate((date) => {
+                const parts = date.split("-");
+                return `${newYear.toString().padStart(4, "0")}-${parts[1]}-${
+                  parts[2]
+                }`;
+              });
+            }}
+            onSelectMonth={(month) => {
+              setMode("month");
+              setDate((date) => {
+                const parts = date.split("-");
+                return `${parts[0]}-${month.toString().padStart(2, "0")}-${
+                  parts[2]
+                }`;
+              });
+            }}
+            onSelectDate={(date) => {
+              setMode("day");
+              setDate(date);
+            }}
+            clubId={clubId}
+          />
+        )}
+        {mode === "month" && (
+          <MonthCalendar
+            grid={displayMode === "grid"}
+            month={date.substring(0, 7)}
+            onMonthChange={(month) => {
+              setDate((date) => {
+                const parts = date.split("-");
+                return `${month}-${parts[2]}`;
+              });
+            }}
+            onSelectDate={(date) => {
+              setMode("day");
+              setDate(date);
+            }}
+            clubId={clubId}
+            onCreateEvent={(date) => {
+              setDate(date);
+              setCreateDrawerOpen(true);
+            }}
+            canCreateEvent={canWrite}
+            refreshKey={refreshKey.toString()}
+          />
+        )}
+        {mode === "day" && (
+          <DayCalendar
+            date={date}
+            onDateChange={setDate}
+            clubId={clubId}
+            refreshKey={refreshKey.toString()}
+          />
+        )}
         {canWrite && (
           <IconButton
             variant="solid"

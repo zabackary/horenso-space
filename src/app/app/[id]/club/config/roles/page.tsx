@@ -32,7 +32,11 @@ export default async function ClubRolesPage({
       <ClubConfigTabNav active="roles" clubId={id} />
       <Box p="4">
         <React.Suspense fallback={<Spinner />}>
-          <RolesManager clubId={id} rolesPromise={rolesPromise} formsPromise={formsPromise} />
+          <RolesManager
+            clubId={id}
+            rolesPromise={rolesPromise}
+            formsPromise={formsPromise}
+          />
         </React.Suspense>
       </Box>
     </>

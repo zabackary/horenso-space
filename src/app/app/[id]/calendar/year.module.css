@@ -1,22 +1,25 @@
-.swiper {
-  width: 100%;
+.yearCalendar {
   flex-grow: 1;
-  height: 100%;
+  width: 100%;
+
+  /* hide scrollbar */
+  scrollbar-width: none;
 }
 
-.slide {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: start;
-  height: 100%;
-  overflow-y: auto;
+.yearCalendar:not(.scrolling) {
+  scroll-snap-type: x mandatory;
+
+  [data-index] {
+    scroll-snap-align: start;
+  }
 }
 
 .yearCard {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  width: 100vw;
+  overflow-y: auto;
 
   a {
     text-decoration: underline;

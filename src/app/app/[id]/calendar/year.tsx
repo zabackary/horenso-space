@@ -2,12 +2,8 @@
 
 import { memo, useEffect, useMemo, useRef, useState } from "react";
 
-import { A11y, Virtual } from "swiper/modules";
-import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
-
 import { Box, Flex, Grid, Heading, Link } from "@radix-ui/themes";
-import "swiper/css";
-import "swiper/css/virtual";
+import { Virtuoso, VirtuosoHandle } from "react-virtuoso";
 
 import { Database } from "@/@types/database.types";
 import { createClient } from "@/lib/supabase/client";
@@ -32,52 +28,59 @@ export default function YearCalendar({
   onSelectDate,
   clubId,
 }: YearCalendarProps) {
-  const ref = useRef<SwiperRef>(null);
   const years = useMemo(() => {
     const currentYear = new Date().getFullYear();
     return Array.from({ length: 200 }, (_, i) => currentYear - 100 + i);
   }, []);
+  const ref = useRef<VirtuosoHandle>(null);
+  const [isScrolling, setIsScrolling] = useState(false);
   useEffect(() => {
-    if (ref.current && ref.current.swiper) {
+    if (ref.current) {
       const index = years.indexOf(year);
       if (index !== -1) {
-        ref.current.swiper.slideTo(index);
+        setIsScrolling(true);
+        setTimeout(() => {
+          ref.current?.scrollToIndex({
+            index,
+            align: "start",
+            behavior: "smooth",
+          });
+        });
+        setTimeout(() => {
+          setIsScrolling(false);
+        }, 500);
       }
     }
-  }, [year, years]);
+  }, [year, years, ref, setIsScrolling]);
   const supabase = useMemo(() => {
     return createClient();
   }, []);
 
   return (
-    <Swiper
-      virtual
-      slidesPerView={1}
-      modules={[Virtual, A11y]}
-      initialSlide={years.indexOf(year) ?? 0}
-      onSlideChange={(swiper) => {
-        if (onYearChange) {
-          onYearChange(years[swiper.activeIndex]);
+    <Virtuoso
+      className={clsx(styles.yearCalendar, { [styles.scrolling]: isScrolling })}
+      data={years}
+      initialTopMostItemIndex={years.indexOf(year)}
+      horizontalDirection
+      ref={ref}
+      itemContent={(_, itemYear) => (
+        <MemorizedYearCard
+          year={itemYear}
+          grid={grid}
+          onSelectMonth={onSelectMonth}
+          onSelectDate={onSelectDate}
+          supabase={supabase}
+          clubId={clubId}
+        />
+      )}
+      rangeChanged={(range) => {
+        if (isScrolling) return;
+        const firstYear = years[range.startIndex];
+        if (firstYear !== undefined && firstYear !== year) {
+          onYearChange?.(firstYear);
         }
       }}
-      direction="horizontal"
-      className={styles.swiper}
-      ref={ref}
-    >
-      {years.map((year, index) => (
-        <SwiperSlide key={year} virtualIndex={index} className={styles.slide}>
-          <MemorizedYearCard
-            key={year}
-            year={year}
-            grid={grid}
-            onSelectMonth={onSelectMonth}
-            onSelectDate={onSelectDate}
-            supabase={supabase}
-            clubId={clubId}
-          />
-        </SwiperSlide>
-      ))}
-    </Swiper>
+    />
   );
 }
 

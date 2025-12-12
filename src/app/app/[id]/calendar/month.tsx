@@ -2,12 +2,8 @@
 
 import { memo, useEffect, useMemo, useRef, useState } from "react";
 
-import { A11y, Virtual } from "swiper/modules";
-import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
-
 import { Box, Button, Flex, Grid, Heading } from "@radix-ui/themes";
-import "swiper/css";
-import "swiper/css/virtual";
+import { Virtuoso, VirtuosoHandle } from "react-virtuoso";
 
 import { Database } from "@/@types/database.types";
 import { createClient } from "@/lib/supabase/client";
@@ -38,7 +34,8 @@ export default function MonthCalendar({
 
   refreshKey,
 }: MonthCalendarProps) {
-  const ref = useRef<SwiperRef>(null);
+  const ref = useRef<VirtuosoHandle>(null);
+  const [isScrolling, setIsScrolling] = useState(false);
   const months = useMemo(() => {
     const currentYear = new Date().getFullYear();
     return Array.from({ length: 200 }, (_, i) => {
@@ -53,10 +50,20 @@ export default function MonthCalendar({
     }).flat();
   }, []);
   useEffect(() => {
-    if (ref.current && ref.current.swiper) {
+    if (ref.current) {
       const index = months.indexOf(month);
       if (index !== -1) {
-        ref.current.swiper.slideTo(index);
+        setIsScrolling(true);
+        setTimeout(() => {
+          ref.current?.scrollToIndex({
+            index,
+            align: "start",
+            behavior: "smooth",
+          });
+        });
+        setTimeout(() => {
+          setIsScrolling(false);
+        }, 500);
       }
     }
   }, [month, months]);
@@ -65,36 +72,32 @@ export default function MonthCalendar({
   }, []);
 
   return (
-    <Swiper
-      virtual
-      slidesPerView={1}
-      modules={[Virtual, A11y]}
-      initialSlide={months.indexOf(month) ?? 0}
-      onSlideChange={(swiper) => {
-        if (onMonthChange) {
-          onMonthChange(months[swiper.activeIndex]);
+    <Virtuoso
+      className={clsx(styles.monthCalendar, { [styles.scrolling]: isScrolling })}
+      data={months}
+      initialTopMostItemIndex={months.indexOf(month)}
+      horizontalDirection
+      ref={ref}
+      itemContent={(_, itemMonth) => (
+        <MemorizedMonthCard
+          year={Number.parseInt(itemMonth.substring(0, 4), 10)}
+          month={Number.parseInt(itemMonth.substring(5, 7), 10)}
+          onSelectDate={onSelectDate}
+          supabase={supabase}
+          clubId={clubId}
+          onCreateEvent={onCreateEvent}
+          canCreateEvent={canCreateEvent}
+          refreshKey={refreshKey}
+        />
+      )}
+      rangeChanged={(range) => {
+        if (isScrolling) return;
+        const firstMonth = months[range.startIndex];
+        if (firstMonth !== undefined && firstMonth !== month) {
+          onMonthChange?.(firstMonth);
         }
       }}
-      direction="horizontal"
-      className={styles.swiper}
-      ref={ref}
-    >
-      {months.map((month, index) => (
-        <SwiperSlide key={month} virtualIndex={index} className={styles.slide}>
-          <MemorizedMonthCard
-            key={month}
-            year={Number.parseInt(month.substring(0, 4), 10)}
-            month={Number.parseInt(month.substring(5, 7), 10)}
-            onSelectDate={onSelectDate}
-            supabase={supabase}
-            clubId={clubId}
-            onCreateEvent={onCreateEvent}
-            canCreateEvent={canCreateEvent}
-            refreshKey={refreshKey}
-          />
-        </SwiperSlide>
-      ))}
-    </Swiper>
+    />
   );
 }
 

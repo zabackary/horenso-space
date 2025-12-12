@@ -1,20 +1,26 @@
-.swiper {
-  width: 100%;
+.monthCalendar {
   flex-grow: 1;
-  height: 100%;
+  width: 100%;
+
+  /* hide scrollbar */
+  scrollbar-width: none;
 }
 
-.slide {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: start;
-  height: 100%;
-  overflow-y: auto;
+.monthCalendar:not(.scrolling) {
+  scroll-snap-type: x mandatory;
+
+  [data-index] {
+    scroll-snap-align: start;
+  }
 }
 
 .monthCard {
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100%;
+  overflow-y: auto;
 
   h3 {
     text-align: center;
@@ -24,6 +30,7 @@
 
 .monthGrid {
   flex-grow: 1;
+  height: 100%;
 }
 
 .dayCell {
