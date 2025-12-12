@@ -5,6 +5,7 @@ create table absence_reports(
   created_at timestamp with time zone default now() not null,
   updated_at timestamp with time zone default now() not null,
   event_id uuid references calendar_events(id) on delete set null,
+  date date,
   data jsonb not null,
   assigned_to_role uuid references roles(id) on delete set null
 );
@@ -42,7 +43,11 @@ create policy "Authorized users can view all club reports" on absence_reports
 create policy "Assigned reviewers can view reports" on absence_reports
   for select
     using (exists (
-      select r.id from roles r
-      join club_members m on m.role_id = r.id
-      where m.user_id = auth.uid() and r.id = absence_reports.assigned_to_role
-    ));
+      select
+        r.id
+      from
+        roles r
+        join club_members m on m.role_id = r.id
+      where
+        m.user_id = auth.uid() and r.id = absence_reports.assigned_to_role));
+

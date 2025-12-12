@@ -108,7 +108,7 @@ create policy "Club admins can create absence report forms for their clubs" on a
 
 create policy "Club admins can modify absence report forms for their clubs" on absence_report_forms
   for update
-    with check (public.user_has_club_permission(absence_report_forms.club_id, 'canManageClub'));
+    using (public.user_has_club_permission(absence_report_forms.club_id, 'canManageClub'));
 
 create policy "Club admins can delete absence report forms for their clubs" on absence_report_forms
   for delete
