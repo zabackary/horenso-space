@@ -49,7 +49,10 @@ export function AbsenceFormRenderer({
   }
 
   // Flatten all items including nested children into a single list
-  function flattenItems(items: AbsenceFormItem[], basePath: number[] = []): Array<{
+  function flattenItems(
+    items: AbsenceFormItem[],
+    basePath: number[] = []
+  ): Array<{
     item: AbsenceFormItem;
     path: number[];
     parentKey?: string;
@@ -67,8 +70,12 @@ export function AbsenceFormRenderer({
       const path = [...basePath, i];
       result.push({ item, path });
 
-      const t = item.item as MultipleChoiceItem | TimeItem | TextItem | SimpleTextItem;
-      
+      const t = item.item as
+        | MultipleChoiceItem
+        | TimeItem
+        | TextItem
+        | SimpleTextItem;
+
       // For multipleChoice items, flatten all possible children
       if (t.type === "multipleChoice") {
         const parentKey = makeKey(path);
@@ -89,13 +96,15 @@ export function AbsenceFormRenderer({
   const flatItems = flattenItems(form.items);
 
   // Filter visible items based on parent selections
-  const visibleItems = flatItems.filter(({ item, path, parentKey, parentValue }) => {
-    if (!parentKey) return true;
-    
-    // Check if parent multipleChoice has selected the option that includes this child
-    const selectedValue = values[parentKey] as string;
-    return selectedValue === parentValue;
-  });
+  const visibleItems = flatItems.filter(
+    ({ item, path, parentKey, parentValue }) => {
+      if (!parentKey) return true;
+
+      // Check if parent multipleChoice has selected the option that includes this child
+      const selectedValue = values[parentKey] as string;
+      return selectedValue === parentValue;
+    }
+  );
 
   function renderItem(item: AbsenceFormItem, path: number[]) {
     const key = makeKey(path);
@@ -114,9 +123,9 @@ export function AbsenceFormRenderer({
             {item.title}
           </Text>
           <Text size="2" className={styles.readOnlyValue}>
-            {t.type === "multipleChoice" && (values[key] as string || "—")}
-            {t.type === "time" && (values[key] as string || "—")}
-            {t.type === "text" && (values[key] as string || "—")}
+            {t.type === "multipleChoice" && ((values[key] as string) || "—")}
+            {t.type === "time" && ((values[key] as string) || "—")}
+            {t.type === "text" && ((values[key] as string) || "—")}
             {t.type === "simpleText" && (t as SimpleTextItem).text}
           </Text>
         </Box>

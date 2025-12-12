@@ -1,6 +1,8 @@
+import { AbsenceForm } from "@/@types/AbsenceForm";
 import { FullscreenCard } from "@/components/ui/fullscreen-card";
+import getProfile from "@/lib/auth/getProfile";
 import { createClient } from "@/lib/supabase/server";
-import { Heading } from "@radix-ui/themes";
+import { Callout, Heading } from "@radix-ui/themes";
 import Form from "./form";
 
 export default async function Page({
@@ -9,6 +11,16 @@ export default async function Page({
   const { id } = await params;
 
   const supabase = await createClient();
+
+  const profile = (await getProfile(supabase))!;
+
+  const { data: templateRawData, error: templateError } = await supabase
+    .from("club_members")
+    .select("roles (absence_report_forms (id, questions))")
+    .eq("user_id", profile.id)
+    .eq("club_id", id)
+    .single();
+  const templateData = templateRawData?.roles?.absence_report_forms ?? null;
 
   const events = supabase
     .from("calendar_events")
@@ -32,7 +44,23 @@ export default async function Page({
       <Heading size="5" as="h2" mb="4">
         Report an absence
       </Heading>
-      <Form clubId={id} events={events} />
+      {templateError || !templateData ? (
+        <Callout.Root variant="outline">
+          <Callout.Text>
+            You do not have a configured absence report form. Please contact a
+            club manager.
+          </Callout.Text>
+        </Callout.Root>
+      ) : (
+        <Form
+          clubId={id}
+          events={events}
+          template={{
+            id: templateData.id,
+            questions: templateData.questions as unknown as AbsenceForm,
+          }}
+        />
+      )}
     </FullscreenCard>
   );
 }

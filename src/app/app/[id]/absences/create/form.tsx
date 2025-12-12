@@ -1,6 +1,6 @@
 "use client";
 
-import { DEFAULT_ABSENCE_FORM } from "@/@types/AbsenceForm";
+import { AbsenceForm } from "@/@types/AbsenceForm";
 import AbsenceFormRenderer from "@/components/absence-form-renderer";
 import getProfile from "@/lib/auth/getProfile";
 import { createClient } from "@/lib/supabase/client";
@@ -18,8 +18,13 @@ import { use, useState } from "react";
 export default function Form({
   clubId,
   events,
+  template,
 }: {
   clubId: string;
+  template: {
+    id: string;
+    questions: AbsenceForm;
+  };
   events: PromiseLike<
     {
       id: string;
@@ -42,14 +47,15 @@ export default function Form({
     console.log("Form data:", data);
     const supabase = createClient();
     const user = await getProfile(supabase);
-    const { data: res, error } = await supabase.from("absence_reports").insert([
-      {
-        club_id: clubId,
-        event_id: event,
-        data: data,
-        user_id: user!.id,
-      },
-    ]);
+    // const { data: res, error } = await supabase.from("absence_reports").insert([
+    //   {
+    //     club_id: clubId,
+    //     event_id: event,
+    //     data: data,
+    //     user_id: user!.id,
+    //   },
+    // ]);
+    const error = "Unimplemented";
     if (error) {
       console.error("Error submitting absence report:", error);
       alert("Failed to submit absence report. Please try again.");
@@ -106,7 +112,7 @@ export default function Form({
       {((absenceType === "event" && event) ||
         (absenceType === "general" && date)) && (
         <AbsenceFormRenderer
-          form={DEFAULT_ABSENCE_FORM}
+          form={template.questions}
           onChange={(values) => setData(values)}
           onSubmit={handleSubmit}
         />
