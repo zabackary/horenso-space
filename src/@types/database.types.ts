@@ -137,7 +137,9 @@ export type Database = {
           club_id: string
           created_at: string
           data: Json
+          date: string | null
           event_id: string | null
+          form_id: string | null
           id: string
           updated_at: string
           user_id: string | null
@@ -147,7 +149,9 @@ export type Database = {
           club_id: string
           created_at?: string
           data: Json
+          date?: string | null
           event_id?: string | null
+          form_id?: string | null
           id?: string
           updated_at?: string
           user_id?: string | null
@@ -157,7 +161,9 @@ export type Database = {
           club_id?: string
           created_at?: string
           data?: Json
+          date?: string | null
           event_id?: string | null
+          form_id?: string | null
           id?: string
           updated_at?: string
           user_id?: string | null
@@ -196,6 +202,13 @@ export type Database = {
             columns: ["event_id"]
             isOneToOne: false
             referencedRelation: "calendar_events"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "absence_reports_form_id_fkey"
+            columns: ["form_id"]
+            isOneToOne: false
+            referencedRelation: "absence_report_forms"
             referencedColumns: ["id"]
           },
         ]

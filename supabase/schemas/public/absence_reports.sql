@@ -6,6 +6,7 @@ create table absence_reports(
   updated_at timestamp with time zone default now() not null,
   event_id uuid references calendar_events(id) on delete set null,
   date date,
+  form_id uuid references absence_report_forms(id) on delete set null,
   data jsonb not null,
   assigned_to_role uuid references roles(id) on delete set null
 );

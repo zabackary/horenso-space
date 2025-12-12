@@ -4,7 +4,9 @@ import { AbsenceForm } from "@/@types/AbsenceForm";
 import AbsenceFormRenderer from "@/components/absence-form-renderer";
 import getProfile from "@/lib/auth/getProfile";
 import { createClient } from "@/lib/supabase/client";
+import { CrossCircledIcon } from "@radix-ui/react-icons";
 import {
+  Callout,
   Card,
   Flex,
   Heading,
@@ -41,24 +43,26 @@ export default function Form({
     null
   );
   const [data, setData] = useState<any>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async () => {
     console.log("Submitting absence report for event:", event);
     console.log("Form data:", data);
     const supabase = createClient();
     const user = await getProfile(supabase);
-    // const { data: res, error } = await supabase.from("absence_reports").insert([
-    //   {
-    //     club_id: clubId,
-    //     event_id: event,
-    //     data: data,
-    //     user_id: user!.id,
-    //   },
-    // ]);
-    const error = "Unimplemented";
+    const { data: res, error } = await supabase.from("absence_reports").insert([
+      {
+        club_id: clubId,
+        event_id: event ?? undefined,
+        date: date ?? undefined,
+        form_id: template.id,
+        data: data,
+        user_id: user!.id,
+      },
+    ]);
     if (error) {
       console.error("Error submitting absence report:", error);
-      alert("Failed to submit absence report. Please try again.");
+      setError("Failed to submit absence report. Please try again.");
     } else {
       redirect(`/app/${clubId}/absences`);
     }
@@ -116,6 +120,14 @@ export default function Form({
           onChange={(values) => setData(values)}
           onSubmit={handleSubmit}
         />
+      )}
+      {error && (
+        <Callout.Root color="red">
+          <Callout.Icon>
+            <CrossCircledIcon />
+          </Callout.Icon>
+          <Callout.Text>{error}</Callout.Text>
+        </Callout.Root>
       )}
     </Flex>
   );
