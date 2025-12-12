@@ -1,5 +1,6 @@
 .root {
   padding: 16px;
+  z-index: -1;
 }
 .heading {
   margin-bottom: 12px;

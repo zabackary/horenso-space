@@ -1,0 +1,38 @@
+.root {
+  max-width: 1200px;
+}
+
+.layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 88px; /* app bar plus spacing without extra padding */
+  height: fit-content;
+}
+
+.templateCard {
+  width: 100%;
+}
+
+.templateMeta {
+  color: var(--gray-9, #666);
+}
+
+.templateCardSelected {
+  outline: 2px solid var(--accent-9);
+  outline-offset: 2px;
+}
+
+.detailCard {
+  flex: 1;
+}
+
+.empty {
+  color: var(--gray-9, #666);
+}

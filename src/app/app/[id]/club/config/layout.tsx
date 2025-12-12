@@ -42,7 +42,7 @@ export function ClubConfigTabNav({
   active,
   clubId,
 }: {
-  active?: "metadata" | "roles" | "members" | "invites";
+  active?: "metadata" | "roles" | "members" | "invites" | "absenceForms";
   clubId: string;
 }) {
   return (
@@ -58,6 +58,11 @@ export function ClubConfigTabNav({
       </TabNav.Link>
       <TabNav.Link asChild active={active === "invites"}>
         <Link href={`/app/${clubId}/club/config/invites`}>Invites</Link>
+      </TabNav.Link>
+      <TabNav.Link asChild active={active === "absenceForms"}>
+        <Link href={`/app/${clubId}/club/config/absence-forms`}>
+          Absence forms
+        </Link>
       </TabNav.Link>
     </TabNav.Root>
   );
