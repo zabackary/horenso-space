@@ -1,8 +1,17 @@
-import type { NextRequest } from "next/server";
 import { updateSession } from "@/lib/supabase/middleware";
+import { type NextRequest } from "next/server";
+import { i18nMiddleware } from "./lib/i18n/middleware";
 
 export async function middleware(request: NextRequest) {
-  return await updateSession(request);
+  // First, handle i18n
+  const i18nResponse = i18nMiddleware(request);
+  if (i18nResponse) {
+    return i18nResponse;
+  }
+
+  // Then, update session
+  const sessionResponse = await updateSession(request);
+  return sessionResponse;
 }
 
 export const config = {

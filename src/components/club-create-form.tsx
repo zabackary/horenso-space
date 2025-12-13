@@ -1,5 +1,7 @@
 "use client";
 
+import { createClient } from "@/lib/supabase/client";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { CrossCircledIcon } from "@radix-ui/react-icons";
 import {
   Button,
@@ -11,10 +13,10 @@ import {
 } from "@radix-ui/themes";
 import { useRouter } from "next/navigation";
 import { useId, useState } from "react";
-import { createClient } from "@/lib/supabase/client";
 
 export function ClubCreateForm() {
   const a11yId = useId();
+  const { t } = useLingui();
 
   const [clubName, setClubName] = useState("");
   const [clubDescription, setClubDescription] = useState("");
@@ -63,35 +65,45 @@ export function ClubCreateForm() {
     <form onSubmit={handleCreate}>
       <Flex direction="column" gap="2" my="4">
         <Text as="label" htmlFor={`${a11yId}-name`} size="2">
-          Club name <span aria-label="required">*</span>
+          <Trans id="club.name">Club name</Trans>{" "}
+          <span aria-label="required">*</span>
         </Text>
         <TextField.Root
-          placeholder="My club"
+          placeholder={t({
+            id: "club.namePlaceholder",
+            message: "Your club",
+          })}
           required
           id={`${a11yId}-name`}
           value={clubName}
           onChange={(e) => setClubName(e.target.value)}
         />
         <Text as="label" htmlFor={`${a11yId}-description`} size="2">
-          Club description (optional)
+          <Trans id="club.description">Club description (optional)</Trans>
         </Text>
         <TextField.Root
-          placeholder="A short description"
+          placeholder={t({
+            id: "club.descriptionPlaceholder",
+            message: "A short description",
+          })}
           id={`${a11yId}-description`}
           value={clubDescription}
           onChange={(e) => setClubDescription(e.target.value)}
         />
         <Text as="label" htmlFor={`${a11yId}-school`} size="2">
-          School (optional)
+          <Trans id="club.school">School (optional)</Trans>
         </Text>
         <TextField.Root
-          placeholder="School name"
+          placeholder={t({
+            id: "club.schoolPlaceholder",
+            message: "Your school",
+          })}
           id={`${a11yId}-school`}
           value={clubSchool}
           onChange={(e) => setClubSchool(e.target.value)}
         />
         <Text as="label" htmlFor={`${a11yId}-website`} size="2">
-          Website (optional)
+          <Trans id="club.website">Website (optional)</Trans>
         </Text>
         <TextField.Root
           placeholder="https://example.com"
@@ -101,7 +113,9 @@ export function ClubCreateForm() {
           onChange={(e) => setClubWebsite(e.target.value)}
         />
         <Text as="label" htmlFor={`${a11yId}-is-public`} size="2">
-          Club privacy: {clubIsPublic ? "Public" : "Private"}
+          <Trans id="club.privacy">
+            Club privacy: {clubIsPublic ? "Public" : "Private"}
+          </Trans>
         </Text>
         <Switch
           id={`${a11yId}-is-public`}
@@ -109,8 +123,10 @@ export function ClubCreateForm() {
           onCheckedChange={setClubIsPublic}
         />
         <Text size="1" color="gray" as="p">
-          If this is a public club, anyone can find it online and view the
-          information you&apos;ve provided here.
+          <Trans id="club.privacyDescription">
+            If this is a public club, anyone can find it online and view the
+            information you've provided here.
+          </Trans>
         </Text>
         {error && (
           <Callout.Root color="red">
@@ -121,7 +137,7 @@ export function ClubCreateForm() {
           </Callout.Root>
         )}
         <Button type="submit" loading={isLoading}>
-          Create club
+          <Trans id="club.createButton">Create club</Trans>
         </Button>
       </Flex>
     </form>

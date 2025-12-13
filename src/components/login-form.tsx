@@ -1,11 +1,12 @@
 "use client";
 
+import { revalidateRoot } from "@/actions/auth";
+import { createClient } from "@/lib/supabase/client";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { CrossCircledIcon } from "@radix-ui/react-icons";
 import { Button, Callout, Flex, TextField } from "@radix-ui/themes";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { revalidateRoot } from "@/actions/auth";
-import { createClient } from "@/lib/supabase/client";
 
 export interface LoginFormProps {
   next?: string;
@@ -19,6 +20,7 @@ export function LoginForm(props: LoginFormProps) {
     "google" | "github" | "email" | null
   >(null);
   const router = useRouter();
+  const { t } = useLingui();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -79,7 +81,7 @@ export function LoginForm(props: LoginFormProps) {
             loading={isLoading === "google"}
             type="button"
           >
-            Sign in with Google
+            <Trans id="auth.signInGoogle">Sign in with Google</Trans>
           </Button>
           <Button
             variant="outline"
@@ -87,7 +89,7 @@ export function LoginForm(props: LoginFormProps) {
             loading={isLoading === "github"}
             type="button"
           >
-            Sign in with GitHub
+            <Trans id="auth.signInGithub">Sign in with GitHub</Trans>
           </Button>
         </Flex>
         {error && (
@@ -99,7 +101,10 @@ export function LoginForm(props: LoginFormProps) {
           </Callout.Root>
         )}
         <TextField.Root
-          placeholder="Email"
+          placeholder={t({
+            id: "common.email",
+            message: "Email",
+          })}
           required
           type="email"
           value={email}
@@ -111,10 +116,13 @@ export function LoginForm(props: LoginFormProps) {
           required
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
+          placeholder={t({
+            id: "common.password",
+            message: "Password",
+          })}
         />
         <Button type="submit" loading={isLoading === "email"}>
-          Login
+          <Trans id="auth.login">Login</Trans>
         </Button>
       </Flex>
     </form>

@@ -1,5 +1,6 @@
-import { Avatar, Flex, Heading, Text } from "@radix-ui/themes";
 import { createClient } from "@/lib/supabase/server";
+import { Trans } from "@lingui/react/macro";
+import { Avatar, Flex, Heading, Text } from "@radix-ui/themes";
 import styles from "./user-profile.module.css";
 
 export interface UserProfileProps {
@@ -23,7 +24,7 @@ export default async function UserProfile({ id, className }: UserProfileProps) {
         <Avatar fallback=" " size="7" className={styles.avatar} />
         <Flex direction="column" gap="1">
           <Heading as="h2" size="6">
-            Unknown user
+            <Trans id="common.unknownUser">Unknown user</Trans>
           </Heading>
         </Flex>
       </Flex>
@@ -43,7 +44,7 @@ export default async function UserProfile({ id, className }: UserProfileProps) {
       />
       <Flex direction="column" gap="1">
         <Heading as="h2" size="6">
-          {full_name ?? "Unknown"}
+          {full_name ?? <Trans id="common.unknown">Unknown</Trans>}
           {nickname ? <> ({nickname})</> : null}
         </Heading>
         {school ? (
@@ -53,7 +54,8 @@ export default async function UserProfile({ id, className }: UserProfileProps) {
         ) : null}
         {created_at ? (
           <Heading size="3" color="gray">
-            Joined {new Date(created_at).toLocaleDateString()}
+            <Trans id="profile.joined">Joined</Trans>{" "}
+            {new Date(created_at).toLocaleDateString()}
           </Heading>
         ) : null}
         {bio ? <Text size="3">{bio}</Text> : null}
