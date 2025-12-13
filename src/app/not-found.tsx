@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default async function NotFound() {
   const requestHeaders = await headers();
   const lang = getRequestLocale(requestHeaders);
-  initLingui(lang);
+  await initLingui();
   return (
     <>
       <AppHeader />

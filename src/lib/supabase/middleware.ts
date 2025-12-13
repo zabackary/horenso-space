@@ -40,11 +40,13 @@ export async function updateSession(request: NextRequest) {
   const { data } = await supabase.auth.getClaims();
   const user = data?.claims;
 
-  const pathname = "/" + request.nextUrl.pathname.split("/").slice(2).join("/");
-
-  if (pathname !== "/" && !user && !pathname.startsWith("/auth")) {
+  if (
+    request.nextUrl.pathname !== "/" &&
+    !user &&
+    !request.nextUrl.pathname.startsWith("/auth")
+  ) {
     const url = request.nextUrl.clone();
-    url.pathname = "/" + url.pathname.split("/")[1] + "/auth/login";
+    url.pathname = "/auth/login";
     url.searchParams.set("next", request.nextUrl.pathname);
     return NextResponse.redirect(url);
   }
