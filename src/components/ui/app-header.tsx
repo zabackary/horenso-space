@@ -1,21 +1,19 @@
+import getProfile from "@/lib/auth/getProfile";
+import { createClient } from "@/lib/supabase/server";
 import { HomeIcon } from "@radix-ui/react-icons";
 import {
-  Avatar,
   Badge,
   Box,
   Button,
   DropdownMenu,
   Flex,
   Heading,
-  IconButton,
   Tooltip,
 } from "@radix-ui/themes";
 import clsx from "clsx";
 import Link from "next/link";
 import type { ComponentPropsWithoutRef } from "react";
-import { logout } from "@/actions/auth";
-import getProfile from "@/lib/auth/getProfile";
-import { createClient } from "@/lib/supabase/server";
+import { AppHeaderMenu } from "./app-header-menu";
 import styles from "./app-header.module.css";
 
 export interface AppHeaderProps extends ComponentPropsWithoutRef<"header"> {
@@ -47,7 +45,7 @@ export async function AppHeader({
       className={clsx(
         styles.header,
         props.className,
-        disableSticky ? "" : styles.sticky,
+        disableSticky ? "" : styles.sticky
       )}
     >
       <header>
@@ -96,33 +94,7 @@ export async function AppHeader({
                 <Link href="/app/club/create">Create a Club</Link>
               </Button>
             )}
-
-            <DropdownMenu.Root>
-              <DropdownMenu.Trigger>
-                <IconButton variant="ghost">
-                  <Avatar
-                    src={profile.avatar_url ?? undefined}
-                    alt={profile.full_name}
-                    fallback={profile.full_name.charAt(0)}
-                  />
-                </IconButton>
-              </DropdownMenu.Trigger>
-              <DropdownMenu.Content
-                align="end"
-                sideOffset={5}
-                style={{ zIndex: 1 }}
-              >
-                <form style={{ display: "contents" }}>
-                  <DropdownMenu.Item asChild>
-                    <Link href="/app/users/me">Profile and Settings</Link>
-                  </DropdownMenu.Item>
-                  <DropdownMenu.Separator />
-                  <DropdownMenu.Item asChild>
-                    <button formAction={logout}>Logout</button>
-                  </DropdownMenu.Item>
-                </form>
-              </DropdownMenu.Content>
-            </DropdownMenu.Root>
+            <AppHeaderMenu profile={profile} />
           </>
         ) : (
           <>

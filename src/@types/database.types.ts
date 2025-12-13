@@ -359,6 +359,52 @@ export type Database = {
         }
         Relationships: []
       }
+      feedback_submissions: {
+        Row: {
+          club_id: string | null
+          created_at: string
+          feedback: string
+          id: string
+          user_id: string | null
+        }
+        Insert: {
+          club_id?: string | null
+          created_at?: string
+          feedback: string
+          id?: string
+          user_id?: string | null
+        }
+        Update: {
+          club_id?: string | null
+          created_at?: string
+          feedback?: string
+          id?: string
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "feedback_submissions_club_id_fkey"
+            columns: ["club_id"]
+            isOneToOne: false
+            referencedRelation: "clubs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "feedback_submissions_club_id_fkey"
+            columns: ["club_id"]
+            isOneToOne: false
+            referencedRelation: "joined_clubs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "feedback_submissions_club_id_fkey"
+            columns: ["club_id"]
+            isOneToOne: false
+            referencedRelation: "public_clubs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       files: {
         Row: {
           club_id: string | null
