@@ -1,5 +1,9 @@
 "use client";
 
+import type { AbsenceForm } from "@/@types/AbsenceForm";
+import type { Database } from "@/@types/database.types";
+import { createClient } from "@/lib/supabase/client";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { CrossCircledIcon, TrashIcon } from "@radix-ui/react-icons";
 import {
   Button,
@@ -11,9 +15,6 @@ import {
 } from "@radix-ui/themes";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
-import type { AbsenceForm } from "@/@types/AbsenceForm";
-import type { Database } from "@/@types/database.types";
-import { createClient } from "@/lib/supabase/client";
 import AbsenceFormEditor from "./absence-form-editor";
 
 type AbsenceFormRow =
@@ -52,8 +53,10 @@ export default function AbsenceFormDetail({
   const [saving, setSaving] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [savedSnapshot, setSavedSnapshot] = useState(() =>
-    JSON.stringify({ name: initial.name, questions: initial.questions }),
+    JSON.stringify({ name: initial.name, questions: initial.questions })
   );
+
+  const { t } = useLingui();
 
   const isDirty = useMemo(() => {
     const current = JSON.stringify({
@@ -75,11 +78,17 @@ export default function AbsenceFormDetail({
         .eq("club_id", clubId);
       if (updateError) throw updateError;
       setSavedSnapshot(
-        JSON.stringify({ name: state.name, questions: state.questions }),
+        JSON.stringify({ name: state.name, questions: state.questions })
       );
       router.refresh();
     } catch (e: unknown) {
-      setError(e instanceof Error ? e.message : String(e));
+      console.error("Failed to save absence form template", e);
+      setError(
+        t({
+          id: "absenceReportTemplate.saveError",
+          message: "Failed to save template.",
+        })
+      );
     } finally {
       setSaving(false);
     }
@@ -100,7 +109,12 @@ export default function AbsenceFormDetail({
       // Soft UX: navigate back
       window.location.href = window.location.pathname.replace(/\/[^/]+$/, "");
     } catch (e: unknown) {
-      setError(e instanceof Error ? e.message : String(e));
+      setError(
+        t({
+          id: "absenceReportTemplate.deleteError",
+          message: "Failed to delete template.",
+        })
+      );
     } finally {
       setDeleting(false);
     }
@@ -112,7 +126,9 @@ export default function AbsenceFormDetail({
       {isDirty && !error && (
         <Callout.Root color="amber">
           <Callout.Text>
-            Unsaved changes. Save to keep this template.
+            <Trans id="absenceReportTemplate.unsavedChanges">
+              You have unsaved changes
+            </Trans>
           </Callout.Text>
         </Callout.Root>
       )}
@@ -136,17 +152,24 @@ export default function AbsenceFormDetail({
             <Spinner />
           ) : (
             <>
-              <TrashIcon /> Delete
+              <TrashIcon />{" "}
+              <Trans id="absenceReportTemplate.delete">Delete</Trans>
             </>
           )}
         </Button>
         <Button onClick={save} disabled={saving || !isDirty} variant="solid">
-          {saving ? <Spinner /> : isDirty ? "Save changes" : "Saved"}
+          {saving ? (
+            <Spinner />
+          ) : isDirty ? (
+            <Trans id="absenceReportTemplate.saveChanges">Save changes</Trans>
+          ) : (
+            <Trans id="absenceReportTemplate.saved">Saved</Trans>
+          )}
         </Button>
       </Flex>
 
       <AbsenceFormEditor
-        value={state.questions as AbsenceForm}
+        value={state.questions}
         onChange={(questions) => setState((s) => ({ ...s, questions }))}
       />
     </Flex>

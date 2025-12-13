@@ -220,7 +220,11 @@ export default function InvitesManager({
         gap="2"
         align="center"
       >
-        <Button onClick={() => openCreateDialog()}>Generate invite</Button>
+        <Button onClick={() => openCreateDialog()}>
+          <Trans id="inviteManager.generateInvite.generateButton">
+            Generate invite
+          </Trans>
+        </Button>
       </Flex>
 
       <Dialog.Root

@@ -56,6 +56,11 @@ msgid "rolesManager.selectTemplateError"
 msgstr "Absence report template must be selected"
 
 #. js-lingui-explicit-id
+#: src/app/app/[id]/club/config/absence-forms/sidebar.tsx:36
+msgid "absenceReportTemplate.templates"
+msgstr "Absence report templates"
+
+#. js-lingui-explicit-id
 #: src/app/app/[id]/page.tsx:75
 msgid "home.absences"
 msgstr "Absence reports"
@@ -294,6 +299,11 @@ msgid "rolesManager.createNewRole"
 msgstr "Create new role"
 
 #. js-lingui-explicit-id
+#: src/app/app/[id]/club/config/absence-forms/sidebar.tsx:81
+msgid "absenceReportTemplate.createNew"
+msgstr "Create new template"
+
+#. js-lingui-explicit-id
 #: src/components/club-config/roles-manager.tsx:344
 msgid "rolesManager.createRole"
 msgstr "Create Role"
@@ -309,21 +319,26 @@ msgid "forms.createFirst"
 msgstr "Create your first absence report template"
 
 #. js-lingui-explicit-id
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:159
-#: src/app/app/[id]/absences/create/form.tsx:122
-msgid "absences.date"
-msgstr "Date"
-
-#. js-lingui-explicit-id
 #: src/app/app/[id]/calendar/create-event-card.tsx:112
 #: src/app/app/[id]/calendar/create-event-card.tsx:134
 msgid "calendar.date"
 msgstr "Date"
 
 #. js-lingui-explicit-id
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:159
+#: src/app/app/[id]/absences/create/form.tsx:122
+msgid "absences.date"
+msgstr "Date"
+
+#. js-lingui-explicit-id
 #: src/app/app/[id]/calendar/calendar.tsx:53
 msgid "calendar.day"
 msgstr "Day"
+
+#. js-lingui-explicit-id
+#: src/components/club-config/absence-form-detail.tsx:156
+msgid "absenceReportTemplate.delete"
+msgstr "Delete"
 
 #. js-lingui-explicit-id
 #: src/components/club-config/invite.tsx:167
@@ -413,6 +428,11 @@ msgid "rolesManager.deleteRoleError"
 msgstr "Failed to delete role. Please try again later."
 
 #. js-lingui-explicit-id
+#: src/components/club-config/absence-form-detail.tsx:113
+msgid "absenceReportTemplate.deleteError"
+msgstr "Failed to delete template."
+
+#. js-lingui-explicit-id
 #: src/components/club-config/invite.tsx:89
 msgid "invitesManager.generateInviteError"
 msgstr "Failed to generate invite. Please try again."
@@ -436,6 +456,11 @@ msgstr "Failed to save club metadata. Please try again later."
 #: src/components/club-config/roles-manager.tsx:145
 msgid "rolesManager.saveRoleError"
 msgstr "Failed to save role. Please try again later."
+
+#. js-lingui-explicit-id
+#: src/components/club-config/absence-form-detail.tsx:87
+msgid "absenceReportTemplate.saveError"
+msgstr "Failed to save template."
 
 #. js-lingui-explicit-id
 #: src/app/app/[id]/absences/create/form.tsx:66
@@ -651,6 +676,11 @@ msgid "calendar.eventTitle"
 msgstr "New event name"
 
 #. js-lingui-explicit-id
+#: src/app/app/[id]/club/config/absence-forms/sidebar.tsx:43
+msgid "absenceReportTemplate.noTemplates"
+msgstr "No absence report templates found."
+
+#. js-lingui-explicit-id
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:201
 #: src/app/app/[id]/absences/(list)/report-detail.tsx:133
 msgid "absences.noData"
@@ -864,6 +894,16 @@ msgid "common.save"
 msgstr "Save"
 
 #. js-lingui-explicit-id
+#: src/components/club-config/absence-form-detail.tsx:164
+msgid "absenceReportTemplate.saveChanges"
+msgstr "Save changes"
+
+#. js-lingui-explicit-id
+#: src/components/club-config/absence-form-detail.tsx:166
+msgid "absenceReportTemplate.saved"
+msgstr "Saved"
+
+#. js-lingui-explicit-id
 #: src/components/club-create-form.tsx:94
 msgid "club.school"
 msgstr "School"
@@ -894,6 +934,16 @@ msgid "rolesManager.selectTemplateFirst"
 msgstr "Select a template first"
 
 #. js-lingui-explicit-id
+#: src/app/app/[id]/club/config/absence-forms/sidebar.tsx:123
+msgid "absenceReportTemplate.selectTitle"
+msgstr "Select absence form"
+
+#. js-lingui-explicit-id
+#: src/app/app/[id]/club/config/absence-forms/sidebar.tsx:129
+msgid "absenceReportTemplate.selectDescription"
+msgstr "Select an absence form template"
+
+#. js-lingui-explicit-id
 #: src/app/app/[id]/absences/create/form.tsx:99
 msgid "absences.selectEvent"
 msgstr "Select event"
@@ -902,6 +952,11 @@ msgstr "Select event"
 #: src/components/club-config/invite.tsx:262
 msgid "inviteManager.generateInvite.selectRole"
 msgstr "Select role for new members"
+
+#. js-lingui-explicit-id
+#: src/app/app/[id]/club/config/absence-forms/sidebar.tsx:115
+msgid "absenceReportTemplate.select"
+msgstr "Select template"
 
 #. js-lingui-explicit-id
 #: src/components/feedback-form.tsx:135
@@ -998,13 +1053,13 @@ msgstr "Time"
 msgid "forgotPassword.subtitle"
 msgstr "Type in your email and we'll send you a link to reset your password"
 
-#: src/app/app/[id]/absences/(list)/list.tsx:58
-msgid "Unassigned"
-msgstr "Unassigned"
-
 #. js-lingui-explicit-id
 #: src/app/app/[id]/absences/(list)/report-detail.tsx:114
 msgid "common.unassigned"
+msgstr "Unassigned"
+
+#: src/app/app/[id]/absences/(list)/list.tsx:58
+msgid "Unassigned"
 msgstr "Unassigned"
 
 #. js-lingui-explicit-id
@@ -1028,6 +1083,17 @@ msgstr "Unknown"
 #: src/components/ui/user-profile.tsx:27
 msgid "common.unknownUser"
 msgstr "Unknown user"
+
+#. js-lingui-explicit-id
+#: src/app/app/[id]/club/config/absence-forms/new/page.tsx:20
+msgid "absenceReportForm.defaultName"
+msgstr "Untitled form"
+
+#. js-lingui-explicit-id
+#. placeholder {0}: new Date(f.updated_at).toLocaleString()
+#: src/app/app/[id]/club/config/absence-forms/sidebar.tsx:65
+msgid "absenceReportTemplate.updatedAt"
+msgstr "Updated at: {0}"
 
 #. js-lingui-explicit-id
 #: src/components/permission-text.tsx:57
@@ -1095,6 +1161,11 @@ msgstr "You are invited to join a club"
 #: src/app/app/[id]/absences/create/page.tsx:53
 msgid "absence.noForm"
 msgstr "You do not have a configured absence report form. Please contact a club manager."
+
+#. js-lingui-explicit-id
+#: src/components/club-config/absence-form-detail.tsx:129
+msgid "absenceReportTemplate.unsavedChanges"
+msgstr "You have unsaved changes"
 
 #. js-lingui-explicit-id
 #. placeholder {0}: invite.role_name

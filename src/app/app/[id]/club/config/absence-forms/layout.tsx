@@ -9,11 +9,7 @@ export default async function AbsenceFormsLayout({
   children,
   params,
 }: LayoutProps<"/app/[id]/club/config/absence-forms">) {
-  const { id, formId } = (await params) as {
-    id: string;
-    formId?: string;
-    lang: string;
-  };
+  const { id } = await params;
   await initLingui();
   const supabase = await createClient();
 
