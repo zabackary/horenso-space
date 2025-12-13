@@ -236,7 +236,7 @@ msgid "Create a club"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/components/ui/app-header.tsx:101
+#: src/components/ui/app-header.tsx:105
 msgid "header.createClub"
 msgstr ""
 
@@ -353,8 +353,18 @@ msgid "Get started"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/components/ui/app-header.tsx:87
+#: src/components/ui/app-header.tsx:91
 msgid "header.home"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/ui/app-header.tsx:63
+msgid "header.title"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/ui/app-header.tsx:66
+msgid "header.subtitle"
 msgstr ""
 
 #: src/components/club-create-form.tsx:126
@@ -405,7 +415,7 @@ msgid "Login"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/components/ui/app-header.tsx:111
+#: src/components/ui/app-header.tsx:115
 msgid "auth.login"
 msgstr ""
 
@@ -563,7 +573,7 @@ msgid "School (optional)"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/components/ui/app-header.tsx:74
+#: src/components/ui/app-header.tsx:78
 msgid "header.selectClub"
 msgstr ""
 
@@ -603,7 +613,7 @@ msgid "Sign up"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/components/ui/app-header.tsx:116
+#: src/components/ui/app-header.tsx:120
 msgid "auth.signup"
 msgstr ""
 
@@ -650,13 +660,13 @@ msgstr ""
 msgid "Type in your email and we'll send you a link to reset your password"
 msgstr ""
 
-#: src/app/[lang]/app/[id]/absences/(list)/list.tsx:59
-msgid "Unassigned"
-msgstr ""
-
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/report-detail.tsx:114
 msgid "common.unassigned"
+msgstr ""
+
+#: src/app/[lang]/app/[id]/absences/(list)/list.tsx:59
+msgid "Unassigned"
 msgstr ""
 
 #. js-lingui-explicit-id

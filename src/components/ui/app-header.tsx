@@ -59,8 +59,12 @@ export async function AppHeader({
               header.text
             ) : (
               <>
-                <span>報連相SPACE</span>
-                <span>ほうれん草SPACE 🥬</span>
+                <span>
+                  <Trans id="header.title">Horenso SPACE</Trans>
+                </span>
+                <span>
+                  <Trans id="header.subtitle">Horenso SPACE 🥬</Trans>
+                </span>
               </>
             )}
           </Heading>
