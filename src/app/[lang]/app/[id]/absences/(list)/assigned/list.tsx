@@ -17,7 +17,7 @@ export default function AssignedReportsList({
   clubId: string;
   initialReports: AssignedReport[];
 }) {
-  const { i18n } = useLingui();
+  const { t } = useLingui();
   const [selectedReportId, setSelectedReportId] = useState<string | null>(null);
   const reports = initialReports;
 
@@ -52,16 +52,17 @@ export default function AssignedReportsList({
                     <Text weight="bold">{report.user_name}</Text>
                     <Text size="2">
                       {report.event_name ??
-                        new Date(report.report_date).toLocaleDateString() ??
-                        i18n._("common.noEvent")}
+                        new Date(report.report_date).toLocaleDateString() ?? (
+                          <Trans id="common.noEvent">No event</Trans>
+                        )}
                     </Text>
                     {report.event_start_time && (
                       <Text size="1" className={styles.reportMeta}>
-                        {report.event_start_time
-                          ? new Date(
-                              report.event_start_time
-                            ).toLocaleDateString()
-                          : i18n._("common.noDate")}
+                        {report.event_start_time ? (
+                          new Date(report.event_start_time).toLocaleDateString()
+                        ) : (
+                          <Trans id="common.noDate">No date</Trans>
+                        )}
                       </Text>
                     )}
                     {(report.reviews as any[]).length > 0 && (

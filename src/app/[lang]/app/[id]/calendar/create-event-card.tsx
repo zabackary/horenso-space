@@ -32,7 +32,7 @@ export default function CreateEventCard({
   onCreate,
   initialStartDate,
 }: CreateEventCardProps) {
-  const { i18n } = useLingui();
+  const { t } = useLingui();
   const [startDate, setStartDate] = useState(() => {
     return initialStartDate ? initialStartDate() : "";
   });
@@ -95,7 +95,10 @@ export default function CreateEventCard({
     <Flex direction="column" gap="2" p={withPadding ? "1" : "0"} asChild>
       <form onSubmit={handleSubmit} className={styles["form"]}>
         <TextField.Root
-          placeholder={i18n._("calendar.newEventName")}
+          placeholder={t({
+            id: "calendar.eventTitle",
+            message: "New event name",
+          })}
           size="3"
           name="title"
           required
@@ -106,7 +109,10 @@ export default function CreateEventCard({
           </Box>
           <Grid columns="auto auto" gap="2" flexGrow="1">
             <TextField.Root
-              placeholder={i18n._("calendar.date")}
+              placeholder={t({
+                id: "calendar.date",
+                message: "Date",
+              })}
               type="date"
               value={startDate}
               onChange={handleStartDateChange}
@@ -114,7 +120,10 @@ export default function CreateEventCard({
               required
             />
             <TextField.Root
-              placeholder={i18n._("calendar.time")}
+              placeholder={t({
+                id: "calendar.time",
+                message: "Time",
+              })}
               type="time"
               value={startTime}
               onChange={(e) => setStartTime(e.target.value)}
@@ -122,7 +131,10 @@ export default function CreateEventCard({
               required
             />
             <TextField.Root
-              placeholder={i18n._("calendar.date")}
+              placeholder={t({
+                id: "calendar.date",
+                message: "Date",
+              })}
               type="date"
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
@@ -131,7 +143,10 @@ export default function CreateEventCard({
               required
             />
             <TextField.Root
-              placeholder={i18n._("calendar.time")}
+              placeholder={t({
+                id: "calendar.time",
+                message: "Time",
+              })}
               type="time"
               value={endTime}
               onChange={(e) => setEndTime(e.target.value)}
@@ -146,7 +161,10 @@ export default function CreateEventCard({
             <GlobeIcon />
           </Box>
           <TextField.Root
-            placeholder={i18n._("calendar.location")}
+            placeholder={t({
+              id: "calendar.location",
+              message: "Location",
+            })}
             size="2"
             className={styles["location-textfield"]}
             name="location"
@@ -157,7 +175,10 @@ export default function CreateEventCard({
             <TextIcon />
           </Box>
           <TextArea
-            placeholder={i18n._("calendar.notes")}
+            placeholder={t({
+              id: "calendar.notes",
+              message: "Notes",
+            })}
             className={styles["notes-textarea"]}
             size="2"
             name="notes"

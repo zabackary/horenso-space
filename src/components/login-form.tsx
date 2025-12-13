@@ -20,7 +20,7 @@ export function LoginForm(props: LoginFormProps) {
     "google" | "github" | "email" | null
   >(null);
   const router = useRouter();
-  const { i18n } = useLingui();
+  const { t } = useLingui();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -101,7 +101,10 @@ export function LoginForm(props: LoginFormProps) {
           </Callout.Root>
         )}
         <TextField.Root
-          placeholder={i18n._("common.email")}
+          placeholder={t({
+            id: "common.email",
+            message: "Email",
+          })}
           required
           type="email"
           value={email}
@@ -113,7 +116,10 @@ export function LoginForm(props: LoginFormProps) {
           required
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder={i18n._("common.password")}
+          placeholder={t({
+            id: "common.password",
+            message: "Password",
+          })}
         />
         <Button type="submit" loading={isLoading === "email"}>
           <Trans key="auth.login">Login</Trans>

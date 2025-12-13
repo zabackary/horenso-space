@@ -21,7 +21,7 @@ export function ForgotPasswordForm({
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const { i18n } = useLingui();
+  const { t } = useLingui();
 
   const handleForgotPassword = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -79,7 +79,10 @@ export function ForgotPasswordForm({
             </Callout.Root>
           )}
           <TextField.Root
-            placeholder={i18n._("common.email")}
+            placeholder={t({
+              id: "common.email",
+              message: "Email",
+            })}
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}

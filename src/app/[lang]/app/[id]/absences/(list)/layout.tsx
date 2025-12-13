@@ -52,25 +52,25 @@ export function AbsencesTabNav({
   clubId: string;
   permissions: string[];
 }) {
-  const { i18n } = useLingui();
+  const { t } = useLingui();
   return (
     <TabNav.Root style={{ width: "100%" }}>
       <TabNav.Link asChild active={active === "my"}>
         <Link href={`/app/${clubId}/absences/my`}>
-          {i18n._("absences.tab.my")}
+          <Trans key="absences.tab.my">My absences</Trans>
         </Link>
       </TabNav.Link>
       {permissions.includes("canReadAllReports") ? (
         <TabNav.Link asChild active={active === "all"}>
           <Link href={`/app/${clubId}/absences/all`}>
-            {i18n._("absences.tab.all")}
+            <Trans key="absences.tab.all">All absences</Trans>
           </Link>
         </TabNav.Link>
       ) : null}
       {permissions.includes("canWriteReportReview") ? (
         <TabNav.Link asChild active={active === "assigned"}>
           <Link href={`/app/${clubId}/absences/assigned`}>
-            {i18n._("absences.tab.assigned")}
+            <Trans key="absences.tab.assigned">Assigned to me</Trans>
           </Link>
         </TabNav.Link>
       ) : null}

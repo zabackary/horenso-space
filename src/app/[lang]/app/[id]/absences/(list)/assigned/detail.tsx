@@ -27,7 +27,7 @@ export default function ReportDetail({
   report: AssignedReport;
   clubId: string;
 }) {
-  const { i18n } = useLingui();
+  const { t } = useLingui();
   const [comments, setComments] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -106,14 +106,14 @@ export default function ReportDetail({
           <Callout.Root color={isAccepted ? "green" : "yellow"}>
             <Callout.Text>
               {isAccepted
-                ? i18n._(
-                    "absences.reportAccepted",
-                    "This report has been accepted."
-                  )
-                : i18n._(
-                    "absences.reportNotAccepted",
-                    "This report has not been accepted."
-                  )}
+                ? t({
+                    id: "absences.reportAccepted",
+                    message: "This report has been accepted.",
+                  })
+                : t({
+                    id: "absences.reportPending",
+                    message: "This report is has not been accepted.",
+                  })}
             </Callout.Text>
           </Callout.Root>
         )}
@@ -140,7 +140,7 @@ export default function ReportDetail({
               <Trans id="absences.submittedBy">Submitted by</Trans>
             </DataList.Label>
             <DataList.Value>
-              {report.user_name || i18n._("common.unknown")}
+              {report.user_name || <Trans id="common.unknown">Unknown</Trans>}
             </DataList.Value>
           </DataList.Item>
 
@@ -149,7 +149,7 @@ export default function ReportDetail({
               <Trans id="absences.event">Event</Trans>
             </DataList.Label>
             <DataList.Value>
-              {report.event_name || i18n._("common.noEvent")}
+              {report.event_name || <Trans id="common.noEvent">No event</Trans>}
             </DataList.Value>
           </DataList.Item>
 
@@ -180,7 +180,9 @@ export default function ReportDetail({
               <Trans id="absences.assignedTo">Assigned to</Trans>
             </DataList.Label>
             <DataList.Value>
-              {report.assigned_to_role_name || i18n._("absences.unassigned")}
+              {report.assigned_to_role_name || (
+                <Trans id="absences.unassigned">Unassigned</Trans>
+              )}
             </DataList.Value>
           </DataList.Item>
         </DataList.Root>
@@ -222,9 +224,11 @@ export default function ReportDetail({
                           color={review.accepted ? "green" : "red"}
                           weight="bold"
                         >
-                          {review.accepted
-                            ? i18n._("absences.accepted")
-                            : i18n._("absences.rejected")}
+                          {review.accepted ? (
+                            <Trans id="absences.accepted">Accepted</Trans>
+                          ) : (
+                            <Trans id="absences.rejected">Rejected</Trans>
+                          )}
                         </Text>
                       </Flex>
                       {review.comments && (
@@ -249,10 +253,10 @@ export default function ReportDetail({
           </Heading>
           <Flex direction="column" gap="3">
             <TextArea
-              placeholder={i18n._(
-                "absences.commentsPlaceholder",
-                "Add comments (optional)"
-              )}
+              placeholder={t({
+                id: "absences.commentsPlaceholder",
+                message: "Add comments (optional)",
+              })}
               value={comments}
               onChange={(e) => setComments(e.target.value)}
               rows={4}

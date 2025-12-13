@@ -34,7 +34,7 @@ interface ModePickerProps {
 }
 
 export function ModePicker({ mode, setMode }: ModePickerProps) {
-  const { i18n } = useLingui();
+  const { t } = useLingui();
   return (
     <Select.Root
       value={mode}
@@ -43,9 +43,15 @@ export function ModePicker({ mode, setMode }: ModePickerProps) {
     >
       <Select.Trigger />
       <Select.Content position="popper">
-        <Select.Item value="year">{i18n._("calendar.year")}</Select.Item>
-        <Select.Item value="month">{i18n._("calendar.month")}</Select.Item>
-        <Select.Item value="day">{i18n._("calendar.day")}</Select.Item>
+        <Select.Item value="year">
+          {t({ id: "calendar.year", message: "Year" })}
+        </Select.Item>
+        <Select.Item value="month">
+          {t({ id: "calendar.month", message: "Month" })}
+        </Select.Item>
+        <Select.Item value="day">
+          {t({ id: "calendar.day", message: "Day" })}
+        </Select.Item>
       </Select.Content>
     </Select.Root>
   );

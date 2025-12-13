@@ -42,7 +42,7 @@ export async function updateSession(request: NextRequest) {
 
   const pathname = "/" + request.nextUrl.pathname.split("/").slice(2).join("/");
 
-  if (pathname !== "" && !user && !pathname.startsWith("/auth")) {
+  if (pathname !== "/" && !user && !pathname.startsWith("/auth")) {
     const url = request.nextUrl.clone();
     url.pathname = "/" + url.pathname.split("/")[1] + "/auth/login";
     url.searchParams.set("next", request.nextUrl.pathname);

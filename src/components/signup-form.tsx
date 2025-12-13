@@ -22,7 +22,7 @@ export function SignupForm(props: SignupFormProps) {
     "google" | "github" | "email" | null
   >(null);
   const router = useRouter();
-  const { i18n } = useLingui();
+  const { t } = useLingui();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -116,7 +116,10 @@ export function SignupForm(props: SignupFormProps) {
           </Callout.Root>
         )}
         <TextField.Root
-          placeholder={i18n._("common.email")}
+          placeholder={t({
+            id: "common.email",
+            message: "Email",
+          })}
           required
           type="email"
           value={email}
@@ -128,7 +131,10 @@ export function SignupForm(props: SignupFormProps) {
           required
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder={i18n._("common.password")}
+          placeholder={t({
+            id: "common.password",
+            message: "Password",
+          })}
         />
         <TextField.Root
           id="confirm-password"
@@ -136,10 +142,16 @@ export function SignupForm(props: SignupFormProps) {
           required
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
-          placeholder={i18n._("auth.confirmPassword")}
+          placeholder={t({
+            id: "auth.confirmPassword",
+            message: "Confirm Password",
+          })}
         />
         <TextField.Root
-          placeholder={i18n._("common.fullName")}
+          placeholder={t({
+            id: "common.fullName",
+            message: "Full Name",
+          })}
           required
           type="text"
           value={fullName}

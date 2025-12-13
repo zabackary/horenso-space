@@ -19,7 +19,7 @@ import styles from "./app-header.module.css";
 
 export interface AppHeaderProps extends ComponentPropsWithoutRef<"header"> {
   header?: {
-    text: string;
+    text: React.ReactNode;
     href: string;
   };
   disableSticky?: boolean;

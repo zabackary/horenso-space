@@ -16,7 +16,7 @@ import { useId, useState } from "react";
 
 export function ClubCreateForm() {
   const a11yId = useId();
-  const { i18n } = useLingui();
+  const { t } = useLingui();
 
   const [clubName, setClubName] = useState("");
   const [clubDescription, setClubDescription] = useState("");
@@ -69,7 +69,10 @@ export function ClubCreateForm() {
           <span aria-label="required">*</span>
         </Text>
         <TextField.Root
-          placeholder={i18n._("club.namePlaceholder")}
+          placeholder={t({
+            id: "club.namePlaceholder",
+            message: "Your club",
+          })}
           required
           id={`${a11yId}-name`}
           value={clubName}
@@ -79,10 +82,10 @@ export function ClubCreateForm() {
           <Trans key="club.description">Club description (optional)</Trans>
         </Text>
         <TextField.Root
-          placeholder={i18n._(
-            "club.descriptionPlaceholder",
-            "A short description"
-          )}
+          placeholder={t({
+            id: "club.descriptionPlaceholder",
+            message: "A short description",
+          })}
           id={`${a11yId}-description`}
           value={clubDescription}
           onChange={(e) => setClubDescription(e.target.value)}
@@ -91,7 +94,10 @@ export function ClubCreateForm() {
           <Trans key="club.school">School (optional)</Trans>
         </Text>
         <TextField.Root
-          placeholder={i18n._("club.schoolPlaceholder")}
+          placeholder={t({
+            id: "club.schoolPlaceholder",
+            message: "Your school",
+          })}
           id={`${a11yId}-school`}
           value={clubSchool}
           onChange={(e) => setClubSchool(e.target.value)}

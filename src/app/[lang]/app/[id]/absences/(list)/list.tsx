@@ -18,7 +18,7 @@ export default function AbsenceReportList({
   clubId,
   linkPathPrefix,
 }: AbsenceReportListProps) {
-  const { i18n } = useLingui();
+  const { t } = useLingui();
   const reportsData = use(reports);
   return (
     <Suspense fallback={<Spinner />}>
@@ -55,15 +55,16 @@ export default function AbsenceReportList({
                 <Flex justify="between" align="center">
                   <Text size="2">
                     <Trans id="absences.assignedTo">Assigned to</Trans>{" "}
-                    {report.assignedToRole?.roleName ||
-                      i18n._("absences.unassigned")}
+                    {report.assignedToRole?.roleName || (
+                      <Trans>Unassigned</Trans>
+                    )}
                   </Text>
                   {report.reviews.length > 0 && (
                     <Text size="1" className={styles.reviewIndicator}>
-                      ✓ {report.reviews.length}{" "}
-                      {report.reviews.length === 1
-                        ? i18n._("absences.review")
-                        : i18n._("absences.reviews")}
+                      ✓{" "}
+                      <Trans id="absences.totalReviews">
+                        {report.reviews.length} reviews
+                      </Trans>
                     </Text>
                   )}
                 </Flex>

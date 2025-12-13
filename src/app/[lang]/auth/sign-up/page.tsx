@@ -34,6 +34,18 @@ export default async function SignUpPage(
   const searchParams = await props.searchParams;
   const next = searchParams.next;
 
+  const loginLink = (
+    <RadixLink asChild>
+      <Link
+        href={
+          next ? `/auth/login?next=${encodeURIComponent(next)}` : "/auth/login"
+        }
+      >
+        <Trans>Log in</Trans>
+      </Link>
+    </RadixLink>
+  );
+
   return (
     <>
       <Heading as="h1" size="7" align="center">
@@ -45,18 +57,7 @@ export default async function SignUpPage(
       <SignupForm next={next} />
       <Text color="gray" align="center" as="p">
         <Trans key="signup.haveAccount">
-          Already have an account?{" "}
-          <RadixLink asChild>
-            <Link
-              href={
-                next
-                  ? `/auth/login?next=${encodeURIComponent(next)}`
-                  : "/auth/login"
-              }
-            >
-              Login
-            </Link>
-          </RadixLink>
+          Already have an account? {loginLink}
         </Trans>
       </Text>
     </>

@@ -37,7 +37,7 @@ export default function ReportDetail({
   report: Report;
   clubId: string;
 }) {
-  const { i18n } = useLingui();
+  const { t } = useLingui();
   const reviews = (report.reviews || []) as any[];
   const reportData = report.data as Record<string, any>;
 
@@ -81,7 +81,7 @@ export default function ReportDetail({
             <Trans id="absences.submittedBy">Submitted by</Trans>
           </DataList.Label>
           <DataList.Value>
-            {report.user_name || i18n._("common.unknown")}
+            {report.user_name || <Trans id="common.unknown">Unknown</Trans>}
           </DataList.Value>
         </DataList.Item>
 
@@ -90,7 +90,7 @@ export default function ReportDetail({
             <Trans id="absences.event">Event</Trans>
           </DataList.Label>
           <DataList.Value>
-            {report.event_name || i18n._("common.noEvent")}
+            {report.event_name || <Trans id="common.noEvent">No event</Trans>}
           </DataList.Value>
         </DataList.Item>
 
@@ -110,7 +110,9 @@ export default function ReportDetail({
             <Trans id="absences.assignedTo">Assigned to</Trans>
           </DataList.Label>
           <DataList.Value>
-            {report.assigned_to_role_name || i18n._("absences.unassigned")}
+            {report.assigned_to_role_name || (
+              <Trans id="common.unassigned">Unassigned</Trans>
+            )}
           </DataList.Value>
         </DataList.Item>
       </DataList.Root>
@@ -158,9 +160,11 @@ export default function ReportDetail({
                         color={review.accepted ? "green" : "red"}
                         weight="bold"
                       >
-                        {review.accepted
-                          ? i18n._("absences.accepted")
-                          : i18n._("absences.rejected")}
+                        {review.accepted ? (
+                          <Trans id="absences.accepted">Accepted</Trans>
+                        ) : (
+                          <Trans id="absences.rejected">Rejected</Trans>
+                        )}
                       </Text>
                     </Flex>
                     {review.comments && <Text size="2">{review.comments}</Text>}

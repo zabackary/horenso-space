@@ -48,32 +48,32 @@ export function ClubConfigTabNav({
   active?: "metadata" | "roles" | "members" | "invites" | "absenceForms";
   clubId: string;
 }) {
-  const { i18n } = useLingui();
+  const { t } = useLingui();
   return (
     <TabNav.Root>
       <TabNav.Link asChild active={active === "metadata"}>
         <Link href={`/app/${clubId}/club/config/metadata`}>
-          {i18n._("config.tab.metadata")}
+          <Trans key="config.tab.metadata">Metadata</Trans>
         </Link>
       </TabNav.Link>
       <TabNav.Link asChild active={active === "roles"}>
         <Link href={`/app/${clubId}/club/config/roles`}>
-          {i18n._("config.tab.roles")}
+          <Trans key="config.tab.roles">Roles</Trans>
         </Link>
       </TabNav.Link>
       <TabNav.Link asChild active={active === "members"}>
         <Link href={`/app/${clubId}/club/config/members`}>
-          {i18n._("config.tab.members")}
+          <Trans key="config.tab.members">Members</Trans>
         </Link>
       </TabNav.Link>
       <TabNav.Link asChild active={active === "invites"}>
         <Link href={`/app/${clubId}/club/config/invites`}>
-          {i18n._("config.tab.invites")}
+          <Trans key="config.tab.invites">Invites</Trans>
         </Link>
       </TabNav.Link>
       <TabNav.Link asChild active={active === "absenceForms"}>
         <Link href={`/app/${clubId}/club/config/absence-forms`}>
-          {i18n._("config.tab.absenceForms")}
+          <Trans key="config.tab.absenceForms">Absence</Trans>
         </Link>
       </TabNav.Link>
     </TabNav.Root>

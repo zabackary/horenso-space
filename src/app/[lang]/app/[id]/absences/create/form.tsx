@@ -37,7 +37,7 @@ export default function Form({
     }[]
   >;
 }) {
-  const { i18n } = useLingui();
+  const { t } = useLingui();
   const eventsData = use(events);
   const [event, setEvent] = useState<string | null>(null);
   const [date, setDate] = useState<string | null>(null);
@@ -63,10 +63,10 @@ export default function Form({
     if (error) {
       console.error("Error submitting absence report:", error);
       setError(
-        i18n._(
-          "absences.submitError",
-          "Failed to submit absence report. Please try again."
-        )
+        t({
+          id: "absences.submitError",
+          message: "Failed to submit absence report. Please try again.",
+        })
       );
     } else {
       redirect(`/app/${clubId}/absences`);
@@ -96,7 +96,10 @@ export default function Form({
             value={event || undefined}
           >
             <Select.Trigger
-              placeholder={i18n._("absences.selectEvent")}
+              placeholder={t({
+                id: "absences.selectEvent",
+                message: "Select event",
+              })}
               style={{ width: "100%" }}
             />
             <Select.Content>
@@ -116,7 +119,10 @@ export default function Form({
           </Heading>
           <TextField.Root
             type="date"
-            placeholder={i18n._("absences.date")}
+            placeholder={t({
+              id: "absences.date",
+              message: "Date",
+            })}
             value={date || ""}
             onChange={(e) => setDate(e.target.value)}
           />
