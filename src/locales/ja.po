@@ -331,12 +331,12 @@ msgstr "ホーム"
 #. js-lingui-explicit-id
 #: src/components/ui/app-header.tsx:63
 msgid "header.title"
-msgstr "Horenso Space"
+msgstr "報連相SPACE"
 
 #. js-lingui-explicit-id
 #: src/components/ui/app-header.tsx:66
 msgid "header.subtitle"
-msgstr "クラブ管理プラットフォーム"
+msgstr "ほうれん草 SPACE 🥬"
 
 #. js-lingui-explicit-id
 #: src/components/club-create-form.tsx:126
@@ -716,12 +716,12 @@ msgstr "ウェブサイト"
 #. js-lingui-explicit-id
 #: src/app/[lang]/auth/login/page.tsx:55
 msgid "login.welcome"
-msgstr "Horenso Spaceへようこそ"
+msgstr "報連相SPACEへようこそ"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/auth/sign-up/page.tsx:52
 msgid "signup.welcome"
-msgstr "Horenso Spaceへようこそ"
+msgstr "報連相SPACEへようこそ"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/calendar/calendar.tsx:47
