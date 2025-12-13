@@ -81,7 +81,7 @@ export function LoginForm(props: LoginFormProps) {
             loading={isLoading === "google"}
             type="button"
           >
-            <Trans key="auth.signInGoogle">Sign in with Google</Trans>
+            <Trans id="auth.signInGoogle">Sign in with Google</Trans>
           </Button>
           <Button
             variant="outline"
@@ -89,7 +89,7 @@ export function LoginForm(props: LoginFormProps) {
             loading={isLoading === "github"}
             type="button"
           >
-            <Trans key="auth.signInGithub">Sign in with GitHub</Trans>
+            <Trans id="auth.signInGithub">Sign in with GitHub</Trans>
           </Button>
         </Flex>
         {error && (
@@ -122,7 +122,7 @@ export function LoginForm(props: LoginFormProps) {
           })}
         />
         <Button type="submit" loading={isLoading === "email"}>
-          <Trans key="auth.login">Login</Trans>
+          <Trans id="auth.login">Login</Trans>
         </Button>
       </Flex>
     </form>

@@ -52,23 +52,23 @@ export default async function LoginPage(
   return (
     <>
       <Heading as="h1" size="7" align="center">
-        <Trans key="login.welcome">Welcome back</Trans>
+        <Trans id="login.welcome">Welcome back</Trans>
       </Heading>
       <Text as="p" size="3" my="2" align="center">
-        <Trans key="login.subtitle">
+        <Trans id="login.subtitle">
           Let's get you logged in to your account
         </Trans>
       </Text>
       <LoginForm next={next} />
       <Text color="gray" align="center" as="p">
-        <Trans key="login.noAccount">
+        <Trans id="login.noAccount">
           Don't have an account yet? {createAccountLink}
         </Trans>
       </Text>
       <Text color="gray" align="center" as="p">
         <RadixLink asChild>
           <Link href="/auth/forgot-password">
-            <Trans key="login.forgotPassword">Forgot password</Trans>
+            <Trans id="login.forgotPassword">Forgot password</Trans>
           </Link>
         </RadixLink>
       </Text>

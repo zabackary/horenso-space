@@ -31,7 +31,7 @@ export default async function UserPage({
       {mutualClubs && mutualClubs.length > 0 && (
         <Flex direction="column" gap="1">
           <Heading>
-            <Trans key="user.commonClubs">Common Clubs</Trans>
+            <Trans id="user.commonClubs">Common Clubs</Trans>
           </Heading>
           <Flex gap="2" wrap="wrap">
             <ClubCard club={mutualClubs[0].joined_clubs} />

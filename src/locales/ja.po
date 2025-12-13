@@ -1,89 +1,53 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2025-12-13 12:00+0900\n"
+"POT-Creation-Date: 2025-12-13 14:51+0900\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: ja\n"
-"Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Plural-Forms: \n"
-
-#. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/calendar/create-event-card.tsx:98
-#~ msgid "calendar.newEventName"
-#~ msgstr ""
-
-#. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/layout.tsx:60
-#~ msgid "absences.tab.my"
-#~ msgstr ""
-
-#. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/layout.tsx:66
-#~ msgid "absences.tab.all"
-#~ msgstr ""
-
-#. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/layout.tsx:73
-#~ msgid "absences.tab.assigned"
-#~ msgstr ""
-
-#. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/list.tsx:55
-#~ msgid "absences.review"
-#~ msgstr ""
-
-#. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:110
-#~ msgid "absences.reportNotAccepted"
-#~ msgstr ""
 
 #. js-lingui-explicit-id
 #. placeholder {0}: report.reviews.length
 #: src/app/[lang]/app/[id]/absences/(list)/list.tsx:65
 msgid "absences.totalReviews"
-msgstr "合計レビュー数: {0}"
+msgstr "レビュー数: {0}"
 
+#. js-lingui-explicit-id
 #. placeholder {0}: new Date().getFullYear()
 #: src/app/[lang]/page.tsx:82
-msgid "©{0} Horenso SPACE"
-msgstr "©{0} Horenso SPACE"
+msgid "landing.copyright"
+msgstr "© {0} Horenso Space. 著作権所有。"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/page.tsx:26
-msgid "<0>Improve</0> your club communication"
-msgstr "<0>向上させる</0>クラブコミュニケーション"
+msgid "landing.headline"
+msgstr "クラブ管理を簡単に"
 
 #. js-lingui-explicit-id
 #: src/components/club-create-form.tsx:85
 msgid "club.descriptionPlaceholder"
-msgstr "クラブの説明を入力してください"
-
-#: src/app/[lang]/app/[id]/club/config/layout.tsx:76
-#~ msgid "Absence"
-#~ msgstr "欠席"
+msgstr "クラブについて説明してください..."
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/club/config/layout.tsx:76
 msgid "config.tab.absenceForms"
 msgstr "欠席報告フォーム"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/page.tsx:74
-msgid "Absence reports"
+msgid "home.absences"
 msgstr "欠席報告"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/layout.tsx:29
-msgid "Absences"
-msgstr "欠席"
+msgid "absences.heading"
+msgstr "欠席報告"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:270
 msgid "absences.accept"
-msgstr "承認"
+msgstr "承認する"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:228
@@ -91,17 +55,19 @@ msgstr "承認"
 msgid "absences.accepted"
 msgstr "承認済み"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/page.tsx:76
-msgid "Access absence report forms"
-msgstr "欠席報告フォームにアクセス"
+msgid "home.absencesDesc"
+msgstr "欠席報告の管理と確認"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:256
 msgid "absences.commentsPlaceholder"
-msgstr "コメントを入力してください"
+msgstr "コメントを入力してください..."
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/page.tsx:67
-msgid "Add event"
+msgid "home.addEvent"
 msgstr "イベントを追加"
 
 #. js-lingui-explicit-id
@@ -109,30 +75,35 @@ msgstr "イベントを追加"
 msgid "absences.addReview"
 msgstr "レビューを追加"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/layout.tsx:66
-msgid "All absences"
-msgstr "すべての欠席"
+msgid "absences.tab.all"
+msgstr "すべて"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/auth/sign-up/page.tsx:59
-msgid "Already have an account? {loginLink}"
-msgstr "既にアカウントをお持ちですか？ {loginLink}"
+msgid "signup.haveAccount"
+msgstr "すでにアカウントをお持ちですか?"
 
+#. js-lingui-explicit-id
 #: src/components/forgot-password-form.tsx:96
-msgid "Already have an account? <0><1>Login</1></0>"
-msgstr "既にアカウントをお持ちですか？ <0><1>ログイン</1></0>"
+msgid "forgotPassword.haveAccount"
+msgstr "アカウントをお持ちですか?"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/page.tsx:57
-msgid "An error occurred"
+msgid "app.error"
 msgstr "エラーが発生しました"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/auth/error/page.tsx:25
-msgid "An unspecified error occurred"
+msgid "error.unspecified"
 msgstr "予期しないエラーが発生しました"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/assigned/list.tsx:31
 msgid "absences.assignedReports"
-msgstr "割り当てられたレポート"
+msgstr "割り当てられた報告"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:180
@@ -141,30 +112,31 @@ msgstr "割り当てられたレポート"
 msgid "absences.assignedTo"
 msgstr "割り当て先"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/layout.tsx:73
-msgid "Assigned to me"
-msgstr "自分に割り当てられたもの"
-
-#: src/app/[lang]/app/club/create/page.tsx:19
-msgid "Back"
-msgstr "戻る"
+msgid "absences.tab.assigned"
+msgstr "割り当てられた"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/calendar/[...date]/page.tsx:25
+#: src/app/[lang]/app/club/create/page.tsx:19
 msgid "common.back"
 msgstr "戻る"
 
+#. js-lingui-explicit-id
 #: src/app/not-found.tsx:46
-msgid "Back to home"
+msgid "notFound.backHome"
 msgstr "ホームに戻る"
 
+#. js-lingui-explicit-id
 #. placeholder {0}: invite.invited_by_name
 #: src/app/[lang]/app/club/invite/[id]/page.tsx:67
-msgid "by {0}"
-msgstr "{0}により"
+msgid "invite.by"
+msgstr "{0}により招待されました"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/page.tsx:57
-msgid "Calendar"
+msgid "home.calendar"
 msgstr "カレンダー"
 
 #. js-lingui-explicit-id
@@ -172,47 +144,60 @@ msgstr "カレンダー"
 msgid "common.cancel"
 msgstr "キャンセル"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/page.tsx:59
-msgid "Check your club events and meetings"
-msgstr "クラブのイベントと会議を確認"
+msgid "home.calendarDesc"
+msgstr "イベントと予定を管理"
 
+#. js-lingui-explicit-id
 #: src/components/forgot-password-form.tsx:49
-msgid "Check your email"
-msgstr "メールを確認"
+msgid "forgotPassword.checkEmail"
+msgstr "メールを確認してください"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/club/config/layout.tsx:34
-msgid "Club configuration"
-msgstr "クラブ設定"
+msgid "config.heading"
+msgstr "設定"
 
+#. js-lingui-explicit-id
 #: src/components/club-create-form.tsx:82
-msgid "Club description (optional)"
-msgstr "クラブの説明（オプション）"
+msgid "club.description"
+msgstr "説明"
 
+#. js-lingui-explicit-id
 #: src/components/club-create-form.tsx:68
-msgid "Club name"
+msgid "club.name"
 msgstr "クラブ名"
 
+#. js-lingui-explicit-id
 #. placeholder {0}: clubIsPublic ? "Public" : "Private"
 #: src/components/club-create-form.tsx:116
-msgid "Club privacy: {0}"
-msgstr "クラブのプライバシー: {0}"
+msgid "club.privacy"
+msgstr "プライバシー: {0}"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/page.tsx:47
-msgid "Club settings"
+msgid "home.clubSettings"
 msgstr "クラブ設定"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/users/[id]/page.tsx:34
-msgid "Common Clubs"
-msgstr "共通クラブ"
+msgid "user.commonClubs"
+msgstr "共通のクラブ"
 
 #. js-lingui-explicit-id
 #: src/components/signup-form.tsx:145
 msgid "auth.confirmPassword"
 msgstr "パスワードを確認"
 
-#: src/app/[lang]/app/club/create/page.tsx:25
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/page.tsx:63
-msgid "Create a club"
+msgid "app.createClub"
+msgstr "クラブを作成"
+
+#. js-lingui-explicit-id
+#: src/app/[lang]/app/club/create/page.tsx:25
+msgid "club.create"
 msgstr "クラブを作成"
 
 #. js-lingui-explicit-id
@@ -220,28 +205,25 @@ msgstr "クラブを作成"
 msgid "header.createClub"
 msgstr "クラブを作成"
 
+#. js-lingui-explicit-id
 #: src/components/club-create-form.tsx:140
-msgid "Create club"
-msgstr "クラブを作成"
+msgid "club.createButton"
+msgstr "作成"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/calendar/[...date]/page.tsx:29
 msgid "calendar.createEvent"
 msgstr "イベントを作成"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/club/config/absence-forms/page.tsx:40
-msgid "Create template"
+msgid "forms.createTemplate"
 msgstr "テンプレートを作成"
 
-#: src/app/[lang]/app/[id]/club/config/absence-forms/page.tsx:34
-msgid "Create your first absence report template"
-msgstr "最初の欠席報告テンプレートを作成"
-
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/calendar/create-event-card.tsx:112
-#: src/app/[lang]/app/[id]/calendar/create-event-card.tsx:134
-msgid "calendar.date"
-msgstr "日付"
+#: src/app/[lang]/app/[id]/club/config/absence-forms/page.tsx:34
+msgid "forms.createFirst"
+msgstr "最初のフォームを作成してください"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:159
@@ -250,17 +232,20 @@ msgid "absences.date"
 msgstr "日付"
 
 #. js-lingui-explicit-id
+#: src/app/[lang]/app/[id]/calendar/create-event-card.tsx:112
+#: src/app/[lang]/app/[id]/calendar/create-event-card.tsx:134
+msgid "calendar.date"
+msgstr "日付"
+
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/calendar/calendar.tsx:53
 msgid "calendar.day"
 msgstr "日"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/auth/login/page.tsx:64
-msgid "Don't have an account yet? {createAccountLink}"
-msgstr "まだアカウントをお持ちでないですか？ {createAccountLink}"
-
-#: src/app/[lang]/auth/login/page.tsx:48
-#~ msgid "Don't have an account yet? <0><1>Sign up</1></0>"
-#~ msgstr ""
+msgid "login.noAccount"
+msgstr "アカウントをお持ちではありませんか?"
 
 #. js-lingui-explicit-id
 #: src/components/forgot-password-form.tsx:82
@@ -269,9 +254,10 @@ msgstr "まだアカウントをお持ちでないですか？ {createAccountLin
 msgid "common.email"
 msgstr "メール"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/auth/error/page.tsx:21
-msgid "Error code:"
-msgstr "エラーコード:"
+msgid "error.code"
+msgstr "エラーコード"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:149
@@ -289,28 +275,32 @@ msgstr "イベント欠席"
 #: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:170
 #: src/app/[lang]/app/[id]/absences/(list)/report-detail.tsx:100
 msgid "absences.eventDate"
-msgstr "イベント日"
+msgstr "イベント日付"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/club/invite/[id]/page.tsx:84
-msgid "Failed to join club"
-msgstr "クラブへの参加に失敗しました"
+msgid "invite.error"
+msgstr "招待エラー"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/create/form.tsx:66
 msgid "absences.submitError"
-msgstr "送信エラー"
+msgstr "送信エラーが発生しました"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/page.tsx:61
-msgid "Find your shared documents easily"
-msgstr "共有ドキュメントを簡単に見つける"
+msgid "landing.feature2"
+msgstr "簡単な欠席管理"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/page.tsx:68
-msgid "For any club, any team, any group"
-msgstr "どんなクラブ、チーム、グループにも対応"
+msgid "landing.feature3"
+msgstr "カレンダー統合"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/auth/login/page.tsx:71
-msgid "Forgot password"
-msgstr "パスワードを忘れた"
+msgid "login.forgotPassword"
+msgstr "パスワードをお忘れですか?"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/report-detail.tsx:124
@@ -326,11 +316,12 @@ msgstr "フルネーム"
 #: src/app/[lang]/app/[id]/absences/create/form.tsx:86
 #: src/app/[lang]/app/[id]/absences/create/form.tsx:118
 msgid "absences.generalAbsence"
-msgstr "一般的な欠席"
+msgstr "通常欠席"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/page.tsx:33
-msgid "Get started"
-msgstr "開始する"
+msgid "landing.getStarted"
+msgstr "始める"
 
 #. js-lingui-explicit-id
 #: src/components/ui/app-header.tsx:91
@@ -340,119 +331,118 @@ msgstr "ホーム"
 #. js-lingui-explicit-id
 #: src/components/ui/app-header.tsx:63
 msgid "header.title"
-msgstr "Horenso SPACE"
+msgstr "Horenso Space"
 
 #. js-lingui-explicit-id
 #: src/components/ui/app-header.tsx:66
 msgid "header.subtitle"
 msgstr "クラブ管理プラットフォーム"
 
+#. js-lingui-explicit-id
 #: src/components/club-create-form.tsx:126
-msgid "If this is a public club, anyone can find it online and view the information you've provided here."
-msgstr "これが公開クラブの場合、誰でもオンラインで見つけることができ、ここで提供した情報を表示できます。"
+msgid "club.privacyDescription"
+msgstr "クラブを公開または非公開に設定"
 
+#. js-lingui-explicit-id
 #: src/components/forgot-password-form.tsx:57
-msgid "If you registered using your email and password, you will receive a password reset email."
-msgstr "メールとパスワードを使用して登録した場合、パスワードリセットメールが届きます。"
+msgid "forgotPassword.checkEmailBody"
+msgstr "パスワードリセットメールを送信しました。メールを確認して指示に従ってください。"
 
+#. js-lingui-explicit-id
 #: src/app/not-found.tsx:51
-msgid "Image by <0>SAWARATSUKI</0>"
-msgstr "画像提供: <0>SAWARATSUKI</0>"
+msgid "notFound.imageCredit"
+msgstr "画像提供"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/club/invite/[id]/page.tsx:41
-msgid "Invalid or expired invite link"
-msgstr "無効または期限切れの招待リンク"
+msgid "invite.invalid"
+msgstr "この招待は無効です"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/club/config/layout.tsx:71
 msgid "config.tab.invites"
 msgstr "招待"
 
-#: src/app/[lang]/app/[id]/club/config/layout.tsx:71
-#~ msgid "Invites"
-#~ msgstr "招待"
-
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/club/invite/[id]/page.tsx:89
-msgid "Join Club"
-msgstr "クラブに参加"
+msgid "invite.join"
+msgstr "参加する"
 
 #. js-lingui-explicit-id
 #: src/components/ui/user-profile.tsx:57
 msgid "profile.joined"
-msgstr "参加日"
+msgstr "参加日時"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/auth/login/page.tsx:58
-msgid "Let's get you logged in to your account"
-msgstr "アカウントにログインしましょう"
+msgid "login.subtitle"
+msgstr "アカウントにログイン"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/calendar/create-event-card.tsx:164
 msgid "calendar.location"
 msgstr "場所"
 
-#: src/app/[lang]/auth/sign-up/page.tsx:44
+#. js-lingui-explicit-id
 #: src/app/[lang]/page.tsx:38
+msgid "landing.login"
+msgstr "ログイン"
+
+#: src/app/[lang]/auth/sign-up/page.tsx:44
 msgid "Log in"
 msgstr "ログイン"
 
-#: src/components/login-form.tsx:125
-msgid "Login"
-msgstr "ログイン"
-
 #. js-lingui-explicit-id
+#: src/components/login-form.tsx:125
 #: src/components/ui/app-header.tsx:115
 msgid "auth.login"
 msgstr "ログイン"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/page.tsx:49
-msgid "Manage club metadata, roles, and members"
-msgstr "クラブのメタデータ、ロール、メンバーを管理"
+msgid "home.clubSettingsDesc"
+msgstr "クラブの設定を管理"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/club/config/layout.tsx:66
 msgid "config.tab.members"
 msgstr "メンバー"
 
-#: src/app/[lang]/app/[id]/club/config/layout.tsx:66
-#~ msgid "Members"
-#~ msgstr "メンバー"
-
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/club/config/layout.tsx:56
 msgid "config.tab.metadata"
-msgstr "メタデータ"
-
-#: src/app/[lang]/app/[id]/club/config/layout.tsx:56
-#~ msgid "Metadata"
-#~ msgstr "メタデータ"
+msgstr "基本情報"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/calendar/calendar.tsx:50
 msgid "calendar.month"
 msgstr "月"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/layout.tsx:60
-msgid "My absences"
-msgstr "自分の欠席"
+msgid "absences.tab.my"
+msgstr "私の報告"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/calendar/create-event-card.tsx:98
 msgid "calendar.eventTitle"
 msgstr "イベントタイトル"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/page.tsx:41
-msgid "News content will appear here"
-msgstr "ニュースコンテンツがここに表示されます"
+msgid "home.newsContent"
+msgstr "ニュース&お知らせ"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:201
 #: src/app/[lang]/app/[id]/absences/(list)/report-detail.tsx:133
 msgid "absences.noData"
-msgstr "データなし"
+msgstr "データがありません"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/page.tsx:46
-msgid "No clubs found. You need an invite link to join a club."
-msgstr "クラブが見つかりません。クラブに参加するには招待リンクが必要です。"
+msgid "app.noClubs"
+msgstr "クラブがありません"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/assigned/list.tsx:64
@@ -474,24 +464,26 @@ msgstr "フォームなし"
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/assigned/list.tsx:36
 msgid "absences.noAssignedReports"
-msgstr "割り当てられたレポートなし"
+msgstr "割り当てられた報告がありません"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/list.tsx:27
 msgid "absences.noReports"
-msgstr "レポートなし"
+msgstr "報告がありません"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/club/config/absence-forms/page.tsx:31
-msgid "No templates yet"
-msgstr "テンプレートがまだありません"
+msgid "forms.empty"
+msgstr "フォームが空です"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/calendar/create-event-card.tsx:178
 msgid "calendar.notes"
 msgstr "メモ"
 
+#. js-lingui-explicit-id
 #: src/app/not-found.tsx:41
-msgid "Page not found"
+msgid "notFound.heading"
 msgstr "ページが見つかりません"
 
 #. js-lingui-explicit-id
@@ -505,29 +497,36 @@ msgstr "パスワード"
 msgid "absences.previousReviews"
 msgstr "前回のレビュー"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/page.tsx:38
-msgid "Recent news"
-msgstr "最近のニュース"
+msgid "home.news"
+msgstr "ニュース"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:277
 msgid "absences.reject"
-msgstr "却下"
+msgstr "却下する"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:230
 #: src/app/[lang]/app/[id]/absences/(list)/report-detail.tsx:166
 msgid "absences.rejected"
-msgstr "却下済み"
+msgstr "却下"
 
-#: src/app/[lang]/app/[id]/absences/(list)/layout.tsx:35
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/page.tsx:82
-msgid "Report absence"
+msgid "home.reportAbsence"
 msgstr "欠席を報告"
 
+#. js-lingui-explicit-id
+#: src/app/[lang]/app/[id]/absences/(list)/layout.tsx:35
+msgid "absences.report"
+msgstr "報告"
+
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/create/page.tsx:48
-msgid "Report an absence"
-msgstr "欠席を報告"
+msgid "absence.report"
+msgstr "欠席報告"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:194
@@ -538,10 +537,11 @@ msgstr "報告の詳細"
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:122
 msgid "absences.reportReview"
-msgstr "報告レビュー"
+msgstr "報告のレビュー"
 
+#. js-lingui-explicit-id
 #: src/components/forgot-password-form.tsx:66
-msgid "Reset your password"
+msgid "forgotPassword.heading"
 msgstr "パスワードをリセット"
 
 #. js-lingui-explicit-id
@@ -559,86 +559,92 @@ msgstr "レビュー"
 msgid "config.tab.roles"
 msgstr "ロール"
 
-#: src/app/[lang]/app/[id]/club/config/layout.tsx:61
-#~ msgid "Roles"
-#~ msgstr "ロール"
-
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/calendar/create-event-card.tsx:199
 msgid "common.save"
 msgstr "保存"
 
+#. js-lingui-explicit-id
 #: src/components/club-create-form.tsx:94
-msgid "School (optional)"
-msgstr "学校（オプション）"
+msgid "club.school"
+msgstr "学校"
 
 #. js-lingui-explicit-id
 #: src/components/ui/app-header.tsx:78
 msgid "header.selectClub"
 msgstr "クラブを選択"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/page.tsx:35
-msgid "Select a club"
+msgid "app.selectClub"
 msgstr "クラブを選択"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/assigned/list.tsx:87
 msgid "absences.selectReportToReview"
-msgstr "レビューするレポートを選択"
+msgstr "レビューする報告を選択"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/users/me/page.tsx:10
-msgid "Select a setting to change"
-msgstr "変更する設定を選択"
+msgid "settings.selectSetting"
+msgstr "設定を選択"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/create/form.tsx:99
 msgid "absences.selectEvent"
 msgstr "イベントを選択"
 
+#. js-lingui-explicit-id
 #: src/components/forgot-password-form.tsx:92
-msgid "Send reset email"
-msgstr "リセットメールを送信"
-
-#: src/components/login-form.tsx:92
-msgid "Sign in with GitHub"
-msgstr "GitHubでサインイン"
-
-#: src/components/login-form.tsx:84
-msgid "Sign in with Google"
-msgstr "Googleでサインイン"
-
-#: src/app/[lang]/auth/login/page.tsx:47
-#: src/components/signup-form.tsx:167
-msgid "Sign up"
-msgstr "サインアップ"
+msgid "forgotPassword.sendReset"
+msgstr "リセットを送信"
 
 #. js-lingui-explicit-id
+#: src/components/login-form.tsx:92
+msgid "auth.signInGithub"
+msgstr "Githubでログイン"
+
+#. js-lingui-explicit-id
+#: src/components/login-form.tsx:84
+msgid "auth.signInGoogle"
+msgstr "Googleでログイン"
+
+#. js-lingui-explicit-id
+#: src/components/signup-form.tsx:167
 #: src/components/ui/app-header.tsx:120
 msgid "auth.signup"
 msgstr "サインアップ"
 
+#: src/app/[lang]/auth/login/page.tsx:47
+msgid "Sign up"
+msgstr "サインアップ"
+
+#. js-lingui-explicit-id
 #: src/app/[lang]/auth/sign-up/page.tsx:55
-msgid "Sign up to get started"
-msgstr "サインアップして開始"
+msgid "signup.subtitle"
+msgstr "新しいアカウントを作成"
 
+#. js-lingui-explicit-id
 #: src/components/signup-form.tsx:107
-msgid "Sign up with GitHub"
-msgstr "GitHubでサインアップ"
+msgid "auth.signUpGithub"
+msgstr "Githubで登録"
 
+#. js-lingui-explicit-id
 #: src/components/signup-form.tsx:99
-msgid "Sign up with Google"
-msgstr "Googleでサインアップ"
+msgid "auth.signUpGoogle"
+msgstr "Googleで登録"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/auth/error/page.tsx:17
-msgid "Something went wrong"
-msgstr "問題が発生しました"
+msgid "error.heading"
+msgstr "エラー"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:140
 #: src/app/[lang]/app/[id]/absences/(list)/list.tsx:46
 #: src/app/[lang]/app/[id]/absences/(list)/report-detail.tsx:81
 msgid "absences.submittedBy"
-msgstr "投稿者"
+msgstr "送信者"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:109
@@ -656,17 +662,18 @@ msgstr "報告は保留中です"
 msgid "calendar.time"
 msgstr "時間"
 
+#. js-lingui-explicit-id
 #: src/components/forgot-password-form.tsx:69
-msgid "Type in your email and we'll send you a link to reset your password"
-msgstr "メールを入力してください。パスワードをリセットするためのリンクを送信します"
+msgid "forgotPassword.subtitle"
+msgstr "パスワードをリセットするためのメールを送信します"
+
+#: src/app/[lang]/app/[id]/absences/(list)/list.tsx:59
+msgid "Unassigned"
+msgstr "未割り当て"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/report-detail.tsx:114
 msgid "common.unassigned"
-msgstr "未割り当て"
-
-#: src/app/[lang]/app/[id]/absences/(list)/list.tsx:59
-msgid "Unassigned"
 msgstr "未割り当て"
 
 #. js-lingui-explicit-id
@@ -674,9 +681,10 @@ msgstr "未割り当て"
 msgid "absences.unassigned"
 msgstr "未割り当て"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/page.tsx:54
-msgid "Understand quickly who's where and when"
-msgstr "誰がどこにいつそこにいるのかをすぐに理解"
+msgid "landing.feature1"
+msgstr "クラブを簡単に管理"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:143
@@ -690,64 +698,74 @@ msgstr "不明"
 msgid "common.unknownUser"
 msgstr "不明なユーザー"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/users/me/layout.tsx:31
-msgid "User settings"
-msgstr "ユーザー設定"
+msgid "user.settings"
+msgstr "設定"
 
+#. js-lingui-explicit-id
 #: src/components/forgot-password-form.tsx:52
-msgid "We emailed you a password reset link"
-msgstr "パスワードリセットリンクをメールで送信しました"
+msgid "forgotPassword.emailSent"
+msgstr "メールを送信しました"
 
+#. js-lingui-explicit-id
 #: src/components/club-create-form.tsx:106
-msgid "Website (optional)"
-msgstr "ウェブサイト（オプション）"
+msgid "club.website"
+msgstr "ウェブサイト"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/auth/login/page.tsx:55
-msgid "Welcome back"
-msgstr "お帰りなさい"
+msgid "login.welcome"
+msgstr "Horenso Spaceへようこそ"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/auth/sign-up/page.tsx:52
-msgid "Welcome!"
-msgstr "ようこそ！"
+msgid "signup.welcome"
+msgstr "Horenso Spaceへようこそ"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/calendar/calendar.tsx:47
 msgid "calendar.year"
 msgstr "年"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/club/invite/[id]/page.tsx:51
-msgid "You are invited to join a club"
-msgstr "クラブに招待されています"
+msgid "invite.heading"
+msgstr "クラブへの招待"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/create/page.tsx:53
-msgid "You do not have a configured absence report form. Please contact a club manager."
-msgstr "設定された欠席報告フォームがありません。クラブマネージャーに連絡してください。"
+msgid "absence.noForm"
+msgstr "フォームがありません"
 
+#. js-lingui-explicit-id
 #. placeholder {0}: invite.role_name
 #. placeholder {1}: new Date(invite.expires_at).toLocaleString()
 #: src/app/[lang]/app/club/invite/[id]/page.tsx:72
-msgid "You will be joining as: <0>{0}</0>. Expires at: <1>{1}</1>"
-msgstr "次のメンバーとして参加します: <0>{0}</0>。有効期限: <1>{1}</1>"
+msgid "invite.details"
+msgstr "ロール: {0} | 有効期限: {1}"
 
 #. js-lingui-explicit-id
 #: src/components/club-create-form.tsx:72
 msgid "club.namePlaceholder"
-msgstr "クラブ名を入力"
+msgstr "クラブの名前を入力..."
 
+#. js-lingui-explicit-id
 #: src/components/signup-form.tsx:161
-msgid "Your full name will not be shared with people outside of your clubs unless you choose to at a later time."
-msgstr "フルネームは、後で選択しない限り、クラブ外の人と共有されません。"
+msgid "auth.fullNameDisclaimer"
+msgstr "本名で登録してください"
 
 #. js-lingui-explicit-id
 #: src/components/club-create-form.tsx:97
 msgid "club.schoolPlaceholder"
-msgstr "学校名を入力（オプション）"
+msgstr "学校名を入力..."
 
 #. js-lingui-explicit-id
 #: src/components/ui/club-card.tsx:65
 msgid "club.join"
 msgstr "参加"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/page.tsx:77
-msgid "札幌光星中学高等学校吹奏楽部とクリスチャン・アカデミー・イン・ジャパンロボティクス部のが制作"
-msgstr "札幌光星中学高等学校吹奏楽部とクリスチャン・アカデミー・イン・ジャパンロボティクス部により制作"
+msgid "landing.footer"
+msgstr "すべてのクラブの管理を1つのプラットフォームで"

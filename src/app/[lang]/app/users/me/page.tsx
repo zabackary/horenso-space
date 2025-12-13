@@ -7,7 +7,7 @@ export default function MeDefault() {
     <>
       <MeTabNav />
       <Card>
-        <Trans key="settings.selectSetting">Select a setting to change</Trans>
+        <Trans id="settings.selectSetting">Select a setting to change</Trans>
       </Card>
     </>
   );

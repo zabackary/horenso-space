@@ -35,18 +35,18 @@ export default async function ClubPage({
       >
         <Card variant="ghost">
           <Heading>
-            <Trans key="home.news">Recent news</Trans>
+            <Trans id="home.news">Recent news</Trans>
           </Heading>
           <Text>
-            <Trans key="home.newsContent">News content will appear here</Trans>
+            <Trans id="home.newsContent">News content will appear here</Trans>
           </Text>
         </Card>
       </Box>
       {permissions.permissions.includes("canManageClub") ? (
         <HomeCard
-          title={<Trans key="home.clubSettings">Club settings</Trans>}
+          title={<Trans id="home.clubSettings">Club settings</Trans>}
           description={
-            <Trans key="home.clubSettingsDesc">
+            <Trans id="home.clubSettingsDesc">
               Manage club metadata, roles, and members
             </Trans>
           }
@@ -54,9 +54,9 @@ export default async function ClubPage({
         />
       ) : null}
       <HomeCard
-        title={<Trans key="home.calendar">Calendar</Trans>}
+        title={<Trans id="home.calendar">Calendar</Trans>}
         description={
-          <Trans key="home.calendarDesc">
+          <Trans id="home.calendarDesc">
             Check your club events and meetings
           </Trans>
         }
@@ -64,22 +64,22 @@ export default async function ClubPage({
         action={
           permissions.permissions.includes("canWriteCalendar")
             ? {
-                label: <Trans key="home.addEvent">Add event</Trans>,
+                label: <Trans id="home.addEvent">Add event</Trans>,
                 href: `/app/${id}/calendar/create`,
               }
             : undefined
         }
       />
       <HomeCard
-        title={<Trans key="home.absences">Absence reports</Trans>}
+        title={<Trans id="home.absences">Absence reports</Trans>}
         description={
-          <Trans key="home.absencesDesc">Access absence report forms</Trans>
+          <Trans id="home.absencesDesc">Access absence report forms</Trans>
         }
         href={`/app/${id}/absences`}
         action={
           permissions.permissions.includes("canWriteOwnReport")
             ? {
-                label: <Trans key="home.reportAbsence">Report absence</Trans>,
+                label: <Trans id="home.reportAbsence">Report absence</Trans>,
                 href: `/app/${id}/absences/create`,
               }
             : undefined

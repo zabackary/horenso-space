@@ -28,7 +28,7 @@ export default async function MeLayout({
       <UserShareActions profile={profile} />
 
       <Heading as="h2" size="3">
-        <Trans key="user.settings">User settings</Trans>
+        <Trans id="user.settings">User settings</Trans>
       </Heading>
       {children}
     </Flex>

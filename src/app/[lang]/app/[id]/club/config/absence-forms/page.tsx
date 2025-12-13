@@ -28,16 +28,16 @@ export default async function ClubAbsenceFormsPage({
       <Card>
         <Flex direction="column" gap="3">
           <Heading size="4">
-            <Trans key="forms.empty">No templates yet</Trans>
+            <Trans id="forms.empty">No templates yet</Trans>
           </Heading>
           <Text>
-            <Trans key="forms.createFirst">
+            <Trans id="forms.createFirst">
               Create your first absence report template
             </Trans>
           </Text>
           <Button asChild>
             <Link href={`/app/${id}/club/config/absence-forms/new`}>
-              <Trans key="forms.createTemplate">Create template</Trans>
+              <Trans id="forms.createTemplate">Create template</Trans>
             </Link>
           </Button>
         </Flex>

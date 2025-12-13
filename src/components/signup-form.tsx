@@ -96,7 +96,7 @@ export function SignupForm(props: SignupFormProps) {
             loading={isLoading === "google"}
             type="button"
           >
-            <Trans key="auth.signUpGoogle">Sign up with Google</Trans>
+            <Trans id="auth.signUpGoogle">Sign up with Google</Trans>
           </Button>
           <Button
             variant="outline"
@@ -104,7 +104,7 @@ export function SignupForm(props: SignupFormProps) {
             loading={isLoading === "github"}
             type="button"
           >
-            <Trans key="auth.signUpGithub">Sign up with GitHub</Trans>
+            <Trans id="auth.signUpGithub">Sign up with GitHub</Trans>
           </Button>
         </Flex>
         {error && (
@@ -158,13 +158,13 @@ export function SignupForm(props: SignupFormProps) {
           onChange={(e) => setFullName(e.target.value)}
         />
         <Text size="1" color="gray" as="p">
-          <Trans key="auth.fullNameDisclaimer">
+          <Trans id="auth.fullNameDisclaimer">
             Your full name will not be shared with people outside of your clubs
             unless you choose to at a later time.
           </Trans>
         </Text>
         <Button type="submit" loading={isLoading === "email"}>
-          <Trans key="auth.signup">Sign up</Trans>
+          <Trans id="auth.signup">Sign up</Trans>
         </Button>
       </Flex>
     </form>

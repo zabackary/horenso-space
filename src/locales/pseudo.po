@@ -19,21 +19,6 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/layout.tsx:60
-#~ msgid "absences.tab.my"
-#~ msgstr ""
-
-#. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/layout.tsx:66
-#~ msgid "absences.tab.all"
-#~ msgstr ""
-
-#. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/layout.tsx:73
-#~ msgid "absences.tab.assigned"
-#~ msgstr ""
-
-#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/list.tsx:55
 #~ msgid "absences.review"
 #~ msgstr ""
@@ -49,14 +34,24 @@ msgstr ""
 msgid "absences.totalReviews"
 msgstr ""
 
+#. js-lingui-explicit-id
 #. placeholder {0}: new Date().getFullYear()
 #: src/app/[lang]/page.tsx:82
-msgid "©{0} Horenso SPACE"
+msgid "landing.copyright"
+msgstr ""
+
+#: src/app/[lang]/page.tsx:82
+#~ msgid "©{0} Horenso SPACE"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/app/[lang]/page.tsx:26
+msgid "landing.headline"
 msgstr ""
 
 #: src/app/[lang]/page.tsx:26
-msgid "<0>Improve</0> your club communication"
-msgstr ""
+#~ msgid "<0>Improve</0> your club communication"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/components/club-create-form.tsx:85
@@ -72,13 +67,23 @@ msgstr ""
 msgid "config.tab.absenceForms"
 msgstr ""
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/page.tsx:74
-msgid "Absence reports"
+msgid "home.absences"
+msgstr ""
+
+#: src/app/[lang]/app/[id]/page.tsx:74
+#~ msgid "Absence reports"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/app/[lang]/app/[id]/absences/(list)/layout.tsx:29
+msgid "absences.heading"
 msgstr ""
 
 #: src/app/[lang]/app/[id]/absences/(list)/layout.tsx:29
-msgid "Absences"
-msgstr ""
+#~ msgid "Absences"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:270
@@ -91,43 +96,78 @@ msgstr ""
 msgid "absences.accepted"
 msgstr ""
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/page.tsx:76
-msgid "Access absence report forms"
+msgid "home.absencesDesc"
 msgstr ""
+
+#: src/app/[lang]/app/[id]/page.tsx:76
+#~ msgid "Access absence report forms"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:256
 msgid "absences.commentsPlaceholder"
 msgstr ""
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/page.tsx:67
-msgid "Add event"
+msgid "home.addEvent"
 msgstr ""
+
+#: src/app/[lang]/app/[id]/page.tsx:67
+#~ msgid "Add event"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:252
 msgid "absences.addReview"
 msgstr ""
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/layout.tsx:66
-msgid "All absences"
+msgid "absences.tab.all"
+msgstr ""
+
+#: src/app/[lang]/app/[id]/absences/(list)/layout.tsx:66
+#~ msgid "All absences"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/app/[lang]/auth/sign-up/page.tsx:59
+msgid "signup.haveAccount"
 msgstr ""
 
 #: src/app/[lang]/auth/sign-up/page.tsx:59
-msgid "Already have an account? {loginLink}"
+#~ msgid "Already have an account? {loginLink}"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/forgot-password-form.tsx:96
+msgid "forgotPassword.haveAccount"
 msgstr ""
 
 #: src/components/forgot-password-form.tsx:96
-msgid "Already have an account? <0><1>Login</1></0>"
+#~ msgid "Already have an account? <0><1>Login</1></0>"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/app/[lang]/app/page.tsx:57
+msgid "app.error"
 msgstr ""
 
 #: src/app/[lang]/app/page.tsx:57
-msgid "An error occurred"
+#~ msgid "An error occurred"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/app/[lang]/auth/error/page.tsx:25
+msgid "error.unspecified"
 msgstr ""
 
 #: src/app/[lang]/auth/error/page.tsx:25
-msgid "An unspecified error occurred"
-msgstr ""
+#~ msgid "An unspecified error occurred"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/assigned/list.tsx:31
@@ -141,100 +181,192 @@ msgstr ""
 msgid "absences.assignedTo"
 msgstr ""
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/layout.tsx:73
-msgid "Assigned to me"
+msgid "absences.tab.assigned"
 msgstr ""
 
-#: src/app/[lang]/app/club/create/page.tsx:19
-msgid "Back"
-msgstr ""
+#: src/app/[lang]/app/[id]/absences/(list)/layout.tsx:73
+#~ msgid "Assigned to me"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/calendar/[...date]/page.tsx:25
+#: src/app/[lang]/app/club/create/page.tsx:19
 msgid "common.back"
 msgstr ""
 
+#: src/app/[lang]/app/club/create/page.tsx:19
+#~ msgid "Back"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
 #: src/app/not-found.tsx:46
-msgid "Back to home"
+msgid "notFound.backHome"
 msgstr ""
 
+#: src/app/not-found.tsx:46
+#~ msgid "Back to home"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
 #. placeholder {0}: invite.invited_by_name
 #: src/app/[lang]/app/club/invite/[id]/page.tsx:67
-msgid "by {0}"
+msgid "invite.by"
+msgstr ""
+
+#: src/app/[lang]/app/club/invite/[id]/page.tsx:67
+#~ msgid "by {0}"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/app/[lang]/app/[id]/page.tsx:57
+msgid "home.calendar"
 msgstr ""
 
 #: src/app/[lang]/app/[id]/page.tsx:57
-msgid "Calendar"
-msgstr ""
+#~ msgid "Calendar"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/calendar/create-event-card.tsx:209
 msgid "common.cancel"
 msgstr ""
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/page.tsx:59
-msgid "Check your club events and meetings"
+msgid "home.calendarDesc"
+msgstr ""
+
+#: src/app/[lang]/app/[id]/page.tsx:59
+#~ msgid "Check your club events and meetings"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/forgot-password-form.tsx:49
+msgid "forgotPassword.checkEmail"
 msgstr ""
 
 #: src/components/forgot-password-form.tsx:49
-msgid "Check your email"
+#~ msgid "Check your email"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/app/[lang]/app/[id]/club/config/layout.tsx:34
+msgid "config.heading"
 msgstr ""
 
 #: src/app/[lang]/app/[id]/club/config/layout.tsx:34
-msgid "Club configuration"
+#~ msgid "Club configuration"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/club-create-form.tsx:82
+msgid "club.description"
 msgstr ""
 
 #: src/components/club-create-form.tsx:82
-msgid "Club description (optional)"
+#~ msgid "Club description (optional)"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/club-create-form.tsx:68
+msgid "club.name"
 msgstr ""
 
 #: src/components/club-create-form.tsx:68
-msgid "Club name"
-msgstr ""
+#~ msgid "Club name"
+#~ msgstr ""
 
+#. js-lingui-explicit-id
 #. placeholder {0}: clubIsPublic ? "Public" : "Private"
 #: src/components/club-create-form.tsx:116
-msgid "Club privacy: {0}"
+msgid "club.privacy"
+msgstr ""
+
+#: src/components/club-create-form.tsx:116
+#~ msgid "Club privacy: {0}"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/app/[lang]/app/[id]/page.tsx:47
+msgid "home.clubSettings"
 msgstr ""
 
 #: src/app/[lang]/app/[id]/page.tsx:47
-msgid "Club settings"
+#~ msgid "Club settings"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/app/[lang]/app/users/[id]/page.tsx:34
+msgid "user.commonClubs"
 msgstr ""
 
 #: src/app/[lang]/app/users/[id]/page.tsx:34
-msgid "Common Clubs"
-msgstr ""
+#~ msgid "Common Clubs"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/components/signup-form.tsx:145
 msgid "auth.confirmPassword"
 msgstr ""
 
+#. js-lingui-explicit-id
+#: src/app/[lang]/app/page.tsx:63
+msgid "app.createClub"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/app/[lang]/app/club/create/page.tsx:25
+msgid "club.create"
+msgstr ""
+
 #: src/app/[lang]/app/club/create/page.tsx:25
 #: src/app/[lang]/app/page.tsx:63
-msgid "Create a club"
-msgstr ""
+#~ msgid "Create a club"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/components/ui/app-header.tsx:105
 msgid "header.createClub"
 msgstr ""
 
+#. js-lingui-explicit-id
 #: src/components/club-create-form.tsx:140
-msgid "Create club"
+msgid "club.createButton"
 msgstr ""
+
+#: src/components/club-create-form.tsx:140
+#~ msgid "Create club"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/calendar/[...date]/page.tsx:29
 msgid "calendar.createEvent"
 msgstr ""
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/club/config/absence-forms/page.tsx:40
-msgid "Create template"
+msgid "forms.createTemplate"
+msgstr ""
+
+#: src/app/[lang]/app/[id]/club/config/absence-forms/page.tsx:40
+#~ msgid "Create template"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/app/[lang]/app/[id]/club/config/absence-forms/page.tsx:34
+msgid "forms.createFirst"
 msgstr ""
 
 #: src/app/[lang]/app/[id]/club/config/absence-forms/page.tsx:34
-msgid "Create your first absence report template"
+#~ msgid "Create your first absence report template"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:159
+#: src/app/[lang]/app/[id]/absences/create/form.tsx:122
+msgid "absences.date"
 msgstr ""
 
 #. js-lingui-explicit-id
@@ -244,19 +376,18 @@ msgid "calendar.date"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:159
-#: src/app/[lang]/app/[id]/absences/create/form.tsx:122
-msgid "absences.date"
-msgstr ""
-
-#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/calendar/calendar.tsx:53
 msgid "calendar.day"
 msgstr ""
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/auth/login/page.tsx:64
-msgid "Don't have an account yet? {createAccountLink}"
+msgid "login.noAccount"
 msgstr ""
+
+#: src/app/[lang]/auth/login/page.tsx:64
+#~ msgid "Don't have an account yet? {createAccountLink}"
+#~ msgstr ""
 
 #: src/app/[lang]/auth/login/page.tsx:48
 #~ msgid "Don't have an account yet? <0><1>Sign up</1></0>"
@@ -269,9 +400,14 @@ msgstr ""
 msgid "common.email"
 msgstr ""
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/auth/error/page.tsx:21
-msgid "Error code:"
+msgid "error.code"
 msgstr ""
+
+#: src/app/[lang]/auth/error/page.tsx:21
+#~ msgid "Error code:"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:149
@@ -291,26 +427,46 @@ msgstr ""
 msgid "absences.eventDate"
 msgstr ""
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/club/invite/[id]/page.tsx:84
-msgid "Failed to join club"
+msgid "invite.error"
 msgstr ""
+
+#: src/app/[lang]/app/club/invite/[id]/page.tsx:84
+#~ msgid "Failed to join club"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/create/form.tsx:66
 msgid "absences.submitError"
 msgstr ""
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/page.tsx:61
-msgid "Find your shared documents easily"
+msgid "landing.feature2"
+msgstr ""
+
+#: src/app/[lang]/page.tsx:61
+#~ msgid "Find your shared documents easily"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/app/[lang]/page.tsx:68
+msgid "landing.feature3"
 msgstr ""
 
 #: src/app/[lang]/page.tsx:68
-msgid "For any club, any team, any group"
+#~ msgid "For any club, any team, any group"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/app/[lang]/auth/login/page.tsx:71
+msgid "login.forgotPassword"
 msgstr ""
 
 #: src/app/[lang]/auth/login/page.tsx:71
-msgid "Forgot password"
-msgstr ""
+#~ msgid "Forgot password"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/report-detail.tsx:124
@@ -328,9 +484,14 @@ msgstr ""
 msgid "absences.generalAbsence"
 msgstr ""
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/page.tsx:33
-msgid "Get started"
+msgid "landing.getStarted"
 msgstr ""
+
+#: src/app/[lang]/page.tsx:33
+#~ msgid "Get started"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/components/ui/app-header.tsx:91
@@ -347,21 +508,41 @@ msgstr ""
 msgid "header.subtitle"
 msgstr ""
 
+#. js-lingui-explicit-id
 #: src/components/club-create-form.tsx:126
-msgid "If this is a public club, anyone can find it online and view the information you've provided here."
+msgid "club.privacyDescription"
+msgstr ""
+
+#: src/components/club-create-form.tsx:126
+#~ msgid "If this is a public club, anyone can find it online and view the information you've provided here."
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/forgot-password-form.tsx:57
+msgid "forgotPassword.checkEmailBody"
 msgstr ""
 
 #: src/components/forgot-password-form.tsx:57
-msgid "If you registered using your email and password, you will receive a password reset email."
+#~ msgid "If you registered using your email and password, you will receive a password reset email."
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/app/not-found.tsx:51
+msgid "notFound.imageCredit"
 msgstr ""
 
 #: src/app/not-found.tsx:51
-msgid "Image by <0>SAWARATSUKI</0>"
+#~ msgid "Image by <0>SAWARATSUKI</0>"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/app/[lang]/app/club/invite/[id]/page.tsx:41
+msgid "invite.invalid"
 msgstr ""
 
 #: src/app/[lang]/app/club/invite/[id]/page.tsx:41
-msgid "Invalid or expired invite link"
-msgstr ""
+#~ msgid "Invalid or expired invite link"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/club/config/layout.tsx:71
@@ -372,41 +553,61 @@ msgstr ""
 #~ msgid "Invites"
 #~ msgstr ""
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/club/invite/[id]/page.tsx:89
-msgid "Join Club"
+msgid "invite.join"
 msgstr ""
+
+#: src/app/[lang]/app/club/invite/[id]/page.tsx:89
+#~ msgid "Join Club"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/components/ui/user-profile.tsx:57
 msgid "profile.joined"
 msgstr ""
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/auth/login/page.tsx:58
-msgid "Let's get you logged in to your account"
+msgid "login.subtitle"
 msgstr ""
+
+#: src/app/[lang]/auth/login/page.tsx:58
+#~ msgid "Let's get you logged in to your account"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/calendar/create-event-card.tsx:164
 msgid "calendar.location"
 msgstr ""
 
-#: src/app/[lang]/auth/sign-up/page.tsx:44
+#. js-lingui-explicit-id
 #: src/app/[lang]/page.tsx:38
+msgid "landing.login"
+msgstr ""
+
+#: src/app/[lang]/auth/sign-up/page.tsx:44
 msgid "Log in"
 msgstr ""
 
-#: src/components/login-form.tsx:125
-msgid "Login"
-msgstr ""
-
 #. js-lingui-explicit-id
+#: src/components/login-form.tsx:125
 #: src/components/ui/app-header.tsx:115
 msgid "auth.login"
 msgstr ""
 
+#: src/components/login-form.tsx:125
+#~ msgid "Login"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/page.tsx:49
-msgid "Manage club metadata, roles, and members"
+msgid "home.clubSettingsDesc"
 msgstr ""
+
+#: src/app/[lang]/app/[id]/page.tsx:49
+#~ msgid "Manage club metadata, roles, and members"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/club/config/layout.tsx:66
@@ -431,18 +632,28 @@ msgstr ""
 msgid "calendar.month"
 msgstr ""
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/layout.tsx:60
-msgid "My absences"
+msgid "absences.tab.my"
 msgstr ""
+
+#: src/app/[lang]/app/[id]/absences/(list)/layout.tsx:60
+#~ msgid "My absences"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/calendar/create-event-card.tsx:98
 msgid "calendar.eventTitle"
 msgstr ""
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/page.tsx:41
-msgid "News content will appear here"
+msgid "home.newsContent"
 msgstr ""
+
+#: src/app/[lang]/app/[id]/page.tsx:41
+#~ msgid "News content will appear here"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:201
@@ -450,9 +661,14 @@ msgstr ""
 msgid "absences.noData"
 msgstr ""
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/page.tsx:46
-msgid "No clubs found. You need an invite link to join a club."
+msgid "app.noClubs"
 msgstr ""
+
+#: src/app/[lang]/app/page.tsx:46
+#~ msgid "No clubs found. You need an invite link to join a club."
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/assigned/list.tsx:64
@@ -481,18 +697,28 @@ msgstr ""
 msgid "absences.noReports"
 msgstr ""
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/club/config/absence-forms/page.tsx:31
-msgid "No templates yet"
+msgid "forms.empty"
 msgstr ""
+
+#: src/app/[lang]/app/[id]/club/config/absence-forms/page.tsx:31
+#~ msgid "No templates yet"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/calendar/create-event-card.tsx:178
 msgid "calendar.notes"
 msgstr ""
 
+#. js-lingui-explicit-id
 #: src/app/not-found.tsx:41
-msgid "Page not found"
+msgid "notFound.heading"
 msgstr ""
+
+#: src/app/not-found.tsx:41
+#~ msgid "Page not found"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/components/login-form.tsx:119
@@ -505,9 +731,14 @@ msgstr ""
 msgid "absences.previousReviews"
 msgstr ""
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/page.tsx:38
-msgid "Recent news"
+msgid "home.news"
 msgstr ""
+
+#: src/app/[lang]/app/[id]/page.tsx:38
+#~ msgid "Recent news"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:277
@@ -520,14 +751,29 @@ msgstr ""
 msgid "absences.rejected"
 msgstr ""
 
+#. js-lingui-explicit-id
+#: src/app/[lang]/app/[id]/page.tsx:82
+msgid "home.reportAbsence"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/app/[lang]/app/[id]/absences/(list)/layout.tsx:35
+msgid "absences.report"
+msgstr ""
+
 #: src/app/[lang]/app/[id]/absences/(list)/layout.tsx:35
 #: src/app/[lang]/app/[id]/page.tsx:82
-msgid "Report absence"
+#~ msgid "Report absence"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/app/[lang]/app/[id]/absences/create/page.tsx:48
+msgid "absence.report"
 msgstr ""
 
 #: src/app/[lang]/app/[id]/absences/create/page.tsx:48
-msgid "Report an absence"
-msgstr ""
+#~ msgid "Report an absence"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:194
@@ -540,9 +786,14 @@ msgstr ""
 msgid "absences.reportReview"
 msgstr ""
 
+#. js-lingui-explicit-id
 #: src/components/forgot-password-form.tsx:66
-msgid "Reset your password"
+msgid "forgotPassword.heading"
 msgstr ""
+
+#: src/components/forgot-password-form.tsx:66
+#~ msgid "Reset your password"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/assigned/list.tsx:70
@@ -568,70 +819,120 @@ msgstr ""
 msgid "common.save"
 msgstr ""
 
+#. js-lingui-explicit-id
 #: src/components/club-create-form.tsx:94
-msgid "School (optional)"
+msgid "club.school"
 msgstr ""
+
+#: src/components/club-create-form.tsx:94
+#~ msgid "School (optional)"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/components/ui/app-header.tsx:78
 msgid "header.selectClub"
 msgstr ""
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/page.tsx:35
-msgid "Select a club"
+msgid "app.selectClub"
 msgstr ""
+
+#: src/app/[lang]/app/page.tsx:35
+#~ msgid "Select a club"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/assigned/list.tsx:87
 msgid "absences.selectReportToReview"
 msgstr ""
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/users/me/page.tsx:10
-msgid "Select a setting to change"
+msgid "settings.selectSetting"
 msgstr ""
+
+#: src/app/[lang]/app/users/me/page.tsx:10
+#~ msgid "Select a setting to change"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/create/form.tsx:99
 msgid "absences.selectEvent"
 msgstr ""
 
+#. js-lingui-explicit-id
 #: src/components/forgot-password-form.tsx:92
-msgid "Send reset email"
+msgid "forgotPassword.sendReset"
+msgstr ""
+
+#: src/components/forgot-password-form.tsx:92
+#~ msgid "Send reset email"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/login-form.tsx:92
+msgid "auth.signInGithub"
 msgstr ""
 
 #: src/components/login-form.tsx:92
-msgid "Sign in with GitHub"
+#~ msgid "Sign in with GitHub"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/login-form.tsx:84
+msgid "auth.signInGoogle"
 msgstr ""
 
 #: src/components/login-form.tsx:84
-msgid "Sign in with Google"
-msgstr ""
-
-#: src/app/[lang]/auth/login/page.tsx:47
-#: src/components/signup-form.tsx:167
-msgid "Sign up"
-msgstr ""
+#~ msgid "Sign in with Google"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
+#: src/components/signup-form.tsx:167
 #: src/components/ui/app-header.tsx:120
 msgid "auth.signup"
 msgstr ""
 
+#: src/app/[lang]/auth/login/page.tsx:47
+msgid "Sign up"
+msgstr ""
+
+#. js-lingui-explicit-id
 #: src/app/[lang]/auth/sign-up/page.tsx:55
-msgid "Sign up to get started"
+msgid "signup.subtitle"
+msgstr ""
+
+#: src/app/[lang]/auth/sign-up/page.tsx:55
+#~ msgid "Sign up to get started"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/signup-form.tsx:107
+msgid "auth.signUpGithub"
 msgstr ""
 
 #: src/components/signup-form.tsx:107
-msgid "Sign up with GitHub"
+#~ msgid "Sign up with GitHub"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/signup-form.tsx:99
+msgid "auth.signUpGoogle"
 msgstr ""
 
 #: src/components/signup-form.tsx:99
-msgid "Sign up with Google"
+#~ msgid "Sign up with Google"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/app/[lang]/auth/error/page.tsx:17
+msgid "error.heading"
 msgstr ""
 
 #: src/app/[lang]/auth/error/page.tsx:17
-msgid "Something went wrong"
-msgstr ""
+#~ msgid "Something went wrong"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:140
@@ -656,8 +957,17 @@ msgstr ""
 msgid "calendar.time"
 msgstr ""
 
+#. js-lingui-explicit-id
 #: src/components/forgot-password-form.tsx:69
-msgid "Type in your email and we'll send you a link to reset your password"
+msgid "forgotPassword.subtitle"
+msgstr ""
+
+#: src/components/forgot-password-form.tsx:69
+#~ msgid "Type in your email and we'll send you a link to reset your password"
+#~ msgstr ""
+
+#: src/app/[lang]/app/[id]/absences/(list)/list.tsx:59
+msgid "Unassigned"
 msgstr ""
 
 #. js-lingui-explicit-id
@@ -665,18 +975,19 @@ msgstr ""
 msgid "common.unassigned"
 msgstr ""
 
-#: src/app/[lang]/app/[id]/absences/(list)/list.tsx:59
-msgid "Unassigned"
-msgstr ""
-
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:184
 msgid "absences.unassigned"
 msgstr ""
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/page.tsx:54
-msgid "Understand quickly who's where and when"
+msgid "landing.feature1"
 msgstr ""
+
+#: src/app/[lang]/page.tsx:54
+#~ msgid "Understand quickly who's where and when"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:143
@@ -690,53 +1001,98 @@ msgstr ""
 msgid "common.unknownUser"
 msgstr ""
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/users/me/layout.tsx:31
-msgid "User settings"
+msgid "user.settings"
+msgstr ""
+
+#: src/app/[lang]/app/users/me/layout.tsx:31
+#~ msgid "User settings"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/forgot-password-form.tsx:52
+msgid "forgotPassword.emailSent"
 msgstr ""
 
 #: src/components/forgot-password-form.tsx:52
-msgid "We emailed you a password reset link"
+#~ msgid "We emailed you a password reset link"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/club-create-form.tsx:106
+msgid "club.website"
 msgstr ""
 
 #: src/components/club-create-form.tsx:106
-msgid "Website (optional)"
+#~ msgid "Website (optional)"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/app/[lang]/auth/login/page.tsx:55
+msgid "login.welcome"
 msgstr ""
 
 #: src/app/[lang]/auth/login/page.tsx:55
-msgid "Welcome back"
+#~ msgid "Welcome back"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/app/[lang]/auth/sign-up/page.tsx:52
+msgid "signup.welcome"
 msgstr ""
 
 #: src/app/[lang]/auth/sign-up/page.tsx:52
-msgid "Welcome!"
-msgstr ""
+#~ msgid "Welcome!"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/calendar/calendar.tsx:47
 msgid "calendar.year"
 msgstr ""
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/club/invite/[id]/page.tsx:51
-msgid "You are invited to join a club"
+msgid "invite.heading"
+msgstr ""
+
+#: src/app/[lang]/app/club/invite/[id]/page.tsx:51
+#~ msgid "You are invited to join a club"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/app/[lang]/app/[id]/absences/create/page.tsx:53
+msgid "absence.noForm"
 msgstr ""
 
 #: src/app/[lang]/app/[id]/absences/create/page.tsx:53
-msgid "You do not have a configured absence report form. Please contact a club manager."
-msgstr ""
+#~ msgid "You do not have a configured absence report form. Please contact a club manager."
+#~ msgstr ""
 
+#. js-lingui-explicit-id
 #. placeholder {0}: invite.role_name
 #. placeholder {1}: new Date(invite.expires_at).toLocaleString()
 #: src/app/[lang]/app/club/invite/[id]/page.tsx:72
-msgid "You will be joining as: <0>{0}</0>. Expires at: <1>{1}</1>"
+msgid "invite.details"
 msgstr ""
+
+#: src/app/[lang]/app/club/invite/[id]/page.tsx:72
+#~ msgid "You will be joining as: <0>{0}</0>. Expires at: <1>{1}</1>"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/components/club-create-form.tsx:72
 msgid "club.namePlaceholder"
 msgstr ""
 
+#. js-lingui-explicit-id
 #: src/components/signup-form.tsx:161
-msgid "Your full name will not be shared with people outside of your clubs unless you choose to at a later time."
+msgid "auth.fullNameDisclaimer"
 msgstr ""
+
+#: src/components/signup-form.tsx:161
+#~ msgid "Your full name will not be shared with people outside of your clubs unless you choose to at a later time."
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/components/club-create-form.tsx:97
@@ -748,6 +1104,11 @@ msgstr ""
 msgid "club.join"
 msgstr ""
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/page.tsx:77
-msgid "札幌光星中学高等学校吹奏楽部とクリスチャン・アカデミー・イン・ジャパンロボティクス部のが制作"
+msgid "landing.footer"
 msgstr ""
+
+#: src/app/[lang]/page.tsx:77
+#~ msgid "札幌光星中学高等学校吹奏楽部とクリスチャン・アカデミー・イン・ジャパンロボティクス部のが制作"
+#~ msgstr ""

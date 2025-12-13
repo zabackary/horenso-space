@@ -31,7 +31,7 @@ export default async function ClubConfigLayout({
       <Flex direction="column" className={styles.root}>
         <div className={styles.container}>
           <Heading as="h2" size="6" className={styles.heading}>
-            <Trans key="config.heading">Club configuration</Trans>
+            <Trans id="config.heading">Club configuration</Trans>
           </Heading>
 
           {children}

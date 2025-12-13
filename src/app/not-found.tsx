@@ -38,17 +38,17 @@ export default async function NotFound() {
           priority
         />
         <Heading size="7" as="h2" style={{ textAlign: "center" }}>
-          <Trans key="notFound.heading">Page not found</Trans>
+          <Trans id="notFound.heading">Page not found</Trans>
         </Heading>
         <Flex justify="center" mt="4">
           <Button asChild size="4" variant="solid">
             <Link href="/">
-              <Trans key="notFound.backHome">Back to home</Trans>
+              <Trans id="notFound.backHome">Back to home</Trans>
             </Link>
           </Button>
         </Flex>
         <Text size="2" color="gray" mt="2" align="center" as="p">
-          <Trans key="notFound.imageCredit">
+          <Trans id="notFound.imageCredit">
             Image by{" "}
             <Link
               href="https://github.com/SAWARATSUKI/KawaiiLogos/blob/f1ed8e2c677943c3179bed7b0611fa3d3c315397/ResponseCode/404%20NotFound.png"

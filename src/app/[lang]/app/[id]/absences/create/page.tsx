@@ -45,12 +45,12 @@ export default async function Page({
   return (
     <FullscreenCard>
       <Heading size="5" as="h2" mb="4">
-        <Trans key="absence.report">Report an absence</Trans>
+        <Trans id="absence.report">Report an absence</Trans>
       </Heading>
       {templateError || !templateData ? (
         <Callout.Root variant="outline">
           <Callout.Text>
-            <Trans key="absence.noForm">
+            <Trans id="absence.noForm">
               You do not have a configured absence report form. Please contact a
               club manager.
             </Trans>

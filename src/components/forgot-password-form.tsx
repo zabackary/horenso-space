@@ -46,15 +46,15 @@ export function ForgotPasswordForm({
   return success ? (
     <>
       <Heading as="h1" size="7" align="center">
-        <Trans key="forgotPassword.checkEmail">Check your email</Trans>
+        <Trans id="forgotPassword.checkEmail">Check your email</Trans>
       </Heading>
       <Text as="p" size="3" my="2" align="center">
-        <Trans key="forgotPassword.emailSent">
+        <Trans id="forgotPassword.emailSent">
           We emailed you a password reset link
         </Trans>
       </Text>
       <Text as="p" align="center">
-        <Trans key="forgotPassword.checkEmailBody">
+        <Trans id="forgotPassword.checkEmailBody">
           If you registered using your email and password, you will receive a
           password reset email.
         </Trans>
@@ -63,10 +63,10 @@ export function ForgotPasswordForm({
   ) : (
     <>
       <Heading as="h1" size="7" align="center">
-        <Trans key="forgotPassword.heading">Reset your password</Trans>
+        <Trans id="forgotPassword.heading">Reset your password</Trans>
       </Heading>
       <Text as="p" size="3" my="2" align="center">
-        <Trans key="forgotPassword.subtitle">
+        <Trans id="forgotPassword.subtitle">
           Type in your email and we&apos;ll send you a link to reset your
           password
         </Trans>
@@ -89,11 +89,11 @@ export function ForgotPasswordForm({
             type="email"
           ></TextField.Root>
           <Button type="submit" loading={isLoading}>
-            <Trans key="forgotPassword.sendReset">Send reset email</Trans>
+            <Trans id="forgotPassword.sendReset">Send reset email</Trans>
           </Button>
         </Flex>
         <Text align="center" color="gray" as="p">
-          <Trans key="forgotPassword.haveAccount">
+          <Trans id="forgotPassword.haveAccount">
             Already have an account?{" "}
             <RadixLink asChild>
               <Link href="/auth/login" className="underline underline-offset-4">

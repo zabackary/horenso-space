@@ -26,13 +26,13 @@ export default async function Page({
     >
       <Flex direction="row" align="center" gap="4">
         <Heading size="5" as="h2">
-          <Trans key="absences.heading">Absences</Trans>
+          <Trans id="absences.heading">Absences</Trans>
         </Heading>
 
         {permissions.includes("canWriteOwnReport") && (
           <Button asChild className={styles.reportButton}>
             <Link href={`/app/${id}/absences/create`}>
-              <Trans key="absences.report">Report absence</Trans>
+              <Trans id="absences.report">Report absence</Trans>
             </Link>
           </Button>
         )}
@@ -57,20 +57,20 @@ export function AbsencesTabNav({
     <TabNav.Root style={{ width: "100%" }}>
       <TabNav.Link asChild active={active === "my"}>
         <Link href={`/app/${clubId}/absences/my`}>
-          <Trans key="absences.tab.my">My absences</Trans>
+          <Trans id="absences.tab.my">My absences</Trans>
         </Link>
       </TabNav.Link>
       {permissions.includes("canReadAllReports") ? (
         <TabNav.Link asChild active={active === "all"}>
           <Link href={`/app/${clubId}/absences/all`}>
-            <Trans key="absences.tab.all">All absences</Trans>
+            <Trans id="absences.tab.all">All absences</Trans>
           </Link>
         </TabNav.Link>
       ) : null}
       {permissions.includes("canWriteReportReview") ? (
         <TabNav.Link asChild active={active === "assigned"}>
           <Link href={`/app/${clubId}/absences/assigned`}>
-            <Trans key="absences.tab.assigned">Assigned to me</Trans>
+            <Trans id="absences.tab.assigned">Assigned to me</Trans>
           </Link>
         </TabNav.Link>
       ) : null}
