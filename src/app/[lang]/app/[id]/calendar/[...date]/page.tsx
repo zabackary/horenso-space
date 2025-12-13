@@ -1,5 +1,7 @@
 import getPermissionsForClub from "@/lib/auth/getPermissionsForClub";
+import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
+import { Trans } from "@lingui/react/macro";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { Button, Flex, Heading } from "@radix-ui/themes";
 import Link from "next/link";
@@ -10,7 +12,8 @@ import CreateEventCard from "../create-event-card";
 export default async function CalendarYearPage({
   params,
 }: PageProps<"/[lang]/app/[id]/calendar/[...date]">) {
-  const { id, date } = await params;
+  const { id, date, lang } = await params;
+  initLingui(lang);
 
   if (date[0] === "create" && date.length === 1) {
     // Event creation
@@ -19,10 +22,12 @@ export default async function CalendarYearPage({
         <Flex direction="row" align="center" gap="2" p="4" mb="-4">
           <Button variant="soft" size="2" type="button" asChild>
             <Link href={`/app/${id}`}>
-              <ArrowLeftIcon /> Back
+              <ArrowLeftIcon /> <Trans id="common.back">Back</Trans>
             </Link>
           </Button>
-          <Heading size="3">Create event</Heading>
+          <Heading size="3">
+            <Trans id="calendar.createEvent">Create event</Trans>
+          </Heading>
         </Flex>
         <CreateEventCard clubId={id} withPadding />
       </>

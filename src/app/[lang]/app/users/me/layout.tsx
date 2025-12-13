@@ -1,14 +1,19 @@
 import UserProfile from "@/components/ui/user-profile";
 import UserShareActions from "@/components/user-share-actions";
 import getProfile from "@/lib/auth/getProfile";
+import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
+import { Trans } from "@lingui/react/macro";
 import { Flex, Heading, TabNav } from "@radix-ui/themes";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export default async function MeLayout({
   children,
+  params,
 }: LayoutProps<"/[lang]/app/users/me">) {
+  const { lang } = await params;
+  initLingui(lang);
   const supabase = await createClient();
   const profile = await getProfile(supabase);
 
@@ -23,7 +28,7 @@ export default async function MeLayout({
       <UserShareActions profile={profile} />
 
       <Heading as="h2" size="3">
-        User settings
+        <Trans key="user.settings">User settings</Trans>
       </Heading>
       {children}
     </Flex>

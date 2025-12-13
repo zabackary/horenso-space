@@ -1,8 +1,9 @@
-import { Box, Spinner } from "@radix-ui/themes";
-import React from "react";
 import type { Database } from "@/@types/database.types";
 import MetadataForm from "@/components/club-config/metadata-form";
+import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
+import { Box, Spinner } from "@radix-ui/themes";
+import React from "react";
 import { ClubConfigTabNav } from "../layout";
 
 type ClubRow = Database["public"]["Tables"]["clubs"]["Row"];
@@ -10,10 +11,11 @@ type ClubRow = Database["public"]["Tables"]["clubs"]["Row"];
 export default async function ClubMetadataPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string; lang: string }>;
 }) {
   // permission check handled in layout
-  const { id } = await params;
+  const { id, lang } = await params;
+  initLingui(lang);
   const supabase = await createClient();
 
   const clubRes = await supabase

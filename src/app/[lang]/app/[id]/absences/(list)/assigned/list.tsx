@@ -1,6 +1,7 @@
 "use client";
 
 import type { Database } from "@/@types/database.types";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { Card, Flex, Heading, Text } from "@radix-ui/themes";
 import { useState } from "react";
 import ReportDetail from "./detail";
@@ -16,6 +17,7 @@ export default function AssignedReportsList({
   clubId: string;
   initialReports: AssignedReport[];
 }) {
+  const { i18n } = useLingui();
   const [selectedReportId, setSelectedReportId] = useState<string | null>(null);
   const reports = initialReports;
 
@@ -25,10 +27,16 @@ export default function AssignedReportsList({
     <Flex className={styles.layout} gap="4">
       <Card className={styles.sidebar}>
         <Flex direction="column" gap="3">
-          <Heading size="3">Assigned Reports</Heading>
+          <Heading size="3">
+            <Trans id="absences.assignedReports">Assigned Reports</Trans>
+          </Heading>
           <Flex direction="column" gap="2">
             {reports.length === 0 && (
-              <Text className={styles.empty}>No reports assigned to you.</Text>
+              <Text className={styles.empty}>
+                <Trans id="absences.noAssignedReports">
+                  No reports assigned to you.
+                </Trans>
+              </Text>
             )}
             {reports.map((report) => {
               const isSelected = selectedReportId === report.id;
@@ -45,7 +53,7 @@ export default function AssignedReportsList({
                     <Text size="2">
                       {report.event_name ??
                         new Date(report.report_date).toLocaleDateString() ??
-                        "No event"}
+                        i18n._("common.noEvent", "No event")}
                     </Text>
                     {report.event_start_time && (
                       <Text size="1" className={styles.reportMeta}>
@@ -53,12 +61,12 @@ export default function AssignedReportsList({
                           ? new Date(
                               report.event_start_time
                             ).toLocaleDateString()
-                          : "No date"}
+                          : i18n._("common.noDate", "No date")}
                       </Text>
                     )}
                     {(report.reviews as any[]).length > 0 && (
                       <Text size="1" className={styles.reviewed}>
-                        ✓ Reviewed
+                        ✓ <Trans id="absences.reviewed">Reviewed</Trans>
                       </Text>
                     )}
                   </Flex>
@@ -74,7 +82,11 @@ export default function AssignedReportsList({
           <ReportDetail report={selectedReport} clubId={clubId} />
         ) : (
           <Card>
-            <Text>Select a report to review</Text>
+            <Text>
+              <Trans id="absences.selectReportToReview">
+                Select a report to review
+              </Trans>
+            </Text>
           </Card>
         )}
       </div>

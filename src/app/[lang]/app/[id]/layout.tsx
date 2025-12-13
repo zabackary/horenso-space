@@ -1,12 +1,14 @@
-import { notFound } from "next/navigation";
 import { AppHeader } from "@/components/ui/app-header";
+import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
+import { notFound } from "next/navigation";
 
 export default async function ClubIdLayout({
   params,
   children,
-}: LayoutProps<`/app/[id]`>) {
-  const { id } = await params;
+}: LayoutProps<`/[lang]/app/[id]`>) {
+  const { id, lang } = await params;
+  initLingui(lang);
   const uuidRegex =
     /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
   if (!uuidRegex.test(id)) {

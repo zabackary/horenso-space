@@ -1,5 +1,6 @@
 "use client";
 
+import { Trans, useLingui } from "@lingui/react/macro";
 import { Card, Flex, Spinner, Text } from "@radix-ui/themes";
 import Link from "next/link";
 import { Suspense, use } from "react";
@@ -17,10 +18,15 @@ export default function AbsenceReportList({
   clubId,
   linkPathPrefix,
 }: AbsenceReportListProps) {
+  const { i18n } = useLingui();
   const reportsData = use(reports);
   return (
     <Suspense fallback={<Spinner />}>
-      {reportsData.length === 0 && <Text>No reports found.</Text>}
+      {reportsData.length === 0 && (
+        <Text>
+          <Trans id="absences.noReports">No reports found.</Trans>
+        </Text>
+      )}
       <Flex direction="column" gap="3" width="100%">
         {reportsData.map((report) => (
           <Link
@@ -36,7 +42,10 @@ export default function AbsenceReportList({
                       report.date?.toDateString() ??
                       "No event"}
                   </Text>
-                  <Text size="2">Submitted by {report.userName}</Text>
+                  <Text size="2">
+                    <Trans id="absences.submittedBy">Submitted by</Trans>{" "}
+                    {report.userName}
+                  </Text>
                   <Text size="1" color="gray">
                     {report.event?.startTime.toDateString() ??
                       report.date?.toDateString() ??
@@ -45,13 +54,16 @@ export default function AbsenceReportList({
                 </Flex>
                 <Flex justify="between" align="center">
                   <Text size="2">
-                    Assigned to:{" "}
-                    {report.assignedToRole?.roleName || "Unassigned"}
+                    <Trans id="absences.assignedTo">Assigned to</Trans>{" "}
+                    {report.assignedToRole?.roleName ||
+                      i18n._("absences.unassigned", "Unassigned")}
                   </Text>
                   {report.reviews.length > 0 && (
                     <Text size="1" className={styles.reviewIndicator}>
-                      ✓ {report.reviews.length} review
-                      {report.reviews.length !== 1 ? "s" : ""}
+                      ✓ {report.reviews.length}{" "}
+                      {report.reviews.length === 1
+                        ? i18n._("absences.review", "review")
+                        : i18n._("absences.reviews", "reviews")}
                     </Text>
                   )}
                 </Flex>

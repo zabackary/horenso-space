@@ -1,5 +1,8 @@
 "use client";
 
+import getProfile from "@/lib/auth/getProfile";
+import { createClient } from "@/lib/supabase/client";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { CalendarIcon, GlobeIcon, TextIcon } from "@radix-ui/react-icons";
 import {
   Box,
@@ -12,8 +15,6 @@ import {
 } from "@radix-ui/themes";
 import type React from "react";
 import { useState } from "react";
-import getProfile from "@/lib/auth/getProfile";
-import { createClient } from "@/lib/supabase/client";
 import styles from "./create-event-card.module.css";
 
 export interface CreateEventCardProps {
@@ -31,6 +32,7 @@ export default function CreateEventCard({
   onCreate,
   initialStartDate,
 }: CreateEventCardProps) {
+  const { i18n } = useLingui();
   const [startDate, setStartDate] = useState(() => {
     return initialStartDate ? initialStartDate() : "";
   });
@@ -93,7 +95,7 @@ export default function CreateEventCard({
     <Flex direction="column" gap="2" p={withPadding ? "1" : "0"} asChild>
       <form onSubmit={handleSubmit} className={styles["form"]}>
         <TextField.Root
-          placeholder="New event name"
+          placeholder={i18n._("calendar.newEventName", "New event name")}
           size="3"
           name="title"
           required
@@ -104,7 +106,7 @@ export default function CreateEventCard({
           </Box>
           <Grid columns="auto auto" gap="2" flexGrow="1">
             <TextField.Root
-              placeholder="Date"
+              placeholder={i18n._("calendar.date", "Date")}
               type="date"
               value={startDate}
               onChange={handleStartDateChange}
@@ -112,7 +114,7 @@ export default function CreateEventCard({
               required
             />
             <TextField.Root
-              placeholder="Date"
+              placeholder={i18n._("calendar.time", "Time")}
               type="time"
               value={startTime}
               onChange={(e) => setStartTime(e.target.value)}
@@ -120,7 +122,7 @@ export default function CreateEventCard({
               required
             />
             <TextField.Root
-              placeholder="Date"
+              placeholder={i18n._("calendar.date", "Date")}
               type="date"
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
@@ -129,7 +131,7 @@ export default function CreateEventCard({
               required
             />
             <TextField.Root
-              placeholder="Date"
+              placeholder={i18n._("calendar.time", "Time")}
               type="time"
               value={endTime}
               onChange={(e) => setEndTime(e.target.value)}
@@ -144,7 +146,7 @@ export default function CreateEventCard({
             <GlobeIcon />
           </Box>
           <TextField.Root
-            placeholder="Location"
+            placeholder={i18n._("calendar.location", "Location")}
             size="2"
             className={styles["location-textfield"]}
             name="location"
@@ -155,7 +157,7 @@ export default function CreateEventCard({
             <TextIcon />
           </Box>
           <TextArea
-            placeholder="Notes"
+            placeholder={i18n._("calendar.notes", "Notes")}
             className={styles["notes-textarea"]}
             size="2"
             name="notes"
@@ -173,7 +175,7 @@ export default function CreateEventCard({
           align="stretch"
         >
           <Button type="submit" size="3" loading={loading}>
-            Save
+            <Trans id="common.save">Save</Trans>
           </Button>
           {onCancel && (
             <Button
@@ -183,7 +185,7 @@ export default function CreateEventCard({
               onClick={onCancel}
               disabled={loading}
             >
-              Cancel
+              <Trans id="common.cancel">Cancel</Trans>
             </Button>
           )}
         </Flex>

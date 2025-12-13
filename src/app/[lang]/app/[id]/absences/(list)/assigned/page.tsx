@@ -1,5 +1,6 @@
 import type { Database } from "@/@types/database.types";
 import getPermissionsForClub from "@/lib/auth/getPermissionsForClub";
+import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
 import { AbsencesTabNav } from "../layout";
@@ -11,7 +12,8 @@ type AssignedReport =
 export default async function Page({
   params,
 }: PageProps<"/[lang]/app/[id]/absences/assigned">) {
-  const { id } = await params;
+  const { id, lang } = await params;
+  initLingui(lang);
 
   const supabase = await createClient();
   const { permissions } = await getPermissionsForClub(supabase, id);

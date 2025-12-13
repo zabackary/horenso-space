@@ -2,6 +2,7 @@
 
 import AbsenceFormRenderer from "@/components/absence-form-renderer";
 import { createClient } from "@/lib/supabase/client";
+import { Trans, useLingui } from "@lingui/react/macro";
 import {
   Card,
   DataList,
@@ -36,6 +37,7 @@ export default function ReportDetail({
   report: Report;
   clubId: string;
 }) {
+  const { i18n } = useLingui();
   const reviews = (report.reviews || []) as any[];
   const reportData = report.data as Record<string, any>;
 
@@ -69,22 +71,34 @@ export default function ReportDetail({
 
   return (
     <Flex direction="column" gap="4" flexGrow="1">
-      <Heading size="4">Report Details</Heading>
+      <Heading size="4">
+        <Trans id="absences.reportDetails">Report Details</Trans>
+      </Heading>
 
       <DataList.Root>
         <DataList.Item>
-          <DataList.Label>Submitted by</DataList.Label>
-          <DataList.Value>{report.user_name || "Unknown"}</DataList.Value>
+          <DataList.Label>
+            <Trans id="absences.submittedBy">Submitted by</Trans>
+          </DataList.Label>
+          <DataList.Value>
+            {report.user_name || i18n._("common.unknown", "Unknown")}
+          </DataList.Value>
         </DataList.Item>
 
         <DataList.Item>
-          <DataList.Label>Event</DataList.Label>
-          <DataList.Value>{report.event_name || "No event"}</DataList.Value>
+          <DataList.Label>
+            <Trans id="absences.event">Event</Trans>
+          </DataList.Label>
+          <DataList.Value>
+            {report.event_name || i18n._("common.noEvent", "No event")}
+          </DataList.Value>
         </DataList.Item>
 
         {report.event_start_time && (
           <DataList.Item>
-            <DataList.Label>Event date</DataList.Label>
+            <DataList.Label>
+              <Trans id="absences.eventDate">Event date</Trans>
+            </DataList.Label>
             <DataList.Value>
               {new Date(report.event_start_time).toLocaleString()}
             </DataList.Value>
@@ -92,9 +106,12 @@ export default function ReportDetail({
         )}
 
         <DataList.Item>
-          <DataList.Label>Assigned to</DataList.Label>
+          <DataList.Label>
+            <Trans id="absences.assignedTo">Assigned to</Trans>
+          </DataList.Label>
           <DataList.Value>
-            {report.assigned_to_role_name || "Unassigned"}
+            {report.assigned_to_role_name ||
+              i18n._("absences.unassigned", "Unassigned")}
           </DataList.Value>
         </DataList.Item>
       </DataList.Root>
@@ -103,7 +120,7 @@ export default function ReportDetail({
 
       <div>
         <Heading size="3" mb="2">
-          Form Responses
+          <Trans id="absences.formResponses">Form Responses</Trans>
         </Heading>
         {formLoading ? (
           <Spinner />
@@ -111,10 +128,16 @@ export default function ReportDetail({
           reportData && Object.keys(reportData).length > 0 ? (
             <AbsenceFormRenderer form={form} values={reportData as any} />
           ) : (
-            <Text color="gray">No additional data</Text>
+            <Text color="gray">
+              <Trans id="absences.noData">No additional data</Trans>
+            </Text>
           )
         ) : (
-          <Text color="gray">No form associated with this report</Text>
+          <Text color="gray">
+            <Trans id="absences.noForm">
+              No form associated with this report
+            </Trans>
+          </Text>
         )}
       </div>
 
@@ -123,7 +146,7 @@ export default function ReportDetail({
           <Separator size="4" />
           <div>
             <Heading size="3" mb="2">
-              Reviews
+              <Trans id="absences.reviews">Reviews</Trans>
             </Heading>
             <Flex direction="column" gap="2">
               {reviews.map((review: any) => (
@@ -136,7 +159,9 @@ export default function ReportDetail({
                         color={review.accepted ? "green" : "red"}
                         weight="bold"
                       >
-                        {review.accepted ? "Accepted" : "Rejected"}
+                        {review.accepted
+                          ? i18n._("absences.accepted", "Accepted")
+                          : i18n._("absences.rejected", "Rejected")}
                       </Text>
                     </Flex>
                     {review.comments && <Text size="2">{review.comments}</Text>}

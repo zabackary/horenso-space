@@ -1,4 +1,5 @@
 import InvitesManager from "@/components/club-config/invite";
+import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
 import { Box, Spinner } from "@radix-ui/themes";
 import React from "react";
@@ -8,7 +9,8 @@ export default async function ClubInvitesPage({
   params,
 }: PageProps<"/[lang]/app/[id]/club/config/invites">) {
   // permission check handled in layout
-  const { id } = await params;
+  const { id, lang } = await params;
+  initLingui(lang);
   const supabase = await createClient();
 
   const invitesPromise = supabase

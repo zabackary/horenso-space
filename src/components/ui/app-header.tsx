@@ -1,5 +1,6 @@
 import getProfile from "@/lib/auth/getProfile";
 import { createClient } from "@/lib/supabase/server";
+import { Trans } from "@lingui/react/macro";
 import { HomeIcon } from "@radix-ui/react-icons";
 import {
   Badge,
@@ -69,7 +70,10 @@ export async function AppHeader({
           <>
             {clubs ? (
               <DropdownMenu.Root>
-                <Tooltip content="Select a club" style={{ zIndex: 1 }}>
+                <Tooltip
+                  content={<Trans id="header.selectClub">Select a club</Trans>}
+                  style={{ zIndex: 1 }}
+                >
                   <DropdownMenu.Trigger>
                     <Button size="3" variant="outline">
                       <HomeIcon />
@@ -79,7 +83,9 @@ export async function AppHeader({
                 </Tooltip>
                 <DropdownMenu.Content align="center" style={{ zIndex: 1 }}>
                   <DropdownMenu.Item asChild>
-                    <Link href="/app">Home</Link>
+                    <Link href="/app">
+                      <Trans id="header.home">Home</Trans>
+                    </Link>
                   </DropdownMenu.Item>
                   <DropdownMenu.Separator />
                   {clubs.map((club) => (
@@ -91,7 +97,9 @@ export async function AppHeader({
               </DropdownMenu.Root>
             ) : (
               <Button asChild size="3" variant="outline">
-                <Link href="/app/club/create">Create a Club</Link>
+                <Link href="/app/club/create">
+                  <Trans id="header.createClub">Create a Club</Trans>
+                </Link>
               </Button>
             )}
             <AppHeaderMenu profile={profile} />
@@ -99,10 +107,14 @@ export async function AppHeader({
         ) : (
           <>
             <Button asChild size="3" variant="soft">
-              <Link href="/auth/login">Login</Link>
+              <Link href="/auth/login">
+                <Trans id="auth.login">Login</Trans>
+              </Link>
             </Button>
             <Button asChild size="3" variant="solid">
-              <Link href="/auth/sign-up">Sign up</Link>
+              <Link href="/auth/sign-up">
+                <Trans id="auth.signup">Sign up</Trans>
+              </Link>
             </Button>
           </>
         )}

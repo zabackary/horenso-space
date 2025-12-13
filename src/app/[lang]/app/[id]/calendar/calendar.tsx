@@ -2,6 +2,7 @@
 
 import { Drawer } from "@/components/ui/drawer";
 import { useMediaQuery } from "@/lib/useMediaQuery";
+import { useLingui } from "@lingui/react/macro";
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
@@ -33,6 +34,7 @@ interface ModePickerProps {
 }
 
 export function ModePicker({ mode, setMode }: ModePickerProps) {
+  const { i18n } = useLingui();
   return (
     <Select.Root
       value={mode}
@@ -41,9 +43,13 @@ export function ModePicker({ mode, setMode }: ModePickerProps) {
     >
       <Select.Trigger />
       <Select.Content position="popper">
-        <Select.Item value="year">Year</Select.Item>
-        <Select.Item value="month">Month</Select.Item>
-        <Select.Item value="day">Day</Select.Item>
+        <Select.Item value="year">
+          {i18n._("calendar.year", "Year")}
+        </Select.Item>
+        <Select.Item value="month">
+          {i18n._("calendar.month", "Month")}
+        </Select.Item>
+        <Select.Item value="day">{i18n._("calendar.day", "Day")}</Select.Item>
       </Select.Content>
     </Select.Root>
   );

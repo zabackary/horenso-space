@@ -1,5 +1,6 @@
 import type { Database } from "@/@types/database.types";
 import MembersManager from "@/components/club-config/members-manager";
+import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
 import { Box, Spinner } from "@radix-ui/themes";
 import React from "react";
@@ -12,7 +13,8 @@ type RoleRow = Database["public"]["Tables"]["roles"]["Row"];
 export default async function ClubMembersPage({
   params,
 }: PageProps<"/[lang]/app/[id]/club/config/members">) {
-  const { id } = await params;
+  const { id, lang } = await params;
+  initLingui(lang);
 
   const supabase = await createClient();
 

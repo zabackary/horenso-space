@@ -1,3 +1,4 @@
+import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
 import { Card, Flex } from "@radix-ui/themes";
 import { ClubConfigTabNav } from "../layout";
@@ -8,7 +9,12 @@ export default async function AbsenceFormsLayout({
   children,
   params,
 }: LayoutProps<"/[lang]/app/[id]/club/config/absence-forms">) {
-  const { id, formId } = (await params) as { id: string; formId?: string };
+  const { id, formId, lang } = (await params) as {
+    id: string;
+    formId?: string;
+    lang: string;
+  };
+  initLingui(lang);
   const supabase = await createClient();
 
   const forms =

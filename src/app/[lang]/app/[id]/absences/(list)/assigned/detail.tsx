@@ -3,6 +3,7 @@
 import { submitReview } from "@/actions/reviews";
 import AbsenceFormRenderer from "@/components/absence-form-renderer";
 import { createClient } from "@/lib/supabase/client";
+import { Trans, useLingui } from "@lingui/react/macro";
 import {
   Button,
   Callout,
@@ -26,6 +27,7 @@ export default function ReportDetail({
   report: AssignedReport;
   clubId: string;
 }) {
+  const { i18n } = useLingui();
   const [comments, setComments] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -104,13 +106,21 @@ export default function ReportDetail({
           <Callout.Root color={isAccepted ? "green" : "yellow"}>
             <Callout.Text>
               {isAccepted
-                ? "This report has been accepted."
-                : "This report has not been accepted."}
+                ? i18n._(
+                    "absences.reportAccepted",
+                    "This report has been accepted."
+                  )
+                : i18n._(
+                    "absences.reportNotAccepted",
+                    "This report has not been accepted."
+                  )}
             </Callout.Text>
           </Callout.Root>
         )}
 
-        <Heading size="4">Report Review</Heading>
+        <Heading size="4">
+          <Trans id="absences.reportReview">Report Review</Trans>
+        </Heading>
 
         {error && (
           <Callout.Root color="red">
@@ -126,18 +136,28 @@ export default function ReportDetail({
 
         <DataList.Root>
           <DataList.Item>
-            <DataList.Label>Submitted by</DataList.Label>
-            <DataList.Value>{report.user_name || "Unknown"}</DataList.Value>
+            <DataList.Label>
+              <Trans id="absences.submittedBy">Submitted by</Trans>
+            </DataList.Label>
+            <DataList.Value>
+              {report.user_name || i18n._("common.unknown", "Unknown")}
+            </DataList.Value>
           </DataList.Item>
 
           <DataList.Item>
-            <DataList.Label>Event</DataList.Label>
-            <DataList.Value>{report.event_name || "No event"}</DataList.Value>
+            <DataList.Label>
+              <Trans id="absences.event">Event</Trans>
+            </DataList.Label>
+            <DataList.Value>
+              {report.event_name || i18n._("common.noEvent", "No event")}
+            </DataList.Value>
           </DataList.Item>
 
           {report.report_date && (
             <DataList.Item>
-              <DataList.Label>Date</DataList.Label>
+              <DataList.Label>
+                <Trans id="absences.date">Date</Trans>
+              </DataList.Label>
               <DataList.Value>
                 {new Date(report.report_date).toLocaleDateString()}
               </DataList.Value>
@@ -146,7 +166,9 @@ export default function ReportDetail({
 
           {report.event_start_time && (
             <DataList.Item>
-              <DataList.Label>Event date</DataList.Label>
+              <DataList.Label>
+                <Trans id="absences.eventDate">Event date</Trans>
+              </DataList.Label>
               <DataList.Value>
                 {new Date(report.event_start_time).toLocaleString()}
               </DataList.Value>
@@ -154,9 +176,12 @@ export default function ReportDetail({
           )}
 
           <DataList.Item>
-            <DataList.Label>Assigned to</DataList.Label>
+            <DataList.Label>
+              <Trans id="absences.assignedTo">Assigned to</Trans>
+            </DataList.Label>
             <DataList.Value>
-              {report.assigned_to_role_name || "Unassigned"}
+              {report.assigned_to_role_name ||
+                i18n._("absences.unassigned", "Unassigned")}
             </DataList.Value>
           </DataList.Item>
         </DataList.Root>
@@ -165,13 +190,15 @@ export default function ReportDetail({
 
         <div>
           <Heading size="3" mb="2">
-            Report Details
+            <Trans id="absences.reportDetails">Report Details</Trans>
           </Heading>
           {form ? (
             reportData && Object.keys(reportData).length > 0 ? (
               <AbsenceFormRenderer form={form} values={reportData as any} />
             ) : (
-              <Text color="gray">No additional data</Text>
+              <Text color="gray">
+                <Trans id="absences.noData">No additional data</Trans>
+              </Text>
             )
           ) : (
             <Spinner />
@@ -183,7 +210,7 @@ export default function ReportDetail({
             <Separator size="4" />
             <div>
               <Heading size="3" mb="2">
-                Previous Reviews
+                <Trans id="absences.previousReviews">Previous Reviews</Trans>
               </Heading>
               <Flex direction="column" gap="2">
                 {reviews.map((review: any) => (
@@ -196,7 +223,9 @@ export default function ReportDetail({
                           color={review.accepted ? "green" : "red"}
                           weight="bold"
                         >
-                          {review.accepted ? "Accepted" : "Rejected"}
+                          {review.accepted
+                            ? i18n._("absences.accepted", "Accepted")
+                            : i18n._("absences.rejected", "Rejected")}
                         </Text>
                       </Flex>
                       {review.comments && (
@@ -217,11 +246,14 @@ export default function ReportDetail({
 
         <div>
           <Heading size="3" mb="2">
-            Add Your Review
+            <Trans id="absences.addReview">Add Your Review</Trans>
           </Heading>
           <Flex direction="column" gap="3">
             <TextArea
-              placeholder="Add comments (optional)"
+              placeholder={i18n._(
+                "absences.commentsPlaceholder",
+                "Add comments (optional)"
+              )}
               value={comments}
               onChange={(e) => setComments(e.target.value)}
               rows={4}
@@ -232,14 +264,14 @@ export default function ReportDetail({
                 onClick={() => handleSubmit(true)}
                 disabled={isSubmitting}
               >
-                Accept
+                <Trans id="absences.accept">Accept</Trans>
               </Button>
               <Button
                 color="red"
                 onClick={() => handleSubmit(false)}
                 disabled={isSubmitting}
               >
-                Reject
+                <Trans id="absences.reject">Reject</Trans>
               </Button>
             </Flex>
           </Flex>

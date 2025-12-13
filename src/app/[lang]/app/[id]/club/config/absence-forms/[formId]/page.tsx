@@ -1,11 +1,13 @@
 import AbsenceFormDetail from "@/components/club-config/absence-form-detail";
+import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
 
 export default async function AbsenceFormDetailPage({
   params,
 }: PageProps<"/[lang]/app/[id]/club/config/absence-forms/[formId]">) {
-  const { id, formId } = await params;
+  const { id, formId, lang } = await params;
+  initLingui(lang);
   const supabase = await createClient();
 
   const res = await supabase

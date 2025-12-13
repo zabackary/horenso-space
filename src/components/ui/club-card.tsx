@@ -1,3 +1,5 @@
+import type { Database } from "@/@types/database.types";
+import { Trans } from "@lingui/react/macro";
 import {
   Badge,
   Box,
@@ -8,7 +10,6 @@ import {
   Text,
 } from "@radix-ui/themes";
 import Link from "next/link";
-import type { Database } from "@/@types/database.types";
 import styles from "./club-card.module.css";
 
 /**
@@ -60,7 +61,9 @@ export default function ClubCard({ club }: ClubCardProps) {
         {club.description && <Text as="p">{club.description}</Text>}
         <Box flexGrow="1" mb="-4" />
         <Button className={styles["club-card__button"]} asChild>
-          <Link href={`/app/${club.id}`}>参加する</Link>
+          <Link href={`/app/${club.id}`}>
+            <Trans id="club.join">参加する</Trans>
+          </Link>
         </Button>
       </Flex>
     </Card>

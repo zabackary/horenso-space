@@ -1,11 +1,12 @@
 "use client";
 
+import { revalidateRoot } from "@/actions/auth";
+import { createClient } from "@/lib/supabase/client";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { CrossCircledIcon } from "@radix-ui/react-icons";
 import { Button, Callout, Flex, Text, TextField } from "@radix-ui/themes";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { revalidateRoot } from "@/actions/auth";
-import { createClient } from "@/lib/supabase/client";
 
 export interface SignupFormProps {
   next?: string;
@@ -21,6 +22,7 @@ export function SignupForm(props: SignupFormProps) {
     "google" | "github" | "email" | null
   >(null);
   const router = useRouter();
+  const { i18n } = useLingui();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -94,7 +96,7 @@ export function SignupForm(props: SignupFormProps) {
             loading={isLoading === "google"}
             type="button"
           >
-            Sign up with Google
+            <Trans key="auth.signUpGoogle">Sign up with Google</Trans>
           </Button>
           <Button
             variant="outline"
@@ -102,7 +104,7 @@ export function SignupForm(props: SignupFormProps) {
             loading={isLoading === "github"}
             type="button"
           >
-            Sign up with GitHub
+            <Trans key="auth.signUpGithub">Sign up with GitHub</Trans>
           </Button>
         </Flex>
         {error && (
@@ -114,7 +116,7 @@ export function SignupForm(props: SignupFormProps) {
           </Callout.Root>
         )}
         <TextField.Root
-          placeholder="Email"
+          placeholder={i18n._("common.email", "Email")}
           required
           type="email"
           value={email}
@@ -126,7 +128,7 @@ export function SignupForm(props: SignupFormProps) {
           required
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
+          placeholder={i18n._("common.password", "Password")}
         />
         <TextField.Root
           id="confirm-password"
@@ -134,21 +136,23 @@ export function SignupForm(props: SignupFormProps) {
           required
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
-          placeholder="Confirm password"
+          placeholder={i18n._("auth.confirmPassword", "Confirm password")}
         />
         <TextField.Root
-          placeholder="Full name"
+          placeholder={i18n._("common.fullName", "Full name")}
           required
           type="text"
           value={fullName}
           onChange={(e) => setFullName(e.target.value)}
         />
         <Text size="1" color="gray" as="p">
-          Your full name will not be shared with people outside of your clubs
-          unless you choose to at a later time.
+          <Trans key="auth.fullNameDisclaimer">
+            Your full name will not be shared with people outside of your clubs
+            unless you choose to at a later time.
+          </Trans>
         </Text>
         <Button type="submit" loading={isLoading === "email"}>
-          Sign up
+          <Trans key="auth.signup">Sign up</Trans>
         </Button>
       </Flex>
     </form>

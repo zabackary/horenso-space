@@ -1,14 +1,17 @@
 import ClubCard from "@/components/ui/club-card";
 import UserProfile from "@/components/ui/user-profile";
 import getProfile from "@/lib/auth/getProfile";
+import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
-import { Flex } from "@radix-ui/themes";
+import { Trans } from "@lingui/react/macro";
+import { Flex, Heading } from "@radix-ui/themes";
 import { redirect } from "next/navigation";
 
 export default async function UserPage({
   params,
 }: PageProps<"/[lang]/app/users/[id]">) {
-  const { id } = await params;
+  const { id, lang } = await params;
+  initLingui(lang);
 
   const supabase = await createClient();
   const ownProfile = await getProfile(supabase);
@@ -27,7 +30,9 @@ export default async function UserPage({
       <UserProfile id={id} />
       {mutualClubs && mutualClubs.length > 0 && (
         <Flex direction="column" gap="1">
-          <h2>Common Clubs</h2>
+          <Heading>
+            <Trans key="user.commonClubs">Common Clubs</Trans>
+          </Heading>
           <Flex gap="2" wrap="wrap">
             <ClubCard club={mutualClubs[0].joined_clubs} />
           </Flex>

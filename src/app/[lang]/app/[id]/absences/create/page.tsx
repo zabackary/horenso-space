@@ -1,14 +1,17 @@
 import { AbsenceForm } from "@/@types/AbsenceForm";
 import { FullscreenCard } from "@/components/ui/fullscreen-card";
 import getProfile from "@/lib/auth/getProfile";
+import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
+import { Trans } from "@lingui/react/macro";
 import { Callout, Heading } from "@radix-ui/themes";
 import Form from "./form";
 
 export default async function Page({
   params,
 }: PageProps<"/[lang]/app/[id]/absences/create">) {
-  const { id } = await params;
+  const { id, lang } = await params;
+  initLingui(lang);
 
   const supabase = await createClient();
 
@@ -42,13 +45,15 @@ export default async function Page({
   return (
     <FullscreenCard>
       <Heading size="5" as="h2" mb="4">
-        Report an absence
+        <Trans key="absence.report">Report an absence</Trans>
       </Heading>
       {templateError || !templateData ? (
         <Callout.Root variant="outline">
           <Callout.Text>
-            You do not have a configured absence report form. Please contact a
-            club manager.
+            <Trans key="absence.noForm">
+              You do not have a configured absence report form. Please contact a
+              club manager.
+            </Trans>
           </Callout.Text>
         </Callout.Root>
       ) : (

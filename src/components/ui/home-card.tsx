@@ -5,11 +5,11 @@ import type { ReactNode } from "react";
 import styles from "./home-card.module.css";
 
 export interface HomeCardProps {
-  title: string;
+  title: ReactNode;
   description: ReactNode;
   href: string;
   action?: {
-    label: string;
+    label: ReactNode;
     href: string;
   };
 }

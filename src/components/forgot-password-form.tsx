@@ -1,5 +1,7 @@
 "use client";
 
+import { createClient } from "@/lib/supabase/client";
+import { Trans, useLingui } from "@lingui/react/macro";
 import {
   Button,
   Callout,
@@ -11,7 +13,6 @@ import {
 } from "@radix-ui/themes";
 import Link from "next/link";
 import { useState } from "react";
-import { createClient } from "@/lib/supabase/client";
 
 export function ForgotPasswordForm({
   ...props
@@ -20,6 +21,7 @@ export function ForgotPasswordForm({
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const { i18n } = useLingui();
 
   const handleForgotPassword = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -44,23 +46,30 @@ export function ForgotPasswordForm({
   return success ? (
     <>
       <Heading as="h1" size="7" align="center">
-        Check your email
+        <Trans key="forgotPassword.checkEmail">Check your email</Trans>
       </Heading>
       <Text as="p" size="3" my="2" align="center">
-        We emailed you a password reset link.
+        <Trans key="forgotPassword.emailSent">
+          We emailed you a password reset link
+        </Trans>
       </Text>
       <Text as="p" align="center">
-        If you registered using your email and password, you will receive a
-        password reset email.
+        <Trans key="forgotPassword.checkEmailBody">
+          If you registered using your email and password, you will receive a
+          password reset email.
+        </Trans>
       </Text>
     </>
   ) : (
     <>
       <Heading as="h1" size="7" align="center">
-        Reset your password
+        <Trans key="forgotPassword.heading">Reset your password</Trans>
       </Heading>
       <Text as="p" size="3" my="2" align="center">
-        Type in your email and we&apos;ll send you a link to reset your password
+        <Trans key="forgotPassword.subtitle">
+          Type in your email and we&apos;ll send you a link to reset your
+          password
+        </Trans>
       </Text>
       <form onSubmit={handleForgotPassword}>
         <Flex direction="column" gap="2" my="4">
@@ -70,23 +79,25 @@ export function ForgotPasswordForm({
             </Callout.Root>
           )}
           <TextField.Root
-            placeholder="Email"
+            placeholder={i18n._("common.email", "Email")}
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             type="email"
           ></TextField.Root>
           <Button type="submit" loading={isLoading}>
-            Send reset email
+            <Trans key="forgotPassword.sendReset">Send reset email</Trans>
           </Button>
         </Flex>
         <Text align="center" color="gray" as="p">
-          Already have an account?{" "}
-          <RadixLink asChild>
-            <Link href="/auth/login" className="underline underline-offset-4">
-              Login
-            </Link>
-          </RadixLink>
+          <Trans key="forgotPassword.haveAccount">
+            Already have an account?{" "}
+            <RadixLink asChild>
+              <Link href="/auth/login" className="underline underline-offset-4">
+                Login
+              </Link>
+            </RadixLink>
+          </Trans>
         </Text>
       </form>
     </>

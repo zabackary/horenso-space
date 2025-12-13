@@ -4,6 +4,7 @@ import { AbsenceForm } from "@/@types/AbsenceForm";
 import AbsenceFormRenderer from "@/components/absence-form-renderer";
 import getProfile from "@/lib/auth/getProfile";
 import { createClient } from "@/lib/supabase/client";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { CrossCircledIcon } from "@radix-ui/react-icons";
 import {
   Callout,
@@ -36,6 +37,7 @@ export default function Form({
     }[]
   >;
 }) {
+  const { i18n } = useLingui();
   const eventsData = use(events);
   const [event, setEvent] = useState<string | null>(null);
   const [date, setDate] = useState<string | null>(null);
@@ -60,7 +62,12 @@ export default function Form({
     ]);
     if (error) {
       console.error("Error submitting absence report:", error);
-      setError("Failed to submit absence report. Please try again.");
+      setError(
+        i18n._(
+          "absences.submitError",
+          "Failed to submit absence report. Please try again."
+        )
+      );
     } else {
       redirect(`/app/${clubId}/absences`);
     }
@@ -72,20 +79,24 @@ export default function Form({
         value={absenceType}
         onValueChange={(value) => setAbsenceType(value as "event" | "general")}
       >
-        <RadioCards.Item value="event">Event Absence</RadioCards.Item>
-        <RadioCards.Item value="general">General Absence</RadioCards.Item>
+        <RadioCards.Item value="event">
+          <Trans id="absences.eventAbsence">Event Absence</Trans>
+        </RadioCards.Item>
+        <RadioCards.Item value="general">
+          <Trans id="absences.generalAbsence">General Absence</Trans>
+        </RadioCards.Item>
       </RadioCards.Root>
       {absenceType === "event" && (
         <Card>
           <Heading size="4" as="h4" mb="4">
-            Event
+            <Trans id="absences.event">Event</Trans>
           </Heading>
           <Select.Root
             onValueChange={(value) => setEvent(value)}
             value={event || undefined}
           >
             <Select.Trigger
-              placeholder="Select event..."
+              placeholder={i18n._("absences.selectEvent", "Select event...")}
               style={{ width: "100%" }}
             />
             <Select.Content>
@@ -101,11 +112,11 @@ export default function Form({
       {absenceType === "general" && (
         <Card>
           <Heading size="4" as="h4" mb="4">
-            General Absence
+            <Trans id="absences.generalAbsence">General Absence</Trans>
           </Heading>
           <TextField.Root
             type="date"
-            placeholder="Date"
+            placeholder={i18n._("absences.date", "Date")}
             value={date || ""}
             onChange={(e) => setDate(e.target.value)}
           />

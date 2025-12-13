@@ -1,6 +1,8 @@
 import { FullscreenCard } from "@/components/ui/fullscreen-card";
 import getProfile from "@/lib/auth/getProfile";
+import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
+import { Trans } from "@lingui/react/macro";
 import { CrossCircledIcon, PaperPlaneIcon } from "@radix-ui/react-icons";
 import { Button, Callout, Card, Flex, Heading, Text } from "@radix-ui/themes";
 import { redirect } from "next/navigation";
@@ -11,7 +13,8 @@ export default async function JoinClubPage({
   params,
   searchParams,
 }: PageProps<"/[lang]/app/club/invite/[id]">) {
-  const { id } = await params;
+  const { id, lang } = await params;
+  initLingui(lang);
   const { error: searchError } = await searchParams;
 
   const supabase = await createClient();
@@ -33,7 +36,11 @@ export default async function JoinClubPage({
     // If there was an error fetching the invite, or if no invite exists, show an empty page
     // This could happen if the invite has already been accepted, or if the ID is invalid
     // Note: We don't want to reveal whether the club exists or not for security reasons
-    return <FullscreenCard>Invalid or expired invite link.</FullscreenCard>;
+    return (
+      <FullscreenCard>
+        <Trans key="invite.invalid">Invalid or expired invite link</Trans>
+      </FullscreenCard>
+    );
   }
 
   return (
@@ -41,7 +48,7 @@ export default async function JoinClubPage({
       <Flex justify="center" align="center" direction="column" gap="4" asChild>
         <form>
           <Text as="p" size="4" align="center">
-            You are invited to join a club
+            <Trans key="invite.heading">You are invited to join a club</Trans>
           </Text>
           <Card className={styles.card}>
             <Flex
@@ -57,24 +64,40 @@ export default async function JoinClubPage({
                 {invite.club_name}
               </Heading>
               <Heading as="h3" size="5" align="center" color="gray">
-                by {invite.invited_by_name}
+                <Trans
+                  key="invite.by"
+                  values={{ name: invite.invited_by_name }}
+                >
+                  by {invite.invited_by_name}
+                </Trans>
               </Heading>
             </Flex>
           </Card>
           <Text as="p" size="4" align="center">
-            You will be joining as: <strong>{invite.role_name}</strong>. Expires
-            at: <strong>{new Date(invite.expires_at).toLocaleString()}</strong>
+            <Trans
+              key="invite.details"
+              values={{
+                role: invite.role_name,
+                date: new Date(invite.expires_at).toLocaleString(),
+              }}
+            >
+              You will be joining as: <strong>{invite.role_name}</strong>.
+              Expires at:{" "}
+              <strong>{new Date(invite.expires_at).toLocaleString()}</strong>
+            </Trans>
           </Text>
           {searchError !== undefined && (
             <Callout.Root color="red">
               <Callout.Icon>
                 <CrossCircledIcon />
               </Callout.Icon>
-              <Callout.Text>Failed to join club</Callout.Text>
+              <Callout.Text>
+                <Trans key="invite.error">Failed to join club</Trans>
+              </Callout.Text>
             </Callout.Root>
           )}
           <Button size="4" variant="solid" formAction={joinClub.bind(null, id)}>
-            Join Club
+            <Trans key="invite.join">Join Club</Trans>
           </Button>
         </form>
       </Flex>

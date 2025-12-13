@@ -1,4 +1,5 @@
 import RolesManager from "@/components/club-config/roles-manager";
+import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
 import { Box, Spinner } from "@radix-ui/themes";
 import React from "react";
@@ -8,7 +9,8 @@ export default async function ClubRolesPage({
   params,
 }: PageProps<"/[lang]/app/[id]/club/config/roles">) {
   // permission check handled in layout
-  const { id } = await params;
+  const { id, lang } = await params;
+  initLingui(lang);
   const supabase = await createClient();
 
   const rolesPromise = supabase

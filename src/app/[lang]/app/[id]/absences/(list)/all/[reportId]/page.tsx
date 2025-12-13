@@ -1,4 +1,5 @@
 import getPermissionsForClub from "@/lib/auth/getPermissionsForClub";
+import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { Card, Flex, Heading, IconButton } from "@radix-ui/themes";
@@ -9,7 +10,8 @@ import ReportDetail from "../../report-detail";
 export default async function Page({
   params,
 }: PageProps<"/[lang]/app/[id]/absences/all/[reportId]">) {
-  const { id, reportId } = await params;
+  const { id, reportId, lang } = await params;
+  initLingui(lang);
 
   const supabase = await createClient();
   const { permissions } = await getPermissionsForClub(supabase, id);
