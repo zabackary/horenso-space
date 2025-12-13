@@ -1,8 +1,9 @@
 import type { Database } from "@/@types/database.types";
 import MembersManager from "@/components/club-config/members-manager";
+import { ListLoading } from "@/components/loading";
 import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
-import { Box, Spinner } from "@radix-ui/themes";
+import { Box } from "@radix-ui/themes";
 import React from "react";
 import { ClubConfigTabNav } from "../layout";
 
@@ -54,7 +55,7 @@ export default async function ClubMembersPage({
     <>
       <ClubConfigTabNav active="members" clubId={id} />
       <Box p="4">
-        <React.Suspense fallback={<Spinner />}>
+        <React.Suspense fallback={<ListLoading />}>
           <MembersManager
             membersPromise={membersPromise}
             rolesPromise={Promise.resolve(rolesPromise)}

@@ -1,7 +1,8 @@
 import RolesManager from "@/components/club-config/roles-manager";
+import { ListLoading } from "@/components/loading";
 import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
-import { Box, Spinner } from "@radix-ui/themes";
+import { Box } from "@radix-ui/themes";
 import React from "react";
 import { ClubConfigTabNav } from "../layout";
 
@@ -33,7 +34,7 @@ export default async function ClubRolesPage({
     <>
       <ClubConfigTabNav active="roles" clubId={id} />
       <Box p="4">
-        <React.Suspense fallback={<Spinner />}>
+        <React.Suspense fallback={<ListLoading />}>
           <RolesManager
             clubId={id}
             rolesPromise={rolesPromise}
