@@ -17,12 +17,12 @@ msgstr "レビュー数: {0}"
 #. placeholder {0}: new Date().getFullYear()
 #: src/app/[lang]/page.tsx:82
 msgid "landing.copyright"
-msgstr "© {0} Horenso Space. 著作権所有。"
+msgstr "©{0} 報連相SPACE"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/page.tsx:26
 msgid "landing.headline"
-msgstr "クラブ管理を簡単に"
+msgstr "部活の報連相を<0>UP</0>"
 
 #. js-lingui-explicit-id
 #: src/components/club-create-form.tsx:85
@@ -83,7 +83,7 @@ msgstr "すべて"
 #. js-lingui-explicit-id
 #: src/app/[lang]/auth/sign-up/page.tsx:59
 msgid "signup.haveAccount"
-msgstr "すでにアカウントをお持ちですか?"
+msgstr "すでにアカウントをお持ちですか? {loginLink}"
 
 #. js-lingui-explicit-id
 #: src/components/forgot-password-form.tsx:96
@@ -245,7 +245,7 @@ msgstr "日"
 #. js-lingui-explicit-id
 #: src/app/[lang]/auth/login/page.tsx:64
 msgid "login.noAccount"
-msgstr "アカウントをお持ちではありませんか?"
+msgstr "アカウントをお持ちではありませんか？　{createAccountLink}"
 
 #. js-lingui-explicit-id
 #: src/components/forgot-password-form.tsx:82
