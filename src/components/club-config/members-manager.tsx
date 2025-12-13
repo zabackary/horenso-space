@@ -1,5 +1,8 @@
 "use client";
 
+import type { Database } from "@/@types/database.types";
+import { createClient } from "@/lib/supabase/client";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { CrossCircledIcon, TrashIcon } from "@radix-ui/react-icons";
 import {
   Button,
@@ -13,8 +16,6 @@ import {
 } from "@radix-ui/themes";
 import Link from "next/link";
 import { use, useState } from "react";
-import type { Database } from "@/@types/database.types";
-import { createClient } from "@/lib/supabase/client";
 import styles from "./members-manager.module.css";
 
 type ClubMemberRow = Database["public"]["Tables"]["club_members"]["Row"];
@@ -37,6 +38,8 @@ export default function MembersManager({
   const initialMembers = (use(membersPromise) ?? []) as MemberWithProfile[];
   const initialRoles = (use(rolesPromise) ?? []) as RoleRow[];
 
+  const { t } = useLingui();
+
   type MemberClient = {
     key: string;
     user_id: string;
@@ -51,14 +54,14 @@ export default function MembersManager({
         user_id: m.user_id,
         role_id: (m.role_id as string) ?? null,
         profile: m.profile,
-      })) ?? [],
+      })) ?? []
   );
   const [roles] = useState<Role[]>(
     () =>
       initialRoles.map((r) => ({
         id: r.id,
         name: (r as { id: string; name: string }).name,
-      })) ?? [],
+      })) ?? []
   );
   const [error, setError] = useState<string | null>(null);
 
@@ -73,11 +76,17 @@ export default function MembersManager({
         .throwOnError();
       setMembers((prev) =>
         prev.map((m) =>
-          m.user_id === memberUserId ? { ...m, role_id: newRoleId } : m,
-        ),
+          m.user_id === memberUserId ? { ...m, role_id: newRoleId } : m
+        )
       );
     } catch (e: unknown) {
-      setError(e instanceof Error ? e.message : String(e));
+      console.error("Failed to change member role:", e);
+      setError(
+        t({
+          id: "membersManager.changeRoleError",
+          message: "Failed to change member role. Please try again later.",
+        })
+      );
     }
   }
 
@@ -92,14 +101,20 @@ export default function MembersManager({
         .throwOnError();
       setMembers((prev) => prev.filter((m) => m.user_id !== memberUserId));
     } catch (e: unknown) {
-      setError(e instanceof Error ? e.message : String(e));
+      console.error("Failed to remove member:", e);
+      setError(
+        t({
+          id: "membersManager.removeMemberError",
+          message: "Failed to remove member. Please try again later.",
+        })
+      );
     }
   }
 
   return (
     <Flex direction="column" className={styles.root} gap="3">
       <Heading size="5" as="h3">
-        Members
+        <Trans id="membersManager.manageMembers">Manage members</Trans>
       </Heading>
       {error && (
         <Callout.Root color="red">
@@ -112,7 +127,9 @@ export default function MembersManager({
 
       <Flex direction="column" gap="3">
         {members.length === 0 ? (
-          <Text className={styles.empty}>No members found.</Text>
+          <Text className={styles.empty}>
+            <Trans id="membersManager.noMembers">No members yet.</Trans>
+          </Text>
         ) : (
           members.map((m) => {
             const displayName =
@@ -131,7 +148,9 @@ export default function MembersManager({
                       </Link>
                     </RadixLink>
                     <Text size="2" color="gray">
-                      Role: {currentRoleLabel}
+                      <Trans id="membersManager.roleLabel">
+                        Role: {currentRoleLabel}
+                      </Trans>
                     </Text>
                   </Flex>
                   <Flex align="center" gap="2">
@@ -153,7 +172,8 @@ export default function MembersManager({
                       variant="soft"
                       color="red"
                     >
-                      <TrashIcon /> Remove
+                      <TrashIcon />{" "}
+                      <Trans id="membersManager.remove">Remove</Trans>
                     </Button>
                   </Flex>
                 </Flex>

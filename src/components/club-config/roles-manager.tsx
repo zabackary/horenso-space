@@ -2,6 +2,7 @@
 
 import type { Database } from "@/@types/database.types";
 import { createClient } from "@/lib/supabase/client";
+import { Trans, useLingui } from "@lingui/react/macro";
 import {
   CrossCircledIcon,
   Pencil1Icon,
@@ -24,18 +25,8 @@ import {
 } from "@radix-ui/themes";
 import Link from "next/link";
 import { use, useState } from "react";
+import { PERMISSION_KEYS, PermissionText } from "../permission-text";
 import styles from "./roles-manager.module.css";
-
-const PERMISSION_KEYS = [
-  "canWriteFiles",
-  "canReadFiles",
-  "canWriteOwnReport",
-  "canReadAllReports",
-  "canWriteReportReview",
-  "canWriteCalendar",
-  "canReadCalendar",
-  "canManageClub",
-];
 
 type Role = {
   id: string;
@@ -107,6 +98,8 @@ export default function RolesManager({
     string | null
   >(null);
 
+  const { t } = useLingui();
+
   function normalizePermissions(
     p: Database["public"]["Tables"]["roles"]["Row"]["permissions"]
   ): Record<string, boolean> {
@@ -147,18 +140,39 @@ export default function RolesManager({
         .throwOnError();
       resetEditDialog();
     } catch (e: unknown) {
-      setError(e instanceof Error ? e.message : String(e));
+      console.error("Error saving role:", e);
+      setError(
+        t({
+          id: "rolesManager.saveRoleError",
+          message: "Failed to save role. Please try again later.",
+        })
+      );
     }
   }
 
   async function deleteRole(roleId: string) {
-    if (!confirm("Delete this role? This cannot be undone.")) return;
+    if (
+      !confirm(
+        t({
+          id: "rolesManager.confirmDeleteRole",
+          message:
+            "Are you sure you want to delete this role? This action cannot be undone.",
+        })
+      )
+    )
+      return;
     setError(null);
     const supabase = createClient();
     try {
       await supabase.from("roles").delete().eq("id", roleId).throwOnError();
     } catch (e: unknown) {
-      setError(e instanceof Error ? e.message : String(e));
+      console.error("Error deleting role:", e);
+      setError(
+        t({
+          id: "rolesManager.deleteRoleError",
+          message: "Failed to delete role. Please try again later.",
+        })
+      );
     }
   }
 
@@ -166,7 +180,12 @@ export default function RolesManager({
     if (!editName.trim()) return setError("Role name required");
     setError(null);
     if (editAbsenceReportFormId === null) {
-      setError("Absence report template must be selected");
+      setError(
+        t({
+          id: "rolesManager.selectTemplateError",
+          message: "Absence report template must be selected",
+        })
+      );
       return;
     }
     const supabase = createClient();
@@ -203,7 +222,13 @@ export default function RolesManager({
       }
       resetEditDialog();
     } catch (e: unknown) {
-      setError(e instanceof Error ? e.message : String(e));
+      console.error("Error creating role:", e);
+      setError(
+        t({
+          id: "rolesManager.createRoleError",
+          message: "Failed to create role. Please try again later.",
+        })
+      );
     }
   }
 
@@ -248,7 +273,7 @@ export default function RolesManager({
   return (
     <Flex direction="column" className={styles.root} gap="3">
       <Heading size="5" as="h3">
-        Roles
+        <Trans id="rolesManager.manageRoles">Manage roles</Trans>
       </Heading>
 
       {error && (
@@ -279,11 +304,11 @@ export default function RolesManager({
                   variant="outline"
                   onClick={() => openEditDialog(role.id)}
                 >
-                  Edit
+                  <Trans id="common.edit">Edit</Trans>
                 </Button>
                 <Button variant="soft" onClick={() => deleteRole(role.id)}>
                   <TrashIcon />
-                  Delete
+                  <Trans id="common.delete">Delete</Trans>
                 </Button>
               </Flex>
             </Card>
@@ -292,7 +317,9 @@ export default function RolesManager({
       </Flex>
 
       <Flex direction="row" gap="2" align="center">
-        <Button onClick={() => openCreateDialog()}>Create role</Button>
+        <Button onClick={() => openCreateDialog()}>
+          <Trans id="rolesManager.createNewRole">Create new role</Trans>
+        </Button>
       </Flex>
 
       <Dialog.Root
@@ -313,12 +340,22 @@ export default function RolesManager({
             }}
           >
             <Dialog.Title>
-              {editDialogRoleId === "new" ? "Create new role" : "Edit role"}
+              {editDialogRoleId === "new" ? (
+                <Trans id="rolesManager.createRole">Create Role</Trans>
+              ) : (
+                <Trans id="rolesManager.editRole">Edit Role</Trans>
+              )}
             </Dialog.Title>
             <Dialog.Description>
-              {editDialogRoleId === "new"
-                ? "Fill in the details for the new role."
-                : `Edit details for ${editName}`}
+              {editDialogRoleId === "new" ? (
+                <Trans id="rolesManager.fillDetailsNewRole">
+                  Fill in the details for the new role.
+                </Trans>
+              ) : (
+                <Trans id="rolesManager.editDetailsRole">
+                  Edit details for {editName}
+                </Trans>
+              )}
             </Dialog.Description>
             <Flex direction="column" gap="2" className={styles.dialogBody}>
               {error && (
@@ -330,18 +367,26 @@ export default function RolesManager({
                 </Callout.Root>
               )}
               <TextField.Root
-                placeholder="Role name"
+                placeholder={t({
+                  id: "rolesManager.roleName",
+                  message: "Role name",
+                })}
                 value={editName}
                 onChange={(e) => setEditName(e.target.value)}
                 required
               />
               <TextField.Root
-                placeholder="Description"
+                placeholder={t({
+                  id: "rolesManager.roleDescription",
+                  message: "Role description",
+                })}
                 value={editDescription}
                 onChange={(e) => setEditDescription(e.target.value)}
               />
 
-              <Heading size="2">Permissions</Heading>
+              <Heading size="2">
+                <Trans id="rolesManager.permissions">Permissions</Trans>
+              </Heading>
               <CheckboxCards.Root
                 value={Object.entries(editPermissions)
                   .filter(([_, v]) => v)
@@ -356,21 +401,29 @@ export default function RolesManager({
               >
                 {PERMISSION_KEYS.map((k) => (
                   <CheckboxCards.Item key={k} value={k}>
-                    {k}
+                    <PermissionText permissionKey={k} />
                   </CheckboxCards.Item>
                 ))}
               </CheckboxCards.Root>
 
-              <Heading size="2">Absence reports</Heading>
+              <Heading size="2">
+                <Trans id="rolesManager.absenceReportSettings">
+                  Absence report settings
+                </Trans>
+              </Heading>
               <Flex direction="column" gap="2">
                 <Flex direction="row" align="center" justify="between">
                   <Text size="2" color="gray">
-                    Configure reviewer/approval and choose the template used for
-                    this role.
+                    <Trans id="rolesManager.configureReviewerApproval">
+                      Configure reviewer/approval and choose the template used
+                      for this role.
+                    </Trans>
                   </Text>
                 </Flex>
                 <Flex direction="row" align="center" gap="2">
-                  <Text style={{ flexGrow: 1 }}>Reviewer role</Text>
+                  <Text style={{ flexGrow: 1 }}>
+                    <Trans id="rolesManager.reviewerRole">Reviewer role</Trans>
+                  </Text>
                   <Select.Root
                     value={editAbsenceReportReviewerRole ?? "~"}
                     onValueChange={(value) =>
@@ -392,22 +445,44 @@ export default function RolesManager({
                   </Select.Root>
                 </Flex>
                 <Flex direction="row" align="center" gap="2">
-                  <Text style={{ flexGrow: 1 }}>Approval required</Text>
+                  <Text style={{ flexGrow: 1 }}>
+                    <Trans id="rolesManager.approvalRequired">
+                      Approval required for reports
+                    </Trans>
+                  </Text>
                   <Switch
                     checked={editAbsenceReportApprovalRequired}
                     onCheckedChange={(checked) =>
                       setEditAbsenceReportApprovalRequired(Boolean(checked))
                     }
-                    required
                   />
                 </Flex>
 
                 <Flex direction="row" align="center" gap="2">
-                  <Text style={{ flexGrow: 1 }}>Template</Text>
-                  <Tooltip content="Open template editor">
+                  <Text style={{ flexGrow: 1 }}>
+                    <Trans id="rolesManager.absenceReportTemplate">
+                      Absence report template
+                    </Trans>
+                  </Text>
+                  <Tooltip
+                    content={
+                      editAbsenceReportFormId
+                        ? t({
+                            id: "rolesManager.editTemplate",
+                            message: "Edit template",
+                          })
+                        : t({
+                            id: "rolesManager.selectTemplateFirst",
+                            message: "Select a template first",
+                          })
+                    }
+                  >
                     <IconButton
                       variant="soft"
-                      aria-label="Edit selected template"
+                      aria-label={t({
+                        id: "rolesManager.openTemplateEditor",
+                        message: "Open template editor",
+                      })}
                       disabled={!editAbsenceReportFormId}
                       asChild
                     >
@@ -448,14 +523,18 @@ export default function RolesManager({
 
               <Flex gap="2">
                 <Button type="submit">
-                  {editDialogRoleId === "new" ? "Create" : "Save"}
+                  {editDialogRoleId === "new" ? (
+                    <Trans id="rolesManager.create">Create</Trans>
+                  ) : (
+                    <Trans id="common.save">Save</Trans>
+                  )}
                 </Button>
                 <Button
                   variant="soft"
                   type="button"
                   onClick={() => resetEditDialog()}
                 >
-                  Cancel
+                  <Trans id="common.cancel">Cancel</Trans>
                 </Button>
               </Flex>
             </Flex>

@@ -1,6 +1,7 @@
 "use client";
 
 import { createClient } from "@/lib/supabase/client";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { CrossCircledIcon } from "@radix-ui/react-icons";
 import {
   Button,
@@ -21,6 +22,8 @@ export default function FeedbackForm({ handleClose }: FeedbackFormProps) {
   const [isAssociatedWithClub, setIsAssociatedWithClub] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const { t } = useLingui();
 
   const a11yId = useId();
 
@@ -47,7 +50,12 @@ export default function FeedbackForm({ handleClose }: FeedbackFormProps) {
     });
     if (error) {
       console.error("Error submitting feedback:", error);
-      setError("Failed to submit feedback. Please try again later.");
+      setError(
+        t({
+          id: "feedbackForm.submitError",
+          message: "Failed to submit feedback. Please try again later.",
+        })
+      );
     } else {
       handleClose?.();
     }
@@ -60,11 +68,13 @@ export default function FeedbackForm({ handleClose }: FeedbackFormProps) {
         <Flex direction="column" gap="3">
           <Flex direction="column" gap="2">
             <Text as="label" size="2" htmlFor={`${a11yId}-feedback-textarea`}>
-              Your feedback
+              <Trans id="feedbackForm.yourFeedback">Your feedback</Trans>
             </Text>
             <Text size="1" color="gray">
-              Please provide as much detail as possible to help us address your
-              issue.
+              <Trans id="feedbackForm.details">
+                Please provide as much detail as possible to help us address
+                your issue. A minimum of 15 characters is required.
+              </Trans>
             </Text>
             <TextArea
               placeholder="Share your thoughts..."
@@ -85,11 +95,15 @@ export default function FeedbackForm({ handleClose }: FeedbackFormProps) {
               />
               <Flex direction="column" gap="1">
                 <Text size="2" as="label" htmlFor={`${a11yId}-associate-club`}>
-                  Attach this club's information
+                  <Trans id="feedbackForm.attachClubInfo">
+                    Attach this club's information
+                  </Trans>
                 </Text>
                 <Text size="1" color="gray">
-                  Sending your club information will help us better understand
-                  your problem to resolve it faster.
+                  <Trans id="feedbackForm.attachClubInfoDescription">
+                    Sending your club information will help us better understand
+                    your problem to resolve it faster.
+                  </Trans>
                 </Text>
               </Flex>
             </Flex>
@@ -110,12 +124,15 @@ export default function FeedbackForm({ handleClose }: FeedbackFormProps) {
               disabled={feedback.trim().length < 15}
               title={
                 feedback.trim().length < 15
-                  ? "Please provide more detailed feedback."
+                  ? t({
+                      id: "feedbackForm.provideMoreDetailedFeedback",
+                      message: "Please provide more detailed feedback.",
+                    })
                   : undefined
               }
               loading={isSubmitting}
             >
-              Send feedback
+              <Trans id="feedbackForm.sendFeedback">Send feedback</Trans>
             </Button>
             <Button
               variant="soft"
@@ -123,7 +140,7 @@ export default function FeedbackForm({ handleClose }: FeedbackFormProps) {
               onClick={() => handleClose?.()}
               disabled={isSubmitting}
             >
-              Cancel
+              <Trans id="common.cancel">Cancel</Trans>
             </Button>
           </Flex>
         </Flex>

@@ -2,8 +2,10 @@
 
 import type { Database } from "@/@types/database.types";
 import { createClient } from "@/lib/supabase/client";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { CrossCircledIcon, TrashIcon } from "@radix-ui/react-icons";
 import {
+  Badge,
   Button,
   Callout,
   Card,
@@ -34,6 +36,8 @@ export default function InvitesManager({
   const initialInvites = use(invitesPromise);
   const [invites, setInvites] = useState(() => initialInvites);
   const roles = use(rolesPromise);
+
+  const { t } = useLingui();
 
   const [generateDialogOpen, setGenerateDialogOpen] = useState(false);
   const [inviteRole, setInviteRole] = useState<string>(
@@ -80,7 +84,13 @@ export default function InvitesManager({
         ]);
       }
     } catch (error: unknown) {
-      setError(error instanceof Error ? error.message : "An error occurred");
+      console.error("Failed to generate invite:", error);
+      setError(
+        t({
+          id: "invitesManager.generateInviteError",
+          message: "Failed to generate invite. Please try again.",
+        })
+      );
     }
   }
 
@@ -95,14 +105,20 @@ export default function InvitesManager({
         prevInvites.filter((invite) => invite.id !== inviteId)
       );
     } catch (error: unknown) {
-      setError(error instanceof Error ? error.message : "An error occurred");
+      console.error("Failed to delete invite:", error);
+      setError(
+        t({
+          id: "invitesManager.deleteInviteError",
+          message: "Failed to delete invite. Please try again.",
+        })
+      );
     }
   }
 
   return (
     <Flex direction="column" className={styles.root} gap="3">
       <Heading size="5" as="h3">
-        Invites
+        <Trans id="invitesManager.invites">Invites</Trans>
       </Heading>
 
       {error && (
@@ -116,20 +132,31 @@ export default function InvitesManager({
 
       <Flex direction="column" gap="3">
         {roles.length === 0 ? (
-          <Text>No invites created yet.</Text>
+          <Text>
+            <Trans id="invitesManager.noRolesWarning">
+              Please create roles before generating invites.
+            </Trans>
+          </Text>
         ) : (
           invites.map((invite) => (
             <Card key={invite.id}>
               <Flex direction="row" align="center" width="100%" gap="2">
-                <Flex direction="column" flexGrow="1">
+                <Flex direction="column" flexGrow="1" gap="1">
                   <Text size="3" weight="bold">
-                    Role: {invite.role_name}
+                    <Trans id="invitesManager.titleRole">
+                      Invite for role "{invite.role_name}"
+                    </Trans>{" "}
+                    <Badge>
+                      <Trans id="invitesManager.usedCount">
+                        Used {invite.usage_count} times
+                      </Trans>
+                    </Badge>
                   </Text>
-                  <Text size="2">Invited by: {invite.invited_by_name}</Text>
                   <Text size="2">
-                    Expires at: {new Date(invite.expires_at).toLocaleString()}
+                    <Trans id="invitesManager.expiresAt">
+                      Expires at: {new Date(invite.expires_at).toLocaleString()}
+                    </Trans>
                   </Text>
-                  <Text size="2">Used {invite.usage_count} times</Text>
                 </Flex>
                 <Button
                   variant="soft"
@@ -137,7 +164,7 @@ export default function InvitesManager({
                   onClick={() => handleDelete(invite.id)}
                 >
                   <TrashIcon />
-                  Delete
+                  <Trans id="common.delete">Delete</Trans>
                 </Button>
                 <Button asChild variant="solid">
                   <Link
@@ -146,12 +173,39 @@ export default function InvitesManager({
                     rel="noopener noreferrer"
                     onClick={(e) => {
                       e.preventDefault();
-                      navigator.clipboard.writeText(
-                        `${window.location.origin}/app/club/invite/${invite.id}`
-                      );
+                      const url = `${window.location.origin}/app/club/invite/${invite.id}`;
+                      if ("share" in navigator) {
+                        try {
+                          navigator
+                            .share({
+                              title: t({
+                                id: "invitesManager.inviteLinkTitle",
+                                message: "Club Invite Link",
+                              }),
+                              url,
+                            })
+                            .catch(() => {
+                              navigator.clipboard.writeText(url);
+                              alert(
+                                t({
+                                  id: "invitesManager.linkCopiedAlert",
+                                  message: "Invite link copied to clipboard.",
+                                })
+                              );
+                            });
+                        } catch (_) {
+                          navigator.clipboard.writeText(url);
+                          alert(
+                            t({
+                              id: "invitesManager.linkCopiedAlert",
+                              message: "Invite link copied to clipboard.",
+                            })
+                          );
+                        }
+                      }
                     }}
                   >
-                    Copy link
+                    <Trans id="invitesManager.copyLink">Copy link</Trans>
                   </Link>
                 </Button>
               </Flex>
@@ -182,9 +236,16 @@ export default function InvitesManager({
               generateInvite();
             }}
           >
-            <Dialog.Title>Generate invite</Dialog.Title>
+            <Dialog.Title>
+              <Trans id="inviteManager.generateInvite.title">
+                Generate invite
+              </Trans>
+            </Dialog.Title>
             <Dialog.Description>
-              Create an invite link to invite a new member to your club.
+              <Trans id="inviteManager.generateInvite.description">
+                Generate a new invitation link for your club. You can choose the
+                role that new members will have when they join using this link.
+              </Trans>
             </Dialog.Description>
             <Flex direction="column" gap="2">
               {error && (
@@ -197,7 +258,11 @@ export default function InvitesManager({
               )}
               <Flex direction="column" gap="2" my="4">
                 <Flex direction="row" align="center" gap="2">
-                  <Text style={{ flexGrow: 1 }}>Role when joining</Text>
+                  <Text style={{ flexGrow: 1 }}>
+                    <Trans id="inviteManager.generateInvite.selectRole">
+                      Select role for new members
+                    </Trans>
+                  </Text>
                   <Select.Root
                     value={inviteRole}
                     onValueChange={(value) => setInviteRole(value)}
@@ -215,13 +280,17 @@ export default function InvitesManager({
               </Flex>
 
               <Flex gap="2">
-                <Button type="submit">Generate invite</Button>
+                <Button type="submit">
+                  <Trans id="inviteManager.generateInvite.generateButton">
+                    Generate invite
+                  </Trans>
+                </Button>
                 <Button
                   variant="soft"
                   type="button"
                   onClick={() => resetDialog()}
                 >
-                  Cancel
+                  <Trans id="common.cancel">Cancel</Trans>
                 </Button>
               </Flex>
             </Flex>

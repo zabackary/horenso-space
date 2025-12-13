@@ -1,5 +1,8 @@
 "use client";
 
+import type { Database } from "@/@types/database.types";
+import { createClient } from "@/lib/supabase/client";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { CrossCircledIcon } from "@radix-ui/react-icons";
 import {
   Button,
@@ -10,8 +13,6 @@ import {
   TextField,
 } from "@radix-ui/themes";
 import { use, useId, useState } from "react";
-import type { Database } from "@/@types/database.types";
-import { createClient } from "@/lib/supabase/client";
 import styles from "./metadata-form.module.css";
 
 type ClubRow = Database["public"]["Tables"]["clubs"]["Row"];
@@ -23,6 +24,7 @@ export default function MetadataForm({
 }) {
   const a11yId = useId();
   const club = use(clubPromise);
+  const { t } = useLingui();
 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -35,7 +37,7 @@ export default function MetadataForm({
     const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
     const data = Object.fromEntries(
-      Array.from(formData.entries()).map(([k, v]) => [k, v === "" ? null : v]),
+      Array.from(formData.entries()).map(([k, v]) => [k, v === "" ? null : v])
     ) as Record<string, FormDataEntryValue | null>;
     const supabase = createClient();
     try {
@@ -51,7 +53,13 @@ export default function MetadataForm({
         .eq("id", club.id)
         .throwOnError();
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : "An error occurred");
+      console.error("Error saving club metadata:", err);
+      setError(
+        t({
+          id: "clubConfig.metadataForm.saveError",
+          message: "Failed to save club metadata. Please try again later.",
+        })
+      );
     } finally {
       setIsLoading(false);
     }
@@ -62,7 +70,7 @@ export default function MetadataForm({
       <Flex direction="column" gap="2">
         <Flex direction="column" className={styles.field}>
           <Text as="label" htmlFor={`${a11yId}-name`} size="2">
-            Club name
+            <Trans id="club.name">Club name</Trans>
           </Text>
           <TextField.Root
             name="name"
@@ -74,7 +82,7 @@ export default function MetadataForm({
 
         <Flex direction="column" className={styles.field}>
           <Text as="label" htmlFor={`${a11yId}-description`} size="2">
-            Club description
+            <Trans id="club.description">Club description</Trans>
           </Text>
           <TextField.Root
             name="description"
@@ -85,7 +93,7 @@ export default function MetadataForm({
 
         <Flex direction="column" className={styles.field}>
           <Text as="label" htmlFor={`${a11yId}-website`} size="2">
-            Website
+            <Trans id="club.website">Website</Trans>
           </Text>
           <TextField.Root
             name="website"
@@ -97,7 +105,14 @@ export default function MetadataForm({
 
         <Flex align="center" gap="2" className={styles.field}>
           <Text as="label" htmlFor={`${a11yId}-is-public`} size="2">
-            Club privacy: {isPublic ? "Public" : "Private"}
+            <Trans id="club.privacy">
+              Club privacy:{" "}
+              {isPublic ? (
+                <Trans id="club.privacy.public">Public</Trans>
+              ) : (
+                <Trans id="club.privacy.private">Private</Trans>
+              )}
+            </Trans>
           </Text>
           <input
             id={`${a11yId}-hidden-public`}
@@ -123,7 +138,7 @@ export default function MetadataForm({
 
         <Flex className={styles.actions}>
           <Button type="submit" loading={isLoading}>
-            Save
+            <Trans id="common.save">Save</Trans>
           </Button>
         </Flex>
       </Flex>

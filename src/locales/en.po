@@ -6,6 +6,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: en\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
 
 #. js-lingui-explicit-id
 #. placeholder {0}: report.reviews.length
@@ -35,6 +41,21 @@ msgid "config.tab.absenceForms"
 msgstr "Absence forms"
 
 #. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:410
+msgid "rolesManager.absenceReportSettings"
+msgstr "Absence report settings"
+
+#. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:463
+msgid "rolesManager.absenceReportTemplate"
+msgstr "Absence report template"
+
+#. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:184
+msgid "rolesManager.selectTemplateError"
+msgstr "Absence report template must be selected"
+
+#. js-lingui-explicit-id
 #: src/app/app/[id]/page.tsx:75
 msgid "home.absences"
 msgstr "Absence reports"
@@ -59,6 +80,11 @@ msgstr "Accepted"
 #: src/app/app/[id]/page.tsx:77
 msgid "home.absencesDesc"
 msgstr "Access absence report forms"
+
+#. js-lingui-explicit-id
+#: src/components/permission-text.tsx:53
+msgid "permissions.readFiles"
+msgstr "Access club files"
 
 #. js-lingui-explicit-id
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:256
@@ -101,6 +127,16 @@ msgid "error.unspecified"
 msgstr "An unspecified error occurred"
 
 #. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:449
+msgid "rolesManager.approvalRequired"
+msgstr "Approval required for reports"
+
+#. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:156
+msgid "rolesManager.confirmDeleteRole"
+msgstr "Are you sure you want to delete this role? This action cannot be undone."
+
+#. js-lingui-explicit-id
 #: src/app/app/[id]/absences/(list)/assigned/list.tsx:31
 msgid "absences.assignedReports"
 msgstr "Assigned Reports"
@@ -116,6 +152,11 @@ msgstr "Assigned to"
 #: src/app/app/[id]/absences/(list)/tab-nav.tsx:33
 msgid "absences.tab.assigned"
 msgstr "Assigned to me"
+
+#. js-lingui-explicit-id
+#: src/components/feedback-form.tsx:98
+msgid "feedbackForm.attachClubInfo"
+msgstr "Attach this club's information"
 
 #. js-lingui-explicit-id
 #: src/app/app/[id]/calendar/[...date]/page.tsx:25
@@ -141,6 +182,9 @@ msgstr "Calendar"
 
 #. js-lingui-explicit-id
 #: src/app/app/[id]/calendar/create-event-card.tsx:209
+#: src/components/club-config/invite.tsx:293
+#: src/components/club-config/roles-manager.tsx:537
+#: src/components/feedback-form.tsx:143
 msgid "common.cancel"
 msgstr "Cancel"
 
@@ -160,17 +204,26 @@ msgid "config.heading"
 msgstr "Club configuration"
 
 #. js-lingui-explicit-id
+#: src/components/club-config/metadata-form.tsx:85
 #: src/components/club-create-form.tsx:82
 msgid "club.description"
-msgstr "Club description (optional)"
+msgstr "Club description"
 
 #. js-lingui-explicit-id
+#: src/components/club-config/invite.tsx:181
+msgid "invitesManager.inviteLinkTitle"
+msgstr "Club Invite Link"
+
+#. js-lingui-explicit-id
+#: src/components/club-config/metadata-form.tsx:73
 #: src/components/club-create-form.tsx:68
 msgid "club.name"
 msgstr "Club name"
 
 #. js-lingui-explicit-id
 #. placeholder {0}: clubIsPublic ? "Public" : "Private"
+#. placeholder {0}: isPublic ? ( <Trans id="club.privacy.public">Public</Trans> ) : ( <Trans id="club.privacy.private">Private</Trans> )
+#: src/components/club-config/metadata-form.tsx:108
 #: src/components/club-create-form.tsx:116
 msgid "club.privacy"
 msgstr "Club privacy: {0}"
@@ -186,9 +239,24 @@ msgid "user.commonClubs"
 msgstr "Common Clubs"
 
 #. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:417
+msgid "rolesManager.configureReviewerApproval"
+msgstr "Configure reviewer/approval and choose the template used for this role."
+
+#. js-lingui-explicit-id
 #: src/components/signup-form.tsx:145
 msgid "auth.confirmPassword"
 msgstr "Confirm Password"
+
+#. js-lingui-explicit-id
+#: src/components/club-config/invite.tsx:208
+msgid "invitesManager.copyLink"
+msgstr "Copy link"
+
+#. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:527
+msgid "rolesManager.create"
+msgstr "Create"
 
 #. js-lingui-explicit-id
 #: src/app/app/page.tsx:63
@@ -206,6 +274,11 @@ msgid "header.createClub"
 msgstr "Create a Club"
 
 #. js-lingui-explicit-id
+#: src/components/permission-text.tsx:30
+msgid "permissions.writeCalendar"
+msgstr "Create and edit calendar events"
+
+#. js-lingui-explicit-id
 #: src/components/club-create-form.tsx:140
 msgid "club.createButton"
 msgstr "Create club"
@@ -214,6 +287,16 @@ msgstr "Create club"
 #: src/app/app/[id]/calendar/[...date]/page.tsx:29
 msgid "calendar.createEvent"
 msgstr "Create event"
+
+#. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:321
+msgid "rolesManager.createNewRole"
+msgstr "Create new role"
+
+#. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:344
+msgid "rolesManager.createRole"
+msgstr "Create Role"
 
 #. js-lingui-explicit-id
 #: src/app/app/[id]/club/config/absence-forms/page.tsx:40
@@ -243,9 +326,35 @@ msgid "calendar.day"
 msgstr "Day"
 
 #. js-lingui-explicit-id
+#: src/components/club-config/invite.tsx:167
+#: src/components/club-config/roles-manager.tsx:311
+msgid "common.delete"
+msgstr "Delete"
+
+#. js-lingui-explicit-id
 #: src/app/auth/login/page.tsx:64
 msgid "login.noAccount"
 msgstr "Don't have an account yet? {createAccountLink}"
+
+#. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:307
+msgid "common.edit"
+msgstr "Edit"
+
+#. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:355
+msgid "rolesManager.editDetailsRole"
+msgstr "Edit details for {editName}"
+
+#. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:346
+msgid "rolesManager.editRole"
+msgstr "Edit Role"
+
+#. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:470
+msgid "rolesManager.editTemplate"
+msgstr "Edit template"
 
 #. js-lingui-explicit-id
 #: src/components/forgot-password-form.tsx:82
@@ -278,14 +387,70 @@ msgid "absences.eventDate"
 msgstr "Event date"
 
 #. js-lingui-explicit-id
+#. placeholder {0}: new Date(invite.expires_at).toLocaleString()
+#: src/components/club-config/invite.tsx:156
+msgid "invitesManager.expiresAt"
+msgstr "Expires at: {0}"
+
+#. js-lingui-explicit-id
+#: src/components/club-config/members-manager.tsx:85
+msgid "membersManager.changeRoleError"
+msgstr "Failed to change member role. Please try again later."
+
+#. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:227
+msgid "rolesManager.createRoleError"
+msgstr "Failed to create role. Please try again later."
+
+#. js-lingui-explicit-id
+#: src/components/club-config/invite.tsx:110
+msgid "invitesManager.deleteInviteError"
+msgstr "Failed to delete invite. Please try again."
+
+#. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:171
+msgid "rolesManager.deleteRoleError"
+msgstr "Failed to delete role. Please try again later."
+
+#. js-lingui-explicit-id
+#: src/components/club-config/invite.tsx:89
+msgid "invitesManager.generateInviteError"
+msgstr "Failed to generate invite. Please try again."
+
+#. js-lingui-explicit-id
 #: src/app/app/club/invite/[id]/page.tsx:84
 msgid "invite.error"
 msgstr "Failed to join club"
 
 #. js-lingui-explicit-id
+#: src/components/club-config/members-manager.tsx:106
+msgid "membersManager.removeMemberError"
+msgstr "Failed to remove member. Please try again later."
+
+#. js-lingui-explicit-id
+#: src/components/club-config/metadata-form.tsx:58
+msgid "clubConfig.metadataForm.saveError"
+msgstr "Failed to save club metadata. Please try again later."
+
+#. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:145
+msgid "rolesManager.saveRoleError"
+msgstr "Failed to save role. Please try again later."
+
+#. js-lingui-explicit-id
 #: src/app/app/[id]/absences/create/form.tsx:66
 msgid "absences.submitError"
 msgstr "Failed to submit absence report. Please try again."
+
+#. js-lingui-explicit-id
+#: src/components/feedback-form.tsx:54
+msgid "feedbackForm.submitError"
+msgstr "Failed to submit feedback. Please try again later."
+
+#. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:351
+msgid "rolesManager.fillDetailsNewRole"
+msgstr "Fill in the details for the new role."
 
 #. js-lingui-explicit-id
 #: src/app/page.tsx:61
@@ -317,6 +482,21 @@ msgstr "Full Name"
 #: src/app/app/[id]/absences/create/form.tsx:118
 msgid "absences.generalAbsence"
 msgstr "General Absence"
+
+#. js-lingui-explicit-id
+#: src/components/club-config/invite.tsx:245
+msgid "inviteManager.generateInvite.description"
+msgstr "Generate a new invitation link for your club. You can choose the role that new members will have when they join using this link."
+
+#. js-lingui-explicit-id
+#: src/components/club-config/invite.tsx:240
+msgid "inviteManager.generateInvite.title"
+msgstr "Generate invite"
+
+#. js-lingui-explicit-id
+#: src/components/club-config/invite.tsx:284
+msgid "inviteManager.generateInvite.generateButton"
+msgstr "Generate invite"
 
 #. js-lingui-explicit-id
 #: src/app/page.tsx:33
@@ -359,9 +539,31 @@ msgid "invite.invalid"
 msgstr "Invalid or expired invite link"
 
 #. js-lingui-explicit-id
+#. placeholder {0}: invite.role_name
+#: src/components/club-config/invite.tsx:146
+msgid "invitesManager.titleRole"
+msgstr "Invite for role \"{0}\""
+
+#. js-lingui-explicit-id
+#: src/components/club-config/invite.tsx:190
+#: src/components/club-config/invite.tsx:199
+msgid "invitesManager.linkCopiedAlert"
+msgstr "Invite link copied to clipboard."
+
+#. js-lingui-explicit-id
+#: src/components/club-config/invite.tsx:121
+msgid "invitesManager.invites"
+msgstr "Invites"
+
+#. js-lingui-explicit-id
 #: src/app/app/[id]/club/config/layout.tsx:71
 msgid "config.tab.invites"
 msgstr "Invites"
+
+#. js-lingui-explicit-id
+#: src/components/ui/club-card.tsx:65
+msgid "club.join"
+msgstr "Join"
 
 #. js-lingui-explicit-id
 #: src/app/app/club/invite/[id]/page.tsx:89
@@ -393,7 +595,7 @@ msgid "Log in"
 msgstr "Log in"
 
 #. js-lingui-explicit-id
-#: src/components/ui/app-header-menu.tsx:45
+#: src/components/ui/app-header-menu.tsx:44
 msgid "menu.logout"
 msgstr "Log out"
 
@@ -404,9 +606,24 @@ msgid "auth.login"
 msgstr "Login"
 
 #. js-lingui-explicit-id
+#: src/components/permission-text.tsx:21
+msgid "permissions.manageClub"
+msgstr "Manage club"
+
+#. js-lingui-explicit-id
 #: src/app/app/[id]/page.tsx:50
 msgid "home.clubSettingsDesc"
 msgstr "Manage club metadata, roles, and members"
+
+#. js-lingui-explicit-id
+#: src/components/club-config/members-manager.tsx:117
+msgid "membersManager.manageMembers"
+msgstr "Manage members"
+
+#. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:276
+msgid "rolesManager.manageRoles"
+msgstr "Manage roles"
 
 #. js-lingui-explicit-id
 #: src/app/app/[id]/club/config/layout.tsx:66
@@ -462,6 +679,11 @@ msgid "absences.noForm"
 msgstr "No form associated with this report"
 
 #. js-lingui-explicit-id
+#: src/components/club-config/members-manager.tsx:131
+msgid "membersManager.noMembers"
+msgstr "No members yet."
+
+#. js-lingui-explicit-id
 #: src/app/app/[id]/page.tsx:39
 msgid "home.notificationsNotFinished"
 msgstr "No notifications. Notifications are not finished yet but will appear here."
@@ -487,6 +709,11 @@ msgid "calendar.notes"
 msgstr "Notes"
 
 #. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:482
+msgid "rolesManager.openTemplateEditor"
+msgstr "Open template editor"
+
+#. js-lingui-explicit-id
 #: src/app/not-found.tsx:41
 msgid "notFound.heading"
 msgstr "Page not found"
@@ -498,14 +725,44 @@ msgid "common.password"
 msgstr "Password"
 
 #. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:388
+msgid "rolesManager.permissions"
+msgstr "Permissions"
+
+#. js-lingui-explicit-id
+#: src/components/club-config/invite.tsx:136
+msgid "invitesManager.noRolesWarning"
+msgstr "Please create roles before generating invites."
+
+#. js-lingui-explicit-id
+#: src/components/feedback-form.tsx:74
+msgid "feedbackForm.details"
+msgstr "Please provide as much detail as possible to help us address your issue. A minimum of 15 characters is required."
+
+#. js-lingui-explicit-id
+#: src/components/feedback-form.tsx:127
+msgid "feedbackForm.provideMoreDetailedFeedback"
+msgstr "Please provide more detailed feedback."
+
+#. js-lingui-explicit-id
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:214
 msgid "absences.previousReviews"
 msgstr "Previous Reviews"
 
 #. js-lingui-explicit-id
-#: src/components/ui/app-header-menu.tsx:36
+#: src/components/club-config/metadata-form.tsx:113
+msgid "club.privacy.private"
+msgstr "Private"
+
+#. js-lingui-explicit-id
+#: src/components/ui/app-header-menu.tsx:35
 msgid "menu.profile"
 msgstr "Profile and settings"
+
+#. js-lingui-explicit-id
+#: src/components/club-config/metadata-form.tsx:111
+msgid "club.privacy.public"
+msgstr "Public"
 
 #. js-lingui-explicit-id
 #: src/app/app/[id]/page.tsx:36
@@ -522,6 +779,11 @@ msgstr "Reject"
 #: src/app/app/[id]/absences/(list)/report-detail.tsx:166
 msgid "absences.rejected"
 msgstr "Rejected"
+
+#. js-lingui-explicit-id
+#: src/components/club-config/members-manager.tsx:176
+msgid "membersManager.remove"
+msgstr "Remove"
 
 #. js-lingui-explicit-id
 #: src/app/app/[id]/page.tsx:83
@@ -555,14 +817,39 @@ msgid "forgotPassword.heading"
 msgstr "Reset your password"
 
 #. js-lingui-explicit-id
+#: src/components/permission-text.tsx:42
+msgid "permissions.writeReportReview"
+msgstr "Review and respond to absence reports"
+
+#. js-lingui-explicit-id
 #: src/app/app/[id]/absences/(list)/assigned/list.tsx:70
 msgid "absences.reviewed"
 msgstr "Reviewed"
 
 #. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:425
+msgid "rolesManager.reviewerRole"
+msgstr "Reviewer role"
+
+#. js-lingui-explicit-id
 #: src/app/app/[id]/absences/(list)/report-detail.tsx:150
 msgid "absences.reviews"
 msgstr "Reviews"
+
+#. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:379
+msgid "rolesManager.roleDescription"
+msgstr "Role description"
+
+#. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:370
+msgid "rolesManager.roleName"
+msgstr "Role name"
+
+#. js-lingui-explicit-id
+#: src/components/club-config/members-manager.tsx:151
+msgid "membersManager.roleLabel"
+msgstr "Role: {currentRoleLabel}"
 
 #. js-lingui-explicit-id
 #: src/app/app/[id]/club/config/layout.tsx:61
@@ -571,13 +858,15 @@ msgstr "Roles"
 
 #. js-lingui-explicit-id
 #: src/app/app/[id]/calendar/create-event-card.tsx:199
+#: src/components/club-config/metadata-form.tsx:141
+#: src/components/club-config/roles-manager.tsx:529
 msgid "common.save"
 msgstr "Save"
 
 #. js-lingui-explicit-id
 #: src/components/club-create-form.tsx:94
 msgid "club.school"
-msgstr "School (optional)"
+msgstr "School"
 
 #. js-lingui-explicit-id
 #: src/components/ui/app-header.tsx:78
@@ -600,12 +889,28 @@ msgid "settings.selectSetting"
 msgstr "Select a setting to change"
 
 #. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:474
+msgid "rolesManager.selectTemplateFirst"
+msgstr "Select a template first"
+
+#. js-lingui-explicit-id
 #: src/app/app/[id]/absences/create/form.tsx:99
 msgid "absences.selectEvent"
 msgstr "Select event"
 
 #. js-lingui-explicit-id
-#: src/components/ui/app-header-menu.tsx:40
+#: src/components/club-config/invite.tsx:262
+msgid "inviteManager.generateInvite.selectRole"
+msgstr "Select role for new members"
+
+#. js-lingui-explicit-id
+#: src/components/feedback-form.tsx:135
+msgid "feedbackForm.sendFeedback"
+msgstr "Send feedback"
+
+#. js-lingui-explicit-id
+#: src/components/ui/app-header-menu.tsx:39
+#: src/components/ui/app-header-menu.tsx:53
 msgid "menu.sendFeedback"
 msgstr "Send Feedback"
 
@@ -613,6 +918,11 @@ msgstr "Send Feedback"
 #: src/components/forgot-password-form.tsx:92
 msgid "forgotPassword.sendReset"
 msgstr "Send reset email"
+
+#. js-lingui-explicit-id
+#: src/components/feedback-form.tsx:103
+msgid "feedbackForm.attachClubInfoDescription"
+msgstr "Sending your club information will help us better understand your problem to resolve it faster."
 
 #. js-lingui-explicit-id
 #: src/components/login-form.tsx:92
@@ -654,6 +964,11 @@ msgstr "Sign up with Google"
 #: src/app/auth/error/page.tsx:17
 msgid "error.heading"
 msgstr "Something went wrong"
+
+#. js-lingui-explicit-id
+#: src/components/permission-text.tsx:49
+msgid "permissions.writeOwnReport"
+msgstr "Submit absence reports"
 
 #. js-lingui-explicit-id
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:140
@@ -715,9 +1030,35 @@ msgid "common.unknownUser"
 msgstr "Unknown user"
 
 #. js-lingui-explicit-id
+#: src/components/permission-text.tsx:57
+msgid "permissions.writeFiles"
+msgstr "Upload and manage club files"
+
+#. js-lingui-explicit-id
+#. placeholder {0}: invite.usage_count
+#: src/components/club-config/invite.tsx:150
+msgid "invitesManager.usedCount"
+msgstr "Used {0} times"
+
+#. js-lingui-explicit-id
 #: src/app/app/users/me/layout.tsx:31
 msgid "user.settings"
 msgstr "User settings"
+
+#. js-lingui-explicit-id
+#: src/components/permission-text.tsx:37
+msgid "permissions.readAllReports"
+msgstr "View all absence reports"
+
+#. js-lingui-explicit-id
+#: src/components/permission-text.tsx:25
+msgid "permissions.readCalendar"
+msgstr "View club calendar events"
+
+#. js-lingui-explicit-id
+#: src/components/ui/app-header-menu.tsx:56
+msgid "menu.feedbackDescription"
+msgstr "We appreciate your feedback to help us improve. Every message is read and considered."
 
 #. js-lingui-explicit-id
 #: src/components/forgot-password-form.tsx:52
@@ -725,9 +1066,10 @@ msgid "forgotPassword.emailSent"
 msgstr "We emailed you a password reset link"
 
 #. js-lingui-explicit-id
+#: src/components/club-config/metadata-form.tsx:96
 #: src/components/club-create-form.tsx:106
 msgid "club.website"
-msgstr "Website (optional)"
+msgstr "Website"
 
 #. js-lingui-explicit-id
 #: src/app/auth/login/page.tsx:55
@@ -767,6 +1109,11 @@ msgid "club.namePlaceholder"
 msgstr "Your club"
 
 #. js-lingui-explicit-id
+#: src/components/feedback-form.tsx:71
+msgid "feedbackForm.yourFeedback"
+msgstr "Your feedback"
+
+#. js-lingui-explicit-id
 #: src/components/signup-form.tsx:161
 msgid "auth.fullNameDisclaimer"
 msgstr "Your full name will not be shared with people outside of your clubs unless you choose to at a later time."
@@ -777,11 +1124,6 @@ msgid "club.schoolPlaceholder"
 msgstr "Your school"
 
 #. js-lingui-explicit-id
-#: src/components/ui/club-card.tsx:65
-msgid "club.join"
-msgstr "参加する"
-
-#. js-lingui-explicit-id
 #: src/app/page.tsx:77
 msgid "landing.footer"
-msgstr "札幌光星中学高等学校吹奏楽部とクリスチャン・アカデミー・イン・ジャパンロボティクス部のが制作"
+msgstr "Made in partnership by Sapporo Kosei Junior and Senior High School Brass Band Club and the Christian Academy in Japan Robotics Club"

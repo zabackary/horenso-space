@@ -2,7 +2,7 @@
 
 import { logout } from "@/actions/auth";
 import { Profile } from "@/lib/auth/getProfile";
-import { Trans, useLingui } from "@lingui/react/macro";
+import { Trans } from "@lingui/react/macro";
 import { Avatar, Dialog, DropdownMenu, IconButton } from "@radix-ui/themes";
 import Link from "next/dist/client/link";
 import { lazy, useState } from "react";
@@ -15,7 +15,6 @@ export interface AppHeaderMenuProps {
 
 export function AppHeaderMenu({ profile }: AppHeaderMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const { t } = useLingui();
 
   return (
     <>
@@ -50,9 +49,14 @@ export function AppHeaderMenu({ profile }: AppHeaderMenuProps) {
       </DropdownMenu.Root>
       <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
         <Dialog.Content>
-          <Dialog.Title>Send Feedback</Dialog.Title>
+          <Dialog.Title>
+            <Trans id="menu.sendFeedback">Send Feedback</Trans>
+          </Dialog.Title>
           <Dialog.Description>
-            We appreciate your feedback to help us improve.
+            <Trans id="menu.feedbackDescription">
+              We appreciate your feedback to help us improve. Every message is
+              read and considered.
+            </Trans>
           </Dialog.Description>
           <FeedbackForm handleClose={() => setIsOpen(false)} />
         </Dialog.Content>

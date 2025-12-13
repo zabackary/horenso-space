@@ -51,6 +51,21 @@ msgid "config.tab.absenceForms"
 msgstr "欠席報告フォーム"
 
 #. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:410
+msgid "rolesManager.absenceReportSettings"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:463
+msgid "rolesManager.absenceReportTemplate"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:184
+msgid "rolesManager.selectTemplateError"
+msgstr ""
+
+#. js-lingui-explicit-id
 #: src/app/app/[id]/page.tsx:75
 msgid "home.absences"
 msgstr "欠席報告"
@@ -75,6 +90,11 @@ msgstr "承認済み"
 #: src/app/app/[id]/page.tsx:77
 msgid "home.absencesDesc"
 msgstr "欠席報告の管理と確認"
+
+#. js-lingui-explicit-id
+#: src/components/permission-text.tsx:53
+msgid "permissions.readFiles"
+msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:256
@@ -117,6 +137,16 @@ msgid "error.unspecified"
 msgstr "予期しないエラーが発生しました"
 
 #. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:449
+msgid "rolesManager.approvalRequired"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:156
+msgid "rolesManager.confirmDeleteRole"
+msgstr ""
+
+#. js-lingui-explicit-id
 #: src/app/app/[id]/absences/(list)/assigned/list.tsx:31
 msgid "absences.assignedReports"
 msgstr "割り当てられた報告"
@@ -132,6 +162,11 @@ msgstr "割り当て先"
 #: src/app/app/[id]/absences/(list)/tab-nav.tsx:33
 msgid "absences.tab.assigned"
 msgstr "割り当てられた"
+
+#. js-lingui-explicit-id
+#: src/components/feedback-form.tsx:98
+msgid "feedbackForm.attachClubInfo"
+msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/app/[id]/calendar/[...date]/page.tsx:25
@@ -157,6 +192,9 @@ msgstr "カレンダー"
 
 #. js-lingui-explicit-id
 #: src/app/app/[id]/calendar/create-event-card.tsx:209
+#: src/components/club-config/invite.tsx:293
+#: src/components/club-config/roles-manager.tsx:537
+#: src/components/feedback-form.tsx:143
 msgid "common.cancel"
 msgstr "キャンセル"
 
@@ -176,17 +214,26 @@ msgid "config.heading"
 msgstr "設定"
 
 #. js-lingui-explicit-id
+#: src/components/club-config/metadata-form.tsx:85
 #: src/components/club-create-form.tsx:82
 msgid "club.description"
 msgstr "説明"
 
 #. js-lingui-explicit-id
+#: src/components/club-config/invite.tsx:181
+msgid "invitesManager.inviteLinkTitle"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/club-config/metadata-form.tsx:73
 #: src/components/club-create-form.tsx:68
 msgid "club.name"
 msgstr "クラブ名"
 
 #. js-lingui-explicit-id
 #. placeholder {0}: clubIsPublic ? "Public" : "Private"
+#. placeholder {0}: isPublic ? ( <Trans id="club.privacy.public">Public</Trans> ) : ( <Trans id="club.privacy.private">Private</Trans> )
+#: src/components/club-config/metadata-form.tsx:108
 #: src/components/club-create-form.tsx:116
 msgid "club.privacy"
 msgstr "プライバシー: {0}"
@@ -202,9 +249,24 @@ msgid "user.commonClubs"
 msgstr "共通のクラブ"
 
 #. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:417
+msgid "rolesManager.configureReviewerApproval"
+msgstr ""
+
+#. js-lingui-explicit-id
 #: src/components/signup-form.tsx:145
 msgid "auth.confirmPassword"
 msgstr "パスワードを確認"
+
+#. js-lingui-explicit-id
+#: src/components/club-config/invite.tsx:208
+msgid "invitesManager.copyLink"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:527
+msgid "rolesManager.create"
+msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/app/page.tsx:63
@@ -222,6 +284,11 @@ msgid "header.createClub"
 msgstr "クラブを作成"
 
 #. js-lingui-explicit-id
+#: src/components/permission-text.tsx:30
+msgid "permissions.writeCalendar"
+msgstr ""
+
+#. js-lingui-explicit-id
 #: src/components/club-create-form.tsx:140
 msgid "club.createButton"
 msgstr "作成"
@@ -230,6 +297,16 @@ msgstr "作成"
 #: src/app/app/[id]/calendar/[...date]/page.tsx:29
 msgid "calendar.createEvent"
 msgstr "イベントを作成"
+
+#. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:321
+msgid "rolesManager.createNewRole"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:344
+msgid "rolesManager.createRole"
+msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/app/[id]/club/config/absence-forms/page.tsx:40
@@ -259,9 +336,35 @@ msgid "calendar.day"
 msgstr "日"
 
 #. js-lingui-explicit-id
+#: src/components/club-config/invite.tsx:167
+#: src/components/club-config/roles-manager.tsx:311
+msgid "common.delete"
+msgstr ""
+
+#. js-lingui-explicit-id
 #: src/app/auth/login/page.tsx:64
 msgid "login.noAccount"
 msgstr "アカウントをお持ちではありませんか？　{createAccountLink}"
+
+#. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:307
+msgid "common.edit"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:355
+msgid "rolesManager.editDetailsRole"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:346
+msgid "rolesManager.editRole"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:470
+msgid "rolesManager.editTemplate"
+msgstr ""
 
 #. js-lingui-explicit-id
 #: src/components/forgot-password-form.tsx:82
@@ -294,14 +397,70 @@ msgid "absences.eventDate"
 msgstr "イベント日付"
 
 #. js-lingui-explicit-id
+#. placeholder {0}: new Date(invite.expires_at).toLocaleString()
+#: src/components/club-config/invite.tsx:156
+msgid "invitesManager.expiresAt"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/club-config/members-manager.tsx:85
+msgid "membersManager.changeRoleError"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:227
+msgid "rolesManager.createRoleError"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/club-config/invite.tsx:110
+msgid "invitesManager.deleteInviteError"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:171
+msgid "rolesManager.deleteRoleError"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/club-config/invite.tsx:89
+msgid "invitesManager.generateInviteError"
+msgstr ""
+
+#. js-lingui-explicit-id
 #: src/app/app/club/invite/[id]/page.tsx:84
 msgid "invite.error"
 msgstr "招待エラー"
 
 #. js-lingui-explicit-id
+#: src/components/club-config/members-manager.tsx:106
+msgid "membersManager.removeMemberError"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/club-config/metadata-form.tsx:58
+msgid "clubConfig.metadataForm.saveError"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:145
+msgid "rolesManager.saveRoleError"
+msgstr ""
+
+#. js-lingui-explicit-id
 #: src/app/app/[id]/absences/create/form.tsx:66
 msgid "absences.submitError"
 msgstr "送信エラーが発生しました"
+
+#. js-lingui-explicit-id
+#: src/components/feedback-form.tsx:54
+msgid "feedbackForm.submitError"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:351
+msgid "rolesManager.fillDetailsNewRole"
+msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/page.tsx:61
@@ -333,6 +492,21 @@ msgstr "フルネーム"
 #: src/app/app/[id]/absences/create/form.tsx:118
 msgid "absences.generalAbsence"
 msgstr "通常欠席"
+
+#. js-lingui-explicit-id
+#: src/components/club-config/invite.tsx:245
+msgid "inviteManager.generateInvite.description"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/club-config/invite.tsx:240
+msgid "inviteManager.generateInvite.title"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/club-config/invite.tsx:284
+msgid "inviteManager.generateInvite.generateButton"
+msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/page.tsx:33
@@ -375,9 +549,31 @@ msgid "invite.invalid"
 msgstr "この招待は無効です"
 
 #. js-lingui-explicit-id
+#. placeholder {0}: invite.role_name
+#: src/components/club-config/invite.tsx:146
+msgid "invitesManager.titleRole"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/club-config/invite.tsx:190
+#: src/components/club-config/invite.tsx:199
+msgid "invitesManager.linkCopiedAlert"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/club-config/invite.tsx:121
+msgid "invitesManager.invites"
+msgstr ""
+
+#. js-lingui-explicit-id
 #: src/app/app/[id]/club/config/layout.tsx:71
 msgid "config.tab.invites"
 msgstr "招待"
+
+#. js-lingui-explicit-id
+#: src/components/ui/club-card.tsx:65
+msgid "club.join"
+msgstr "参加"
 
 #. js-lingui-explicit-id
 #: src/app/app/club/invite/[id]/page.tsx:89
@@ -409,9 +605,9 @@ msgid "Log in"
 msgstr "ログイン"
 
 #. js-lingui-explicit-id
-#: src/components/ui/app-header-menu.tsx:45
+#: src/components/ui/app-header-menu.tsx:44
 msgid "menu.logout"
-msgstr ""
+msgstr "ログアウト"
 
 #. js-lingui-explicit-id
 #: src/components/login-form.tsx:125
@@ -420,9 +616,24 @@ msgid "auth.login"
 msgstr "ログイン"
 
 #. js-lingui-explicit-id
+#: src/components/permission-text.tsx:21
+msgid "permissions.manageClub"
+msgstr ""
+
+#. js-lingui-explicit-id
 #: src/app/app/[id]/page.tsx:50
 msgid "home.clubSettingsDesc"
 msgstr "クラブの設定を管理"
+
+#. js-lingui-explicit-id
+#: src/components/club-config/members-manager.tsx:117
+msgid "membersManager.manageMembers"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:276
+msgid "rolesManager.manageRoles"
+msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/app/[id]/club/config/layout.tsx:66
@@ -478,6 +689,11 @@ msgid "absences.noForm"
 msgstr "フォームなし"
 
 #. js-lingui-explicit-id
+#: src/components/club-config/members-manager.tsx:131
+msgid "membersManager.noMembers"
+msgstr ""
+
+#. js-lingui-explicit-id
 #: src/app/app/[id]/page.tsx:39
 msgid "home.notificationsNotFinished"
 msgstr ""
@@ -503,6 +719,11 @@ msgid "calendar.notes"
 msgstr "メモ"
 
 #. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:482
+msgid "rolesManager.openTemplateEditor"
+msgstr ""
+
+#. js-lingui-explicit-id
 #: src/app/not-found.tsx:41
 msgid "notFound.heading"
 msgstr "ページが見つかりません"
@@ -514,19 +735,49 @@ msgid "common.password"
 msgstr "パスワード"
 
 #. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:388
+msgid "rolesManager.permissions"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/club-config/invite.tsx:136
+msgid "invitesManager.noRolesWarning"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/feedback-form.tsx:74
+msgid "feedbackForm.details"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/feedback-form.tsx:127
+msgid "feedbackForm.provideMoreDetailedFeedback"
+msgstr ""
+
+#. js-lingui-explicit-id
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:214
 msgid "absences.previousReviews"
 msgstr "前回のレビュー"
 
 #. js-lingui-explicit-id
-#: src/components/ui/app-header-menu.tsx:36
+#: src/components/club-config/metadata-form.tsx:113
+msgid "club.privacy.private"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/ui/app-header-menu.tsx:35
 msgid "menu.profile"
+msgstr "プロフィール・設定"
+
+#. js-lingui-explicit-id
+#: src/components/club-config/metadata-form.tsx:111
+msgid "club.privacy.public"
 msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/app/[id]/page.tsx:36
 msgid "home.notifications"
-msgstr ""
+msgstr "通知"
 
 #. js-lingui-explicit-id
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:277
@@ -538,6 +789,11 @@ msgstr "却下する"
 #: src/app/app/[id]/absences/(list)/report-detail.tsx:166
 msgid "absences.rejected"
 msgstr "却下"
+
+#. js-lingui-explicit-id
+#: src/components/club-config/members-manager.tsx:176
+msgid "membersManager.remove"
+msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/app/[id]/page.tsx:83
@@ -571,14 +827,39 @@ msgid "forgotPassword.heading"
 msgstr "パスワードをリセット"
 
 #. js-lingui-explicit-id
+#: src/components/permission-text.tsx:42
+msgid "permissions.writeReportReview"
+msgstr ""
+
+#. js-lingui-explicit-id
 #: src/app/app/[id]/absences/(list)/assigned/list.tsx:70
 msgid "absences.reviewed"
 msgstr "レビュー済み"
 
 #. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:425
+msgid "rolesManager.reviewerRole"
+msgstr ""
+
+#. js-lingui-explicit-id
 #: src/app/app/[id]/absences/(list)/report-detail.tsx:150
 msgid "absences.reviews"
 msgstr "レビュー"
+
+#. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:379
+msgid "rolesManager.roleDescription"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:370
+msgid "rolesManager.roleName"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/club-config/members-manager.tsx:151
+msgid "membersManager.roleLabel"
+msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/app/[id]/club/config/layout.tsx:61
@@ -587,6 +868,8 @@ msgstr "ロール"
 
 #. js-lingui-explicit-id
 #: src/app/app/[id]/calendar/create-event-card.tsx:199
+#: src/components/club-config/metadata-form.tsx:141
+#: src/components/club-config/roles-manager.tsx:529
 msgid "common.save"
 msgstr "保存"
 
@@ -616,19 +899,40 @@ msgid "settings.selectSetting"
 msgstr "設定を選択"
 
 #. js-lingui-explicit-id
+#: src/components/club-config/roles-manager.tsx:474
+msgid "rolesManager.selectTemplateFirst"
+msgstr ""
+
+#. js-lingui-explicit-id
 #: src/app/app/[id]/absences/create/form.tsx:99
 msgid "absences.selectEvent"
 msgstr "イベントを選択"
 
 #. js-lingui-explicit-id
-#: src/components/ui/app-header-menu.tsx:40
-msgid "menu.sendFeedback"
+#: src/components/club-config/invite.tsx:262
+msgid "inviteManager.generateInvite.selectRole"
 msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/feedback-form.tsx:135
+msgid "feedbackForm.sendFeedback"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/ui/app-header-menu.tsx:39
+#: src/components/ui/app-header-menu.tsx:53
+msgid "menu.sendFeedback"
+msgstr "フィードバックを送信"
 
 #. js-lingui-explicit-id
 #: src/components/forgot-password-form.tsx:92
 msgid "forgotPassword.sendReset"
 msgstr "リセットを送信"
+
+#. js-lingui-explicit-id
+#: src/components/feedback-form.tsx:103
+msgid "feedbackForm.attachClubInfoDescription"
+msgstr ""
 
 #. js-lingui-explicit-id
 #: src/components/login-form.tsx:92
@@ -674,6 +978,11 @@ msgstr "Googleで登録"
 #: src/app/auth/error/page.tsx:17
 msgid "error.heading"
 msgstr "エラー"
+
+#. js-lingui-explicit-id
+#: src/components/permission-text.tsx:49
+msgid "permissions.writeOwnReport"
+msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:140
@@ -735,9 +1044,35 @@ msgid "common.unknownUser"
 msgstr "不明なユーザー"
 
 #. js-lingui-explicit-id
+#: src/components/permission-text.tsx:57
+msgid "permissions.writeFiles"
+msgstr ""
+
+#. js-lingui-explicit-id
+#. placeholder {0}: invite.usage_count
+#: src/components/club-config/invite.tsx:150
+msgid "invitesManager.usedCount"
+msgstr ""
+
+#. js-lingui-explicit-id
 #: src/app/app/users/me/layout.tsx:31
 msgid "user.settings"
 msgstr "設定"
+
+#. js-lingui-explicit-id
+#: src/components/permission-text.tsx:37
+msgid "permissions.readAllReports"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/permission-text.tsx:25
+msgid "permissions.readCalendar"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/ui/app-header-menu.tsx:56
+msgid "menu.feedbackDescription"
+msgstr ""
 
 #. js-lingui-explicit-id
 #: src/components/forgot-password-form.tsx:52
@@ -745,6 +1080,7 @@ msgid "forgotPassword.emailSent"
 msgstr "メールを送信しました"
 
 #. js-lingui-explicit-id
+#: src/components/club-config/metadata-form.tsx:96
 #: src/components/club-create-form.tsx:106
 msgid "club.website"
 msgstr "ウェブサイト"
@@ -787,6 +1123,11 @@ msgid "club.namePlaceholder"
 msgstr "クラブの名前を入力..."
 
 #. js-lingui-explicit-id
+#: src/components/feedback-form.tsx:71
+msgid "feedbackForm.yourFeedback"
+msgstr ""
+
+#. js-lingui-explicit-id
 #: src/components/signup-form.tsx:161
 msgid "auth.fullNameDisclaimer"
 msgstr "本名で登録してください"
@@ -795,11 +1136,6 @@ msgstr "本名で登録してください"
 #: src/components/club-create-form.tsx:97
 msgid "club.schoolPlaceholder"
 msgstr "学校名を入力..."
-
-#. js-lingui-explicit-id
-#: src/components/ui/club-card.tsx:65
-msgid "club.join"
-msgstr "参加"
 
 #. js-lingui-explicit-id
 #: src/app/page.tsx:77

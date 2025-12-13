@@ -79,7 +79,7 @@ export function ClubCreateForm() {
           onChange={(e) => setClubName(e.target.value)}
         />
         <Text as="label" htmlFor={`${a11yId}-description`} size="2">
-          <Trans id="club.description">Club description (optional)</Trans>
+          <Trans id="club.description">Club description</Trans>
         </Text>
         <TextField.Root
           placeholder={t({
@@ -91,7 +91,7 @@ export function ClubCreateForm() {
           onChange={(e) => setClubDescription(e.target.value)}
         />
         <Text as="label" htmlFor={`${a11yId}-school`} size="2">
-          <Trans id="club.school">School (optional)</Trans>
+          <Trans id="club.school">School</Trans>
         </Text>
         <TextField.Root
           placeholder={t({
@@ -103,7 +103,7 @@ export function ClubCreateForm() {
           onChange={(e) => setClubSchool(e.target.value)}
         />
         <Text as="label" htmlFor={`${a11yId}-website`} size="2">
-          <Trans id="club.website">Website (optional)</Trans>
+          <Trans id="club.website">Website</Trans>
         </Text>
         <TextField.Root
           placeholder="https://example.com"
