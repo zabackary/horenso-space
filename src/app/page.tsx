@@ -1,7 +1,8 @@
+import { AppHeader } from "@/components/ui/app-header";
+import { Trans } from "@lingui/react/macro";
 import { Button, Card, Flex, Grid, Heading, Text } from "@radix-ui/themes";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { AppHeader } from "@/components/ui/app-header";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -18,7 +19,9 @@ export default function Home() {
         <Card className={styles.banner} variant="surface" asChild>
           <main>
             <Heading size="9" as="h1">
-              部活の報連相を<em>UP</em>
+              <Trans key="landing.headline">
+                <em>Improve</em> your club communication
+              </Trans>
             </Heading>
             <Flex gap="2">
               <Button asChild size="4" variant="solid">
@@ -40,17 +43,17 @@ export default function Home() {
           <main>
             <Card>
               <Heading size="7" as="h2">
-                誰がいないか、はっきりわかる
+                Understand quickly who's where and when
               </Heading>
             </Card>
             <Card>
               <Heading size="7" as="h2">
-                必要なドキュメントを簡単に共有
+                Find your shared documents easily
               </Heading>
             </Card>
             <Card>
               <Heading size="7" as="h2">
-                どんな部活でも。
+                For any club, any team, any group
               </Heading>
             </Card>
           </main>
