@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
+    "extract": "lingui extract",
     "start": "next start",
     "lint": "biome check",
     "lint-types": "tsc --noEmit",
