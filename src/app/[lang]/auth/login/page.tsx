@@ -44,7 +44,7 @@ export default async function LoginPage(
             : "/auth/sign-up"
         }
       >
-        <Trans>Sign up</Trans>
+        <Trans id="login.signUp">Sign up</Trans>
       </Link>
     </RadixLink>
   );
