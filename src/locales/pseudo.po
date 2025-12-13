@@ -14,31 +14,6 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/club/config/layout.tsx:56
-#~ msgid "config.tab.metadata"
-#~ msgstr ""
-
-#. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/club/config/layout.tsx:61
-#~ msgid "config.tab.roles"
-#~ msgstr ""
-
-#. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/club/config/layout.tsx:66
-#~ msgid "config.tab.members"
-#~ msgstr ""
-
-#. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/club/config/layout.tsx:71
-#~ msgid "config.tab.invites"
-#~ msgstr ""
-
-#. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/club/config/layout.tsx:76
-#~ msgid "config.tab.absenceForms"
-#~ msgstr ""
-
-#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/calendar/create-event-card.tsx:98
 #~ msgid "calendar.newEventName"
 #~ msgstr ""
@@ -89,7 +64,12 @@ msgid "club.descriptionPlaceholder"
 msgstr ""
 
 #: src/app/[lang]/app/[id]/club/config/layout.tsx:76
-msgid "Absence"
+#~ msgid "Absence"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/app/[lang]/app/[id]/club/config/layout.tsx:76
+msgid "config.tab.absenceForms"
 msgstr ""
 
 #: src/app/[lang]/app/[id]/page.tsx:74
@@ -383,9 +363,14 @@ msgstr ""
 msgid "Invalid or expired invite link"
 msgstr ""
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/club/config/layout.tsx:71
-msgid "Invites"
+msgid "config.tab.invites"
 msgstr ""
+
+#: src/app/[lang]/app/[id]/club/config/layout.tsx:71
+#~ msgid "Invites"
+#~ msgstr ""
 
 #: src/app/[lang]/app/club/invite/[id]/page.tsx:89
 msgid "Join Club"
@@ -423,13 +408,23 @@ msgstr ""
 msgid "Manage club metadata, roles, and members"
 msgstr ""
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/club/config/layout.tsx:66
-msgid "Members"
+msgid "config.tab.members"
+msgstr ""
+
+#: src/app/[lang]/app/[id]/club/config/layout.tsx:66
+#~ msgid "Members"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/app/[lang]/app/[id]/club/config/layout.tsx:56
+msgid "config.tab.metadata"
 msgstr ""
 
 #: src/app/[lang]/app/[id]/club/config/layout.tsx:56
-msgid "Metadata"
-msgstr ""
+#~ msgid "Metadata"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/calendar/calendar.tsx:50
@@ -559,9 +554,14 @@ msgstr ""
 msgid "absences.reviews"
 msgstr ""
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/club/config/layout.tsx:61
-msgid "Roles"
+msgid "config.tab.roles"
 msgstr ""
+
+#: src/app/[lang]/app/[id]/club/config/layout.tsx:61
+#~ msgid "Roles"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/calendar/create-event-card.tsx:199

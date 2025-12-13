@@ -53,27 +53,27 @@ export function ClubConfigTabNav({
     <TabNav.Root>
       <TabNav.Link asChild active={active === "metadata"}>
         <Link href={`/app/${clubId}/club/config/metadata`}>
-          <Trans key="config.tab.metadata">Metadata</Trans>
+          <Trans id="config.tab.metadata">Metadata</Trans>
         </Link>
       </TabNav.Link>
       <TabNav.Link asChild active={active === "roles"}>
         <Link href={`/app/${clubId}/club/config/roles`}>
-          <Trans key="config.tab.roles">Roles</Trans>
+          <Trans id="config.tab.roles">Roles</Trans>
         </Link>
       </TabNav.Link>
       <TabNav.Link asChild active={active === "members"}>
         <Link href={`/app/${clubId}/club/config/members`}>
-          <Trans key="config.tab.members">Members</Trans>
+          <Trans id="config.tab.members">Members</Trans>
         </Link>
       </TabNav.Link>
       <TabNav.Link asChild active={active === "invites"}>
         <Link href={`/app/${clubId}/club/config/invites`}>
-          <Trans key="config.tab.invites">Invites</Trans>
+          <Trans id="config.tab.invites">Invites</Trans>
         </Link>
       </TabNav.Link>
       <TabNav.Link asChild active={active === "absenceForms"}>
         <Link href={`/app/${clubId}/club/config/absence-forms`}>
-          <Trans key="config.tab.absenceForms">Absence</Trans>
+          <Trans id="config.tab.absenceForms">Absence forms</Trans>
         </Link>
       </TabNav.Link>
     </TabNav.Root>

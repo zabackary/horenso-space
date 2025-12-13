@@ -6,6 +6,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: en\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
 
 #. js-lingui-explicit-id
 #. placeholder {0}: report.reviews.length
@@ -28,8 +34,13 @@ msgid "club.descriptionPlaceholder"
 msgstr "A short description"
 
 #: src/app/[lang]/app/[id]/club/config/layout.tsx:76
-msgid "Absence"
-msgstr "Absence"
+#~ msgid "Absence"
+#~ msgstr "Absence"
+
+#. js-lingui-explicit-id
+#: src/app/[lang]/app/[id]/club/config/layout.tsx:76
+msgid "config.tab.absenceForms"
+msgstr "Absence forms"
 
 #: src/app/[lang]/app/[id]/page.tsx:74
 msgid "Absence reports"
@@ -318,9 +329,14 @@ msgstr "Image by <0>SAWARATSUKI</0>"
 msgid "Invalid or expired invite link"
 msgstr "Invalid or expired invite link"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/club/config/layout.tsx:71
-msgid "Invites"
+msgid "config.tab.invites"
 msgstr "Invites"
+
+#: src/app/[lang]/app/[id]/club/config/layout.tsx:71
+#~ msgid "Invites"
+#~ msgstr "Invites"
 
 #: src/app/[lang]/app/club/invite/[id]/page.tsx:89
 msgid "Join Club"
@@ -358,13 +374,23 @@ msgstr "Login"
 msgid "Manage club metadata, roles, and members"
 msgstr "Manage club metadata, roles, and members"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/club/config/layout.tsx:66
-msgid "Members"
+msgid "config.tab.members"
 msgstr "Members"
 
+#: src/app/[lang]/app/[id]/club/config/layout.tsx:66
+#~ msgid "Members"
+#~ msgstr "Members"
+
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/club/config/layout.tsx:56
-msgid "Metadata"
+msgid "config.tab.metadata"
 msgstr "Metadata"
+
+#: src/app/[lang]/app/[id]/club/config/layout.tsx:56
+#~ msgid "Metadata"
+#~ msgstr "Metadata"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/calendar/calendar.tsx:50
@@ -494,9 +520,14 @@ msgstr "Reviewed"
 msgid "absences.reviews"
 msgstr "Reviews"
 
+#. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/club/config/layout.tsx:61
-msgid "Roles"
+msgid "config.tab.roles"
 msgstr "Roles"
+
+#: src/app/[lang]/app/[id]/club/config/layout.tsx:61
+#~ msgid "Roles"
+#~ msgstr "Roles"
 
 #. js-lingui-explicit-id
 #: src/app/[lang]/app/[id]/calendar/create-event-card.tsx:199
