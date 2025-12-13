@@ -34,7 +34,7 @@ export function LoginForm(props: LoginFormProps) {
         password,
       });
       if (error) throw error;
-      revalidateRoot();
+      await revalidateRoot();
       if (props.next) {
         router.push(props.next);
       } else {
