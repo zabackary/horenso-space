@@ -1,7 +1,5 @@
 "use client";
 
-import { useTranslation } from "@/lib/i18n/useTranslation";
-import { createClient } from "@/lib/supabase/client";
 import {
   Button,
   Callout,
@@ -13,11 +11,11 @@ import {
 } from "@radix-ui/themes";
 import Link from "next/link";
 import { useState } from "react";
+import { createClient } from "@/lib/supabase/client";
 
 export function ForgotPasswordForm({
   ...props
 }: React.ComponentPropsWithoutRef<"div">) {
-  const { t } = useTranslation("auth");
   const [email, setEmail] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
@@ -37,7 +35,7 @@ export function ForgotPasswordForm({
       if (error) throw error;
       setSuccess(true);
     } catch (error: unknown) {
-      setError(error instanceof Error ? error.message : t("common:error"));
+      setError(error instanceof Error ? error.message : "An error occurred");
     } finally {
       setIsLoading(false);
     }
@@ -46,22 +44,23 @@ export function ForgotPasswordForm({
   return success ? (
     <>
       <Heading as="h1" size="7" align="center">
-        {t("checkEmail")}
+        Check your email
       </Heading>
       <Text as="p" size="3" my="2" align="center">
-        {t("resetEmailSent")}
+        We emailed you a password reset link.
       </Text>
       <Text as="p" align="center">
-        {t("resetEmailInfo")}
+        If you registered using your email and password, you will receive a
+        password reset email.
       </Text>
     </>
   ) : (
     <>
       <Heading as="h1" size="7" align="center">
-        {t("resetPassword")}
+        Reset your password
       </Heading>
       <Text as="p" size="3" my="2" align="center">
-        {t("resetPasswordDescription")}
+        Type in your email and we&apos;ll send you a link to reset your password
       </Text>
       <form onSubmit={handleForgotPassword}>
         <Flex direction="column" gap="2" my="4">
@@ -71,21 +70,21 @@ export function ForgotPasswordForm({
             </Callout.Root>
           )}
           <TextField.Root
-            placeholder={t("email")}
+            placeholder="Email"
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             type="email"
           ></TextField.Root>
           <Button type="submit" loading={isLoading}>
-            {t("sendResetEmail")}
+            Send reset email
           </Button>
         </Flex>
         <Text align="center" color="gray" as="p">
-          {t("alreadyHaveAccount")}{" "}
+          Already have an account?{" "}
           <RadixLink asChild>
             <Link href="/auth/login" className="underline underline-offset-4">
-              {t("login")}
+              Login
             </Link>
           </RadixLink>
         </Text>

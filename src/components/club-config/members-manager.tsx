@@ -1,8 +1,5 @@
 "use client";
 
-import type { Database } from "@/@types/database.types";
-import { useTranslation } from "@/lib/i18n/useTranslation";
-import { createClient } from "@/lib/supabase/client";
 import { CrossCircledIcon, TrashIcon } from "@radix-ui/react-icons";
 import {
   Button,
@@ -16,6 +13,8 @@ import {
 } from "@radix-ui/themes";
 import Link from "next/link";
 import { use, useState } from "react";
+import type { Database } from "@/@types/database.types";
+import { createClient } from "@/lib/supabase/client";
 import styles from "./members-manager.module.css";
 
 type ClubMemberRow = Database["public"]["Tables"]["club_members"]["Row"];
@@ -35,7 +34,6 @@ export default function MembersManager({
   rolesPromise: Promise<{ id: string; name: string }[]>;
   clubId: string;
 }) {
-  const { t } = useTranslation("members");
   const initialMembers = (use(membersPromise) ?? []) as MemberWithProfile[];
   const initialRoles = (use(rolesPromise) ?? []) as RoleRow[];
 
@@ -53,14 +51,14 @@ export default function MembersManager({
         user_id: m.user_id,
         role_id: (m.role_id as string) ?? null,
         profile: m.profile,
-      })) ?? []
+      })) ?? [],
   );
   const [roles] = useState<Role[]>(
     () =>
       initialRoles.map((r) => ({
         id: r.id,
         name: (r as { id: string; name: string }).name,
-      })) ?? []
+      })) ?? [],
   );
   const [error, setError] = useState<string | null>(null);
 
@@ -75,8 +73,8 @@ export default function MembersManager({
         .throwOnError();
       setMembers((prev) =>
         prev.map((m) =>
-          m.user_id === memberUserId ? { ...m, role_id: newRoleId } : m
-        )
+          m.user_id === memberUserId ? { ...m, role_id: newRoleId } : m,
+        ),
       );
     } catch (e: unknown) {
       setError(e instanceof Error ? e.message : String(e));
@@ -101,7 +99,7 @@ export default function MembersManager({
   return (
     <Flex direction="column" className={styles.root} gap="3">
       <Heading size="5" as="h3">
-        {t("title")}
+        Members
       </Heading>
       {error && (
         <Callout.Root color="red">
@@ -133,7 +131,7 @@ export default function MembersManager({
                       </Link>
                     </RadixLink>
                     <Text size="2" color="gray">
-                      {t("role", { role: currentRoleLabel })}
+                      Role: {currentRoleLabel}
                     </Text>
                   </Flex>
                   <Flex align="center" gap="2">
@@ -155,7 +153,7 @@ export default function MembersManager({
                       variant="soft"
                       color="red"
                     >
-                      <TrashIcon /> {t("remove")}
+                      <TrashIcon /> Remove
                     </Button>
                   </Flex>
                 </Flex>

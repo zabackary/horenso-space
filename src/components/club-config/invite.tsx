@@ -1,7 +1,6 @@
 "use client";
 
 import type { Database } from "@/@types/database.types";
-import { useTranslation } from "@/lib/i18n/useTranslation";
 import { createClient } from "@/lib/supabase/client";
 import { CrossCircledIcon, TrashIcon } from "@radix-ui/react-icons";
 import {
@@ -31,7 +30,6 @@ export default function InvitesManager({
     Database["public"]["Functions"]["get_invitations"]["Returns"]
   >;
 }) {
-  const { t } = useTranslation("invite");
   const [error, setError] = useState<string | null>(null);
   const initialInvites = use(invitesPromise);
   const [invites, setInvites] = useState(() => initialInvites);
@@ -82,7 +80,7 @@ export default function InvitesManager({
         ]);
       }
     } catch (error: unknown) {
-      setError(error instanceof Error ? error.message : t("common:error"));
+      setError(error instanceof Error ? error.message : "An error occurred");
     }
   }
 
@@ -97,14 +95,14 @@ export default function InvitesManager({
         prevInvites.filter((invite) => invite.id !== inviteId)
       );
     } catch (error: unknown) {
-      setError(error instanceof Error ? error.message : t("common:error"));
+      setError(error instanceof Error ? error.message : "An error occurred");
     }
   }
 
   return (
     <Flex direction="column" className={styles.root} gap="3">
       <Heading size="5" as="h3">
-        {t("title")}
+        Invites
       </Heading>
 
       {error && (
@@ -118,26 +116,20 @@ export default function InvitesManager({
 
       <Flex direction="column" gap="3">
         {roles.length === 0 ? (
-          <Text>{t("noInvites")}</Text>
+          <Text>No invites created yet.</Text>
         ) : (
           invites.map((invite) => (
             <Card key={invite.id}>
               <Flex direction="row" align="center" width="100%" gap="2">
                 <Flex direction="column" flexGrow="1">
                   <Text size="3" weight="bold">
-                    {t("role", { role: invite.role_name })}
+                    Role: {invite.role_name}
                   </Text>
+                  <Text size="2">Invited by: {invite.invited_by_name}</Text>
                   <Text size="2">
-                    {t("invitedBy", { name: invite.invited_by_name })}
+                    Expires at: {new Date(invite.expires_at).toLocaleString()}
                   </Text>
-                  <Text size="2">
-                    {t("expiresAt", {
-                      date: new Date(invite.expires_at).toLocaleString(),
-                    })}
-                  </Text>
-                  <Text size="2">
-                    {t("usedCount", { count: invite.usage_count })}
-                  </Text>
+                  <Text size="2">Used {invite.usage_count} times</Text>
                 </Flex>
                 <Button
                   variant="soft"
@@ -145,7 +137,7 @@ export default function InvitesManager({
                   onClick={() => handleDelete(invite.id)}
                 >
                   <TrashIcon />
-                  {t("common:delete")}
+                  Delete
                 </Button>
                 <Button asChild variant="solid">
                   <Link
@@ -159,7 +151,7 @@ export default function InvitesManager({
                       );
                     }}
                   >
-                    {t("copyLink")}
+                    Copy link
                   </Link>
                 </Button>
               </Flex>
@@ -174,9 +166,7 @@ export default function InvitesManager({
         gap="2"
         align="center"
       >
-        <Button onClick={() => openCreateDialog()}>
-          {t("generateInvite")}
-        </Button>
+        <Button onClick={() => openCreateDialog()}>Generate invite</Button>
       </Flex>
 
       <Dialog.Root
@@ -192,9 +182,9 @@ export default function InvitesManager({
               generateInvite();
             }}
           >
-            <Dialog.Title>{t("generateInvite")}</Dialog.Title>
+            <Dialog.Title>Generate invite</Dialog.Title>
             <Dialog.Description>
-              {t("generateInviteDescription")}
+              Create an invite link to invite a new member to your club.
             </Dialog.Description>
             <Flex direction="column" gap="2">
               {error && (
@@ -207,7 +197,7 @@ export default function InvitesManager({
               )}
               <Flex direction="column" gap="2" my="4">
                 <Flex direction="row" align="center" gap="2">
-                  <Text style={{ flexGrow: 1 }}>{t("roleWhenJoining")}</Text>
+                  <Text style={{ flexGrow: 1 }}>Role when joining</Text>
                   <Select.Root
                     value={inviteRole}
                     onValueChange={(value) => setInviteRole(value)}
@@ -225,13 +215,13 @@ export default function InvitesManager({
               </Flex>
 
               <Flex gap="2">
-                <Button type="submit">{t("generateInvite")}</Button>
+                <Button type="submit">Generate invite</Button>
                 <Button
                   variant="soft"
                   type="button"
                   onClick={() => resetDialog()}
                 >
-                  {t("common:cancel")}
+                  Cancel
                 </Button>
               </Flex>
             </Flex>
