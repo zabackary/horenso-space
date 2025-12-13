@@ -69,7 +69,7 @@ export function ClubCreateForm() {
           <span aria-label="required">*</span>
         </Text>
         <TextField.Root
-          placeholder={i18n._("club.namePlaceholder", "My club")}
+          placeholder={i18n._("club.namePlaceholder")}
           required
           id={`${a11yId}-name`}
           value={clubName}
@@ -91,7 +91,7 @@ export function ClubCreateForm() {
           <Trans key="club.school">School (optional)</Trans>
         </Text>
         <TextField.Root
-          placeholder={i18n._("club.schoolPlaceholder", "School name")}
+          placeholder={i18n._("club.schoolPlaceholder")}
           id={`${a11yId}-school`}
           value={clubSchool}
           onChange={(e) => setClubSchool(e.target.value)}

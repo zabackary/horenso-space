@@ -95,7 +95,7 @@ export default function CreateEventCard({
     <Flex direction="column" gap="2" p={withPadding ? "1" : "0"} asChild>
       <form onSubmit={handleSubmit} className={styles["form"]}>
         <TextField.Root
-          placeholder={i18n._("calendar.newEventName", "New event name")}
+          placeholder={i18n._("calendar.newEventName")}
           size="3"
           name="title"
           required
@@ -106,7 +106,7 @@ export default function CreateEventCard({
           </Box>
           <Grid columns="auto auto" gap="2" flexGrow="1">
             <TextField.Root
-              placeholder={i18n._("calendar.date", "Date")}
+              placeholder={i18n._("calendar.date")}
               type="date"
               value={startDate}
               onChange={handleStartDateChange}
@@ -114,7 +114,7 @@ export default function CreateEventCard({
               required
             />
             <TextField.Root
-              placeholder={i18n._("calendar.time", "Time")}
+              placeholder={i18n._("calendar.time")}
               type="time"
               value={startTime}
               onChange={(e) => setStartTime(e.target.value)}
@@ -122,7 +122,7 @@ export default function CreateEventCard({
               required
             />
             <TextField.Root
-              placeholder={i18n._("calendar.date", "Date")}
+              placeholder={i18n._("calendar.date")}
               type="date"
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
@@ -131,7 +131,7 @@ export default function CreateEventCard({
               required
             />
             <TextField.Root
-              placeholder={i18n._("calendar.time", "Time")}
+              placeholder={i18n._("calendar.time")}
               type="time"
               value={endTime}
               onChange={(e) => setEndTime(e.target.value)}
@@ -146,7 +146,7 @@ export default function CreateEventCard({
             <GlobeIcon />
           </Box>
           <TextField.Root
-            placeholder={i18n._("calendar.location", "Location")}
+            placeholder={i18n._("calendar.location")}
             size="2"
             className={styles["location-textfield"]}
             name="location"
@@ -157,7 +157,7 @@ export default function CreateEventCard({
             <TextIcon />
           </Box>
           <TextArea
-            placeholder={i18n._("calendar.notes", "Notes")}
+            placeholder={i18n._("calendar.notes")}
             className={styles["notes-textarea"]}
             size="2"
             name="notes"

@@ -56,14 +56,14 @@ export default function AbsenceReportList({
                   <Text size="2">
                     <Trans id="absences.assignedTo">Assigned to</Trans>{" "}
                     {report.assignedToRole?.roleName ||
-                      i18n._("absences.unassigned", "Unassigned")}
+                      i18n._("absences.unassigned")}
                   </Text>
                   {report.reviews.length > 0 && (
                     <Text size="1" className={styles.reviewIndicator}>
                       ✓ {report.reviews.length}{" "}
                       {report.reviews.length === 1
-                        ? i18n._("absences.review", "review")
-                        : i18n._("absences.reviews", "reviews")}
+                        ? i18n._("absences.review")
+                        : i18n._("absences.reviews")}
                     </Text>
                   )}
                 </Flex>

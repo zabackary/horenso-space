@@ -57,20 +57,20 @@ export function AbsencesTabNav({
     <TabNav.Root style={{ width: "100%" }}>
       <TabNav.Link asChild active={active === "my"}>
         <Link href={`/app/${clubId}/absences/my`}>
-          {i18n._("absences.tab.my", "My reports")}
+          {i18n._("absences.tab.my")}
         </Link>
       </TabNav.Link>
       {permissions.includes("canReadAllReports") ? (
         <TabNav.Link asChild active={active === "all"}>
           <Link href={`/app/${clubId}/absences/all`}>
-            {i18n._("absences.tab.all", "All reports")}
+            {i18n._("absences.tab.all")}
           </Link>
         </TabNav.Link>
       ) : null}
       {permissions.includes("canWriteReportReview") ? (
         <TabNav.Link asChild active={active === "assigned"}>
           <Link href={`/app/${clubId}/absences/assigned`}>
-            {i18n._("absences.tab.assigned", "Assigned to me")}
+            {i18n._("absences.tab.assigned")}
           </Link>
         </TabNav.Link>
       ) : null}

@@ -53,7 +53,7 @@ export default function AssignedReportsList({
                     <Text size="2">
                       {report.event_name ??
                         new Date(report.report_date).toLocaleDateString() ??
-                        i18n._("common.noEvent", "No event")}
+                        i18n._("common.noEvent")}
                     </Text>
                     {report.event_start_time && (
                       <Text size="1" className={styles.reportMeta}>
@@ -61,7 +61,7 @@ export default function AssignedReportsList({
                           ? new Date(
                               report.event_start_time
                             ).toLocaleDateString()
-                          : i18n._("common.noDate", "No date")}
+                          : i18n._("common.noDate")}
                       </Text>
                     )}
                     {(report.reviews as any[]).length > 0 && (

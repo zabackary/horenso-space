@@ -140,7 +140,7 @@ export default function ReportDetail({
               <Trans id="absences.submittedBy">Submitted by</Trans>
             </DataList.Label>
             <DataList.Value>
-              {report.user_name || i18n._("common.unknown", "Unknown")}
+              {report.user_name || i18n._("common.unknown")}
             </DataList.Value>
           </DataList.Item>
 
@@ -149,7 +149,7 @@ export default function ReportDetail({
               <Trans id="absences.event">Event</Trans>
             </DataList.Label>
             <DataList.Value>
-              {report.event_name || i18n._("common.noEvent", "No event")}
+              {report.event_name || i18n._("common.noEvent")}
             </DataList.Value>
           </DataList.Item>
 
@@ -180,8 +180,7 @@ export default function ReportDetail({
               <Trans id="absences.assignedTo">Assigned to</Trans>
             </DataList.Label>
             <DataList.Value>
-              {report.assigned_to_role_name ||
-                i18n._("absences.unassigned", "Unassigned")}
+              {report.assigned_to_role_name || i18n._("absences.unassigned")}
             </DataList.Value>
           </DataList.Item>
         </DataList.Root>
@@ -224,8 +223,8 @@ export default function ReportDetail({
                           weight="bold"
                         >
                           {review.accepted
-                            ? i18n._("absences.accepted", "Accepted")
-                            : i18n._("absences.rejected", "Rejected")}
+                            ? i18n._("absences.accepted")
+                            : i18n._("absences.rejected")}
                         </Text>
                       </Flex>
                       {review.comments && (

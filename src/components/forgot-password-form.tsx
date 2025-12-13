@@ -79,7 +79,7 @@ export function ForgotPasswordForm({
             </Callout.Root>
           )}
           <TextField.Root
-            placeholder={i18n._("common.email", "Email")}
+            placeholder={i18n._("common.email")}
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}

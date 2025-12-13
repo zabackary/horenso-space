@@ -96,7 +96,7 @@ export default function Form({
             value={event || undefined}
           >
             <Select.Trigger
-              placeholder={i18n._("absences.selectEvent", "Select event...")}
+              placeholder={i18n._("absences.selectEvent")}
               style={{ width: "100%" }}
             />
             <Select.Content>
@@ -116,7 +116,7 @@ export default function Form({
           </Heading>
           <TextField.Root
             type="date"
-            placeholder={i18n._("absences.date", "Date")}
+            placeholder={i18n._("absences.date")}
             value={date || ""}
             onChange={(e) => setDate(e.target.value)}
           />

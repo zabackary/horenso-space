@@ -43,13 +43,9 @@ export function ModePicker({ mode, setMode }: ModePickerProps) {
     >
       <Select.Trigger />
       <Select.Content position="popper">
-        <Select.Item value="year">
-          {i18n._("calendar.year", "Year")}
-        </Select.Item>
-        <Select.Item value="month">
-          {i18n._("calendar.month", "Month")}
-        </Select.Item>
-        <Select.Item value="day">{i18n._("calendar.day", "Day")}</Select.Item>
+        <Select.Item value="year">{i18n._("calendar.year")}</Select.Item>
+        <Select.Item value="month">{i18n._("calendar.month")}</Select.Item>
+        <Select.Item value="day">{i18n._("calendar.day")}</Select.Item>
       </Select.Content>
     </Select.Root>
   );

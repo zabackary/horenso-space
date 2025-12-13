@@ -64,23 +64,12 @@ export default async function JoinClubPage({
                 {invite.club_name}
               </Heading>
               <Heading as="h3" size="5" align="center" color="gray">
-                <Trans
-                  key="invite.by"
-                  values={{ name: invite.invited_by_name }}
-                >
-                  by {invite.invited_by_name}
-                </Trans>
+                <Trans key="invite.by">by {invite.invited_by_name}</Trans>
               </Heading>
             </Flex>
           </Card>
           <Text as="p" size="4" align="center">
-            <Trans
-              key="invite.details"
-              values={{
-                role: invite.role_name,
-                date: new Date(invite.expires_at).toLocaleString(),
-              }}
-            >
+            <Trans key="invite.details">
               You will be joining as: <strong>{invite.role_name}</strong>.
               Expires at:{" "}
               <strong>{new Date(invite.expires_at).toLocaleString()}</strong>
