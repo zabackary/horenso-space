@@ -3,8 +3,8 @@ import getProfile from "@/lib/auth/getProfile";
 import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
 import getReports from "../getReports";
-import { AbsencesTabNav } from "../layout";
 import AbsenceReportList from "../list";
+import { AbsencesTabNav } from "../tab-nav";
 
 export default async function Page({
   params,

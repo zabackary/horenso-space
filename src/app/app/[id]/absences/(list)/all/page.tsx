@@ -3,8 +3,8 @@ import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
 import getReports from "../getReports";
-import { AbsencesTabNav } from "../layout";
 import AbsenceReportList from "../list";
+import { AbsencesTabNav } from "../tab-nav";
 
 export default async function Page({
   params,

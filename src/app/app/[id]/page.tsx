@@ -33,10 +33,13 @@ export default async function ClubPage({ params }: PageProps<"/app/[id]">) {
       >
         <Card variant="ghost">
           <Heading>
-            <Trans id="home.news">Recent news</Trans>
+            <Trans id="home.notifications">Recent notifications</Trans>
           </Heading>
           <Text>
-            <Trans id="home.newsContent">News content will appear here</Trans>
+            <Trans id="home.notificationsNotFinished">
+              No notifications. Notifications are not finished yet but will
+              appear here.
+            </Trans>
           </Text>
         </Card>
       </Box>

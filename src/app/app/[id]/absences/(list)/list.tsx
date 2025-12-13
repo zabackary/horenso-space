@@ -1,6 +1,6 @@
 "use client";
 
-import { Trans, useLingui } from "@lingui/react/macro";
+import { Trans } from "@lingui/react/macro";
 import { Card, Flex, Spinner, Text } from "@radix-ui/themes";
 import Link from "next/link";
 import { Suspense, use } from "react";
@@ -18,7 +18,6 @@ export default function AbsenceReportList({
   clubId,
   linkPathPrefix,
 }: AbsenceReportListProps) {
-  const { t } = useLingui();
   const reportsData = use(reports);
   return (
     <Suspense fallback={<Spinner />}>

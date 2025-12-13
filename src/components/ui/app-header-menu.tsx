@@ -2,6 +2,7 @@
 
 import { logout } from "@/actions/auth";
 import { Profile } from "@/lib/auth/getProfile";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { Avatar, Dialog, DropdownMenu, IconButton } from "@radix-ui/themes";
 import Link from "next/dist/client/link";
 import { lazy, useState } from "react";
@@ -14,6 +15,7 @@ export interface AppHeaderMenuProps {
 
 export function AppHeaderMenu({ profile }: AppHeaderMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useLingui();
 
   return (
     <>
@@ -30,14 +32,18 @@ export function AppHeaderMenu({ profile }: AppHeaderMenuProps) {
         <DropdownMenu.Content align="end" sideOffset={5} style={{ zIndex: 1 }}>
           <form style={{ display: "contents" }}>
             <DropdownMenu.Item asChild>
-              <Link href="/app/users/me">Profile and Settings</Link>
+              <Link href="/app/users/me">
+                <Trans id="menu.profile">Profile and settings</Trans>
+              </Link>
             </DropdownMenu.Item>
             <DropdownMenu.Item onClick={() => setIsOpen(true)}>
-              Send Feedback
+              <Trans id="menu.sendFeedback">Send Feedback</Trans>
             </DropdownMenu.Item>
             <DropdownMenu.Separator />
             <DropdownMenu.Item asChild>
-              <button formAction={logout}>Logout</button>
+              <button formAction={logout}>
+                <Trans id="menu.logout">Log out</Trans>
+              </button>
             </DropdownMenu.Item>
           </form>
         </DropdownMenu.Content>

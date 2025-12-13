@@ -29,14 +29,24 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
+#: src/app/[lang]/app/[id]/page.tsx:41
+#~ msgid "home.newsContent"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/app/[lang]/app/[id]/page.tsx:38
+#~ msgid "home.news"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
 #. placeholder {0}: report.reviews.length
-#: src/app/[lang]/app/[id]/absences/(list)/list.tsx:65
+#: src/app/app/[id]/absences/(list)/list.tsx:64
 msgid "absences.totalReviews"
 msgstr ""
 
 #. js-lingui-explicit-id
 #. placeholder {0}: new Date().getFullYear()
-#: src/app/[lang]/page.tsx:82
+#: src/app/page.tsx:82
 msgid "landing.copyright"
 msgstr ""
 
@@ -45,7 +55,7 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/page.tsx:26
+#: src/app/page.tsx:26
 msgid "landing.headline"
 msgstr ""
 
@@ -63,12 +73,12 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/club/config/layout.tsx:76
+#: src/app/app/[id]/club/config/layout.tsx:76
 msgid "config.tab.absenceForms"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/page.tsx:74
+#: src/app/app/[id]/page.tsx:75
 msgid "home.absences"
 msgstr ""
 
@@ -77,7 +87,7 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/layout.tsx:29
+#: src/app/app/[id]/absences/(list)/layout.tsx:31
 msgid "absences.heading"
 msgstr ""
 
@@ -86,18 +96,18 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:270
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:270
 msgid "absences.accept"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:228
-#: src/app/[lang]/app/[id]/absences/(list)/report-detail.tsx:164
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:228
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:164
 msgid "absences.accepted"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/page.tsx:76
+#: src/app/app/[id]/page.tsx:77
 msgid "home.absencesDesc"
 msgstr ""
 
@@ -106,12 +116,12 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:256
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:256
 msgid "absences.commentsPlaceholder"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/page.tsx:67
+#: src/app/app/[id]/page.tsx:68
 msgid "home.addEvent"
 msgstr ""
 
@@ -120,12 +130,12 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:252
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:252
 msgid "absences.addReview"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/layout.tsx:66
+#: src/app/app/[id]/absences/(list)/tab-nav.tsx:26
 msgid "absences.tab.all"
 msgstr ""
 
@@ -134,7 +144,7 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/auth/sign-up/page.tsx:59
+#: src/app/auth/sign-up/page.tsx:59
 msgid "signup.haveAccount"
 msgstr ""
 
@@ -152,7 +162,7 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/page.tsx:57
+#: src/app/app/page.tsx:57
 msgid "app.error"
 msgstr ""
 
@@ -161,7 +171,7 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/auth/error/page.tsx:25
+#: src/app/auth/error/page.tsx:25
 msgid "error.unspecified"
 msgstr ""
 
@@ -170,19 +180,19 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/assigned/list.tsx:31
+#: src/app/app/[id]/absences/(list)/assigned/list.tsx:31
 msgid "absences.assignedReports"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:180
-#: src/app/[lang]/app/[id]/absences/(list)/list.tsx:57
-#: src/app/[lang]/app/[id]/absences/(list)/report-detail.tsx:110
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:180
+#: src/app/app/[id]/absences/(list)/list.tsx:56
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:110
 msgid "absences.assignedTo"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/layout.tsx:73
+#: src/app/app/[id]/absences/(list)/tab-nav.tsx:33
 msgid "absences.tab.assigned"
 msgstr ""
 
@@ -191,8 +201,8 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/calendar/[...date]/page.tsx:25
-#: src/app/[lang]/app/club/create/page.tsx:19
+#: src/app/app/[id]/calendar/[...date]/page.tsx:25
+#: src/app/app/club/create/page.tsx:19
 msgid "common.back"
 msgstr ""
 
@@ -211,7 +221,7 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #. placeholder {0}: invite.invited_by_name
-#: src/app/[lang]/app/club/invite/[id]/page.tsx:67
+#: src/app/app/club/invite/[id]/page.tsx:67
 msgid "invite.by"
 msgstr ""
 
@@ -220,7 +230,7 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/page.tsx:57
+#: src/app/app/[id]/page.tsx:58
 msgid "home.calendar"
 msgstr ""
 
@@ -229,12 +239,12 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/calendar/create-event-card.tsx:209
+#: src/app/app/[id]/calendar/create-event-card.tsx:209
 msgid "common.cancel"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/page.tsx:59
+#: src/app/app/[id]/page.tsx:60
 msgid "home.calendarDesc"
 msgstr ""
 
@@ -252,7 +262,7 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/club/config/layout.tsx:34
+#: src/app/app/[id]/club/config/layout.tsx:34
 msgid "config.heading"
 msgstr ""
 
@@ -289,7 +299,7 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/page.tsx:47
+#: src/app/app/[id]/page.tsx:48
 msgid "home.clubSettings"
 msgstr ""
 
@@ -298,7 +308,7 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/users/[id]/page.tsx:34
+#: src/app/app/users/[id]/page.tsx:34
 msgid "user.commonClubs"
 msgstr ""
 
@@ -312,12 +322,12 @@ msgid "auth.confirmPassword"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/page.tsx:63
+#: src/app/app/page.tsx:63
 msgid "app.createClub"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/club/create/page.tsx:25
+#: src/app/app/club/create/page.tsx:25
 msgid "club.create"
 msgstr ""
 
@@ -341,12 +351,12 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/calendar/[...date]/page.tsx:29
+#: src/app/app/[id]/calendar/[...date]/page.tsx:29
 msgid "calendar.createEvent"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/club/config/absence-forms/page.tsx:40
+#: src/app/app/[id]/club/config/absence-forms/page.tsx:40
 msgid "forms.createTemplate"
 msgstr ""
 
@@ -355,7 +365,7 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/club/config/absence-forms/page.tsx:34
+#: src/app/app/[id]/club/config/absence-forms/page.tsx:34
 msgid "forms.createFirst"
 msgstr ""
 
@@ -364,24 +374,24 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:159
-#: src/app/[lang]/app/[id]/absences/create/form.tsx:122
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:159
+#: src/app/app/[id]/absences/create/form.tsx:122
 msgid "absences.date"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/calendar/create-event-card.tsx:112
-#: src/app/[lang]/app/[id]/calendar/create-event-card.tsx:134
+#: src/app/app/[id]/calendar/create-event-card.tsx:112
+#: src/app/app/[id]/calendar/create-event-card.tsx:134
 msgid "calendar.date"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/calendar/calendar.tsx:53
+#: src/app/app/[id]/calendar/calendar.tsx:53
 msgid "calendar.day"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/auth/login/page.tsx:64
+#: src/app/auth/login/page.tsx:64
 msgid "login.noAccount"
 msgstr ""
 
@@ -401,7 +411,7 @@ msgid "common.email"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/auth/error/page.tsx:21
+#: src/app/auth/error/page.tsx:21
 msgid "error.code"
 msgstr ""
 
@@ -410,25 +420,25 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:149
-#: src/app/[lang]/app/[id]/absences/(list)/report-detail.tsx:90
-#: src/app/[lang]/app/[id]/absences/create/form.tsx:92
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:149
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:90
+#: src/app/app/[id]/absences/create/form.tsx:92
 msgid "absences.event"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/create/form.tsx:83
+#: src/app/app/[id]/absences/create/form.tsx:83
 msgid "absences.eventAbsence"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:170
-#: src/app/[lang]/app/[id]/absences/(list)/report-detail.tsx:100
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:170
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:100
 msgid "absences.eventDate"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/club/invite/[id]/page.tsx:84
+#: src/app/app/club/invite/[id]/page.tsx:84
 msgid "invite.error"
 msgstr ""
 
@@ -437,12 +447,12 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/create/form.tsx:66
+#: src/app/app/[id]/absences/create/form.tsx:66
 msgid "absences.submitError"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/page.tsx:61
+#: src/app/page.tsx:61
 msgid "landing.feature2"
 msgstr ""
 
@@ -451,7 +461,7 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/page.tsx:68
+#: src/app/page.tsx:68
 msgid "landing.feature3"
 msgstr ""
 
@@ -460,7 +470,7 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/auth/login/page.tsx:71
+#: src/app/auth/login/page.tsx:71
 msgid "login.forgotPassword"
 msgstr ""
 
@@ -469,7 +479,7 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/report-detail.tsx:124
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:124
 msgid "absences.formResponses"
 msgstr ""
 
@@ -479,13 +489,13 @@ msgid "common.fullName"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/create/form.tsx:86
-#: src/app/[lang]/app/[id]/absences/create/form.tsx:118
+#: src/app/app/[id]/absences/create/form.tsx:86
+#: src/app/app/[id]/absences/create/form.tsx:118
 msgid "absences.generalAbsence"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/page.tsx:33
+#: src/app/page.tsx:33
 msgid "landing.getStarted"
 msgstr ""
 
@@ -536,7 +546,7 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/club/invite/[id]/page.tsx:41
+#: src/app/app/club/invite/[id]/page.tsx:41
 msgid "invite.invalid"
 msgstr ""
 
@@ -545,7 +555,7 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/club/config/layout.tsx:71
+#: src/app/app/[id]/club/config/layout.tsx:71
 msgid "config.tab.invites"
 msgstr ""
 
@@ -554,7 +564,7 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/club/invite/[id]/page.tsx:89
+#: src/app/app/club/invite/[id]/page.tsx:89
 msgid "invite.join"
 msgstr ""
 
@@ -568,7 +578,7 @@ msgid "profile.joined"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/auth/login/page.tsx:58
+#: src/app/auth/login/page.tsx:58
 msgid "login.subtitle"
 msgstr ""
 
@@ -577,17 +587,22 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/calendar/create-event-card.tsx:164
+#: src/app/app/[id]/calendar/create-event-card.tsx:164
 msgid "calendar.location"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/page.tsx:38
+#: src/app/page.tsx:38
 msgid "landing.login"
 msgstr ""
 
-#: src/app/[lang]/auth/sign-up/page.tsx:44
+#: src/app/auth/sign-up/page.tsx:44
 msgid "Log in"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/ui/app-header-menu.tsx:45
+msgid "menu.logout"
 msgstr ""
 
 #. js-lingui-explicit-id
@@ -601,7 +616,7 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/page.tsx:49
+#: src/app/app/[id]/page.tsx:50
 msgid "home.clubSettingsDesc"
 msgstr ""
 
@@ -610,7 +625,7 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/club/config/layout.tsx:66
+#: src/app/app/[id]/club/config/layout.tsx:66
 msgid "config.tab.members"
 msgstr ""
 
@@ -619,7 +634,7 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/club/config/layout.tsx:56
+#: src/app/app/[id]/club/config/layout.tsx:56
 msgid "config.tab.metadata"
 msgstr ""
 
@@ -628,12 +643,12 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/calendar/calendar.tsx:50
+#: src/app/app/[id]/calendar/calendar.tsx:50
 msgid "calendar.month"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/layout.tsx:60
+#: src/app/app/[id]/absences/(list)/tab-nav.tsx:20
 msgid "absences.tab.my"
 msgstr ""
 
@@ -642,13 +657,8 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/calendar/create-event-card.tsx:98
+#: src/app/app/[id]/calendar/create-event-card.tsx:98
 msgid "calendar.eventTitle"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/page.tsx:41
-msgid "home.newsContent"
 msgstr ""
 
 #: src/app/[lang]/app/[id]/page.tsx:41
@@ -656,13 +666,13 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:201
-#: src/app/[lang]/app/[id]/absences/(list)/report-detail.tsx:133
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:201
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:133
 msgid "absences.noData"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/page.tsx:46
+#: src/app/app/page.tsx:46
 msgid "app.noClubs"
 msgstr ""
 
@@ -671,34 +681,39 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/assigned/list.tsx:64
+#: src/app/app/[id]/absences/(list)/assigned/list.tsx:64
 msgid "common.noDate"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:152
-#: src/app/[lang]/app/[id]/absences/(list)/assigned/list.tsx:56
-#: src/app/[lang]/app/[id]/absences/(list)/report-detail.tsx:93
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:152
+#: src/app/app/[id]/absences/(list)/assigned/list.tsx:56
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:93
 msgid "common.noEvent"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/report-detail.tsx:138
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:138
 msgid "absences.noForm"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/assigned/list.tsx:36
+#: src/app/app/[id]/page.tsx:39
+msgid "home.notificationsNotFinished"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/app/app/[id]/absences/(list)/assigned/list.tsx:36
 msgid "absences.noAssignedReports"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/list.tsx:27
+#: src/app/app/[id]/absences/(list)/list.tsx:26
 msgid "absences.noReports"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/club/config/absence-forms/page.tsx:31
+#: src/app/app/[id]/club/config/absence-forms/page.tsx:31
 msgid "forms.empty"
 msgstr ""
 
@@ -707,7 +722,7 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/calendar/create-event-card.tsx:178
+#: src/app/app/[id]/calendar/create-event-card.tsx:178
 msgid "calendar.notes"
 msgstr ""
 
@@ -727,13 +742,13 @@ msgid "common.password"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:214
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:214
 msgid "absences.previousReviews"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/page.tsx:38
-msgid "home.news"
+#: src/components/ui/app-header-menu.tsx:36
+msgid "menu.profile"
 msgstr ""
 
 #: src/app/[lang]/app/[id]/page.tsx:38
@@ -741,23 +756,28 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:277
+#: src/app/app/[id]/page.tsx:36
+msgid "home.notifications"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:277
 msgid "absences.reject"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:230
-#: src/app/[lang]/app/[id]/absences/(list)/report-detail.tsx:166
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:230
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:166
 msgid "absences.rejected"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/page.tsx:82
+#: src/app/app/[id]/page.tsx:83
 msgid "home.reportAbsence"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/layout.tsx:35
+#: src/app/app/[id]/absences/(list)/layout.tsx:37
 msgid "absences.report"
 msgstr ""
 
@@ -767,7 +787,7 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/create/page.tsx:48
+#: src/app/app/[id]/absences/create/page.tsx:48
 msgid "absence.report"
 msgstr ""
 
@@ -776,13 +796,13 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:194
-#: src/app/[lang]/app/[id]/absences/(list)/report-detail.tsx:75
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:194
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:75
 msgid "absences.reportDetails"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:122
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:122
 msgid "absences.reportReview"
 msgstr ""
 
@@ -796,17 +816,17 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/assigned/list.tsx:70
+#: src/app/app/[id]/absences/(list)/assigned/list.tsx:70
 msgid "absences.reviewed"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/report-detail.tsx:150
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:150
 msgid "absences.reviews"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/club/config/layout.tsx:61
+#: src/app/app/[id]/club/config/layout.tsx:61
 msgid "config.tab.roles"
 msgstr ""
 
@@ -815,7 +835,7 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/calendar/create-event-card.tsx:199
+#: src/app/app/[id]/calendar/create-event-card.tsx:199
 msgid "common.save"
 msgstr ""
 
@@ -834,7 +854,7 @@ msgid "header.selectClub"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/page.tsx:35
+#: src/app/app/page.tsx:35
 msgid "app.selectClub"
 msgstr ""
 
@@ -843,12 +863,12 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/assigned/list.tsx:87
+#: src/app/app/[id]/absences/(list)/assigned/list.tsx:87
 msgid "absences.selectReportToReview"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/users/me/page.tsx:10
+#: src/app/app/users/me/page.tsx:12
 msgid "settings.selectSetting"
 msgstr ""
 
@@ -857,8 +877,13 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/create/form.tsx:99
+#: src/app/app/[id]/absences/create/form.tsx:99
 msgid "absences.selectEvent"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/ui/app-header-menu.tsx:40
+msgid "menu.sendFeedback"
 msgstr ""
 
 #. js-lingui-explicit-id
@@ -894,12 +919,17 @@ msgstr ""
 msgid "auth.signup"
 msgstr ""
 
-#: src/app/[lang]/auth/login/page.tsx:47
-msgid "Sign up"
+#. js-lingui-explicit-id
+#: src/app/auth/login/page.tsx:47
+msgid "login.signUp"
 msgstr ""
 
+#: src/app/[lang]/auth/login/page.tsx:47
+#~ msgid "Sign up"
+#~ msgstr ""
+
 #. js-lingui-explicit-id
-#: src/app/[lang]/auth/sign-up/page.tsx:55
+#: src/app/auth/sign-up/page.tsx:55
 msgid "signup.subtitle"
 msgstr ""
 
@@ -926,7 +956,7 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/auth/error/page.tsx:17
+#: src/app/auth/error/page.tsx:17
 msgid "error.heading"
 msgstr ""
 
@@ -935,25 +965,25 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:140
-#: src/app/[lang]/app/[id]/absences/(list)/list.tsx:46
-#: src/app/[lang]/app/[id]/absences/(list)/report-detail.tsx:81
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:140
+#: src/app/app/[id]/absences/(list)/list.tsx:45
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:81
 msgid "absences.submittedBy"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:109
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:109
 msgid "absences.reportAccepted"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:113
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:113
 msgid "absences.reportPending"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/calendar/create-event-card.tsx:123
-#: src/app/[lang]/app/[id]/calendar/create-event-card.tsx:146
+#: src/app/app/[id]/calendar/create-event-card.tsx:123
+#: src/app/app/[id]/calendar/create-event-card.tsx:146
 msgid "calendar.time"
 msgstr ""
 
@@ -966,22 +996,22 @@ msgstr ""
 #~ msgid "Type in your email and we'll send you a link to reset your password"
 #~ msgstr ""
 
-#: src/app/[lang]/app/[id]/absences/(list)/list.tsx:59
+#: src/app/app/[id]/absences/(list)/list.tsx:58
 msgid "Unassigned"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/report-detail.tsx:114
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:114
 msgid "common.unassigned"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:184
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:184
 msgid "absences.unassigned"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/page.tsx:54
+#: src/app/page.tsx:54
 msgid "landing.feature1"
 msgstr ""
 
@@ -990,8 +1020,8 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/(list)/assigned/detail.tsx:143
-#: src/app/[lang]/app/[id]/absences/(list)/report-detail.tsx:84
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:143
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:84
 #: src/components/ui/user-profile.tsx:47
 msgid "common.unknown"
 msgstr ""
@@ -1002,7 +1032,7 @@ msgid "common.unknownUser"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/users/me/layout.tsx:31
+#: src/app/app/users/me/layout.tsx:31
 msgid "user.settings"
 msgstr ""
 
@@ -1029,7 +1059,7 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/auth/login/page.tsx:55
+#: src/app/auth/login/page.tsx:55
 msgid "login.welcome"
 msgstr ""
 
@@ -1038,7 +1068,7 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/auth/sign-up/page.tsx:52
+#: src/app/auth/sign-up/page.tsx:52
 msgid "signup.welcome"
 msgstr ""
 
@@ -1047,12 +1077,12 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/calendar/calendar.tsx:47
+#: src/app/app/[id]/calendar/calendar.tsx:47
 msgid "calendar.year"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/club/invite/[id]/page.tsx:51
+#: src/app/app/club/invite/[id]/page.tsx:51
 msgid "invite.heading"
 msgstr ""
 
@@ -1061,7 +1091,7 @@ msgstr ""
 #~ msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/app/[id]/absences/create/page.tsx:53
+#: src/app/app/[id]/absences/create/page.tsx:53
 msgid "absence.noForm"
 msgstr ""
 
@@ -1072,7 +1102,7 @@ msgstr ""
 #. js-lingui-explicit-id
 #. placeholder {0}: invite.role_name
 #. placeholder {1}: new Date(invite.expires_at).toLocaleString()
-#: src/app/[lang]/app/club/invite/[id]/page.tsx:72
+#: src/app/app/club/invite/[id]/page.tsx:72
 msgid "invite.details"
 msgstr ""
 
@@ -1105,7 +1135,7 @@ msgid "club.join"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/page.tsx:77
+#: src/app/page.tsx:77
 msgid "landing.footer"
 msgstr ""
 
