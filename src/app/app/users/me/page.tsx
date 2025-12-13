@@ -1,8 +1,10 @@
+import { initLingui } from "@/lib/i18n/initLingui";
 import { Trans } from "@lingui/react/macro";
 import { Card } from "@radix-ui/themes";
 import { MeTabNav } from "./layout";
 
-export default function MeDefault() {
+export default async function MeDefault() {
+  await initLingui();
   return (
     <>
       <MeTabNav />
