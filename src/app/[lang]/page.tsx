@@ -1,4 +1,5 @@
 import { AppHeader } from "@/components/ui/app-header";
+import { initLingui } from "@/lib/i18n/initLingui";
 import { Trans } from "@lingui/react/macro";
 import { Button, Card, Flex, Grid, Heading, Text } from "@radix-ui/themes";
 import type { Metadata } from "next";
@@ -11,7 +12,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
+export default async function Home({ params }: PageProps<"/[lang]">) {
+  const { lang } = await params;
+  initLingui(lang);
+
   return (
     <Flex direction="column" minHeight="100%">
       <AppHeader />
@@ -25,10 +29,14 @@ export default function Home() {
             </Heading>
             <Flex gap="2">
               <Button asChild size="4" variant="solid">
-                <Link href="/auth/sign-up">始めよう</Link>
+                <Link href="/auth/sign-up">
+                  <Trans key="landing.getStarted">Get started</Trans>
+                </Link>
               </Button>
               <Button asChild size="4" variant="surface">
-                <Link href="/auth/login">ログイン</Link>
+                <Link href="/auth/login">
+                  <Trans key="landing.login">Log in</Trans>
+                </Link>
               </Button>
             </Flex>
           </main>
@@ -43,27 +51,37 @@ export default function Home() {
           <main>
             <Card>
               <Heading size="7" as="h2">
-                Understand quickly who's where and when
+                <Trans key="landing.feature1">
+                  Understand quickly who's where and when
+                </Trans>
               </Heading>
             </Card>
             <Card>
               <Heading size="7" as="h2">
-                Find your shared documents easily
+                <Trans key="landing.feature2">
+                  Find your shared documents easily
+                </Trans>
               </Heading>
             </Card>
             <Card>
               <Heading size="7" as="h2">
-                For any club, any team, any group
+                <Trans key="landing.feature3">
+                  For any club, any team, any group
+                </Trans>
               </Heading>
             </Card>
           </main>
         </Grid>
         <Flex direction="column" p="2">
           <Text size="2" align="center" mt="4" mb="2">
-            札幌光星中学高等学校吹奏楽部とクリスチャン・アカデミー・イン・ジャパンロボティクス部のが制作
+            <Trans key="landing.footer">
+              札幌光星中学高等学校吹奏楽部とクリスチャン・アカデミー・イン・ジャパンロボティクス部のが制作
+            </Trans>
           </Text>
           <Text size="2" align="center" mb="2">
-            ©{new Date().getFullYear()} Horenso SPACE
+            <Trans key="landing.copyright">
+              ©{new Date().getFullYear()} Horenso SPACE
+            </Trans>
           </Text>
         </Flex>
       </Flex>
