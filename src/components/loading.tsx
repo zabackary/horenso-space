@@ -8,15 +8,21 @@ export function FullPageLoading() {
   );
 }
 
-export function ListLoading() {
+export interface ListLoadingProps {}
+
+export function ListLoading({
+  p = "4",
+  ...props
+}: ListLoadingProps & React.ComponentPropsWithoutRef<typeof Flex>) {
   return (
     <Flex
       justify="start"
       align="start"
       flexGrow="1"
-      p="4"
+      p={p}
       direction="column"
       gap="3"
+      {...props}
     >
       <Skeleton>
         <Heading size="3">Heading name</Heading>

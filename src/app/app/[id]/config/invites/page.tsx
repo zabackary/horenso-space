@@ -1,9 +1,7 @@
 import InvitesManager from "@/components/club-config/invite";
-import { ListLoading } from "@/components/loading";
 import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
 import { Box } from "@radix-ui/themes";
-import React from "react";
 
 export default async function ClubInvitesPage({
   params,
@@ -26,16 +24,12 @@ export default async function ClubInvitesPage({
     .then((res) => res.data ?? []);
 
   return (
-    <>
-      <Box p="4">
-        <React.Suspense fallback={<ListLoading />}>
-          <InvitesManager
-            clubId={id}
-            invitesPromise={invitesPromise}
-            rolesPromise={rolesPromise}
-          />
-        </React.Suspense>
-      </Box>
-    </>
+    <Box p="4">
+      <InvitesManager
+        clubId={id}
+        invitesPromise={invitesPromise}
+        rolesPromise={rolesPromise}
+      />
+    </Box>
   );
 }

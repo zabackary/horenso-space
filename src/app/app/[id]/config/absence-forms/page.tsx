@@ -34,7 +34,7 @@ export default async function ClubAbsenceFormsPage({
             <Trans>Create your first absence report template</Trans>
           </Text>
           <Button asChild>
-            <Link href={`/app/${id}/club/config/absence-forms/new`}>
+            <Link href={`/app/${id}/club/absence-forms/new`}>
               <Trans>Create template</Trans>
             </Link>
           </Button>

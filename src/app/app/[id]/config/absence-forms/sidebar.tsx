@@ -54,7 +54,7 @@ function FormsList({
                 }}
                 asChild
               >
-                <Link href={`/app/${clubId}/club/config/absence-forms/${f.id}`}>
+                <Link href={`/app/${clubId}/config/absence-forms/${f.id}`}>
                   <Flex direction="column" gap="1">
                     <Text weight="bold">{f.name}</Text>
                     <Text size="1" className={styles.templateMeta}>
@@ -71,7 +71,7 @@ function FormsList({
       </Flex>
       <Button asChild>
         <Link
-          href={`/app/${clubId}/club/config/absence-forms/new`}
+          href={`/app/${clubId}/config/absence-forms/new`}
           onClick={onSelect}
         >
           <Trans>Create new template</Trans>
@@ -99,7 +99,7 @@ export default function Sidebar({
       <>
         <Button asChild className={styles.menuButton}>
           <Link
-            href={`/app/${clubId}/club/config/absence-forms`}
+            href={`/app/${clubId}/config/absence-forms`}
             onClick={(e) => {
               e.preventDefault();
               setDrawerOpen(true);

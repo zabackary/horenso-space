@@ -1,10 +1,8 @@
 import type { Database } from "@/@types/database.types";
 import MembersManager from "@/components/club-config/members-manager";
-import { ListLoading } from "@/components/loading";
 import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
 import { Box } from "@radix-ui/themes";
-import React from "react";
 
 type ClubMemberRow = Database["public"]["Tables"]["club_members"]["Row"];
 type ProfileRow = Database["public"]["Views"]["profiles"]["Row"];
@@ -51,16 +49,12 @@ export default async function ClubMembersPage({
     ([] as RoleRow[]);
 
   return (
-    <>
-      <Box p="4">
-        <React.Suspense fallback={<ListLoading />}>
-          <MembersManager
-            membersPromise={membersPromise}
-            rolesPromise={Promise.resolve(rolesPromise)}
-            clubId={id}
-          />
-        </React.Suspense>
-      </Box>
-    </>
+    <Box p="4">
+      <MembersManager
+        membersPromise={membersPromise}
+        rolesPromise={Promise.resolve(rolesPromise)}
+        clubId={id}
+      />
+    </Box>
   );
 }

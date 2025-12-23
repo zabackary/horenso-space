@@ -2,8 +2,7 @@ import type { Database } from "@/@types/database.types";
 import MetadataForm from "@/components/club-config/metadata-form";
 import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
-import { Box, Spinner } from "@radix-ui/themes";
-import React from "react";
+import { Box } from "@radix-ui/themes";
 
 type ClubRow = Database["public"]["Tables"]["clubs"]["Row"];
 
@@ -17,22 +16,17 @@ export default async function ClubMetadataPage({
   await initLingui();
   const supabase = await createClient();
 
-  const clubRes = await supabase
+  const clubPromise = supabase
     .from("clubs")
-    .select("id, name, description, website, public")
+    .select("*")
     .eq("id", id)
-    .single();
-  const club: ClubRow | null = (clubRes.data ?? null) as ClubRow | null;
-
-  const clubPromise = Promise.resolve(club);
+    .single()
+    .throwOnError()
+    .then((res) => res.data);
 
   return (
-    <>
-      <Box p="4">
-        <React.Suspense fallback={<Spinner />}>
-          <MetadataForm clubPromise={clubPromise} />
-        </React.Suspense>
-      </Box>
-    </>
+    <Box p="4">
+      <MetadataForm clubPromise={clubPromise} />
+    </Box>
   );
 }

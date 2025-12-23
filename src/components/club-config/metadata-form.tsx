@@ -20,7 +20,7 @@ type ClubRow = Database["public"]["Tables"]["clubs"]["Row"];
 export default function MetadataForm({
   clubPromise,
 }: {
-  clubPromise: Promise<ClubRow | null>;
+  clubPromise: PromiseLike<ClubRow | null>;
 }) {
   const a11yId = useId();
   const club = use(clubPromise);

@@ -24,8 +24,8 @@ export default async function NewAbsenceFormPage({
     .single();
 
   if (!error && data) {
-    redirect(`/app/${id}/club/config/absence-forms/${data.id}`);
+    redirect(`/app/${id}/config/absence-forms/${data.id}`);
   }
 
-  redirect(`/app/${id}/club/config/absence-forms`);
+  redirect(`/app/${id}/config/absence-forms`);
 }

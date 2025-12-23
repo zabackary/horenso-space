@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 export function ClubConfigTabNav({ clubId }: { clubId: string }) {
   const current = usePathname();
 
-  const active = current.split("/").pop();
+  const active = current.split("/")[4];
 
   return (
     <TabNav.Root>
@@ -32,7 +32,7 @@ export function ClubConfigTabNav({ clubId }: { clubId: string }) {
           <Trans>Invites</Trans>
         </Link>
       </TabNav.Link>
-      <TabNav.Link asChild active={active === "absenceForms"}>
+      <TabNav.Link asChild active={active === "absence-forms"}>
         <Link href={`/app/${clubId}/config/absence-forms`}>
           <Trans>Absence forms</Trans>
         </Link>

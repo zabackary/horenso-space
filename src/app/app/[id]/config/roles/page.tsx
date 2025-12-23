@@ -1,9 +1,7 @@
 import RolesManager from "@/components/club-config/roles-manager";
-import { ListLoading } from "@/components/loading";
 import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
 import { Box } from "@radix-ui/themes";
-import React from "react";
 
 export default async function ClubRolesPage({
   params,
@@ -30,16 +28,12 @@ export default async function ClubRolesPage({
     .then((res) => res.data ?? []);
 
   return (
-    <>
-      <Box p="4">
-        <React.Suspense fallback={<ListLoading />}>
-          <RolesManager
-            clubId={id}
-            rolesPromise={rolesPromise}
-            formsPromise={formsPromise}
-          />
-        </React.Suspense>
-      </Box>
-    </>
+    <Box p="4">
+      <RolesManager
+        clubId={id}
+        rolesPromise={rolesPromise}
+        formsPromise={formsPromise}
+      />
+    </Box>
   );
 }
