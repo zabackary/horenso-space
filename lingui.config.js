@@ -1,15 +1,13 @@
 /** @type {import("@lingui/conf").LinguiConfig} */
-module.exports = {
-  locales: ["en", "ja", "pseudo"],
-  pseudoLocale: "pseudo",
-  sourceLocale: "en",
-  fallbackLocales: {
-    default: "en"
-  },
-  catalogs: [
-    {
-      path: "src/locales/{locale}",
-      include: ["src/"]
-    }
-  ]
-}
+export const locales = ["en", "ja", "pseudo"];
+export const pseudoLocale = "pseudo";
+export const sourceLocale = "en";
+export const fallbackLocales = {
+  default: "en"
+};
+export const catalogs = [
+  {
+    path: "src/locales/{locale}",
+    include: ["src/"]
+  }
+];

@@ -1,9 +1,8 @@
 import "server-only";
 
 import { I18n, Messages, setupI18n } from "@lingui/core";
-import linguiConfig from "../../../lingui.config";
+import { locales } from "../../../lingui.config";
 
-const { locales } = linguiConfig;
 // optionally use a stricter union type
 type SupportedLocales = string;
 

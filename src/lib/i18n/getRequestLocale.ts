@@ -1,8 +1,5 @@
 import Negotiator from "negotiator";
-
-import linguiConfig from "../../../lingui.config";
-
-const { locales } = linguiConfig;
+import { locales } from "../../../lingui.config";
 
 export default function getRequestLocale(requestHeaders: Headers): string {
   const langHeader = requestHeaders.get("accept-language") || undefined;
