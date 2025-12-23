@@ -4,9 +4,9 @@ import getProfile from "@/lib/auth/getProfile";
 import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
 import { Trans } from "@lingui/react/macro";
-import { Flex, Heading, TabNav } from "@radix-ui/themes";
-import Link from "next/link";
+import { Flex, Heading } from "@radix-ui/themes";
 import { notFound } from "next/navigation";
+import { MeTabNav } from "./tabs";
 
 export default async function MeLayout({
   children,
@@ -30,20 +30,9 @@ export default async function MeLayout({
       <Heading as="h2" size="3">
         <Trans>User settings</Trans>
       </Heading>
+
+      <MeTabNav />
       {children}
     </Flex>
-  );
-}
-
-export function MeTabNav({ active }: { active?: "login" | "profile" }) {
-  return (
-    <TabNav.Root>
-      <TabNav.Link asChild active={active === "login"}>
-        <Link href="/app/users/me/login">Login</Link>
-      </TabNav.Link>
-      <TabNav.Link asChild active={active === "profile"}>
-        <Link href="/app/users/me/profile">Profile</Link>
-      </TabNav.Link>
-    </TabNav.Root>
   );
 }

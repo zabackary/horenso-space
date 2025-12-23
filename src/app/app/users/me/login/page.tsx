@@ -1,7 +1,6 @@
-import { Box } from "@radix-ui/themes";
 import LoginAuthProvidersSettings from "@/components/login-auth-providers-settings";
 import { createClient } from "@/lib/supabase/server";
-import { MeTabNav } from "../layout";
+import { Box } from "@radix-ui/themes";
 
 export default async function LoginSettingsPage() {
   const supabase = await createClient();
@@ -15,11 +14,8 @@ export default async function LoginSettingsPage() {
     });
 
   return (
-    <>
-      <MeTabNav active="login" />
-      <Box p="4">
-        <LoginAuthProvidersSettings identitiesPromise={identitiesPromise} />
-      </Box>
-    </>
+    <Box p="4">
+      <LoginAuthProvidersSettings identitiesPromise={identitiesPromise} />
+    </Box>
   );
 }
