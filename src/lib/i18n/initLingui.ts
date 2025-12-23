@@ -1,5 +1,6 @@
 import { setI18n } from "@lingui/react/server";
 import { headers } from "next/headers";
+import { createClient } from "../supabase/server";
 import getRequestLocale from "./getRequestLocale";
 import { getI18nInstance } from "./i18n";
 
@@ -9,8 +10,9 @@ export type PageLangParam = {
 
 export async function initLingui() {
   const requestHeaders = await headers();
-  const lang = getRequestLocale(requestHeaders);
-  const i18n = getI18nInstance(lang);
+  const requestLang = getRequestLocale(requestHeaders);
+  const { data: userLang } = await (await createClient()).rpc("current_locale");
+  const i18n = getI18nInstance(userLang || requestLang);
   setI18n(i18n);
   return i18n;
 }

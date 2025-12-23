@@ -645,22 +645,22 @@ export type Database = {
           school: string | null
         }
         Insert: {
-          avatar_url?: string | null
-          bio?: string | null
+          avatar_url?: never
+          bio?: never
           created_at?: string | null
-          full_name?: string | null
+          full_name?: never
           id?: string | null
-          nickname?: string | null
-          school?: string | null
+          nickname?: never
+          school?: never
         }
         Update: {
-          avatar_url?: string | null
-          bio?: string | null
+          avatar_url?: never
+          bio?: never
           created_at?: string | null
-          full_name?: string | null
+          full_name?: never
           id?: string | null
-          nickname?: string | null
-          school?: string | null
+          nickname?: never
+          school?: never
         }
         Relationships: []
       }
@@ -704,6 +704,7 @@ export type Database = {
         Args: { expires_at: string; new_club_id: string; role_id: string }
         Returns: string
       }
+      current_locale: { Args: never; Returns: string }
       delete_invitation: { Args: { invitation_id: string }; Returns: undefined }
       get_absence_reports: {
         Args: { p_club_id: string; p_user_id?: string }
@@ -751,6 +752,7 @@ export type Database = {
         }[]
       }
       is_report_approved: { Args: { p_report_id: string }; Returns: boolean }
+      set_current_locale: { Args: { new_locale: string }; Returns: undefined }
       user_has_club_permission: {
         Args: { p_club_id: string; p_permission: string }
         Returns: boolean

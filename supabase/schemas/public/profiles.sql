@@ -41,5 +41,12 @@ create rule profiles_update as on update
       avatar_url = new.avatar_url,
       bio = new.bio,
       school = new.school where
-      id = new.id;
+      id = new.id returning
+      id,
+      created_at,
+      full_name,
+      nickname,
+      avatar_url,
+      bio,
+      school;
 
