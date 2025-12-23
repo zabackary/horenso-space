@@ -81,12 +81,7 @@ export default function MembersManager({
       );
     } catch (e: unknown) {
       console.error("Failed to change member role:", e);
-      setError(
-        t({
-          id: "membersManager.changeRoleError",
-          message: "Failed to change member role. Please try again later.",
-        })
-      );
+      setError(t`Failed to change member role. Please try again later.`);
     }
   }
 
@@ -102,12 +97,7 @@ export default function MembersManager({
       setMembers((prev) => prev.filter((m) => m.user_id !== memberUserId));
     } catch (e: unknown) {
       console.error("Failed to remove member:", e);
-      setError(
-        t({
-          id: "membersManager.removeMemberError",
-          message: "Failed to remove member. Please try again later.",
-        })
-      );
+      setError(t`Failed to remove member. Please try again later.`);
     }
   }
 

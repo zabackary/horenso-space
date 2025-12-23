@@ -116,10 +116,7 @@ export function SignupForm(props: SignupFormProps) {
           </Callout.Root>
         )}
         <TextField.Root
-          placeholder={t({
-            id: "common.email",
-            message: "Email",
-          })}
+          placeholder={t`Email`}
           required
           type="email"
           value={email}
@@ -131,10 +128,7 @@ export function SignupForm(props: SignupFormProps) {
           required
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder={t({
-            id: "common.password",
-            message: "Password",
-          })}
+          placeholder={t`Password`}
         />
         <TextField.Root
           id="confirm-password"
@@ -142,16 +136,10 @@ export function SignupForm(props: SignupFormProps) {
           required
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
-          placeholder={t({
-            id: "auth.confirmPassword",
-            message: "Confirm Password",
-          })}
+          placeholder={t`Confirm Password`}
         />
         <TextField.Root
-          placeholder={t({
-            id: "common.fullName",
-            message: "Full Name",
-          })}
+          placeholder={t`Full Name`}
           required
           type="text"
           value={fullName}

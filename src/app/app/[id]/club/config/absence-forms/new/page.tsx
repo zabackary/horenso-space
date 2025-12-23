@@ -17,10 +17,7 @@ export default async function NewAbsenceFormPage({
     .from("absence_report_forms")
     .insert({
       club_id: id,
-      name: t({
-        id: "absenceReportForm.defaultName",
-        message: "Untitled form",
-      }),
+      name: t`Untitled form`,
       questions: DEFAULT_ABSENCE_FORM as any,
     })
     .select()

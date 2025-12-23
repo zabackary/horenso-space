@@ -101,10 +101,7 @@ export function LoginForm(props: LoginFormProps) {
           </Callout.Root>
         )}
         <TextField.Root
-          placeholder={t({
-            id: "common.email",
-            message: "Email",
-          })}
+          placeholder={t`Email`}
           required
           type="email"
           value={email}
@@ -116,10 +113,7 @@ export function LoginForm(props: LoginFormProps) {
           required
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder={t({
-            id: "common.password",
-            message: "Password",
-          })}
+          placeholder={t`Password`}
         />
         <Button type="submit" loading={isLoading === "email"}>
           <Trans>Login</Trans>

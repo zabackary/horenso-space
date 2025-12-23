@@ -141,12 +141,7 @@ export default function RolesManager({
       resetEditDialog();
     } catch (e: unknown) {
       console.error("Error saving role:", e);
-      setError(
-        t({
-          id: "rolesManager.saveRoleError",
-          message: "Failed to save role. Please try again later.",
-        })
-      );
+      setError(t`Failed to save role. Please try again later.`);
     }
   }
 
@@ -167,12 +162,7 @@ export default function RolesManager({
       await supabase.from("roles").delete().eq("id", roleId).throwOnError();
     } catch (e: unknown) {
       console.error("Error deleting role:", e);
-      setError(
-        t({
-          id: "rolesManager.deleteRoleError",
-          message: "Failed to delete role. Please try again later.",
-        })
-      );
+      setError(t`Failed to delete role. Please try again later.`);
     }
   }
 
@@ -180,12 +170,7 @@ export default function RolesManager({
     if (!editName.trim()) return setError("Role name required");
     setError(null);
     if (editAbsenceReportFormId === null) {
-      setError(
-        t({
-          id: "rolesManager.selectTemplateError",
-          message: "Absence report template must be selected",
-        })
-      );
+      setError(t`Absence report template must be selected`);
       return;
     }
     const supabase = createClient();
@@ -223,12 +208,7 @@ export default function RolesManager({
       resetEditDialog();
     } catch (e: unknown) {
       console.error("Error creating role:", e);
-      setError(
-        t({
-          id: "rolesManager.createRoleError",
-          message: "Failed to create role. Please try again later.",
-        })
-      );
+      setError(t`Failed to create role. Please try again later.`);
     }
   }
 
@@ -363,19 +343,13 @@ export default function RolesManager({
                 </Callout.Root>
               )}
               <TextField.Root
-                placeholder={t({
-                  id: "rolesManager.roleName",
-                  message: "Role name",
-                })}
+                placeholder={t`Role name`}
                 value={editName}
                 onChange={(e) => setEditName(e.target.value)}
                 required
               />
               <TextField.Root
-                placeholder={t({
-                  id: "rolesManager.roleDescription",
-                  message: "Role description",
-                })}
+                placeholder={t`Role description`}
                 value={editDescription}
                 onChange={(e) => setEditDescription(e.target.value)}
               />
@@ -457,22 +431,13 @@ export default function RolesManager({
                   <Tooltip
                     content={
                       editAbsenceReportFormId
-                        ? t({
-                            id: "rolesManager.editTemplate",
-                            message: "Edit template",
-                          })
-                        : t({
-                            id: "rolesManager.selectTemplateFirst",
-                            message: "Select a template first",
-                          })
+                        ? t`Edit template`
+                        : t`Select a template first`
                     }
                   >
                     <IconButton
                       variant="soft"
-                      aria-label={t({
-                        id: "rolesManager.openTemplateEditor",
-                        message: "Open template editor",
-                      })}
+                      aria-label={t`Open template editor`}
                       disabled={!editAbsenceReportFormId}
                       asChild
                     >

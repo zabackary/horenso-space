@@ -54,12 +54,7 @@ export default function MetadataForm({
         .throwOnError();
     } catch (err: unknown) {
       console.error("Error saving club metadata:", err);
-      setError(
-        t({
-          id: "clubConfig.metadataForm.saveError",
-          message: "Failed to save club metadata. Please try again later.",
-        })
-      );
+      setError(t`Failed to save club metadata. Please try again later.`);
     } finally {
       setIsLoading(false);
     }

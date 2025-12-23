@@ -85,12 +85,7 @@ export default function InvitesManager({
       }
     } catch (error: unknown) {
       console.error("Failed to generate invite:", error);
-      setError(
-        t({
-          id: "invitesManager.generateInviteError",
-          message: "Failed to generate invite. Please try again.",
-        })
-      );
+      setError(t`Failed to generate invite. Please try again.`);
     }
   }
 
@@ -106,12 +101,7 @@ export default function InvitesManager({
       );
     } catch (error: unknown) {
       console.error("Failed to delete invite:", error);
-      setError(
-        t({
-          id: "invitesManager.deleteInviteError",
-          message: "Failed to delete invite. Please try again.",
-        })
-      );
+      setError(t`Failed to delete invite. Please try again.`);
     }
   }
 
@@ -172,29 +162,16 @@ export default function InvitesManager({
                         try {
                           navigator
                             .share({
-                              title: t({
-                                id: "invitesManager.inviteLinkTitle",
-                                message: "Club Invite Link",
-                              }),
+                              title: t`Club Invite Link`,
                               url,
                             })
                             .catch(() => {
                               navigator.clipboard.writeText(url);
-                              alert(
-                                t({
-                                  id: "invitesManager.linkCopiedAlert",
-                                  message: "Invite link copied to clipboard.",
-                                })
-                              );
+                              alert(t`Invite link copied to clipboard.`);
                             });
                         } catch (_) {
                           navigator.clipboard.writeText(url);
-                          alert(
-                            t({
-                              id: "invitesManager.linkCopiedAlert",
-                              message: "Invite link copied to clipboard.",
-                            })
-                          );
+                          alert(t`Invite link copied to clipboard.`);
                         }
                       }
                     }}

@@ -62,12 +62,7 @@ export default function Form({
     ]);
     if (error) {
       console.error("Error submitting absence report:", error);
-      setError(
-        t({
-          id: "absences.submitError",
-          message: "Failed to submit absence report. Please try again.",
-        })
-      );
+      setError(t`Failed to submit absence report. Please try again.`);
     } else {
       redirect(`/app/${clubId}/absences`);
     }
@@ -96,10 +91,7 @@ export default function Form({
             value={event || undefined}
           >
             <Select.Trigger
-              placeholder={t({
-                id: "absences.selectEvent",
-                message: "Select event",
-              })}
+              placeholder={t`Select event`}
               style={{ width: "100%" }}
             />
             <Select.Content>
@@ -119,10 +111,7 @@ export default function Form({
           </Heading>
           <TextField.Root
             type="date"
-            placeholder={t({
-              id: "absences.date",
-              message: "Date",
-            })}
+            placeholder={t`Date`}
             value={date || ""}
             onChange={(e) => setDate(e.target.value)}
           />

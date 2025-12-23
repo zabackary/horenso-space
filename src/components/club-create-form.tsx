@@ -68,10 +68,7 @@ export function ClubCreateForm() {
           <Trans>Club name</Trans> <span aria-label="required">*</span>
         </Text>
         <TextField.Root
-          placeholder={t({
-            id: "club.namePlaceholder",
-            message: "Your club",
-          })}
+          placeholder={t`Your club`}
           required
           id={`${a11yId}-name`}
           value={clubName}
@@ -81,10 +78,7 @@ export function ClubCreateForm() {
           <Trans>Club description</Trans>
         </Text>
         <TextField.Root
-          placeholder={t({
-            id: "club.descriptionPlaceholder",
-            message: "A short description",
-          })}
+          placeholder={t`A short description`}
           id={`${a11yId}-description`}
           value={clubDescription}
           onChange={(e) => setClubDescription(e.target.value)}
@@ -93,10 +87,7 @@ export function ClubCreateForm() {
           <Trans>School</Trans>
         </Text>
         <TextField.Root
-          placeholder={t({
-            id: "club.schoolPlaceholder",
-            message: "Your school",
-          })}
+          placeholder={t`Your school`}
           id={`${a11yId}-school`}
           value={clubSchool}
           onChange={(e) => setClubSchool(e.target.value)}

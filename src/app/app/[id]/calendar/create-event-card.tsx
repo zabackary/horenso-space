@@ -95,10 +95,7 @@ export default function CreateEventCard({
     <Flex direction="column" gap="2" p={withPadding ? "1" : "0"} asChild>
       <form onSubmit={handleSubmit} className={styles["form"]}>
         <TextField.Root
-          placeholder={t({
-            id: "calendar.eventTitle",
-            message: "New event name",
-          })}
+          placeholder={t`New event name`}
           size="3"
           name="title"
           required
@@ -109,10 +106,7 @@ export default function CreateEventCard({
           </Box>
           <Grid columns="auto auto" gap="2" flexGrow="1">
             <TextField.Root
-              placeholder={t({
-                id: "calendar.date",
-                message: "Date",
-              })}
+              placeholder={t`Date`}
               type="date"
               value={startDate}
               onChange={handleStartDateChange}
@@ -120,10 +114,7 @@ export default function CreateEventCard({
               required
             />
             <TextField.Root
-              placeholder={t({
-                id: "calendar.time",
-                message: "Time",
-              })}
+              placeholder={t`Time`}
               type="time"
               value={startTime}
               onChange={(e) => setStartTime(e.target.value)}
@@ -131,10 +122,7 @@ export default function CreateEventCard({
               required
             />
             <TextField.Root
-              placeholder={t({
-                id: "calendar.date",
-                message: "Date",
-              })}
+              placeholder={t`Date`}
               type="date"
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
@@ -143,10 +131,7 @@ export default function CreateEventCard({
               required
             />
             <TextField.Root
-              placeholder={t({
-                id: "calendar.time",
-                message: "Time",
-              })}
+              placeholder={t`Time`}
               type="time"
               value={endTime}
               onChange={(e) => setEndTime(e.target.value)}
@@ -161,10 +146,7 @@ export default function CreateEventCard({
             <GlobeIcon />
           </Box>
           <TextField.Root
-            placeholder={t({
-              id: "calendar.location",
-              message: "Location",
-            })}
+            placeholder={t`Location`}
             size="2"
             className={styles["location-textfield"]}
             name="location"
@@ -175,10 +157,7 @@ export default function CreateEventCard({
             <TextIcon />
           </Box>
           <TextArea
-            placeholder={t({
-              id: "calendar.notes",
-              message: "Notes",
-            })}
+            placeholder={t`Notes`}
             className={styles["notes-textarea"]}
             size="2"
             name="notes"

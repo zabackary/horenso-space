@@ -83,12 +83,7 @@ export default function AbsenceFormDetail({
       router.refresh();
     } catch (e: unknown) {
       console.error("Failed to save absence form template", e);
-      setError(
-        t({
-          id: "absenceReportTemplate.saveError",
-          message: "Failed to save template.",
-        })
-      );
+      setError(t`Failed to save template.`);
     } finally {
       setSaving(false);
     }
@@ -109,12 +104,7 @@ export default function AbsenceFormDetail({
       // Soft UX: navigate back
       window.location.href = window.location.pathname.replace(/\/[^/]+$/, "");
     } catch (e: unknown) {
-      setError(
-        t({
-          id: "absenceReportTemplate.deleteError",
-          message: "Failed to delete template.",
-        })
-      );
+      setError(t`Failed to delete template.`);
     } finally {
       setDeleting(false);
     }

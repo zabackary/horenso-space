@@ -106,14 +106,8 @@ export default function ReportDetail({
           <Callout.Root color={isAccepted ? "green" : "yellow"}>
             <Callout.Text>
               {isAccepted
-                ? t({
-                    id: "absences.reportAccepted",
-                    message: "This report has been accepted.",
-                  })
-                : t({
-                    id: "absences.reportPending",
-                    message: "This report is has not been accepted.",
-                  })}
+                ? t`This report has been accepted.`
+                : t`This report is has not been accepted.`}
             </Callout.Text>
           </Callout.Root>
         )}
@@ -251,10 +245,7 @@ export default function ReportDetail({
           </Heading>
           <Flex direction="column" gap="3">
             <TextArea
-              placeholder={t({
-                id: "absences.commentsPlaceholder",
-                message: "Add comments (optional)",
-              })}
+              placeholder={t`Add comments (optional)`}
               value={comments}
               onChange={(e) => setComments(e.target.value)}
               rows={4}

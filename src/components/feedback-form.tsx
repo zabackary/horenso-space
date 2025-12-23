@@ -50,12 +50,7 @@ export default function FeedbackForm({ handleClose }: FeedbackFormProps) {
     });
     if (error) {
       console.error("Error submitting feedback:", error);
-      setError(
-        t({
-          id: "feedbackForm.submitError",
-          message: "Failed to submit feedback. Please try again later.",
-        })
-      );
+      setError(t`Failed to submit feedback. Please try again later.`);
     } else {
       handleClose?.();
     }
@@ -122,10 +117,7 @@ export default function FeedbackForm({ handleClose }: FeedbackFormProps) {
               disabled={feedback.trim().length < 15}
               title={
                 feedback.trim().length < 15
-                  ? t({
-                      id: "feedbackForm.provideMoreDetailedFeedback",
-                      message: "Please provide more detailed feedback.",
-                    })
+                  ? t`Please provide more detailed feedback.`
                   : undefined
               }
               loading={isSubmitting}

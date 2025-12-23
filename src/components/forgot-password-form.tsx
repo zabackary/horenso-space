@@ -77,10 +77,7 @@ export function ForgotPasswordForm({
             </Callout.Root>
           )}
           <TextField.Root
-            placeholder={t({
-              id: "common.email",
-              message: "Email",
-            })}
+            placeholder={t`Email`}
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
