@@ -2,7 +2,7 @@
 
 import { Drawer } from "@/components/ui/drawer";
 import { useMediaQuery } from "@/lib/useMediaQuery";
-import { useLingui } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
@@ -44,13 +44,13 @@ export function ModePicker({ mode, setMode }: ModePickerProps) {
       <Select.Trigger />
       <Select.Content position="popper">
         <Select.Item value="year">
-          {t({ id: "calendar.year", message: "Year" })}
+          <Trans>Year</Trans>
         </Select.Item>
         <Select.Item value="month">
-          {t({ id: "calendar.month", message: "Month" })}
+          <Trans>Month</Trans>
         </Select.Item>
         <Select.Item value="day">
-          {t({ id: "calendar.day", message: "Day" })}
+          <Trans>Day</Trans>
         </Select.Item>
       </Select.Content>
     </Select.Root>
