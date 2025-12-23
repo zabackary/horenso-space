@@ -1,3 +1,7 @@
 .root {
   max-width: 920px;
 }
+
+.expired {
+  font-style: italic;
+}

@@ -2,6 +2,7 @@
 
 import type { Database } from "@/@types/database.types";
 import { createClient } from "@/lib/supabase/client";
+import { plural } from "@lingui/core/macro";
 import { Trans, useLingui } from "@lingui/react/macro";
 import { CrossCircledIcon, TrashIcon } from "@radix-ui/react-icons";
 import {
@@ -126,62 +127,80 @@ export default function InvitesManager({
             <Trans>Please create roles before generating invites.</Trans>
           </Text>
         ) : (
-          invites.map((invite) => (
-            <Card key={invite.id}>
-              <Flex direction="row" align="center" width="100%" gap="2">
-                <Flex direction="column" flexGrow="1" gap="1">
-                  <Text size="3" weight="bold">
-                    <Trans>Invite for role "{invite.role_name}"</Trans>{" "}
-                    <Badge>
-                      <Trans>Used {invite.usage_count} times</Trans>
-                    </Badge>
-                  </Text>
-                  <Text size="2">
-                    <Trans>
-                      Expires at: {new Date(invite.expires_at).toLocaleString()}
-                    </Trans>
-                  </Text>
-                </Flex>
-                <Button
-                  variant="soft"
-                  color="red"
-                  onClick={() => handleDelete(invite.id)}
-                >
-                  <TrashIcon />
-                  <Trans>Delete</Trans>
-                </Button>
-                <Button asChild variant="solid">
-                  <Link
-                    href={`/app/club/invite/${invite.id}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      const url = `${window.location.origin}/app/club/invite/${invite.id}`;
-                      if ("share" in navigator) {
-                        try {
-                          navigator
-                            .share({
-                              title: t`Club Invite Link`,
-                              url,
-                            })
-                            .catch(() => {
+          invites.map((invite) => {
+            const expired = new Date(invite.expires_at) < new Date();
+            return (
+              <Card key={invite.id} className={expired ? styles.expired : ""}>
+                <Flex direction="row" align="center" width="100%" gap="2">
+                  <Flex direction="column" flexGrow="1" gap="1">
+                    <Text size="3" weight="bold">
+                      <Trans>Invite for role "{invite.role_name}"</Trans>{" "}
+                      {invite.usage_count > 0 && (
+                        <Badge>
+                          {plural(invite.usage_count, {
+                            one: "used 1 time",
+                            other: "used # times",
+                          })}
+                        </Badge>
+                      )}{" "}
+                      {expired && (
+                        <Badge color="red">
+                          <Trans>expired</Trans>
+                        </Badge>
+                      )}
+                    </Text>
+                    {!expired && (
+                      <Text size="2">
+                        <Trans>
+                          Expires at:{" "}
+                          {new Date(invite.expires_at).toLocaleString()}
+                        </Trans>
+                      </Text>
+                    )}
+                  </Flex>
+                  <Button
+                    variant="soft"
+                    color="red"
+                    onClick={() => handleDelete(invite.id)}
+                  >
+                    <TrashIcon />
+                    <Trans>Delete</Trans>
+                  </Button>
+                  {!expired && (
+                    <Button asChild variant="solid">
+                      <Link
+                        href={`/app/club/invite/${invite.id}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          const url = `${window.location.origin}/app/club/invite/${invite.id}`;
+                          if ("share" in navigator) {
+                            try {
+                              navigator
+                                .share({
+                                  title: t`Club Invite Link`,
+                                  url,
+                                })
+                                .catch(() => {
+                                  navigator.clipboard.writeText(url);
+                                  alert(t`Invite link copied to clipboard.`);
+                                });
+                            } catch (_) {
                               navigator.clipboard.writeText(url);
                               alert(t`Invite link copied to clipboard.`);
-                            });
-                        } catch (_) {
-                          navigator.clipboard.writeText(url);
-                          alert(t`Invite link copied to clipboard.`);
-                        }
-                      }
-                    }}
-                  >
-                    <Trans>Copy link</Trans>
-                  </Link>
-                </Button>
-              </Flex>
-            </Card>
-          ))
+                            }
+                          }
+                        }}
+                      >
+                        <Trans>Copy link</Trans>
+                      </Link>
+                    </Button>
+                  )}
+                </Flex>
+              </Card>
+            );
+          })
         )}
       </Flex>
 
