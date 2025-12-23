@@ -4,7 +4,6 @@ import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
 import { Box, Spinner } from "@radix-ui/themes";
 import React from "react";
-import { ClubConfigTabNav } from "../layout";
 
 type ClubRow = Database["public"]["Tables"]["clubs"]["Row"];
 
@@ -29,7 +28,6 @@ export default async function ClubMetadataPage({
 
   return (
     <>
-      <ClubConfigTabNav active="metadata" clubId={id} />
       <Box p="4">
         <React.Suspense fallback={<Spinner />}>
           <MetadataForm clubPromise={clubPromise} />

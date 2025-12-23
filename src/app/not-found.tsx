@@ -1,10 +1,8 @@
 import { AppHeader } from "@/components/ui/app-header";
-import getRequestLocale from "@/lib/i18n/getRequestLocale";
 import { initLingui } from "@/lib/i18n/initLingui";
 import { Trans } from "@lingui/react/macro";
 import { Button, Flex, Heading, Text } from "@radix-ui/themes";
 import type { Metadata } from "next";
-import { headers } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./not-found.module.css";
@@ -14,9 +12,17 @@ export const metadata: Metadata = {
 };
 
 export default async function NotFound() {
-  const requestHeaders = await headers();
-  const lang = getRequestLocale(requestHeaders);
   await initLingui();
+
+  const sawaratsukiLink = (
+    <Link
+      href="https://github.com/SAWARATSUKI/KawaiiLogos/blob/f1ed8e2c677943c3179bed7b0611fa3d3c315397/ResponseCode/404%20NotFound.png"
+      target="_blank"
+    >
+      SAWARATSUKI
+    </Link>
+  );
+
   return (
     <>
       <AppHeader />
@@ -48,15 +54,7 @@ export default async function NotFound() {
           </Button>
         </Flex>
         <Text size="2" color="gray" mt="2" align="center" as="p">
-          <Trans>
-            Image by{" "}
-            <Link
-              href="https://github.com/SAWARATSUKI/KawaiiLogos/blob/f1ed8e2c677943c3179bed7b0611fa3d3c315397/ResponseCode/404%20NotFound.png"
-              target="_blank"
-            >
-              SAWARATSUKI
-            </Link>
-          </Trans>
+          <Trans>Image by {sawaratsukiLink}</Trans>
         </Text>
       </Flex>
     </>

@@ -5,7 +5,6 @@ import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
 import { Box } from "@radix-ui/themes";
 import React from "react";
-import { ClubConfigTabNav } from "../layout";
 
 type ClubMemberRow = Database["public"]["Tables"]["club_members"]["Row"];
 type ProfileRow = Database["public"]["Views"]["profiles"]["Row"];
@@ -13,7 +12,7 @@ type RoleRow = Database["public"]["Tables"]["roles"]["Row"];
 
 export default async function ClubMembersPage({
   params,
-}: PageProps<"/app/[id]/club/config/members">) {
+}: PageProps<"/app/[id]/config/members">) {
   const { id } = await params;
   await initLingui();
 
@@ -53,7 +52,6 @@ export default async function ClubMembersPage({
 
   return (
     <>
-      <ClubConfigTabNav active="members" clubId={id} />
       <Box p="4">
         <React.Suspense fallback={<ListLoading />}>
           <MembersManager

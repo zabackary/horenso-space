@@ -4,11 +4,10 @@ import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
 import { Box } from "@radix-ui/themes";
 import React from "react";
-import { ClubConfigTabNav } from "../layout";
 
 export default async function ClubRolesPage({
   params,
-}: PageProps<"/app/[id]/club/config/roles">) {
+}: PageProps<"/app/[id]/config/roles">) {
   // permission check handled in layout
   const { id } = await params;
   await initLingui();
@@ -32,7 +31,6 @@ export default async function ClubRolesPage({
 
   return (
     <>
-      <ClubConfigTabNav active="roles" clubId={id} />
       <Box p="4">
         <React.Suspense fallback={<ListLoading />}>
           <RolesManager

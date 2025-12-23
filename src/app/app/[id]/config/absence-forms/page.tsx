@@ -8,7 +8,7 @@ import React from "react";
 
 export default async function ClubAbsenceFormsPage({
   params,
-}: PageProps<"/app/[id]/club/config/absence-forms">) {
+}: PageProps<"/app/[id]/config/absence-forms">) {
   const { id } = await params;
   await initLingui();
   const supabase = await createClient();

@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 
 export default async function NewAbsenceFormPage({
   params,
-}: PageProps<"/app/[id]/club/config/absence-forms/new">) {
+}: PageProps<"/app/[id]/config/absence-forms/new">) {
   const { id } = await params;
   await initLingui();
 

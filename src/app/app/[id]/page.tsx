@@ -47,7 +47,7 @@ export default async function ClubPage({ params }: PageProps<"/app/[id]">) {
         <HomeCard
           title={<Trans>Club settings</Trans>}
           description={<Trans>Manage club metadata, roles, and members</Trans>}
-          href={`/app/${id}/club/config/metadata`}
+          href={`/app/${id}/config`}
         />
       ) : null}
       <HomeCard

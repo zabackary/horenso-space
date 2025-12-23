@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 
 export default async function AbsenceFormDetailPage({
   params,
-}: PageProps<"/app/[id]/club/config/absence-forms/[formId]">) {
+}: PageProps<"/app/[id]/config/absence-forms/[formId]">) {
   const { id, formId } = await params;
   await initLingui();
   const supabase = await createClient();
