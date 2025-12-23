@@ -69,7 +69,9 @@ export default async function Home({ params }: PageProps<"/">) {
         <Flex direction="column" p="2">
           <Text size="2" align="center" mt="4" mb="2">
             <Trans>
-              札幌光星中学高等学校吹奏楽部とクリスチャン・アカデミー・イン・ジャパンロボティクス部のが制作
+              Sponsored by the Sapporo Kosei Junior & Senior High School Brass
+              Band club and produced by the Christian Academy in Japan Robotics
+              club (VEX team 99484).
             </Trans>
           </Text>
           <Text size="2" align="center" mb="2">

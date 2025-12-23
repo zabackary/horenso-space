@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2025-12-23 12:47+0900\n"
+"POT-Creation-Date: 2025-12-23 13:00+0900\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,7 +13,7 @@ msgid "{0} reviews"
 msgstr "{0} reviews"
 
 #. placeholder {0}: new Date().getFullYear()
-#: src/app/page.tsx:76
+#: src/app/page.tsx:78
 msgid "©{0} Horenso SPACE"
 msgstr "©{0} Horenso SPACE"
 
@@ -29,15 +29,15 @@ msgstr "A short description"
 msgid "Absence forms"
 msgstr "Absence forms"
 
-#: src/components/club-config/roles-manager.tsx:380
+#: src/components/club-config/roles-manager.tsx:376
 msgid "Absence report settings"
 msgstr "Absence report settings"
 
-#: src/components/club-config/roles-manager.tsx:429
+#: src/components/club-config/roles-manager.tsx:425
 msgid "Absence report template"
 msgstr "Absence report template"
 
-#: src/components/club-config/roles-manager.tsx:173
+#: src/components/club-config/roles-manager.tsx:169
 msgid "Absence report template must be selected"
 msgstr "Absence report template must be selected"
 
@@ -102,13 +102,12 @@ msgstr "An error occurred"
 msgid "An unspecified error occurred"
 msgstr "An unspecified error occurred"
 
-#: src/components/club-config/roles-manager.tsx:417
+#: src/components/club-config/roles-manager.tsx:413
 msgid "Approval required for reports"
 msgstr "Approval required for reports"
 
-#. js-lingui-explicit-id
 #: src/components/club-config/roles-manager.tsx:151
-msgid "rolesManager.confirmDeleteRole"
+msgid "Are you sure you want to delete this role? This action cannot be undone."
 msgstr "Are you sure you want to delete this role? This action cannot be undone."
 
 #: src/app/app/[id]/absences/(list)/assigned/list.tsx:31
@@ -149,7 +148,7 @@ msgstr "Calendar"
 
 #: src/app/app/[id]/calendar/create-event-card.tsx:188
 #: src/components/club-config/invite.tsx:260
-#: src/components/club-config/roles-manager.tsx:492
+#: src/components/club-config/roles-manager.tsx:488
 #: src/components/feedback-form.tsx:133
 msgid "Cancel"
 msgstr "Cancel"
@@ -195,7 +194,7 @@ msgstr "Club settings"
 msgid "Common Clubs"
 msgstr "Common Clubs"
 
-#: src/components/club-config/roles-manager.tsx:385
+#: src/components/club-config/roles-manager.tsx:381
 msgid "Configure reviewer/approval and choose the template used for this role."
 msgstr "Configure reviewer/approval and choose the template used for this role."
 
@@ -207,7 +206,7 @@ msgstr "Confirm Password"
 msgid "Copy link"
 msgstr "Copy link"
 
-#: src/components/club-config/roles-manager.tsx:482
+#: src/components/club-config/roles-manager.tsx:478
 msgid "Create"
 msgstr "Create"
 
@@ -232,7 +231,7 @@ msgstr "Create club"
 msgid "Create event"
 msgstr "Create event"
 
-#: src/components/club-config/roles-manager.tsx:301
+#: src/components/club-config/roles-manager.tsx:297
 msgid "Create new role"
 msgstr "Create new role"
 
@@ -240,7 +239,7 @@ msgstr "Create new role"
 msgid "Create new template"
 msgstr "Create new template"
 
-#: src/components/club-config/roles-manager.tsx:324
+#: src/components/club-config/roles-manager.tsx:320
 msgid "Create Role"
 msgstr "Create Role"
 
@@ -266,7 +265,7 @@ msgstr "Day"
 
 #: src/components/club-config/absence-form-detail.tsx:143
 #: src/components/club-config/invite.tsx:151
-#: src/components/club-config/roles-manager.tsx:291
+#: src/components/club-config/roles-manager.tsx:287
 msgid "Delete"
 msgstr "Delete"
 
@@ -274,19 +273,19 @@ msgstr "Delete"
 msgid "Don't have an account yet? {createAccountLink}"
 msgstr "Don't have an account yet? {createAccountLink}"
 
-#: src/components/club-config/roles-manager.tsx:287
+#: src/components/club-config/roles-manager.tsx:283
 msgid "Edit"
 msgstr "Edit"
 
-#: src/components/club-config/roles-manager.tsx:333
+#: src/components/club-config/roles-manager.tsx:329
 msgid "Edit details for {editName}"
 msgstr "Edit details for {editName}"
 
-#: src/components/club-config/roles-manager.tsx:326
+#: src/components/club-config/roles-manager.tsx:322
 msgid "Edit Role"
 msgstr "Edit Role"
 
-#: src/components/club-config/roles-manager.tsx:434
+#: src/components/club-config/roles-manager.tsx:430
 msgid "Edit template"
 msgstr "Edit template"
 
@@ -324,7 +323,7 @@ msgstr "Expires at: {0}"
 msgid "Failed to change member role. Please try again later."
 msgstr "Failed to change member role. Please try again later."
 
-#: src/components/club-config/roles-manager.tsx:211
+#: src/components/club-config/roles-manager.tsx:207
 msgid "Failed to create role. Please try again later."
 msgstr "Failed to create role. Please try again later."
 
@@ -332,7 +331,7 @@ msgstr "Failed to create role. Please try again later."
 msgid "Failed to delete invite. Please try again."
 msgstr "Failed to delete invite. Please try again."
 
-#: src/components/club-config/roles-manager.tsx:165
+#: src/components/club-config/roles-manager.tsx:161
 msgid "Failed to delete role. Please try again later."
 msgstr "Failed to delete role. Please try again later."
 
@@ -372,7 +371,7 @@ msgstr "Failed to submit absence report. Please try again."
 msgid "Failed to submit feedback. Please try again later."
 msgstr "Failed to submit feedback. Please try again later."
 
-#: src/components/club-config/roles-manager.tsx:331
+#: src/components/club-config/roles-manager.tsx:327
 msgid "Fill in the details for the new role."
 msgstr "Fill in the details for the new role."
 
@@ -504,7 +503,7 @@ msgstr "Manage club metadata, roles, and members"
 msgid "Manage members"
 msgstr "Manage members"
 
-#: src/components/club-config/roles-manager.tsx:256
+#: src/components/club-config/roles-manager.tsx:252
 msgid "Manage roles"
 msgstr "Manage roles"
 
@@ -580,7 +579,7 @@ msgstr "No templates yet"
 msgid "Notes"
 msgstr "Notes"
 
-#: src/components/club-config/roles-manager.tsx:440
+#: src/components/club-config/roles-manager.tsx:436
 msgid "Open template editor"
 msgstr "Open template editor"
 
@@ -593,7 +592,7 @@ msgstr "Page not found"
 msgid "Password"
 msgstr "Password"
 
-#: src/components/club-config/roles-manager.tsx:358
+#: src/components/club-config/roles-manager.tsx:354
 msgid "Permissions"
 msgstr "Permissions"
 
@@ -672,7 +671,7 @@ msgstr "Review and respond to absence reports"
 msgid "Reviewed"
 msgstr "Reviewed"
 
-#: src/components/club-config/roles-manager.tsx:393
+#: src/components/club-config/roles-manager.tsx:389
 msgid "Reviewer role"
 msgstr "Reviewer role"
 
@@ -680,11 +679,11 @@ msgstr "Reviewer role"
 msgid "Reviews"
 msgstr "Reviews"
 
-#: src/components/club-config/roles-manager.tsx:352
+#: src/components/club-config/roles-manager.tsx:348
 msgid "Role description"
 msgstr "Role description"
 
-#: src/components/club-config/roles-manager.tsx:346
+#: src/components/club-config/roles-manager.tsx:342
 msgid "Role name"
 msgstr "Role name"
 
@@ -698,7 +697,7 @@ msgstr "Roles"
 
 #: src/app/app/[id]/calendar/create-event-card.tsx:178
 #: src/components/club-config/metadata-form.tsx:132
-#: src/components/club-config/roles-manager.tsx:484
+#: src/components/club-config/roles-manager.tsx:480
 msgid "Save"
 msgstr "Save"
 
@@ -727,7 +726,7 @@ msgstr "Select a report to review"
 msgid "Select a setting to change"
 msgstr "Select a setting to change"
 
-#: src/components/club-config/roles-manager.tsx:435
+#: src/components/club-config/roles-manager.tsx:431
 msgid "Select a template first"
 msgstr "Select a template first"
 
@@ -797,6 +796,10 @@ msgstr "Sign up with Google"
 #: src/app/auth/error/page.tsx:17
 msgid "Something went wrong"
 msgstr "Something went wrong"
+
+#: src/app/page.tsx:71
+msgid "Sponsored by the Sapporo Kosei Junior & Senior High School Brass Band club and produced by the Christian Academy in Japan Robotics club (VEX team 99484)."
+msgstr "Sponsored by the Sapporo Kosei Junior & Senior High School Brass Band club and produced by the Christian Academy in Japan Robotics club (VEX team 99484)."
 
 #: src/components/permission-text.tsx:36
 msgid "Submit absence reports"
@@ -934,7 +937,3 @@ msgstr "Your full name will not be shared with people outside of your clubs unle
 #: src/components/club-create-form.tsx:90
 msgid "Your school"
 msgstr "Your school"
-
-#: src/app/page.tsx:71
-msgid "札幌光星中学高等学校吹奏楽部とクリスチャン・アカデミー・イン・ジャパンロボティクス部のが制作"
-msgstr "札幌光星中学高等学校吹奏楽部とクリスチャン・アカデミー・イン・ジャパンロボティクス部のが制作"

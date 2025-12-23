@@ -148,11 +148,7 @@ export default function RolesManager({
   async function deleteRole(roleId: string) {
     if (
       !confirm(
-        t({
-          id: "rolesManager.confirmDeleteRole",
-          message:
-            "Are you sure you want to delete this role? This action cannot be undone.",
-        })
+        t`Are you sure you want to delete this role? This action cannot be undone.`
       )
     )
       return;
