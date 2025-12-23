@@ -126,9 +126,7 @@ export default function AbsenceFormDetail({
       {isDirty && !error && (
         <Callout.Root color="amber">
           <Callout.Text>
-            <Trans id="absenceReportTemplate.unsavedChanges">
-              You have unsaved changes
-            </Trans>
+            <Trans>You have unsaved changes</Trans>
           </Callout.Text>
         </Callout.Root>
       )}
@@ -152,8 +150,7 @@ export default function AbsenceFormDetail({
             <Spinner />
           ) : (
             <>
-              <TrashIcon />{" "}
-              <Trans id="absenceReportTemplate.delete">Delete</Trans>
+              <TrashIcon /> <Trans>Delete</Trans>
             </>
           )}
         </Button>
@@ -161,9 +158,9 @@ export default function AbsenceFormDetail({
           {saving ? (
             <Spinner />
           ) : isDirty ? (
-            <Trans id="absenceReportTemplate.saveChanges">Save changes</Trans>
+            <Trans>Save changes</Trans>
           ) : (
-            <Trans id="absenceReportTemplate.saved">Saved</Trans>
+            <Trans>Saved</Trans>
           )}
         </Button>
       </Flex>

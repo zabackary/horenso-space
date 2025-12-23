@@ -28,13 +28,13 @@ export default async function Page({
     >
       <Flex direction="row" align="center" gap="4">
         <Heading size="5" as="h2">
-          <Trans id="absences.heading">Absences</Trans>
+          <Trans>Absences</Trans>
         </Heading>
 
         {permissions.includes("canWriteOwnReport") && (
           <Button asChild className={styles.reportButton}>
             <Link href={`/app/${id}/absences/create`}>
-              <Trans id="absences.report">Report absence</Trans>
+              <Trans>Report absence</Trans>
             </Link>
           </Button>
         )}

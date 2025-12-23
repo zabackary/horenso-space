@@ -9,7 +9,7 @@ export default async function MeDefault() {
     <>
       <MeTabNav />
       <Card>
-        <Trans id="settings.selectSetting">Select a setting to change</Trans>
+        <Trans>Select a setting to change</Trans>
       </Card>
     </>
   );

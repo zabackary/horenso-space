@@ -119,7 +119,7 @@ export default function ReportDetail({
         )}
 
         <Heading size="4">
-          <Trans id="absences.reportReview">Report Review</Trans>
+          <Trans>Report Review</Trans>
         </Heading>
 
         {error && (
@@ -137,26 +137,26 @@ export default function ReportDetail({
         <DataList.Root>
           <DataList.Item>
             <DataList.Label>
-              <Trans id="absences.submittedBy">Submitted by</Trans>
+              <Trans>Submitted by</Trans>
             </DataList.Label>
             <DataList.Value>
-              {report.user_name || <Trans id="common.unknown">Unknown</Trans>}
+              {report.user_name || <Trans>Unknown</Trans>}
             </DataList.Value>
           </DataList.Item>
 
           <DataList.Item>
             <DataList.Label>
-              <Trans id="absences.event">Event</Trans>
+              <Trans>Event</Trans>
             </DataList.Label>
             <DataList.Value>
-              {report.event_name || <Trans id="common.noEvent">No event</Trans>}
+              {report.event_name || <Trans>No event</Trans>}
             </DataList.Value>
           </DataList.Item>
 
           {report.report_date && (
             <DataList.Item>
               <DataList.Label>
-                <Trans id="absences.date">Date</Trans>
+                <Trans>Date</Trans>
               </DataList.Label>
               <DataList.Value>
                 {new Date(report.report_date).toLocaleDateString()}
@@ -167,7 +167,7 @@ export default function ReportDetail({
           {report.event_start_time && (
             <DataList.Item>
               <DataList.Label>
-                <Trans id="absences.eventDate">Event date</Trans>
+                <Trans>Event date</Trans>
               </DataList.Label>
               <DataList.Value>
                 {new Date(report.event_start_time).toLocaleString()}
@@ -177,12 +177,10 @@ export default function ReportDetail({
 
           <DataList.Item>
             <DataList.Label>
-              <Trans id="absences.assignedTo">Assigned to</Trans>
+              <Trans>Assigned to</Trans>
             </DataList.Label>
             <DataList.Value>
-              {report.assigned_to_role_name || (
-                <Trans id="absences.unassigned">Unassigned</Trans>
-              )}
+              {report.assigned_to_role_name || <Trans>Unassigned</Trans>}
             </DataList.Value>
           </DataList.Item>
         </DataList.Root>
@@ -191,14 +189,14 @@ export default function ReportDetail({
 
         <div>
           <Heading size="3" mb="2">
-            <Trans id="absences.reportDetails">Report Details</Trans>
+            <Trans>Report Details</Trans>
           </Heading>
           {form ? (
             reportData && Object.keys(reportData).length > 0 ? (
               <AbsenceFormRenderer form={form} values={reportData as any} />
             ) : (
               <Text color="gray">
-                <Trans id="absences.noData">No additional data</Trans>
+                <Trans>No additional data</Trans>
               </Text>
             )
           ) : (
@@ -211,7 +209,7 @@ export default function ReportDetail({
             <Separator size="4" />
             <div>
               <Heading size="3" mb="2">
-                <Trans id="absences.previousReviews">Previous Reviews</Trans>
+                <Trans>Previous Reviews</Trans>
               </Heading>
               <Flex direction="column" gap="2">
                 {reviews.map((review: any) => (
@@ -225,9 +223,9 @@ export default function ReportDetail({
                           weight="bold"
                         >
                           {review.accepted ? (
-                            <Trans id="absences.accepted">Accepted</Trans>
+                            <Trans>Accepted</Trans>
                           ) : (
-                            <Trans id="absences.rejected">Rejected</Trans>
+                            <Trans>Rejected</Trans>
                           )}
                         </Text>
                       </Flex>
@@ -249,7 +247,7 @@ export default function ReportDetail({
 
         <div>
           <Heading size="3" mb="2">
-            <Trans id="absences.addReview">Add Your Review</Trans>
+            <Trans>Add Your Review</Trans>
           </Heading>
           <Flex direction="column" gap="3">
             <TextArea
@@ -267,14 +265,14 @@ export default function ReportDetail({
                 onClick={() => handleSubmit(true)}
                 disabled={isSubmitting}
               >
-                <Trans id="absences.accept">Accept</Trans>
+                <Trans>Accept</Trans>
               </Button>
               <Button
                 color="red"
                 onClick={() => handleSubmit(false)}
                 disabled={isSubmitting}
               >
-                <Trans id="absences.reject">Reject</Trans>
+                <Trans>Reject</Trans>
               </Button>
             </Flex>
           </Flex>

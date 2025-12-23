@@ -24,7 +24,7 @@ export default async function UserProfile({ id, className }: UserProfileProps) {
         <Avatar fallback=" " size="7" className={styles.avatar} />
         <Flex direction="column" gap="1">
           <Heading as="h2" size="6">
-            <Trans id="common.unknownUser">Unknown user</Trans>
+            <Trans>Unknown user</Trans>
           </Heading>
         </Flex>
       </Flex>
@@ -44,7 +44,7 @@ export default async function UserProfile({ id, className }: UserProfileProps) {
       />
       <Flex direction="column" gap="1">
         <Heading as="h2" size="6">
-          {full_name ?? <Trans id="common.unknown">Unknown</Trans>}
+          {full_name ?? <Trans>Unknown</Trans>}
           {nickname ? <> ({nickname})</> : null}
         </Heading>
         {school ? (
@@ -54,8 +54,7 @@ export default async function UserProfile({ id, className }: UserProfileProps) {
         ) : null}
         {created_at ? (
           <Heading size="3" color="gray">
-            <Trans id="profile.joined">Joined</Trans>{" "}
-            {new Date(created_at).toLocaleDateString()}
+            <Trans>Joined</Trans> {new Date(created_at).toLocaleDateString()}
           </Heading>
         ) : null}
         {bio ? <Text size="3">{bio}</Text> : null}

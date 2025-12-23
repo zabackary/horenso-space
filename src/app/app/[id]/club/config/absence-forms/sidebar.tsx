@@ -33,16 +33,12 @@ function FormsList({
   return (
     <Flex direction="column" gap="3">
       <Heading size="3">
-        <Trans id="absenceReportTemplate.templates">
-          Absence report templates
-        </Trans>
+        <Trans>Absence report templates</Trans>
       </Heading>
       <Flex direction="column" gap="2">
         {forms.length === 0 ? (
           <Text className={styles.empty}>
-            <Trans id="absenceReportTemplate.noTemplates">
-              No absence report templates found.
-            </Trans>
+            <Trans>No absence report templates found.</Trans>
           </Text>
         ) : (
           forms.map((f) => {
@@ -62,7 +58,7 @@ function FormsList({
                   <Flex direction="column" gap="1">
                     <Text weight="bold">{f.name}</Text>
                     <Text size="1" className={styles.templateMeta}>
-                      <Trans id="absenceReportTemplate.updatedAt">
+                      <Trans>
                         Updated at: {new Date(f.updated_at).toLocaleString()}
                       </Trans>
                     </Text>
@@ -78,9 +74,7 @@ function FormsList({
           href={`/app/${clubId}/club/config/absence-forms/new`}
           onClick={onSelect}
         >
-          <Trans id="absenceReportTemplate.createNew">
-            Create new template
-          </Trans>
+          <Trans>Create new template</Trans>
         </Link>
       </Button>
     </Flex>
@@ -111,8 +105,7 @@ export default function Sidebar({
               setDrawerOpen(true);
             }}
           >
-            <ChevronDownIcon />{" "}
-            <Trans id="absenceReportTemplate.select">Select template</Trans>
+            <ChevronDownIcon /> <Trans>Select template</Trans>
           </Link>
         </Button>
         <Drawer.Root open={drawerOpen} onOpenChange={setDrawerOpen}>
@@ -120,15 +113,11 @@ export default function Sidebar({
             <Drawer.Overlay />
             <Drawer.Content>
               <Drawer.Title>
-                <Trans id="absenceReportTemplate.selectTitle">
-                  Select absence form
-                </Trans>
+                <Trans>Select absence form</Trans>
               </Drawer.Title>
               <Drawer.Description asChild>
                 <VisuallyHidden>
-                  <Trans id="absenceReportTemplate.selectDescription">
-                    Select an absence form template
-                  </Trans>
+                  <Trans>Select an absence form template</Trans>
                 </VisuallyHidden>
               </Drawer.Description>
               <div className={styles.drawerContent}>

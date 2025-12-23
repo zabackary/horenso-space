@@ -31,7 +31,7 @@ export default async function ClubConfigLayout({
       <Flex direction="column" className={styles.root}>
         <div className={styles.container}>
           <Heading as="h2" size="6" className={styles.heading}>
-            <Trans id="config.heading">Club configuration</Trans>
+            <Trans>Club configuration</Trans>
           </Heading>
 
           {children}
@@ -53,27 +53,27 @@ export function ClubConfigTabNav({
     <TabNav.Root>
       <TabNav.Link asChild active={active === "metadata"}>
         <Link href={`/app/${clubId}/club/config/metadata`}>
-          <Trans id="config.tab.metadata">Metadata</Trans>
+          <Trans>Metadata</Trans>
         </Link>
       </TabNav.Link>
       <TabNav.Link asChild active={active === "roles"}>
         <Link href={`/app/${clubId}/club/config/roles`}>
-          <Trans id="config.tab.roles">Roles</Trans>
+          <Trans>Roles</Trans>
         </Link>
       </TabNav.Link>
       <TabNav.Link asChild active={active === "members"}>
         <Link href={`/app/${clubId}/club/config/members`}>
-          <Trans id="config.tab.members">Members</Trans>
+          <Trans>Members</Trans>
         </Link>
       </TabNav.Link>
       <TabNav.Link asChild active={active === "invites"}>
         <Link href={`/app/${clubId}/club/config/invites`}>
-          <Trans id="config.tab.invites">Invites</Trans>
+          <Trans>Invites</Trans>
         </Link>
       </TabNav.Link>
       <TabNav.Link asChild active={active === "absenceForms"}>
         <Link href={`/app/${clubId}/club/config/absence-forms`}>
-          <Trans id="config.tab.absenceForms">Absence forms</Trans>
+          <Trans>Absence forms</Trans>
         </Link>
       </TabNav.Link>
     </TabNav.Root>

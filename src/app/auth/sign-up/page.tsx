@@ -49,16 +49,14 @@ export default async function SignUpPage(
   return (
     <>
       <Heading as="h1" size="7" align="center">
-        <Trans id="signup.welcome">Welcome!</Trans>
+        <Trans>Welcome!</Trans>
       </Heading>
       <Text as="p" size="3" my="2" align="center">
-        <Trans id="signup.subtitle">Sign up to get started</Trans>
+        <Trans>Sign up to get started</Trans>
       </Text>
       <SignupForm next={next} />
       <Text color="gray" align="center" as="p">
-        <Trans id="signup.haveAccount">
-          Already have an account? {loginLink}
-        </Trans>
+        <Trans>Already have an account? {loginLink}</Trans>
       </Text>
     </>
   );

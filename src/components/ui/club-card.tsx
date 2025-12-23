@@ -62,7 +62,7 @@ export default function ClubCard({ club }: ClubCardProps) {
         <Box flexGrow="1" mb="-4" />
         <Button className={styles["club-card__button"]} asChild>
           <Link href={`/app/${club.id}`}>
-            <Trans id="club.join">Join club</Trans>
+            <Trans>Join club</Trans>
           </Link>
         </Button>
       </Flex>

@@ -118,7 +118,7 @@ export default function InvitesManager({
   return (
     <Flex direction="column" className={styles.root} gap="3">
       <Heading size="5" as="h3">
-        <Trans id="invitesManager.invites">Invites</Trans>
+        <Trans>Invites</Trans>
       </Heading>
 
       {error && (
@@ -133,9 +133,7 @@ export default function InvitesManager({
       <Flex direction="column" gap="3">
         {roles.length === 0 ? (
           <Text>
-            <Trans id="invitesManager.noRolesWarning">
-              Please create roles before generating invites.
-            </Trans>
+            <Trans>Please create roles before generating invites.</Trans>
           </Text>
         ) : (
           invites.map((invite) => (
@@ -143,17 +141,13 @@ export default function InvitesManager({
               <Flex direction="row" align="center" width="100%" gap="2">
                 <Flex direction="column" flexGrow="1" gap="1">
                   <Text size="3" weight="bold">
-                    <Trans id="invitesManager.titleRole">
-                      Invite for role "{invite.role_name}"
-                    </Trans>{" "}
+                    <Trans>Invite for role "{invite.role_name}"</Trans>{" "}
                     <Badge>
-                      <Trans id="invitesManager.usedCount">
-                        Used {invite.usage_count} times
-                      </Trans>
+                      <Trans>Used {invite.usage_count} times</Trans>
                     </Badge>
                   </Text>
                   <Text size="2">
-                    <Trans id="invitesManager.expiresAt">
+                    <Trans>
                       Expires at: {new Date(invite.expires_at).toLocaleString()}
                     </Trans>
                   </Text>
@@ -164,7 +158,7 @@ export default function InvitesManager({
                   onClick={() => handleDelete(invite.id)}
                 >
                   <TrashIcon />
-                  <Trans id="common.delete">Delete</Trans>
+                  <Trans>Delete</Trans>
                 </Button>
                 <Button asChild variant="solid">
                   <Link
@@ -205,7 +199,7 @@ export default function InvitesManager({
                       }
                     }}
                   >
-                    <Trans id="invitesManager.copyLink">Copy link</Trans>
+                    <Trans>Copy link</Trans>
                   </Link>
                 </Button>
               </Flex>
@@ -221,9 +215,7 @@ export default function InvitesManager({
         align="center"
       >
         <Button onClick={() => openCreateDialog()}>
-          <Trans id="inviteManager.generateInvite.generateButton">
-            Generate invite
-          </Trans>
+          <Trans>Generate invite</Trans>
         </Button>
       </Flex>
 
@@ -241,12 +233,10 @@ export default function InvitesManager({
             }}
           >
             <Dialog.Title>
-              <Trans id="inviteManager.generateInvite.title">
-                Generate invite
-              </Trans>
+              <Trans>Generate invite</Trans>
             </Dialog.Title>
             <Dialog.Description>
-              <Trans id="inviteManager.generateInvite.description">
+              <Trans>
                 Generate a new invitation link for your club. You can choose the
                 role that new members will have when they join using this link.
               </Trans>
@@ -263,9 +253,7 @@ export default function InvitesManager({
               <Flex direction="column" gap="2" my="4">
                 <Flex direction="row" align="center" gap="2">
                   <Text style={{ flexGrow: 1 }}>
-                    <Trans id="inviteManager.generateInvite.selectRole">
-                      Select role for new members
-                    </Trans>
+                    <Trans>Select role for new members</Trans>
                   </Text>
                   <Select.Root
                     value={inviteRole}
@@ -285,16 +273,14 @@ export default function InvitesManager({
 
               <Flex gap="2">
                 <Button type="submit">
-                  <Trans id="inviteManager.generateInvite.generateButton">
-                    Generate invite
-                  </Trans>
+                  <Trans>Generate invite</Trans>
                 </Button>
                 <Button
                   variant="soft"
                   type="button"
                   onClick={() => resetDialog()}
                 >
-                  <Trans id="common.cancel">Cancel</Trans>
+                  <Trans>Cancel</Trans>
                 </Button>
               </Flex>
             </Flex>

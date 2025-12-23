@@ -68,10 +68,10 @@ export default function FeedbackForm({ handleClose }: FeedbackFormProps) {
         <Flex direction="column" gap="3">
           <Flex direction="column" gap="2">
             <Text as="label" size="2" htmlFor={`${a11yId}-feedback-textarea`}>
-              <Trans id="feedbackForm.yourFeedback">Your feedback</Trans>
+              <Trans>Your feedback</Trans>
             </Text>
             <Text size="1" color="gray">
-              <Trans id="feedbackForm.details">
+              <Trans>
                 Please provide as much detail as possible to help us address
                 your issue. A minimum of 15 characters is required.
               </Trans>
@@ -95,12 +95,10 @@ export default function FeedbackForm({ handleClose }: FeedbackFormProps) {
               />
               <Flex direction="column" gap="1">
                 <Text size="2" as="label" htmlFor={`${a11yId}-associate-club`}>
-                  <Trans id="feedbackForm.attachClubInfo">
-                    Attach this club's information
-                  </Trans>
+                  <Trans>Attach this club's information</Trans>
                 </Text>
                 <Text size="1" color="gray">
-                  <Trans id="feedbackForm.attachClubInfoDescription">
+                  <Trans>
                     Sending your club information will help us better understand
                     your problem to resolve it faster.
                   </Trans>
@@ -132,7 +130,7 @@ export default function FeedbackForm({ handleClose }: FeedbackFormProps) {
               }
               loading={isSubmitting}
             >
-              <Trans id="feedbackForm.sendFeedback">Send feedback</Trans>
+              <Trans>Send feedback</Trans>
             </Button>
             <Button
               variant="soft"
@@ -140,7 +138,7 @@ export default function FeedbackForm({ handleClose }: FeedbackFormProps) {
               onClick={() => handleClose?.()}
               disabled={isSubmitting}
             >
-              <Trans id="common.cancel">Cancel</Trans>
+              <Trans>Cancel</Trans>
             </Button>
           </Flex>
         </Flex>

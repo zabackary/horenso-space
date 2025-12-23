@@ -38,7 +38,7 @@ export default async function JoinClubPage({
     // Note: We don't want to reveal whether the club exists or not for security reasons
     return (
       <FullscreenCard>
-        <Trans id="invite.invalid">Invalid or expired invite link</Trans>
+        <Trans>Invalid or expired invite link</Trans>
       </FullscreenCard>
     );
   }
@@ -48,7 +48,7 @@ export default async function JoinClubPage({
       <Flex justify="center" align="center" direction="column" gap="4" asChild>
         <form>
           <Text as="p" size="4" align="center">
-            <Trans id="invite.heading">You are invited to join a club</Trans>
+            <Trans>You are invited to join a club</Trans>
           </Text>
           <Card className={styles.card}>
             <Flex
@@ -64,12 +64,12 @@ export default async function JoinClubPage({
                 {invite.club_name}
               </Heading>
               <Heading as="h3" size="5" align="center" color="gray">
-                <Trans id="invite.by">by {invite.invited_by_name}</Trans>
+                <Trans>by {invite.invited_by_name}</Trans>
               </Heading>
             </Flex>
           </Card>
           <Text as="p" size="4" align="center">
-            <Trans id="invite.details">
+            <Trans>
               You will be joining as: <strong>{invite.role_name}</strong>.
               Expires at:{" "}
               <strong>{new Date(invite.expires_at).toLocaleString()}</strong>
@@ -81,12 +81,12 @@ export default async function JoinClubPage({
                 <CrossCircledIcon />
               </Callout.Icon>
               <Callout.Text>
-                <Trans id="invite.error">Failed to join club</Trans>
+                <Trans>Failed to join club</Trans>
               </Callout.Text>
             </Callout.Root>
           )}
           <Button size="4" variant="solid" formAction={joinClub.bind(null, id)}>
-            <Trans id="invite.join">Join Club</Trans>
+            <Trans>Join Club</Trans>
           </Button>
         </form>
       </Flex>

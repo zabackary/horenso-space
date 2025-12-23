@@ -114,7 +114,7 @@ export default function MembersManager({
   return (
     <Flex direction="column" className={styles.root} gap="3">
       <Heading size="5" as="h3">
-        <Trans id="membersManager.manageMembers">Manage members</Trans>
+        <Trans>Manage members</Trans>
       </Heading>
       {error && (
         <Callout.Root color="red">
@@ -128,7 +128,7 @@ export default function MembersManager({
       <Flex direction="column" gap="3">
         {members.length === 0 ? (
           <Text className={styles.empty}>
-            <Trans id="membersManager.noMembers">No members yet.</Trans>
+            <Trans>No members yet.</Trans>
           </Text>
         ) : (
           members.map((m) => {
@@ -148,9 +148,7 @@ export default function MembersManager({
                       </Link>
                     </RadixLink>
                     <Text size="2" color="gray">
-                      <Trans id="membersManager.roleLabel">
-                        Role: {currentRoleLabel}
-                      </Trans>
+                      <Trans>Role: {currentRoleLabel}</Trans>
                     </Text>
                   </Flex>
                   <Flex align="center" gap="2">
@@ -172,8 +170,7 @@ export default function MembersManager({
                       variant="soft"
                       color="red"
                     >
-                      <TrashIcon />{" "}
-                      <Trans id="membersManager.remove">Remove</Trans>
+                      <TrashIcon /> <Trans>Remove</Trans>
                     </Button>
                   </Flex>
                 </Flex>

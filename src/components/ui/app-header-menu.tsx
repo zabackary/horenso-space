@@ -32,16 +32,16 @@ export function AppHeaderMenu({ profile }: AppHeaderMenuProps) {
           <form style={{ display: "contents" }}>
             <DropdownMenu.Item asChild>
               <Link href="/app/users/me">
-                <Trans id="menu.profile">Profile and settings</Trans>
+                <Trans>Profile and settings</Trans>
               </Link>
             </DropdownMenu.Item>
             <DropdownMenu.Item onClick={() => setIsOpen(true)}>
-              <Trans id="menu.sendFeedback">Send Feedback</Trans>
+              <Trans>Send Feedback</Trans>
             </DropdownMenu.Item>
             <DropdownMenu.Separator />
             <DropdownMenu.Item asChild>
               <button formAction={logout}>
-                <Trans id="menu.logout">Log out</Trans>
+                <Trans>Log out</Trans>
               </button>
             </DropdownMenu.Item>
           </form>
@@ -50,10 +50,10 @@ export function AppHeaderMenu({ profile }: AppHeaderMenuProps) {
       <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
         <Dialog.Content>
           <Dialog.Title>
-            <Trans id="menu.sendFeedback">Send Feedback</Trans>
+            <Trans>Send Feedback</Trans>
           </Dialog.Title>
           <Dialog.Description>
-            <Trans id="menu.feedbackDescription">
+            <Trans>
               We appreciate your feedback to help us improve. Every message is
               read and considered.
             </Trans>

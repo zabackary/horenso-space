@@ -340,7 +340,7 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #. placeholder {0}: clubIsPublic ? "Public" : "Private"
-#. placeholder {0}: isPublic ? ( <Trans id="club.privacy.public">Public</Trans> ) : ( <Trans id="club.privacy.private">Private</Trans> )
+#. placeholder {0}: isPublic ? ( <Trans>Public</Trans> ) : ( <Trans>Private</Trans> )
 #: src/components/club-config/metadata-form.tsx:108
 #: src/components/club-create-form.tsx:116
 msgid "club.privacy"

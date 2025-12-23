@@ -33,10 +33,10 @@ export default async function ClubPage({ params }: PageProps<"/app/[id]">) {
       >
         <Card variant="ghost">
           <Heading>
-            <Trans id="home.notifications">Recent notifications</Trans>
+            <Trans>Recent notifications</Trans>
           </Heading>
           <Text>
-            <Trans id="home.notificationsNotFinished">
+            <Trans>
               No notifications. Notifications are not finished yet but will
               appear here.
             </Trans>
@@ -45,42 +45,32 @@ export default async function ClubPage({ params }: PageProps<"/app/[id]">) {
       </Box>
       {permissions.permissions.includes("canManageClub") ? (
         <HomeCard
-          title={<Trans id="home.clubSettings">Club settings</Trans>}
-          description={
-            <Trans id="home.clubSettingsDesc">
-              Manage club metadata, roles, and members
-            </Trans>
-          }
+          title={<Trans>Club settings</Trans>}
+          description={<Trans>Manage club metadata, roles, and members</Trans>}
           href={`/app/${id}/club/config/metadata`}
         />
       ) : null}
       <HomeCard
-        title={<Trans id="home.calendar">Calendar</Trans>}
-        description={
-          <Trans id="home.calendarDesc">
-            Check your club events and meetings
-          </Trans>
-        }
+        title={<Trans>Calendar</Trans>}
+        description={<Trans>Check your club events and meetings</Trans>}
         href={`/app/${id}/calendar`}
         action={
           permissions.permissions.includes("canWriteCalendar")
             ? {
-                label: <Trans id="home.addEvent">Add event</Trans>,
+                label: <Trans>Add event</Trans>,
                 href: `/app/${id}/calendar/create`,
               }
             : undefined
         }
       />
       <HomeCard
-        title={<Trans id="home.absences">Absence reports</Trans>}
-        description={
-          <Trans id="home.absencesDesc">Access absence report forms</Trans>
-        }
+        title={<Trans>Absence reports</Trans>}
+        description={<Trans>Access absence report forms</Trans>}
         href={`/app/${id}/absences`}
         action={
           permissions.permissions.includes("canWriteOwnReport")
             ? {
-                label: <Trans id="home.reportAbsence">Report absence</Trans>,
+                label: <Trans>Report absence</Trans>,
                 href: `/app/${id}/absences/create`,
               }
             : undefined

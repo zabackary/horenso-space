@@ -22,11 +22,11 @@ export default async function CalendarYearPage({
         <Flex direction="row" align="center" gap="2" p="4" mb="-4">
           <Button variant="soft" size="2" type="button" asChild>
             <Link href={`/app/${id}`}>
-              <ArrowLeftIcon /> <Trans id="common.back">Back</Trans>
+              <ArrowLeftIcon /> <Trans>Back</Trans>
             </Link>
           </Button>
           <Heading size="3">
-            <Trans id="calendar.createEvent">Create event</Trans>
+            <Trans>Create event</Trans>
           </Heading>
         </Flex>
         <CreateEventCard clubId={id} withPadding />

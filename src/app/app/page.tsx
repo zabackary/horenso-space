@@ -32,7 +32,7 @@ export default async function App({ params }: PageProps<"/app">) {
         style={{ zIndex: -1 }}
       >
         <Heading size="7" as="h1">
-          <Trans id="app.selectClub">Select a club</Trans>
+          <Trans>Select a club</Trans>
         </Heading>
         {clubs?.length ? (
           <Flex gap="4" wrap="wrap" justify="center">
@@ -43,7 +43,7 @@ export default async function App({ params }: PageProps<"/app">) {
         ) : clubs ? (
           <Callout.Root>
             <Callout.Text>
-              <Trans id="app.noClubs">
+              <Trans>
                 No clubs found. You need an invite link to join a club.
               </Trans>
             </Callout.Text>
@@ -54,13 +54,13 @@ export default async function App({ params }: PageProps<"/app">) {
               <CrossCircledIcon />
             </Callout.Icon>
             <Callout.Text>
-              <Trans id="app.error">An error occurred</Trans>
+              <Trans>An error occurred</Trans>
             </Callout.Text>
           </Callout.Root>
         )}
         <Button asChild variant="soft" size="4">
           <Link href="/app/club/create">
-            <Trans id="app.createClub">Create a club</Trans>
+            <Trans>Create a club</Trans>
           </Link>
         </Button>
       </Flex>

@@ -16,13 +16,13 @@ export default async function CreateClubPage({
       navigationButton={
         <Button asChild variant="ghost" size="2" mb="4">
           <Link href="/app">
-            <ArrowLeftIcon /> <Trans id="common.back">Back</Trans>
+            <ArrowLeftIcon /> <Trans>Back</Trans>
           </Link>
         </Button>
       }
     >
       <Heading as="h1" size="7" align="center">
-        <Trans id="club.create">Create a club</Trans>
+        <Trans>Create a club</Trans>
       </Heading>
       <ClubCreateForm />
     </FullscreenCard>

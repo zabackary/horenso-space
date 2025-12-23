@@ -273,7 +273,7 @@ export default function RolesManager({
   return (
     <Flex direction="column" className={styles.root} gap="3">
       <Heading size="5" as="h3">
-        <Trans id="rolesManager.manageRoles">Manage roles</Trans>
+        <Trans>Manage roles</Trans>
       </Heading>
 
       {error && (
@@ -304,11 +304,11 @@ export default function RolesManager({
                   variant="outline"
                   onClick={() => openEditDialog(role.id)}
                 >
-                  <Trans id="common.edit">Edit</Trans>
+                  <Trans>Edit</Trans>
                 </Button>
                 <Button variant="soft" onClick={() => deleteRole(role.id)}>
                   <TrashIcon />
-                  <Trans id="common.delete">Delete</Trans>
+                  <Trans>Delete</Trans>
                 </Button>
               </Flex>
             </Card>
@@ -318,7 +318,7 @@ export default function RolesManager({
 
       <Flex direction="row" gap="2" align="center">
         <Button onClick={() => openCreateDialog()}>
-          <Trans id="rolesManager.createNewRole">Create new role</Trans>
+          <Trans>Create new role</Trans>
         </Button>
       </Flex>
 
@@ -341,20 +341,16 @@ export default function RolesManager({
           >
             <Dialog.Title>
               {editDialogRoleId === "new" ? (
-                <Trans id="rolesManager.createRole">Create Role</Trans>
+                <Trans>Create Role</Trans>
               ) : (
-                <Trans id="rolesManager.editRole">Edit Role</Trans>
+                <Trans>Edit Role</Trans>
               )}
             </Dialog.Title>
             <Dialog.Description>
               {editDialogRoleId === "new" ? (
-                <Trans id="rolesManager.fillDetailsNewRole">
-                  Fill in the details for the new role.
-                </Trans>
+                <Trans>Fill in the details for the new role.</Trans>
               ) : (
-                <Trans id="rolesManager.editDetailsRole">
-                  Edit details for {editName}
-                </Trans>
+                <Trans>Edit details for {editName}</Trans>
               )}
             </Dialog.Description>
             <Flex direction="column" gap="2" className={styles.dialogBody}>
@@ -385,7 +381,7 @@ export default function RolesManager({
               />
 
               <Heading size="2">
-                <Trans id="rolesManager.permissions">Permissions</Trans>
+                <Trans>Permissions</Trans>
               </Heading>
               <CheckboxCards.Root
                 value={Object.entries(editPermissions)
@@ -407,14 +403,12 @@ export default function RolesManager({
               </CheckboxCards.Root>
 
               <Heading size="2">
-                <Trans id="rolesManager.absenceReportSettings">
-                  Absence report settings
-                </Trans>
+                <Trans>Absence report settings</Trans>
               </Heading>
               <Flex direction="column" gap="2">
                 <Flex direction="row" align="center" justify="between">
                   <Text size="2" color="gray">
-                    <Trans id="rolesManager.configureReviewerApproval">
+                    <Trans>
                       Configure reviewer/approval and choose the template used
                       for this role.
                     </Trans>
@@ -422,7 +416,7 @@ export default function RolesManager({
                 </Flex>
                 <Flex direction="row" align="center" gap="2">
                   <Text style={{ flexGrow: 1 }}>
-                    <Trans id="rolesManager.reviewerRole">Reviewer role</Trans>
+                    <Trans>Reviewer role</Trans>
                   </Text>
                   <Select.Root
                     value={editAbsenceReportReviewerRole ?? "~"}
@@ -446,9 +440,7 @@ export default function RolesManager({
                 </Flex>
                 <Flex direction="row" align="center" gap="2">
                   <Text style={{ flexGrow: 1 }}>
-                    <Trans id="rolesManager.approvalRequired">
-                      Approval required for reports
-                    </Trans>
+                    <Trans>Approval required for reports</Trans>
                   </Text>
                   <Switch
                     checked={editAbsenceReportApprovalRequired}
@@ -460,9 +452,7 @@ export default function RolesManager({
 
                 <Flex direction="row" align="center" gap="2">
                   <Text style={{ flexGrow: 1 }}>
-                    <Trans id="rolesManager.absenceReportTemplate">
-                      Absence report template
-                    </Trans>
+                    <Trans>Absence report template</Trans>
                   </Text>
                   <Tooltip
                     content={
@@ -524,9 +514,9 @@ export default function RolesManager({
               <Flex gap="2">
                 <Button type="submit">
                   {editDialogRoleId === "new" ? (
-                    <Trans id="rolesManager.create">Create</Trans>
+                    <Trans>Create</Trans>
                   ) : (
-                    <Trans id="common.save">Save</Trans>
+                    <Trans>Save</Trans>
                   )}
                 </Button>
                 <Button
@@ -534,7 +524,7 @@ export default function RolesManager({
                   type="button"
                   onClick={() => resetEditDialog()}
                 >
-                  <Trans id="common.cancel">Cancel</Trans>
+                  <Trans>Cancel</Trans>
                 </Button>
               </Flex>
             </Flex>

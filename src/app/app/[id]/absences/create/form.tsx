@@ -80,16 +80,16 @@ export default function Form({
         onValueChange={(value) => setAbsenceType(value as "event" | "general")}
       >
         <RadioCards.Item value="event">
-          <Trans id="absences.eventAbsence">Event Absence</Trans>
+          <Trans>Event Absence</Trans>
         </RadioCards.Item>
         <RadioCards.Item value="general">
-          <Trans id="absences.generalAbsence">General Absence</Trans>
+          <Trans>General Absence</Trans>
         </RadioCards.Item>
       </RadioCards.Root>
       {absenceType === "event" && (
         <Card>
           <Heading size="4" as="h4" mb="4">
-            <Trans id="absences.event">Event</Trans>
+            <Trans>Event</Trans>
           </Heading>
           <Select.Root
             onValueChange={(value) => setEvent(value)}
@@ -115,7 +115,7 @@ export default function Form({
       {absenceType === "general" && (
         <Card>
           <Heading size="4" as="h4" mb="4">
-            <Trans id="absences.generalAbsence">General Absence</Trans>
+            <Trans>General Absence</Trans>
           </Heading>
           <TextField.Root
             type="date"

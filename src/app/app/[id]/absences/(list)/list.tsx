@@ -23,7 +23,7 @@ export default function AbsenceReportList({
     <Suspense fallback={<Spinner />}>
       {reportsData.length === 0 && (
         <Text>
-          <Trans id="absences.noReports">No reports found.</Trans>
+          <Trans>No reports found.</Trans>
         </Text>
       )}
       <Flex direction="column" gap="3" width="100%">
@@ -42,8 +42,7 @@ export default function AbsenceReportList({
                       "No event"}
                   </Text>
                   <Text size="2">
-                    <Trans id="absences.submittedBy">Submitted by</Trans>{" "}
-                    {report.userName}
+                    <Trans>Submitted by</Trans> {report.userName}
                   </Text>
                   <Text size="1" color="gray">
                     {report.event?.startTime.toDateString() ??
@@ -53,17 +52,14 @@ export default function AbsenceReportList({
                 </Flex>
                 <Flex justify="between" align="center">
                   <Text size="2">
-                    <Trans id="absences.assignedTo">Assigned to</Trans>{" "}
+                    <Trans>Assigned to</Trans>{" "}
                     {report.assignedToRole?.roleName || (
                       <Trans>Unassigned</Trans>
                     )}
                   </Text>
                   {report.reviews.length > 0 && (
                     <Text size="1" className={styles.reviewIndicator}>
-                      ✓{" "}
-                      <Trans id="absences.totalReviews">
-                        {report.reviews.length} reviews
-                      </Trans>
+                      ✓ <Trans>{report.reviews.length} reviews</Trans>
                     </Text>
                   )}
                 </Flex>

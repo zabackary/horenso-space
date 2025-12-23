@@ -44,7 +44,7 @@ export default async function LoginPage(
             : "/auth/sign-up"
         }
       >
-        <Trans id="login.signUp">Sign up</Trans>
+        <Trans>Sign up</Trans>
       </Link>
     </RadixLink>
   );
@@ -52,23 +52,19 @@ export default async function LoginPage(
   return (
     <>
       <Heading as="h1" size="7" align="center">
-        <Trans id="login.welcome">Welcome back</Trans>
+        <Trans>Welcome back</Trans>
       </Heading>
       <Text as="p" size="3" my="2" align="center">
-        <Trans id="login.subtitle">
-          Let's get you logged in to your account
-        </Trans>
+        <Trans>Let's get you logged in to your account</Trans>
       </Text>
       <LoginForm next={next} />
       <Text color="gray" align="center" as="p">
-        <Trans id="login.noAccount">
-          Don't have an account yet? {createAccountLink}
-        </Trans>
+        <Trans>Don't have an account yet? {createAccountLink}</Trans>
       </Text>
       <Text color="gray" align="center" as="p">
         <RadixLink asChild>
           <Link href="/auth/forgot-password">
-            <Trans id="login.forgotPassword">Forgot password</Trans>
+            <Trans>Forgot password</Trans>
           </Link>
         </RadixLink>
       </Text>

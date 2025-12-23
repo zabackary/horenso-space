@@ -14,15 +14,15 @@ export default async function Page({
   return (
     <Card>
       <Heading as="h1">
-        <Trans id="error.heading">Something went wrong</Trans>
+        <Trans>Something went wrong</Trans>
       </Heading>
       {params?.error ? (
         <Text>
-          <Trans id="error.code">Error code:</Trans> {params.error}
+          <Trans>Error code:</Trans> {params.error}
         </Text>
       ) : (
         <Text>
-          <Trans id="error.unspecified">An unspecified error occurred</Trans>
+          <Trans>An unspecified error occurred</Trans>
         </Text>
       )}
     </Card>

@@ -17,20 +17,20 @@ export async function AbsencesTabNav({
     <TabNav.Root style={{ width: "100%" }}>
       <TabNav.Link asChild active={active === "my"}>
         <Link href={`/app/${clubId}/absences/my`}>
-          <Trans id="absences.tab.my">My absences</Trans>
+          <Trans>My absences</Trans>
         </Link>
       </TabNav.Link>
       {permissions.includes("canReadAllReports") ? (
         <TabNav.Link asChild active={active === "all"}>
           <Link href={`/app/${clubId}/absences/all`}>
-            <Trans id="absences.tab.all">All absences</Trans>
+            <Trans>All absences</Trans>
           </Link>
         </TabNav.Link>
       ) : null}
       {permissions.includes("canWriteReportReview") ? (
         <TabNav.Link asChild active={active === "assigned"}>
           <Link href={`/app/${clubId}/absences/assigned`}>
-            <Trans id="absences.tab.assigned">Assigned to me</Trans>
+            <Trans>Assigned to me</Trans>
           </Link>
         </TabNav.Link>
       ) : null}

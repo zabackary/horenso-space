@@ -70,7 +70,7 @@ export default function MetadataForm({
       <Flex direction="column" gap="2">
         <Flex direction="column" className={styles.field}>
           <Text as="label" htmlFor={`${a11yId}-name`} size="2">
-            <Trans id="club.name">Club name</Trans>
+            <Trans>Club name</Trans>
           </Text>
           <TextField.Root
             name="name"
@@ -82,7 +82,7 @@ export default function MetadataForm({
 
         <Flex direction="column" className={styles.field}>
           <Text as="label" htmlFor={`${a11yId}-description`} size="2">
-            <Trans id="club.description">Club description</Trans>
+            <Trans>Club description</Trans>
           </Text>
           <TextField.Root
             name="description"
@@ -93,7 +93,7 @@ export default function MetadataForm({
 
         <Flex direction="column" className={styles.field}>
           <Text as="label" htmlFor={`${a11yId}-website`} size="2">
-            <Trans id="club.website">Website</Trans>
+            <Trans>Website</Trans>
           </Text>
           <TextField.Root
             name="website"
@@ -105,13 +105,9 @@ export default function MetadataForm({
 
         <Flex align="center" gap="2" className={styles.field}>
           <Text as="label" htmlFor={`${a11yId}-is-public`} size="2">
-            <Trans id="club.privacy">
+            <Trans>
               Club privacy:{" "}
-              {isPublic ? (
-                <Trans id="club.privacy.public">Public</Trans>
-              ) : (
-                <Trans id="club.privacy.private">Private</Trans>
-              )}
+              {isPublic ? <Trans>Public</Trans> : <Trans>Private</Trans>}
             </Trans>
           </Text>
           <input
@@ -138,7 +134,7 @@ export default function MetadataForm({
 
         <Flex className={styles.actions}>
           <Button type="submit" loading={isLoading}>
-            <Trans id="common.save">Save</Trans>
+            <Trans>Save</Trans>
           </Button>
         </Flex>
       </Flex>

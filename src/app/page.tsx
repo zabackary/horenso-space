@@ -23,19 +23,19 @@ export default async function Home({ params }: PageProps<"/">) {
         <Card className={styles.banner} variant="surface" asChild>
           <main>
             <Heading size="9" as="h1">
-              <Trans id="landing.headline">
+              <Trans>
                 <em>Improve</em> your club communication
               </Trans>
             </Heading>
             <Flex gap="2">
               <Button asChild size="4" variant="solid">
                 <Link href="/auth/sign-up">
-                  <Trans id="landing.getStarted">Get started</Trans>
+                  <Trans>Get started</Trans>
                 </Link>
               </Button>
               <Button asChild size="4" variant="surface">
                 <Link href="/auth/login">
-                  <Trans id="landing.login">Log in</Trans>
+                  <Trans>Log in</Trans>
                 </Link>
               </Button>
             </Flex>
@@ -51,37 +51,29 @@ export default async function Home({ params }: PageProps<"/">) {
           <main>
             <Card>
               <Heading size="7" as="h2">
-                <Trans id="landing.feature1">
-                  Understand quickly who's where and when
-                </Trans>
+                <Trans>Understand quickly who's where and when</Trans>
               </Heading>
             </Card>
             <Card>
               <Heading size="7" as="h2">
-                <Trans id="landing.feature2">
-                  Find your shared documents easily
-                </Trans>
+                <Trans>Find your shared documents easily</Trans>
               </Heading>
             </Card>
             <Card>
               <Heading size="7" as="h2">
-                <Trans id="landing.feature3">
-                  For any club, any team, any group
-                </Trans>
+                <Trans>For any club, any team, any group</Trans>
               </Heading>
             </Card>
           </main>
         </Grid>
         <Flex direction="column" p="2">
           <Text size="2" align="center" mt="4" mb="2">
-            <Trans id="landing.footer">
+            <Trans>
               札幌光星中学高等学校吹奏楽部とクリスチャン・アカデミー・イン・ジャパンロボティクス部のが制作
             </Trans>
           </Text>
           <Text size="2" align="center" mb="2">
-            <Trans id="landing.copyright">
-              ©{new Date().getFullYear()} Horenso SPACE
-            </Trans>
+            <Trans>©{new Date().getFullYear()} Horenso SPACE</Trans>
           </Text>
         </Flex>
       </Flex>

@@ -65,8 +65,7 @@ export function ClubCreateForm() {
     <form onSubmit={handleCreate}>
       <Flex direction="column" gap="2" my="4">
         <Text as="label" htmlFor={`${a11yId}-name`} size="2">
-          <Trans id="club.name">Club name</Trans>{" "}
-          <span aria-label="required">*</span>
+          <Trans>Club name</Trans> <span aria-label="required">*</span>
         </Text>
         <TextField.Root
           placeholder={t({
@@ -79,7 +78,7 @@ export function ClubCreateForm() {
           onChange={(e) => setClubName(e.target.value)}
         />
         <Text as="label" htmlFor={`${a11yId}-description`} size="2">
-          <Trans id="club.description">Club description</Trans>
+          <Trans>Club description</Trans>
         </Text>
         <TextField.Root
           placeholder={t({
@@ -91,7 +90,7 @@ export function ClubCreateForm() {
           onChange={(e) => setClubDescription(e.target.value)}
         />
         <Text as="label" htmlFor={`${a11yId}-school`} size="2">
-          <Trans id="club.school">School</Trans>
+          <Trans>School</Trans>
         </Text>
         <TextField.Root
           placeholder={t({
@@ -103,7 +102,7 @@ export function ClubCreateForm() {
           onChange={(e) => setClubSchool(e.target.value)}
         />
         <Text as="label" htmlFor={`${a11yId}-website`} size="2">
-          <Trans id="club.website">Website</Trans>
+          <Trans>Website</Trans>
         </Text>
         <TextField.Root
           placeholder="https://example.com"
@@ -113,9 +112,7 @@ export function ClubCreateForm() {
           onChange={(e) => setClubWebsite(e.target.value)}
         />
         <Text as="label" htmlFor={`${a11yId}-is-public`} size="2">
-          <Trans id="club.privacy">
-            Club privacy: {clubIsPublic ? "Public" : "Private"}
-          </Trans>
+          <Trans>Club privacy: {clubIsPublic ? "Public" : "Private"}</Trans>
         </Text>
         <Switch
           id={`${a11yId}-is-public`}
@@ -123,7 +120,7 @@ export function ClubCreateForm() {
           onCheckedChange={setClubIsPublic}
         />
         <Text size="1" color="gray" as="p">
-          <Trans id="club.privacyDescription">
+          <Trans>
             If this is a public club, anyone can find it online and view the
             information you've provided here.
           </Trans>
@@ -137,7 +134,7 @@ export function ClubCreateForm() {
           </Callout.Root>
         )}
         <Button type="submit" loading={isLoading}>
-          <Trans id="club.createButton">Create club</Trans>
+          <Trans>Create club</Trans>
         </Button>
       </Flex>
     </form>

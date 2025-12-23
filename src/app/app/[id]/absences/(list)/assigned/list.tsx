@@ -28,14 +28,12 @@ export default function AssignedReportsList({
       <Card className={styles.sidebar}>
         <Flex direction="column" gap="3">
           <Heading size="3">
-            <Trans id="absences.assignedReports">Assigned Reports</Trans>
+            <Trans>Assigned Reports</Trans>
           </Heading>
           <Flex direction="column" gap="2">
             {reports.length === 0 && (
               <Text className={styles.empty}>
-                <Trans id="absences.noAssignedReports">
-                  No reports assigned to you.
-                </Trans>
+                <Trans>No reports assigned to you.</Trans>
               </Text>
             )}
             {reports.map((report) => {
@@ -53,7 +51,7 @@ export default function AssignedReportsList({
                     <Text size="2">
                       {report.event_name ??
                         new Date(report.report_date).toLocaleDateString() ?? (
-                          <Trans id="common.noEvent">No event</Trans>
+                          <Trans>No event</Trans>
                         )}
                     </Text>
                     {report.event_start_time && (
@@ -61,13 +59,13 @@ export default function AssignedReportsList({
                         {report.event_start_time ? (
                           new Date(report.event_start_time).toLocaleDateString()
                         ) : (
-                          <Trans id="common.noDate">No date</Trans>
+                          <Trans>No date</Trans>
                         )}
                       </Text>
                     )}
                     {(report.reviews as any[]).length > 0 && (
                       <Text size="1" className={styles.reviewed}>
-                        ✓ <Trans id="absences.reviewed">Reviewed</Trans>
+                        ✓ <Trans>Reviewed</Trans>
                       </Text>
                     )}
                   </Flex>
@@ -84,9 +82,7 @@ export default function AssignedReportsList({
         ) : (
           <Card>
             <Text>
-              <Trans id="absences.selectReportToReview">
-                Select a report to review
-              </Trans>
+              <Trans>Select a report to review</Trans>
             </Text>
           </Card>
         )}

@@ -60,10 +60,10 @@ export async function AppHeader({
             ) : (
               <>
                 <span>
-                  <Trans id="header.title">Horenso SPACE</Trans>
+                  <Trans>Horenso SPACE</Trans>
                 </span>
                 <span>
-                  <Trans id="header.subtitle">Horenso SPACE 🥬</Trans>
+                  <Trans>Horenso SPACE 🥬</Trans>
                 </span>
               </>
             )}
@@ -75,7 +75,7 @@ export async function AppHeader({
             {clubs ? (
               <DropdownMenu.Root>
                 <Tooltip
-                  content={<Trans id="header.selectClub">Select a club</Trans>}
+                  content={<Trans>Select a club</Trans>}
                   style={{ zIndex: 1 }}
                 >
                   <DropdownMenu.Trigger>
@@ -88,7 +88,7 @@ export async function AppHeader({
                 <DropdownMenu.Content align="center" style={{ zIndex: 1 }}>
                   <DropdownMenu.Item asChild>
                     <Link href="/app">
-                      <Trans id="header.home">Home</Trans>
+                      <Trans>Home</Trans>
                     </Link>
                   </DropdownMenu.Item>
                   <DropdownMenu.Separator />
@@ -102,7 +102,7 @@ export async function AppHeader({
             ) : (
               <Button asChild size="3" variant="outline">
                 <Link href="/app/club/create">
-                  <Trans id="header.createClub">Create a Club</Trans>
+                  <Trans>Create a Club</Trans>
                 </Link>
               </Button>
             )}
@@ -112,12 +112,12 @@ export async function AppHeader({
           <>
             <Button asChild size="3" variant="soft">
               <Link href="/auth/login">
-                <Trans id="auth.login">Login</Trans>
+                <Trans>Login</Trans>
               </Link>
             </Button>
             <Button asChild size="3" variant="solid">
               <Link href="/auth/sign-up">
-                <Trans id="auth.signup">Sign up</Trans>
+                <Trans>Sign up</Trans>
               </Link>
             </Button>
           </>

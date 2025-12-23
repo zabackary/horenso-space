@@ -196,7 +196,7 @@ export default function CreateEventCard({
           align="stretch"
         >
           <Button type="submit" size="3" loading={loading}>
-            <Trans id="common.save">Save</Trans>
+            <Trans>Save</Trans>
           </Button>
           {onCancel && (
             <Button
@@ -206,7 +206,7 @@ export default function CreateEventCard({
               onClick={onCancel}
               disabled={loading}
             >
-              <Trans id="common.cancel">Cancel</Trans>
+              <Trans>Cancel</Trans>
             </Button>
           )}
         </Flex>
