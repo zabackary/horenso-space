@@ -43,7 +43,7 @@ export function SignupForm(props: SignupFormProps) {
       if (user) {
         const { error } = await supabase
           .from("profiles")
-          .update({ full_name: fullName })
+          .update({ full_name: fullName as any })
           .eq("id", user.id);
         if (error) {
           console.warn("Failed to update full name:", error);
