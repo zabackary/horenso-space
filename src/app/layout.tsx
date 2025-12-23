@@ -2,6 +2,7 @@ import { initLingui } from "@/lib/i18n/initLingui";
 import { LinguiClientProvider } from "@/lib/i18n/LinguiClientProvider";
 import { Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import {
@@ -58,6 +59,7 @@ export default async function RootLayout({
           >
             <ThemeProvider attribute="class">{children}</ThemeProvider>
           </LinguiClientProvider>
+          <Analytics />
         </body>
       </Theme>
     </html>
