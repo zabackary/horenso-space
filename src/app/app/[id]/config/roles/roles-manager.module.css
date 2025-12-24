@@ -32,7 +32,7 @@
   background: var(--color-panel-solid);
   border: 1px solid var(--gray-a6);
   border-radius: var(--radius-3);
-  color: var(--gray-1);
+  color: inherit;
   font-family: var(--default-font-family);
   padding: 10px 15px;
   box-shadow: var(--shadow-2);
@@ -126,7 +126,7 @@
   position: absolute;
   bottom: 8px;
   right: 8px;
-  background: var(--color-panel-solid);
+  background: var(--color-panel-solid) !important;
   border: 1px solid var(--gray-a6);
   border-radius: var(--radius-2);
   box-shadow: var(--shadow-2);
