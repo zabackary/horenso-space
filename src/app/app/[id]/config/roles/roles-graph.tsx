@@ -172,6 +172,7 @@ function buildGraph(roles: Role[]): { nodes: Node[]; edges: Edge[] } {
     id: r.id,
     data: { label: r.name },
     position: { x: (idx % 4) * 250, y: Math.floor(idx / 4) * 120 },
+    draggable: true,
   }));
   const edges: Edge[] = [];
   roles.forEach((r) => {
