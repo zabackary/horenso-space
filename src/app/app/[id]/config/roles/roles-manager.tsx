@@ -1,10 +1,7 @@
-"use client";
-
-import type { Database } from "@/@types/database.types";
-import { Trans, useLingui } from "@lingui/react/macro";
-import { Button, Callout, Card, Flex, Heading, Text } from "@radix-ui/themes";
-import { CrossCircledIcon, TrashIcon } from "@radix-ui/react-icons";
 import { createClient } from "@/lib/supabase/client";
+import { Trans, useLingui } from "@lingui/react/macro";
+import { CrossCircledIcon, TrashIcon } from "@radix-ui/react-icons";
+import { Button, Callout, Card, Flex, Heading, Text } from "@radix-ui/themes";
 import styles from "./roles-manager.module.css";
 
 export type Role = {
@@ -36,7 +33,11 @@ export default function RolesManager({
   const [error, setError] = useState<string | null>(null);
 
   async function deleteRole(roleId: string) {
-    if (!confirm(t`Are you sure you want to delete this role? This action cannot be undone.`))
+    if (
+      !confirm(
+        t`Are you sure you want to delete this role? This action cannot be undone.`
+      )
+    )
       return;
     setError(null);
     const supabase = createClient();

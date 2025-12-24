@@ -1,13 +1,13 @@
 "use client";
 
-import { use, useEffect, useMemo, useState } from "react";
 import type { Database } from "@/@types/database.types";
+import { createClient } from "@/lib/supabase/client";
 import { Box, Flex, SegmentedControl, Text } from "@radix-ui/themes";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { use, useEffect, useState } from "react";
 import RoleDialog, { Role } from "./role-dialog";
 import RolesGraph from "./roles-graph";
 import RolesManager from "./roles-manager";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { createClient } from "@/lib/supabase/client";
 
 type RolesViewProps = {
   clubId: string;
@@ -24,11 +24,18 @@ type RolesViewProps = {
     >[]
   >;
   formsPromise: PromiseLike<
-    Pick<Database["public"]["Tables"]["absence_report_forms"]["Row"], "id" | "name">[]
+    Pick<
+      Database["public"]["Tables"]["absence_report_forms"]["Row"],
+      "id" | "name"
+    >[]
   >;
 };
 
-export default function RolesView({ clubId, rolesPromise, formsPromise }: RolesViewProps) {
+export default function RolesView({
+  clubId,
+  rolesPromise,
+  formsPromise,
+}: RolesViewProps) {
   const initial = use(rolesPromise) ?? [];
   const formsInitial = use(formsPromise) ?? [];
   const [roles, setRoles] = useState<Role[]>(() =>
@@ -50,7 +57,9 @@ export default function RolesView({ clubId, rolesPromise, formsPromise }: RolesV
   const pathname = usePathname();
   const router = useRouter();
   const viewParam = searchParams.get("view") ?? "list";
-  const [view, setView] = useState<"list" | "graph">(viewParam === "graph" ? "graph" : "list");
+  const [view, setView] = useState<"list" | "graph">(
+    viewParam === "graph" ? "graph" : "list"
+  );
 
   useEffect(() => {
     const params = new URLSearchParams(searchParams.toString());
@@ -76,7 +85,10 @@ export default function RolesView({ clubId, rolesPromise, formsPromise }: RolesV
     setDialogOpen(true);
   }
 
-  async function onSave(roleId: string, payload: Omit<Role, "id"> & { name: string }) {
+  async function onSave(
+    roleId: string,
+    payload: Omit<Role, "id"> & { name: string }
+  ) {
     setError(null);
     const supabase = createClient();
     try {
@@ -87,7 +99,8 @@ export default function RolesView({ clubId, rolesPromise, formsPromise }: RolesV
           description: payload.description,
           permissions: payload.permissions,
           absence_report_reviewer_role: payload.absenceReportReviewerRole,
-          absence_report_approval_required: payload.absenceReportApprovalRequired,
+          absence_report_approval_required:
+            payload.absenceReportApprovalRequired,
           absence_report_form: payload.absenceReportFormId,
         })
         .eq("id", roleId)
@@ -101,7 +114,8 @@ export default function RolesView({ clubId, rolesPromise, formsPromise }: RolesV
                 description: payload.description,
                 permissions: payload.permissions,
                 absenceReportReviewerRole: payload.absenceReportReviewerRole,
-                absenceReportApprovalRequired: payload.absenceReportApprovalRequired,
+                absenceReportApprovalRequired:
+                  payload.absenceReportApprovalRequired,
                 absenceReportFormId: payload.absenceReportFormId,
               }
             : r
@@ -126,7 +140,8 @@ export default function RolesView({ clubId, rolesPromise, formsPromise }: RolesV
           description: payload.description,
           permissions: payload.permissions,
           absence_report_reviewer_role: payload.absenceReportReviewerRole,
-          absence_report_approval_required: payload.absenceReportApprovalRequired,
+          absence_report_approval_required:
+            payload.absenceReportApprovalRequired,
           absence_report_form: payload.absenceReportFormId,
         })
         .throwOnError()
@@ -140,8 +155,10 @@ export default function RolesView({ clubId, rolesPromise, formsPromise }: RolesV
             name: data.name,
             description: data.description,
             permissions: normalizePermissions(data.permissions),
-            absenceReportReviewerRole: data.absence_report_reviewer_role ?? null,
-            absenceReportApprovalRequired: data.absence_report_approval_required,
+            absenceReportReviewerRole:
+              data.absence_report_reviewer_role ?? null,
+            absenceReportApprovalRequired:
+              data.absence_report_approval_required,
             absenceReportFormId: (data as any).absence_report_form ?? null,
           },
         ]);
@@ -157,7 +174,10 @@ export default function RolesView({ clubId, rolesPromise, formsPromise }: RolesV
     <Box>
       <Flex justify="between" align="center" mb="3">
         <Text weight="bold">Roles</Text>
-        <SegmentedControl.Root value={view} onValueChange={(v) => setView(v as any)}>
+        <SegmentedControl.Root
+          value={view}
+          onValueChange={(v) => setView(v as any)}
+        >
           <SegmentedControl.Item value="list">List</SegmentedControl.Item>
           <SegmentedControl.Item value="graph">Graph</SegmentedControl.Item>
         </SegmentedControl.Root>
@@ -197,7 +217,10 @@ function normalizePermissions(
 ): Record<string, boolean> {
   if (!p || typeof p !== "object" || Array.isArray(p)) return {};
   const entries = Object.entries(
-    p as Record<string, Database["public"]["Tables"]["roles"]["Row"]["permissions"]>
+    p as Record<
+      string,
+      Database["public"]["Tables"]["roles"]["Row"]["permissions"]
+    >
   );
   const out: Record<string, boolean> = {};
   entries.forEach(([k, v]) => {

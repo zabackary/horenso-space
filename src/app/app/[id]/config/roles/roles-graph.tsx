@@ -1,11 +1,17 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { ReactFlow, Background, Controls, type Node, type Edge } from "@xyflow/react";
-import "@xyflow/react/dist/style.css";
-import { Card, Flex, Text } from "@radix-ui/themes";
-import RoleDialog, { Role } from "./role-dialog";
 import { createClient } from "@/lib/supabase/client";
+import { Card, Flex } from "@radix-ui/themes";
+import {
+  Background,
+  Controls,
+  ReactFlow,
+  type Edge,
+  type Node,
+} from "@xyflow/react";
+import "@xyflow/react/dist/style.css";
+import { useMemo, useState } from "react";
+import RoleDialog, { Role } from "./role-dialog";
 
 type RolesGraphProps = {
   clubId: string;
@@ -29,7 +35,10 @@ export default function RolesGraph({ clubId, roles, forms }: RolesGraphProps) {
     setDialogOpen(true);
   }
 
-  async function onSave(roleId: string, payload: Omit<Role, "id"> & { name: string }) {
+  async function onSave(
+    roleId: string,
+    payload: Omit<Role, "id"> & { name: string }
+  ) {
     setError(null);
     const supabase = createClient();
     try {
@@ -40,7 +49,8 @@ export default function RolesGraph({ clubId, roles, forms }: RolesGraphProps) {
           description: payload.description,
           permissions: payload.permissions,
           absence_report_reviewer_role: payload.absenceReportReviewerRole,
-          absence_report_approval_required: payload.absenceReportApprovalRequired,
+          absence_report_approval_required:
+            payload.absenceReportApprovalRequired,
           absence_report_form: payload.absenceReportFormId,
         })
         .eq("id", roleId)
@@ -54,7 +64,8 @@ export default function RolesGraph({ clubId, roles, forms }: RolesGraphProps) {
                 description: payload.description,
                 permissions: payload.permissions,
                 absenceReportReviewerRole: payload.absenceReportReviewerRole,
-                absenceReportApprovalRequired: payload.absenceReportApprovalRequired,
+                absenceReportApprovalRequired:
+                  payload.absenceReportApprovalRequired,
                 absenceReportFormId: payload.absenceReportFormId,
               }
             : r
@@ -79,7 +90,8 @@ export default function RolesGraph({ clubId, roles, forms }: RolesGraphProps) {
           description: payload.description,
           permissions: payload.permissions,
           absence_report_reviewer_role: payload.absenceReportReviewerRole,
-          absence_report_approval_required: payload.absenceReportApprovalRequired,
+          absence_report_approval_required:
+            payload.absenceReportApprovalRequired,
           absence_report_form: payload.absenceReportFormId,
         })
         .throwOnError()
@@ -93,8 +105,10 @@ export default function RolesGraph({ clubId, roles, forms }: RolesGraphProps) {
             name: data.name,
             description: data.description,
             permissions: normalizePermissions(data.permissions as any),
-            absenceReportReviewerRole: data.absence_report_reviewer_role ?? null,
-            absenceReportApprovalRequired: data.absence_report_approval_required,
+            absenceReportReviewerRole:
+              data.absence_report_reviewer_role ?? null,
+            absenceReportApprovalRequired:
+              data.absence_report_approval_required,
             absenceReportFormId: (data as any).absence_report_form ?? null,
           },
         ]);
@@ -141,7 +155,9 @@ export default function RolesGraph({ clubId, roles, forms }: RolesGraphProps) {
   );
 }
 
-function normalizePermissions(p: Record<string, unknown> | null): Record<string, boolean> {
+function normalizePermissions(
+  p: Record<string, unknown> | null
+): Record<string, boolean> {
   if (!p || typeof p !== "object" || Array.isArray(p)) return {};
   const entries = Object.entries(p as Record<string, unknown>);
   const out: Record<string, boolean> = {};
@@ -160,7 +176,11 @@ function buildGraph(roles: Role[]): { nodes: Node[]; edges: Edge[] } {
   const edges: Edge[] = [];
   roles.forEach((r) => {
     if (r.absenceReportReviewerRole) {
-      edges.push({ id: `${r.id}->${r.absenceReportReviewerRole}`, source: r.id, target: r.absenceReportReviewerRole });
+      edges.push({
+        id: `${r.id}->${r.absenceReportReviewerRole}`,
+        source: r.id,
+        target: r.absenceReportReviewerRole,
+      });
     }
   });
   return { nodes, edges };

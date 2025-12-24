@@ -1,26 +1,25 @@
 "use client";
 
-import type { Database } from "@/@types/database.types";
+import { PERMISSION_KEYS, PermissionText } from "@/components/permission-text";
 import { Trans, useLingui } from "@lingui/react/macro";
+import { CrossCircledIcon, Pencil1Icon } from "@radix-ui/react-icons";
 import {
   Button,
   Callout,
+  CheckboxCards,
   Dialog,
   Flex,
   Heading,
   IconButton,
-  CheckboxCards,
   Select,
   Switch,
   Text,
   TextField,
   Tooltip,
 } from "@radix-ui/themes";
-import { CrossCircledIcon, Pencil1Icon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import styles from "./roles-manager.module.css";
-import { PERMISSION_KEYS, PermissionText } from "@/components/permission-text";
 
 export type Role = {
   id: string;
@@ -41,7 +40,9 @@ type RoleDialogProps = {
   forms: { id: string; name: string }[];
   error?: string | null;
   onClose: () => void;
-  onCreate: (payload: Omit<Role, "id"> & { name: string }) => Promise<void> | void;
+  onCreate: (
+    payload: Omit<Role, "id"> & { name: string }
+  ) => Promise<void> | void;
   onSave: (
     roleId: string,
     payload: Omit<Role, "id"> & { name: string }
@@ -83,7 +84,9 @@ export default function RoleDialog({
     } else {
       setName("");
       setDescription("");
-      setPermissions(Object.fromEntries(PERMISSION_KEYS.map((k) => [k, false])));
+      setPermissions(
+        Object.fromEntries(PERMISSION_KEYS.map((k) => [k, false]))
+      );
       setReviewerRole(null);
       setApprovalRequired(false);
       setFormId(null);
@@ -120,7 +123,11 @@ export default function RoleDialog({
     <Dialog.Root open={open} onOpenChange={(o) => (!o ? onClose() : null)}>
       <Dialog.Content>
         <Dialog.Title>
-          {mode === "new" ? <Trans>Create Role</Trans> : <Trans>Edit Role</Trans>}
+          {mode === "new" ? (
+            <Trans>Create Role</Trans>
+          ) : (
+            <Trans>Edit Role</Trans>
+          )}
         </Dialog.Title>
         <Dialog.Description>
           {mode === "new" ? (
@@ -180,7 +187,8 @@ export default function RoleDialog({
             <Flex direction="row" align="center" justify="between">
               <Text size="2" color="gray">
                 <Trans>
-                  Configure reviewer/approval and choose the template used for this role.
+                  Configure reviewer/approval and choose the template used for
+                  this role.
                 </Trans>
               </Text>
             </Flex>
@@ -190,7 +198,9 @@ export default function RoleDialog({
               </Text>
               <Select.Root
                 value={reviewerRole ?? "~"}
-                onValueChange={(value) => setReviewerRole(value === "~" ? null : value)}
+                onValueChange={(value) =>
+                  setReviewerRole(value === "~" ? null : value)
+                }
                 required
               >
                 <Select.Trigger />
@@ -210,7 +220,9 @@ export default function RoleDialog({
               </Text>
               <Switch
                 checked={approvalRequired}
-                onCheckedChange={(checked) => setApprovalRequired(Boolean(checked))}
+                onCheckedChange={(checked) =>
+                  setApprovalRequired(Boolean(checked))
+                }
               />
             </Flex>
 
@@ -218,7 +230,9 @@ export default function RoleDialog({
               <Text style={{ flexGrow: 1 }}>
                 <Trans>Absence report template</Trans>
               </Text>
-              <Tooltip content={formId ? t`Edit template` : t`Select a template first`}>
+              <Tooltip
+                content={formId ? t`Edit template` : t`Select a template first`}
+              >
                 <IconButton
                   variant="soft"
                   aria-label={t`Open template editor`}
@@ -226,7 +240,11 @@ export default function RoleDialog({
                   asChild
                 >
                   <Link
-                    href={formId ? `/app/${clubId}/club/config/absence-forms/${formId}` : "#"}
+                    href={
+                      formId
+                        ? `/app/${clubId}/club/config/absence-forms/${formId}`
+                        : "#"
+                    }
                     target="_blank"
                     onClick={(e) => {
                       if (!formId) e.preventDefault();
@@ -238,7 +256,9 @@ export default function RoleDialog({
               </Tooltip>
               <Select.Root
                 value={formId ?? ""}
-                onValueChange={(value) => setFormId(value === "" ? null : value)}
+                onValueChange={(value) =>
+                  setFormId(value === "" ? null : value)
+                }
                 name="absenceReportForm"
                 required
               >
