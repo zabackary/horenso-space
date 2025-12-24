@@ -30,7 +30,7 @@ type RoleNodeData = {
   onEdit: () => void;
 };
 
-function RoleNode({ data }: NodeProps<RoleNodeData>) {
+function RoleNode({ data }: NodeProps<Node<RoleNodeData>>) {
   return (
     <div className={styles.roleNode}>
       <Handle type="target" position={Position.Top} />
@@ -60,21 +60,43 @@ const nodeTypes = {
 export default function RolesGraph({ clubId, roles, forms }: RolesGraphProps) {
   const { t } = useLingui();
   const [localRoles, setLocalRoles] = useState<Role[]>(roles);
+  const [nodes, setNodes] = useState<Node<RoleNodeData>[]>([]);
+  const [edges, setEdges] = useState<Edge[]>([]);
 
   const [dialogOpen, setDialogOpen] = useState(false);
   const [dialogMode, setDialogMode] = useState<"new" | "edit">("edit");
   const [selectedRole, setSelectedRole] = useState<Role | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const { nodes, edges } = useMemo(
-    () => buildGraph(localRoles, openEdit),
-    [localRoles]
-  );
+  // Build graph when roles change
+  useMemo(() => {
+    const graph = buildGraph(localRoles, openEdit);
+    setNodes(graph.nodes);
+    setEdges(graph.edges);
+  }, [localRoles]);
 
   function openEdit(role: Role) {
     setSelectedRole(role);
     setDialogMode("edit");
     setDialogOpen(true);
+  }
+
+  function onNodesChange(changes: any) {
+    setNodes((nds) => {
+      const updatedNodes = [...nds];
+      changes.forEach((change: any) => {
+        if (change.type === "position" && change.position) {
+          const nodeIndex = updatedNodes.findIndex((n) => n.id === change.id);
+          if (nodeIndex !== -1) {
+            updatedNodes[nodeIndex] = {
+              ...updatedNodes[nodeIndex],
+              position: change.position,
+            };
+          }
+        }
+      });
+      return updatedNodes;
+    });
   }
 
   async function onSave(
@@ -170,6 +192,7 @@ export default function RolesGraph({ clubId, roles, forms }: RolesGraphProps) {
             nodes={nodes}
             edges={edges}
             nodeTypes={nodeTypes}
+            onNodesChange={onNodesChange}
             fitView
             nodesDraggable={true}
             nodesConnectable={false}
@@ -212,8 +235,8 @@ function normalizePermissions(
 function buildGraph(
   roles: Role[],
   onEdit: (role: Role) => void
-): { nodes: Node[]; edges: Edge[] } {
-  const nodes: Node[] = roles.map((r, idx) => ({
+): { nodes: Node<RoleNodeData>[]; edges: Edge[] } {
+  const nodes: Node<RoleNodeData>[] = roles.map((r, idx) => ({
     id: r.id,
     type: "roleNode",
     data: {
