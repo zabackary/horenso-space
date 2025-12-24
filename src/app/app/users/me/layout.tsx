@@ -22,9 +22,8 @@ export default async function MeLayout({
   }
 
   return (
-    <Flex p="4" direction="column" gap="2">
+    <Flex p="4" direction="column" gap="2" style={{ zIndex: -1 }}>
       <UserProfile id={profile.id} />
-
       <UserShareActions profile={profile} />
 
       <Heading as="h2" size="3">
