@@ -1,11 +1,11 @@
 "use client";
 
-import { Trans } from "@lingui/react/macro";
-import { Card, Flex, Spinner, Text } from "@radix-ui/themes";
+import ClickableCard from "@/components/ui/clickable-card";
+import { Plural, Trans } from "@lingui/react/macro";
+import { Badge, Flex, Spinner, Text } from "@radix-ui/themes";
 import Link from "next/link";
 import { Suspense, use } from "react";
 import { AbsenceReport } from "./getReports";
-import styles from "./list.module.css";
 
 type AbsenceReportListProps = {
   reports: PromiseLike<AbsenceReport[]>;
@@ -28,12 +28,11 @@ export default function AbsenceReportList({
       )}
       <Flex direction="column" gap="3" width="100%">
         {reportsData.map((report) => (
-          <Link
-            key={report.id}
-            href={`/app/${clubId}${linkPathPrefix}/${report.id}`}
-            className={styles.reportCardLink}
-          >
-            <Card className={styles.reportCard}>
+          <ClickableCard asChild key={report.id}>
+            <Link
+              key={report.id}
+              href={`/app/${clubId}${linkPathPrefix}/${report.id}`}
+            >
               <Flex direction="column" gap="2">
                 <Flex direction="column" gap="1">
                   <Text weight="bold">
@@ -58,14 +57,18 @@ export default function AbsenceReportList({
                     )}
                   </Text>
                   {report.reviews.length > 0 && (
-                    <Text size="1" className={styles.reviewIndicator}>
-                      ✓ <Trans>{report.reviews.length} reviews</Trans>
-                    </Text>
+                    <Badge size="1" color="gray">
+                      <Plural
+                        value={report.reviews.length}
+                        one="# review"
+                        other="# reviews"
+                      />
+                    </Badge>
                   )}
                 </Flex>
               </Flex>
-            </Card>
-          </Link>
+            </Link>
+          </ClickableCard>
         ))}
       </Flex>
     </Suspense>

@@ -1,6 +1,7 @@
 "use client";
 
 import type { Database } from "@/@types/database.types";
+import ClickableCard from "@/components/ui/clickable-card";
 import { Trans, useLingui } from "@lingui/react/macro";
 import { Card, Flex, Heading, Text } from "@radix-ui/themes";
 import { useState } from "react";
@@ -39,11 +40,9 @@ export default function AssignedReportsList({
             {reports.map((report) => {
               const isSelected = selectedReportId === report.id;
               return (
-                <Card
+                <ClickableCard
                   key={report.id}
-                  className={`${styles.reportCard} ${
-                    isSelected ? styles.reportCardSelected : ""
-                  }`}
+                  className={`${isSelected ? styles.reportCardSelected : ""}`}
                   onClick={() => setSelectedReportId(report.id)}
                 >
                   <Flex direction="column" gap="1">
@@ -69,7 +68,7 @@ export default function AssignedReportsList({
                       </Text>
                     )}
                   </Flex>
-                </Card>
+                </ClickableCard>
               );
             })}
           </Flex>

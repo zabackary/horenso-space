@@ -2,8 +2,9 @@
 
 import AbsenceFormRenderer from "@/components/absence-form-renderer";
 import { createClient } from "@/lib/supabase/client";
-import { Trans, useLingui } from "@lingui/react/macro";
+import { Trans } from "@lingui/react/macro";
 import {
+  Badge,
   Card,
   DataList,
   Flex,
@@ -13,7 +14,6 @@ import {
   Text,
 } from "@radix-ui/themes";
 import { useEffect, useState } from "react";
-import styles from "./report-detail.module.css";
 
 type Report = {
   id: string;
@@ -37,7 +37,6 @@ export default function ReportDetail({
   report: Report;
   clubId: string;
 }) {
-  const { t } = useLingui();
   const reviews = (report.reviews || []) as any[];
   const reportData = report.data as Record<string, any>;
 
@@ -71,7 +70,7 @@ export default function ReportDetail({
 
   return (
     <Flex direction="column" gap="4" flexGrow="1">
-      <Heading size="4">
+      <Heading size="4" as="h3">
         <Trans>Report Details</Trans>
       </Heading>
 
@@ -118,7 +117,7 @@ export default function ReportDetail({
       <Separator size="4" />
 
       <div>
-        <Heading size="3" mb="2">
+        <Heading size="3" mb="2" as="h4">
           <Trans>Form Responses</Trans>
         </Heading>
         {formLoading ? (
@@ -142,26 +141,22 @@ export default function ReportDetail({
         <>
           <Separator size="4" />
           <div>
-            <Heading size="3" mb="2">
+            <Heading size="3" mb="2" as="h4">
               <Trans>Reviews</Trans>
             </Heading>
             <Flex direction="column" gap="2">
               {reviews.map((review: any) => (
-                <Card key={review.id} className={styles.reviewCard}>
+                <Card key={review.id}>
                   <Flex direction="column" gap="2">
                     <Flex justify="between" align="center">
                       <Text weight="bold">{review.reviewer_name}</Text>
-                      <Text
-                        size="2"
-                        color={review.accepted ? "green" : "red"}
-                        weight="bold"
-                      >
+                      <Badge size="2" color={review.accepted ? "green" : "red"}>
                         {review.accepted ? (
                           <Trans>Accepted</Trans>
                         ) : (
                           <Trans>Rejected</Trans>
                         )}
-                      </Text>
+                      </Badge>
                     </Flex>
                     {review.comments && <Text size="2">{review.comments}</Text>}
                     <Text size="1" color="gray">

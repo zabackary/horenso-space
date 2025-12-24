@@ -12,6 +12,7 @@ import {
   Flex,
   Heading,
   Separator,
+  Skeleton,
   Spinner,
   Text,
   TextArea,
@@ -102,12 +103,30 @@ export default function ReportDetail({
   return (
     <Card>
       <Flex direction="column" gap="4">
-        {isAccepted !== null && (
+        {isAccepted === null ? (
+          <Skeleton>
+            <Callout.Root>
+              <Callout.Text>
+                <Trans>Loading...</Trans>
+              </Callout.Text>
+            </Callout.Root>
+          </Skeleton>
+        ) : reviews.length > 0 ? (
+          isAccepted !== null && (
+            <Callout.Root color={isAccepted ? "green" : "red"}>
+              <Callout.Text>
+                {isAccepted ? (
+                  <Trans>This report has been accepted</Trans>
+                ) : (
+                  <Trans>This report has been rejected</Trans>
+                )}
+              </Callout.Text>
+            </Callout.Root>
+          )
+        ) : (
           <Callout.Root color={isAccepted ? "green" : "yellow"}>
             <Callout.Text>
-              {isAccepted
-                ? t`This report has been accepted.`
-                : t`This report is has not been accepted.`}
+              <Trans>This report has not been reviewed yet.</Trans>
             </Callout.Text>
           </Callout.Root>
         )}
@@ -254,14 +273,14 @@ export default function ReportDetail({
               <Button
                 color="green"
                 onClick={() => handleSubmit(true)}
-                disabled={isSubmitting}
+                loading={isSubmitting}
               >
                 <Trans>Accept</Trans>
               </Button>
               <Button
                 color="red"
                 onClick={() => handleSubmit(false)}
-                disabled={isSubmitting}
+                loading={isSubmitting}
               >
                 <Trans>Reject</Trans>
               </Button>
