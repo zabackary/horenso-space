@@ -94,6 +94,8 @@
   border-bottom: 1px solid var(--gray-a4);
   color: var(--gray-11);
   transition: all 0.2s ease;
+  border-radius: var(--radius-2);
+  margin: 2px;
 }
 
 :global(.react-flow__controls button:last-child) {
@@ -117,4 +119,24 @@
   background: var(--color-panel-solid);
   border: 1px solid var(--gray-a6);
   border-radius: var(--radius-2);
+}
+
+/* React Flow attribution styling */
+:global(.react-flow__attribution) {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: var(--color-panel-solid);
+  border: 1px solid var(--gray-a6);
+  border-radius: var(--radius-2);
+  box-shadow: var(--shadow-2);
+  color: var(--gray-11);
+  font-size: 12px;
+  padding: 4px 8px;
+  opacity: 0.75;
+  transition: opacity 0.15s ease;
+}
+
+:global(.react-flow__attribution:hover) {
+  opacity: 1;
 }
