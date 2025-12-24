@@ -1,6 +1,7 @@
 "use client";
 
 import { createClient } from "@/lib/supabase/client";
+import { useLingui } from "@lingui/react/macro";
 import { Card, Flex } from "@radix-ui/themes";
 import {
   Background,
@@ -20,6 +21,7 @@ type RolesGraphProps = {
 };
 
 export default function RolesGraph({ clubId, roles, forms }: RolesGraphProps) {
+  const { t } = useLingui();
   const [localRoles, setLocalRoles] = useState<Role[]>(roles);
 
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -74,7 +76,7 @@ export default function RolesGraph({ clubId, roles, forms }: RolesGraphProps) {
       setDialogOpen(false);
     } catch (e) {
       console.error("Error saving role:", e);
-      setError("Failed to save role. Please try again later.");
+      setError(t`Failed to save role. Please try again later.`);
     }
   }
 
@@ -116,7 +118,7 @@ export default function RolesGraph({ clubId, roles, forms }: RolesGraphProps) {
       setDialogOpen(false);
     } catch (e) {
       console.error("Error creating role:", e);
-      setError("Failed to create role. Please try again later.");
+      setError(t`Failed to create role. Please try again later.`);
     }
   }
 

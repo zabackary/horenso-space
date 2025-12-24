@@ -2,6 +2,7 @@
 
 import type { Database } from "@/@types/database.types";
 import { createClient } from "@/lib/supabase/client";
+import { useLingui } from "@lingui/react/macro";
 import { Box, Flex, SegmentedControl, Text } from "@radix-ui/themes";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { use, useEffect, useState } from "react";
@@ -36,6 +37,7 @@ export default function RolesView({
   rolesPromise,
   formsPromise,
 }: RolesViewProps) {
+  const { t } = useLingui();
   const initial = use(rolesPromise) ?? [];
   const formsInitial = use(formsPromise) ?? [];
   const [roles, setRoles] = useState<Role[]>(() =>
@@ -124,7 +126,7 @@ export default function RolesView({
       setDialogOpen(false);
     } catch (e) {
       console.error("Error saving role:", e);
-      setError("Failed to save role. Please try again later.");
+      setError(t`Failed to save role. Please try again later.`);
     }
   }
 
@@ -166,7 +168,7 @@ export default function RolesView({
       setDialogOpen(false);
     } catch (e) {
       console.error("Error creating role:", e);
-      setError("Failed to create role. Please try again later.");
+      setError(t`Failed to create role. Please try again later.`);
     }
   }
 
