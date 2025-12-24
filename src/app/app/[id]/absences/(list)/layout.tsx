@@ -7,6 +7,7 @@ import { Trans } from "@lingui/react/macro";
 import { Button, Flex, Heading } from "@radix-ui/themes";
 import Link from "next/link";
 import styles from "./layout.module.css";
+import { AbsencesTabNav } from "./tab-nav";
 
 export default async function Page({
   params,
@@ -39,6 +40,8 @@ export default async function Page({
           </Button>
         )}
       </Flex>
+
+      <AbsencesTabNav clubId={id} permissions={permissions} />
 
       {children}
     </Flex>

@@ -1,18 +1,19 @@
-"use server";
+"use client";
 
 import { Trans } from "@lingui/react/macro";
 import { TabNav } from "@radix-ui/themes";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-export async function AbsencesTabNav({
-  active,
+export function AbsencesTabNav({
   clubId,
   permissions,
 }: {
-  active?: "my" | "all" | "assigned";
   clubId: string;
   permissions: string[];
 }) {
+  const active = usePathname().split("/")[4];
+
   return (
     <TabNav.Root style={{ width: "100%" }}>
       <TabNav.Link asChild active={active === "my"}>

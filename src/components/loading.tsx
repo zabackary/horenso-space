@@ -22,6 +22,7 @@ export function ListLoading({
       p={p}
       direction="column"
       gap="3"
+      width="100%"
       {...props}
     >
       <Skeleton>

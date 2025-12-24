@@ -3,7 +3,6 @@ import getPermissionsForClub from "@/lib/auth/getPermissionsForClub";
 import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
-import { AbsencesTabNav } from "../tab-nav";
 import AssignedReportsList from "./list";
 
 type AssignedReport =
@@ -35,10 +34,5 @@ export default async function Page({
 
   const reportsList = (reports || []) as AssignedReport[];
 
-  return (
-    <>
-      <AbsencesTabNav active="assigned" clubId={id} permissions={permissions} />
-      <AssignedReportsList clubId={id} initialReports={reportsList} />
-    </>
-  );
+  return <AssignedReportsList clubId={id} initialReports={reportsList} />;
 }

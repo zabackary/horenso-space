@@ -4,7 +4,6 @@ import { createClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
 import getReports from "../getReports";
 import AbsenceReportList from "../list";
-import { AbsencesTabNav } from "../tab-nav";
 
 export default async function Page({
   params,
@@ -22,13 +21,10 @@ export default async function Page({
   const reports = getReports(supabase, id);
 
   return (
-    <>
-      <AbsencesTabNav active="all" clubId={id} permissions={permissions} />
-      <AbsenceReportList
-        reports={reports}
-        clubId={id}
-        linkPathPrefix="/absences/all"
-      />
-    </>
+    <AbsenceReportList
+      reports={reports}
+      clubId={id}
+      linkPathPrefix="/absences/all"
+    />
   );
 }
