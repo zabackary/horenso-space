@@ -1,0 +1,28 @@
+.root {
+  max-width: 920px;
+}
+.roleCard {
+  border: 1px solid var(--gray-3, #e6e6e6);
+  padding: 12px;
+  margin-bottom: 8px;
+}
+.descriptionField {
+  margin-top: 8px;
+}
+.permissions {
+  margin-top: 8px;
+}
+.createSection {
+  margin-top: 16px;
+  border-top: 1px solid var(--gray-2, #eee);
+  padding-top: 12px;
+}
+.dialogBody {
+  margin-top: 8px;
+}
+.permissionLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}

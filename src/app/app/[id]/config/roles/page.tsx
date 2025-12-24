@@ -1,4 +1,4 @@
-import RolesManager from "@/components/club-config/roles-manager";
+import RolesView from "./roles-view";
 import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
 import { Box } from "@radix-ui/themes";
@@ -29,11 +29,7 @@ export default async function ClubRolesPage({
 
   return (
     <Box p="4">
-      <RolesManager
-        clubId={id}
-        rolesPromise={rolesPromise}
-        formsPromise={formsPromise}
-      />
+      <RolesView clubId={id} rolesPromise={rolesPromise} formsPromise={formsPromise} />
     </Box>
   );
 }
