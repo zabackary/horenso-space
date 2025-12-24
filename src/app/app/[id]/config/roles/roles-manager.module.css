@@ -28,55 +28,81 @@
 }
 
 /* React Flow custom node styles with Radix theme variables */
-:global(.react-flow__node) {
+.roleNode {
   background: var(--color-panel-solid);
-  border: 1px solid var(--gray-6);
+  border: 1px solid var(--gray-a6);
   border-radius: var(--radius-3);
   color: var(--gray-12);
   font-family: var(--default-font-family);
   padding: 10px 15px;
   box-shadow: var(--shadow-2);
   transition: all 0.2s ease;
+  min-width: 150px;
 }
 
-:global(.react-flow__node:hover) {
+.roleNodeLabel {
+  font-weight: 500;
+  font-size: 14px;
+  flex: 1;
+}
+
+.roleNodeEditButton {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.roleNode:hover .roleNodeEditButton {
+  opacity: 1;
+}
+
+:global(.react-flow__node.selected) .roleNode {
   border-color: var(--accent-9);
-  box-shadow: var(--shadow-3);
+  box-shadow: 0 0 0 2px var(--accent-a5);
 }
 
-:global(.react-flow__node.selected) {
-  border-color: var(--accent-10);
-  box-shadow: 0 0 0 2px var(--accent-a5);
+:global(.react-flow__node:hover) .roleNode {
+  border-color: var(--gray-a8);
+  box-shadow: var(--shadow-3);
 }
 
 :global(.react-flow__handle) {
   background: var(--accent-9);
   border: 2px solid var(--color-panel-solid);
+  width: 8px;
+  height: 8px;
 }
 
 :global(.react-flow__edge-path) {
-  stroke: var(--gray-9);
+  stroke: var(--gray-a9);
   stroke-width: 2;
 }
 
 :global(.react-flow__edge.selected .react-flow__edge-path) {
-  stroke: var(--accent-10);
+  stroke: var(--accent-9);
 }
 
 :global(.react-flow__controls) {
   background: var(--color-panel-solid);
-  border: 1px solid var(--gray-6);
+  border: 1px solid var(--gray-a6);
+  border-radius: var(--radius-3);
   box-shadow: var(--shadow-3);
 }
 
 :global(.react-flow__controls button) {
-  background: var(--color-panel-solid);
-  border-bottom: 1px solid var(--gray-6);
-  color: var(--gray-12);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--gray-a4);
+  color: var(--gray-11);
+  transition: all 0.2s ease;
+}
+
+:global(.react-flow__controls button:last-child) {
+  border-bottom: none;
 }
 
 :global(.react-flow__controls button:hover) {
-  background: var(--accent-3);
+  background: var(--accent-a3);
+  color: var(--accent-11);
 }
 
 :global(.react-flow__controls button path) {
@@ -89,5 +115,6 @@
 
 :global(.react-flow__minimap) {
   background: var(--color-panel-solid);
-  border: 1px solid var(--gray-6);
+  border: 1px solid var(--gray-a6);
+  border-radius: var(--radius-2);
 }

@@ -2,13 +2,17 @@
 
 import { createClient } from "@/lib/supabase/client";
 import { useLingui } from "@lingui/react/macro";
-import { Card, Flex } from "@radix-ui/themes";
+import { Pencil1Icon } from "@radix-ui/react-icons";
+import { Card, Flex, IconButton } from "@radix-ui/themes";
 import {
   Background,
   Controls,
+  Handle,
+  Position,
   ReactFlow,
   type Edge,
   type Node,
+  type NodeProps,
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 import { useMemo, useState } from "react";
@@ -21,6 +25,38 @@ type RolesGraphProps = {
   forms: { id: string; name: string }[];
 };
 
+type RoleNodeData = {
+  label: string;
+  onEdit: () => void;
+};
+
+function RoleNode({ data }: NodeProps<RoleNodeData>) {
+  return (
+    <div className={styles.roleNode}>
+      <Handle type="target" position={Position.Top} />
+      <Flex align="center" gap="2">
+        <span className={styles.roleNodeLabel}>{data.label}</span>
+        <IconButton
+          size="1"
+          variant="ghost"
+          onClick={(e) => {
+            e.stopPropagation();
+            data.onEdit();
+          }}
+          className={styles.roleNodeEditButton}
+        >
+          <Pencil1Icon />
+        </IconButton>
+      </Flex>
+      <Handle type="source" position={Position.Bottom} />
+    </div>
+  );
+}
+
+const nodeTypes = {
+  roleNode: RoleNode,
+};
+
 export default function RolesGraph({ clubId, roles, forms }: RolesGraphProps) {
   const { t } = useLingui();
   const [localRoles, setLocalRoles] = useState<Role[]>(roles);
@@ -30,7 +66,10 @@ export default function RolesGraph({ clubId, roles, forms }: RolesGraphProps) {
   const [selectedRole, setSelectedRole] = useState<Role | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const { nodes, edges } = useMemo(() => buildGraph(localRoles), [localRoles]);
+  const { nodes, edges } = useMemo(
+    () => buildGraph(localRoles, openEdit),
+    [localRoles]
+  );
 
   function openEdit(role: Role) {
     setSelectedRole(role);
@@ -130,11 +169,11 @@ export default function RolesGraph({ clubId, roles, forms }: RolesGraphProps) {
           <ReactFlow
             nodes={nodes}
             edges={edges}
+            nodeTypes={nodeTypes}
             fitView
-            onNodeClick={(_, node) => {
-              const r = roles.find((x) => x.id === node.id);
-              if (r) openEdit(r);
-            }}
+            nodesDraggable={true}
+            nodesConnectable={false}
+            elementsSelectable={true}
           >
             <Background />
             <Controls />
@@ -170,10 +209,17 @@ function normalizePermissions(
   return out;
 }
 
-function buildGraph(roles: Role[]): { nodes: Node[]; edges: Edge[] } {
+function buildGraph(
+  roles: Role[],
+  onEdit: (role: Role) => void
+): { nodes: Node[]; edges: Edge[] } {
   const nodes: Node[] = roles.map((r, idx) => ({
     id: r.id,
-    data: { label: r.name },
+    type: "roleNode",
+    data: {
+      label: r.name,
+      onEdit: () => onEdit(r),
+    },
     position: { x: (idx % 4) * 250, y: Math.floor(idx / 4) * 120 },
     draggable: true,
   }));
