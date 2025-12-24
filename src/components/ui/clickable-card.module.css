@@ -1,0 +1,21 @@
+.clickableCard {
+  cursor: pointer;
+
+  --base-card-surface-box-shadow: 0 0 0 1px
+    color-mix(in oklab, var(--accent-a5), var(--accent-5) 25%);
+  --base-card-surface-hover-box-shadow: 0 0 0 1px
+    color-mix(in oklab, var(--accent-a7), var(--accent-7) 25%);
+  --base-card-surface-active-box-shadow: 0 0 0 1px
+    color-mix(in oklab, var(--accent-a8), var(--accent-8) 25%);
+
+  &:hover {
+    --card-background-color: var(--accent-a3);
+  }
+
+  &:active {
+    --card-background-color: var(--accent-a4);
+    border-color: var(--accent-a5);
+  }
+
+  /* focus handling is handled internally by Radix UI components */
+}
