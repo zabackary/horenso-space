@@ -21,6 +21,7 @@ import "@xyflow/react/dist/style.css";
 import { useEffect, useState } from "react";
 import RoleDialog, { Role } from "./role-dialog";
 import styles from "./roles-manager.module.css";
+import dagre from "dagre";
 
 type RolesGraphProps = {
   clubId: string;
@@ -223,14 +224,14 @@ function buildGraph(
   roles: Role[],
   onEdit: (role: Role) => void
 ): { nodes: Node<RoleNodeData>[]; edges: Edge[] } {
-  const nodes: Node<RoleNodeData>[] = roles.map((r, idx) => ({
+  const nodes: Node<RoleNodeData>[] = roles.map((r) => ({
     id: r.id,
     type: "roleNode",
     data: {
       label: r.name,
       onEdit: () => onEdit(r),
     },
-    position: { x: (idx % 4) * 250, y: Math.floor(idx / 4) * 120 },
+    position: { x: 0, y: 0 },
     draggable: true,
   }));
   const edges: Edge[] = [];
@@ -244,5 +245,26 @@ function buildGraph(
       });
     }
   });
+
+  // Dagre layout (top-to-bottom)
+  const g = new dagre.graphlib.Graph();
+  g.setGraph({ rankdir: "TB", ranksep: 60, nodesep: 40 });
+  g.setDefaultEdgeLabel(() => ({}));
+
+  nodes.forEach((n) => {
+    g.setNode(n.id, { width: 180, height: 56 });
+  });
+  edges.forEach((e) => {
+    g.setEdge(String(e.source), String(e.target));
+  });
+
+  dagre.layout(g);
+  nodes.forEach((n) => {
+    const pos = g.node(n.id);
+    if (pos && typeof pos.x === "number" && typeof pos.y === "number") {
+      n.position = { x: pos.x, y: pos.y };
+    }
+  });
+
   return { nodes, edges };
 }
