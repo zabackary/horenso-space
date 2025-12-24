@@ -10,12 +10,14 @@ import {
   Handle,
   Position,
   ReactFlow,
+  useEdgesState,
+  useNodesState,
   type Edge,
   type Node,
   type NodeProps,
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import RoleDialog, { Role } from "./role-dialog";
 import styles from "./roles-manager.module.css";
 
@@ -60,8 +62,8 @@ const nodeTypes = {
 export default function RolesGraph({ clubId, roles, forms }: RolesGraphProps) {
   const { t } = useLingui();
   const [localRoles, setLocalRoles] = useState<Role[]>(roles);
-  const [nodes, setNodes] = useState<Node<RoleNodeData>[]>([]);
-  const [edges, setEdges] = useState<Edge[]>([]);
+  const [nodes, setNodes, onNodesChange] = useNodesState<Node<RoleNodeData>>([]);
+  const [edges, setEdges, onEdgesChange] = useEdgesState<Edge>([]);
 
   const [dialogOpen, setDialogOpen] = useState(false);
   const [dialogMode, setDialogMode] = useState<"new" | "edit">("edit");
@@ -69,7 +71,7 @@ export default function RolesGraph({ clubId, roles, forms }: RolesGraphProps) {
   const [error, setError] = useState<string | null>(null);
 
   // Build graph when roles change
-  useMemo(() => {
+  useEffect(() => {
     const graph = buildGraph(localRoles, openEdit);
     setNodes(graph.nodes);
     setEdges(graph.edges);
@@ -79,24 +81,6 @@ export default function RolesGraph({ clubId, roles, forms }: RolesGraphProps) {
     setSelectedRole(role);
     setDialogMode("edit");
     setDialogOpen(true);
-  }
-
-  function onNodesChange(changes: any) {
-    setNodes((nds) => {
-      const updatedNodes = [...nds];
-      changes.forEach((change: any) => {
-        if (change.type === "position" && change.position) {
-          const nodeIndex = updatedNodes.findIndex((n) => n.id === change.id);
-          if (nodeIndex !== -1) {
-            updatedNodes[nodeIndex] = {
-              ...updatedNodes[nodeIndex],
-              position: change.position,
-            };
-          }
-        }
-      });
-      return updatedNodes;
-    });
   }
 
   async function onSave(
