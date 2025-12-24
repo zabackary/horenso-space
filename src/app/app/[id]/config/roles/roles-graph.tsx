@@ -62,7 +62,9 @@ const nodeTypes = {
 export default function RolesGraph({ clubId, roles, forms }: RolesGraphProps) {
   const { t } = useLingui();
   const [localRoles, setLocalRoles] = useState<Role[]>(roles);
-  const [nodes, setNodes, onNodesChange] = useNodesState<Node<RoleNodeData>>([]);
+  const [nodes, setNodes, onNodesChange] = useNodesState<Node<RoleNodeData>>(
+    []
+  );
   const [edges, setEdges, onEdgesChange] = useEdgesState<Edge>([]);
 
   const [dialogOpen, setDialogOpen] = useState(false);
