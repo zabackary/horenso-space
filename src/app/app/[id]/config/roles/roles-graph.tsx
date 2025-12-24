@@ -13,6 +13,7 @@ import {
 import "@xyflow/react/dist/style.css";
 import { useMemo, useState } from "react";
 import RoleDialog, { Role } from "./role-dialog";
+import styles from "./roles-manager.module.css";
 
 type RolesGraphProps = {
   clubId: string;
