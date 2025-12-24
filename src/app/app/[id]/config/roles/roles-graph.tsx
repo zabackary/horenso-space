@@ -10,6 +10,7 @@ import {
   Handle,
   Position,
   ReactFlow,
+  MarkerType,
   useEdgesState,
   useNodesState,
   type Edge,
@@ -239,6 +240,7 @@ function buildGraph(
         id: `${r.id}->${r.absenceReportReviewerRole}`,
         source: r.id,
         target: r.absenceReportReviewerRole,
+        markerEnd: { type: MarkerType.ArrowClosed },
       });
     }
   });
