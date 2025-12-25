@@ -199,7 +199,7 @@ export default function RolesView({
         </Heading>
         <SegmentedControl.Root
           value={view}
-          onValueChange={(v) => setView(v as any)}
+          onValueChange={(v: "list" | "graph") => setView(v)}
         >
           <SegmentedControl.Item value="list">
             <Trans>List</Trans>
