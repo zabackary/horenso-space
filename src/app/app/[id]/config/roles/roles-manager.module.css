@@ -1,0 +1,149 @@
+.root {
+  max-width: 920px;
+}
+.roleCard {
+  border: 1px solid var(--gray-3, #e6e6e6);
+  padding: 12px;
+  margin-bottom: 8px;
+}
+.descriptionField {
+  margin-top: 8px;
+}
+.permissions {
+  margin-top: 8px;
+}
+.createSection {
+  margin-top: 16px;
+  border-top: 1px solid var(--gray-2, #eee);
+  padding-top: 12px;
+}
+.dialogBody {
+  margin-top: 8px;
+}
+
+/* React Flow custom node styles with Radix theme variables */
+.roleNode {
+  background: var(--color-panel-solid);
+  border: 1px solid var(--gray-a6);
+  border-radius: var(--radius-3);
+  color: inherit;
+  font-family: var(--default-font-family);
+  padding: 10px 15px;
+  box-shadow: var(--shadow-2);
+  transition: all 0.2s ease;
+  min-width: 150px;
+}
+
+.roleNodeLabel {
+  font-weight: 500;
+  font-size: 14px;
+  flex: 1;
+}
+
+.roleNodeEditButton {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.roleNode:hover .roleNodeEditButton {
+  opacity: 1;
+}
+
+:global(.react-flow__node.selected) .roleNode {
+  border-color: var(--accent-9);
+  box-shadow: 0 0 0 2px var(--accent-a5);
+}
+
+:global(.react-flow__node:hover) .roleNode {
+  border-color: var(--gray-a8);
+  box-shadow: var(--shadow-3);
+}
+
+:global(.react-flow__handle) {
+  background: var(--accent-9);
+  border: 2px solid var(--color-panel-solid);
+  width: 8px;
+  height: 8px;
+}
+
+:global(.react-flow__edge-path) {
+  stroke: var(--gray-a9);
+  stroke-width: 2;
+}
+
+:global(.react-flow__edge.selected .react-flow__edge-path) {
+  stroke: var(--accent-9);
+}
+
+:global(.react-flow__controls) {
+  background: var(--color-panel-solid);
+  border: 1px solid var(--gray-a6);
+  border-radius: var(--radius-3);
+  box-shadow: var(--shadow-3);
+}
+
+:global(.react-flow__controls button) {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--gray-a4);
+  color: var(--gray-11);
+  transition: all 0.2s ease;
+  border-radius: var(--radius-2);
+  margin: 2px;
+}
+
+:global(.react-flow__controls button:last-child) {
+  border-bottom: none;
+}
+
+:global(.react-flow__controls button:hover) {
+  background: var(--accent-a3);
+  color: var(--accent-11);
+}
+
+:global(.react-flow__controls button path) {
+  fill: currentColor;
+}
+
+:global(.react-flow__background) {
+  background: var(--color-background);
+}
+
+:global(.react-flow__minimap) {
+  background: var(--color-panel-solid);
+  border: 1px solid var(--gray-a6);
+  border-radius: var(--radius-2);
+}
+
+/* React Flow attribution styling */
+:global(.react-flow__attribution) {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: var(--color-panel-solid) !important;
+  border: 1px solid var(--gray-a6);
+  border-radius: var(--radius-2);
+  box-shadow: var(--shadow-2);
+  color: var(--gray-11);
+  font-size: 12px;
+  padding: 4px 8px;
+  opacity: 0.75;
+  transition: opacity 0.15s ease;
+}
+
+:global(.react-flow__attribution:hover) {
+  opacity: 1;
+}
+
+.addRoleButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 1;
+}
+
+.rolesGraphCard {
+  position: relative;
+  flex-grow: 1;
+  padding: 0;
+}

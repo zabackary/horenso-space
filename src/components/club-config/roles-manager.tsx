@@ -1,6 +1,8 @@
 "use client";
 
 import type { Database } from "@/@types/database.types";
+import { Role } from "@/app/app/[id]/config/roles/role-dialog";
+import { normalizePermissions } from "@/app/app/[id]/config/roles/roles-view";
 import { createClient } from "@/lib/supabase/client";
 import { Trans, useLingui } from "@lingui/react/macro";
 import {
@@ -27,16 +29,6 @@ import Link from "next/link";
 import { use, useState } from "react";
 import { PERMISSION_KEYS, PermissionText } from "../permission-text";
 import styles from "./roles-manager.module.css";
-
-type Role = {
-  id: string;
-  name: string;
-  description?: string | null;
-  permissions: Record<string, boolean>;
-  absenceReportReviewerRole: string | null;
-  absenceReportApprovalRequired: boolean;
-  absenceReportFormId: string | null;
-};
 
 export default function RolesManager({
   clubId,
@@ -74,7 +66,7 @@ export default function RolesManager({
         permissions: normalizePermissions(r.permissions),
         absenceReportReviewerRole: r.absence_report_reviewer_role ?? null,
         absenceReportApprovalRequired: r.absence_report_approval_required,
-        absenceReportFormId: (r as any).absence_report_form ?? null,
+        absenceReportFormId: r.absence_report_form ?? null,
       })) ?? []
   );
   const [error, setError] = useState<string | null>(null);
@@ -99,23 +91,6 @@ export default function RolesManager({
   >(null);
 
   const { t } = useLingui();
-
-  function normalizePermissions(
-    p: Database["public"]["Tables"]["roles"]["Row"]["permissions"]
-  ): Record<string, boolean> {
-    if (!p || typeof p !== "object" || Array.isArray(p)) return {};
-    const entries = Object.entries(
-      p as Record<
-        string,
-        Database["public"]["Tables"]["roles"]["Row"]["permissions"]
-      >
-    );
-    const out: Record<string, boolean> = {};
-    entries.forEach(([k, v]) => {
-      out[k] = Boolean(v);
-    });
-    return out;
-  }
   async function saveRole(roleId: string) {
     const role = roles.find((r) => r.id === roleId);
     if (!role) return;

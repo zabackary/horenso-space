@@ -645,22 +645,22 @@ export type Database = {
           school: string | null
         }
         Insert: {
-          avatar_url?: never
-          bio?: never
+          avatar_url?: string | null
+          bio?: string | null
           created_at?: string | null
-          full_name?: never
+          full_name?: string | null
           id?: string | null
-          nickname?: never
-          school?: never
+          nickname?: string | null
+          school?: string | null
         }
         Update: {
-          avatar_url?: never
-          bio?: never
+          avatar_url?: string | null
+          bio?: string | null
           created_at?: string | null
-          full_name?: never
+          full_name?: string | null
           id?: string | null
-          nickname?: never
-          school?: never
+          nickname?: string | null
+          school?: string | null
         }
         Relationships: []
       }
