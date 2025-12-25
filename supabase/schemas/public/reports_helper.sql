@@ -105,6 +105,14 @@ create or replace function public.get_assigned_absence_reports(p_club_id uuid)
     and cm.accepted = true
 where
   ar.club_id = p_club_id
+  and not exists(
+    select
+      1
+    from
+      public.absence_report_reviews arr_reviewer
+    where
+      arr_reviewer.absence_report_id = ar.id
+      and arr_reviewer.reviewer_id = auth.uid())
 group by
   -- pgt-ignore typecheck Seems to work fine
   ar.id,
