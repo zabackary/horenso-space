@@ -140,3 +140,16 @@
 :global(.react-flow__attribution:hover) {
   opacity: 1;
 }
+
+.addRoleButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 1;
+}
+
+.rolesGraphCard {
+  position: relative;
+  flex-grow: 1;
+  padding: 0;
+}

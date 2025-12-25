@@ -27,16 +27,12 @@ export default async function ClubConfigLayout({
   }
 
   return (
-    <>
-      <Flex direction="column" className={styles.root}>
-        <div className={styles.container}>
-          <Heading as="h2" size="6" className={styles.heading}>
-            <Trans>Club configuration</Trans>
-          </Heading>
-          <ClubConfigTabNav clubId={id} />
-          {children}
-        </div>
-      </Flex>
-    </>
+    <Flex direction="column" className={styles.root} flexGrow="1">
+      <Heading as="h2" size="6" className={styles.heading}>
+        <Trans>Club configuration</Trans>
+      </Heading>
+      <ClubConfigTabNav clubId={id} />
+      {children}
+    </Flex>
   );
 }

@@ -2,13 +2,14 @@
 
 import type { Database } from "@/@types/database.types";
 import { createClient } from "@/lib/supabase/client";
-import { useLingui } from "@lingui/react/macro";
-import { Box, Flex, SegmentedControl, Text } from "@radix-ui/themes";
+import { Trans, useLingui } from "@lingui/react/macro";
+import { Flex, Heading, SegmentedControl, Skeleton } from "@radix-ui/themes";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { use, useEffect, useState } from "react";
+import { lazy, Suspense, use, useEffect, useState } from "react";
 import RoleDialog, { Role } from "./role-dialog";
-import RolesGraph from "./roles-graph";
 import RolesManager from "./roles-manager";
+
+const RolesGraph = lazy(() => import("./roles-graph"));
 
 type RolesViewProps = {
   clubId: string;
@@ -172,30 +173,59 @@ export default function RolesView({
     }
   }
 
+  async function deleteRole(roleId: string) {
+    if (
+      !confirm(
+        t`Are you sure you want to delete this role? This action cannot be undone.`
+      )
+    )
+      return;
+    setError(null);
+    const supabase = createClient();
+    try {
+      await supabase.from("roles").delete().eq("id", roleId).throwOnError();
+      setRoles(roles.filter((r) => r.id !== roleId));
+    } catch (e: unknown) {
+      console.error("Error deleting role:", e);
+      setError(t`Failed to delete role. Please try again later.`);
+    }
+  }
+
   return (
-    <Box>
+    <Flex direction="column" flexGrow="1" p="4">
       <Flex justify="between" align="center" mb="3">
-        <Text weight="bold">Roles</Text>
+        <Heading size="5" as="h3">
+          <Trans>Manage roles</Trans>
+        </Heading>
         <SegmentedControl.Root
           value={view}
           onValueChange={(v) => setView(v as any)}
         >
-          <SegmentedControl.Item value="list">List</SegmentedControl.Item>
-          <SegmentedControl.Item value="graph">Graph</SegmentedControl.Item>
+          <SegmentedControl.Item value="list">
+            <Trans>List</Trans>
+          </SegmentedControl.Item>
+          <SegmentedControl.Item value="graph">
+            <Trans>Graph</Trans>
+          </SegmentedControl.Item>
         </SegmentedControl.Root>
       </Flex>
 
       {view === "list" ? (
         <RolesManager
-          clubId={clubId}
           roles={roles}
-          forms={forms}
           onEditRole={openEdit}
           onCreateRole={openCreate}
-          onRolesChange={setRoles}
+          onDeleteRole={deleteRole}
         />
       ) : (
-        <RolesGraph clubId={clubId} roles={roles} forms={forms} />
+        <Suspense fallback={<Skeleton height="100%" />}>
+          <RolesGraph
+            roles={roles}
+            onEditRole={openEdit}
+            onCreateRole={openCreate}
+            onDeleteRole={deleteRole}
+          />
+        </Suspense>
       )}
 
       <RoleDialog
@@ -210,7 +240,7 @@ export default function RolesView({
         onCreate={onCreate}
         onSave={onSave}
       />
-    </Box>
+    </Flex>
   );
 }
 

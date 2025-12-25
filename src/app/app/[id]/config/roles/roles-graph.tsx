@@ -1,9 +1,6 @@
-"use client";
-
-import { createClient } from "@/lib/supabase/client";
-import { useLingui } from "@lingui/react/macro";
-import { Pencil1Icon } from "@radix-ui/react-icons";
-import { Card, Flex, IconButton } from "@radix-ui/themes";
+import { Trans } from "@lingui/react/macro";
+import { Pencil1Icon, PlusIcon } from "@radix-ui/react-icons";
+import { Card, Flex, IconButton, Tooltip } from "@radix-ui/themes";
 import {
   Background,
   Controls,
@@ -19,15 +16,9 @@ import {
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 import dagre from "dagre";
-import { useEffect, useState } from "react";
-import RoleDialog, { Role } from "./role-dialog";
+import { useEffect } from "react";
+import { Role } from "./role-dialog";
 import styles from "./roles-manager.module.css";
-
-type RolesGraphProps = {
-  clubId: string;
-  roles: Role[];
-  forms: { id: string; name: string }[];
-};
 
 type RoleNodeData = {
   label: string;
@@ -61,149 +52,60 @@ const nodeTypes = {
   roleNode: RoleNode,
 };
 
-export default function RolesGraph({ clubId, roles, forms }: RolesGraphProps) {
-  const { t } = useLingui();
-  const [localRoles, setLocalRoles] = useState<Role[]>(roles);
+export default function RolesGraph({
+  roles,
+  onEditRole,
+  onCreateRole,
+  onDeleteRole,
+}: {
+  roles: Role[];
+  onEditRole: (roleId: string) => void;
+  onCreateRole: () => void;
+  onDeleteRole: (roleId: string) => void;
+}) {
   const [nodes, setNodes, onNodesChange] = useNodesState<Node<RoleNodeData>>(
     []
   );
   const [edges, setEdges, onEdgesChange] = useEdgesState<Edge>([]);
 
-  const [dialogOpen, setDialogOpen] = useState(false);
-  const [dialogMode, setDialogMode] = useState<"new" | "edit">("edit");
-  const [selectedRole, setSelectedRole] = useState<Role | null>(null);
-  const [error, setError] = useState<string | null>(null);
-
   // Build graph when roles change
   useEffect(() => {
-    const graph = buildGraph(localRoles, openEdit);
+    const graph = buildGraph(roles, onEditRole);
     setNodes(graph.nodes);
     setEdges(graph.edges);
-  }, [localRoles]);
-
-  function openEdit(role: Role) {
-    setSelectedRole(role);
-    setDialogMode("edit");
-    setDialogOpen(true);
-  }
-
-  async function onSave(
-    roleId: string,
-    payload: Omit<Role, "id"> & { name: string }
-  ) {
-    setError(null);
-    const supabase = createClient();
-    try {
-      await supabase
-        .from("roles")
-        .update({
-          name: payload.name,
-          description: payload.description,
-          permissions: payload.permissions,
-          absence_report_reviewer_role: payload.absenceReportReviewerRole,
-          absence_report_approval_required:
-            payload.absenceReportApprovalRequired,
-          absence_report_form: payload.absenceReportFormId,
-        })
-        .eq("id", roleId)
-        .throwOnError();
-      setLocalRoles((prev) =>
-        prev.map((r) =>
-          r.id === roleId
-            ? {
-                ...r,
-                name: payload.name,
-                description: payload.description,
-                permissions: payload.permissions,
-                absenceReportReviewerRole: payload.absenceReportReviewerRole,
-                absenceReportApprovalRequired:
-                  payload.absenceReportApprovalRequired,
-                absenceReportFormId: payload.absenceReportFormId,
-              }
-            : r
-        )
-      );
-      setDialogOpen(false);
-    } catch (e) {
-      console.error("Error saving role:", e);
-      setError(t`Failed to save role. Please try again later.`);
-    }
-  }
-
-  async function onCreate(payload: Omit<Role, "id"> & { name: string }) {
-    setError(null);
-    const supabase = createClient();
-    try {
-      const { data } = await supabase
-        .from("roles")
-        .insert({
-          club_id: clubId,
-          name: payload.name,
-          description: payload.description,
-          permissions: payload.permissions,
-          absence_report_reviewer_role: payload.absenceReportReviewerRole,
-          absence_report_approval_required:
-            payload.absenceReportApprovalRequired,
-          absence_report_form: payload.absenceReportFormId,
-        })
-        .throwOnError()
-        .select()
-        .single();
-      if (data) {
-        setLocalRoles((prev) => [
-          ...prev,
-          {
-            id: data.id,
-            name: data.name,
-            description: data.description,
-            permissions: normalizePermissions(data.permissions as any),
-            absenceReportReviewerRole:
-              data.absence_report_reviewer_role ?? null,
-            absenceReportApprovalRequired:
-              data.absence_report_approval_required,
-            absenceReportFormId: (data as any).absence_report_form ?? null,
-          },
-        ]);
-      }
-      setDialogOpen(false);
-    } catch (e) {
-      console.error("Error creating role:", e);
-      setError(t`Failed to create role. Please try again later.`);
-    }
-  }
+  }, [roles, onEditRole, setEdges, setNodes]);
 
   return (
-    <Flex direction="column" gap="3">
-      <Card>
-        <div style={{ width: "100%", height: 480 }}>
-          <ReactFlow
-            nodes={nodes}
-            edges={edges}
-            nodeTypes={nodeTypes}
-            onNodesChange={onNodesChange}
-            fitView
-            nodesDraggable={true}
-            nodesConnectable={false}
-            elementsSelectable={true}
+    <Flex direction="column" gap="3" flexGrow="1" asChild>
+      <Card className={styles.rolesGraphCard}>
+        <Tooltip content={<Trans>Add role</Trans>}>
+          <IconButton
+            size="4"
+            variant="outline"
+            className={styles.addRoleButton}
+            onClick={(e) => {
+              e.stopPropagation();
+              onCreateRole();
+            }}
           >
-            <Background />
-            <Controls />
-          </ReactFlow>
-        </div>
+            <PlusIcon />
+          </IconButton>
+        </Tooltip>
+        <ReactFlow
+          nodes={nodes}
+          edges={edges}
+          nodeTypes={nodeTypes}
+          onNodesChange={onNodesChange}
+          onEdgesChange={onEdgesChange}
+          fitView
+          nodesDraggable={true}
+          nodesConnectable={false}
+          elementsSelectable={true}
+        >
+          <Background />
+          <Controls />
+        </ReactFlow>
       </Card>
-
-      <RoleDialog
-        clubId={clubId}
-        open={dialogOpen}
-        mode={dialogMode}
-        role={selectedRole}
-        roles={localRoles}
-        forms={forms}
-        error={error}
-        onClose={() => setDialogOpen(false)}
-        onCreate={onCreate}
-        onSave={onSave}
-      />
     </Flex>
   );
 }
@@ -222,14 +124,14 @@ function normalizePermissions(
 
 function buildGraph(
   roles: Role[],
-  onEdit: (role: Role) => void
+  onEdit: (roleId: string) => void
 ): { nodes: Node<RoleNodeData>[]; edges: Edge[] } {
   const nodes: Node<RoleNodeData>[] = roles.map((r) => ({
     id: r.id,
     type: "roleNode",
     data: {
       label: r.name,
-      onEdit: () => onEdit(r),
+      onEdit: () => onEdit(r.id),
     },
     position: { x: 0, y: 0 },
     draggable: true,

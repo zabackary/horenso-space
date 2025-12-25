@@ -1,7 +1,6 @@
-import { createClient } from "@/lib/supabase/client";
-import { Trans, useLingui } from "@lingui/react/macro";
-import { CrossCircledIcon, TrashIcon } from "@radix-ui/react-icons";
-import { Button, Callout, Card, Flex, Heading, Text } from "@radix-ui/themes";
+import { Trans } from "@lingui/react/macro";
+import { TrashIcon } from "@radix-ui/react-icons";
+import { Button, Card, Flex, Text } from "@radix-ui/themes";
 import styles from "./roles-manager.module.css";
 
 export type Role = {
@@ -15,56 +14,18 @@ export type Role = {
 };
 
 export default function RolesManager({
-  clubId,
   roles,
-  forms,
   onEditRole,
   onCreateRole,
-  onRolesChange,
+  onDeleteRole,
 }: {
-  clubId: string;
   roles: Role[];
-  forms: { id: string; name: string }[];
   onEditRole: (roleId: string) => void;
   onCreateRole: () => void;
-  onRolesChange: (roles: Role[]) => void;
+  onDeleteRole: (roleId: string) => void;
 }) {
-  const { t } = useLingui();
-  const [error, setError] = useState<string | null>(null);
-
-  async function deleteRole(roleId: string) {
-    if (
-      !confirm(
-        t`Are you sure you want to delete this role? This action cannot be undone.`
-      )
-    )
-      return;
-    setError(null);
-    const supabase = createClient();
-    try {
-      await supabase.from("roles").delete().eq("id", roleId).throwOnError();
-      onRolesChange(roles.filter((r) => r.id !== roleId));
-    } catch (e: unknown) {
-      console.error("Error deleting role:", e);
-      setError(t`Failed to delete role. Please try again later.`);
-    }
-  }
-
   return (
     <Flex direction="column" className={styles.root} gap="3">
-      <Heading size="5" as="h3">
-        <Trans>Manage roles</Trans>
-      </Heading>
-
-      {error && (
-        <Callout.Root color="red">
-          <Callout.Icon>
-            <CrossCircledIcon />
-          </Callout.Icon>
-          <Callout.Text>{error}</Callout.Text>
-        </Callout.Root>
-      )}
-
       <Flex direction="column" gap="3">
         {roles.length === 0 ? (
           <Text>No roles created yet.</Text>
@@ -83,7 +44,7 @@ export default function RolesManager({
                 <Button variant="outline" onClick={() => onEditRole(role.id)}>
                   <Trans>Edit</Trans>
                 </Button>
-                <Button variant="soft" onClick={() => deleteRole(role.id)}>
+                <Button variant="soft" onClick={() => onDeleteRole(role.id)}>
                   <TrashIcon />
                   <Trans>Delete</Trans>
                 </Button>
@@ -101,5 +62,3 @@ export default function RolesManager({
     </Flex>
   );
 }
-
-import { useState } from "react";
