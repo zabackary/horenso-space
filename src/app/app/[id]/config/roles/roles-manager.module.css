@@ -20,12 +20,6 @@
 .dialogBody {
   margin-top: 8px;
 }
-.permissionLabel {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
-}
 
 /* React Flow custom node styles with Radix theme variables */
 .roleNode {

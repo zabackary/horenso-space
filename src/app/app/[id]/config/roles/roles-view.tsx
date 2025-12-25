@@ -5,7 +5,7 @@ import { createClient } from "@/lib/supabase/client";
 import { Trans, useLingui } from "@lingui/react/macro";
 import { Flex, Heading, SegmentedControl, Skeleton } from "@radix-ui/themes";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { lazy, Suspense, use, useEffect, useState } from "react";
+import { lazy, Suspense, use, useCallback, useEffect, useState } from "react";
 import RoleDialog, { Role } from "./role-dialog";
 import RolesManager from "./roles-manager";
 
@@ -49,7 +49,7 @@ export default function RolesView({
       permissions: normalizePermissions(r.permissions),
       absenceReportReviewerRole: r.absence_report_reviewer_role ?? null,
       absenceReportApprovalRequired: r.absence_report_approval_required,
-      absenceReportFormId: (r as any).absence_report_form ?? null,
+      absenceReportFormId: r.absence_report_form ?? null,
     }))
   );
   const [forms] = useState<{ id: string; name: string }[]>(() =>
@@ -68,8 +68,7 @@ export default function RolesView({
     const params = new URLSearchParams(searchParams.toString());
     params.set("view", view);
     router.replace(`${pathname}?${params.toString()}`);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [view]);
+  }, [view, router, pathname, searchParams.toString()]);
 
   const [dialogOpen, setDialogOpen] = useState(false);
   const [dialogMode, setDialogMode] = useState<"new" | "edit">("new");
@@ -81,12 +80,15 @@ export default function RolesView({
     setDialogMode("new");
     setDialogOpen(true);
   }
-  function openEdit(roleId: string) {
-    const r = roles.find((x) => x.id === roleId) ?? null;
-    setSelectedRole(r);
-    setDialogMode("edit");
-    setDialogOpen(true);
-  }
+  const openEdit = useCallback(
+    (roleId: string) => {
+      const r = roles.find((x) => x.id === roleId) ?? null;
+      setSelectedRole(r);
+      setDialogMode("edit");
+      setDialogOpen(true);
+    },
+    [roles]
+  );
 
   async function onSave(
     roleId: string,
@@ -162,7 +164,7 @@ export default function RolesView({
               data.absence_report_reviewer_role ?? null,
             absenceReportApprovalRequired:
               data.absence_report_approval_required,
-            absenceReportFormId: (data as any).absence_report_form ?? null,
+            absenceReportFormId: data.absence_report_form ?? null,
           },
         ]);
       }
@@ -244,7 +246,7 @@ export default function RolesView({
   );
 }
 
-function normalizePermissions(
+export function normalizePermissions(
   p: Database["public"]["Tables"]["roles"]["Row"]["permissions"]
 ): Record<string, boolean> {
   if (!p || typeof p !== "object" || Array.isArray(p)) return {};

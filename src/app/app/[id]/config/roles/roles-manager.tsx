@@ -1,17 +1,8 @@
 import { Trans } from "@lingui/react/macro";
 import { TrashIcon } from "@radix-ui/react-icons";
 import { Button, Card, Flex, Text } from "@radix-ui/themes";
+import { Role } from "./role-dialog";
 import styles from "./roles-manager.module.css";
-
-export type Role = {
-  id: string;
-  name: string;
-  description?: string | null;
-  permissions: Record<string, boolean>;
-  absenceReportReviewerRole: string | null;
-  absenceReportApprovalRequired: boolean;
-  absenceReportFormId: string | null;
-};
 
 export default function RolesManager({
   roles,
@@ -32,8 +23,8 @@ export default function RolesManager({
         ) : (
           roles.map((role) => (
             <Card key={role.id} className={styles.roleCard}>
-              <Flex align="center" gap="2">
-                <Flex direction="column" style={{ flexGrow: 1 }}>
+              <Flex align="center" gap="2" justify="between">
+                <Flex direction="column">
                   <Text weight="bold">{role.name}</Text>
                   {role.description && (
                     <Text color="gray" size="2">
@@ -41,13 +32,15 @@ export default function RolesManager({
                     </Text>
                   )}
                 </Flex>
-                <Button variant="outline" onClick={() => onEditRole(role.id)}>
-                  <Trans>Edit</Trans>
-                </Button>
-                <Button variant="soft" onClick={() => onDeleteRole(role.id)}>
-                  <TrashIcon />
-                  <Trans>Delete</Trans>
-                </Button>
+                <Flex gap="2">
+                  <Button variant="outline" onClick={() => onEditRole(role.id)}>
+                    <Trans>Edit</Trans>
+                  </Button>
+                  <Button variant="soft" onClick={() => onDeleteRole(role.id)}>
+                    <TrashIcon />
+                    <Trans>Delete</Trans>
+                  </Button>
+                </Flex>
               </Flex>
             </Card>
           ))

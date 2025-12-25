@@ -1,5 +1,3 @@
-"use client";
-
 import { PERMISSION_KEYS, PermissionText } from "@/components/permission-text";
 import { Trans, useLingui } from "@lingui/react/macro";
 import { CrossCircledIcon, Pencil1Icon } from "@radix-ui/react-icons";
@@ -192,8 +190,8 @@ export default function RoleDialog({
                 </Trans>
               </Text>
             </Flex>
-            <Flex direction="row" align="center" gap="2">
-              <Text style={{ flexGrow: 1 }}>
+            <Flex direction="row" align="center" gap="2" justify="between">
+              <Text>
                 <Trans>Reviewer role</Trans>
               </Text>
               <Select.Root
@@ -214,8 +212,8 @@ export default function RoleDialog({
                 </Select.Content>
               </Select.Root>
             </Flex>
-            <Flex direction="row" align="center" gap="2">
-              <Text style={{ flexGrow: 1 }}>
+            <Flex direction="row" align="center" gap="2" justify="between">
+              <Text>
                 <Trans>Approval required for reports</Trans>
               </Text>
               <Switch
@@ -226,51 +224,55 @@ export default function RoleDialog({
               />
             </Flex>
 
-            <Flex direction="row" align="center" gap="2">
-              <Text style={{ flexGrow: 1 }}>
+            <Flex direction="row" align="center" gap="2" justify="between">
+              <Text>
                 <Trans>Absence report template</Trans>
               </Text>
-              <Tooltip
-                content={formId ? t`Edit template` : t`Select a template first`}
-              >
-                <IconButton
-                  variant="soft"
-                  aria-label={t`Open template editor`}
-                  disabled={!formId}
-                  asChild
+              <Flex align="center" gap="2">
+                <Tooltip
+                  content={
+                    formId ? t`Edit template` : t`Select a template first`
+                  }
                 >
-                  <Link
-                    href={
-                      formId
-                        ? `/app/${clubId}/club/config/absence-forms/${formId}`
-                        : "#"
-                    }
-                    target="_blank"
-                    onClick={(e) => {
-                      if (!formId) e.preventDefault();
-                    }}
+                  <IconButton
+                    variant="soft"
+                    aria-label={t`Open template editor`}
+                    disabled={!formId}
+                    asChild
                   >
-                    <Pencil1Icon />
-                  </Link>
-                </IconButton>
-              </Tooltip>
-              <Select.Root
-                value={formId ?? ""}
-                onValueChange={(value) =>
-                  setFormId(value === "" ? null : value)
-                }
-                name="absenceReportForm"
-                required
-              >
-                <Select.Trigger />
-                <Select.Content>
-                  {forms.map((f) => (
-                    <Select.Item key={f.id} value={f.id}>
-                      {f.name}
-                    </Select.Item>
-                  ))}
-                </Select.Content>
-              </Select.Root>
+                    <Link
+                      href={
+                        formId
+                          ? `/app/${clubId}/club/config/absence-forms/${formId}`
+                          : "#"
+                      }
+                      target="_blank"
+                      onClick={(e) => {
+                        if (!formId) e.preventDefault();
+                      }}
+                    >
+                      <Pencil1Icon />
+                    </Link>
+                  </IconButton>
+                </Tooltip>
+                <Select.Root
+                  value={formId ?? ""}
+                  onValueChange={(value) =>
+                    setFormId(value === "" ? null : value)
+                  }
+                  name="absenceReportForm"
+                  required
+                >
+                  <Select.Trigger />
+                  <Select.Content>
+                    {forms.map((f) => (
+                      <Select.Item key={f.id} value={f.id}>
+                        {f.name}
+                      </Select.Item>
+                    ))}
+                  </Select.Content>
+                </Select.Root>
+              </Flex>
             </Flex>
           </Flex>
 

@@ -1,6 +1,13 @@
 import { Trans } from "@lingui/react/macro";
-import { Pencil1Icon, PlusIcon } from "@radix-ui/react-icons";
-import { Card, Flex, IconButton, Tooltip } from "@radix-ui/themes";
+import { Pencil1Icon, PlusIcon, TrashIcon } from "@radix-ui/react-icons";
+import {
+  Card,
+  ContextMenu,
+  Flex,
+  IconButton,
+  Text,
+  Tooltip,
+} from "@radix-ui/themes";
 import {
   Background,
   Controls,
@@ -23,26 +30,48 @@ import styles from "./roles-manager.module.css";
 type RoleNodeData = {
   label: string;
   onEdit: () => void;
+  onDelete: () => void;
 };
 
 function RoleNode({ data }: NodeProps<Node<RoleNodeData>>) {
   return (
     <div className={styles.roleNode}>
       <Handle type="target" position={Position.Top} />
-      <Flex align="center" gap="2">
-        <span className={styles.roleNodeLabel}>{data.label}</span>
-        <IconButton
-          size="1"
-          variant="ghost"
-          onClick={(e) => {
-            e.stopPropagation();
-            data.onEdit();
-          }}
-          className={styles.roleNodeEditButton}
-        >
-          <Pencil1Icon />
-        </IconButton>
-      </Flex>
+      <ContextMenu.Root>
+        <ContextMenu.Trigger>
+          <Flex align="center" gap="2">
+            <Text className={styles.roleNodeLabel}>{data.label}</Text>
+            <IconButton
+              size="1"
+              variant="ghost"
+              onClick={(e) => {
+                e.stopPropagation();
+                data.onEdit();
+              }}
+              className={styles.roleNodeEditButton}
+            >
+              <Pencil1Icon />
+            </IconButton>
+          </Flex>
+        </ContextMenu.Trigger>
+        <ContextMenu.Content>
+          <ContextMenu.Item
+            onSelect={() => {
+              data.onEdit();
+            }}
+          >
+            <Pencil1Icon />
+            <Trans>Edit role</Trans>
+          </ContextMenu.Item>
+          <ContextMenu.Item
+            onSelect={() => {
+              data.onDelete();
+            }}
+          >
+            <TrashIcon /> <Trans>Delete role</Trans>
+          </ContextMenu.Item>
+        </ContextMenu.Content>
+      </ContextMenu.Root>
       <Handle type="source" position={Position.Bottom} />
     </div>
   );
@@ -70,10 +99,10 @@ export default function RolesGraph({
 
   // Build graph when roles change
   useEffect(() => {
-    const graph = buildGraph(roles, onEditRole);
+    const graph = buildGraph(roles, onEditRole, onDeleteRole);
     setNodes(graph.nodes);
     setEdges(graph.edges);
-  }, [roles, onEditRole, setEdges, setNodes]);
+  }, [roles, onEditRole, onDeleteRole, setEdges, setNodes]);
 
   return (
     <Flex direction="column" gap="3" flexGrow="1" asChild>
@@ -112,7 +141,8 @@ export default function RolesGraph({
 
 function buildGraph(
   roles: Role[],
-  onEdit: (roleId: string) => void
+  onEdit: (roleId: string) => void,
+  onDelete: (roleId: string) => void
 ): { nodes: Node<RoleNodeData>[]; edges: Edge[] } {
   const nodes: Node<RoleNodeData>[] = roles.map((r) => ({
     id: r.id,
@@ -120,6 +150,7 @@ function buildGraph(
     data: {
       label: r.name,
       onEdit: () => onEdit(r.id),
+      onDelete: () => onDelete(r.id),
     },
     position: { x: 0, y: 0 },
     draggable: true,
