@@ -1,9 +1,12 @@
 "use client";
 
+import { createClient } from "@/lib/supabase/client";
+import { Trans, useLingui } from "@lingui/react/macro";
 import {
   Box,
   Button,
   Callout,
+  Card,
   DataList,
   Flex,
   Heading,
@@ -13,18 +16,29 @@ import {
 import type { Provider, UserIdentity } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
 import { use, useEffect, useState } from "react";
-import { createClient } from "@/lib/supabase/client";
 
-const OAUTH_NAME_PROVIDERS: Partial<Record<Provider, string>> = {
-  google: "Google",
-  github: "GitHub",
-};
+const SUPPORTED_OAUTH_PROVIDERS: Provider[] = ["google", "github"];
+
+function OauthProviderName({ provider }: { provider: Provider | "email" }) {
+  switch (provider) {
+    case "google":
+      return <Trans>Google</Trans>;
+    case "github":
+      return <Trans>GitHub</Trans>;
+    case "email":
+      return <Trans>Email</Trans>;
+    default:
+      return <>{provider}</>;
+  }
+}
 
 export default function LoginAuthProvidersSettings({
   identitiesPromise,
 }: {
   identitiesPromise: Promise<UserIdentity[]>;
 }) {
+  const { i18n } = useLingui();
+
   const router = useRouter();
   const [linkingError, setLinkingError] = useState<string | null>(null);
 
@@ -59,7 +73,7 @@ export default function LoginAuthProvidersSettings({
   };
 
   const [resetPasswordError, setResetPasswordError] = useState<string | null>(
-    null,
+    null
   );
   const [resetPasswordSuccess, setResetPasswordSuccess] = useState<
     boolean | null
@@ -97,8 +111,8 @@ export default function LoginAuthProvidersSettings({
         decodeURIComponent(
           searchParams.get("error_description") ||
             searchParams.get("error_code") ||
-            "An error occurred.",
-        ),
+            "An error occurred."
+        )
       );
       // Clean up the URL to remove error params
       router.replace(window.location.pathname);
@@ -109,52 +123,69 @@ export default function LoginAuthProvidersSettings({
 
   return (
     <Flex direction="column" gap="4" align="start">
-      <Heading as="h3">Password and login</Heading>
-      <form onSubmit={handleResetPassword} style={{ display: "contents" }}>
-        <Heading as="h4" size="3">
-          Change password
-        </Heading>
-        {resetPasswordError && (
-          <Callout.Root color="red">
-            <Callout.Text>{resetPasswordError}</Callout.Text>
-          </Callout.Root>
-        )}
-        {resetPasswordSuccess && (
-          <Callout.Root color="green">
-            <Callout.Text>Password updated successfully.</Callout.Text>
-          </Callout.Root>
-        )}
-        <Text as="p">
-          <Text as="label" htmlFor="newPassword" size="2">
-            New Password
-          </Text>
-        </Text>
-        <TextField.Root
-          id="newPassword"
-          name="newPassword"
-          type="password"
-          required
-          placeholder="New password"
-          style={{ width: "100%" }}
-        />
-        <Text as="p">
-          <Text as="label" htmlFor="confirmNewPassword" size="2">
-            Confirm new password
-          </Text>
-        </Text>
-        <TextField.Root
-          id="confirmNewPassword"
-          name="confirmNewPassword"
-          type="password"
-          required
-          placeholder="New password"
-          style={{ width: "100%" }}
-        />
-        <Button type="submit" loading={resetPasswordSuccess === null}>
-          Update password
-        </Button>
-      </form>
-      <Heading as="h3">Login methods</Heading>
+      <Heading as="h3" size="4">
+        Password and login
+      </Heading>
+      <Card asChild>
+        <Flex direction="column" gap="2" width="100%" align="start" asChild>
+          <form
+            onSubmit={handleResetPassword}
+            style={{
+              display: "flex",
+            }}
+          >
+            <Heading as="h4" size="3">
+              <Trans>Change password</Trans>
+            </Heading>
+            {resetPasswordError && (
+              <Callout.Root color="red">
+                <Callout.Text>{resetPasswordError}</Callout.Text>
+              </Callout.Root>
+            )}
+            {resetPasswordSuccess && (
+              <Callout.Root color="green">
+                <Callout.Text>Password updated successfully.</Callout.Text>
+              </Callout.Root>
+            )}
+            <Text as="p">
+              <Text as="label" htmlFor="newPassword" size="2">
+                <Trans>New Password</Trans>
+              </Text>
+            </Text>
+            <TextField.Root
+              id="newPassword"
+              name="newPassword"
+              type="password"
+              required
+              placeholder="New password"
+              style={{ width: "100%" }}
+            />
+            <Text as="p">
+              <Text as="label" htmlFor="confirmNewPassword" size="2">
+                <Trans>Confirm new password</Trans>
+              </Text>
+            </Text>
+            <TextField.Root
+              id="confirmNewPassword"
+              name="confirmNewPassword"
+              type="password"
+              required
+              placeholder="New password"
+              style={{ width: "100%" }}
+            />
+            <Button
+              type="submit"
+              loading={resetPasswordSuccess === null}
+              variant="soft"
+            >
+              <Trans>Update password</Trans>
+            </Button>
+          </form>
+        </Flex>
+      </Card>
+      <Heading as="h3" size="4">
+        Login methods
+      </Heading>
       {linkingError && (
         <Callout.Root color="red">
           <Callout.Text>{linkingError}</Callout.Text>
@@ -165,46 +196,50 @@ export default function LoginAuthProvidersSettings({
         {identities.map((identity) => (
           <DataList.Item key={identity.id}>
             <DataList.Label title={identity.id}>
-              {OAUTH_NAME_PROVIDERS[identity.provider as Provider] ||
-              identity.provider === "email"
-                ? "Email"
-                : identity.provider}
+              <OauthProviderName provider={identity.provider as Provider} />
             </DataList.Label>
             <DataList.Value>
               <Box>
                 <Button
                   onClick={() => handleOauthUnlink(identity)}
                   loading={unlinking === (identity.provider as Provider)}
+                  variant="soft"
                 >
-                  Unlink
+                  <Trans>Unlink account</Trans>
                 </Button>
                 <Text as="div" size="2" mt="2">
-                  Last used:{" "}
-                  {identity.last_sign_in_at
-                    ? new Date(identity.last_sign_in_at).toLocaleString()
-                    : "Never"}
+                  {identity.last_sign_in_at ? (
+                    <Trans>
+                      Last used{" "}
+                      {i18n.date(identity.last_sign_in_at, {
+                        dateStyle: "medium",
+                        timeStyle: "short",
+                      })}
+                    </Trans>
+                  ) : (
+                    <Trans>Never used</Trans>
+                  )}
                 </Text>
               </Box>
             </DataList.Value>
           </DataList.Item>
         ))}
-        {Object.keys(OAUTH_NAME_PROVIDERS).map((provider) => {
+        {SUPPORTED_OAUTH_PROVIDERS.map((provider) => {
           if (!identities.find((id) => id.provider === provider)) {
             return (
               <DataList.Item key={provider}>
                 <DataList.Label>
-                  {OAUTH_NAME_PROVIDERS[provider as Provider] || provider}
+                  <OauthProviderName provider={provider} />
                 </DataList.Label>
                 <DataList.Value>
                   <Button
                     onClick={() => handleOauthLink(provider as Provider)}
                     loading={linking === provider}
+                    variant="soft"
                   >
-                    {linking === provider
-                      ? "Linking..."
-                      : `Link ${
-                          OAUTH_NAME_PROVIDERS[provider as Provider] || provider
-                        } account`}
+                    <Trans>
+                      Link <OauthProviderName provider={provider} /> account
+                    </Trans>
                   </Button>
                 </DataList.Value>
               </DataList.Item>

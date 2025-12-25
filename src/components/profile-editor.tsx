@@ -1,11 +1,12 @@
 "use client";
 
-import { CheckCircledIcon } from "@radix-ui/react-icons";
-import { Callout, Spinner, Text, TextArea, TextField } from "@radix-ui/themes";
-import { use, useId, useState } from "react";
 import type { Profile } from "@/lib/auth/getProfile";
 import { useDebounceCallback } from "@/lib/debounce";
 import { createClient } from "@/lib/supabase/client";
+import { Trans, useLingui } from "@lingui/react/macro";
+import { CheckCircledIcon } from "@radix-ui/react-icons";
+import { Callout, Spinner, Text, TextArea, TextField } from "@radix-ui/themes";
+import { use, useId, useState } from "react";
 
 export default function ProfileEditor({
   profilePromise,
@@ -25,7 +26,7 @@ export default function ProfileEditor({
         .form!;
       const formData = new FormData(form);
       const data = Object.fromEntries(
-        formData.entries().map(([k, v]) => [k, v === "" ? null : v]),
+        formData.entries().map(([k, v]) => [k, v === "" ? null : v])
       );
 
       const supabase = createClient();
@@ -44,6 +45,8 @@ export default function ProfileEditor({
     debounceFormUpdate(event);
   };
 
+  const { t } = useLingui();
+
   return (
     <form onChange={handleFormUpdate}>
       {showFormSaving !== null ? (
@@ -51,21 +54,23 @@ export default function ProfileEditor({
           <Callout.Icon>
             {showFormSaving ? <Spinner /> : <CheckCircledIcon />}
           </Callout.Icon>
-          <Callout.Text>{showFormSaving ? "Saving..." : "Saved!"}</Callout.Text>
+          <Callout.Text>
+            {showFormSaving ? t`Saving...` : t`Saved!`}
+          </Callout.Text>
         </Callout.Root>
       ) : null}
       {/* TODO: add profile public/private toggle here */}
       {/* TODO: add profile picture upload here */}
 
-      <Text as="p" mt="4" mb="1">
+      <Text as="p" mb="1">
         <Text as="label" htmlFor={`${a11yId}-name`} size="2">
-          Full name <span aria-label="required">*</span>
+          <Trans>Full Name</Trans> <span aria-label="required">*</span>
         </Text>
       </Text>
       <TextField.Root
         name="full_name"
         defaultValue={profile.full_name}
-        placeholder="Your full name"
+        placeholder={t`Your full name`}
         type="text"
         required
         autoComplete="name"
@@ -74,13 +79,13 @@ export default function ProfileEditor({
 
       <Text as="p" mt="4" mb="1">
         <Text as="label" htmlFor={`${a11yId}-nickname`} size="2">
-          Nickname
+          <Trans>Nickname</Trans>
         </Text>
       </Text>
       <TextField.Root
         name="nickname"
         defaultValue={profile.nickname ?? ""}
-        placeholder="Your nickname"
+        placeholder={t`What people call you`}
         type="text"
         autoComplete="name"
         id={`${a11yId}-nickname`}
@@ -88,26 +93,26 @@ export default function ProfileEditor({
 
       <Text as="p" mt="4" mb="1">
         <Text as="label" htmlFor={`${a11yId}-school`} size="2">
-          School
+          <Trans>School</Trans>
         </Text>
       </Text>
       <TextField.Root
         name="school"
         defaultValue={profile.school ?? ""}
-        placeholder="通っている学校名"
+        placeholder={t`Your school name`}
         type="text"
         id={`${a11yId}-school`}
       />
 
       <Text as="p" mt="4" mb="1">
         <Text as="label" htmlFor={`${a11yId}-bio`} size="2">
-          Biography
+          <Trans>Biography</Trans>
         </Text>
       </Text>
       <TextArea
         name="bio"
         defaultValue={profile.bio ?? ""}
-        placeholder="〇〇出身。"
+        placeholder={t`Born in 〇〇.`}
         id={`${a11yId}-bio`}
       />
     </form>
