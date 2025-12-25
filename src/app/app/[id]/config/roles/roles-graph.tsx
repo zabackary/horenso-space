@@ -110,18 +110,6 @@ export default function RolesGraph({
   );
 }
 
-function normalizePermissions(
-  p: Record<string, unknown> | null
-): Record<string, boolean> {
-  if (!p || typeof p !== "object" || Array.isArray(p)) return {};
-  const entries = Object.entries(p as Record<string, unknown>);
-  const out: Record<string, boolean> = {};
-  entries.forEach(([k, v]) => {
-    out[k] = Boolean(v);
-  });
-  return out;
-}
-
 function buildGraph(
   roles: Role[],
   onEdit: (roleId: string) => void
