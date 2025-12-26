@@ -45,10 +45,10 @@ export default function MetadataForm({
       await supabase
         .from("clubs")
         .update({
-          name: (data["name"] as string) ?? "",
-          description: (data["description"] as string) ?? null,
-          website: (data["website"] as string) ?? null,
-          public: data["public"] === "on" || data["public"] === "true",
+          name: (data.name as string) ?? "",
+          description: (data.description as string) ?? null,
+          website: (data.website as string) ?? null,
+          public: data.public === "on" || data.public === "true",
         })
         .eq("id", club.id)
         .throwOnError();

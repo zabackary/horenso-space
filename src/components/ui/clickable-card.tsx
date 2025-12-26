@@ -9,7 +9,7 @@ export default function ClickableCard({
 }: CardProps) {
   return (
     <Card {...props} className={`${styles.clickableCard} ${className}`} asChild>
-      {asChild ? children : <button>{children}</button>}
+      {asChild ? children : <button type="button">{children}</button>}
     </Card>
   );
 }

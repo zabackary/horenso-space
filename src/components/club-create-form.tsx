@@ -65,7 +65,7 @@ export function ClubCreateForm() {
     <form onSubmit={handleCreate}>
       <Flex direction="column" gap="2" my="4">
         <Text as="label" htmlFor={`${a11yId}-name`} size="2">
-          <Trans>Club name</Trans> <span aria-label="required">*</span>
+          <Trans>Club name</Trans> <span>*</span>
         </Text>
         <TextField.Root
           placeholder={t`Your club`}

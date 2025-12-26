@@ -393,7 +393,7 @@ function ItemEditor({
                             {normalizeChildren(opt.children).map(
                               (child, childIndex) => (
                                 <ItemEditor
-                                  key={`child-${index}-${childIndex}`}
+                                  key={`child-${opt.label}-${child.title}-${childIndex}`}
                                   item={child}
                                   onChange={(next) =>
                                     updateChildOption(index, childIndex, next)
@@ -478,7 +478,7 @@ export default function AbsenceFormEditor({
       <div className={styles.items}>
         {value.items.map((item, index) => (
           <ItemEditor
-            key={index}
+            key={`item-${item.title}-${index}`}
             item={item}
             onChange={(next) => updateItem(index, next)}
             onRemove={() => removeItem(index)}

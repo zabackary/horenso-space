@@ -11,7 +11,7 @@ export default async function Page({
 }: {
   params: Promise<{ lang: string }>;
 }) {
-  const {} = await params;
+  await params;
   await initLingui();
   return <ForgotPasswordForm />;
 }

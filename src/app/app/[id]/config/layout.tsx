@@ -15,10 +15,10 @@ export default async function ClubConfigLayout({
   await initLingui();
 
   const supabase = await createClient();
-  let perms;
+  let perms: Awaited<ReturnType<typeof getPermissionsForClub>>;
   try {
     perms = await getPermissionsForClub(supabase, id);
-  } catch (e) {
+  } catch (_e) {
     notFound();
   }
 

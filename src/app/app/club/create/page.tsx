@@ -9,7 +9,7 @@ import { initLingui } from "@/lib/i18n/initLingui";
 export default async function CreateClubPage({
   params,
 }: PageProps<"/app/club/create">) {
-  const {} = await params;
+  await params;
   await initLingui();
   return (
     <FullscreenCard

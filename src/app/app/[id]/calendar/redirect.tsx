@@ -12,6 +12,6 @@ export default function CalendarRedirect({ id }: { id: string }) {
       .toString()
       .padStart(2, "0")}`;
     redirect(pathname);
-  }, []);
+  }, [id]);
   return null;
 }

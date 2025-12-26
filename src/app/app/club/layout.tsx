@@ -5,7 +5,7 @@ export default async function ClubLayout({
   children,
   params,
 }: LayoutProps<"/app/club">) {
-  const {} = await params;
+  await params;
   await initLingui();
   return (
     <>

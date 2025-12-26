@@ -70,7 +70,7 @@ export default function DayCalendar({
     return () => {
       abortController.abort();
     };
-  }, [date, clubId, supabase, refreshKey]);
+  }, [date, clubId, supabase]);
 
   return (
     <Flex direction="column" p="4" gap="4">

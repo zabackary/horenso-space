@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Home({ params }: PageProps<"/">) {
-  const {} = await params;
+  await params;
   await initLingui();
 
   return (

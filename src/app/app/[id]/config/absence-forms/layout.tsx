@@ -22,19 +22,17 @@ export default async function AbsenceFormsLayout({
     ).data ?? [];
 
   return (
-    <>
-      <Flex p="4" direction="column" gap="3" className={styles.root}>
-        <div className={styles.mobileMenuWrapper}>
+    <Flex p="4" direction="column" gap="3" className={styles.root}>
+      <div className={styles.mobileMenuWrapper}>
+        <Sidebar clubId={id} forms={forms} />
+      </div>
+      <Flex className={styles.layout}>
+        <Card className={styles.sidebar}>
           <Sidebar clubId={id} forms={forms} />
-        </div>
-        <Flex className={styles.layout}>
-          <Card className={styles.sidebar}>
-            <Sidebar clubId={id} forms={forms} />
-          </Card>
+        </Card>
 
-          <div className={styles.detailCard}>{children}</div>
-        </Flex>
+        <div className={styles.detailCard}>{children}</div>
       </Flex>
-    </>
+    </Flex>
   );
 }

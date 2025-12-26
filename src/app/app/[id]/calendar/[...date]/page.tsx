@@ -40,7 +40,7 @@ export default async function CalendarYearPage({
   switch (date.length) {
     case 1: {
       // Year view
-      if (isNaN(Number(date[0]))) {
+      if (Number.isNaN(Number(date[0]))) {
         notFound();
       }
 
@@ -56,7 +56,7 @@ export default async function CalendarYearPage({
     case 2: {
       // Month view
       const [year, month] = date;
-      if (isNaN(Number(year)) || isNaN(Number(month))) {
+      if (Number.isNaN(Number(year)) || Number.isNaN(Number(month))) {
         notFound();
       }
 
@@ -72,7 +72,11 @@ export default async function CalendarYearPage({
     case 3: {
       // Day view
       const [year, month, day] = date;
-      if (isNaN(Number(year)) || isNaN(Number(month)) || isNaN(Number(day))) {
+      if (
+        Number.isNaN(Number(year)) ||
+        Number.isNaN(Number(month)) ||
+        Number.isNaN(Number(day))
+      ) {
         notFound();
       }
 

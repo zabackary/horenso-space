@@ -68,7 +68,7 @@ export default function RolesView({
     const params = new URLSearchParams(searchParams.toString());
     params.set("view", view);
     router.replace(`${pathname}?${params.toString()}`);
-  }, [view, router, pathname, searchParams.toString()]);
+  }, [view, router, pathname, searchParams.toString]);
 
   const [dialogOpen, setDialogOpen] = useState(false);
   const [dialogMode, setDialogMode] = useState<"new" | "edit">("new");

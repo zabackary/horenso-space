@@ -181,7 +181,7 @@ function MonthCard({
     return () => {
       abortController.abort();
     };
-  }, [year, supabase, refreshKey]);
+  }, [year, supabase, clubId, month]);
 
   // Render a grid of dates for the month
   const daysInMonth = useMemo(
@@ -221,14 +221,16 @@ function MonthCard({
           if (i < firstDayOfMonth) {
             return (
               <Box
-                key={`dimmed-start-${i}`}
+                // biome-ignore lint/suspicious/noArrayIndexKey: Grid position is stable identity
+                key={`empty-before-${year}-${month}-${i}`}
                 className={clsx(styles.dayCell, styles.dayCellDimmed)}
               />
             );
           } else if (i >= firstDayOfMonth + daysInMonth) {
             return (
               <Box
-                key={`dimmed-end-${i}`}
+                // biome-ignore lint/suspicious/noArrayIndexKey: Grid position is stable identity
+                key={`empty-after-${year}-${month}-${i}`}
                 className={clsx(styles.dayCell, styles.dayCellDimmed)}
               />
             );

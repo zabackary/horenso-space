@@ -8,7 +8,7 @@ import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
 
 export default async function App({ params }: PageProps<"/app">) {
-  const {} = await params;
+  await params;
   await initLingui();
   const supabase = await createClient();
   const { data: clubs, error: clubsError } = await supabase

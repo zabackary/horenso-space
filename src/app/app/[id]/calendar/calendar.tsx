@@ -70,7 +70,7 @@ export default function Calendar({
   clubId,
   canWrite = false,
 }: CalendarProps) {
-  const router = useRouter();
+  const _router = useRouter();
   const [mode, setMode] = useState<"year" | "month" | "day">(initialMode);
   const [date, setDate] = useState(() => {
     // Normalize date format, using today's date's less significant parts if missing
@@ -106,7 +106,7 @@ export default function Calendar({
               : ""
       }`,
     );
-  }, [date, mode]);
+  }, [date, mode, clubId]);
 
   const handleModeChange = (newMode: "year" | "month" | "day") => {
     setMode(newMode);

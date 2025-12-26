@@ -103,7 +103,7 @@ export default function AbsenceFormDetail({
       if (delError) throw delError;
       // Soft UX: navigate back
       window.location.href = window.location.pathname.replace(/\/[^/]+$/, "");
-    } catch (e: unknown) {
+    } catch (_e: unknown) {
       setError(t`Failed to delete template.`);
     } finally {
       setDeleting(false);

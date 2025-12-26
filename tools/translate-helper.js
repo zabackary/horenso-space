@@ -74,14 +74,16 @@ function escapePo(text) {
 function hasComplexBraces(text) {
   const braceRegex = /\{([^{}]*)\}/g;
   let match;
-  let foundBrace = false;
+  let _foundBrace = false;
 
-  while ((match = braceRegex.exec(text)) !== null) {
-    foundBrace = true;
+  match = braceRegex.exec(text);
+  while (match !== null) {
+    _foundBrace = true;
     const inner = match[1];
     if (!/^[A-Za-z0-9]+$/.test(inner)) {
       return true;
     }
+    match = braceRegex.exec(text);
   }
 
   // If there were braces but all were simple, it's fine
@@ -95,8 +97,10 @@ function extractJSXTags(text) {
   const tags = [];
   const tagRegex = /<(\d+)>.*?<\/\1>|<(\d+)\/>/g;
   let match;
-  while ((match = tagRegex.exec(text)) !== null) {
+  match = tagRegex.exec(text);
+  while (match !== null) {
     tags.push(match[1] || match[2]);
+    match = tagRegex.exec(text);
   }
   return tags;
 }
@@ -260,7 +264,9 @@ async function main() {
     await flushChunk();
 
     console.log(`\n✓ Created ${tempFiles.length} temporary file(s):`);
-    tempFiles.forEach((file, idx) => console.log(`   ${idx + 1}. ${file}`));
+    tempFiles.forEach((file, idx) => {
+      console.log(`   ${idx + 1}. ${file}`);
+    });
 
     console.log("\nNext steps for each file (in order):");
     console.log("1. Open the file");

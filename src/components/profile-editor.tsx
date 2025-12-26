@@ -64,7 +64,7 @@ export default function ProfileEditor({
 
       <Text as="p" mb="1">
         <Text as="label" htmlFor={`${a11yId}-name`} size="2">
-          <Trans>Full Name</Trans> <span aria-label="required">*</span>
+          <Trans>Full Name</Trans> <span>*</span>
         </Text>
       </Text>
       <TextField.Root

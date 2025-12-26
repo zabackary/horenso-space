@@ -81,7 +81,7 @@ export default function AbsenceFormsManager({
   const [error, setError] = useState<string | null>(null);
   const [isSaving, setIsSaving] = useState(false);
   const [isCreating, setIsCreating] = useState(false);
-  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+  const [_isPopoverOpen, _setIsPopoverOpen] = useState(false);
 
   const selected = useMemo(
     () => forms.find((f) => f.id === selectedId) ?? null,

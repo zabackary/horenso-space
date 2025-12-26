@@ -117,7 +117,10 @@ export default function LoginAuthProvidersSettings({
       // Clean up the URL to remove error params
       router.replace(window.location.pathname);
     }
-  }, []);
+  }, [
+    // Clean up the URL to remove error params
+    router.replace,
+  ]);
 
   const identities = use(identitiesPromise);
 

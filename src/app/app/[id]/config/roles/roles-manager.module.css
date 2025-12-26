@@ -120,7 +120,7 @@
   position: absolute;
   bottom: 8px;
   right: 8px;
-  background: var(--color-panel-solid) !important;
+  background: var(--color-panel-solid);
   border: 1px solid var(--gray-a6);
   border-radius: var(--radius-2);
   box-shadow: var(--shadow-2);

@@ -12,7 +12,7 @@ export default async function MeLayout({
   children,
   params,
 }: LayoutProps<"/app/users/me">) {
-  const {} = await params;
+  await params;
   await initLingui();
   const supabase = await createClient();
   const profile = await getProfile(supabase);

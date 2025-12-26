@@ -93,7 +93,7 @@ export default function CreateEventCard({
 
   return (
     <Flex direction="column" gap="2" p={withPadding ? "1" : "0"} asChild>
-      <form onSubmit={handleSubmit} className={styles["form"]}>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <TextField.Root
           placeholder={t`New event name`}
           size="3"

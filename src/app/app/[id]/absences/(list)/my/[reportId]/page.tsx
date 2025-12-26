@@ -42,7 +42,7 @@ export default async function Page({
     `,
     )
     .eq("id", reportId)
-    .eq("user_id", profile!.id)
+    .eq("user_id", profile?.id)
     .eq("club_id", id)
     .single();
 

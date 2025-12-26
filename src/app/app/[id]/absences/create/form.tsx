@@ -57,7 +57,7 @@ export default function Form({
         date: date ?? undefined,
         form_id: template.id,
         data: data,
-        user_id: user!.id,
+        user_id: user?.id,
       },
     ]);
     if (error) {
@@ -95,8 +95,8 @@ export default function Form({
               style={{ width: "100%" }}
             />
             <Select.Content>
-              {eventsData.map((event, index) => (
-                <Select.Item key={index} value={event.id}>
+              {eventsData.map((event) => (
+                <Select.Item key={event.id} value={event.id}>
                   {event.title} - {event.startTime.toDateString()}
                 </Select.Item>
               ))}

@@ -5,7 +5,7 @@ export default async function UsersLayout({
   children,
   params,
 }: LayoutProps<"/app/users">) {
-  const {} = await params;
+  await params;
   await initLingui();
   return (
     <>

@@ -6,7 +6,7 @@ export default async function AuthLayout({
   children,
   params,
 }: LayoutProps<"/auth">) {
-  const {} = await params;
+  await params;
   await initLingui();
   return (
     <>

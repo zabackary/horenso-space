@@ -5,7 +5,7 @@ export default async function Layout({
   children,
   params,
 }: LayoutProps<`/app/[id]/calendar`>) {
-  const {} = await params;
+  await params;
   await initLingui();
   return <>{children}</>;
 }

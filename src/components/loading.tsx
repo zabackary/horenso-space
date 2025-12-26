@@ -29,7 +29,8 @@ export function ListLoading({
         <Heading size="3">Heading name</Heading>
       </Skeleton>
       {new Array(3).fill(0).map((_, index) => (
-        <Skeleton key={index} width="100%" height="60px" />
+        // biome-ignore lint/suspicious/noArrayIndexKey: Static loading skeletons never reorder
+        <Skeleton key={`skeleton-${index}`} width="100%" height="60px" />
       ))}
     </Flex>
   );

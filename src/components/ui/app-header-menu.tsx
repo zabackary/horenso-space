@@ -40,7 +40,7 @@ export function AppHeaderMenu({ profile }: AppHeaderMenuProps) {
             </DropdownMenu.Item>
             <DropdownMenu.Separator />
             <DropdownMenu.Item asChild>
-              <button formAction={logout}>
+              <button type="submit" formAction={logout}>
                 <Trans>Log out</Trans>
               </button>
             </DropdownMenu.Item>

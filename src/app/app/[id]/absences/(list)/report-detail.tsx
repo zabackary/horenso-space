@@ -66,7 +66,7 @@ export default function ReportDetail({
     return () => {
       abortController.abort();
     };
-  }, [report.form_id, clubId]);
+  }, [report.form_id]);
 
   return (
     <Flex direction="column" gap="4" flexGrow="1">

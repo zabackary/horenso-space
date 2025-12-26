@@ -60,7 +60,7 @@ export default function ReportDetail({
     return () => {
       abortController.abort();
     };
-  }, [report.form_id, clubId]);
+  }, [report.form_id]);
 
   const [isAccepted, setIsAccepted] = useState<boolean | null>(null);
   useEffect(() => {

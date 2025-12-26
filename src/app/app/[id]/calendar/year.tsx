@@ -47,7 +47,7 @@ export default function YearCalendar({
         }, 0);
       }
     }
-  }, [year, years, ref]);
+  }, [year, years]);
   const supabase = useMemo(() => {
     return createClient();
   }, []);
@@ -149,7 +149,7 @@ function YearCard({
     return () => {
       abortController.abort();
     };
-  }, [year, supabase]);
+  }, [year, supabase, clubId]);
 
   return (
     <Flex p="4" className={styles.yearCard}>
@@ -165,7 +165,7 @@ function YearCard({
         width="100%"
         flexGrow="1"
       >
-        {Array.from({ length: 12 }, (_, i) => i + 1).map((month, i) => (
+        {Array.from({ length: 12 }, (_, i) => i + 1).map((month, _i) => (
           <Box
             key={month}
             className={styles.monthCard}
@@ -245,14 +245,16 @@ function MonthPreview({
         if (i < firstDayOfMonth) {
           return (
             <Box
-              key={`dimmed-start-${i}`}
+              // biome-ignore lint/suspicious/noArrayIndexKey: Grid position is stable identity
+              key={`empty-before-${year}-${month}-${i}`}
               className={clsx(styles.dayCell, styles.dayCellDimmed)}
             />
           );
         } else if (i >= firstDayOfMonth + daysInMonth) {
           return (
             <Box
-              key={`dimmed-end-${i}`}
+              // biome-ignore lint/suspicious/noArrayIndexKey: Grid position is stable identity
+              key={`empty-after-${year}-${month}-${i}`}
               className={clsx(styles.dayCell, styles.dayCellDimmed)}
             />
           );
