@@ -1,7 +1,5 @@
 "use client";
 
-import AbsenceFormRenderer from "@/components/absence-form-renderer";
-import { createClient } from "@/lib/supabase/client";
 import { Trans } from "@lingui/react/macro";
 import {
   Badge,
@@ -14,6 +12,8 @@ import {
   Text,
 } from "@radix-ui/themes";
 import { useEffect, useState } from "react";
+import AbsenceFormRenderer from "@/components/absence-form-renderer";
+import { createClient } from "@/lib/supabase/client";
 
 type Report = {
   id: string;

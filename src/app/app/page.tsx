@@ -1,11 +1,11 @@
-import { AppHeader } from "@/components/ui/app-header";
-import ClubCard from "@/components/ui/club-card";
-import { initLingui } from "@/lib/i18n/initLingui";
-import { createClient } from "@/lib/supabase/server";
 import { Trans } from "@lingui/react/macro";
 import { CrossCircledIcon } from "@radix-ui/react-icons";
 import { Button, Callout, Flex, Heading } from "@radix-ui/themes";
 import Link from "next/link";
+import { AppHeader } from "@/components/ui/app-header";
+import ClubCard from "@/components/ui/club-card";
+import { initLingui } from "@/lib/i18n/initLingui";
+import { createClient } from "@/lib/supabase/server";
 
 export default async function App({ params }: PageProps<"/app">) {
   const {} = await params;

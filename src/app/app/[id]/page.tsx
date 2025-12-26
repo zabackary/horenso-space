@@ -1,9 +1,9 @@
+import { Trans } from "@lingui/react/macro";
+import { Box, Card, Grid, Heading, Text } from "@radix-ui/themes";
 import HomeCard from "@/components/ui/home-card";
 import getPermissionsForClub from "@/lib/auth/getPermissionsForClub";
 import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
-import { Trans } from "@lingui/react/macro";
-import { Box, Card, Grid, Heading, Text } from "@radix-ui/themes";
 
 export default async function ClubPage({ params }: PageProps<"/app/[id]">) {
   const { id } = await params;

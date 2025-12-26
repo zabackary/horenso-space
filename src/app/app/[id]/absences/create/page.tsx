@@ -1,10 +1,10 @@
-import { AbsenceForm } from "@/@types/AbsenceForm";
+import { Trans } from "@lingui/react/macro";
+import { Callout, Heading } from "@radix-ui/themes";
+import type { AbsenceForm } from "@/@types/AbsenceForm";
 import { FullscreenCard } from "@/components/ui/fullscreen-card";
 import getProfile from "@/lib/auth/getProfile";
 import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
-import { Trans } from "@lingui/react/macro";
-import { Callout, Heading } from "@radix-ui/themes";
 import Form from "./form";
 
 export default async function Page({
@@ -39,7 +39,7 @@ export default async function Page({
           title: event.title,
           startTime: new Date(event.start_time),
           endTime: new Date(event.end_time),
-        })) || []
+        })) || [],
     );
 
   return (

@@ -1,7 +1,7 @@
+import { notFound } from "next/navigation";
 import getPermissionsForClub from "@/lib/auth/getPermissionsForClub";
 import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
-import { notFound } from "next/navigation";
 import getReports from "../getReports";
 import AbsenceReportList from "../list";
 

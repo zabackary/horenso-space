@@ -1,10 +1,10 @@
-import { ClubCreateForm } from "@/components/club-create-form";
-import { FullscreenCard } from "@/components/ui/fullscreen-card";
-import { initLingui } from "@/lib/i18n/initLingui";
 import { Trans } from "@lingui/react/macro";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { Button, Heading } from "@radix-ui/themes";
 import Link from "next/link";
+import { ClubCreateForm } from "@/components/club-create-form";
+import { FullscreenCard } from "@/components/ui/fullscreen-card";
+import { initLingui } from "@/lib/i18n/initLingui";
 
 export default async function CreateClubPage({
   params,

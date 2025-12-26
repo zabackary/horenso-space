@@ -1,8 +1,5 @@
 "use client";
 
-import type { AbsenceForm } from "@/@types/AbsenceForm";
-import type { Database } from "@/@types/database.types";
-import { createClient } from "@/lib/supabase/client";
 import { Trans, useLingui } from "@lingui/react/macro";
 import { CrossCircledIcon, TrashIcon } from "@radix-ui/react-icons";
 import {
@@ -15,6 +12,9 @@ import {
 } from "@radix-ui/themes";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
+import type { AbsenceForm } from "@/@types/AbsenceForm";
+import type { Database } from "@/@types/database.types";
+import { createClient } from "@/lib/supabase/client";
 import AbsenceFormEditor from "./absence-form-editor";
 
 type AbsenceFormRow =
@@ -53,7 +53,7 @@ export default function AbsenceFormDetail({
   const [saving, setSaving] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [savedSnapshot, setSavedSnapshot] = useState(() =>
-    JSON.stringify({ name: initial.name, questions: initial.questions })
+    JSON.stringify({ name: initial.name, questions: initial.questions }),
   );
 
   const { t } = useLingui();
@@ -78,7 +78,7 @@ export default function AbsenceFormDetail({
         .eq("club_id", clubId);
       if (updateError) throw updateError;
       setSavedSnapshot(
-        JSON.stringify({ name: state.name, questions: state.questions })
+        JSON.stringify({ name: state.name, questions: state.questions }),
       );
       router.refresh();
     } catch (e: unknown) {

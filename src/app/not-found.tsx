@@ -1,10 +1,10 @@
-import { AppHeader } from "@/components/ui/app-header";
-import { initLingui } from "@/lib/i18n/initLingui";
 import { Trans } from "@lingui/react/macro";
 import { Button, Flex, Heading, Text } from "@radix-ui/themes";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { AppHeader } from "@/components/ui/app-header";
+import { initLingui } from "@/lib/i18n/initLingui";
 import styles from "./not-found.module.css";
 
 export const metadata: Metadata = {

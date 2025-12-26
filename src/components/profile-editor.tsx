@@ -1,12 +1,12 @@
 "use client";
 
-import type { Profile } from "@/lib/auth/getProfile";
-import { useDebounceCallback } from "@/lib/debounce";
-import { createClient } from "@/lib/supabase/client";
 import { Trans, useLingui } from "@lingui/react/macro";
 import { CheckCircledIcon } from "@radix-ui/react-icons";
 import { Callout, Spinner, Text, TextArea, TextField } from "@radix-ui/themes";
 import { use, useId, useState } from "react";
+import type { Profile } from "@/lib/auth/getProfile";
+import { useDebounceCallback } from "@/lib/debounce";
+import { createClient } from "@/lib/supabase/client";
 
 export default function ProfileEditor({
   profilePromise,
@@ -26,7 +26,7 @@ export default function ProfileEditor({
         .form!;
       const formData = new FormData(form);
       const data = Object.fromEntries(
-        formData.entries().map(([k, v]) => [k, v === "" ? null : v])
+        formData.entries().map(([k, v]) => [k, v === "" ? null : v]),
       );
 
       const supabase = createClient();

@@ -1,11 +1,11 @@
 "use client";
 
-import { logout } from "@/actions/auth";
-import { Profile } from "@/lib/auth/getProfile";
 import { Trans } from "@lingui/react/macro";
 import { Avatar, Dialog, DropdownMenu, IconButton } from "@radix-ui/themes";
 import Link from "next/link";
 import { lazy, useState } from "react";
+import { logout } from "@/actions/auth";
+import type { Profile } from "@/lib/auth/getProfile";
 
 const FeedbackForm = lazy(() => import("../feedback-form"));
 

@@ -1,13 +1,5 @@
 "use client";
 
-import type {
-  AbsenceForm,
-  AbsenceFormItem,
-  MultipleChoiceItem,
-  SimpleTextItem,
-  TextItem,
-  TimeItem,
-} from "@/@types/AbsenceForm";
 import { CrossCircledIcon } from "@radix-ui/react-icons";
 import {
   Box,
@@ -22,6 +14,14 @@ import {
   TextField,
 } from "@radix-ui/themes";
 import { useState } from "react";
+import type {
+  AbsenceForm,
+  AbsenceFormItem,
+  MultipleChoiceItem,
+  SimpleTextItem,
+  TextItem,
+  TimeItem,
+} from "@/@types/AbsenceForm";
 import styles from "./absence-form-renderer.module.css";
 
 export type AbsenceFormValues = Record<string, unknown>;
@@ -54,7 +54,7 @@ export function AbsenceFormRenderer({
   // Flatten all items including nested children into a single list
   function flattenItems(
     items: AbsenceFormItem[],
-    basePath: number[] = []
+    basePath: number[] = [],
   ): Array<{
     item: AbsenceFormItem;
     path: number[];
@@ -106,7 +106,7 @@ export function AbsenceFormRenderer({
       // Check if parent multipleChoice has selected the option that includes this child
       const selectedValue = values[parentKey] as string;
       return selectedValue === parentValue;
-    }
+    },
   );
 
   function renderItem(item: AbsenceFormItem, path: number[]) {
@@ -147,7 +147,7 @@ export function AbsenceFormRenderer({
             // Keep controlled for lifetime of component
             value={
               typeof values[key] === "string"
-                ? (values[key] as string) ?? ""
+                ? ((values[key] as string) ?? "")
                 : ""
             }
             onValueChange={(val) => updateValue(key, val)}

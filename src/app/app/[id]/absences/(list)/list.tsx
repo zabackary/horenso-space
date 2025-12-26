@@ -1,11 +1,11 @@
 "use client";
 
-import ClickableCard from "@/components/ui/clickable-card";
 import { Plural, Trans } from "@lingui/react/macro";
 import { Badge, Flex, Spinner, Text } from "@radix-ui/themes";
 import Link from "next/link";
 import { Suspense, use } from "react";
-import { AbsenceReport } from "./getReports";
+import ClickableCard from "@/components/ui/clickable-card";
+import type { AbsenceReport } from "./getReports";
 
 type AbsenceReportListProps = {
   reports: PromiseLike<AbsenceReport[]>;

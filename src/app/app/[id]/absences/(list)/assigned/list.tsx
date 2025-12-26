@@ -1,10 +1,10 @@
 "use client";
 
-import type { Database } from "@/@types/database.types";
-import ClickableCard from "@/components/ui/clickable-card";
 import { Trans, useLingui } from "@lingui/react/macro";
 import { Card, Flex, Heading, Text } from "@radix-ui/themes";
 import { useState } from "react";
+import type { Database } from "@/@types/database.types";
+import ClickableCard from "@/components/ui/clickable-card";
 import ReportDetail from "./detail";
 import styles from "./list.module.css";
 

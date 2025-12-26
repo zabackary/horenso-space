@@ -1,9 +1,9 @@
-import getPermissionsForClub from "@/lib/auth/getPermissionsForClub";
-import { initLingui } from "@/lib/i18n/initLingui";
-import { createClient } from "@/lib/supabase/server";
 import { Trans } from "@lingui/react/macro";
 import { Flex, Heading } from "@radix-ui/themes";
 import { notFound } from "next/navigation";
+import getPermissionsForClub from "@/lib/auth/getPermissionsForClub";
+import { initLingui } from "@/lib/i18n/initLingui";
+import { createClient } from "@/lib/supabase/server";
 import styles from "./page.module.css";
 import { ClubConfigTabNav } from "./tabs";
 

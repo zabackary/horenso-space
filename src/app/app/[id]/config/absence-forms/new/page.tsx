@@ -1,8 +1,8 @@
+import { useLingui } from "@lingui/react/macro";
+import { redirect } from "next/navigation";
 import { DEFAULT_ABSENCE_FORM } from "@/@types/AbsenceForm";
 import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
-import { useLingui } from "@lingui/react/macro";
-import { redirect } from "next/navigation";
 
 export default async function NewAbsenceFormPage({
   params,

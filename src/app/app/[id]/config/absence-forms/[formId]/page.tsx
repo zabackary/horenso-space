@@ -1,7 +1,7 @@
+import { notFound } from "next/navigation";
 import AbsenceFormDetail from "@/components/club-config/absence-form-detail";
 import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
-import { notFound } from "next/navigation";
 
 export default async function AbsenceFormDetailPage({
   params,

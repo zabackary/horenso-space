@@ -1,6 +1,6 @@
-import { initLingui } from "@/lib/i18n/initLingui";
 import { Trans } from "@lingui/react/macro";
 import { Flex, Text } from "@radix-ui/themes";
+import { initLingui } from "@/lib/i18n/initLingui";
 
 export default async function Page() {
   await initLingui();

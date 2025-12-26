@@ -13,7 +13,7 @@ export default async function ClubRolesPage({
   const rolesPromise = supabase
     .from("roles")
     .select(
-      "id, name, description, permissions, absence_report_reviewer_role, absence_report_approval_required, absence_report_form"
+      "id, name, description, permissions, absence_report_reviewer_role, absence_report_approval_required, absence_report_form",
     )
     .eq("club_id", id)
     .order("created_at", { ascending: true })

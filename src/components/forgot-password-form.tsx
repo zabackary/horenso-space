@@ -1,6 +1,5 @@
 "use client";
 
-import { createClient } from "@/lib/supabase/client";
 import { Trans, useLingui } from "@lingui/react/macro";
 import {
   Button,
@@ -13,6 +12,7 @@ import {
 } from "@radix-ui/themes";
 import Link from "next/link";
 import { useState } from "react";
+import { createClient } from "@/lib/supabase/client";
 
 export function ForgotPasswordForm({
   ...props

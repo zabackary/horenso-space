@@ -1,6 +1,5 @@
 "use client";
 
-import { createClient } from "@/lib/supabase/client";
 import { Trans, useLingui } from "@lingui/react/macro";
 import { CrossCircledIcon } from "@radix-ui/react-icons";
 import {
@@ -12,6 +11,7 @@ import {
   TextArea,
 } from "@radix-ui/themes";
 import { useId, useState } from "react";
+import { createClient } from "@/lib/supabase/client";
 
 export interface FeedbackFormProps {
   handleClose?: () => void;
@@ -29,7 +29,7 @@ export default function FeedbackForm({ handleClose }: FeedbackFormProps) {
 
   // examine the url for the club id
   let clubId: string | null = new URL(window.location.href).pathname.split(
-    "/"
+    "/",
   )[2];
   // check if the club id is a valid uuid
   const uuidRegex =

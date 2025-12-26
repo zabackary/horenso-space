@@ -1,5 +1,3 @@
-import getProfile from "@/lib/auth/getProfile";
-import { createClient } from "@/lib/supabase/server";
 import { Trans } from "@lingui/react/macro";
 import { HomeIcon } from "@radix-ui/react-icons";
 import {
@@ -14,8 +12,10 @@ import {
 import clsx from "clsx";
 import Link from "next/link";
 import type { ComponentPropsWithoutRef } from "react";
-import { AppHeaderMenu } from "./app-header-menu";
+import getProfile from "@/lib/auth/getProfile";
+import { createClient } from "@/lib/supabase/server";
 import styles from "./app-header.module.css";
+import { AppHeaderMenu } from "./app-header-menu";
 
 export interface AppHeaderProps extends ComponentPropsWithoutRef<"header"> {
   header?: {
@@ -46,7 +46,7 @@ export async function AppHeader({
       className={clsx(
         styles.header,
         props.className,
-        disableSticky ? "" : styles.sticky
+        disableSticky ? "" : styles.sticky,
       )}
     >
       <header>

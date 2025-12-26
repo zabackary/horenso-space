@@ -1,13 +1,13 @@
-import { LoginForm } from "@/components/login-form";
-import getProfile from "@/lib/auth/getProfile";
-import { initLingui } from "@/lib/i18n/initLingui";
-import { createClient } from "@/lib/supabase/server";
 import { Trans } from "@lingui/react/macro";
 import { Heading, Link as RadixLink, Text } from "@radix-ui/themes";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { RedirectType, redirect } from "next/navigation";
 import type { PropsWithChildren } from "react";
+import { LoginForm } from "@/components/login-form";
+import getProfile from "@/lib/auth/getProfile";
+import { initLingui } from "@/lib/i18n/initLingui";
+import { createClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = {
   title: "Login",
@@ -21,7 +21,7 @@ export default async function LoginPage(
   props: PropsWithChildren<{
     params: Promise<{ lang: string }>;
     searchParams: Promise<LoginPageSearchParams>;
-  }>
+  }>,
 ) {
   const { lang } = await props.params;
   await initLingui();

@@ -20,7 +20,11 @@ function parsePOFile(content) {
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trim();
 
-    if (line.startsWith("#:") || line.startsWith("#.") || line.startsWith("#")) {
+    if (
+      line.startsWith("#:") ||
+      line.startsWith("#.") ||
+      line.startsWith("#")
+    ) {
       // Comment lines - start a new entry if needed
       if (!currentEntry) {
         currentEntry = { comments: [], msgid: "", msgstr: "" };
@@ -135,9 +139,8 @@ function applyTranslations(poContent, updates) {
 
     if (line.startsWith("msgid ")) {
       const raw = line.substring(6).trim();
-      currentId = raw.startsWith('"') && raw.endsWith('"')
-        ? raw.slice(1, -1)
-        : raw;
+      currentId =
+        raw.startsWith('"') && raw.endsWith('"') ? raw.slice(1, -1) : raw;
       continue;
     }
 
@@ -202,10 +205,12 @@ async function main() {
 
     if (skippedComplex.length > 0) {
       console.error(
-        `\n⚠️  Skipped ${skippedComplex.length} entries with complex placeholders:`
+        `\n⚠️  Skipped ${skippedComplex.length} entries with complex placeholders:`,
       );
       for (const text of skippedComplex) {
-        console.error(`   - ${text.substring(0, 60)}${text.length > 60 ? "..." : ""}`);
+        console.error(
+          `   - ${text.substring(0, 60)}${text.length > 60 ? "..." : ""}`,
+        );
       }
     }
 
@@ -222,7 +227,7 @@ async function main() {
       if (chunkLines.length === 0) return;
       const tempPath = path.join(
         os.tmpdir(),
-        `translate-${languageId}-${Date.now()}-${chunkIndex}.txt`
+        `translate-${languageId}-${Date.now()}-${chunkIndex}.txt`,
       );
       const content = chunkLines.join("\n");
       await fs.writeFile(tempPath, content, "utf-8");
@@ -236,7 +241,10 @@ async function main() {
       const text = entry.msgid;
       const additional = (chunkLines.length > 0 ? 1 : 0) + text.length;
 
-      if (chunkLength + additional > MAX_CHARS_PER_CHUNK && chunkLines.length > 0) {
+      if (
+        chunkLength + additional > MAX_CHARS_PER_CHUNK &&
+        chunkLines.length > 0
+      ) {
         await flushChunk();
       }
 
@@ -267,7 +275,9 @@ async function main() {
       output: process.stdout,
     });
 
-    await rl.question('\nPress Enter when ready to proceed (or Ctrl+C to cancel)...');
+    await rl.question(
+      "\nPress Enter when ready to proceed (or Ctrl+C to cancel)...",
+    );
     rl.close();
 
     console.log("\nReading translations...");
@@ -280,7 +290,7 @@ async function main() {
 
     if (translatedLines.length !== toTranslate.length) {
       throw new Error(
-        `Expected ${toTranslate.length} translations but got ${translatedLines.length}`
+        `Expected ${toTranslate.length} translations but got ${translatedLines.length}`,
       );
     }
 
@@ -294,7 +304,7 @@ async function main() {
 
       if (!validateJSXTags(entry.msgid, translated)) {
         warnings.push(
-          `JSX tag mismatch in: "${entry.msgid.substring(0, 40)}..." -> "${translated.substring(0, 40)}..."`
+          `JSX tag mismatch in: "${entry.msgid.substring(0, 40)}..." -> "${translated.substring(0, 40)}..."`,
         );
         continue;
       }
@@ -318,11 +328,13 @@ async function main() {
     const updatedContent = applyTranslations(originalContent, updates);
     await fs.writeFile(poFilePath, updatedContent, "utf-8");
 
-    console.log(`\n✓ Successfully updated ${successCount} translations in ${poFilePath}`);
+    console.log(
+      `\n✓ Successfully updated ${successCount} translations in ${poFilePath}`,
+    );
 
     if (warnings.length > 0) {
       console.log(
-        `\n⚠️  ${warnings.length} translations were skipped due to validation errors.`
+        `\n⚠️  ${warnings.length} translations were skipped due to validation errors.`,
       );
       console.log("Please review and fix them manually.");
     }
@@ -331,7 +343,7 @@ async function main() {
     process.exitCode = 1;
   } finally {
     for (const file of tempFiles) {
-      await fs.rm(file, { force: true }).catch(() => { });
+      await fs.rm(file, { force: true }).catch(() => {});
     }
   }
 }

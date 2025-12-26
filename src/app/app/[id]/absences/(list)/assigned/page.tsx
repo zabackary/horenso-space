@@ -1,8 +1,8 @@
+import { notFound } from "next/navigation";
 import type { Database } from "@/@types/database.types";
 import getPermissionsForClub from "@/lib/auth/getPermissionsForClub";
 import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
-import { notFound } from "next/navigation";
 import AssignedReportsList from "./list";
 
 type AssignedReport =
@@ -25,7 +25,7 @@ export default async function Page({
     "get_assigned_absence_reports",
     {
       p_club_id: id,
-    }
+    },
   );
 
   if (error) {

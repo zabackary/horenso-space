@@ -1,6 +1,6 @@
 import "server-only";
 
-import { I18n, Messages, setupI18n } from "@lingui/core";
+import { type I18n, type Messages, setupI18n } from "@lingui/core";
 import { locales } from "../../../lingui.config";
 
 // optionally use a stricter union type
@@ -32,7 +32,7 @@ export const allI18nInstances: AllI18nInstances = locales.reduce(
     });
     return { ...acc, [locale]: i18n };
   },
-  {}
+  {},
 );
 
 export const getI18nInstance = (locale: SupportedLocales): I18n => {

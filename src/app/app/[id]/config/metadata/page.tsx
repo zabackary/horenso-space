@@ -1,8 +1,8 @@
+import { Box } from "@radix-ui/themes";
 import type { Database } from "@/@types/database.types";
 import MetadataForm from "@/components/club-config/metadata-form";
 import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
-import { Box } from "@radix-ui/themes";
 
 type ClubRow = Database["public"]["Tables"]["clubs"]["Row"];
 

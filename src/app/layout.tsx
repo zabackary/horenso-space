@@ -1,16 +1,16 @@
+import { Theme } from "@radix-ui/themes";
 import { initLingui } from "@/lib/i18n/initLingui";
 import { LinguiClientProvider } from "@/lib/i18n/LinguiClientProvider";
-import { Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
-import { ThemeProvider } from "next-themes";
 import {
   Gloria_Hallelujah,
   Hachi_Maru_Pop,
   Noto_Sans,
   Noto_Sans_JP,
 } from "next/font/google";
+import { ThemeProvider } from "next-themes";
 import "./layout.module.css";
 
 const hachiMaruPop = Hachi_Maru_Pop({

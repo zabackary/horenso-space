@@ -1,6 +1,6 @@
+import { Card, Flex } from "@radix-ui/themes";
 import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
-import { Card, Flex } from "@radix-ui/themes";
 import styles from "./layout.module.css";
 import Sidebar from "./sidebar";
 

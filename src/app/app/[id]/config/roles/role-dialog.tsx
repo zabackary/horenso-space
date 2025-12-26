@@ -1,4 +1,3 @@
-import { PERMISSION_KEYS, PermissionText } from "@/components/permission-text";
 import { Trans, useLingui } from "@lingui/react/macro";
 import { CrossCircledIcon, Pencil1Icon } from "@radix-ui/react-icons";
 import {
@@ -17,6 +16,7 @@ import {
 } from "@radix-ui/themes";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { PERMISSION_KEYS, PermissionText } from "@/components/permission-text";
 import styles from "./roles-manager.module.css";
 
 export type Role = {
@@ -39,11 +39,11 @@ type RoleDialogProps = {
   error?: string | null;
   onClose: () => void;
   onCreate: (
-    payload: Omit<Role, "id"> & { name: string }
+    payload: Omit<Role, "id"> & { name: string },
   ) => Promise<void> | void;
   onSave: (
     roleId: string,
-    payload: Omit<Role, "id"> & { name: string }
+    payload: Omit<Role, "id"> & { name: string },
   ) => Promise<void> | void;
 };
 
@@ -63,7 +63,7 @@ export default function RoleDialog({
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [permissions, setPermissions] = useState<Record<string, boolean>>(() =>
-    Object.fromEntries(PERMISSION_KEYS.map((k) => [k, false]))
+    Object.fromEntries(PERMISSION_KEYS.map((k) => [k, false])),
   );
   const [reviewerRole, setReviewerRole] = useState<string | null>(null);
   const [approvalRequired, setApprovalRequired] = useState(false);
@@ -83,7 +83,7 @@ export default function RoleDialog({
       setName("");
       setDescription("");
       setPermissions(
-        Object.fromEntries(PERMISSION_KEYS.map((k) => [k, false]))
+        Object.fromEntries(PERMISSION_KEYS.map((k) => [k, false])),
       );
       setReviewerRole(null);
       setApprovalRequired(false);

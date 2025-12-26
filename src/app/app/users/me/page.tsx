@@ -1,9 +1,9 @@
-import ClickableCard from "@/components/ui/clickable-card";
-import { initLingui } from "@/lib/i18n/initLingui";
 import { Trans } from "@lingui/react/macro";
 import { EnterIcon, GearIcon, PersonIcon } from "@radix-ui/react-icons";
 import { Box, Flex, Text } from "@radix-ui/themes";
 import Link from "next/link";
+import ClickableCard from "@/components/ui/clickable-card";
+import { initLingui } from "@/lib/i18n/initLingui";
 
 function SettingsCard({
   href,

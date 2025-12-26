@@ -1,7 +1,5 @@
 "use client";
 
-import type { Database } from "@/@types/database.types";
-import { createClient } from "@/lib/supabase/client";
 import { plural } from "@lingui/core/macro";
 import { Trans, useLingui } from "@lingui/react/macro";
 import { CrossCircledIcon, TrashIcon } from "@radix-ui/react-icons";
@@ -18,6 +16,8 @@ import {
 } from "@radix-ui/themes";
 import Link from "next/link";
 import { use, useState } from "react";
+import type { Database } from "@/@types/database.types";
+import { createClient } from "@/lib/supabase/client";
 import styles from "./invite.module.css";
 
 export default function InvitesManager({
@@ -42,7 +42,7 @@ export default function InvitesManager({
 
   const [generateDialogOpen, setGenerateDialogOpen] = useState(false);
   const [inviteRole, setInviteRole] = useState<string>(
-    roles.length > 0 ? roles[0].id : ""
+    roles.length > 0 ? roles[0].id : "",
   );
 
   function openCreateDialog() {
@@ -63,7 +63,7 @@ export default function InvitesManager({
         new_club_id: clubId,
         role_id: inviteRole,
         expires_at: new Date(
-          Date.now() + 7 * 24 * 60 * 60 * 1000
+          Date.now() + 7 * 24 * 60 * 60 * 1000,
         ).toISOString(),
       });
       if (error) throw error;
@@ -77,7 +77,7 @@ export default function InvitesManager({
               roles.find((r) => r.id === inviteRole)?.name ?? "Unknown role",
             invited_by_name: "You",
             expires_at: new Date(
-              Date.now() + 7 * 24 * 60 * 60 * 1000
+              Date.now() + 7 * 24 * 60 * 60 * 1000,
             ).toISOString(),
             created_at: new Date().toISOString(),
             usage_count: 0,
@@ -98,7 +98,7 @@ export default function InvitesManager({
       });
       if (error) throw error;
       setInvites((prevInvites) =>
-        prevInvites.filter((invite) => invite.id !== inviteId)
+        prevInvites.filter((invite) => invite.id !== inviteId),
       );
     } catch (error: unknown) {
       console.error("Failed to delete invite:", error);

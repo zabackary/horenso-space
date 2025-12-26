@@ -1,5 +1,5 @@
-import type { Database } from "@/@types/database.types";
 import type { SupabaseClient } from "@supabase/supabase-js";
+import type { Database } from "@/@types/database.types";
 
 export interface AbsenceReport {
   id: string;
@@ -30,14 +30,14 @@ export interface AbsenceReport {
 export default async function getReports(
   supabase: SupabaseClient<Database>,
   id: string,
-  userId?: string
+  userId?: string,
 ): Promise<AbsenceReport[]> {
   const { data: reportsRes, error: reportsError } = await supabase.rpc(
     "get_absence_reports",
     {
       p_club_id: id,
       p_user_id: userId,
-    }
+    },
   );
   if (reportsError) {
     throw reportsError;

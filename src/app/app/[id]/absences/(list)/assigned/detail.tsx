@@ -1,8 +1,5 @@
 "use client";
 
-import { submitReview } from "@/actions/reviews";
-import AbsenceFormRenderer from "@/components/absence-form-renderer";
-import { createClient } from "@/lib/supabase/client";
 import { Trans, useLingui } from "@lingui/react/macro";
 import {
   Button,
@@ -18,8 +15,11 @@ import {
   TextArea,
 } from "@radix-ui/themes";
 import { useEffect, useState } from "react";
+import { submitReview } from "@/actions/reviews";
+import AbsenceFormRenderer from "@/components/absence-form-renderer";
+import { createClient } from "@/lib/supabase/client";
 import styles from "./detail.module.css";
-import { AssignedReport } from "./list";
+import type { AssignedReport } from "./list";
 
 export default function ReportDetail({
   report,

@@ -1,12 +1,12 @@
-import { SignupForm } from "@/components/signup-form";
-import getProfile from "@/lib/auth/getProfile";
-import { initLingui } from "@/lib/i18n/initLingui";
-import { createClient } from "@/lib/supabase/server";
 import { Trans } from "@lingui/react/macro";
 import { Heading, Link as RadixLink, Text } from "@radix-ui/themes";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { RedirectType, redirect } from "next/navigation";
+import { SignupForm } from "@/components/signup-form";
+import getProfile from "@/lib/auth/getProfile";
+import { initLingui } from "@/lib/i18n/initLingui";
+import { createClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = {
   title: "Sign up",
@@ -20,7 +20,7 @@ export default async function SignUpPage(
   props: React.PropsWithChildren<{
     params: Promise<{ lang: string }>;
     searchParams: Promise<SignUpPageSearchParams>;
-  }>
+  }>,
 ) {
   const { lang } = await props.params;
   await initLingui();

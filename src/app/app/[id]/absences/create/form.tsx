@@ -1,9 +1,5 @@
 "use client";
 
-import { AbsenceForm } from "@/@types/AbsenceForm";
-import AbsenceFormRenderer from "@/components/absence-form-renderer";
-import getProfile from "@/lib/auth/getProfile";
-import { createClient } from "@/lib/supabase/client";
 import { Trans, useLingui } from "@lingui/react/macro";
 import { CrossCircledIcon } from "@radix-ui/react-icons";
 import {
@@ -17,6 +13,10 @@ import {
 } from "@radix-ui/themes";
 import { redirect } from "next/navigation";
 import { use, useState } from "react";
+import type { AbsenceForm } from "@/@types/AbsenceForm";
+import AbsenceFormRenderer from "@/components/absence-form-renderer";
+import getProfile from "@/lib/auth/getProfile";
+import { createClient } from "@/lib/supabase/client";
 
 export default function Form({
   clubId,
@@ -42,7 +42,7 @@ export default function Form({
   const [event, setEvent] = useState<string | null>(null);
   const [date, setDate] = useState<string | null>(null);
   const [absenceType, setAbsenceType] = useState<"event" | "general" | null>(
-    null
+    null,
   );
   const [data, setData] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);

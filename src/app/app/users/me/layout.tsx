@@ -1,11 +1,11 @@
+import { Trans } from "@lingui/react/macro";
+import { Flex, Heading } from "@radix-ui/themes";
+import { notFound } from "next/navigation";
 import UserProfile from "@/components/ui/user-profile";
 import UserShareActions from "@/components/user-share-actions";
 import getProfile from "@/lib/auth/getProfile";
 import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
-import { Trans } from "@lingui/react/macro";
-import { Flex, Heading } from "@radix-ui/themes";
-import { notFound } from "next/navigation";
 import { MeTabNav } from "./tabs";
 
 export default async function MeLayout({

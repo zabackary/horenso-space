@@ -1,12 +1,12 @@
 "use client";
 
-import type { Database } from "@/@types/database.types";
-import { createClient } from "@/lib/supabase/client";
 import { Trans, useLingui } from "@lingui/react/macro";
 import { Flex, Heading, SegmentedControl, Skeleton } from "@radix-ui/themes";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { lazy, Suspense, use, useCallback, useEffect, useState } from "react";
-import RoleDialog, { Role } from "./role-dialog";
+import type { Database } from "@/@types/database.types";
+import { createClient } from "@/lib/supabase/client";
+import RoleDialog, { type Role } from "./role-dialog";
 import RolesManager from "./roles-manager";
 
 const RolesGraph = lazy(() => import("./roles-graph"));
@@ -50,10 +50,10 @@ export default function RolesView({
       absenceReportReviewerRole: r.absence_report_reviewer_role ?? null,
       absenceReportApprovalRequired: r.absence_report_approval_required,
       absenceReportFormId: r.absence_report_form ?? null,
-    }))
+    })),
   );
   const [forms] = useState<{ id: string; name: string }[]>(() =>
-    (formsInitial ?? []).map((f) => ({ id: f.id, name: f.name }))
+    (formsInitial ?? []).map((f) => ({ id: f.id, name: f.name })),
   );
 
   const searchParams = useSearchParams();
@@ -61,7 +61,7 @@ export default function RolesView({
   const router = useRouter();
   const viewParam = searchParams.get("view") ?? "list";
   const [view, setView] = useState<"list" | "graph">(
-    viewParam === "graph" ? "graph" : "list"
+    viewParam === "graph" ? "graph" : "list",
   );
 
   useEffect(() => {
@@ -87,12 +87,12 @@ export default function RolesView({
       setDialogMode("edit");
       setDialogOpen(true);
     },
-    [roles]
+    [roles],
   );
 
   async function onSave(
     roleId: string,
-    payload: Omit<Role, "id"> & { name: string }
+    payload: Omit<Role, "id"> & { name: string },
   ) {
     setError(null);
     const supabase = createClient();
@@ -123,8 +123,8 @@ export default function RolesView({
                   payload.absenceReportApprovalRequired,
                 absenceReportFormId: payload.absenceReportFormId,
               }
-            : r
-        )
+            : r,
+        ),
       );
       setDialogOpen(false);
     } catch (e) {
@@ -178,7 +178,7 @@ export default function RolesView({
   async function deleteRole(roleId: string) {
     if (
       !confirm(
-        t`Are you sure you want to delete this role? This action cannot be undone.`
+        t`Are you sure you want to delete this role? This action cannot be undone.`,
       )
     )
       return;
@@ -247,14 +247,14 @@ export default function RolesView({
 }
 
 export function normalizePermissions(
-  p: Database["public"]["Tables"]["roles"]["Row"]["permissions"]
+  p: Database["public"]["Tables"]["roles"]["Row"]["permissions"],
 ): Record<string, boolean> {
   if (!p || typeof p !== "object" || Array.isArray(p)) return {};
   const entries = Object.entries(
     p as Record<
       string,
       Database["public"]["Tables"]["roles"]["Row"]["permissions"]
-    >
+    >,
   );
   const out: Record<string, boolean> = {};
   entries.forEach(([k, v]) => {

@@ -1,9 +1,5 @@
 "use client";
 
-import type { Database } from "@/@types/database.types";
-import { Role } from "@/app/app/[id]/config/roles/role-dialog";
-import { normalizePermissions } from "@/app/app/[id]/config/roles/roles-view";
-import { createClient } from "@/lib/supabase/client";
 import { Trans, useLingui } from "@lingui/react/macro";
 import {
   CrossCircledIcon,
@@ -27,6 +23,10 @@ import {
 } from "@radix-ui/themes";
 import Link from "next/link";
 import { use, useState } from "react";
+import type { Database } from "@/@types/database.types";
+import type { Role } from "@/app/app/[id]/config/roles/role-dialog";
+import { normalizePermissions } from "@/app/app/[id]/config/roles/roles-view";
+import { createClient } from "@/lib/supabase/client";
 import { PERMISSION_KEYS, PermissionText } from "../permission-text";
 import styles from "./roles-manager.module.css";
 
@@ -67,11 +67,11 @@ export default function RolesManager({
         absenceReportReviewerRole: r.absence_report_reviewer_role ?? null,
         absenceReportApprovalRequired: r.absence_report_approval_required,
         absenceReportFormId: r.absence_report_form ?? null,
-      })) ?? []
+      })) ?? [],
   );
   const [error, setError] = useState<string | null>(null);
   const [forms] = useState<{ id: string; name: string }[]>(() =>
-    (formsInitial ?? []).map((f) => ({ id: f.id, name: f.name }))
+    (formsInitial ?? []).map((f) => ({ id: f.id, name: f.name })),
   );
 
   const [editDialogRoleId, setEditDialogRoleId] = useState<string | null>(null);
@@ -123,7 +123,7 @@ export default function RolesManager({
   async function deleteRole(roleId: string) {
     if (
       !confirm(
-        t`Are you sure you want to delete this role? This action cannot be undone.`
+        t`Are you sure you want to delete this role? This action cannot be undone.`,
       )
     )
       return;
@@ -188,7 +188,7 @@ export default function RolesManager({
     setEditName("");
     setEditDescription("");
     setEditPermissions(
-      Object.fromEntries(PERMISSION_KEYS.map((k) => [k, false]))
+      Object.fromEntries(PERMISSION_KEYS.map((k) => [k, false])),
     );
     setEditAbsenceReportReviewerRole(null);
     setEditAbsenceReportApprovalRequired(false);
@@ -214,7 +214,7 @@ export default function RolesManager({
     setEditName("");
     setEditDescription("");
     setEditPermissions(
-      Object.fromEntries(PERMISSION_KEYS.map((k) => [k, false]))
+      Object.fromEntries(PERMISSION_KEYS.map((k) => [k, false])),
     );
     setEditAbsenceReportReviewerRole(null);
     setEditAbsenceReportApprovalRequired(false);
@@ -367,7 +367,7 @@ export default function RolesManager({
                     value={editAbsenceReportReviewerRole ?? "~"}
                     onValueChange={(value) =>
                       setEditAbsenceReportReviewerRole(
-                        value === "~" ? null : value
+                        value === "~" ? null : value,
                       )
                     }
                     required

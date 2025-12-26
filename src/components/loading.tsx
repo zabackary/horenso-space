@@ -8,7 +8,7 @@ export function FullPageLoading() {
   );
 }
 
-export interface ListLoadingProps {}
+export type ListLoadingProps = {};
 
 export function ListLoading({
   p = "4",

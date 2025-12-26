@@ -1,6 +1,6 @@
+import { Box } from "@radix-ui/themes";
 import LoginAuthProvidersSettings from "@/components/login-auth-providers-settings";
 import { createClient } from "@/lib/supabase/server";
-import { Box } from "@radix-ui/themes";
 
 export default async function LoginSettingsPage() {
   const supabase = await createClient();

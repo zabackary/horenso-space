@@ -1,11 +1,11 @@
-import getPermissionsForClub from "@/lib/auth/getPermissionsForClub";
-import getProfile from "@/lib/auth/getProfile";
-import { initLingui } from "@/lib/i18n/initLingui";
-import { createClient } from "@/lib/supabase/server";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { Card, Flex, Heading, IconButton } from "@radix-ui/themes";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import getPermissionsForClub from "@/lib/auth/getPermissionsForClub";
+import getProfile from "@/lib/auth/getProfile";
+import { initLingui } from "@/lib/i18n/initLingui";
+import { createClient } from "@/lib/supabase/server";
 import ReportDetail from "../../report-detail";
 
 export default async function Page({
@@ -39,7 +39,7 @@ export default async function Page({
         reviewer_id
       ),
       roles (id, name)
-    `
+    `,
     )
     .eq("id", reportId)
     .eq("user_id", profile!.id)
@@ -61,7 +61,7 @@ export default async function Page({
 
   // Fetch reviewer profiles for all reviews
   const reviewerIds = (report.absence_report_reviews || []).map(
-    (r: any) => r.reviewer_id
+    (r: any) => r.reviewer_id,
   );
   const { data: reviewerProfiles } =
     reviewerIds.length > 0

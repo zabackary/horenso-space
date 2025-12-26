@@ -1,13 +1,13 @@
 "use server";
 
-import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
+import { createClient } from "@/lib/supabase/server";
 
 export async function submitReview(
   clubId: string,
   reportId: string,
   accepted: boolean,
-  comments: string | null
+  comments: string | null,
 ) {
   const supabase = await createClient();
 

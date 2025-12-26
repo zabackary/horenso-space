@@ -11,20 +11,20 @@ import {
 import {
   Background,
   Controls,
+  type Edge,
   Handle,
   MarkerType,
+  type Node,
+  type NodeProps,
   Position,
   ReactFlow,
   useEdgesState,
   useNodesState,
-  type Edge,
-  type Node,
-  type NodeProps,
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 import dagre from "dagre";
 import { useEffect } from "react";
-import { Role } from "./role-dialog";
+import type { Role } from "./role-dialog";
 import styles from "./roles-manager.module.css";
 
 type RoleNodeData = {
@@ -93,7 +93,7 @@ export default function RolesGraph({
   onDeleteRole: (roleId: string) => void;
 }) {
   const [nodes, setNodes, onNodesChange] = useNodesState<Node<RoleNodeData>>(
-    []
+    [],
   );
   const [edges, setEdges, onEdgesChange] = useEdgesState<Edge>([]);
 
@@ -142,7 +142,7 @@ export default function RolesGraph({
 function buildGraph(
   roles: Role[],
   onEdit: (roleId: string) => void,
-  onDelete: (roleId: string) => void
+  onDelete: (roleId: string) => void,
 ): { nodes: Node<RoleNodeData>[]; edges: Edge[] } {
   const nodes: Node<RoleNodeData>[] = roles.map((r) => ({
     id: r.id,

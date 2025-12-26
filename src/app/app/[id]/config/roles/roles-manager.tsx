@@ -1,7 +1,7 @@
 import { Trans } from "@lingui/react/macro";
 import { TrashIcon } from "@radix-ui/react-icons";
 import { Button, Card, Flex, Text } from "@radix-ui/themes";
-import { Role } from "./role-dialog";
+import type { Role } from "./role-dialog";
 import styles from "./roles-manager.module.css";
 
 export default function RolesManager({

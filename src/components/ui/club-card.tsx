@@ -1,4 +1,3 @@
-import type { Database } from "@/@types/database.types";
 import { Trans } from "@lingui/react/macro";
 import {
   Badge,
@@ -10,6 +9,7 @@ import {
   Text,
 } from "@radix-ui/themes";
 import Link from "next/link";
+import type { Database } from "@/@types/database.types";
 import styles from "./club-card.module.css";
 
 /**
