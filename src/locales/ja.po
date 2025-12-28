@@ -87,11 +87,11 @@ msgstr "承認済み"
 
 #: src/app/app/[id]/page.tsx:68
 msgid "Access absence report forms"
-msgstr "欠席報告フォームにアクセス"
+msgstr "欠席連絡フォームにアクセス"
 
 #: src/components/permission-text.tsx:39
 msgid "Access club files"
-msgstr "クラブファイルにアクセス"
+msgstr "部活ファイルにアクセス"
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:267
 msgid "Add comments (optional)"
@@ -107,19 +107,19 @@ msgstr ""
 
 #: src/components/club-config/absence-form-editor.tsx:418
 msgid "Add follow-up question"
-msgstr ""
+msgstr "付属問題を追加"
 
 #: src/components/club-config/absence-form-editor.tsx:426
 msgid "Add option"
-msgstr ""
+msgstr "選択肢を追加"
 
 #: src/components/club-config/absence-form-editor.tsx:511
 msgid "Add question"
-msgstr ""
+msgstr "質問を追加"
 
 #: src/app/app/[id]/config/roles/roles-graph.tsx:110
 msgid "Add role"
-msgstr ""
+msgstr "役割を追加"
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:263
 msgid "Add Your Review"
@@ -131,7 +131,7 @@ msgstr "すべて"
 
 #: src/components/club-config/absence-form-editor.tsx:272
 msgid "Allow multiple lines"
-msgstr ""
+msgstr "複数行を許可する"
 
 #: src/app/auth/sign-up/page.tsx:59
 msgid "Already have an account? {loginLink}"
@@ -148,23 +148,23 @@ msgstr "エラーが発生しました"
 #. placeholder {0}: error.message
 #: src/components/club-create-form.tsx:60
 msgid "An error occurred while creating the club: {0}"
-msgstr ""
+msgstr "部活の制作中にエラーが発生しました"
 
 #: src/components/club-create-form.tsx:61
 msgid "An error occurred while creating the club."
-msgstr ""
+msgstr "部活の制作中にエラーが発生しました"
 
 #. placeholder {0}: error.message
 #: src/components/auth/login-form.tsx:46
 #: src/components/auth/login-form.tsx:76
 msgid "An error occurred while signing in: {0}"
-msgstr ""
+msgstr "サインイン中にエラーが発生しました"
 
 #. placeholder {0}: error.message
 #: src/components/auth/signup-form.tsx:61
 #: src/components/auth/signup-form.tsx:90
 msgid "An error occurred while signing up: {0}"
-msgstr ""
+msgstr "サインイン中にエラーが発生しました"
 
 #: src/components/auth/login-auth-providers-settings.tsx:100
 #: src/components/auth/login-form.tsx:47
@@ -172,7 +172,7 @@ msgstr ""
 #: src/components/auth/signup-form.tsx:62
 #: src/components/auth/signup-form.tsx:91
 msgid "An error occurred."
-msgstr ""
+msgstr "エラーが発生しました"
 
 #: src/app/auth/error/page.tsx:25
 msgid "An unspecified error occurred"
@@ -217,11 +217,11 @@ msgstr "ホームに戻る"
 
 #: src/components/profile-editor.tsx:109
 msgid "Biography"
-msgstr ""
+msgstr "自己紹介"
 
 #: src/components/profile-editor.tsx:115
 msgid "Born in 〇〇."
-msgstr ""
+msgstr "出身地"
 
 #. placeholder {0}: invite.invited_by_name
 #: src/app/app/club/invite/[id]/page.tsx:67
@@ -242,7 +242,7 @@ msgstr "キャンセル"
 
 #: src/components/auth/login-auth-providers-settings.tsx:124
 msgid "Change password"
-msgstr ""
+msgstr "パスワードを変える"
 
 #: src/app/app/[id]/page.tsx:55
 msgid "Check your club events and meetings"
@@ -250,44 +250,44 @@ msgstr "クラブのイベントとミーティングを確認"
 
 #: src/components/forgot-password-form.tsx:49
 msgid "Check your email"
-msgstr "メールを確認"
+msgstr "メールを確認してください"
 
 #: src/app/app/[id]/config/layout.tsx:32
 msgid "Club configuration"
-msgstr "クラブ設定"
+msgstr "部活の設定"
 
 #: src/components/club-config/metadata-form.tsx:80
 #: src/components/club-create-form.tsx:82
 msgid "Club description"
-msgstr "クラブの説明"
+msgstr "部活の説明"
 
 #: src/components/club-config/invite.tsx:182
 msgid "Club Invite Link"
-msgstr "クラブ招待リンク"
+msgstr "部活の招待リンク"
 
 #: src/components/club-config/metadata-form.tsx:68
 #: src/components/club-create-form.tsx:72
 msgid "Club name"
-msgstr "クラブ名"
+msgstr "部活動名"
 
 #. placeholder {0}: clubIsPublic ? "Public" : "Private"
 #. placeholder {0}: isPublic ? <Trans>Public</Trans> : <Trans>Private</Trans>
 #: src/components/club-config/metadata-form.tsx:103
 #: src/components/club-create-form.tsx:110
 msgid "Club privacy: {0}"
-msgstr "クラブのプライバシー: {0}"
+msgstr "部活のプライバシー: {0}"
 
 #: src/app/app/[id]/page.tsx:48
 msgid "Club settings"
-msgstr "クラブ設定"
+msgstr "部活の設定"
 
 #: src/components/club-config/absence-form-editor.tsx:491
 msgid "Collapse all"
-msgstr ""
+msgstr "すべて折りたたむ"
 
 #: src/app/app/users/[id]/page.tsx:34
 msgid "Common Clubs"
-msgstr "共通クラブ"
+msgstr "共通の部活"
 
 #: src/app/app/[id]/config/roles/role-dialog.tsx:187
 #: src/components/club-config/roles-manager.tsx:356
@@ -296,7 +296,7 @@ msgstr "レビュー担当者/承認を設定し、この役割に使用する�
 
 #: src/components/auth/login-auth-providers-settings.tsx:153
 msgid "Confirm new password"
-msgstr ""
+msgstr "新しいパスワードを確認してください"
 
 #: src/components/auth/signup-form.tsx:144
 msgid "Confirm Password"
@@ -314,11 +314,11 @@ msgstr "作成"
 #: src/app/app/club/create/page.tsx:25
 #: src/app/app/page.tsx:63
 msgid "Create a club"
-msgstr "クラブを作成"
+msgstr "部活を作成"
 
 #: src/components/ui/app-header.tsx:105
 msgid "Create a Club"
-msgstr "クラブを作成"
+msgstr "部活を作成"
 
 #: src/components/permission-text.tsx:27
 msgid "Create and edit calendar events"
@@ -326,7 +326,7 @@ msgstr "カレンダーイベントの作成と編集"
 
 #: src/components/club-create-form.tsx:132
 msgid "Create club"
-msgstr "クラブを作成"
+msgstr "部活を作成"
 
 #: src/app/app/[id]/calendar/[...date]/page.tsx:29
 msgid "Create event"
@@ -352,7 +352,7 @@ msgstr "テンプレートを作成"
 
 #: src/app/app/[id]/config/absence-forms/page.tsx:34
 msgid "Create your first absence report template"
-msgstr "最初の欠席レポートテンプレートを作成"
+msgstr "最初の欠席レポートテンプレートを作成してください"
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:172
 #: src/app/app/[id]/absences/create/form.tsx:114
@@ -374,11 +374,11 @@ msgstr "削除"
 
 #: src/app/app/[id]/config/roles/roles-graph.tsx:71
 msgid "Delete role"
-msgstr ""
+msgstr "役割の削除"
 
 #: src/components/club-config/absence-form-editor.tsx:479
 msgid "Describe the purpose of this absence form..."
-msgstr ""
+msgstr "この欠席届の用途を説明してください"
 
 #: src/app/auth/login/page.tsx:62
 msgid "Don't have an account yet? {createAccountLink}"
@@ -395,21 +395,21 @@ msgstr "{editName}の詳細を編集"
 
 #: src/app/app/[id]/config/roles/role-dialog.tsx:134
 msgid "Edit details for {name}"
-msgstr ""
+msgstr "{name}の詳細を編集"
 
 #: src/app/app/[id]/config/roles/roles-graph.tsx:64
 msgid "Edit role"
-msgstr ""
+msgstr "役割の編集する"
 
 #: src/app/app/[id]/config/roles/role-dialog.tsx:127
 #: src/components/club-config/roles-manager.tsx:297
 msgid "Edit Role"
-msgstr "役割を編集"
+msgstr "役割を編集する"
 
 #: src/app/app/[id]/config/roles/role-dialog.tsx:234
 #: src/components/club-config/roles-manager.tsx:405
 msgid "Edit template"
-msgstr "テンプレートを編集"
+msgstr "テンプレートを編集する"
 
 #: src/components/auth/login-form.tsx:110
 #: src/components/auth/providers.tsx:18
