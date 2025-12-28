@@ -1,5 +1,5 @@
 import { initLingui } from "@/lib/i18n/initLingui";
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { Button, Flex, Select, Text } from "@radix-ui/themes";
 
 import { LOCALES } from "@/../lingui.config";
@@ -22,13 +22,15 @@ export default async function Page() {
     };
   });
 
+  const { i18n } = useLingui();
+
   return (
     <Flex direction="column" gap="4" p="4" align="start" asChild>
       <form action={generalSettingsAction}>
         <Text as="label">
           <Trans>Language</Trans>
           <br />
-          <Select.Root defaultValue="en" required name="language">
+          <Select.Root defaultValue={i18n.locale} required name="language">
             <Select.Trigger
               id={`user-general-settings-name`}
               aria-label="Language"

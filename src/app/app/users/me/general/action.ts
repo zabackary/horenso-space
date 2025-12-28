@@ -2,7 +2,7 @@
 
 import { LOCALES } from "@/../lingui.config";
 import { createClient } from "@/lib/supabase/server";
-// import { refresh } from "next/cache";
+import { refresh } from "next/cache";
 
 export default async function generalSettingsAction(formData: FormData) {
   const language = formData.get("language");
@@ -16,5 +16,5 @@ export default async function generalSettingsAction(formData: FormData) {
     new_locale: language as string,
   });
 
-  // refresh();
+  refresh();
 }
