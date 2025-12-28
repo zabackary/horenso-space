@@ -55,7 +55,11 @@ export function ClubCreateForm() {
         router.push("/app");
       }
     } catch (error: unknown) {
-      setError(error instanceof Error ? error.message : "An error occurred");
+      setError(
+        error instanceof Error
+          ? t`An error occurred while creating the club: ${error.message}`
+          : t`An error occurred while creating the club.`
+      );
     } finally {
       setIsLoading(false);
     }

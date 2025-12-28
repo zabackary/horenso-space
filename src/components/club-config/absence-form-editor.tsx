@@ -1,5 +1,12 @@
-"use client";
-
+import type {
+  AbsenceForm,
+  AbsenceFormItem,
+  MultipleChoiceItem,
+  SimpleTextItem,
+  TextItem,
+  TimeItem,
+} from "@/@types/AbsenceForm";
+import { Plural, Trans, useLingui } from "@lingui/react/macro";
 import {
   CaretDownIcon,
   CaretRightIcon,
@@ -17,34 +24,18 @@ import {
   TextField,
 } from "@radix-ui/themes";
 import { useEffect, useState } from "react";
-import type {
-  AbsenceForm,
-  AbsenceFormItem,
-  MultipleChoiceItem,
-  SimpleTextItem,
-  TextItem,
-  TimeItem,
-} from "@/@types/AbsenceForm";
 import styles from "./absence-form-editor.module.css";
-
-const DEFAULT_TEXT_ITEM: AbsenceFormItem = {
-  title: "New question",
-  item: {
-    type: "text",
-    multiline: true,
-  },
-};
 
 function coerceType(
   item: AbsenceFormItem,
-  type: AbsenceFormItem["item"]["type"],
+  type: AbsenceFormItem["item"]["type"]
 ): AbsenceFormItem {
   if (type === "text") {
     return {
       ...item,
       item: {
         type: "text",
-        multiline: true,
+        multiline: false,
       } satisfies TextItem,
     };
   }
@@ -69,7 +60,7 @@ function coerceType(
     ...item,
     item: {
       type: "multipleChoice",
-      options: [{ label: "Option 1" }, { label: "Option 2" }],
+      options: [],
     } satisfies MultipleChoiceItem,
   };
 }
@@ -78,8 +69,8 @@ function normalizeChildren(children?: AbsenceFormItem[]): AbsenceFormItem[] {
   if (!children) return [];
   if (!Array.isArray(children)) return [];
   return children.map((child) => ({
-    title: child.title ?? "Follow-up",
-    item: child.item ?? { type: "text", multiline: true },
+    title: child.title ?? "",
+    item: child.item ?? { type: "text", multiline: false },
   }));
 }
 
@@ -94,6 +85,8 @@ function ItemEditor({
   onRemove?: () => void;
   expandAllFollowups?: boolean;
 }) {
+  const { t } = useLingui();
+
   const inner = item.item as
     | MultipleChoiceItem
     | TextItem
@@ -129,7 +122,7 @@ function ItemEditor({
   function updateOptionLabel(index: number, label: string) {
     if (inner.type !== "multipleChoice") return;
     const options = inner.options.map((opt, i) =>
-      i === index ? { ...opt, label } : opt,
+      i === index ? { ...opt, label } : opt
     );
     updateMultipleChoice(options);
   }
@@ -138,7 +131,7 @@ function ItemEditor({
     if (inner.type !== "multipleChoice") return;
     updateMultipleChoice([
       ...inner.options,
-      { label: `Option ${inner.options.length + 1}` },
+      { label: t`Option ${inner.options.length + 1}` },
     ]);
     setOptionsOpen(true);
   }
@@ -156,7 +149,13 @@ function ItemEditor({
       const nextChildren = normalizeChildren(opt.children);
       return {
         ...opt,
-        children: [...nextChildren, { ...DEFAULT_TEXT_ITEM }],
+        children: [
+          ...nextChildren,
+          {
+            title: t`New question`,
+            item: { type: "text" as const, multiline: false },
+          },
+        ],
       };
     });
     updateMultipleChoice(options);
@@ -171,13 +170,13 @@ function ItemEditor({
   function updateChildOption(
     index: number,
     childIndex: number,
-    next: AbsenceFormItem,
+    next: AbsenceFormItem
   ) {
     if (inner.type !== "multipleChoice") return;
     const options = inner.options.map((opt, i) => {
       if (i !== index) return opt;
       const nextChildren = normalizeChildren(opt.children).map((child, j) =>
-        j === childIndex ? next : child,
+        j === childIndex ? next : child
       );
       return {
         ...opt,
@@ -192,7 +191,7 @@ function ItemEditor({
     const options = inner.options.map((opt, i) => {
       if (i !== index) return opt;
       const nextChildren = normalizeChildren(opt.children).filter(
-        (_, j) => j !== childIndex,
+        (_, j) => j !== childIndex
       );
       return {
         ...opt,
@@ -234,14 +233,14 @@ function ItemEditor({
               className={styles.removeButton}
             >
               <TrashIcon />
-              Remove
+              <Trans>Remove</Trans>
             </Button>
           )}
         </Flex>
 
         <Flex gap="2" className={styles.typeRow}>
           <Text color="gray" size="2" style={{ minWidth: 48 }}>
-            Type
+            <Trans>Type</Trans>
           </Text>
           <Select.Root
             value={inner.type}
@@ -251,10 +250,18 @@ function ItemEditor({
           >
             <Select.Trigger />
             <Select.Content>
-              <Select.Item value="text">Text</Select.Item>
-              <Select.Item value="time">Time</Select.Item>
-              <Select.Item value="multipleChoice">Multiple choice</Select.Item>
-              <Select.Item value="simpleText">Static text</Select.Item>
+              <Select.Item value="text">
+                <Trans>Text</Trans>
+              </Select.Item>
+              <Select.Item value="time">
+                <Trans>Time</Trans>
+              </Select.Item>
+              <Select.Item value="multipleChoice">
+                <Trans>Multiple choice</Trans>
+              </Select.Item>
+              <Select.Item value="simpleText">
+                <Trans>Static text</Trans>
+              </Select.Item>
             </Select.Content>
           </Select.Root>
         </Flex>
@@ -262,7 +269,7 @@ function ItemEditor({
         {inner.type === "text" && (
           <Flex align="center" gap="2">
             <Text color="gray" size="2" style={{ minWidth: 120 }}>
-              Allow multiline
+              <Trans>Allow multiple lines</Trans>
             </Text>
             <Switch
               checked={Boolean(inner.multiline)}
@@ -279,7 +286,7 @@ function ItemEditor({
         {inner.type === "simpleText" && (
           <TextArea
             className={styles.simpleTextArea}
-            placeholder="Static text"
+            placeholder={t`Static text content`}
             value={(inner as SimpleTextItem).text}
             onChange={(e) =>
               onChange({
@@ -294,15 +301,17 @@ function ItemEditor({
         {inner.type === "multipleChoice" && (
           <Flex direction="column" gap="2">
             <Flex align="center" justify="between">
-              <Heading size="3">Options</Heading>
+              <Heading size="3">
+                <Trans>Options</Trans>
+              </Heading>
               <Button variant="ghost" onClick={() => setOptionsOpen((v) => !v)}>
                 {optionsOpen ? (
                   <>
-                    <CaretDownIcon /> Hide options
+                    <CaretDownIcon /> <Trans>Hide options</Trans>
                   </>
                 ) : (
                   <>
-                    <CaretRightIcon /> Show options
+                    <CaretRightIcon /> <Trans>Show options</Trans>
                   </>
                 )}
               </Button>
@@ -328,7 +337,7 @@ function ItemEditor({
                     <Flex direction="column" gap="2">
                       <Flex align="center" gap="2">
                         <TextField.Root
-                          placeholder="Option label"
+                          placeholder={t`Option ${index + 1}`}
                           value={opt.label}
                           onChange={(e) =>
                             updateOptionLabel(index, e.target.value)
@@ -342,21 +351,18 @@ function ItemEditor({
                           disabled={inner.options.length <= 1}
                         >
                           <TrashIcon />
-                          Remove
+                          <Trans>Remove</Trans>
                         </Button>
                       </Flex>
 
                       <Flex align="center" justify="between">
                         <Text size="2" className={styles.childHeaderSummary}>
-                          {normalizeChildren(opt.children).length > 0
-                            ? `${
-                                normalizeChildren(opt.children).length
-                              } follow-up${
-                                normalizeChildren(opt.children).length === 1
-                                  ? ""
-                                  : "s"
-                              }`
-                            : "No follow-ups"}
+                          <Plural
+                            value={normalizeChildren(opt.children).length}
+                            one="# follow-up"
+                            other="# follow-ups"
+                            zero="No follow-ups"
+                          />
                         </Text>
                         {normalizeChildren(opt.children).length > 0 ? (
                           <Button
@@ -365,11 +371,11 @@ function ItemEditor({
                           >
                             {isOptionOpen(index) ? (
                               <>
-                                <CaretDownIcon /> Hide
+                                <CaretDownIcon /> <Trans>Hide</Trans>
                               </>
                             ) : (
                               <>
-                                <CaretRightIcon /> Show
+                                <CaretRightIcon /> <Trans>Show</Trans>
                               </>
                             )}
                           </Button>
@@ -378,7 +384,7 @@ function ItemEditor({
                             variant="ghost"
                             onClick={() => addChildOption(index)}
                           >
-                            Add follow-up
+                            <Trans>Add follow-up</Trans>
                           </Button>
                         )}
                       </Flex>
@@ -403,13 +409,13 @@ function ItemEditor({
                                   }
                                   expandAllFollowups={expandAllFollowups}
                                 />
-                              ),
+                              )
                             )}
                             <Button
                               variant="outline"
                               onClick={() => addChildOption(index)}
                             >
-                              Add follow-up question
+                              <Trans>Add follow-up question</Trans>
                             </Button>
                           </Flex>
                         )}
@@ -417,7 +423,7 @@ function ItemEditor({
                   </Card>
                 ))}
                 <Button variant="outline" onClick={() => addOption()}>
-                  Add option
+                  <Trans>Add option</Trans>
                 </Button>
               </Flex>
             )}
@@ -435,6 +441,8 @@ export default function AbsenceFormEditor({
   value: AbsenceForm;
   onChange: (form: AbsenceForm) => void;
 }) {
+  const { t } = useLingui();
+
   const [expandAllFollowups, setExpandAllFollowups] = useState(false);
   function updateItem(index: number, next: AbsenceFormItem) {
     onChange({
@@ -453,26 +461,37 @@ export default function AbsenceFormEditor({
   function addItem() {
     onChange({
       ...value,
-      items: [...value.items, { ...DEFAULT_TEXT_ITEM }],
+      items: [
+        ...value.items,
+        { title: t`New question`, item: { type: "text", multiline: false } },
+      ],
     });
   }
 
   return (
     <Flex direction="column" gap="3">
       <Flex align="center" justify="between">
-        <Heading size="3">Form description</Heading>
+        <Heading size="3">
+          <Trans>Form description</Trans>
+        </Heading>
       </Flex>
       <TextArea
-        placeholder="Form description (optional)"
+        placeholder={t`Describe the purpose of this absence form...`}
         value={value.description ?? ""}
         onChange={(e) => onChange({ ...value, description: e.target.value })}
         rows={3}
       />
 
       <Flex align="center" justify="between">
-        <Heading size="4">Questions</Heading>
+        <Heading size="4">
+          <Trans>Questions</Trans>
+        </Heading>
         <Button variant="soft" onClick={() => setExpandAllFollowups((v) => !v)}>
-          {expandAllFollowups ? "Collapse all" : "Expand all"}
+          {expandAllFollowups ? (
+            <Trans>Collapse all</Trans>
+          ) : (
+            <Trans>Expand all</Trans>
+          )}
         </Button>
       </Flex>
       <div className={styles.items}>
@@ -489,7 +508,7 @@ export default function AbsenceFormEditor({
 
       <Flex>
         <Button variant="outline" onClick={() => addItem()}>
-          Add question
+          <Trans>Add question</Trans>
         </Button>
       </Flex>
     </Flex>

@@ -13,6 +13,11 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#. placeholder {0}: normalizeChildren(opt.children).length
+#: src/components/club-config/absence-form-editor.tsx:360
+msgid "{0, plural, one {# follow-up} other {# follow-ups} zero {No follow-ups}}"
+msgstr ""
+
 #. placeholder {0}: report.reviews.length
 #: src/app/app/[id]/absences/(list)/list.tsx:61
 msgid "{0, plural, one {# review} other {# reviews}}"
@@ -36,7 +41,7 @@ msgstr ""
 msgid "<0>Improve</0> your club communication"
 msgstr ""
 
-#: src/components/club-create-form.tsx:81
+#: src/components/club-create-form.tsx:85
 msgid "A short description"
 msgstr ""
 
@@ -44,15 +49,18 @@ msgstr ""
 msgid "Absence forms"
 msgstr ""
 
-#: src/components/club-config/roles-manager.tsx:376
+#: src/app/app/[id]/config/roles/role-dialog.tsx:182
+#: src/components/club-config/roles-manager.tsx:351
 msgid "Absence report settings"
 msgstr ""
 
-#: src/components/club-config/roles-manager.tsx:425
+#: src/app/app/[id]/config/roles/role-dialog.tsx:229
+#: src/components/club-config/roles-manager.tsx:400
 msgid "Absence report template"
 msgstr ""
 
-#: src/components/club-config/roles-manager.tsx:169
+#: src/app/app/[id]/config/roles/role-dialog.tsx:102
+#: src/components/club-config/roles-manager.tsx:144
 msgid "Absence report template must be selected"
 msgstr ""
 
@@ -93,12 +101,36 @@ msgstr ""
 msgid "Add event"
 msgstr ""
 
+#: src/components/club-config/absence-form-editor.tsx:387
+msgid "Add follow-up"
+msgstr ""
+
+#: src/components/club-config/absence-form-editor.tsx:418
+msgid "Add follow-up question"
+msgstr ""
+
+#: src/components/club-config/absence-form-editor.tsx:426
+msgid "Add option"
+msgstr ""
+
+#: src/components/club-config/absence-form-editor.tsx:511
+msgid "Add question"
+msgstr ""
+
+#: src/app/app/[id]/config/roles/roles-graph.tsx:110
+msgid "Add role"
+msgstr ""
+
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:263
 msgid "Add Your Review"
 msgstr ""
 
 #: src/app/app/[id]/absences/(list)/tab-nav.tsx:27
 msgid "All absences"
+msgstr ""
+
+#: src/components/club-config/absence-form-editor.tsx:272
+msgid "Allow multiple lines"
 msgstr ""
 
 #: src/app/auth/sign-up/page.tsx:59
@@ -113,15 +145,46 @@ msgstr ""
 msgid "An error occurred"
 msgstr ""
 
+#. placeholder {0}: error.message
+#: src/components/club-create-form.tsx:60
+msgid "An error occurred while creating the club: {0}"
+msgstr ""
+
+#: src/components/club-create-form.tsx:61
+msgid "An error occurred while creating the club."
+msgstr ""
+
+#. placeholder {0}: error.message
+#: src/components/auth/login-form.tsx:46
+#: src/components/auth/login-form.tsx:76
+msgid "An error occurred while signing in: {0}"
+msgstr ""
+
+#. placeholder {0}: error.message
+#: src/components/auth/signup-form.tsx:61
+#: src/components/auth/signup-form.tsx:90
+msgid "An error occurred while signing up: {0}"
+msgstr ""
+
+#: src/components/auth/login-auth-providers-settings.tsx:100
+#: src/components/auth/login-form.tsx:47
+#: src/components/auth/login-form.tsx:77
+#: src/components/auth/signup-form.tsx:62
+#: src/components/auth/signup-form.tsx:91
+msgid "An error occurred."
+msgstr ""
+
 #: src/app/auth/error/page.tsx:25
 msgid "An unspecified error occurred"
 msgstr ""
 
-#: src/components/club-config/roles-manager.tsx:413
+#: src/app/app/[id]/config/roles/role-dialog.tsx:217
+#: src/components/club-config/roles-manager.tsx:388
 msgid "Approval required for reports"
 msgstr ""
 
-#: src/components/club-config/roles-manager.tsx:151
+#: src/app/app/[id]/config/roles/roles-view.tsx:181
+#: src/components/club-config/roles-manager.tsx:126
 msgid "Are you sure you want to delete this role? This action cannot be undone."
 msgstr ""
 
@@ -170,13 +233,14 @@ msgid "Calendar"
 msgstr ""
 
 #: src/app/app/[id]/calendar/create-event-card.tsx:188
+#: src/app/app/[id]/config/roles/role-dialog.tsx:284
 #: src/components/club-config/invite.tsx:279
-#: src/components/club-config/roles-manager.tsx:488
+#: src/components/club-config/roles-manager.tsx:463
 #: src/components/feedback-form.tsx:133
 msgid "Cancel"
 msgstr ""
 
-#: src/components/login-auth-providers-settings.tsx:138
+#: src/components/auth/login-auth-providers-settings.tsx:124
 msgid "Change password"
 msgstr ""
 
@@ -188,12 +252,12 @@ msgstr ""
 msgid "Check your email"
 msgstr ""
 
-#: src/app/app/[id]/config/layout.tsx:34
+#: src/app/app/[id]/config/layout.tsx:32
 msgid "Club configuration"
 msgstr ""
 
 #: src/components/club-config/metadata-form.tsx:80
-#: src/components/club-create-form.tsx:78
+#: src/components/club-create-form.tsx:82
 msgid "Club description"
 msgstr ""
 
@@ -202,14 +266,14 @@ msgid "Club Invite Link"
 msgstr ""
 
 #: src/components/club-config/metadata-form.tsx:68
-#: src/components/club-create-form.tsx:68
+#: src/components/club-create-form.tsx:72
 msgid "Club name"
 msgstr ""
 
 #. placeholder {0}: clubIsPublic ? "Public" : "Private"
 #. placeholder {0}: isPublic ? <Trans>Public</Trans> : <Trans>Private</Trans>
 #: src/components/club-config/metadata-form.tsx:103
-#: src/components/club-create-form.tsx:106
+#: src/components/club-create-form.tsx:110
 msgid "Club privacy: {0}"
 msgstr ""
 
@@ -217,19 +281,24 @@ msgstr ""
 msgid "Club settings"
 msgstr ""
 
+#: src/components/club-config/absence-form-editor.tsx:491
+msgid "Collapse all"
+msgstr ""
+
 #: src/app/app/users/[id]/page.tsx:34
 msgid "Common Clubs"
 msgstr ""
 
-#: src/components/club-config/roles-manager.tsx:381
+#: src/app/app/[id]/config/roles/role-dialog.tsx:187
+#: src/components/club-config/roles-manager.tsx:356
 msgid "Configure reviewer/approval and choose the template used for this role."
 msgstr ""
 
-#: src/components/login-auth-providers-settings.tsx:165
+#: src/components/auth/login-auth-providers-settings.tsx:153
 msgid "Confirm new password"
 msgstr ""
 
-#: src/components/signup-form.tsx:139
+#: src/components/auth/signup-form.tsx:144
 msgid "Confirm Password"
 msgstr ""
 
@@ -237,7 +306,8 @@ msgstr ""
 msgid "Copy link"
 msgstr ""
 
-#: src/components/club-config/roles-manager.tsx:478
+#: src/app/app/[id]/config/roles/role-dialog.tsx:281
+#: src/components/club-config/roles-manager.tsx:453
 msgid "Create"
 msgstr ""
 
@@ -254,7 +324,7 @@ msgstr ""
 msgid "Create and edit calendar events"
 msgstr ""
 
-#: src/components/club-create-form.tsx:128
+#: src/components/club-create-form.tsx:132
 msgid "Create club"
 msgstr ""
 
@@ -262,7 +332,8 @@ msgstr ""
 msgid "Create event"
 msgstr ""
 
-#: src/components/club-config/roles-manager.tsx:297
+#: src/app/app/[id]/config/roles/roles-manager.tsx:52
+#: src/components/club-config/roles-manager.tsx:272
 msgid "Create new role"
 msgstr ""
 
@@ -270,7 +341,8 @@ msgstr ""
 msgid "Create new template"
 msgstr ""
 
-#: src/components/club-config/roles-manager.tsx:320
+#: src/app/app/[id]/config/roles/role-dialog.tsx:125
+#: src/components/club-config/roles-manager.tsx:295
 msgid "Create Role"
 msgstr ""
 
@@ -293,41 +365,76 @@ msgstr ""
 msgid "Day"
 msgstr ""
 
+#: src/app/app/[id]/config/roles/roles-manager.tsx:41
 #: src/components/club-config/absence-form-detail.tsx:143
 #: src/components/club-config/invite.tsx:167
-#: src/components/club-config/roles-manager.tsx:287
+#: src/components/club-config/roles-manager.tsx:262
 msgid "Delete"
+msgstr ""
+
+#: src/app/app/[id]/config/roles/roles-graph.tsx:71
+msgid "Delete role"
+msgstr ""
+
+#: src/components/club-config/absence-form-editor.tsx:479
+msgid "Describe the purpose of this absence form..."
 msgstr ""
 
 #: src/app/auth/login/page.tsx:62
 msgid "Don't have an account yet? {createAccountLink}"
 msgstr ""
 
-#: src/components/club-config/roles-manager.tsx:283
+#: src/app/app/[id]/config/roles/roles-manager.tsx:37
+#: src/components/club-config/roles-manager.tsx:258
 msgid "Edit"
 msgstr ""
 
-#: src/components/club-config/roles-manager.tsx:329
+#: src/components/club-config/roles-manager.tsx:304
 msgid "Edit details for {editName}"
 msgstr ""
 
-#: src/components/club-config/roles-manager.tsx:322
+#: src/app/app/[id]/config/roles/role-dialog.tsx:134
+msgid "Edit details for {name}"
+msgstr ""
+
+#: src/app/app/[id]/config/roles/roles-graph.tsx:64
+msgid "Edit role"
+msgstr ""
+
+#: src/app/app/[id]/config/roles/role-dialog.tsx:127
+#: src/components/club-config/roles-manager.tsx:297
 msgid "Edit Role"
 msgstr ""
 
-#: src/components/club-config/roles-manager.tsx:430
+#: src/app/app/[id]/config/roles/role-dialog.tsx:234
+#: src/components/club-config/roles-manager.tsx:405
 msgid "Edit template"
 msgstr ""
 
+#: src/components/auth/login-form.tsx:110
+#: src/components/auth/providers.tsx:18
+#: src/components/auth/signup-form.tsx:124
 #: src/components/forgot-password-form.tsx:80
-#: src/components/login-auth-providers-settings.tsx:29
-#: src/components/login-form.tsx:104
-#: src/components/signup-form.tsx:119
 msgid "Email"
 msgstr ""
 
 #: src/app/auth/error/page.tsx:21
 msgid "Error code:"
+msgstr ""
+
+#. placeholder {0}: error.message
+#: src/components/auth/login-auth-providers-settings.tsx:44
+msgid "Error linking identity: {0}"
+msgstr ""
+
+#. placeholder {0}: error.message
+#: src/components/auth/login-auth-providers-settings.tsx:55
+msgid "Error unlinking identity: {0}"
+msgstr ""
+
+#. placeholder {0}: error.message
+#: src/components/auth/login-auth-providers-settings.tsx:84
+msgid "Error updating password: {0}"
 msgstr ""
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:162
@@ -345,6 +452,10 @@ msgstr ""
 msgid "Event date"
 msgstr ""
 
+#: src/components/club-config/absence-form-editor.tsx:493
+msgid "Expand all"
+msgstr ""
+
 #: src/components/club-config/invite.tsx:148
 msgid "expired"
 msgstr ""
@@ -358,7 +469,8 @@ msgstr ""
 msgid "Failed to change member role. Please try again later."
 msgstr ""
 
-#: src/components/club-config/roles-manager.tsx:207
+#: src/app/app/[id]/config/roles/roles-view.tsx:174
+#: src/components/club-config/roles-manager.tsx:182
 msgid "Failed to create role. Please try again later."
 msgstr ""
 
@@ -366,7 +478,8 @@ msgstr ""
 msgid "Failed to delete invite. Please try again."
 msgstr ""
 
-#: src/components/club-config/roles-manager.tsx:161
+#: src/app/app/[id]/config/roles/roles-view.tsx:192
+#: src/components/club-config/roles-manager.tsx:136
 msgid "Failed to delete role. Please try again later."
 msgstr ""
 
@@ -390,7 +503,8 @@ msgstr ""
 msgid "Failed to save club metadata. Please try again later."
 msgstr ""
 
-#: src/components/club-config/roles-manager.tsx:144
+#: src/app/app/[id]/config/roles/roles-view.tsx:132
+#: src/components/club-config/roles-manager.tsx:119
 msgid "Failed to save role. Please try again later."
 msgstr ""
 
@@ -406,7 +520,8 @@ msgstr ""
 msgid "Failed to submit feedback. Please try again later."
 msgstr ""
 
-#: src/components/club-config/roles-manager.tsx:327
+#: src/app/app/[id]/config/roles/role-dialog.tsx:132
+#: src/components/club-config/roles-manager.tsx:302
 msgid "Fill in the details for the new role."
 msgstr ""
 
@@ -422,12 +537,16 @@ msgstr ""
 msgid "Forgot password"
 msgstr ""
 
+#: src/components/club-config/absence-form-editor.tsx:475
+msgid "Form description"
+msgstr ""
+
 #: src/app/app/[id]/absences/(list)/report-detail.tsx:121
 msgid "Form Responses"
 msgstr ""
 
+#: src/components/auth/signup-form.tsx:147
 #: src/components/profile-editor.tsx:67
-#: src/components/signup-form.tsx:142
 msgid "Full Name"
 msgstr ""
 
@@ -455,12 +574,24 @@ msgstr ""
 msgid "Get started"
 msgstr ""
 
-#: src/components/login-auth-providers-settings.tsx:27
+#: src/components/auth/providers.tsx:16
 msgid "GitHub"
 msgstr ""
 
-#: src/components/login-auth-providers-settings.tsx:25
+#: src/components/auth/providers.tsx:14
 msgid "Google"
+msgstr ""
+
+#: src/app/app/[id]/config/roles/roles-view.tsx:210
+msgid "Graph"
+msgstr ""
+
+#: src/components/club-config/absence-form-editor.tsx:374
+msgid "Hide"
+msgstr ""
+
+#: src/components/club-config/absence-form-editor.tsx:310
+msgid "Hide options"
 msgstr ""
 
 #: src/components/ui/app-header.tsx:91
@@ -475,7 +606,7 @@ msgstr ""
 msgid "Horenso SPACE 🥬"
 msgstr ""
 
-#: src/components/club-create-form.tsx:114
+#: src/components/club-create-form.tsx:118
 msgid "If this is a public club, anyone can find it online and view the information you've provided here."
 msgstr ""
 
@@ -522,8 +653,13 @@ msgstr ""
 msgid "Joined"
 msgstr ""
 
+#: src/app/app/users/me/general/page.tsx:31
+#: src/app/app/users/me/general/page.tsx:36
+msgid "Language"
+msgstr ""
+
 #. placeholder {0}: i18n.date(identity.last_sign_in_at, { dateStyle: "medium", timeStyle: "short", })
-#: src/components/login-auth-providers-settings.tsx:212
+#: src/components/auth/login-auth-providers-settings.tsx:200
 msgid "Last used {0}"
 msgstr ""
 
@@ -531,8 +667,12 @@ msgstr ""
 msgid "Let's get you logged in to your account"
 msgstr ""
 
-#: src/components/login-auth-providers-settings.tsx:240
+#: src/components/auth/login-auth-providers-settings.tsx:228
 msgid "Link <0/> account"
+msgstr ""
+
+#: src/app/app/[id]/config/roles/roles-view.tsx:207
+msgid "List"
 msgstr ""
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:110
@@ -552,13 +692,14 @@ msgstr ""
 msgid "Log out"
 msgstr ""
 
-#: src/components/login-form.tsx:119
+#: src/components/auth/login-form.tsx:125
 #: src/components/ui/app-header.tsx:115
 msgid "Login"
 msgstr ""
 
 #: src/app/app/users/me/page.tsx:45
 #: src/app/app/users/me/tabs.tsx:20
+#: src/components/auth/login-auth-providers-settings.tsx:175
 msgid "Login methods"
 msgstr ""
 
@@ -574,7 +715,8 @@ msgstr ""
 msgid "Manage members"
 msgstr ""
 
-#: src/components/club-config/roles-manager.tsx:252
+#: src/app/app/[id]/config/roles/roles-view.tsx:200
+#: src/components/club-config/roles-manager.tsx:227
 msgid "Manage roles"
 msgstr ""
 
@@ -590,11 +732,15 @@ msgstr ""
 msgid "Month"
 msgstr ""
 
+#: src/components/club-config/absence-form-editor.tsx:260
+msgid "Multiple choice"
+msgstr ""
+
 #: src/app/app/[id]/absences/(list)/tab-nav.tsx:21
 msgid "My absences"
 msgstr ""
 
-#: src/components/login-auth-providers-settings.tsx:220
+#: src/components/auth/login-auth-providers-settings.tsx:208
 msgid "Never used"
 msgstr ""
 
@@ -602,8 +748,13 @@ msgstr ""
 msgid "New event name"
 msgstr ""
 
-#: src/components/login-auth-providers-settings.tsx:152
+#: src/components/auth/login-auth-providers-settings.tsx:140
 msgid "New Password"
+msgstr ""
+
+#: src/components/club-config/absence-form-editor.tsx:155
+#: src/components/club-config/absence-form-editor.tsx:466
+msgid "New question"
 msgstr ""
 
 #: src/components/profile-editor.tsx:82
@@ -661,20 +812,45 @@ msgstr ""
 msgid "Notes"
 msgstr ""
 
-#: src/components/club-config/roles-manager.tsx:436
+#: src/app/app/[id]/config/roles/role-dialog.tsx:239
+#: src/components/club-config/roles-manager.tsx:411
 msgid "Open template editor"
+msgstr ""
+
+#. placeholder {0}: index + 1
+#. placeholder {0}: inner.options.length + 1
+#: src/components/club-config/absence-form-editor.tsx:134
+#: src/components/club-config/absence-form-editor.tsx:340
+msgid "Option {0}"
+msgstr ""
+
+#: src/components/club-config/absence-form-editor.tsx:305
+msgid "Options"
 msgstr ""
 
 #: src/app/not-found.tsx:47
 msgid "Page not found"
 msgstr ""
 
-#: src/components/login-form.tsx:116
-#: src/components/signup-form.tsx:131
+#: src/components/auth/login-form.tsx:122
+#: src/components/auth/signup-form.tsx:136
 msgid "Password"
 msgstr ""
 
-#: src/components/club-config/roles-manager.tsx:354
+#: src/components/auth/login-auth-providers-settings.tsx:113
+msgid "Password and login"
+msgstr ""
+
+#: src/components/auth/login-auth-providers-settings.tsx:134
+msgid "Password updated successfully."
+msgstr ""
+
+#: src/components/auth/login-auth-providers-settings.tsx:74
+msgid "Passwords do not match."
+msgstr ""
+
+#: src/app/app/[id]/config/roles/role-dialog.tsx:160
+#: src/components/club-config/roles-manager.tsx:329
 msgid "Permissions"
 msgstr ""
 
@@ -711,6 +887,10 @@ msgstr ""
 msgid "Public"
 msgstr ""
 
+#: src/components/club-config/absence-form-editor.tsx:487
+msgid "Questions"
+msgstr ""
+
 #: src/app/app/[id]/page.tsx:36
 msgid "Recent notifications"
 msgstr ""
@@ -724,6 +904,8 @@ msgstr ""
 msgid "Rejected"
 msgstr ""
 
+#: src/components/club-config/absence-form-editor.tsx:236
+#: src/components/club-config/absence-form-editor.tsx:354
 #: src/components/club-config/members-manager.tsx:163
 msgid "Remove"
 msgstr ""
@@ -758,7 +940,8 @@ msgstr ""
 msgid "Reviewed"
 msgstr ""
 
-#: src/components/club-config/roles-manager.tsx:389
+#: src/app/app/[id]/config/roles/role-dialog.tsx:195
+#: src/components/club-config/roles-manager.tsx:364
 msgid "Reviewer role"
 msgstr ""
 
@@ -766,12 +949,18 @@ msgstr ""
 msgid "Reviews"
 msgstr ""
 
-#: src/components/club-config/roles-manager.tsx:348
+#: src/app/app/[id]/config/roles/role-dialog.tsx:154
+#: src/components/club-config/roles-manager.tsx:323
 msgid "Role description"
 msgstr ""
 
-#: src/components/club-config/roles-manager.tsx:342
+#: src/app/app/[id]/config/roles/role-dialog.tsx:148
+#: src/components/club-config/roles-manager.tsx:317
 msgid "Role name"
+msgstr ""
+
+#: src/app/app/[id]/config/roles/role-dialog.tsx:98
+msgid "Role name required"
 msgstr ""
 
 #: src/components/club-config/members-manager.tsx:141
@@ -783,8 +972,10 @@ msgid "Roles"
 msgstr ""
 
 #: src/app/app/[id]/calendar/create-event-card.tsx:178
+#: src/app/app/[id]/config/roles/role-dialog.tsx:281
+#: src/app/app/users/me/general/page.tsx:48
 #: src/components/club-config/metadata-form.tsx:132
-#: src/components/club-config/roles-manager.tsx:480
+#: src/components/club-config/roles-manager.tsx:455
 msgid "Save"
 msgstr ""
 
@@ -804,7 +995,7 @@ msgstr ""
 msgid "Saving..."
 msgstr ""
 
-#: src/components/club-create-form.tsx:87
+#: src/components/club-create-form.tsx:91
 #: src/components/profile-editor.tsx:96
 msgid "School"
 msgstr ""
@@ -822,7 +1013,8 @@ msgstr ""
 #~ msgid "Select a setting to change"
 #~ msgstr ""
 
-#: src/components/club-config/roles-manager.tsx:431
+#: src/app/app/[id]/config/roles/role-dialog.tsx:234
+#: src/components/club-config/roles-manager.tsx:406
 msgid "Select a template first"
 msgstr ""
 
@@ -863,16 +1055,28 @@ msgstr ""
 msgid "Sending your club information will help us better understand your problem to resolve it faster."
 msgstr ""
 
-#: src/components/login-form.tsx:92
-msgid "Sign in with GitHub"
+#: src/components/club-config/absence-form-editor.tsx:378
+msgid "Show"
 msgstr ""
+
+#: src/components/club-config/absence-form-editor.tsx:314
+msgid "Show options"
+msgstr ""
+
+#: src/components/auth/login-form.tsx:95
+msgid "Sign in with <0/>"
+msgstr ""
+
+#: src/components/login-form.tsx:92
+#~ msgid "Sign in with GitHub"
+#~ msgstr ""
 
 #: src/components/login-form.tsx:84
-msgid "Sign in with Google"
-msgstr ""
+#~ msgid "Sign in with Google"
+#~ msgstr ""
 
 #: src/app/auth/login/page.tsx:47
-#: src/components/signup-form.tsx:155
+#: src/components/auth/signup-form.tsx:160
 #: src/components/ui/app-header.tsx:120
 msgid "Sign up"
 msgstr ""
@@ -881,13 +1085,17 @@ msgstr ""
 msgid "Sign up to get started"
 msgstr ""
 
-#: src/components/signup-form.tsx:107
-msgid "Sign up with GitHub"
+#: src/components/auth/signup-form.tsx:109
+msgid "Sign up with <0/>"
 msgstr ""
 
+#: src/components/signup-form.tsx:107
+#~ msgid "Sign up with GitHub"
+#~ msgstr ""
+
 #: src/components/signup-form.tsx:99
-msgid "Sign up with Google"
-msgstr ""
+#~ msgid "Sign up with Google"
+#~ msgstr ""
 
 #: src/app/auth/error/page.tsx:17
 msgid "Something went wrong"
@@ -895,6 +1103,14 @@ msgstr ""
 
 #: src/app/page.tsx:71
 msgid "Sponsored by the Sapporo Kosei Junior & Senior High School Brass Band club and produced by the Christian Academy in Japan Robotics club (VEX team 99484)."
+msgstr ""
+
+#: src/components/club-config/absence-form-editor.tsx:263
+msgid "Static text"
+msgstr ""
+
+#: src/components/club-config/absence-form-editor.tsx:289
+msgid "Static text content"
 msgstr ""
 
 #: src/components/permission-text.tsx:36
@@ -905,6 +1121,10 @@ msgstr ""
 #: src/app/app/[id]/absences/(list)/list.tsx:44
 #: src/app/app/[id]/absences/(list)/report-detail.tsx:80
 msgid "Submitted by"
+msgstr ""
+
+#: src/components/club-config/absence-form-editor.tsx:254
+msgid "Text"
 msgstr ""
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:119
@@ -929,7 +1149,12 @@ msgstr ""
 
 #: src/app/app/[id]/calendar/create-event-card.tsx:117
 #: src/app/app/[id]/calendar/create-event-card.tsx:134
+#: src/components/club-config/absence-form-editor.tsx:257
 msgid "Time"
+msgstr ""
+
+#: src/components/club-config/absence-form-editor.tsx:243
+msgid "Type"
 msgstr ""
 
 #: src/components/forgot-password-form.tsx:67
@@ -956,7 +1181,7 @@ msgstr ""
 msgid "Unknown user"
 msgstr ""
 
-#: src/components/login-auth-providers-settings.tsx:208
+#: src/components/auth/login-auth-providers-settings.tsx:196
 msgid "Unlink account"
 msgstr ""
 
@@ -964,7 +1189,7 @@ msgstr ""
 msgid "Untitled form"
 msgstr ""
 
-#: src/components/login-auth-providers-settings.tsx:181
+#: src/components/auth/login-auth-providers-settings.tsx:169
 msgid "Update password"
 msgstr ""
 
@@ -1002,7 +1227,7 @@ msgid "We emailed you a password reset link"
 msgstr ""
 
 #: src/components/club-config/metadata-form.tsx:91
-#: src/components/club-create-form.tsx:96
+#: src/components/club-create-form.tsx:100
 msgid "Website"
 msgstr ""
 
@@ -1040,7 +1265,7 @@ msgstr ""
 msgid "You will be joining as: <0>{0}</0>. Expires at: <1>{1}</1>"
 msgstr ""
 
-#: src/components/club-create-form.tsx:71
+#: src/components/club-create-form.tsx:75
 msgid "Your club"
 msgstr ""
 
@@ -1052,11 +1277,11 @@ msgstr ""
 msgid "Your full name"
 msgstr ""
 
-#: src/components/signup-form.tsx:149
+#: src/components/auth/signup-form.tsx:154
 msgid "Your full name will not be shared with people outside of your clubs unless you choose to at a later time."
 msgstr ""
 
-#: src/components/club-create-form.tsx:90
+#: src/components/club-create-form.tsx:94
 msgid "Your school"
 msgstr ""
 
