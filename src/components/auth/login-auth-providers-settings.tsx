@@ -16,28 +16,14 @@ import {
 import type { Provider, UserIdentity } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
 import { use, useEffect, useState } from "react";
-
-const SUPPORTED_OAUTH_PROVIDERS: Provider[] = ["google", "github"];
-
-function OauthProviderName({ provider }: { provider: Provider | "email" }) {
-  switch (provider) {
-    case "google":
-      return <Trans>Google</Trans>;
-    case "github":
-      return <Trans>GitHub</Trans>;
-    case "email":
-      return <Trans>Email</Trans>;
-    default:
-      return <>{provider}</>;
-  }
-}
+import { OauthProviderName, SUPPORTED_OAUTH_PROVIDERS } from "./providers";
 
 export default function LoginAuthProvidersSettings({
   identitiesPromise,
 }: {
   identitiesPromise: Promise<UserIdentity[]>;
 }) {
-  const { i18n } = useLingui();
+  const { i18n, t } = useLingui();
 
   const router = useRouter();
   const [linkingError, setLinkingError] = useState<string | null>(null);
@@ -55,7 +41,7 @@ export default function LoginAuthProvidersSettings({
     setLinking(null);
     if (error) {
       console.error("Error linking identity:", error.message);
-      setLinkingError(error.message);
+      setLinkingError(t`Error linking identity: ${error.message}`);
     }
   };
 
@@ -66,7 +52,7 @@ export default function LoginAuthProvidersSettings({
     const { error } = await supabase.auth.unlinkIdentity(identity);
     setUnlinking(null);
     if (error) {
-      setLinkingError(error.message);
+      setLinkingError(t`Error unlinking identity: ${error.message}`);
     } else {
       router.refresh();
     }
@@ -85,7 +71,7 @@ export default function LoginAuthProvidersSettings({
     const newPassword = formData.get("newPassword") as string;
     const confirmNewPassword = formData.get("confirmNewPassword") as string;
     if (newPassword !== confirmNewPassword) {
-      setResetPasswordError("Passwords do not match.");
+      setResetPasswordError(t`Passwords do not match.`);
       setResetPasswordSuccess(false);
       return;
     }
@@ -95,7 +81,7 @@ export default function LoginAuthProvidersSettings({
     });
     if (error) {
       console.error("Error updating password:", error.message);
-      setResetPasswordError(error.message);
+      setResetPasswordError(t`Error updating password: ${error.message}`);
       setResetPasswordSuccess(false);
     } else {
       setResetPasswordError(null);
@@ -111,7 +97,7 @@ export default function LoginAuthProvidersSettings({
         decodeURIComponent(
           searchParams.get("error_description") ||
             searchParams.get("error_code") ||
-            "An error occurred."
+            t`An error occurred.`
         )
       );
       // Clean up the URL to remove error params
@@ -124,7 +110,7 @@ export default function LoginAuthProvidersSettings({
   return (
     <Flex direction="column" gap="4" align="start">
       <Heading as="h3" size="4">
-        Password and login
+        <Trans>Password and login</Trans>
       </Heading>
       <Card asChild>
         <Flex direction="column" gap="2" width="100%" align="start" asChild>
@@ -144,7 +130,9 @@ export default function LoginAuthProvidersSettings({
             )}
             {resetPasswordSuccess && (
               <Callout.Root color="green">
-                <Callout.Text>Password updated successfully.</Callout.Text>
+                <Callout.Text>
+                  <Trans>Password updated successfully.</Trans>
+                </Callout.Text>
               </Callout.Root>
             )}
             <Text as="p">
@@ -184,7 +172,7 @@ export default function LoginAuthProvidersSettings({
         </Flex>
       </Card>
       <Heading as="h3" size="4">
-        Login methods
+        <Trans>Login methods</Trans>
       </Heading>
       {linkingError && (
         <Callout.Root color="red">

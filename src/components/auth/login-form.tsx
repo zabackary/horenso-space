@@ -4,23 +4,21 @@ import { revalidateRoot } from "@/actions/auth";
 import { createClient } from "@/lib/supabase/client";
 import { Trans, useLingui } from "@lingui/react/macro";
 import { CrossCircledIcon } from "@radix-ui/react-icons";
-import { Button, Callout, Flex, Text, TextField } from "@radix-ui/themes";
+import { Button, Callout, Flex, TextField } from "@radix-ui/themes";
+import { Provider } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { OauthProviderName, SUPPORTED_OAUTH_PROVIDERS } from "./providers";
 
-export interface SignupFormProps {
+export interface LoginFormProps {
   next?: string;
 }
 
-export function SignupForm(props: SignupFormProps) {
+export function LoginForm(props: LoginFormProps) {
   const [email, setEmail] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const [password, setPassword] = useState("");
-  const [fullName, setFullName] = useState("");
   const [error, setError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState<
-    "google" | "github" | "email" | null
-  >(null);
+  const [isLoading, setIsLoading] = useState<Provider | "email" | null>(null);
   const router = useRouter();
   const { t } = useLingui();
 
@@ -31,38 +29,29 @@ export function SignupForm(props: SignupFormProps) {
     setError(null);
 
     try {
-      const {
-        data: { user },
-        error,
-      } = await supabase.auth.signUp({
+      const { error } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
       if (error) throw error;
-      // At this point there should be a profile created by the DB trigger
-      if (user) {
-        const { error } = await supabase
-          .from("profiles")
-          .update({ full_name: fullName as any })
-          .eq("id", user.id);
-        if (error) {
-          console.warn("Failed to update full name:", error);
-        }
-      }
-      revalidateRoot();
+      await revalidateRoot();
       if (props.next) {
         router.push(props.next);
       } else {
         router.push("/app");
       }
     } catch (error: unknown) {
-      setError(error instanceof Error ? error.message : "An error occurred");
+      setError(
+        error instanceof Error
+          ? t`An error occurred while signing in: ${error.message}`
+          : t`An error occurred.`
+      );
     } finally {
       setIsLoading(null);
     }
   };
 
-  const handleOauthLogin = async (provider: "google" | "github") => {
+  const handleOauthLogin = async (provider: Provider) => {
     const supabase = createClient();
     setIsLoading(provider);
     setError(null);
@@ -81,7 +70,12 @@ export function SignupForm(props: SignupFormProps) {
       });
       if (error) throw error;
     } catch (error: unknown) {
-      setError(error instanceof Error ? error.message : "An error occurred");
+      console.error("OAuth login error:", error);
+      setError(
+        error instanceof Error
+          ? t`An error occurred while signing in: ${error.message}`
+          : t`An error occurred.`
+      );
       setIsLoading(null);
     }
   };
@@ -90,22 +84,19 @@ export function SignupForm(props: SignupFormProps) {
     <form onSubmit={handleLogin}>
       <Flex direction="column" gap="2" my="4">
         <Flex direction="row" gap="2" align="stretch" justify="center">
-          <Button
-            variant="outline"
-            onClick={() => handleOauthLogin("google")}
-            loading={isLoading === "google"}
-            type="button"
-          >
-            <Trans>Sign up with Google</Trans>
-          </Button>
-          <Button
-            variant="outline"
-            onClick={() => handleOauthLogin("github")}
-            loading={isLoading === "github"}
-            type="button"
-          >
-            <Trans>Sign up with GitHub</Trans>
-          </Button>
+          {SUPPORTED_OAUTH_PROVIDERS.map((provider) => (
+            <Button
+              key={provider}
+              variant="outline"
+              onClick={() => handleOauthLogin(provider)}
+              loading={isLoading === provider}
+              type="button"
+            >
+              <Trans>
+                Sign in with <OauthProviderName provider={provider} />
+              </Trans>
+            </Button>
+          ))}
         </Flex>
         {error && (
           <Callout.Root color="red">
@@ -130,29 +121,8 @@ export function SignupForm(props: SignupFormProps) {
           onChange={(e) => setPassword(e.target.value)}
           placeholder={t`Password`}
         />
-        <TextField.Root
-          id="confirm-password"
-          type="password"
-          required
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          placeholder={t`Confirm Password`}
-        />
-        <TextField.Root
-          placeholder={t`Full Name`}
-          required
-          type="text"
-          value={fullName}
-          onChange={(e) => setFullName(e.target.value)}
-        />
-        <Text size="1" color="gray" as="p">
-          <Trans>
-            Your full name will not be shared with people outside of your clubs
-            unless you choose to at a later time.
-          </Trans>
-        </Text>
         <Button type="submit" loading={isLoading === "email"}>
-          <Trans>Sign up</Trans>
+          <Trans>Login</Trans>
         </Button>
       </Flex>
     </form>
