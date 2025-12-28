@@ -1,4 +1,4 @@
-import LoginAuthProvidersSettings from "@/components/login-auth-providers-settings";
+import LoginAuthProvidersSettings from "@/components/auth/login-auth-providers-settings";
 import { createClient } from "@/lib/supabase/server";
 import { Box } from "@radix-ui/themes";
 

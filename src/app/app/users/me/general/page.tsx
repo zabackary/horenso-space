@@ -22,7 +22,7 @@ export default async function Page() {
     };
   });
 
-  const { i18n } = useLingui();
+  const { i18n, t } = useLingui();
 
   return (
     <Flex direction="column" gap="4" p="4" align="start" asChild>
@@ -33,7 +33,7 @@ export default async function Page() {
           <Select.Root defaultValue={i18n.locale} required name="language">
             <Select.Trigger
               id={`user-general-settings-name`}
-              aria-label="Language"
+              aria-label={t`Language`}
             />
             <Select.Content>
               {languages.map((language) => (
