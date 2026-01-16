@@ -26,7 +26,7 @@ export default async function App({ params }: PageProps<"/app">) {
         direction="column"
         align="center"
         justify="center"
-        height="100vh"
+        flexGrow="1"
         gap="4"
         p="4"
         style={{ zIndex: -1 }}
