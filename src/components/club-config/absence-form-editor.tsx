@@ -331,7 +331,7 @@ function ItemEditor({
               <Flex direction="column" gap="2">
                 {inner.options.map((opt, index) => (
                   <Card
-                    key={`${opt.label}-${index}`}
+                    key={`${index}`} // We can't use opt.label as key because it may change
                     className={styles.optionCard}
                   >
                     <Flex direction="column" gap="2">
