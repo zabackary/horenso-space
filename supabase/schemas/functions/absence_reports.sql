@@ -1,6 +1,6 @@
 -- Helper function to fetch absence reports with user profiles and assigned role
 -- Returns absence reports for a club with associated event and review data
-create or replace function public.get_absence_reports(p_club_id uuid, p_user_id uuid default null)
+create function public.absence_reports_get(p_club_id uuid, p_user_id uuid default null)
   returns table(
     id uuid,
     user_id uuid,
@@ -56,11 +56,9 @@ order by
   ar.date desc nulls last;
 $$;
 
-grant execute on function public.get_absence_reports(uuid, uuid) to authenticated;
-
 -- Helper function to fetch absence reports assigned to current user's roles
 -- Returns reports where the current user has a role matching the assigned_to_role
-create or replace function public.get_assigned_absence_reports(p_club_id uuid)
+create function public.absence_reports_assigned_get(p_club_id uuid)
   returns table(
     id uuid,
     user_id uuid,
@@ -130,6 +128,4 @@ group by
 order by
   ar.date desc nulls last;
 $$;
-
-grant execute on function public.get_assigned_absence_reports(uuid) to authenticated;
 

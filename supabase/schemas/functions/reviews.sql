@@ -1,6 +1,6 @@
 -- When an absence report is created, assign it to the appropriate role if
 -- the creator's role has an absence_report_reviewer_role set
-create or replace function public.handle_report_creation()
+create function public.assign_new_report()
   returns trigger
   language plpgsql
   security definer -- runs with max privileges, so we need to validate inputs
@@ -30,14 +30,14 @@ begin
 end;
 $$;
 
-create trigger handle_report_creation
+create trigger assign_new_report
   before insert on absence_reports for each row
-  execute function public.handle_report_creation();
+  execute function public.assign_new_report();
 
 -- When an absence report review is created and is accepted, if the person creating the review's
 -- role has an absence_report_reviewer_role and absence_report_approval_required
 -- is true, then set the absence report's assigned_to_role to that role.
-create or replace function public.handle_review_creation()
+create function public.handle_review_creation()
   returns trigger
   language plpgsql
   security definer -- runs with max privileges, so we need to validate inputs
@@ -92,7 +92,7 @@ create trigger handle_review_creation
 -- checking that each role that requires approval has an accepted review from their reviewer role
 -- repeating until a role with absence_report_approval_required = false is found
 -- or a reviewer role has already been checked (to prevent recursion loops)
-create or replace function public.is_report_approved(p_report_id uuid)
+create function public.absence_reports_is_approved(p_report_id uuid)
   returns boolean
   language plpgsql
   security definer stable

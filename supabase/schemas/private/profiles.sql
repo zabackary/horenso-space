@@ -16,36 +16,6 @@ create table private.profiles(
 
 create index on private.profiles(full_name);
 
--- Add a getter for the current user's locale
-create function public.current_locale()
-  returns text
-  language sql
-  security definer
-  set search_path = ''
-  as $$
-  select
-    locale
-  from
-    private.profiles
-  where
-    id = auth.uid();
-$$;
-
--- Set the current user's locale
-create function public.set_current_locale(new_locale text)
-  returns void
-  language sql
-  security definer
-  set search_path = ''
-  as $$
-  update
-    private.profiles
-  set
-    locale = new_locale
-  where
-    id = auth.uid();
-$$;
-
 create trigger set_updated_at
   before update on private.profiles for each row
   execute function extensions.moddatetime("updated_at");

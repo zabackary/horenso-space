@@ -699,30 +699,7 @@ export type Database = {
       }
     }
     Functions: {
-      accept_invitation: { Args: { invitation_id: string }; Returns: undefined }
-      create_invitation: {
-        Args: { expires_at: string; new_club_id: string; role_id: string }
-        Returns: string
-      }
-      current_locale: { Args: never; Returns: string }
-      delete_invitation: { Args: { invitation_id: string }; Returns: undefined }
-      get_absence_reports: {
-        Args: { p_club_id: string; p_user_id?: string }
-        Returns: {
-          assigned_to_role_id: string
-          assigned_to_role_name: string
-          event_end_time: string
-          event_id: string
-          event_name: string
-          event_start_time: string
-          id: string
-          report_date: string
-          reviews: Json
-          user_id: string
-          user_name: string
-        }[]
-      }
-      get_assigned_absence_reports: {
+      absence_reports_assigned_get: {
         Args: { p_club_id: string }
         Returns: {
           assigned_to_role_id: string
@@ -740,7 +717,48 @@ export type Database = {
           user_name: string
         }[]
       }
-      get_invitations: {
+      absence_reports_get: {
+        Args: { p_club_id: string; p_user_id?: string }
+        Returns: {
+          assigned_to_role_id: string
+          assigned_to_role_name: string
+          event_end_time: string
+          event_id: string
+          event_name: string
+          event_start_time: string
+          id: string
+          report_date: string
+          reviews: Json
+          user_id: string
+          user_name: string
+        }[]
+      }
+      absence_reports_is_approved: {
+        Args: { p_report_id: string }
+        Returns: boolean
+      }
+      invintations_verify: {
+        Args: { invitation_id: string }
+        Returns: {
+          club_name: string
+          expires_at: string
+          invited_by_name: string
+          role_name: string
+        }[]
+      }
+      invitations_accept: {
+        Args: { invitation_id: string }
+        Returns: undefined
+      }
+      invitations_create: {
+        Args: { expires_at: string; new_club_id: string; role_id: string }
+        Returns: string
+      }
+      invitations_delete: {
+        Args: { invitation_id: string }
+        Returns: undefined
+      }
+      invitations_get: {
         Args: { club_id: string }
         Returns: {
           created_at: string
@@ -751,20 +769,11 @@ export type Database = {
           usage_count: number
         }[]
       }
-      is_report_approved: { Args: { p_report_id: string }; Returns: boolean }
-      set_current_locale: { Args: { new_locale: string }; Returns: undefined }
+      profiles_locale_get: { Args: never; Returns: string }
+      profiles_locale_set: { Args: { new_locale: string }; Returns: undefined }
       user_has_club_permission: {
         Args: { p_club_id: string; p_permission: string }
         Returns: boolean
-      }
-      verify_invitation: {
-        Args: { invitation_id: string }
-        Returns: {
-          club_name: string
-          expires_at: string
-          invited_by_name: string
-          role_name: string
-        }[]
       }
     }
     Enums: {

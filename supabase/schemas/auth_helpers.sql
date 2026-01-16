@@ -21,8 +21,6 @@ create function public.user_has_club_permission(p_club_id uuid, p_permission tex
         and(r.permissions ->> p_permission)::boolean = true);
 $$;
 
-grant execute on function public.user_has_club_permission(uuid, text) to authenticated;
-
 -- Joined clubs view for easier permission checks
 create view public.joined_clubs as
 select
