@@ -41,7 +41,7 @@ begin
 end;
 $function$;
 
-create function "public"."invintations_verify"(invitation_id uuid)
+create function "public"."invitations_verify"(invitation_id uuid)
   returns table(
     club_name text,
     role_name text,

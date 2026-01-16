@@ -737,15 +737,6 @@ export type Database = {
         Args: { p_report_id: string }
         Returns: boolean
       }
-      invintations_verify: {
-        Args: { invitation_id: string }
-        Returns: {
-          club_name: string
-          expires_at: string
-          invited_by_name: string
-          role_name: string
-        }[]
-      }
       invitations_accept: {
         Args: { invitation_id: string }
         Returns: undefined
@@ -767,6 +758,15 @@ export type Database = {
           invited_by_name: string
           role_name: string
           usage_count: number
+        }[]
+      }
+      invitations_verify: {
+        Args: { invitation_id: string }
+        Returns: {
+          club_name: string
+          expires_at: string
+          invited_by_name: string
+          role_name: string
         }[]
       }
       profiles_locale_get: { Args: never; Returns: string }
