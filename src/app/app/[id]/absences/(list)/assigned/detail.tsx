@@ -68,7 +68,7 @@ export default function ReportDetail({
     async function fetchAcceptedStatus() {
       const supabase = createClient();
       const { data, error } = await supabase
-        .rpc("is_report_approved", {
+        .rpc("absence_reports_is_approved", {
           p_report_id: report.id,
         })
         .abortSignal(abortController.signal);

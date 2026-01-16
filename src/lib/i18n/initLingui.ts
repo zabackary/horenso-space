@@ -11,7 +11,9 @@ export type PageLangParam = {
 export async function initLingui() {
   const requestHeaders = await headers();
   const requestLang = getRequestLocale(requestHeaders);
-  const { data: userLang } = await (await createClient()).rpc("current_locale");
+  const { data: userLang } = await (
+    await createClient()
+  ).rpc("profiles_locale_get");
   const i18n = getI18nInstance(userLang || requestLang);
   setI18n(i18n);
   return i18n;

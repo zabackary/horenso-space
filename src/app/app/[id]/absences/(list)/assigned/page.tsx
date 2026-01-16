@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 import AssignedReportsList from "./list";
 
 type AssignedReport =
-  Database["public"]["Functions"]["get_assigned_absence_reports"]["Returns"][number];
+  Database["public"]["Functions"]["absence_reports_assigned_get"]["Returns"][number];
 
 export default async function Page({
   params,
@@ -22,7 +22,7 @@ export default async function Page({
   }
 
   const { data: reports, error } = await supabase.rpc(
-    "get_assigned_absence_reports",
+    "absence_reports_assigned_get",
     {
       p_club_id: id,
     }

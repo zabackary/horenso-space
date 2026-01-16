@@ -33,7 +33,7 @@ export default async function getReports(
   userId?: string
 ): Promise<AbsenceReport[]> {
   const { data: reportsRes, error: reportsError } = await supabase.rpc(
-    "get_absence_reports",
+    "absence_reports_get",
     {
       p_club_id: id,
       p_user_id: userId,

@@ -12,7 +12,7 @@ export default async function ClubInvitesPage({
   const supabase = await createClient();
 
   const invitesPromise = supabase
-    .rpc("get_invitations", { club_id: id })
+    .rpc("invitations_get", { club_id: id })
     .then((res) => res.data ?? []);
   const rolesPromise = supabase
     .from("roles")

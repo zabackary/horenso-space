@@ -28,7 +28,7 @@ export default async function JoinClubPage({
     redirect(`/auth/login?${searchParams.toString()}`);
   }
   const { data: invite, error } = await supabase
-    .rpc("verify_invitation", {
+    .rpc("invitations_verify", {
       invitation_id: id,
     })
     .single();

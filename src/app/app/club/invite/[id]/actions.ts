@@ -1,8 +1,8 @@
 "use server";
 
-import { redirect } from "next/dist/client/components/navigation";
 import getProfile from "@/lib/auth/getProfile";
 import { createClient } from "@/lib/supabase/server";
+import { redirect } from "next/dist/client/components/navigation";
 
 export async function joinClub(invitationId: string) {
   const supabase = await createClient();
@@ -13,7 +13,7 @@ export async function joinClub(invitationId: string) {
 
   try {
     await supabase
-      .rpc("accept_invitation", { invitation_id: invitationId })
+      .rpc("invitations_accept", { invitation_id: invitationId })
       .throwOnError();
   } catch (error) {
     console.error("Failed to join club:", error);

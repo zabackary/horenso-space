@@ -12,7 +12,7 @@ export default async function generalSettingsAction(formData: FormData) {
   }
 
   const supabase = await createClient();
-  await supabase.rpc("set_current_locale", {
+  await supabase.rpc("profiles_locale_set", {
     new_locale: language as string,
   });
 

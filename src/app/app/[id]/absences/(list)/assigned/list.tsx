@@ -9,7 +9,7 @@ import ReportDetail from "./detail";
 import styles from "./list.module.css";
 
 export type AssignedReport =
-  Database["public"]["Functions"]["get_assigned_absence_reports"]["Returns"][number];
+  Database["public"]["Functions"]["absence_reports_assigned_get"]["Returns"][number];
 
 export default function AssignedReportsList({
   clubId,

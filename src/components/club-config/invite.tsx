@@ -30,7 +30,7 @@ export default function InvitesManager({
     Pick<Database["public"]["Tables"]["roles"]["Row"], "id" | "name">[]
   >;
   invitesPromise: PromiseLike<
-    Database["public"]["Functions"]["get_invitations"]["Returns"]
+    Database["public"]["Functions"]["invitations_get"]["Returns"]
   >;
 }) {
   const [error, setError] = useState<string | null>(null);
@@ -59,7 +59,7 @@ export default function InvitesManager({
     setError(null);
     try {
       const supabase = createClient();
-      const { data, error } = await supabase.rpc("create_invitation", {
+      const { data, error } = await supabase.rpc("invitations_create", {
         new_club_id: clubId,
         role_id: inviteRole,
         expires_at: new Date(
@@ -93,7 +93,7 @@ export default function InvitesManager({
   async function handleDelete(inviteId: string) {
     try {
       const supabase = createClient();
-      const { error } = await supabase.rpc("delete_invitation", {
+      const { error } = await supabase.rpc("invitations_delete", {
         invitation_id: inviteId,
       });
       if (error) throw error;
