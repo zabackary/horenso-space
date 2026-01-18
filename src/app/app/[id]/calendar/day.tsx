@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/client";
+import { Trans } from "@lingui/react/macro";
 import { GlobeIcon, TextIcon } from "@radix-ui/react-icons";
 import { Box, Card, Flex, Heading, Separator, Text } from "@radix-ui/themes";
 import { useEffect, useMemo, useState } from "react";
@@ -50,7 +51,8 @@ export default function DayCalendar({
         .abortSignal(abortController.signal);
 
       if (error) {
-        console.error("Error fetching events:", error);
+        if (!error.message.includes("AbortError"))
+          console.error("Error fetching events:", error);
       } else {
         setEvents(
           data.map((event) => ({
@@ -60,7 +62,7 @@ export default function DayCalendar({
             endDate: event.end_time,
             description: event.description || undefined,
             location: event.location || undefined,
-          }))
+          })),
         );
       }
     }
@@ -84,7 +86,9 @@ export default function DayCalendar({
       <Separator />
       <Box>
         {events.length === 0 ? (
-          <Text>本日のイベントはありません。</Text>
+          <Text>
+            <Trans>No events for today.</Trans>
+          </Text>
         ) : (
           events.map((event) => (
             <Card key={event.id} mb="2">

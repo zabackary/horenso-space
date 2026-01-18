@@ -100,11 +100,11 @@ export default function Calendar({
         mode === "year"
           ? date.split("-")[0]
           : mode === "month"
-          ? date.split("-").slice(0, 2).join("/")
-          : mode === "day"
-          ? date.split("-").join("/")
-          : ""
-      }`
+            ? date.split("-").slice(0, 2).join("/")
+            : mode === "day"
+              ? date.split("-").join("/")
+              : ""
+      }`,
     );
   }, [date, mode]);
 
@@ -113,6 +113,8 @@ export default function Calendar({
   };
 
   const isSmall = useMediaQuery("(max-width: 600px)");
+
+  const { t } = useLingui();
 
   return (
     <>
@@ -135,7 +137,7 @@ export default function Calendar({
                 : "outline"
             }
             size="3"
-            aria-label="Go to today"
+            aria-label={t`Go to today`}
             onClick={() => {
               const today = new Date();
               const year = today.getFullYear().toString().padStart(4, "0");
@@ -313,11 +315,11 @@ export default function Calendar({
           <IconButton
             variant="solid"
             size="4"
-            aria-label="Create event"
+            aria-label={t`Create event`}
             className={styles.createEventFAB}
             onClick={() => setCreateDrawerOpen(true)}
           >
-            <PlusIcon />
+            <PlusIcon width={36} height={36} />
           </IconButton>
         )}
       </Flex>
@@ -332,11 +334,13 @@ export default function Calendar({
             <Drawer.Overlay />
             <Drawer.Content>
               <VisuallyHidden>
-                <Drawer.Title>Create event</Drawer.Title>
+                <Drawer.Title>
+                  <Trans>Create event</Trans>
+                </Drawer.Title>
               </VisuallyHidden>
               <VisuallyHidden>
                 <Drawer.Description>
-                  Create a new event for your club.
+                  <Trans>Create a new event for your club.</Trans>
                 </Drawer.Description>
               </VisuallyHidden>
               <CreateEventCard
@@ -347,9 +351,6 @@ export default function Calendar({
                 onCreate={() => {
                   setCreateDrawerOpen(false);
                   setRefreshKey((key) => key + 1);
-                }}
-                initialStartDate={() => {
-                  return date;
                 }}
               />
             </Drawer.Content>

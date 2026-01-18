@@ -83,5 +83,9 @@
     color: var(--accent-11);
     width: 100%;
     border: 1px dashed var(--accent-8);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
   }
 }

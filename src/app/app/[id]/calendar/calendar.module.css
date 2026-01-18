@@ -1,14 +1,16 @@
 .createEventFAB {
-  position: fixed;
+  position: absolute;
   bottom: var(--space-4);
   right: var(--space-4);
   z-index: 1;
+  width: 84px;
+  height: 84px;
+  border-radius: var(--radius-5);
 }
 
 .swiper {
   width: 100%;
   flex-grow: 1;
-  max-height: calc(100% - 72px);
 }
 
 .header {

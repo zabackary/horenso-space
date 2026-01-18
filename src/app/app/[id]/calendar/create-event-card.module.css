@@ -25,16 +25,17 @@
 
 .buttons {
   position: sticky;
-  bottom: 16px;
+  top: var(--space-4);
   width: 100%;
-  margin-top: 16px;
-
-  button {
-    flex-grow: 1;
-  }
 }
 
 .form {
   width: 100%;
   flex-grow: 1;
+}
+
+.title {
+  font-size: 1.5rem;
+  height: 3rem;
+  border-radius: var(--radius-2);
 }

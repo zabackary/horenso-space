@@ -2,7 +2,8 @@
 
 import type { Database } from "@/@types/database.types";
 import { createClient } from "@/lib/supabase/client";
-import { Box, Flex, Grid, Heading, Link } from "@radix-ui/themes";
+import { useLingui } from "@lingui/react/macro";
+import { Box, Button, Flex, Grid, Heading, Link } from "@radix-ui/themes";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import clsx from "clsx";
 import { memo, useEffect, useMemo, useRef, useState } from "react";
@@ -36,7 +37,6 @@ export default function YearCalendar({
     if (ref.current) {
       const index = years.indexOf(year);
       if (index !== -1 && !scrollingFromCallback.current) {
-        console.log("initiated scroll", scrollingFromCallback.current);
         setIsScrolling(true);
         setTimeout(() => {
           ref.current?.scrollToIndex({
@@ -123,7 +123,8 @@ function YearCard({
       .abortSignal(abortController.signal)
       .then(({ data, error }) => {
         if (error) {
-          console.error("failed to fetch events to highlight:", error);
+          if (!error.message.includes("AbortError"))
+            console.error("failed to fetch events to highlight:", error);
           return;
         }
         const dateToISO = (date: Date) => date.toISOString().substring(0, 10);
@@ -141,7 +142,7 @@ function YearCard({
                 return result;
               }
               return [];
-            })
+            }),
           ),
         ]);
       });
@@ -195,8 +196,8 @@ function YearCard({
                     x.startsWith(
                       `${year.toString().padStart(4, "0")}-${month
                         .toString()
-                        .padStart(2, "0")}`
-                    )
+                        .padStart(2, "0")}`,
+                    ),
                   )
                   .map((x) => Number.parseInt(x.substring(8), 10))}
               />
@@ -224,12 +225,12 @@ function MonthPreview({
   // Render a grid of dates for the month
   const daysInMonth = useMemo(
     () => new Date(year, month, 0).getDate(),
-    [year, month]
+    [year, month],
   );
 
   const firstDayOfMonth = useMemo(
     () => new Date(year, month - 1, 1).getDay(),
-    [year, month]
+    [year, month],
   );
 
   const totalCells = useMemo(() => {
@@ -238,6 +239,8 @@ function MonthPreview({
       ? daysInMonth + firstDayOfMonth
       : daysInMonth + firstDayOfMonth + (7 - lastDayOfMonth);
   }, [firstDayOfMonth, daysInMonth]);
+
+  const { t } = useLingui();
 
   return (
     <Grid columns="7" gap="1" width="100%">
@@ -259,15 +262,12 @@ function MonthPreview({
         } else {
           const day = i - firstDayOfMonth + 1;
           return (
-            <Box
-              key={day}
-              className={clsx(
-                styles.dayCell,
-                highlightDates.includes(day) && styles.dayCellHighlight
-              )}
+            <Button
+              variant="ghost"
+              className={styles.dayButton}
               title={
                 highlightDates.includes(day)
-                  ? "An event is on this date."
+                  ? t`An event is scheduled on this day.`
                   : undefined
               }
               onClick={(e) => {
@@ -278,9 +278,17 @@ function MonthPreview({
                   onSelectDate(`${year}-${monthStr}-${dayStr}`);
                 }
               }}
+              key={day}
             >
-              {day}
-            </Box>
+              <Box
+                className={clsx(
+                  styles.dayCell,
+                  highlightDates.includes(day) && styles.dayCellHighlight,
+                )}
+              >
+                {day}
+              </Box>
+            </Button>
           );
         }
       })}

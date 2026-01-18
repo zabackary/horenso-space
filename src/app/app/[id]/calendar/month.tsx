@@ -43,7 +43,7 @@ export default function MonthCalendar({
         (_, i) =>
           `${year.toString().padStart(4, "0")}-${(i + 1)
             .toString()
-            .padStart(2, "0")}`
+            .padStart(2, "0")}`,
       );
     }).flat();
   }, []);
@@ -173,7 +173,7 @@ function MonthCard({
                 return result;
               }
               return [];
-            })
+            }),
           ),
         ]);
       });
@@ -186,12 +186,12 @@ function MonthCard({
   // Render a grid of dates for the month
   const daysInMonth = useMemo(
     () => new Date(year, month, 0).getDate(),
-    [year, month]
+    [year, month],
   );
 
   const firstDayOfMonth = useMemo(
     () => new Date(year, month - 1, 1).getDay(),
-    [year, month]
+    [year, month],
   );
 
   const totalCells = useMemo(() => {
@@ -240,7 +240,7 @@ function MonthCard({
                 key={day}
                 className={clsx(
                   styles.dayCell,
-                  highlights.length > 0 && styles.dayCellHighlight
+                  highlights.length > 0 && styles.dayCellHighlight,
                 )}
                 onClick={(e) => {
                   if (onSelectDate) {
@@ -271,7 +271,7 @@ function MonthCard({
                             .toString()
                             .padStart(2, "0")}-${day
                             .toString()
-                            .padStart(2, "0")}`
+                            .padStart(2, "0")}`,
                         );
                       }
                     }}

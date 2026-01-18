@@ -3,13 +3,20 @@
 import getProfile from "@/lib/auth/getProfile";
 import { createClient } from "@/lib/supabase/client";
 import { Trans, useLingui } from "@lingui/react/macro";
-import { CalendarIcon, GlobeIcon, TextIcon } from "@radix-ui/react-icons";
+import {
+  BookmarkFilledIcon,
+  CalendarIcon,
+  Cross1Icon,
+  GlobeIcon,
+  TextIcon,
+} from "@radix-ui/react-icons";
 import {
   Box,
   Button,
   Callout,
   Flex,
   Grid,
+  IconButton,
   TextArea,
   TextField,
 } from "@radix-ui/themes";
@@ -22,7 +29,6 @@ export interface CreateEventCardProps {
   withPadding?: boolean;
   onCancel?: () => void;
   onCreate?: (eventId: string) => void;
-  initialStartDate?: () => string;
 }
 
 export default function CreateEventCard({
@@ -30,23 +36,10 @@ export default function CreateEventCard({
   withPadding,
   onCancel,
   onCreate,
-  initialStartDate,
 }: CreateEventCardProps) {
   const { t } = useLingui();
-  const [startDate, setStartDate] = useState(() => {
-    return initialStartDate ? initialStartDate() : "";
-  });
-  const [startTime, setStartTime] = useState("");
-  const [endDate, setEndDate] = useState(() => {
-    return initialStartDate ? initialStartDate() : "";
-  });
-  const [endTime, setEndTime] = useState("");
-  const handleStartDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setStartDate(e.target.value);
-    if (endDate === "") {
-      setEndDate(e.target.value);
-    }
-  };
+  const [start, setStart] = useState("");
+  const [end, setEnd] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const handleSubmit = async (e: React.FormEvent) => {
@@ -61,9 +54,6 @@ export default function CreateEventCard({
       const location = formData.get("location") as string;
       const notes = formData.get("notes") as string;
 
-      const start = new Date(`${startDate}T${startTime}`);
-      const end = new Date(`${endDate}T${endTime}`);
-
       const user = (await getProfile(supabase))!;
 
       const { data } = await supabase
@@ -71,8 +61,8 @@ export default function CreateEventCard({
         .insert({
           title,
           club_id: clubId,
-          start_time: start.toISOString(),
-          end_time: end.toISOString(),
+          start_time: new Date(start).toUTCString(),
+          end_time: new Date(end).toUTCString(),
           created_by: user.id,
           location: location ?? undefined,
           description: notes,
@@ -91,52 +81,71 @@ export default function CreateEventCard({
     }
   };
 
+  const openNativeDateTimePicker = (e: React.MouseEvent<HTMLInputElement>) => {
+    e.currentTarget.showPicker();
+  };
+
   return (
     <Flex direction="column" gap="2" p={withPadding ? "1" : "0"} asChild>
       <form onSubmit={handleSubmit} className={styles["form"]}>
+        <Flex
+          direction="row"
+          gap="2"
+          className={styles.buttons}
+          align="center"
+          justify="between"
+        >
+          {onCancel && (
+            <IconButton
+              type="button"
+              size="3"
+              variant="soft"
+              onClick={onCancel}
+              disabled={loading}
+            >
+              <Cross1Icon />
+            </IconButton>
+          )}
+          <Button type="submit" size="3" loading={loading}>
+            <BookmarkFilledIcon />
+            <Trans>Save</Trans>
+          </Button>
+        </Flex>
         <TextField.Root
           placeholder={t`New event name`}
           size="3"
+          variant="soft"
+          className={styles.title}
           name="title"
+          ref={(input) => {
+            if (input) {
+              setTimeout(() => input.focus(), 0);
+            }
+          }}
           required
         />
         <Flex direction="row" gap="2">
           <Box className={styles["row-icon"]}>
             <CalendarIcon />
           </Box>
-          <Grid columns="auto auto" gap="2" flexGrow="1">
+          <Grid columns="auto" gap="2" flexGrow="1">
             <TextField.Root
-              placeholder={t`Date`}
-              type="date"
-              value={startDate}
-              onChange={handleStartDateChange}
-              name="startDate"
+              placeholder={t`Start date and time`}
+              type="datetime-local"
+              value={start}
+              onChange={(e) => setStart(e.target.value)}
+              name="start"
+              onClick={openNativeDateTimePicker}
               required
             />
             <TextField.Root
-              placeholder={t`Time`}
-              type="time"
-              value={startTime}
-              onChange={(e) => setStartTime(e.target.value)}
-              name="startTime"
-              required
-            />
-            <TextField.Root
-              placeholder={t`Date`}
-              type="date"
-              value={endDate}
-              onChange={(e) => setEndDate(e.target.value)}
-              min={startDate}
-              name="endDate"
-              required
-            />
-            <TextField.Root
-              placeholder={t`Time`}
-              type="time"
-              value={endTime}
-              onChange={(e) => setEndTime(e.target.value)}
-              min={startDate === endDate ? startTime : undefined}
-              name="endTime"
+              placeholder={t`End date and time`}
+              type="datetime-local"
+              value={end}
+              onChange={(e) => setEnd(e.target.value)}
+              min={start}
+              name="end"
+              onClick={openNativeDateTimePicker}
               required
             />
           </Grid>
@@ -168,27 +177,6 @@ export default function CreateEventCard({
             <Callout.Text>{error}</Callout.Text>
           </Callout.Root>
         )}
-        <Flex
-          direction="row"
-          gap="2"
-          className={styles.buttons}
-          align="stretch"
-        >
-          <Button type="submit" size="3" loading={loading}>
-            <Trans>Save</Trans>
-          </Button>
-          {onCancel && (
-            <Button
-              type="button"
-              size="3"
-              variant="soft"
-              onClick={onCancel}
-              disabled={loading}
-            >
-              <Trans>Cancel</Trans>
-            </Button>
-          )}
-        </Flex>
       </form>
     </Flex>
   );
