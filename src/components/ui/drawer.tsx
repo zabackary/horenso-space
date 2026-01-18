@@ -21,13 +21,29 @@ function Overlay({
   );
 }
 
+function transformTemplate<T>(y: T) {
+  if (typeof y === "number") {
+    if (y < -window.innerHeight) {
+      // Stretch animation
+      return `scaleY(${1 + (Math.abs(y + window.innerHeight) / window.innerHeight) * 0.5}) translate3d(0, 0%, 0)`;
+    }
+    return `translate3d(0, calc(100% + ${y}px), 0)`;
+  } else {
+    return `translate3d(0, calc(100% + ${y}), 0)`;
+  }
+}
+
 function Content({
   className,
   children,
   ...props
 }: React.ComponentProps<typeof DrawerContent>) {
   return (
-    <DrawerContent {...props} className={clsx(styles.content, className)}>
+    <DrawerContent
+      {...props}
+      className={clsx(styles.content, className)}
+      transformTemplate={transformTemplate}
+    >
       <Box className={styles["content-inner"]}>{children}</Box>
     </DrawerContent>
   );

@@ -36,7 +36,7 @@
     content: "";
     width: 40px;
     height: 4px;
-    background-color: var(--gray-6);
+    background-color: var(--accent-8);
     border-radius: var(--radius-full);
     margin: var(--space-4) auto var(--space-4) auto;
   }
