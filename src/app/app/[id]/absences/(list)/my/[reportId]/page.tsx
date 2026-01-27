@@ -3,7 +3,7 @@ import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
 import { Trans } from "@lingui/react/macro";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
-import { Card, Flex, Heading, IconButton } from "@radix-ui/themes";
+import { Flex, Heading, IconButton } from "@radix-ui/themes";
 import Link from "next/link";
 import getReports from "../../getReports";
 import ReportDetail from "../../report-detail";
@@ -36,9 +36,7 @@ export default async function Page({
           <Trans>Report details</Trans>
         </Heading>
       </Flex>
-      <Card>
-        <ReportDetail report={report} clubId={id} />
-      </Card>
+      <ReportDetail report={report} clubId={id} />
     </Flex>
   );
 }

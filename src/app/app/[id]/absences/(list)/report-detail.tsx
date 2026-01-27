@@ -5,6 +5,7 @@ import { createClient } from "@/lib/supabase/client";
 import { Trans } from "@lingui/react/macro";
 import {
   Badge,
+  Callout,
   Card,
   DataList,
   Flex,
@@ -77,6 +78,23 @@ export default function ReportDetail({
 
   return (
     <Flex direction="column" gap="4" flexGrow="1">
+      {report.reviews.length > 0 ? (
+        <Callout.Root color={report.approved ? "green" : "red"}>
+          <Callout.Text>
+            {report.approved ? (
+              <Trans>This report has been accepted</Trans>
+            ) : (
+              <Trans>This report has been rejected</Trans>
+            )}
+          </Callout.Text>
+        </Callout.Root>
+      ) : (
+        <Callout.Root color="yellow">
+          <Callout.Text>
+            <Trans>This report has not been reviewed yet.</Trans>
+          </Callout.Text>
+        </Callout.Root>
+      )}
       <Heading size="4" as="h3">
         <Trans>Report Details</Trans>
       </Heading>

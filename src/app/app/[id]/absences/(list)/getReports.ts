@@ -58,6 +58,8 @@ export default async function getReports(
     throw reportsError;
   }
 
+  console.log("Fetched reports:", reportsRes);
+
   const reports = (reportsRes || []).map((report) => {
     return {
       id: report.id,

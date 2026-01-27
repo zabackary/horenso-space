@@ -42,7 +42,7 @@ export default function Form({
   const [event, setEvent] = useState<string | null>(null);
   const [date, setDate] = useState<string | null>(null);
   const [absenceType, setAbsenceType] = useState<"event" | "general" | null>(
-    null
+    null,
   );
   const [data, setData] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
@@ -56,7 +56,7 @@ export default function Form({
         event_id: event ?? undefined,
         date: date ?? undefined,
         form_id: template.id,
-        data: data,
+        data: data ?? {},
         user_id: user!.id,
       },
     ]);
