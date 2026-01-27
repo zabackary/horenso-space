@@ -363,7 +363,7 @@ msgstr "日付"
 
 #: src/app/app/[id]/calendar/calendar.tsx:53
 msgid "Day"
-msgstr "曜日"
+msgstr "日"
 
 #: src/app/app/[id]/config/roles/roles-manager.tsx:41
 #: src/components/club-config/absence-form-detail.tsx:143
