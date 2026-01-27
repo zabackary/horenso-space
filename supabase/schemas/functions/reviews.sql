@@ -137,9 +137,9 @@ begin
     if not v_approval_required then
       return true;
     end if;
-    -- If approval is required but there's no reviewer role set, cannot be approved
+    -- If approval is required but there's no reviewer role set, it is treated as approved
     if v_reviewer_role_id is null then
-      return false;
+      return true;
     end if;
     -- Check if someone with the reviewer role has accepted a review for this report
     select
