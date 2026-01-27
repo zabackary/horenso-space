@@ -718,8 +718,16 @@ export type Database = {
         }[]
       }
       absence_reports_get: {
-        Args: { p_club_id: string; p_user_id?: string }
+        Args: {
+          p_club_id: string
+          p_date?: string
+          p_limit?: number
+          p_offset?: number
+          p_report_id?: string
+          p_user_id?: string
+        }
         Returns: {
+          approved: boolean
           assigned_to_role_id: string
           assigned_to_role_name: string
           event_end_time: string

@@ -68,6 +68,7 @@ schema_paths = [
   "./schemas/permission_validation.sql",
   "./schemas/*.sql",
   # API
+  "./schemas/functions/reviews.sql",
   "./schemas/functions/*.sql",
 ]
 

@@ -30,14 +30,14 @@ export interface AbsenceReport {
 export default async function getReports(
   supabase: SupabaseClient<Database>,
   id: string,
-  userId?: string
+  userId?: string,
 ): Promise<AbsenceReport[]> {
   const { data: reportsRes, error: reportsError } = await supabase.rpc(
     "absence_reports_get",
     {
       p_club_id: id,
       p_user_id: userId,
-    }
+    },
   );
   if (reportsError) {
     throw reportsError;
@@ -72,6 +72,7 @@ export default async function getReports(
           fullName: review.reviewer_name || "Unknown",
         },
       })),
+      approved: report.approved,
     };
   });
   return reports;
