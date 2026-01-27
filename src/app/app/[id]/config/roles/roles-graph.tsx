@@ -93,7 +93,7 @@ export default function RolesGraph({
   onDeleteRole: (roleId: string) => void;
 }) {
   const [nodes, setNodes, onNodesChange] = useNodesState<Node<RoleNodeData>>(
-    []
+    [],
   );
   const [edges, setEdges, onEdgesChange] = useEdgesState<Edge>([]);
 
@@ -105,7 +105,7 @@ export default function RolesGraph({
   }, [roles, onEditRole, onDeleteRole, setEdges, setNodes]);
 
   return (
-    <Flex direction="column" gap="3" flexGrow="1" asChild>
+    <Flex direction="column" gap="3" height="80vh" asChild>
       <Card className={styles.rolesGraphCard}>
         <Tooltip content={<Trans>Add role</Trans>}>
           <IconButton
@@ -142,7 +142,7 @@ export default function RolesGraph({
 function buildGraph(
   roles: Role[],
   onEdit: (roleId: string) => void,
-  onDelete: (roleId: string) => void
+  onDelete: (roleId: string) => void,
 ): { nodes: Node<RoleNodeData>[]; edges: Edge[] } {
   const nodes: Node<RoleNodeData>[] = roles.map((r) => ({
     id: r.id,
