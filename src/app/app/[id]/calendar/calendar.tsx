@@ -17,7 +17,6 @@ import {
   Separator,
   VisuallyHidden,
 } from "@radix-ui/themes";
-import { useRouter } from "next/navigation";
 import { memo, useEffect, useState } from "react";
 import styles from "./calendar.module.css";
 import CreateEventCard from "./create-event-card";
@@ -70,7 +69,6 @@ export default function Calendar({
   clubId,
   canWrite = false,
 }: CalendarProps) {
-  const router = useRouter();
   const [mode, setMode] = useState<"year" | "month" | "day">(initialMode);
   const [date, setDate] = useState(() => {
     // Normalize date format, using today's date's less significant parts if missing
