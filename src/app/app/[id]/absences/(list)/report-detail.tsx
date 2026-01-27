@@ -14,59 +14,66 @@ import {
   Text,
 } from "@radix-ui/themes";
 import { useEffect, useState } from "react";
-
-type Report = {
-  id: string;
-  user_id: string | null;
-  user_name: string | null;
-  event_id: string | null;
-  event_name: string | null;
-  event_start_time: string | null;
-  event_end_time: string | null;
-  assigned_to_role_id: string | null;
-  assigned_to_role_name: string | null;
-  reviews: any;
-  data: any;
-  form_id: string | null;
-};
+import { AbsenceReport } from "./getReports";
 
 export default function ReportDetail({
   report,
   clubId,
 }: {
-  report: Report;
+  report: AbsenceReport;
   clubId: string;
 }) {
-  const reviews = (report.reviews || []) as any[];
-  const reportData = report.data as Record<string, any>;
-
   const [form, setForm] = useState<any>(null);
+  const [reportData, setReportData] = useState<any>(null);
   const [formLoading, setFormLoading] = useState(true);
 
   useEffect(() => {
     const abortController = new AbortController();
     async function fetchForm() {
-      if (report.form_id) {
-        const supabase = createClient();
+      const supabase = createClient();
+      // Get the form ID and responses associated with this report
+      let reportData: Record<string, any> | null = null;
+      const { data: reportRes, error: reportError } = await supabase
+        .from("absence_reports")
+        .select("data, form_id")
+        .eq("id", report.id)
+        .abortSignal(abortController.signal)
+        .single();
+      if (reportError) {
+        throw reportError;
+      }
+      if (reportRes.form_id) {
+        setReportData(reportRes.data);
+        // Fetch the form structure
         const { data, error } = await supabase
           .from("absence_report_forms")
           .select("questions")
-          .eq("id", report.form_id)
+          .eq("id", reportRes.form_id)
           .abortSignal(abortController.signal)
           .single();
         if (error) {
-          console.error("Failed to fetch form:", error);
+          throw error;
         } else {
           setForm(data.questions);
         }
+      } else {
+        setForm(null);
       }
-      setFormLoading(false);
     }
-    fetchForm();
+    setFormLoading(true);
+    fetchForm()
+      .catch((err) => {
+        if (err.name === "AbortError" || err.message.includes("AbortError"))
+          return;
+        console.error("Error fetching form:", err);
+      })
+      .finally(() => {
+        setFormLoading(false);
+      });
     return () => {
       abortController.abort();
     };
-  }, [report.form_id, clubId]);
+  }, [report.id, clubId]);
 
   return (
     <Flex direction="column" gap="4" flexGrow="1">
@@ -80,7 +87,7 @@ export default function ReportDetail({
             <Trans>Submitted by</Trans>
           </DataList.Label>
           <DataList.Value>
-            {report.user_name || <Trans>Unknown</Trans>}
+            {report.userName || <Trans>Unknown</Trans>}
           </DataList.Value>
         </DataList.Item>
 
@@ -89,17 +96,17 @@ export default function ReportDetail({
             <Trans>Event</Trans>
           </DataList.Label>
           <DataList.Value>
-            {report.event_name || <Trans>No event</Trans>}
+            {report.event?.name || <Trans>No event</Trans>}
           </DataList.Value>
         </DataList.Item>
 
-        {report.event_start_time && (
+        {report.event?.startTime && (
           <DataList.Item>
             <DataList.Label>
               <Trans>Event date</Trans>
             </DataList.Label>
             <DataList.Value>
-              {new Date(report.event_start_time).toLocaleString()}
+              {new Date(report.event.startTime).toLocaleString()}
             </DataList.Value>
           </DataList.Item>
         )}
@@ -109,7 +116,7 @@ export default function ReportDetail({
             <Trans>Assigned to</Trans>
           </DataList.Label>
           <DataList.Value>
-            {report.assigned_to_role_name || <Trans>Unassigned</Trans>}
+            {report.assignedToRole?.roleName || <Trans>Unassigned</Trans>}
           </DataList.Value>
         </DataList.Item>
       </DataList.Root>
@@ -137,7 +144,7 @@ export default function ReportDetail({
         )}
       </div>
 
-      {reviews.length > 0 && (
+      {report.reviews.length > 0 && (
         <>
           <Separator size="4" />
           <div>
@@ -145,11 +152,11 @@ export default function ReportDetail({
               <Trans>Reviews</Trans>
             </Heading>
             <Flex direction="column" gap="2">
-              {reviews.map((review: any) => (
+              {report.reviews.map((review) => (
                 <Card key={review.id}>
                   <Flex direction="column" gap="2">
                     <Flex justify="between" align="center">
-                      <Text weight="bold">{review.reviewer_name}</Text>
+                      <Text weight="bold">{review.reviewer.fullName}</Text>
                       <Badge size="2" color={review.accepted ? "green" : "red"}>
                         {review.accepted ? (
                           <Trans>Accepted</Trans>
@@ -160,7 +167,7 @@ export default function ReportDetail({
                     </Flex>
                     {review.comments && <Text size="2">{review.comments}</Text>}
                     <Text size="1" color="gray">
-                      {new Date(review.created_at).toLocaleString()}
+                      {new Date(review.createdAt).toLocaleString()}
                     </Text>
                   </Flex>
                 </Card>

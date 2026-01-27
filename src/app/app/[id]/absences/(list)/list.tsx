@@ -1,7 +1,7 @@
 "use client";
 
 import ClickableCard from "@/components/ui/clickable-card";
-import { Plural, Trans } from "@lingui/react/macro";
+import { Plural, Trans, useLingui } from "@lingui/react/macro";
 import { Badge, Flex, Spinner, Text } from "@radix-ui/themes";
 import Link from "next/link";
 import { Suspense, use } from "react";
@@ -19,6 +19,7 @@ export default function AbsenceReportList({
   linkPathPrefix,
 }: AbsenceReportListProps) {
   const reportsData = use(reports);
+  const { t } = useLingui();
   return (
     <Suspense fallback={<Spinner />}>
       {reportsData.length === 0 && (
@@ -46,7 +47,7 @@ export default function AbsenceReportList({
                   <Text size="1" color="gray">
                     {report.event?.startTime.toDateString() ??
                       report.date?.toDateString() ??
-                      "No date"}
+                      t`No date`}
                   </Text>
                 </Flex>
                 <Flex justify="between" align="center">
@@ -57,13 +58,22 @@ export default function AbsenceReportList({
                     )}
                   </Text>
                   {report.reviews.length > 0 && (
-                    <Badge size="1" color="gray">
-                      <Plural
-                        value={report.reviews.length}
-                        one="# review"
-                        other="# reviews"
-                      />
-                    </Badge>
+                    <Flex gap="2">
+                      <Badge size="1" color="gray">
+                        <Plural
+                          value={report.reviews.length}
+                          one="# review"
+                          other="# reviews"
+                        />
+                      </Badge>
+                      <Badge size="1" color={report.approved ? "green" : "red"}>
+                        {report.approved ? (
+                          <Trans>Approved</Trans>
+                        ) : (
+                          <Trans>Rejected</Trans>
+                        )}
+                      </Badge>
+                    </Flex>
                   )}
                 </Flex>
               </Flex>

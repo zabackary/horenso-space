@@ -25,18 +25,33 @@ export interface AbsenceReport {
       fullName: string;
     };
   }[];
+  approved: boolean;
+}
+
+export interface GetReportsOptions {
+  clubId: string;
+  userId?: string;
+  date?: Date;
+  reportId?: string;
+  limit?: number;
+  offset?: number;
 }
 
 export default async function getReports(
   supabase: SupabaseClient<Database>,
-  id: string,
-  userId?: string,
+  options: GetReportsOptions,
 ): Promise<AbsenceReport[]> {
   const { data: reportsRes, error: reportsError } = await supabase.rpc(
     "absence_reports_get",
     {
-      p_club_id: id,
-      p_user_id: userId,
+      p_club_id: options.clubId,
+      p_user_id: options.userId,
+      p_date: options.date
+        ? options.date.toISOString().split("T")[0]
+        : undefined,
+      p_report_id: options.reportId ?? undefined,
+      p_limit: options.limit ?? undefined,
+      p_offset: options.offset ?? 0,
     },
   );
   if (reportsError) {
@@ -46,7 +61,7 @@ export default async function getReports(
   const reports = (reportsRes || []).map((report) => {
     return {
       id: report.id,
-      userName: report.user_name || "Unknown",
+      userName: report.user_name ?? null,
       event: report.event_id
         ? {
             id: report.event_id,
@@ -59,7 +74,7 @@ export default async function getReports(
       assignedToRole: report.assigned_to_role_id
         ? {
             roleId: report.assigned_to_role_id,
-            roleName: report.assigned_to_role_name || "Unknown",
+            roleName: report.assigned_to_role_name ?? null,
           }
         : null,
       reviews: ((report.reviews || []) as any[]).map((review: any) => ({
@@ -69,7 +84,7 @@ export default async function getReports(
         createdAt: review.created_at,
         reviewer: {
           userId: review.reviewer_id,
-          fullName: review.reviewer_name || "Unknown",
+          fullName: review.reviewer_name ?? null,
         },
       })),
       approved: report.approved,

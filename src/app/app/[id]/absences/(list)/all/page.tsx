@@ -18,7 +18,9 @@ export default async function Page({
     notFound();
   }
 
-  const reports = getReports(supabase, id);
+  const reports = getReports(supabase, {
+    clubId: id,
+  });
 
   return (
     <AbsenceReportList

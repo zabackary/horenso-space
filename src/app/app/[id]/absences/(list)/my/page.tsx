@@ -12,7 +12,10 @@ export default async function Page({
 
   const supabase = await createClient();
   const reports = getProfile(supabase).then((profile) =>
-    getReports(supabase, id, profile!.id)
+    getReports(supabase, {
+      clubId: id,
+      userId: profile!.id,
+    }),
   );
 
   return (
