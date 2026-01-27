@@ -39,11 +39,11 @@ type RoleDialogProps = {
   error?: string | null;
   onClose: () => void;
   onCreate: (
-    payload: Omit<Role, "id"> & { name: string }
+    payload: Omit<Role, "id"> & { name: string },
   ) => Promise<void> | void;
   onSave: (
     roleId: string,
-    payload: Omit<Role, "id"> & { name: string }
+    payload: Omit<Role, "id"> & { name: string },
   ) => Promise<void> | void;
 };
 
@@ -63,7 +63,7 @@ export default function RoleDialog({
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [permissions, setPermissions] = useState<Record<string, boolean>>(() =>
-    Object.fromEntries(PERMISSION_KEYS.map((k) => [k, false]))
+    Object.fromEntries(PERMISSION_KEYS.map((k) => [k, false])),
   );
   const [reviewerRole, setReviewerRole] = useState<string | null>(null);
   const [approvalRequired, setApprovalRequired] = useState(false);
@@ -83,7 +83,7 @@ export default function RoleDialog({
       setName("");
       setDescription("");
       setPermissions(
-        Object.fromEntries(PERMISSION_KEYS.map((k) => [k, false]))
+        Object.fromEntries(PERMISSION_KEYS.map((k) => [k, false])),
       );
       setReviewerRole(null);
       setApprovalRequired(false);
@@ -212,12 +212,31 @@ export default function RoleDialog({
                 </Select.Content>
               </Select.Root>
             </Flex>
-            <Flex direction="row" align="center" gap="2" justify="between">
-              <Text>
-                <Trans>Approval required for reports</Trans>
-              </Text>
+            <Flex
+              direction="row"
+              align="center"
+              gap="2"
+              justify="between"
+              style={{ opacity: reviewerRole ? 1 : 0.5 }}
+            >
+              <Flex direction="column" gap="1">
+                <Text>
+                  <Trans>Approval required for reports</Trans>
+                </Text>
+                {reviewerRole === null && (
+                  <Text size="2" color="gray">
+                    <Trans>
+                      You must set a reviewer for the role in order to require
+                      approval for absence reports. Note that if no reviewer is
+                      set, no reviews will be required for approval of this
+                      role's reports.
+                    </Trans>
+                  </Text>
+                )}
+              </Flex>
               <Switch
                 checked={approvalRequired}
+                disabled={!reviewerRole}
                 onCheckedChange={(checked) =>
                   setApprovalRequired(Boolean(checked))
                 }
