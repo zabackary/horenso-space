@@ -19,7 +19,7 @@ msgid "{0, plural, one {# follow-up} other {# follow-ups} zero {No follow-ups}}"
 msgstr "{0, plural, one {# follow-up} other {# follow-ups} zero {No follow-ups}}"
 
 #. placeholder {0}: report.reviews.length
-#: src/app/app/[id]/absences/(list)/list.tsx:61
+#: src/app/app/[id]/absences/(list)/list.tsx:63
 msgid "{0, plural, one {# review} other {# reviews}}"
 msgstr "{0, plural, one {# review} other {# reviews}}"
 
@@ -54,7 +54,7 @@ msgstr "Absence forms"
 msgid "Absence report settings"
 msgstr "Absence report settings"
 
-#: src/app/app/[id]/config/roles/role-dialog.tsx:229
+#: src/app/app/[id]/config/roles/role-dialog.tsx:248
 #: src/components/club-config/roles-manager.tsx:400
 msgid "Absence report template"
 msgstr "Absence report template"
@@ -72,6 +72,10 @@ msgstr "Absence report templates"
 msgid "Absence reports"
 msgstr "Absence reports"
 
+#: src/app/app/[id]/calendar/day.tsx:153
+msgid "Absence reports for this day"
+msgstr "Absence reports for this day"
+
 #: src/app/app/[id]/absences/(list)/layout.tsx:32
 msgid "Absences"
 msgstr "Absences"
@@ -81,7 +85,7 @@ msgid "Accept"
 msgstr "Accept"
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:239
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:155
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:180
 msgid "Accepted"
 msgstr "Accepted"
 
@@ -174,14 +178,22 @@ msgstr "An error occurred while signing up: {0}"
 msgid "An error occurred."
 msgstr "An error occurred."
 
+#: src/app/app/[id]/calendar/year.tsx:280
+msgid "An event is scheduled on this day."
+msgstr "An event is scheduled on this day."
+
 #: src/app/auth/error/page.tsx:25
 msgid "An unspecified error occurred"
 msgstr "An unspecified error occurred"
 
-#: src/app/app/[id]/config/roles/role-dialog.tsx:217
+#: src/app/app/[id]/config/roles/role-dialog.tsx:224
 #: src/components/club-config/roles-manager.tsx:388
 msgid "Approval required for reports"
 msgstr "Approval required for reports"
+
+#: src/app/app/[id]/absences/(list)/list.tsx:71
+msgid "Approved"
+msgstr "Approved"
 
 #: src/app/app/[id]/config/roles/roles-view.tsx:181
 #: src/components/club-config/roles-manager.tsx:126
@@ -193,8 +205,8 @@ msgid "Assigned Reports"
 msgstr "Assigned Reports"
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:193
-#: src/app/app/[id]/absences/(list)/list.tsx:54
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:109
+#: src/app/app/[id]/absences/(list)/list.tsx:55
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:134
 msgid "Assigned to"
 msgstr "Assigned to"
 
@@ -232,8 +244,7 @@ msgstr "by {0}"
 msgid "Calendar"
 msgstr "Calendar"
 
-#: src/app/app/[id]/calendar/create-event-card.tsx:188
-#: src/app/app/[id]/config/roles/role-dialog.tsx:284
+#: src/app/app/[id]/config/roles/role-dialog.tsx:303
 #: src/components/club-config/invite.tsx:279
 #: src/components/club-config/roles-manager.tsx:463
 #: src/components/feedback-form.tsx:133
@@ -306,7 +317,7 @@ msgstr "Confirm Password"
 msgid "Copy link"
 msgstr "Copy link"
 
-#: src/app/app/[id]/config/roles/role-dialog.tsx:281
+#: src/app/app/[id]/config/roles/role-dialog.tsx:300
 #: src/components/club-config/roles-manager.tsx:453
 msgid "Create"
 msgstr "Create"
@@ -320,6 +331,10 @@ msgstr "Create a club"
 msgid "Create a Club"
 msgstr "Create a Club"
 
+#: src/app/app/[id]/calendar/calendar.tsx:345
+msgid "Create a new event for your club."
+msgstr "Create a new event for your club."
+
 #: src/components/permission-text.tsx:27
 msgid "Create and edit calendar events"
 msgstr "Create and edit calendar events"
@@ -329,6 +344,8 @@ msgid "Create club"
 msgstr "Create club"
 
 #: src/app/app/[id]/calendar/[...date]/page.tsx:29
+#: src/app/app/[id]/calendar/calendar.tsx:320
+#: src/app/app/[id]/calendar/calendar.tsx:340
 msgid "Create event"
 msgstr "Create event"
 
@@ -356,12 +373,10 @@ msgstr "Create your first absence report template"
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:172
 #: src/app/app/[id]/absences/create/form.tsx:114
-#: src/app/app/[id]/calendar/create-event-card.tsx:109
-#: src/app/app/[id]/calendar/create-event-card.tsx:125
 msgid "Date"
 msgstr "Date"
 
-#: src/app/app/[id]/calendar/calendar.tsx:53
+#: src/app/app/[id]/calendar/calendar.tsx:52
 msgid "Day"
 msgstr "Day"
 
@@ -406,7 +421,7 @@ msgstr "Edit role"
 msgid "Edit Role"
 msgstr "Edit Role"
 
-#: src/app/app/[id]/config/roles/role-dialog.tsx:234
+#: src/app/app/[id]/config/roles/role-dialog.tsx:253
 #: src/components/club-config/roles-manager.tsx:405
 msgid "Edit template"
 msgstr "Edit template"
@@ -417,6 +432,10 @@ msgstr "Edit template"
 #: src/components/forgot-password-form.tsx:80
 msgid "Email"
 msgstr "Email"
+
+#: src/app/app/[id]/calendar/create-event-card.tsx:142
+msgid "End date and time"
+msgstr "End date and time"
 
 #: src/app/auth/error/page.tsx:21
 msgid "Error code:"
@@ -438,7 +457,7 @@ msgid "Error updating password: {0}"
 msgstr "Error updating password: {0}"
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:162
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:89
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:114
 #: src/app/app/[id]/absences/create/form.tsx:87
 msgid "Event"
 msgstr "Event"
@@ -448,7 +467,7 @@ msgid "Event Absence"
 msgstr "Event Absence"
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:183
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:99
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:124
 msgid "Event date"
 msgstr "Event date"
 
@@ -541,7 +560,7 @@ msgstr "Forgot password"
 msgid "Form description"
 msgstr "Form description"
 
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:121
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:146
 msgid "Form Responses"
 msgstr "Form Responses"
 
@@ -577,6 +596,10 @@ msgstr "Get started"
 #: src/components/auth/providers.tsx:16
 msgid "GitHub"
 msgstr "GitHub"
+
+#: src/app/app/[id]/calendar/calendar.tsx:141
+msgid "Go to today"
+msgstr "Go to today"
 
 #: src/components/auth/providers.tsx:14
 msgid "Google"
@@ -679,7 +702,7 @@ msgstr "List"
 msgid "Loading..."
 msgstr "Loading..."
 
-#: src/app/app/[id]/calendar/create-event-card.tsx:149
+#: src/app/app/[id]/calendar/create-event-card.tsx:158
 msgid "Location"
 msgstr "Location"
 
@@ -728,7 +751,7 @@ msgstr "Members"
 msgid "Metadata"
 msgstr "Metadata"
 
-#: src/app/app/[id]/calendar/calendar.tsx:50
+#: src/app/app/[id]/calendar/calendar.tsx:49
 msgid "Month"
 msgstr "Month"
 
@@ -744,7 +767,7 @@ msgstr "My absences"
 msgid "Never used"
 msgstr "Never used"
 
-#: src/app/app/[id]/calendar/create-event-card.tsx:98
+#: src/app/app/[id]/calendar/create-event-card.tsx:115
 msgid "New event name"
 msgstr "New event name"
 
@@ -765,8 +788,12 @@ msgstr "Nickname"
 msgid "No absence report templates found."
 msgstr "No absence report templates found."
 
+#: src/app/app/[id]/calendar/day.tsx:167
+msgid "No absence reports for this day."
+msgstr "No absence reports for this day."
+
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:212
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:130
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:155
 msgid "No additional data"
 msgstr "No additional data"
 
@@ -775,16 +802,21 @@ msgid "No clubs found. You need an invite link to join a club."
 msgstr "No clubs found. You need an invite link to join a club."
 
 #: src/app/app/[id]/absences/(list)/assigned/list.tsx:61
+#: src/app/app/[id]/absences/(list)/list.tsx:50
 msgid "No date"
 msgstr "No date"
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:165
 #: src/app/app/[id]/absences/(list)/assigned/list.tsx:53
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:92
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:117
 msgid "No event"
 msgstr "No event"
 
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:135
+#: src/app/app/[id]/calendar/day.tsx:123
+msgid "No events for today."
+msgstr "No events for today."
+
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:160
 msgid "No form associated with this report"
 msgstr "No form associated with this report"
 
@@ -800,7 +832,7 @@ msgstr "No notifications. Notifications are not finished yet but will appear her
 msgid "No reports assigned to you."
 msgstr "No reports assigned to you."
 
-#: src/app/app/[id]/absences/(list)/list.tsx:26
+#: src/app/app/[id]/absences/(list)/list.tsx:27
 msgid "No reports found."
 msgstr "No reports found."
 
@@ -808,11 +840,11 @@ msgstr "No reports found."
 msgid "No templates yet"
 msgstr "No templates yet"
 
-#: src/app/app/[id]/calendar/create-event-card.tsx:160
+#: src/app/app/[id]/calendar/create-event-card.tsx:169
 msgid "Notes"
 msgstr "Notes"
 
-#: src/app/app/[id]/config/roles/role-dialog.tsx:239
+#: src/app/app/[id]/config/roles/role-dialog.tsx:258
 #: src/components/club-config/roles-manager.tsx:411
 msgid "Open template editor"
 msgstr "Open template editor"
@@ -900,7 +932,8 @@ msgid "Reject"
 msgstr "Reject"
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:241
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:157
+#: src/app/app/[id]/absences/(list)/list.tsx:73
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:182
 msgid "Rejected"
 msgstr "Rejected"
 
@@ -919,8 +952,13 @@ msgstr "Report absence"
 msgid "Report an absence"
 msgstr "Report an absence"
 
+#: src/app/app/[id]/absences/(list)/all/[reportId]/page.tsx:40
+#: src/app/app/[id]/absences/(list)/my/[reportId]/page.tsx:36
+msgid "Report details"
+msgstr "Report details"
+
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:205
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:74
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:99
 msgid "Report Details"
 msgstr "Report Details"
 
@@ -945,7 +983,7 @@ msgstr "Reviewed"
 msgid "Reviewer role"
 msgstr "Reviewer role"
 
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:145
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:170
 msgid "Reviews"
 msgstr "Reviews"
 
@@ -971,8 +1009,8 @@ msgstr "Role: {currentRoleLabel}"
 msgid "Roles"
 msgstr "Roles"
 
-#: src/app/app/[id]/calendar/create-event-card.tsx:178
-#: src/app/app/[id]/config/roles/role-dialog.tsx:281
+#: src/app/app/[id]/calendar/create-event-card.tsx:111
+#: src/app/app/[id]/config/roles/role-dialog.tsx:300
 #: src/app/app/users/me/general/page.tsx:48
 #: src/components/club-config/metadata-form.tsx:132
 #: src/components/club-config/roles-manager.tsx:455
@@ -1013,7 +1051,7 @@ msgstr "Select a report to review"
 #~ msgid "Select a setting to change"
 #~ msgstr "Select a setting to change"
 
-#: src/app/app/[id]/config/roles/role-dialog.tsx:234
+#: src/app/app/[id]/config/roles/role-dialog.tsx:253
 #: src/components/club-config/roles-manager.tsx:406
 msgid "Select a template first"
 msgstr "Select a template first"
@@ -1105,6 +1143,10 @@ msgstr "Something went wrong"
 msgid "Sponsored by the Sapporo Kosei Junior & Senior High School Brass Band club and produced by the Christian Academy in Japan Robotics club (VEX team 99484)."
 msgstr "Sponsored by the Sapporo Kosei Junior & Senior High School Brass Band club and produced by the Christian Academy in Japan Robotics club (VEX team 99484)."
 
+#: src/app/app/[id]/calendar/create-event-card.tsx:133
+msgid "Start date and time"
+msgstr "Start date and time"
+
 #: src/components/club-config/absence-form-editor.tsx:263
 msgid "Static text"
 msgstr "Static text"
@@ -1118,8 +1160,8 @@ msgid "Submit absence reports"
 msgstr "Submit absence reports"
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:153
-#: src/app/app/[id]/absences/(list)/list.tsx:44
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:80
+#: src/app/app/[id]/absences/(list)/list.tsx:45
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:105
 msgid "Submitted by"
 msgstr "Submitted by"
 
@@ -1128,6 +1170,7 @@ msgid "Text"
 msgstr "Text"
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:119
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:85
 msgid "This report has been accepted"
 msgstr "This report has been accepted"
 
@@ -1136,10 +1179,12 @@ msgstr "This report has been accepted"
 #~ msgstr "This report has been accepted."
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:121
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:87
 msgid "This report has been rejected"
 msgstr "This report has been rejected"
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:129
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:94
 msgid "This report has not been reviewed yet."
 msgstr "This report has not been reviewed yet."
 
@@ -1147,8 +1192,6 @@ msgstr "This report has not been reviewed yet."
 #~ msgid "This report is has not been accepted."
 #~ msgstr "This report is has not been accepted."
 
-#: src/app/app/[id]/calendar/create-event-card.tsx:117
-#: src/app/app/[id]/calendar/create-event-card.tsx:134
 #: src/components/club-config/absence-form-editor.tsx:257
 msgid "Time"
 msgstr "Time"
@@ -1162,8 +1205,8 @@ msgid "Type in your email and we'll send you a link to reset your password"
 msgstr "Type in your email and we'll send you a link to reset your password"
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:196
-#: src/app/app/[id]/absences/(list)/list.tsx:56
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:112
+#: src/app/app/[id]/absences/(list)/list.tsx:57
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:137
 msgid "Unassigned"
 msgstr "Unassigned"
 
@@ -1172,7 +1215,7 @@ msgid "Understand quickly who's where and when"
 msgstr "Understand quickly who's where and when"
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:156
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:83
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:108
 #: src/components/ui/user-profile.tsx:47
 msgid "Unknown"
 msgstr "Unknown"
@@ -1243,7 +1286,7 @@ msgstr "Welcome!"
 msgid "What people call you"
 msgstr "What people call you"
 
-#: src/app/app/[id]/calendar/calendar.tsx:47
+#: src/app/app/[id]/calendar/calendar.tsx:46
 msgid "Year"
 msgstr "Year"
 
@@ -1258,6 +1301,10 @@ msgstr "You do not have a configured absence report form. Please contact a club 
 #: src/components/club-config/absence-form-detail.tsx:119
 msgid "You have unsaved changes"
 msgstr "You have unsaved changes"
+
+#: src/app/app/[id]/config/roles/role-dialog.tsx:228
+msgid "You must set a reviewer for the role in order to require approval for absence reports. Note that if no reviewer is set, no reviews will be required for approval of this role's reports."
+msgstr "You must set a reviewer for the role in order to require approval for absence reports. Note that if no reviewer is set, no reviews will be required for approval of this role's reports."
 
 #. placeholder {0}: invite.role_name
 #. placeholder {1}: new Date(invite.expires_at).toLocaleString()
