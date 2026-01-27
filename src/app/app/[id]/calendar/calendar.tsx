@@ -61,6 +61,8 @@ export interface CalendarProps {
   initialDate: string;
   clubId: string;
   canWrite?: boolean;
+
+  canReadAllReports?: boolean;
 }
 
 export default function Calendar({
@@ -68,6 +70,7 @@ export default function Calendar({
   initialDate,
   clubId,
   canWrite = false,
+  canReadAllReports = false,
 }: CalendarProps) {
   const [mode, setMode] = useState<"year" | "month" | "day">(initialMode);
   const [date, setDate] = useState(() => {
@@ -307,6 +310,7 @@ export default function Calendar({
             onDateChange={setDate}
             clubId={clubId}
             refreshKey={refreshKey.toString()}
+            canReadAllReports={canReadAllReports}
           />
         )}
         {canWrite && (

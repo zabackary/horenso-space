@@ -41,6 +41,9 @@ export default async function getReports(
   supabase: SupabaseClient<Database>,
   options: GetReportsOptions,
 ): Promise<AbsenceReport[]> {
+  console.log(
+    options.date ? options.date.toISOString().split("T")[0] : undefined,
+  );
   const { data: reportsRes, error: reportsError } = await supabase.rpc(
     "absence_reports_get",
     {
@@ -57,8 +60,6 @@ export default async function getReports(
   if (reportsError) {
     throw reportsError;
   }
-
-  console.log("Fetched reports:", reportsRes);
 
   const reports = (reportsRes || []).map((report) => {
     return {

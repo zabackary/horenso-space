@@ -1,8 +1,11 @@
+import { ListLoading } from "@/components/loading";
 import { createClient } from "@/lib/supabase/client";
 import { Trans } from "@lingui/react/macro";
 import { GlobeIcon, TextIcon } from "@radix-ui/react-icons";
 import { Box, Card, Flex, Heading, Separator, Text } from "@radix-ui/themes";
-import { useEffect, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
+import getReports, { AbsenceReport } from "../absences/(list)/getReports";
+import AbsenceReportList from "../absences/(list)/list";
 
 export interface DayCalendarProps {
   date: string;
@@ -10,6 +13,8 @@ export interface DayCalendarProps {
   clubId: string;
   canCreateEvent?: boolean;
   refreshKey?: string;
+
+  canReadAllReports: boolean;
 }
 
 export default function DayCalendar({
@@ -17,6 +22,7 @@ export default function DayCalendar({
   onDateChange,
   clubId,
   refreshKey,
+  canReadAllReports,
 }: DayCalendarProps) {
   const supabase = useMemo(() => {
     return createClient();
@@ -74,6 +80,33 @@ export default function DayCalendar({
     };
   }, [date, clubId, supabase, refreshKey]);
 
+  const [reports, setReports] = useState<AbsenceReport[] | null>(null);
+  useEffect(() => {
+    if (!date) return;
+    const abortController = new AbortController();
+
+    async function fetchReports() {
+      const supabase = createClient();
+      const reports = await getReports(supabase, {
+        clubId,
+        date: new Date(date),
+      });
+      if (abortController.signal.aborted) return;
+      setReports(reports);
+    }
+
+    setReports(null);
+    fetchReports().catch((err) => {
+      if (err.name === "AbortError" || err.message.includes("AbortError"))
+        return;
+      console.error("Error fetching reports:", err);
+    });
+
+    return () => {
+      abortController.abort();
+    };
+  }, [date, clubId]);
+
   return (
     <Flex direction="column" p="4" gap="4" align="center">
       <Heading size="5" as="h3" align="center">
@@ -113,6 +146,35 @@ export default function DayCalendar({
           ))
         )}
       </Box>
+      {canReadAllReports && (
+        <>
+          <Separator mb="2" />
+          <Heading size="5" mb="2">
+            <Trans>Absence reports for this day</Trans>
+          </Heading>
+          <Box width="100%">
+            <Card>
+              <Suspense fallback={<ListLoading />}>
+                {reports !== null ? (
+                  reports.length > 0 ? (
+                    <AbsenceReportList
+                      reports={Promise.resolve(reports)}
+                      clubId={clubId}
+                      linkPathPrefix="/absences/all"
+                    />
+                  ) : (
+                    <Text>
+                      <Trans>No absence reports for this day.</Trans>
+                    </Text>
+                  )
+                ) : (
+                  <ListLoading />
+                )}
+              </Suspense>
+            </Card>
+          </Box>
+        </>
+      )}
     </Flex>
   );
 }

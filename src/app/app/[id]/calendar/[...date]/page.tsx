@@ -50,6 +50,7 @@ export default async function CalendarYearPage({
           initialDate={date[0]}
           clubId={id}
           canWrite={permissions.includes("canWriteCalendar")}
+          canReadAllReports={permissions.includes("canReadAllReports")}
         />
       );
     }
@@ -66,6 +67,7 @@ export default async function CalendarYearPage({
           initialDate={date.join("-")}
           clubId={id}
           canWrite={permissions.includes("canWriteCalendar")}
+          canReadAllReports={permissions.includes("canReadAllReports")}
         />
       );
     }
@@ -82,6 +84,7 @@ export default async function CalendarYearPage({
           initialDate={date.join("-")}
           clubId={id}
           canWrite={permissions.includes("canWriteCalendar")}
+          canReadAllReports={permissions.includes("canReadAllReports")}
         />
       );
     }
