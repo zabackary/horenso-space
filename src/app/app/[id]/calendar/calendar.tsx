@@ -148,7 +148,7 @@ export default function Calendar({
           >
             <CalendarIcon />
           </IconButton>
-          {!isSmall && (
+          {(!isSmall || mode === "day") && (
             <>
               <IconButton
                 variant="surface"

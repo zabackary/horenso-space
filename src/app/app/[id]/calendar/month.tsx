@@ -87,18 +87,26 @@ export default function MonthCalendar({
           refreshKey={refreshKey}
         />
       )}
-      rangeChanged={(range) => {
-        const firstMonth = months[range.startIndex];
-        if (
-          firstMonth !== undefined &&
-          firstMonth !== month &&
-          !currentlyAutoScrolling.current
-        ) {
-          scrollingFromCallback.current = true;
-          onMonthChange?.(firstMonth);
-          setTimeout(() => {
-            scrollingFromCallback.current = false;
-          }, 0);
+      onScroll={(e) => {
+        const left = (e.nativeEvent.currentTarget as HTMLElement | null)
+          ?.scrollLeft;
+        if (left !== undefined) {
+          const index =
+            left / (e.nativeEvent.currentTarget as HTMLElement).clientWidth;
+          const firstMonth = months[Math.round(index)];
+          if (firstMonth !== month) {
+            if (
+              firstMonth !== undefined &&
+              firstMonth !== month &&
+              !currentlyAutoScrolling.current
+            ) {
+              scrollingFromCallback.current = true;
+              onMonthChange?.(firstMonth);
+              setTimeout(() => {
+                scrollingFromCallback.current = false;
+              }, 0);
+            }
+          }
         }
       }}
       isScrolling={(scrolling) => {
@@ -203,7 +211,7 @@ function MonthCard({
 
   return (
     <Flex direction="column" className={styles.monthCard}>
-      <Heading size="5" as="h3">
+      <Heading size="5" as="h3" align="center">
         {new Date(year, month - 1).toLocaleDateString(undefined, {
           month: "long",
           year: "numeric",

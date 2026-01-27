@@ -75,8 +75,8 @@ export default function DayCalendar({
   }, [date, clubId, supabase, refreshKey]);
 
   return (
-    <Flex direction="column" p="4" gap="4">
-      <Heading size="5" as="h3">
+    <Flex direction="column" p="4" gap="4" align="center">
+      <Heading size="5" as="h3" align="center">
         {new Date(date).toLocaleDateString(undefined, {
           year: "numeric",
           month: "long",
@@ -84,7 +84,7 @@ export default function DayCalendar({
         })}
       </Heading>
       <Separator />
-      <Box>
+      <Box width="100%">
         {events.length === 0 ? (
           <Text>
             <Trans>No events for today.</Trans>

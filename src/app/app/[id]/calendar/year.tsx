@@ -68,18 +68,26 @@ export default function YearCalendar({
           clubId={clubId}
         />
       )}
-      rangeChanged={(range) => {
-        const firstYear = years[range.startIndex];
-        if (
-          firstYear !== undefined &&
-          firstYear !== year &&
-          !currentlyAutoScrolling.current
-        ) {
-          scrollingFromCallback.current = true;
-          onYearChange?.(firstYear);
-          setTimeout(() => {
-            scrollingFromCallback.current = false;
-          }, 0);
+      onScroll={(e) => {
+        const left = (e.nativeEvent.currentTarget as HTMLElement | null)
+          ?.scrollLeft;
+        if (left !== undefined) {
+          const index =
+            left / (e.nativeEvent.currentTarget as HTMLElement).clientWidth;
+          const firstYear = years[Math.round(index)];
+          if (firstYear !== year) {
+            if (
+              firstYear !== undefined &&
+              firstYear !== year &&
+              !currentlyAutoScrolling.current
+            ) {
+              scrollingFromCallback.current = true;
+              onYearChange?.(firstYear);
+              setTimeout(() => {
+                scrollingFromCallback.current = false;
+              }, 0);
+            }
+          }
         }
       }}
       isScrolling={(scrolling) => {
@@ -154,7 +162,9 @@ function YearCard({
 
   return (
     <Flex p="4" className={styles.yearCard}>
-      <Heading size="4">{year}</Heading>
+      <Heading size="5" as="h3" align="center">
+        {year}
+      </Heading>
       <Grid
         columns={{
           xs: "2",
