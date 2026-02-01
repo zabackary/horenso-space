@@ -18,8 +18,8 @@ export default async function CalendarYearPage({
   if (date[0] === "create" && date.length === 1) {
     // Event creation
     return (
-      <>
-        <Flex direction="row" align="center" gap="2" p="4" mb="-4">
+      <Flex direction="column" gap="4" p="4">
+        <Flex direction="row" align="center" gap="2">
           <Button variant="soft" size="2" type="button" asChild>
             <Link href={`/app/${id}`}>
               <ArrowLeftIcon /> <Trans>Back</Trans>
@@ -30,7 +30,7 @@ export default async function CalendarYearPage({
           </Heading>
         </Flex>
         <CreateEventCard clubId={id} withPadding />
-      </>
+      </Flex>
     );
   }
 

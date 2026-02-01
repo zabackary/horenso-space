@@ -7,6 +7,7 @@ import {
   BookmarkFilledIcon,
   CalendarIcon,
   Cross1Icon,
+  DownloadIcon,
   GlobeIcon,
   TextIcon,
 } from "@radix-ui/react-icons";
@@ -29,6 +30,7 @@ export interface CreateEventCardProps {
   withPadding?: boolean;
   onCancel?: () => void;
   onCreate?: (eventId: string) => void;
+  onCSVImport?: () => void;
 }
 
 export default function CreateEventCard({
@@ -36,6 +38,7 @@ export default function CreateEventCard({
   withPadding,
   onCancel,
   onCreate,
+  onCSVImport,
 }: CreateEventCardProps) {
   const { t } = useLingui();
   const [start, setStart] = useState("");
@@ -106,10 +109,23 @@ export default function CreateEventCard({
               <Cross1Icon />
             </IconButton>
           )}
-          <Button type="submit" size="3" loading={loading}>
-            <BookmarkFilledIcon />
-            <Trans>Save</Trans>
-          </Button>
+          <Flex direction="row" gap="2">
+            {onCSVImport && (
+              <Button
+                type="button"
+                size="3"
+                variant="soft"
+                onClick={onCSVImport}
+              >
+                <DownloadIcon />
+                <Trans>Import from CSV</Trans>
+              </Button>
+            )}
+            <Button type="submit" size="3" loading={loading}>
+              <BookmarkFilledIcon />
+              <Trans>Save</Trans>
+            </Button>
+          </Flex>
         </Flex>
         <TextField.Root
           placeholder={t`New event name`}
