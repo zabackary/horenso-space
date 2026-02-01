@@ -263,6 +263,10 @@ msgstr "Check your club events and meetings"
 msgid "Check your email"
 msgstr "Check your email"
 
+#: src/app/app/[id]/calendar/calendar.tsx:486
+msgid "Close"
+msgstr "Close"
+
 #: src/app/app/[id]/config/layout.tsx:32
 msgid "Club configuration"
 msgstr "Club configuration"
@@ -275,6 +279,10 @@ msgstr "Club description"
 #: src/components/club-config/invite.tsx:182
 msgid "Club Invite Link"
 msgstr "Club Invite Link"
+
+#: src/app/app/[id]/calendar/calendar.tsx:123
+msgid "Club meeting"
+msgstr "Club meeting"
 
 #: src/components/club-config/metadata-form.tsx:68
 #: src/components/club-create-form.tsx:72
@@ -331,7 +339,7 @@ msgstr "Create a club"
 msgid "Create a Club"
 msgstr "Create a Club"
 
-#: src/app/app/[id]/calendar/calendar.tsx:345
+#: src/app/app/[id]/calendar/calendar.tsx:449
 msgid "Create a new event for your club."
 msgstr "Create a new event for your club."
 
@@ -344,8 +352,8 @@ msgid "Create club"
 msgstr "Create club"
 
 #: src/app/app/[id]/calendar/[...date]/page.tsx:29
-#: src/app/app/[id]/calendar/calendar.tsx:320
-#: src/app/app/[id]/calendar/calendar.tsx:340
+#: src/app/app/[id]/calendar/calendar.tsx:424
+#: src/app/app/[id]/calendar/calendar.tsx:444
 msgid "Create event"
 msgstr "Create event"
 
@@ -376,7 +384,7 @@ msgstr "Create your first absence report template"
 msgid "Date"
 msgstr "Date"
 
-#: src/app/app/[id]/calendar/calendar.tsx:52
+#: src/app/app/[id]/calendar/calendar.tsx:55
 msgid "Day"
 msgstr "Day"
 
@@ -398,6 +406,10 @@ msgstr "Describe the purpose of this absence form..."
 #: src/app/auth/login/page.tsx:62
 msgid "Don't have an account yet? {createAccountLink}"
 msgstr "Don't have an account yet? {createAccountLink}"
+
+#: src/app/app/[id]/calendar/calendar.tsx:483
+msgid "Download example CSV"
+msgstr "Download example CSV"
 
 #: src/app/app/[id]/config/roles/roles-manager.tsx:37
 #: src/components/club-config/roles-manager.tsx:258
@@ -433,7 +445,7 @@ msgstr "Edit template"
 msgid "Email"
 msgstr "Email"
 
-#: src/app/app/[id]/calendar/create-event-card.tsx:142
+#: src/app/app/[id]/calendar/create-event-card.tsx:158
 msgid "End date and time"
 msgstr "End date and time"
 
@@ -470,6 +482,10 @@ msgstr "Event Absence"
 #: src/app/app/[id]/absences/(list)/report-detail.tsx:124
 msgid "Event date"
 msgstr "Event date"
+
+#: src/app/app/[id]/calendar/calendar.tsx:129
+msgid "example-calendar-events.csv"
+msgstr "example-calendar-events.csv"
 
 #: src/components/club-config/absence-form-editor.tsx:493
 msgid "Expand all"
@@ -597,7 +613,7 @@ msgstr "Get started"
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/app/app/[id]/calendar/calendar.tsx:141
+#: src/app/app/[id]/calendar/calendar.tsx:245
 msgid "Go to today"
 msgstr "Go to today"
 
@@ -644,6 +660,18 @@ msgstr "Image by {sawaratsukiLink}"
 #: src/app/not-found.tsx:51
 #~ msgid "Image by <0>SAWARATSUKI</0>"
 #~ msgstr "Image by <0>SAWARATSUKI</0>"
+
+#: src/app/app/[id]/calendar/create-event-card.tsx:121
+msgid "Import from CSV"
+msgstr "Import from CSV"
+
+#: src/app/app/[id]/calendar/calendar.tsx:471
+msgid "Importing CSV"
+msgstr "Importing CSV"
+
+#: src/app/app/[id]/calendar/calendar.tsx:477
+msgid "Importing CSV file, please wait..."
+msgstr "Importing CSV file, please wait..."
 
 #: src/app/app/club/invite/[id]/page.tsx:41
 msgid "Invalid or expired invite link"
@@ -702,7 +730,7 @@ msgstr "List"
 msgid "Loading..."
 msgstr "Loading..."
 
-#: src/app/app/[id]/calendar/create-event-card.tsx:158
+#: src/app/app/[id]/calendar/create-event-card.tsx:174
 msgid "Location"
 msgstr "Location"
 
@@ -751,7 +779,7 @@ msgstr "Members"
 msgid "Metadata"
 msgstr "Metadata"
 
-#: src/app/app/[id]/calendar/calendar.tsx:49
+#: src/app/app/[id]/calendar/calendar.tsx:52
 msgid "Month"
 msgstr "Month"
 
@@ -767,7 +795,7 @@ msgstr "My absences"
 msgid "Never used"
 msgstr "Never used"
 
-#: src/app/app/[id]/calendar/create-event-card.tsx:115
+#: src/app/app/[id]/calendar/create-event-card.tsx:131
 msgid "New event name"
 msgstr "New event name"
 
@@ -840,9 +868,13 @@ msgstr "No reports found."
 msgid "No templates yet"
 msgstr "No templates yet"
 
-#: src/app/app/[id]/calendar/create-event-card.tsx:169
+#: src/app/app/[id]/calendar/create-event-card.tsx:185
 msgid "Notes"
 msgstr "Notes"
+
+#: src/app/app/[id]/calendar/calendar.tsx:182
+msgid "One or more rows in the CSV file are invalid. Each row must have at least title, start_time, and end_time."
+msgstr "One or more rows in the CSV file are invalid. Each row must have at least title, start_time, and end_time."
 
 #: src/app/app/[id]/config/roles/role-dialog.tsx:258
 #: src/components/club-config/roles-manager.tsx:411
@@ -855,6 +887,14 @@ msgstr "Open template editor"
 #: src/components/club-config/absence-form-editor.tsx:340
 msgid "Option {0}"
 msgstr "Option {0}"
+
+#: src/app/app/[id]/calendar/calendar.tsx:123
+msgid "Optional description"
+msgstr "Optional description"
+
+#: src/app/app/[id]/calendar/calendar.tsx:123
+msgid "Optional room"
+msgstr "Optional room"
 
 #: src/components/club-config/absence-form-editor.tsx:305
 msgid "Options"
@@ -897,6 +937,10 @@ msgstr "Please provide as much detail as possible to help us address your issue.
 #: src/components/feedback-form.tsx:120
 msgid "Please provide more detailed feedback."
 msgstr "Please provide more detailed feedback."
+
+#: src/app/app/[id]/calendar/calendar.tsx:210
+msgid "Please select one valid CSV file for import."
+msgstr "Please select one valid CSV file for import."
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:225
 msgid "Previous Reviews"
@@ -1009,7 +1053,7 @@ msgstr "Role: {currentRoleLabel}"
 msgid "Roles"
 msgstr "Roles"
 
-#: src/app/app/[id]/calendar/create-event-card.tsx:111
+#: src/app/app/[id]/calendar/create-event-card.tsx:126
 #: src/app/app/[id]/config/roles/role-dialog.tsx:300
 #: src/app/app/users/me/general/page.tsx:48
 #: src/components/club-config/metadata-form.tsx:132
@@ -1143,7 +1187,7 @@ msgstr "Something went wrong"
 msgid "Sponsored by the Sapporo Kosei Junior & Senior High School Brass Band club and produced by the Christian Academy in Japan Robotics club (VEX team 99484)."
 msgstr "Sponsored by the Sapporo Kosei Junior & Senior High School Brass Band club and produced by the Christian Academy in Japan Robotics club (VEX team 99484)."
 
-#: src/app/app/[id]/calendar/create-event-card.tsx:133
+#: src/app/app/[id]/calendar/create-event-card.tsx:149
 msgid "Start date and time"
 msgstr "Start date and time"
 
@@ -1168,6 +1212,14 @@ msgstr "Submitted by"
 #: src/components/club-config/absence-form-editor.tsx:254
 msgid "Text"
 msgstr "Text"
+
+#: src/app/app/[id]/calendar/calendar.tsx:169
+msgid "The CSV file header is invalid. Expected columns: title, start_time, end_time, [location], [description]."
+msgstr "The CSV file header is invalid. Expected columns: title, start_time, end_time, [location], [description]."
+
+#: src/app/app/[id]/calendar/calendar.tsx:157
+msgid "The CSV file is empty or invalid."
+msgstr "The CSV file is empty or invalid."
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:119
 #: src/app/app/[id]/absences/(list)/report-detail.tsx:85
@@ -1286,7 +1338,7 @@ msgstr "Welcome!"
 msgid "What people call you"
 msgstr "What people call you"
 
-#: src/app/app/[id]/calendar/calendar.tsx:46
+#: src/app/app/[id]/calendar/calendar.tsx:49
 msgid "Year"
 msgstr "Year"
 

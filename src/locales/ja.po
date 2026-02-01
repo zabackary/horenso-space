@@ -263,6 +263,10 @@ msgstr "部活のイベントとミーティングを確認"
 msgid "Check your email"
 msgstr "メールを確認してください"
 
+#: src/app/app/[id]/calendar/calendar.tsx:486
+msgid "Close"
+msgstr ""
+
 #: src/app/app/[id]/config/layout.tsx:32
 msgid "Club configuration"
 msgstr "部活の設定"
@@ -275,6 +279,10 @@ msgstr "部活の説明"
 #: src/components/club-config/invite.tsx:182
 msgid "Club Invite Link"
 msgstr "部活の招待リンク"
+
+#: src/app/app/[id]/calendar/calendar.tsx:123
+msgid "Club meeting"
+msgstr ""
 
 #: src/components/club-config/metadata-form.tsx:68
 #: src/components/club-create-form.tsx:72
@@ -331,7 +339,7 @@ msgstr "部活を作成"
 msgid "Create a Club"
 msgstr "部活を作成"
 
-#: src/app/app/[id]/calendar/calendar.tsx:345
+#: src/app/app/[id]/calendar/calendar.tsx:449
 msgid "Create a new event for your club."
 msgstr "新しいイベントを制作する"
 
@@ -344,8 +352,8 @@ msgid "Create club"
 msgstr "部活を作成"
 
 #: src/app/app/[id]/calendar/[...date]/page.tsx:29
-#: src/app/app/[id]/calendar/calendar.tsx:320
-#: src/app/app/[id]/calendar/calendar.tsx:340
+#: src/app/app/[id]/calendar/calendar.tsx:424
+#: src/app/app/[id]/calendar/calendar.tsx:444
 msgid "Create event"
 msgstr "イベントを作成"
 
@@ -376,7 +384,7 @@ msgstr "最初の欠席レポートテンプレートを作成してください
 msgid "Date"
 msgstr "日付"
 
-#: src/app/app/[id]/calendar/calendar.tsx:52
+#: src/app/app/[id]/calendar/calendar.tsx:55
 msgid "Day"
 msgstr "日"
 
@@ -398,6 +406,10 @@ msgstr "この欠席届の用途を説明してください。"
 #: src/app/auth/login/page.tsx:62
 msgid "Don't have an account yet? {createAccountLink}"
 msgstr "まだアカウントをお持ちではありませんか？ {createAccountLink}"
+
+#: src/app/app/[id]/calendar/calendar.tsx:483
+msgid "Download example CSV"
+msgstr ""
 
 #: src/app/app/[id]/config/roles/roles-manager.tsx:37
 #: src/components/club-config/roles-manager.tsx:258
@@ -433,7 +445,7 @@ msgstr "テンプレートを編集する"
 msgid "Email"
 msgstr "メール"
 
-#: src/app/app/[id]/calendar/create-event-card.tsx:142
+#: src/app/app/[id]/calendar/create-event-card.tsx:158
 msgid "End date and time"
 msgstr "終了日時"
 
@@ -470,6 +482,10 @@ msgstr "イベントの欠席"
 #: src/app/app/[id]/absences/(list)/report-detail.tsx:124
 msgid "Event date"
 msgstr "イベントの日付"
+
+#: src/app/app/[id]/calendar/calendar.tsx:129
+msgid "example-calendar-events.csv"
+msgstr ""
 
 #: src/components/club-config/absence-form-editor.tsx:493
 msgid "Expand all"
@@ -597,7 +613,7 @@ msgstr "開始する"
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/app/app/[id]/calendar/calendar.tsx:141
+#: src/app/app/[id]/calendar/calendar.tsx:245
 msgid "Go to today"
 msgstr "今日"
 
@@ -644,6 +660,18 @@ msgstr "画像提供 {sawaratsukiLink}"
 #: src/app/not-found.tsx:51
 #~ msgid "Image by <0>SAWARATSUKI</0>"
 #~ msgstr "画像提供: <0>SAWARATSUKI</0>"
+
+#: src/app/app/[id]/calendar/create-event-card.tsx:121
+msgid "Import from CSV"
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar.tsx:471
+msgid "Importing CSV"
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar.tsx:477
+msgid "Importing CSV file, please wait..."
+msgstr ""
 
 #: src/app/app/club/invite/[id]/page.tsx:41
 msgid "Invalid or expired invite link"
@@ -702,7 +730,7 @@ msgstr "リスト"
 msgid "Loading..."
 msgstr "ロード中．．．"
 
-#: src/app/app/[id]/calendar/create-event-card.tsx:158
+#: src/app/app/[id]/calendar/create-event-card.tsx:174
 msgid "Location"
 msgstr "場所"
 
@@ -751,7 +779,7 @@ msgstr "メンバー"
 msgid "Metadata"
 msgstr "メタデータ"
 
-#: src/app/app/[id]/calendar/calendar.tsx:49
+#: src/app/app/[id]/calendar/calendar.tsx:52
 msgid "Month"
 msgstr "月"
 
@@ -767,7 +795,7 @@ msgstr "私の欠席連絡"
 msgid "Never used"
 msgstr "未使用"
 
-#: src/app/app/[id]/calendar/create-event-card.tsx:115
+#: src/app/app/[id]/calendar/create-event-card.tsx:131
 msgid "New event name"
 msgstr "新しいイベント名"
 
@@ -840,9 +868,13 @@ msgstr "レポートが見つかりません。"
 msgid "No templates yet"
 msgstr "テンプレートはまだありません。"
 
-#: src/app/app/[id]/calendar/create-event-card.tsx:169
+#: src/app/app/[id]/calendar/create-event-card.tsx:185
 msgid "Notes"
 msgstr "メモ"
+
+#: src/app/app/[id]/calendar/calendar.tsx:182
+msgid "One or more rows in the CSV file are invalid. Each row must have at least title, start_time, and end_time."
+msgstr ""
 
 #: src/app/app/[id]/config/roles/role-dialog.tsx:258
 #: src/components/club-config/roles-manager.tsx:411
@@ -855,6 +887,14 @@ msgstr "テンプレートエディターを開く"
 #: src/components/club-config/absence-form-editor.tsx:340
 msgid "Option {0}"
 msgstr "選択肢 {0}"
+
+#: src/app/app/[id]/calendar/calendar.tsx:123
+msgid "Optional description"
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar.tsx:123
+msgid "Optional room"
+msgstr ""
 
 #: src/components/club-config/absence-form-editor.tsx:305
 msgid "Options"
@@ -897,6 +937,10 @@ msgstr "問題解決のため、できるだけ詳細な情報をご提供くだ
 #: src/components/feedback-form.tsx:120
 msgid "Please provide more detailed feedback."
 msgstr "より詳細なフィードバックをご提供ください。"
+
+#: src/app/app/[id]/calendar/calendar.tsx:210
+msgid "Please select one valid CSV file for import."
+msgstr ""
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:225
 msgid "Previous Reviews"
@@ -1009,7 +1053,7 @@ msgstr "役割: {currentRoleLabel}"
 msgid "Roles"
 msgstr "役割"
 
-#: src/app/app/[id]/calendar/create-event-card.tsx:111
+#: src/app/app/[id]/calendar/create-event-card.tsx:126
 #: src/app/app/[id]/config/roles/role-dialog.tsx:300
 #: src/app/app/users/me/general/page.tsx:48
 #: src/components/club-config/metadata-form.tsx:132
@@ -1143,7 +1187,7 @@ msgstr "問題が発生しました"
 msgid "Sponsored by the Sapporo Kosei Junior & Senior High School Brass Band club and produced by the Christian Academy in Japan Robotics club (VEX team 99484)."
 msgstr "札幌光星中学校・高等学校吹奏楽部が主催し、クリスチャン・アカデミー・イン・ジャパン ロボティクスクラブ（VEX チーム 99484）がプロデュースしています。"
 
-#: src/app/app/[id]/calendar/create-event-card.tsx:133
+#: src/app/app/[id]/calendar/create-event-card.tsx:149
 msgid "Start date and time"
 msgstr "開始日時"
 
@@ -1168,6 +1212,14 @@ msgstr "送信者"
 #: src/components/club-config/absence-form-editor.tsx:254
 msgid "Text"
 msgstr "テキスト"
+
+#: src/app/app/[id]/calendar/calendar.tsx:169
+msgid "The CSV file header is invalid. Expected columns: title, start_time, end_time, [location], [description]."
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar.tsx:157
+msgid "The CSV file is empty or invalid."
+msgstr ""
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:119
 #: src/app/app/[id]/absences/(list)/report-detail.tsx:85
@@ -1286,7 +1338,7 @@ msgstr "ようこそ！"
 msgid "What people call you"
 msgstr "よく呼ばれている名前"
 
-#: src/app/app/[id]/calendar/calendar.tsx:46
+#: src/app/app/[id]/calendar/calendar.tsx:49
 msgid "Year"
 msgstr "年"
 

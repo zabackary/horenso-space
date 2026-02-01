@@ -472,7 +472,7 @@ ${t`Club meeting`},2024-07-01T10:00:00Z,2024-07-01T11:00:00Z,${t`Optional room`}
             </Dialog.Title>
             <Dialog.Description>
               {csvImportError ? (
-                <Trans>{csvImportError}</Trans>
+                <>{csvImportError}</>
               ) : (
                 <Trans>Importing CSV file, please wait...</Trans>
               )}
