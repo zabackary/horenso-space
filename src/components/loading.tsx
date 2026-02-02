@@ -8,10 +8,15 @@ export function FullPageLoading() {
   );
 }
 
-export interface ListLoadingProps {}
+export interface ListLoadingProps {
+  withHeading?: boolean;
+  cards?: boolean;
+}
 
 export function ListLoading({
   p = "4",
+  withHeading = true,
+  cards = false,
   ...props
 }: ListLoadingProps & React.ComponentPropsWithoutRef<typeof Flex>) {
   return (
@@ -25,12 +30,20 @@ export function ListLoading({
       width="100%"
       {...props}
     >
-      <Skeleton>
-        <Heading size="3">Heading name</Heading>
-      </Skeleton>
-      {new Array(3).fill(0).map((_, index) => (
-        <Skeleton key={index} width="100%" height="60px" />
-      ))}
+      {withHeading && (
+        <Skeleton>
+          <Heading size="3">Heading name</Heading>
+        </Skeleton>
+      )}
+      {new Array(3)
+        .fill(0)
+        .map((_, index) =>
+          cards ? (
+            <Skeleton key={index} width="100%" height="120px" />
+          ) : (
+            <Skeleton key={index} width="100%" height="60px" />
+          ),
+        )}
     </Flex>
   );
 }

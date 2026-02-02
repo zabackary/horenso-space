@@ -1,8 +1,9 @@
 "use client";
 
+import { ListLoading } from "@/components/loading";
 import ClickableCard from "@/components/ui/clickable-card";
 import { Plural, Trans, useLingui } from "@lingui/react/macro";
-import { Badge, Flex, Spinner, Text } from "@radix-ui/themes";
+import { Badge, Flex, Text } from "@radix-ui/themes";
 import Link from "next/link";
 import { Suspense, use } from "react";
 import { AbsenceReport } from "./getReports";
@@ -21,7 +22,7 @@ export default function AbsenceReportList({
   const reportsData = use(reports);
   const { t } = useLingui();
   return (
-    <Suspense fallback={<Spinner />}>
+    <Suspense fallback={<ListLoading withHeading={false} cards={true} />}>
       {reportsData.length === 0 && (
         <Text>
           <Trans>No reports found.</Trans>

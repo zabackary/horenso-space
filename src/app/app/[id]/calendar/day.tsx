@@ -38,15 +38,16 @@ export default function DayCalendar({
   }, []);
 
   const [events, setEvents] = useState<
-    {
-      id: string;
-      title: string;
-      startDate: string;
-      endDate: string;
-      description?: string;
-      location?: string;
-    }[]
-  >([]);
+    | {
+        id: string;
+        title: string;
+        startDate: string;
+        endDate: string;
+        description?: string;
+        location?: string;
+      }[]
+    | null
+  >(null);
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -82,6 +83,7 @@ export default function DayCalendar({
       }
     }
 
+    setEvents(null);
     fetchEvents();
 
     return () => {
@@ -132,7 +134,9 @@ export default function DayCalendar({
       </div>
       <div className={styles.mainContent}>
         <Box width="100%">
-          {events.length === 0 ? (
+          {events === null ? (
+            <ListLoading withHeading={false} />
+          ) : events.length === 0 ? (
             <EmptyState
               icon={<CalendarIcon />}
               title={t`No events for today.`}
@@ -193,7 +197,7 @@ export default function DayCalendar({
                     />
                   )
                 ) : (
-                  <ListLoading />
+                  <ListLoading withHeading={false} />
                 )}
               </Suspense>
             </Flex>
