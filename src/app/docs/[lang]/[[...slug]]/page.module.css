@@ -43,10 +43,14 @@
   color: var(--gray-11);
   text-decoration: none;
   font-size: 14px;
+  display: block;
+  padding: 4px 8px;
+  border-radius: 4px;
 }
 
 .link:hover {
   color: var(--gray-12);
+  background: var(--gray-a2);
 }
 
 .activeLink {
@@ -54,6 +58,27 @@
   text-decoration: none;
   font-size: 14px;
   font-weight: 500;
+  display: block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: var(--accent-a3);
+}
+
+.folderItem {
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  user-select: none;
+}
+
+.folderItem:hover {
+  background: var(--gray-a2);
+}
+
+.folderName {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--gray-12);
 }
 
 .contentColumn {
@@ -103,6 +128,22 @@
   padding: 12px;
   border-radius: 8px;
   overflow: auto;
+}
+
+.navSection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.navCard {
+  padding: 16px;
+}
+
+.navLink {
+  display: block;
+  text-decoration: none;
+  color: inherit;
 }
 
 @media (max-width: 900px) {

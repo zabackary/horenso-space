@@ -13,6 +13,7 @@ export interface DocMeta {
   author?: string;
   description?: string;
   updatedDate?: string;
+  folderName?: string;
 }
 
 export interface DocPage {
@@ -26,6 +27,14 @@ export interface DocListingItem {
   lang: string;
   slug: string[];
   meta: DocMeta;
+}
+
+export interface DocTreeNode {
+  name: string;
+  slug: string[];
+  meta?: DocMeta;
+  children: DocTreeNode[];
+  isFolder: boolean;
 }
 
 export interface DocLanguageOption {
@@ -112,7 +121,7 @@ function buildLanguageSlugMap(files: DocFile[]) {
 
 function resolveDocPath(lang: string, slug: string[]) {
   if (slug.length === 0) {
-    return path.join(docsRoot, lang, "index.md");
+    return path.join(docsRoot, lang, "intro.md");
   }
 
   return `${path.join(docsRoot, lang, ...slug)}.md`;
@@ -135,6 +144,8 @@ function ensureMeta(data: Record<string, unknown>, slug: string[]): DocMeta {
       typeof data.description === "string" ? data.description : undefined,
     updatedDate:
       typeof data.updatedDate === "string" ? data.updatedDate : undefined,
+    folderName:
+      typeof data.folderName === "string" ? data.folderName : undefined,
   };
 }
 
@@ -196,4 +207,161 @@ export async function getDocLanguageOptions(
       lang,
       slug: slugs.has(slugKey) ? slug : [],
     }));
+}
+
+function buildDocTree(items: DocListingItem[]): DocTreeNode[] {
+  const root: DocTreeNode[] = [];
+  const folderMap = new Map<string, DocTreeNode>();
+  const folderNames = new Map<string, string>();
+
+  // First pass: collect folder names from index.md files
+  for (const item of items) {
+    if (
+      item.slug.length > 0 &&
+      item.slug[item.slug.length - 1] === "index" &&
+      item.meta.folderName
+    ) {
+      const folderSlug = item.slug.slice(0, -1);
+      const folderKey = folderSlug.join("/");
+      folderNames.set(folderKey, item.meta.folderName);
+    }
+  }
+
+  // Sort items by slug depth and name for consistent tree building
+  const sortedItems = [...items].sort((a, b) => {
+    if (a.slug.length !== b.slug.length) {
+      return a.slug.length - b.slug.length;
+    }
+    return a.slug.join("/").localeCompare(b.slug.join("/"));
+  });
+
+  for (const item of sortedItems) {
+    if (item.slug.length === 0) {
+      // Root index file
+      continue;
+    }
+
+    // Skip folder index files (they're only for metadata)
+    if (item.slug[item.slug.length - 1] === "index") {
+      continue;
+    }
+
+    // Create all parent folders if they don't exist
+    for (let i = 0; i < item.slug.length - 1; i++) {
+      const folderSlug = item.slug.slice(0, i + 1);
+      const folderKey = folderSlug.join("/");
+
+      if (!folderMap.has(folderKey)) {
+        const defaultName = folderSlug[folderSlug.length - 1];
+        const customName = folderNames.get(folderKey);
+
+        const folderNode: DocTreeNode = {
+          name: customName ?? defaultName,
+          slug: folderSlug,
+          children: [],
+          isFolder: true,
+        };
+        folderMap.set(folderKey, folderNode);
+
+        // Add to parent
+        if (i === 0) {
+          root.push(folderNode);
+        } else {
+          const parentKey = folderSlug.slice(0, -1).join("/");
+          const parent = folderMap.get(parentKey);
+          if (parent) {
+            parent.children.push(folderNode);
+          }
+        }
+      }
+    }
+
+    // Add the file node
+    const fileNode: DocTreeNode = {
+      name: item.meta.title,
+      slug: item.slug,
+      meta: item.meta,
+      children: [],
+      isFolder: false,
+    };
+
+    if (item.slug.length === 1) {
+      root.push(fileNode);
+    } else {
+      const parentKey = item.slug.slice(0, -1).join("/");
+      const parent = folderMap.get(parentKey);
+      if (parent) {
+        parent.children.push(fileNode);
+      }
+    }
+  }
+
+  return root;
+}
+
+export async function getDocTree(lang: string): Promise<DocTreeNode[]> {
+  const listing = await getDocListing(lang);
+  return buildDocTree(listing);
+}
+
+export interface DocNavigation {
+  prev?: {
+    slug: string[];
+    title: string;
+  };
+  next?: {
+    slug: string[];
+    title: string;
+  };
+}
+
+function flattenTree(nodes: DocTreeNode[]): DocTreeNode[] {
+  const result: DocTreeNode[] = [];
+  for (const node of nodes) {
+    if (!node.isFolder) {
+      result.push(node);
+    }
+    if (node.children.length > 0) {
+      result.push(...flattenTree(node.children));
+    }
+  }
+  return result;
+}
+
+export async function getDocNavigation(
+  lang: string,
+  currentSlug: string[],
+): Promise<DocNavigation> {
+  const tree = await getDocTree(lang);
+  const flatDocs = flattenTree(tree);
+  const currentKey = currentSlug.join("/");
+  const currentIndex = flatDocs.findIndex(
+    (doc) => doc.slug.join("/") === currentKey,
+  );
+
+  if (currentIndex === -1) {
+    return {};
+  }
+
+  const prev =
+    currentIndex > 0
+      ? {
+          slug: flatDocs[currentIndex - 1].slug,
+          title:
+            flatDocs[currentIndex - 1].meta?.title ??
+            flatDocs[currentIndex - 1].name,
+        }
+      : undefined;
+
+  const next =
+    currentIndex < flatDocs.length - 1
+      ? {
+          slug: flatDocs[currentIndex + 1].slug,
+          title:
+            flatDocs[currentIndex + 1].meta?.title ??
+            flatDocs[currentIndex + 1].name,
+        }
+      : undefined;
+
+  return { prev, next };
 }

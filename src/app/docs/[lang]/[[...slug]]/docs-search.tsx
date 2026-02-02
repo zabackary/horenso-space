@@ -27,14 +27,15 @@ export default function DocsSearch({ items, activeSlug }: DocsSearchProps) {
     [items],
   );
 
+  const trimmedQuery = query.trim();
+  const hasQuery = trimmedQuery.length > 0;
   const results = useMemo(() => {
-    const trimmed = query.trim();
-    if (!trimmed) {
-      return items;
+    if (!hasQuery) {
+      return [];
     }
 
-    return fuse.search(trimmed).map((result) => result.item);
-  }, [fuse, items, query]);
+    return fuse.search(trimmedQuery).map((result) => result.item);
+  }, [fuse, hasQuery, trimmedQuery]);
 
   return (
     <Flex direction="column" gap="2" className={styles.searchBox}>
@@ -47,31 +48,33 @@ export default function DocsSearch({ items, activeSlug }: DocsSearchProps) {
         value={query}
         onChange={(event) => setQuery(event.target.value)}
       />
-      <Flex direction="column" gap="2">
-        {results.length === 0 ? (
-          <Text size="2" color="gray">
-            <Trans>No matching docs</Trans>
-          </Text>
-        ) : (
-          results.map((item) => {
-            const href =
-              item.slug.length === 0
-                ? `/docs/${item.lang}`
-                : `/docs/${item.lang}/${item.slug.join("/")}`;
-            const isActive = activeSlug.join("/") === item.slug.join("/");
+      {hasQuery ? (
+        <Flex direction="column" gap="2">
+          {results.length === 0 ? (
+            <Text size="2" color="gray">
+              <Trans>No matching docs</Trans>
+            </Text>
+          ) : (
+            results.map((item) => {
+              const href =
+                item.slug.length === 0
+                  ? `/docs/${item.lang}`
+                  : `/docs/${item.lang}/${item.slug.join("/")}`;
+              const isActive = activeSlug.join("/") === item.slug.join("/");
 
-            return (
-              <Link
-                key={`${item.lang}-${item.slug.join("/")}`}
-                href={href}
-                className={isActive ? styles.activeLink : styles.link}
-              >
-                {item.meta.title}
-              </Link>
-            );
-          })
-        )}
-      </Flex>
+              return (
+                <Link
+                  key={`${item.lang}-${item.slug.join("/")}`}
+                  href={href}
+                  className={isActive ? styles.activeLink : styles.link}
+                >
+                  {item.meta.title}
+                </Link>
+              );
+            })
+          )}
+        </Flex>
+      ) : null}
     </Flex>
   );
 }
