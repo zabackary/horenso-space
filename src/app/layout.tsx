@@ -3,7 +3,7 @@ import { LinguiClientProvider } from "@/lib/i18n/LinguiClientProvider";
 import { Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
 import { Analytics } from "@vercel/analytics/next";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { ThemeProvider } from "next-themes";
 import {
   Gloria_Hallelujah,
@@ -40,6 +40,10 @@ export const metadata: Metadata = {
   },
   description: "部活の報連相をUP",
 };
+
+export const viewport = {
+  interactiveWidget: "resizes-content",
+} satisfies Viewport;
 
 export default async function RootLayout({
   children,
