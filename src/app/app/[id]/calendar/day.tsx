@@ -222,28 +222,27 @@ export default function DayCalendar({
         </div>
       )}
 
-      {selectedEventId && events && (
-        <EventDetailDrawer
-          open={
-            eventDrawerOpen &&
-            selectedEventId !== null &&
-            events.find((e) => e.id === selectedEventId) !== undefined
-          }
-          onOpenChange={(open) => {
-            setEventDrawerOpen(open);
-          }}
-          event={events.find((e) => e.id === selectedEventId)!}
-          clubId={clubId}
-          canWrite={canWrite}
-          onDelete={() => {
-            setEventDrawerOpen(false);
-            setRefreshTrigger((t) => t + 1);
-          }}
-          onUpdate={() => {
-            setRefreshTrigger((t) => t + 1);
-          }}
-        />
-      )}
+      {selectedEventId &&
+        events &&
+        selectedEventId !== null &&
+        events.find((e) => e.id === selectedEventId) !== undefined && (
+          <EventDetailDrawer
+            open={eventDrawerOpen}
+            onOpenChange={(open) => {
+              setEventDrawerOpen(open);
+            }}
+            event={events.find((e) => e.id === selectedEventId)!}
+            clubId={clubId}
+            canWrite={canWrite}
+            onDelete={() => {
+              setEventDrawerOpen(false);
+              setRefreshTrigger((t) => t + 1);
+            }}
+            onUpdate={() => {
+              setRefreshTrigger((t) => t + 1);
+            }}
+          />
+        )}
     </div>
   );
 }
