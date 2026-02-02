@@ -1,7 +1,13 @@
 import { ListLoading } from "@/components/loading";
+import EmptyState from "@/components/ui/empty-state";
 import { createClient } from "@/lib/supabase/client";
-import { Trans } from "@lingui/react/macro";
-import { GlobeIcon, TextIcon } from "@radix-ui/react-icons";
+import { Trans, useLingui } from "@lingui/react/macro";
+import {
+  CalendarIcon,
+  FileTextIcon,
+  GlobeIcon,
+  TextIcon,
+} from "@radix-ui/react-icons";
 import { Box, Card, Flex, Heading, Separator, Text } from "@radix-ui/themes";
 import { Suspense, useEffect, useMemo, useState } from "react";
 import getReports, { AbsenceReport } from "../absences/(list)/getReports";
@@ -12,19 +18,21 @@ export interface DayCalendarProps {
   date: string;
   onDateChange?: (date: string) => void;
   clubId: string;
-  canCreateEvent?: boolean;
   refreshKey?: string;
 
+  createEvent?: () => void;
   canReadAllReports: boolean;
 }
 
 export default function DayCalendar({
   date,
   onDateChange,
+  createEvent,
   clubId,
   refreshKey,
   canReadAllReports,
 }: DayCalendarProps) {
+  const { t } = useLingui();
   const supabase = useMemo(() => {
     return createClient();
   }, []);
@@ -125,9 +133,18 @@ export default function DayCalendar({
       <div className={styles.mainContent}>
         <Box width="100%">
           {events.length === 0 ? (
-            <Text>
-              <Trans>No events for today.</Trans>
-            </Text>
+            <EmptyState
+              icon={<CalendarIcon />}
+              title={t`No events for today.`}
+              action={
+                createEvent
+                  ? {
+                      label: t`Add event`,
+                      onClick: createEvent,
+                    }
+                  : undefined
+              }
+            />
           ) : (
             events.map((event) => (
               <Card key={event.id} mb="2">
@@ -169,9 +186,11 @@ export default function DayCalendar({
                       linkPathPrefix="/absences/all"
                     />
                   ) : (
-                    <Text>
-                      <Trans>No absence reports for this day.</Trans>
-                    </Text>
+                    <EmptyState
+                      icon={<FileTextIcon />}
+                      title={t`No absence reports`}
+                      caption={t`There are no reported absences for this day.`}
+                    />
                   )
                 ) : (
                   <ListLoading />

@@ -4,7 +4,11 @@ import type { Database } from "@/@types/database.types";
 import { createClient } from "@/lib/supabase/client";
 import { plural } from "@lingui/core/macro";
 import { Trans, useLingui } from "@lingui/react/macro";
-import { CrossCircledIcon, TrashIcon } from "@radix-ui/react-icons";
+import {
+  CrossCircledIcon,
+  PaperPlaneIcon,
+  TrashIcon,
+} from "@radix-ui/react-icons";
 import {
   Badge,
   Button,
@@ -18,6 +22,7 @@ import {
 } from "@radix-ui/themes";
 import Link from "next/link";
 import { use, useState } from "react";
+import EmptyState from "../ui/empty-state";
 import styles from "./invite.module.css";
 
 export default function InvitesManager({
@@ -42,7 +47,7 @@ export default function InvitesManager({
 
   const [generateDialogOpen, setGenerateDialogOpen] = useState(false);
   const [inviteRole, setInviteRole] = useState<string>(
-    roles.length > 0 ? roles[0].id : ""
+    roles.length > 0 ? roles[0].id : "",
   );
 
   function openCreateDialog() {
@@ -63,7 +68,7 @@ export default function InvitesManager({
         new_club_id: clubId,
         role_id: inviteRole,
         expires_at: new Date(
-          Date.now() + 7 * 24 * 60 * 60 * 1000
+          Date.now() + 7 * 24 * 60 * 60 * 1000,
         ).toISOString(),
       });
       if (error) throw error;
@@ -77,7 +82,7 @@ export default function InvitesManager({
               roles.find((r) => r.id === inviteRole)?.name ?? "Unknown role",
             invited_by_name: "You",
             expires_at: new Date(
-              Date.now() + 7 * 24 * 60 * 60 * 1000
+              Date.now() + 7 * 24 * 60 * 60 * 1000,
             ).toISOString(),
             created_at: new Date().toISOString(),
             usage_count: 0,
@@ -98,7 +103,7 @@ export default function InvitesManager({
       });
       if (error) throw error;
       setInvites((prevInvites) =>
-        prevInvites.filter((invite) => invite.id !== inviteId)
+        prevInvites.filter((invite) => invite.id !== inviteId),
       );
     } catch (error: unknown) {
       console.error("Failed to delete invite:", error);
@@ -126,93 +131,105 @@ export default function InvitesManager({
           <Text>
             <Trans>Please create roles before generating invites.</Trans>
           </Text>
+        ) : invites.length === 0 ? (
+          <EmptyState
+            icon={<PaperPlaneIcon />}
+            title={t`No invites yet`}
+            caption={t`Generate invites to allow others to join your club.`}
+            action={{
+              label: t`Generate invite`,
+              onClick: () => openCreateDialog(),
+              variant: "solid",
+            }}
+          />
         ) : (
-          invites.map((invite) => {
-            const expired = new Date(invite.expires_at) < new Date();
-            return (
-              <Card key={invite.id} className={expired ? styles.expired : ""}>
-                <Flex direction="row" align="center" width="100%" gap="2">
-                  <Flex direction="column" flexGrow="1" gap="1">
-                    <Text size="3" weight="bold">
-                      <Trans>Invite for role "{invite.role_name}"</Trans>{" "}
-                      {invite.usage_count > 0 && (
-                        <Badge>
-                          {plural(invite.usage_count, {
-                            one: "used 1 time",
-                            other: "used # times",
-                          })}
-                        </Badge>
-                      )}{" "}
-                      {expired && (
-                        <Badge color="red">
-                          <Trans>expired</Trans>
-                        </Badge>
-                      )}
-                    </Text>
-                    {!expired && (
-                      <Text size="2">
-                        <Trans>
-                          Expires at:{" "}
-                          {new Date(invite.expires_at).toLocaleString()}
-                        </Trans>
+          <>
+            {invites.map((invite) => {
+              const expired = new Date(invite.expires_at) < new Date();
+              return (
+                <Card key={invite.id} className={expired ? styles.expired : ""}>
+                  <Flex direction="row" align="center" width="100%" gap="2">
+                    <Flex direction="column" flexGrow="1" gap="1">
+                      <Text size="3" weight="bold">
+                        <Trans>Invite for role "{invite.role_name}"</Trans>{" "}
+                        {invite.usage_count > 0 && (
+                          <Badge>
+                            {plural(invite.usage_count, {
+                              one: "used 1 time",
+                              other: "used # times",
+                            })}
+                          </Badge>
+                        )}{" "}
+                        {expired && (
+                          <Badge color="red">
+                            <Trans>expired</Trans>
+                          </Badge>
+                        )}
                       </Text>
+                      {!expired && (
+                        <Text size="2">
+                          <Trans>
+                            Expires at:{" "}
+                            {new Date(invite.expires_at).toLocaleString()}
+                          </Trans>
+                        </Text>
+                      )}
+                    </Flex>
+                    <Button
+                      variant="soft"
+                      color="red"
+                      onClick={() => handleDelete(invite.id)}
+                    >
+                      <TrashIcon />
+                      <Trans>Delete</Trans>
+                    </Button>
+                    {!expired && (
+                      <Button asChild variant="solid">
+                        <Link
+                          href={`/app/club/invite/${invite.id}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            const url = `${window.location.origin}/app/club/invite/${invite.id}`;
+                            if ("share" in navigator) {
+                              try {
+                                navigator
+                                  .share({
+                                    title: t`Club Invite Link`,
+                                    url,
+                                  })
+                                  .catch(() => {
+                                    navigator.clipboard.writeText(url);
+                                    alert(t`Invite link copied to clipboard.`);
+                                  });
+                              } catch (_) {
+                                navigator.clipboard.writeText(url);
+                                alert(t`Invite link copied to clipboard.`);
+                              }
+                            }
+                          }}
+                        >
+                          <Trans>Copy link</Trans>
+                        </Link>
+                      </Button>
                     )}
                   </Flex>
-                  <Button
-                    variant="soft"
-                    color="red"
-                    onClick={() => handleDelete(invite.id)}
-                  >
-                    <TrashIcon />
-                    <Trans>Delete</Trans>
-                  </Button>
-                  {!expired && (
-                    <Button asChild variant="solid">
-                      <Link
-                        href={`/app/club/invite/${invite.id}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          const url = `${window.location.origin}/app/club/invite/${invite.id}`;
-                          if ("share" in navigator) {
-                            try {
-                              navigator
-                                .share({
-                                  title: t`Club Invite Link`,
-                                  url,
-                                })
-                                .catch(() => {
-                                  navigator.clipboard.writeText(url);
-                                  alert(t`Invite link copied to clipboard.`);
-                                });
-                            } catch (_) {
-                              navigator.clipboard.writeText(url);
-                              alert(t`Invite link copied to clipboard.`);
-                            }
-                          }
-                        }}
-                      >
-                        <Trans>Copy link</Trans>
-                      </Link>
-                    </Button>
-                  )}
-                </Flex>
-              </Card>
-            );
-          })
+                </Card>
+              );
+            })}
+            <Flex
+              direction="row"
+              className={styles.createSection}
+              gap="2"
+              align="center"
+            >
+              <Button onClick={() => openCreateDialog()}>
+                <Trans>Generate invite</Trans>
+              </Button>
+            </Flex>
+          </>
         )}
-      </Flex>
-
-      <Flex
-        direction="row"
-        className={styles.createSection}
-        gap="2"
-        align="center"
-      >
-        <Button onClick={() => openCreateDialog()}>
-          <Trans>Generate invite</Trans>
-        </Button>
       </Flex>
 
       <Dialog.Root

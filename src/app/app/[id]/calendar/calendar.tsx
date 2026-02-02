@@ -415,6 +415,7 @@ ${t`Club meeting`},2024-07-01T10:00:00Z,2024-07-01T11:00:00Z,${t`Optional room`}
             clubId={clubId}
             refreshKey={refreshKey.toString()}
             canReadAllReports={canReadAllReports}
+            createEvent={canWrite ? () => setCreateDrawerOpen(true) : undefined}
           />
         )}
         {canWrite && (
