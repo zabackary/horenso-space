@@ -1,0 +1,13 @@
+.deleteButton {
+  color: white;
+  background-color: var(--red-9);
+
+  &:hover {
+    background-color: var(--red-10);
+  }
+
+  &:disabled {
+    background-color: var(--red-8);
+    opacity: 0.7;
+  }
+}

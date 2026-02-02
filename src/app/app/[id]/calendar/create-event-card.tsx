@@ -5,25 +5,14 @@ import { createClient } from "@/lib/supabase/client";
 import { Trans, useLingui } from "@lingui/react/macro";
 import {
   BookmarkFilledIcon,
-  CalendarIcon,
   Cross1Icon,
   DownloadIcon,
-  GlobeIcon,
-  TextIcon,
 } from "@radix-ui/react-icons";
-import {
-  Box,
-  Button,
-  Callout,
-  Flex,
-  Grid,
-  IconButton,
-  TextArea,
-  TextField,
-} from "@radix-ui/themes";
+import { Button, Flex, IconButton } from "@radix-ui/themes";
 import type React from "react";
 import { useState } from "react";
 import styles from "./create-event-card.module.css";
+import EventForm, { type EventFormData } from "./event-form";
 
 export interface CreateEventCardProps {
   clubId: string;
@@ -41,51 +30,59 @@ export default function CreateEventCard({
   onCSVImport,
 }: CreateEventCardProps) {
   const { t } = useLingui();
-  const [start, setStart] = useState("");
-  const [end, setEnd] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState<EventFormData>({
+    title: "",
+    startDate: "",
+    startTime: "",
+    endDate: "",
+    endTime: "",
+    location: "",
+    notes: "",
+  });
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     e.stopPropagation();
     setLoading(true);
+    setError(null);
 
     try {
       const supabase = createClient();
-      const formData = new FormData(e.target as HTMLFormElement);
-      const title = formData.get("title") as string;
-      const location = formData.get("location") as string;
-      const notes = formData.get("notes") as string;
-
       const user = (await getProfile(supabase))!;
+
+      const startDateTime = new Date(
+        `${formData.startDate}T${formData.startTime}:00`,
+      ).toISOString();
+      const endDateTime = new Date(
+        `${formData.endDate}T${formData.endTime}:00`,
+      ).toISOString();
 
       const { data } = await supabase
         .from("calendar_events")
         .insert({
-          title,
+          title: formData.title,
           club_id: clubId,
-          start_time: new Date(start).toUTCString(),
-          end_time: new Date(end).toUTCString(),
+          start_time: startDateTime,
+          end_time: endDateTime,
           created_by: user.id,
-          location: location ?? undefined,
-          description: notes,
+          location: formData.location || undefined,
+          description: formData.notes || undefined,
         })
         .throwOnError()
         .select("id")
         .single();
+
       if (onCreate && data) {
         onCreate(data.id);
       }
-    } catch (error) {
-      setError((error as Error).message);
-      console.error(error);
+    } catch (err) {
+      setError((err as Error).message);
+      console.error(err);
     } finally {
       setLoading(false);
     }
-  };
-
-  const openNativeDateTimePicker = (e: React.MouseEvent<HTMLInputElement>) => {
-    e.currentTarget.showPicker();
   };
 
   return (
@@ -127,72 +124,8 @@ export default function CreateEventCard({
             </Button>
           </Flex>
         </Flex>
-        <TextField.Root
-          placeholder={t`New event name`}
-          size="3"
-          variant="soft"
-          className={styles.title}
-          name="title"
-          ref={(input) => {
-            if (input) {
-              setTimeout(() => input.focus(), 0);
-            }
-          }}
-          required
-        />
-        <Flex direction="row" gap="2">
-          <Box className={styles["row-icon"]}>
-            <CalendarIcon />
-          </Box>
-          <Grid columns="auto" gap="2" flexGrow="1">
-            <TextField.Root
-              placeholder={t`Start date and time`}
-              type="datetime-local"
-              value={start}
-              onChange={(e) => setStart(e.target.value)}
-              name="start"
-              onClick={openNativeDateTimePicker}
-              required
-            />
-            <TextField.Root
-              placeholder={t`End date and time`}
-              type="datetime-local"
-              value={end}
-              onChange={(e) => setEnd(e.target.value)}
-              min={start}
-              name="end"
-              onClick={openNativeDateTimePicker}
-              required
-            />
-          </Grid>
-        </Flex>
-        <Flex direction="row" gap="2">
-          <Box className={styles["row-icon"]}>
-            <GlobeIcon />
-          </Box>
-          <TextField.Root
-            placeholder={t`Location`}
-            size="2"
-            className={styles["location-textfield"]}
-            name="location"
-          />
-        </Flex>
-        <Flex direction="row" gap="2">
-          <Box className={styles["row-icon"]}>
-            <TextIcon />
-          </Box>
-          <TextArea
-            placeholder={t`Notes`}
-            className={styles["notes-textarea"]}
-            size="2"
-            name="notes"
-          />
-        </Flex>
-        {error && (
-          <Callout.Root>
-            <Callout.Text>{error}</Callout.Text>
-          </Callout.Root>
-        )}
+
+        <EventForm data={formData} onChange={setFormData} error={error} />
       </form>
     </Flex>
   );

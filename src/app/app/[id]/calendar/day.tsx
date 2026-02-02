@@ -1,4 +1,5 @@
 import { ListLoading } from "@/components/loading";
+import ClickableCard from "@/components/ui/clickable-card";
 import EmptyState from "@/components/ui/empty-state";
 import { createClient } from "@/lib/supabase/client";
 import { Trans, useLingui } from "@lingui/react/macro";
@@ -13,6 +14,7 @@ import { Suspense, useEffect, useMemo, useState } from "react";
 import getReports, { AbsenceReport } from "../absences/(list)/getReports";
 import AbsenceReportList from "../absences/(list)/list";
 import styles from "./day.module.css";
+import EventDetailDrawer from "./event-detail-drawer";
 
 export interface DayCalendarProps {
   date: string;
@@ -22,6 +24,7 @@ export interface DayCalendarProps {
 
   createEvent?: () => void;
   canReadAllReports: boolean;
+  canWrite?: boolean;
 }
 
 export default function DayCalendar({
@@ -31,6 +34,7 @@ export default function DayCalendar({
   clubId,
   refreshKey,
   canReadAllReports,
+  canWrite = false,
 }: DayCalendarProps) {
   const { t } = useLingui();
   const supabase = useMemo(() => {
@@ -48,6 +52,10 @@ export default function DayCalendar({
       }[]
     | null
   >(null);
+
+  const [selectedEventId, setSelectedEventId] = useState<string | null>(null);
+  const [eventDrawerOpen, setEventDrawerOpen] = useState(false);
+  const [refreshTrigger, setRefreshTrigger] = useState(0);
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -89,7 +97,7 @@ export default function DayCalendar({
     return () => {
       abortController.abort();
     };
-  }, [date, clubId, supabase, refreshKey]);
+  }, [date, clubId, supabase, refreshKey, refreshTrigger]);
 
   const [reports, setReports] = useState<AbsenceReport[] | null>(null);
   useEffect(() => {
@@ -151,25 +159,34 @@ export default function DayCalendar({
             />
           ) : (
             events.map((event) => (
-              <Card key={event.id} mb="2">
-                <Heading size="5">{event.title}</Heading>
-                <Text>
-                  {new Date(event.startDate).toLocaleTimeString()} -{" "}
-                  {new Date(event.endDate).toLocaleTimeString()}
-                </Text>
-                {event.description && (
-                  <Flex direction="row" mt="2" gap="1" align="center">
-                    <TextIcon />
-                    <Text>{event.description}</Text>
-                  </Flex>
-                )}
-                {event.location && (
-                  <Flex direction="row" mt="2" gap="1" align="center">
-                    <GlobeIcon />
-                    <Text>{event.location}</Text>
-                  </Flex>
-                )}
-              </Card>
+              <ClickableCard
+                key={event.id}
+                mb="2"
+                onClick={() => {
+                  setSelectedEventId(event.id);
+                  setEventDrawerOpen(true);
+                }}
+              >
+                <Flex direction="column" gap="2">
+                  <Heading size="5">{event.title}</Heading>
+                  <Text size="2">
+                    {new Date(event.startDate).toLocaleTimeString()} -{" "}
+                    {new Date(event.endDate).toLocaleTimeString()}
+                  </Text>
+                  {event.description && (
+                    <Flex direction="row" gap="1" align="start">
+                      <TextIcon style={{ flexShrink: 0, marginTop: "2px" }} />
+                      <Text size="2">{event.description}</Text>
+                    </Flex>
+                  )}
+                  {event.location && (
+                    <Flex direction="row" gap="1" align="start">
+                      <GlobeIcon style={{ flexShrink: 0, marginTop: "2px" }} />
+                      <Text size="2">{event.location}</Text>
+                    </Flex>
+                  )}
+                </Flex>
+              </ClickableCard>
             ))
           )}
         </Box>
@@ -203,6 +220,29 @@ export default function DayCalendar({
             </Flex>
           </Card>
         </div>
+      )}
+
+      {selectedEventId && events && (
+        <EventDetailDrawer
+          open={
+            eventDrawerOpen &&
+            selectedEventId !== null &&
+            events.find((e) => e.id === selectedEventId) !== undefined
+          }
+          onOpenChange={(open) => {
+            setEventDrawerOpen(open);
+          }}
+          event={events.find((e) => e.id === selectedEventId)!}
+          clubId={clubId}
+          canWrite={canWrite}
+          onDelete={() => {
+            setEventDrawerOpen(false);
+            setRefreshTrigger((t) => t + 1);
+          }}
+          onUpdate={() => {
+            setRefreshTrigger((t) => t + 1);
+          }}
+        />
       )}
     </div>
   );

@@ -415,6 +415,7 @@ ${t`Club meeting`},2024-07-01T10:00:00Z,2024-07-01T11:00:00Z,${t`Optional room`}
             clubId={clubId}
             refreshKey={refreshKey.toString()}
             canReadAllReports={canReadAllReports}
+            canWrite={canWrite}
             createEvent={canWrite ? () => setCreateDrawerOpen(true) : undefined}
           />
         )}
@@ -433,7 +434,6 @@ ${t`Club meeting`},2024-07-01T10:00:00Z,2024-07-01T11:00:00Z,${t`Optional room`}
       {canWrite && (
         <Drawer.Root
           snapPoints={[420, "100%"]}
-          modal={false}
           open={createDrawerOpen}
           onOpenChange={setCreateDrawerOpen}
         >
