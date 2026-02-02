@@ -6,6 +6,7 @@ import { Box, Card, Flex, Heading, Separator, Text } from "@radix-ui/themes";
 import { Suspense, useEffect, useMemo, useState } from "react";
 import getReports, { AbsenceReport } from "../absences/(list)/getReports";
 import AbsenceReportList from "../absences/(list)/list";
+import styles from "./day.module.css";
 
 export interface DayCalendarProps {
   date: string;
@@ -108,52 +109,57 @@ export default function DayCalendar({
   }, [date, clubId]);
 
   return (
-    <Flex direction="column" p="4" gap="4" align="center">
-      <Heading size="5" as="h3" align="center">
-        {new Date(date).toLocaleDateString(undefined, {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        })}
-      </Heading>
-      <Separator />
-      <Box width="100%">
-        {events.length === 0 ? (
-          <Text>
-            <Trans>No events for today.</Trans>
-          </Text>
-        ) : (
-          events.map((event) => (
-            <Card key={event.id} mb="2">
-              <Heading size="5">{event.title}</Heading>
-              <Text>
-                {new Date(event.startDate).toLocaleTimeString()} -{" "}
-                {new Date(event.endDate).toLocaleTimeString()}
-              </Text>
-              {event.description && (
-                <Flex direction="row" mt="2" gap="1" align="center">
-                  <TextIcon />
-                  <Text>{event.description}</Text>
-                </Flex>
-              )}
-              {event.location && (
-                <Flex direction="row" mt="2" gap="1" align="center">
-                  <GlobeIcon />
-                  <Text>{event.location}</Text>
-                </Flex>
-              )}
-            </Card>
-          ))
-        )}
-      </Box>
-      {canReadAllReports && (
-        <>
-          <Separator mb="2" />
-          <Heading size="5" mb="2">
-            <Trans>Absence reports for this day</Trans>
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <Flex direction="column" align="center" gap="2">
+          <Heading size="5" as="h3" align="center">
+            {new Date(date).toLocaleDateString(undefined, {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
           </Heading>
-          <Box width="100%">
-            <Card>
+          <Separator />
+        </Flex>
+      </div>
+      <div className={styles.mainContent}>
+        <Box width="100%">
+          {events.length === 0 ? (
+            <Text>
+              <Trans>No events for today.</Trans>
+            </Text>
+          ) : (
+            events.map((event) => (
+              <Card key={event.id} mb="2">
+                <Heading size="5">{event.title}</Heading>
+                <Text>
+                  {new Date(event.startDate).toLocaleTimeString()} -{" "}
+                  {new Date(event.endDate).toLocaleTimeString()}
+                </Text>
+                {event.description && (
+                  <Flex direction="row" mt="2" gap="1" align="center">
+                    <TextIcon />
+                    <Text>{event.description}</Text>
+                  </Flex>
+                )}
+                {event.location && (
+                  <Flex direction="row" mt="2" gap="1" align="center">
+                    <GlobeIcon />
+                    <Text>{event.location}</Text>
+                  </Flex>
+                )}
+              </Card>
+            ))
+          )}
+        </Box>
+      </div>
+      {canReadAllReports && (
+        <div className={styles.sidebar}>
+          <Card className={styles.sidebarCard}>
+            <Flex direction="column" gap="3">
+              <Heading size="5">
+                <Trans>Absence reports for this day</Trans>
+              </Heading>
               <Suspense fallback={<ListLoading />}>
                 {reports !== null ? (
                   reports.length > 0 ? (
@@ -171,10 +177,10 @@ export default function DayCalendar({
                   <ListLoading />
                 )}
               </Suspense>
-            </Card>
-          </Box>
-        </>
+            </Flex>
+          </Card>
+        </div>
       )}
-    </Flex>
+    </div>
   );
 }
