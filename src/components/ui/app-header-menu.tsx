@@ -35,6 +35,11 @@ export function AppHeaderMenu({ profile }: AppHeaderMenuProps) {
                 <Trans>Profile and settings</Trans>
               </Link>
             </DropdownMenu.Item>
+            <DropdownMenu.Item asChild>
+              <Link href="/docs">
+                <Trans>Help Center</Trans>
+              </Link>
+            </DropdownMenu.Item>
             <DropdownMenu.Item onClick={() => setIsOpen(true)}>
               <Trans>Send Feedback</Trans>
             </DropdownMenu.Item>

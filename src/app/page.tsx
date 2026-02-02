@@ -75,6 +75,11 @@ export default async function Home({ params }: PageProps<"/">) {
             </Trans>
           </Text>
           <Text size="2" align="center" mb="2">
+            <Link href="/docs" className={styles.footerLink}>
+              <Trans>Help Center</Trans>
+            </Link>
+          </Text>
+          <Text size="2" align="center" mb="2">
             <Trans>©{new Date().getFullYear()} Horenso SPACE</Trans>
           </Text>
         </Flex>

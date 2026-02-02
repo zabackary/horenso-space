@@ -28,3 +28,12 @@
     font-family: var(--font-hachi-maru-pop);
   }
 }
+
+.footerLink {
+  color: var(--accent-11);
+  text-decoration: none;
+}
+
+.footerLink:hover {
+  color: var(--accent-12);
+}
