@@ -62,11 +62,11 @@ msgstr "欠席報告テンプレート"
 #: src/app/app/[id]/config/roles/role-dialog.tsx:102
 #: src/components/club-config/roles-manager.tsx:144
 msgid "Absence report template must be selected"
-msgstr "欠席報告テンプレートを選択してください"
+msgstr "欠席報告のテンプレートを選択してください"
 
 #: src/app/app/[id]/config/absence-forms/sidebar.tsx:36
 msgid "Absence report templates"
-msgstr "欠席報告テンプレート"
+msgstr "欠席報告のテンプレート"
 
 #: src/app/app/[id]/page.tsx:67
 msgid "Absence reports"
@@ -136,7 +136,7 @@ msgstr "すべての欠席連絡"
 
 #: src/components/club-config/absence-form-editor.tsx:272
 msgid "Allow multiple lines"
-msgstr "複数行を許可する"
+msgstr "複数行の許可"
 
 #: src/app/auth/sign-up/page.tsx:59
 msgid "Already have an account? {loginLink}"
@@ -198,7 +198,7 @@ msgstr "承認済み"
 
 #: src/app/app/[id]/calendar/event-detail-drawer.tsx:245
 msgid "Are you sure you want to delete this event? This action cannot be undone."
-msgstr ""
+msgstr "このイベントを削除してもよろしいですか？この操作は元に戻せません。"
 
 #: src/app/app/[id]/config/roles/roles-view.tsx:181
 #: src/components/club-config/roles-manager.tsx:126
@@ -272,7 +272,7 @@ msgstr "メールを確認してください"
 
 #: src/app/app/[id]/calendar/calendar.tsx:487
 msgid "Close"
-msgstr ""
+msgstr "閉じる"
 
 #: src/app/app/[id]/config/layout.tsx:32
 msgid "Club configuration"
@@ -289,7 +289,7 @@ msgstr "部活の招待リンク"
 
 #: src/app/app/[id]/calendar/calendar.tsx:123
 msgid "Club meeting"
-msgstr ""
+msgstr "部活動会議"
 
 #: src/components/club-config/metadata-form.tsx:68
 #: src/components/club-create-form.tsx:72
@@ -406,7 +406,7 @@ msgstr "削除"
 
 #: src/app/app/[id]/calendar/event-detail-drawer.tsx:242
 msgid "Delete event"
-msgstr ""
+msgstr "イベントを削除"
 
 #: src/app/app/[id]/config/roles/roles-graph.tsx:71
 msgid "Delete role"
@@ -422,7 +422,7 @@ msgstr "まだアカウントをお持ちではありませんか？ {createAcco
 
 #: src/app/app/[id]/calendar/calendar.tsx:484
 msgid "Download example CSV"
-msgstr ""
+msgstr "CSVの例をダウンロード"
 
 #: src/app/app/[id]/calendar/event-detail-drawer.tsx:185
 #: src/app/app/[id]/config/roles/roles-manager.tsx:37
@@ -440,7 +440,7 @@ msgstr "{name}の詳細を編集"
 
 #: src/app/app/[id]/calendar/event-detail-drawer.tsx:146
 msgid "Edit Event"
-msgstr ""
+msgstr "イベントの編集"
 
 #: src/app/app/[id]/config/roles/roles-graph.tsx:64
 msgid "Edit role"
@@ -504,15 +504,15 @@ msgstr "イベントの日付"
 #. placeholder {0}: event.title
 #: src/app/app/[id]/calendar/event-detail-drawer.tsx:151
 msgid "Event details for {0}"
-msgstr ""
+msgstr "{0}の詳細"
 
 #: src/app/app/[id]/calendar/event-form.tsx:119
 msgid "Event name"
-msgstr ""
+msgstr "イベント名"
 
 #: src/app/app/[id]/calendar/calendar.tsx:129
 msgid "example-calendar-events.csv"
-msgstr ""
+msgstr "example-calendar-events.csv"
 
 #: src/components/club-config/absence-form-editor.tsx:493
 msgid "Expand all"
@@ -635,7 +635,7 @@ msgstr "招待を作成"
 
 #: src/components/club-config/invite.tsx:138
 msgid "Generate invites to allow others to join your club."
-msgstr ""
+msgstr "ほかの人が部活に参加するための正体を生成します。"
 
 #: src/app/page.tsx:33
 msgid "Get started"
@@ -695,15 +695,15 @@ msgstr "画像提供 {sawaratsukiLink}"
 
 #: src/app/app/[id]/calendar/create-event-card.tsx:118
 msgid "Import from CSV"
-msgstr ""
+msgstr "CSVからインポートする"
 
 #: src/app/app/[id]/calendar/calendar.tsx:472
 msgid "Importing CSV"
-msgstr ""
+msgstr "インポート中"
 
 #: src/app/app/[id]/calendar/calendar.tsx:478
 msgid "Importing CSV file, please wait..."
-msgstr ""
+msgstr "CSVのインポート中です。しばしお待ちを．．．"
 
 #: src/app/app/club/invite/[id]/page.tsx:41
 msgid "Invalid or expired invite link"
@@ -850,7 +850,7 @@ msgstr "欠席レポートテンプレートが見つかりません。"
 
 #: src/app/app/[id]/calendar/day.tsx:212
 msgid "No absence reports"
-msgstr ""
+msgstr "欠席連絡はありません"
 
 #: src/app/app/[id]/calendar/day.tsx:167
 #~ msgid "No absence reports for this day."
@@ -886,7 +886,7 @@ msgstr "このレポートに関連付けられたフォームはありません
 
 #: src/components/club-config/invite.tsx:137
 msgid "No invites yet"
-msgstr ""
+msgstr "招待はありません"
 
 #: src/components/club-config/members-manager.tsx:121
 msgid "No members yet."
@@ -914,7 +914,7 @@ msgstr "メモ"
 
 #: src/app/app/[id]/calendar/calendar.tsx:182
 msgid "One or more rows in the CSV file are invalid. Each row must have at least title, start_time, and end_time."
-msgstr ""
+msgstr "CSVファイル内の一つかそれ以上の行が無効です。すべての行にイベント名、開始時間、終了時間が必要です。"
 
 #: src/app/app/[id]/config/roles/role-dialog.tsx:258
 #: src/components/club-config/roles-manager.tsx:411
@@ -930,11 +930,11 @@ msgstr "選択肢 {0}"
 
 #: src/app/app/[id]/calendar/calendar.tsx:123
 msgid "Optional description"
-msgstr ""
+msgstr "説明(任意)"
 
 #: src/app/app/[id]/calendar/calendar.tsx:123
 msgid "Optional room"
-msgstr ""
+msgstr "任意のスペース"
 
 #: src/components/club-config/absence-form-editor.tsx:305
 msgid "Options"
@@ -980,7 +980,7 @@ msgstr "より詳細なフィードバックをご提供ください。"
 
 #: src/app/app/[id]/calendar/calendar.tsx:210
 msgid "Please select one valid CSV file for import."
-msgstr ""
+msgstr "インポートをする有効なCSVファイルを一つ選択してください。"
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:225
 msgid "Previous Reviews"
@@ -1256,15 +1256,15 @@ msgstr "テキスト"
 
 #: src/app/app/[id]/calendar/calendar.tsx:169
 msgid "The CSV file header is invalid. Expected columns: title, start_time, end_time, [location], [description]."
-msgstr ""
+msgstr "このCSVファイルは無効です。イベント名、開始時間、終了時間、場所(任意)、説明(任意)を入力してください。"
 
 #: src/app/app/[id]/calendar/calendar.tsx:157
 msgid "The CSV file is empty or invalid."
-msgstr ""
+msgstr "このCSVには何も入っていないか、無効です。"
 
 #: src/app/app/[id]/calendar/day.tsx:213
 msgid "There are no reported absences for this day."
-msgstr ""
+msgstr "本日の欠席連絡はありません。"
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:119
 #: src/app/app/[id]/absences/(list)/report-detail.tsx:85
