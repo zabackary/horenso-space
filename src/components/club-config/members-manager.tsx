@@ -5,6 +5,7 @@ import { createClient } from "@/lib/supabase/client";
 import { Trans, useLingui } from "@lingui/react/macro";
 import { CrossCircledIcon, TrashIcon } from "@radix-ui/react-icons";
 import {
+  Avatar,
   Button,
   Callout,
   Card,
@@ -54,14 +55,14 @@ export default function MembersManager({
         user_id: m.user_id,
         role_id: (m.role_id as string) ?? null,
         profile: m.profile,
-      })) ?? []
+      })) ?? [],
   );
   const [roles] = useState<Role[]>(
     () =>
       initialRoles.map((r) => ({
         id: r.id,
         name: (r as { id: string; name: string }).name,
-      })) ?? []
+      })) ?? [],
   );
   const [error, setError] = useState<string | null>(null);
 
@@ -76,8 +77,8 @@ export default function MembersManager({
         .throwOnError();
       setMembers((prev) =>
         prev.map((m) =>
-          m.user_id === memberUserId ? { ...m, role_id: newRoleId } : m
-        )
+          m.user_id === memberUserId ? { ...m, role_id: newRoleId } : m,
+        ),
       );
     } catch (e: unknown) {
       console.error("Failed to change member role:", e);
@@ -131,6 +132,11 @@ export default function MembersManager({
             return (
               <Card key={m.key}>
                 <Flex align="center" gap="3" justify="between" width="100%">
+                  <Avatar
+                    fallback={displayName.charAt(0).toUpperCase()}
+                    size="4"
+                    src={m.profile?.avatar_url ?? undefined}
+                  />
                   <Flex direction="column" style={{ flexGrow: 1 }} gap="1">
                     <RadixLink weight="bold" size="3" asChild>
                       <Link href={`/app/users/${m.user_id}`}>

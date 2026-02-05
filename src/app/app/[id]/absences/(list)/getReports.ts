@@ -3,7 +3,6 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 
 export interface AbsenceReport {
   id: string;
-  userName: string;
   date: Date | null;
   event: {
     id: string;
@@ -11,6 +10,11 @@ export interface AbsenceReport {
     startTime: Date;
     endTime: Date;
   } | null;
+  user: {
+    id: string;
+    fullName: string;
+    avatarUrl: string | null;
+  };
   assignedToRole: {
     roleId: string;
     roleName: string;
@@ -25,6 +29,7 @@ export interface AbsenceReport {
       fullName: string;
     };
   }[];
+  submittedAt: Date;
   approved: boolean;
 }
 
@@ -41,9 +46,6 @@ export default async function getReports(
   supabase: SupabaseClient<Database>,
   options: GetReportsOptions,
 ): Promise<AbsenceReport[]> {
-  console.log(
-    options.date ? options.date.toISOString().split("T")[0] : undefined,
-  );
   const { data: reportsRes, error: reportsError } = await supabase.rpc(
     "absence_reports_get",
     {
@@ -64,7 +66,11 @@ export default async function getReports(
   const reports = (reportsRes || []).map((report) => {
     return {
       id: report.id,
-      userName: report.user_name ?? null,
+      user: {
+        id: report.user_id,
+        fullName: report.user_full_name,
+        avatarUrl: report.user_avatar_url,
+      },
       event: report.event_id
         ? {
             id: report.event_id,
@@ -91,6 +97,7 @@ export default async function getReports(
         },
       })),
       approved: report.approved,
+      submittedAt: new Date(report.submitted_at),
     };
   });
   return reports;

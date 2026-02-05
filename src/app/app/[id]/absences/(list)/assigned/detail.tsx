@@ -28,7 +28,7 @@ export default function ReportDetail({
   report: AssignedReport;
   clubId: string;
 }) {
-  const { t } = useLingui();
+  const { t, i18n } = useLingui();
   const [comments, setComments] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -73,7 +73,8 @@ export default function ReportDetail({
         })
         .abortSignal(abortController.signal);
       if (error) {
-        console.error("Failed to fetch accepted status:", error);
+        if (!error.message.includes("AbortError"))
+          console.error("Failed to fetch accepted status:", error);
         return;
       }
       setIsAccepted(data as boolean);

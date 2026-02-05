@@ -4,7 +4,8 @@ create function public.absence_reports_get(p_club_id uuid, p_user_id uuid defaul
   returns table(
     id uuid,
     user_id uuid,
-    user_name text,
+    user_full_name text,
+    user_avatar_url text,
     report_date date,
     event_id uuid,
     event_name text,
@@ -12,6 +13,7 @@ create function public.absence_reports_get(p_club_id uuid, p_user_id uuid defaul
     event_end_time timestamp with time zone,
     assigned_to_role_id uuid,
     assigned_to_role_name text,
+    submitted_at timestamp with time zone,
     reviews jsonb,
     approved boolean)
   language sql
@@ -21,6 +23,7 @@ create function public.absence_reports_get(p_club_id uuid, p_user_id uuid defaul
     ar.id,
     ar.user_id,
     p_user.full_name,
+    p_user.avatar_url,
     ar.date as report_date,
     ce.id as event_id,
     ce.title as event_name,
@@ -28,6 +31,7 @@ create function public.absence_reports_get(p_club_id uuid, p_user_id uuid defaul
     ce.end_time as event_end_time,
     ar.assigned_to_role as assigned_to_role_id,
     r.name as assigned_to_role_name,
+    ar.created_at as submitted_at,
     coalesce(jsonb_agg(jsonb_build_object('id', arr.id, 'comments', arr.comments, 'accepted', arr.accepted, 'created_at', arr.created_at, 'reviewer_id', arr.reviewer_id, 'reviewer_name', p_reviewer.full_name)
       order by arr.created_at) filter(where arr.id is not null), '[]'::jsonb) as reviews,
     public.absence_reports_is_approved(ar.id) as approved
@@ -51,6 +55,7 @@ group by
   ar.id,
   ar.user_id,
   p_user.full_name,
+  p_user.avatar_url,
   ar.date,
   ce.id,
   ce.title,

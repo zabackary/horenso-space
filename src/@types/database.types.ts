@@ -737,8 +737,10 @@ export type Database = {
           id: string
           report_date: string
           reviews: Json
+          submitted_at: string
+          user_avatar_url: string
+          user_full_name: string
           user_id: string
-          user_name: string
         }[]
       }
       absence_reports_is_approved: {
