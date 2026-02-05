@@ -26,7 +26,12 @@ export default function ProfileEditor({
         .form!;
       const formData = new FormData(form);
       const data = Object.fromEntries(
-        formData.entries().map(([k, v]) => [k, v === "" ? null : v])
+        formData.entries().map(([k, v]) => [
+          k,
+          // Convert empty strings to null, except for full_name since it has
+          // a not null constraint in the database.
+          v === "" && k !== "full_name" ? null : v,
+        ]),
       );
 
       const supabase = createClient();
@@ -35,8 +40,11 @@ export default function ProfileEditor({
         .update(data)
         .eq("id", profile?.id ?? "")
         .single();
-      if (!error) {
+      if (error) {
+        console.error("Error updating profile:", error);
+      } else {
         setShowFormSaving(false);
+        setTimeout(() => setShowFormSaving(null), 2000);
       }
     })();
   }, 1000);
