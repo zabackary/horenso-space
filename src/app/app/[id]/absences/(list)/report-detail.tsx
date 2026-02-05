@@ -4,6 +4,7 @@ import AbsenceFormRenderer from "@/components/absence-form-renderer";
 import { createClient } from "@/lib/supabase/client";
 import { Trans } from "@lingui/react/macro";
 import {
+  Avatar,
   Badge,
   Callout,
   Card,
@@ -105,7 +106,13 @@ export default function ReportDetail({
             <Trans>Submitted by</Trans>
           </DataList.Label>
           <DataList.Value>
-            {report.userName || <Trans>Unknown</Trans>}
+            <Avatar
+              size="2"
+              src={report.user.avatarUrl || undefined}
+              alt={report.user.fullName}
+              fallback={report.user.fullName.charAt(0).toUpperCase()}
+            />{" "}
+            {report.user.fullName}
           </DataList.Value>
         </DataList.Item>
 
