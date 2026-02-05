@@ -68,8 +68,8 @@ export default async function getReports(
       id: report.id,
       user: {
         id: report.user_id,
-        fullName: report.user_full_name,
-        avatarUrl: report.user_avatar_url,
+        fullName: report.user_full_name ?? "",
+        avatarUrl: report.user_avatar_url ?? null,
       },
       event: report.event_id
         ? {
