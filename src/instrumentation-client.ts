@@ -11,10 +11,18 @@ Sentry.init({
   tracesSampleRate: 1,
   // Enable logs to be sent to Sentry
   enableLogs: true,
+  // Send console.error and console.warn messages to Sentry
+  integrations: [
+    Sentry.captureConsoleIntegration({
+      levels: ["error", "warn"],
+    }),
+  ],
 
   // Enable sending user PII (Personally Identifiable Information)
   // https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/options/#sendDefaultPii
   sendDefaultPii: true,
+
+  enabled: process.env.NODE_ENV === "production",
 });
 
 export const onRouterTransitionStart = Sentry.captureRouterTransitionStart;
