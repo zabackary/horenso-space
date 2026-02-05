@@ -40,50 +40,6 @@ export async function updateSession(request: NextRequest) {
   const { data } = await supabase.auth.getClaims();
   const user = data?.claims;
 
-  // Update the user's metadata in the DB if it is not populated and the relevant
-  // claims are populated.
-  // We only do this if the issued at timestamp is within the last 10 seconds
-  // to avoid updating metadata on every request.
-  if (user) {
-    const issuedAt = data?.claims?.iat;
-    const now = Math.floor(Date.now() / 1000);
-    const isNewLogin = issuedAt && now - issuedAt < 10;
-
-    if (isNewLogin) {
-      // First, check if metadata fields are missing
-      const { data: profileData, error: profileError } = await supabase
-        .from("profiles")
-        .select("full_name, avatar_url")
-        .eq("id", user.sub)
-        .single();
-
-      if (profileError) {
-        console.error(
-          "Error fetching profile for metadata update:",
-          profileError,
-        );
-      } else {
-        const updates: { full_name?: string; avatar_url?: string } = {};
-        if (!profileData?.full_name && data?.claims?.name) {
-          updates.full_name = data.claims.name;
-        }
-        if (!profileData?.avatar_url && data?.claims?.picture) {
-          updates.avatar_url = data.claims.picture;
-        }
-
-        if (Object.keys(updates).length > 0) {
-          const { error: updateError } = await supabase
-            .from("profiles")
-            .update(updates)
-            .eq("id", user.sub);
-          if (updateError) {
-            console.error("Error updating profile metadata:", updateError);
-          }
-        }
-      }
-    }
-  }
-
   // Redirect to login if user is not authenticated and trying to access a private path
   const pathname = request.nextUrl.pathname;
   const isPrivatePath = pathname.startsWith("/app");

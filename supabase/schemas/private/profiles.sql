@@ -20,7 +20,10 @@ create trigger set_updated_at
   before update on private.profiles for each row
   execute function extensions.moddatetime("updated_at");
 
--- When a user is created, we create the corresponding profile with a blank full_name
+-- When a user is created, we create the corresponding profile full_name populated
+-- with the JWT 'name' and avatar_url populated with the JWT 'picture'.
+-- If these claims are not present in the JWT, we default to an empty string for
+-- full_name and NULL for avatar_url.
 create function create_user_profile()
   returns trigger
   language plpgsql
@@ -28,8 +31,8 @@ create function create_user_profile()
   security definer
   as $$
 begin
-  insert into private.profiles(id, full_name)
-    values(new.id, '');
+  insert into private.profiles(id, full_name, avatar_url)
+    values(new.id, coalesce(new.raw_user_meta_data ->> 'name', ''), new.raw_user_meta_data ->> 'picture');
   return new;
 end;
 $$;
