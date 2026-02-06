@@ -1,4 +1,4 @@
-import { AppHeader } from "@/components/ui/app-header";
+import DateRenderer from "@/components/date";
 import { initLingui } from "@/lib/i18n/initLingui";
 import { MAINTENANCE } from "@/maintainance";
 import { Trans } from "@lingui/react/macro";
@@ -33,7 +33,6 @@ export default async function NotFound() {
 
   return (
     <>
-      <AppHeader />
       <Flex
         direction="column"
         align="center"
@@ -58,10 +57,11 @@ export default async function NotFound() {
           {MAINTENANCE.eta && (
             <Text size="2" color="gray" align="center" as="p">
               Service is planned to resume at{" "}
-              {i18n.date(MAINTENANCE.eta, {
-                dateStyle: "full",
-                timeStyle: "short",
-              })}
+              <DateRenderer
+                date={MAINTENANCE.eta}
+                dateStyle="full"
+                timeStyle="short"
+              />
               .
             </Text>
           )}
