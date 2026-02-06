@@ -643,7 +643,7 @@ msgstr "ほかの人が部活に参加するための正体を生成します。
 
 #: src/app/page.tsx:33
 msgid "Get started"
-msgstr "開始する"
+msgstr "サインアップ"
 
 #: src/components/auth/providers.tsx:16
 msgid "GitHub"
