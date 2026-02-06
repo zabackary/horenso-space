@@ -317,6 +317,10 @@ msgstr "Confirm Password"
 msgid "Copy link"
 msgstr "Copy link"
 
+#: src/components/user-share-actions.tsx:81
+msgid "Copy user ID"
+msgstr "Copy user ID"
+
 #: src/app/app/[id]/config/roles/role-dialog.tsx:300
 #: src/components/club-config/roles-manager.tsx:453
 msgid "Create"
@@ -511,6 +515,10 @@ msgstr "Expires at: {0}"
 msgid "Failed to change member role. Please try again later."
 msgstr "Failed to change member role. Please try again later."
 
+#: src/components/user-share-actions.tsx:69
+msgid "Failed to copy to clipboard: {message}"
+msgstr "Failed to copy to clipboard: {message}"
+
 #: src/app/app/[id]/config/roles/roles-view.tsx:174
 #: src/components/club-config/roles-manager.tsx:182
 msgid "Failed to create role. Please try again later."
@@ -553,6 +561,10 @@ msgstr "Failed to save role. Please try again later."
 #: src/components/club-config/absence-form-detail.tsx:86
 msgid "Failed to save template."
 msgstr "Failed to save template."
+
+#: src/components/user-share-actions.tsx:54
+msgid "Failed to share profile: {message}"
+msgstr "Failed to share profile: {message}"
 
 #: src/app/app/[id]/absences/create/form.tsx:65
 msgid "Failed to submit absence report. Please try again."
@@ -1178,6 +1190,10 @@ msgstr "Sending your club information will help us better understand your proble
 #: src/app/maintenance/page.tsx:55
 msgid "Service Unavailable"
 msgstr "Service Unavailable"
+
+#: src/components/user-share-actions.tsx:78
+msgid "Share profile"
+msgstr "Share profile"
 
 #: src/components/club-config/absence-form-editor.tsx:378
 msgid "Show"

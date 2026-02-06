@@ -317,6 +317,10 @@ msgstr ""
 msgid "Copy link"
 msgstr ""
 
+#: src/components/user-share-actions.tsx:81
+msgid "Copy user ID"
+msgstr ""
+
 #: src/app/app/[id]/config/roles/role-dialog.tsx:300
 #: src/components/club-config/roles-manager.tsx:453
 msgid "Create"
@@ -511,6 +515,10 @@ msgstr ""
 msgid "Failed to change member role. Please try again later."
 msgstr ""
 
+#: src/components/user-share-actions.tsx:69
+msgid "Failed to copy to clipboard: {message}"
+msgstr ""
+
 #: src/app/app/[id]/config/roles/roles-view.tsx:174
 #: src/components/club-config/roles-manager.tsx:182
 msgid "Failed to create role. Please try again later."
@@ -552,6 +560,10 @@ msgstr ""
 
 #: src/components/club-config/absence-form-detail.tsx:86
 msgid "Failed to save template."
+msgstr ""
+
+#: src/components/user-share-actions.tsx:54
+msgid "Failed to share profile: {message}"
 msgstr ""
 
 #: src/app/app/[id]/absences/create/form.tsx:65
@@ -1177,6 +1189,10 @@ msgstr ""
 
 #: src/app/maintenance/page.tsx:55
 msgid "Service Unavailable"
+msgstr ""
+
+#: src/components/user-share-actions.tsx:78
+msgid "Share profile"
 msgstr ""
 
 #: src/components/club-config/absence-form-editor.tsx:378

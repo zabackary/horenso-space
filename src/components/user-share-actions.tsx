@@ -1,8 +1,9 @@
 "use client";
 
+import type { Profile } from "@/lib/auth/getProfile";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { AlertDialog, Button, Flex } from "@radix-ui/themes";
 import { useState } from "react";
-import type { Profile } from "@/lib/auth/getProfile";
 
 export interface UserShareActionsProps {
   profile: Profile;
@@ -14,6 +15,8 @@ export default function UserShareActions({ profile }: UserShareActionsProps) {
     useState(false);
   const [shareErrorOpen, setShareErrorOpen] = useState(false);
   const [shareError, setShareError] = useState<string | null>(null);
+
+  const { t } = useLingui();
 
   const handleShareProfile = () => {
     const profileUrl = `${window.location.origin}/app/users/${profile.id}`;
@@ -41,10 +44,14 @@ export default function UserShareActions({ profile }: UserShareActionsProps) {
             setShareSuccessWasClipboard(false);
           })
           .catch((error) => {
+            if (error.name === "AbortError") {
+              // User cancelled the share, do nothing
+              return;
+            }
             console.error("Error sharing profile:", error);
-            setShareError(
-              error instanceof Error ? error.message : String(error),
-            );
+            const message =
+              error instanceof Error ? error.message : String(error);
+            setShareError(t`Failed to share profile: ${message}`);
             setShareErrorOpen(true);
           });
       } else {
@@ -58,6 +65,9 @@ export default function UserShareActions({ profile }: UserShareActionsProps) {
     const userId = profile.id;
     navigator.clipboard.writeText(userId).catch((error) => {
       console.error("Failed to copy user ID:", error);
+      const message = error instanceof Error ? error.message : String(error);
+      setShareError(t`Failed to copy to clipboard: ${message}`);
+      setShareErrorOpen(true);
     });
   };
 
@@ -65,10 +75,10 @@ export default function UserShareActions({ profile }: UserShareActionsProps) {
     <>
       <Flex gap="2">
         <Button variant="outline" size="2" onClick={handleShareProfile}>
-          Share profile
+          <Trans>Share profile</Trans>
         </Button>
         <Button variant="outline" size="2" onClick={handleCopyUserId}>
-          Copy user ID
+          <Trans>Copy user ID</Trans>
         </Button>
       </Flex>
       <AlertDialog.Root
