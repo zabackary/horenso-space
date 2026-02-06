@@ -13,17 +13,14 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#. placeholder {0}: normalizeChildren(opt.children).length
 #: src/components/club-config/absence-form-editor.tsx:360
 msgid "{0, plural, one {# follow-up} other {# follow-ups} zero {No follow-ups}}"
 msgstr ""
 
-#. placeholder {0}: report.reviews.length
 #: src/app/app/[id]/absences/(list)/list.tsx:92
 msgid "{0, plural, one {# review} other {# reviews}}"
 msgstr ""
 
-#. placeholder {0}: invite.usage_count
 #: src/components/club-config/invite.tsx:157
 msgid "{0, plural, one {used 1 time} other {used # times}}"
 msgstr ""
@@ -32,7 +29,6 @@ msgstr ""
 #~ msgid "{0} reviews"
 #~ msgstr "{0}件のレビュー"
 
-#. placeholder {0}: new Date().getFullYear()
 #: src/app/page.tsx:83
 msgid "©{0} Horenso SPACE"
 msgstr "©{0} Horenso SPACE"
@@ -146,11 +142,10 @@ msgstr "既にアカウントをお持ちですか？ {loginLink}"
 msgid "Already have an account? <0><1>Login</1></0>"
 msgstr "既にアカウントをお持ちですか？ <0><1>ログイン</1></0>"
 
-#: src/app/app/page.tsx:57
+#: src/app/app/page.tsx:67
 msgid "An error occurred"
 msgstr "エラーが発生しました"
 
-#. placeholder {0}: error.message
 #: src/components/club-create-form.tsx:60
 msgid "An error occurred while creating the club: {0}"
 msgstr "部活の制作中にエラーが発生しました"
@@ -159,13 +154,11 @@ msgstr "部活の制作中にエラーが発生しました"
 msgid "An error occurred while creating the club."
 msgstr "部活の制作中にエラーが発生しました"
 
-#. placeholder {0}: error.message
 #: src/components/auth/login-form.tsx:46
 #: src/components/auth/login-form.tsx:76
 msgid "An error occurred while signing in: {0}"
 msgstr "サインイン中にエラーが発生しました"
 
-#. placeholder {0}: error.message
 #: src/components/auth/signup-form.tsx:61
 #: src/components/auth/signup-form.tsx:90
 msgid "An error occurred while signing up: {0}"
@@ -240,7 +233,6 @@ msgstr "自己紹介"
 msgid "Born in 〇〇."
 msgstr "出身地"
 
-#. placeholder {0}: invite.invited_by_name
 #: src/app/app/club/invite/[id]/page.tsx:67
 msgid "by {0}"
 msgstr "作成者: {0}"
@@ -296,8 +288,6 @@ msgstr "部活動会議"
 msgid "Club name"
 msgstr "部活動名"
 
-#. placeholder {0}: clubIsPublic ? "Public" : "Private"
-#. placeholder {0}: isPublic ? <Trans>Public</Trans> : <Trans>Private</Trans>
 #: src/components/club-config/metadata-form.tsx:103
 #: src/components/club-create-form.tsx:110
 msgid "Club privacy: {0}"
@@ -337,8 +327,7 @@ msgstr "リンクをコピー"
 msgid "Create"
 msgstr "作成"
 
-#: src/app/app/club/create/page.tsx:25
-#: src/app/app/page.tsx:63
+#: src/app/app/page.tsx:73
 msgid "Create a club"
 msgstr "部活を作成"
 
@@ -475,17 +464,14 @@ msgstr "メール"
 msgid "Error code:"
 msgstr "エラーコード:"
 
-#. placeholder {0}: error.message
 #: src/components/auth/login-auth-providers-settings.tsx:44
 msgid "Error linking identity: {0}"
 msgstr "個人情報との接続に失敗しました:{0}"
 
-#. placeholder {0}: error.message
 #: src/components/auth/login-auth-providers-settings.tsx:55
 msgid "Error unlinking identity: {0}"
 msgstr "個人情報との接続の切除に失敗しました:{0}"
 
-#. placeholder {0}: error.message
 #: src/components/auth/login-auth-providers-settings.tsx:84
 msgid "Error updating password: {0}"
 msgstr "パスワードの更新ができませんでした:{0}"
@@ -505,7 +491,6 @@ msgstr "イベントの欠席"
 msgid "Event date"
 msgstr "イベントの日付"
 
-#. placeholder {0}: event.title
 #: src/app/app/[id]/calendar/event-detail-drawer.tsx:151
 msgid "Event details for {0}"
 msgstr "{0}の詳細"
@@ -526,7 +511,6 @@ msgstr "すべて拡張する"
 msgid "expired"
 msgstr "期限切れ"
 
-#. placeholder {0}: new Date(invite.expires_at).toLocaleString()
 #: src/components/club-config/invite.tsx:171
 msgid "Expires at: {0}"
 msgstr "有効期限: {0}"
@@ -719,7 +703,6 @@ msgstr "CSVのインポート中です。しばしお待ちを．．．"
 msgid "Invalid or expired invite link"
 msgstr "招待リンクが無効または期限切れです"
 
-#. placeholder {0}: invite.role_name
 #: src/components/club-config/invite.tsx:154
 msgid "Invite for role \"{0}\""
 msgstr "役職「{0}」への招待"
@@ -755,7 +738,6 @@ msgstr "言語"
 msgid "Languages"
 msgstr "言語"
 
-#. placeholder {0}: i18n.date(identity.last_sign_in_at, { dateStyle: "medium", timeStyle: "short", })
 #: src/components/auth/login-auth-providers-settings.tsx:200
 msgid "Last used {0}"
 msgstr "最後に使用した{0}"
@@ -879,7 +861,7 @@ msgstr "欠席連絡はありません"
 msgid "No additional data"
 msgstr "追加データがありません"
 
-#: src/app/app/page.tsx:46
+#: src/app/app/page.tsx:56
 msgid "No clubs found. You need an invite link to join a club."
 msgstr "部活が見つかりません。部活に参加するには招待リンクが必要です。"
 
@@ -942,8 +924,6 @@ msgstr "CSVファイル内の一つかそれ以上の行が無効です。すべ
 msgid "Open template editor"
 msgstr "テンプレートエディターを開く"
 
-#. placeholder {0}: index + 1
-#. placeholder {0}: inner.options.length + 1
 #: src/components/club-config/absence-form-editor.tsx:134
 #: src/components/club-config/absence-form-editor.tsx:340
 msgid "Option {0}"
@@ -1156,8 +1136,7 @@ msgstr "検索"
 msgid "Search docs"
 msgstr "ドキュメントの検索"
 
-#: src/app/app/page.tsx:35
-#: src/components/ui/app-header.tsx:78
+#: src/app/app/page.tsx:45
 msgid "Select a club"
 msgstr "部活を選択"
 
@@ -1287,7 +1266,6 @@ msgstr "欠席報告を送信"
 msgid "Submitted by"
 msgstr "送信者"
 
-#. placeholder {0}: i18n.date(report.submittedAt, { dateStyle: "long", timeStyle: "long", })
 #: src/app/app/[id]/absences/(list)/list.tsx:73
 msgid "Submitted on {0}"
 msgstr "提出日時：{0}"
@@ -1374,7 +1352,6 @@ msgstr "無題のフォーム"
 msgid "Update password"
 msgstr "パスワードを更新する"
 
-#. placeholder {0}: new Date(f.updated_at).toLocaleString()
 #: src/app/app/[id]/config/absence-forms/sidebar.tsx:61
 msgid "Updated at: {0}"
 msgstr "更新日時: {0}"
@@ -1444,8 +1421,6 @@ msgstr "変更が保存されていません"
 msgid "You must set a reviewer for the role in order to require approval for absence reports. Note that if no reviewer is set, no reviews will be required for approval of this role's reports."
 msgstr "欠席届の承認にはレビュー者を設定する必要があります。設定されていなければ、提出される届けに承認が必要ではなくなります。"
 
-#. placeholder {0}: invite.role_name
-#. placeholder {1}: new Date(invite.expires_at).toLocaleString()
 #: src/app/app/club/invite/[id]/page.tsx:72
 msgid "You will be joining as: <0>{0}</0>. Expires at: <1>{1}</1>"
 msgstr "参加時のユーザー名: <0>{0}</0>。有効期限: <1>{1}</1>"
