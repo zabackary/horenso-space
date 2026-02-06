@@ -47,7 +47,7 @@ create function public.profiles_get(p_user_id uuid)
 $$;
 
 -- Updates a user profile by id, only allowing the owner to update their profile
-create function public.profiles_update_self(p_full_name text, p_nickname text, p_avatar_url text, p_bio text, p_school text, p_notifications_enabled boolean, p_private_profile boolean)
+create function public.profiles_update_self(p_full_name text default null, p_nickname text default null, p_avatar_url text default null, p_bio text default null, p_school text default null, p_notifications_enabled boolean default null, p_private_profile boolean default null)
   returns void
   language sql
   security definer
@@ -56,13 +56,13 @@ create function public.profiles_update_self(p_full_name text, p_nickname text, p
   update
     private.profiles
   set
-    full_name = p_full_name,
-    nickname = p_nickname,
-    avatar_url = p_avatar_url,
-    bio = p_bio,
-    school = p_school,
-    notifications_enabled = p_notifications_enabled,
-    private_profile = p_private_profile
+    full_name = coalesce(p_full_name, full_name),
+    nickname = coalesce(p_nickname, nickname),
+    avatar_url = coalesce(p_avatar_url, avatar_url),
+    bio = coalesce(p_bio, bio),
+    school = coalesce(p_school, school),
+    notifications_enabled = coalesce(p_notifications_enabled, notifications_enabled),
+    private_profile = coalesce(p_private_profile, private_profile)
   where
     id = auth.uid();
 $$;

@@ -674,13 +674,13 @@ export type Database = {
       profiles_locale_set: { Args: { new_locale: string }; Returns: undefined }
       profiles_update_self: {
         Args: {
-          p_avatar_url: string
-          p_bio: string
-          p_full_name: string
-          p_nickname: string
-          p_notifications_enabled: boolean
-          p_private_profile: boolean
-          p_school: string
+          p_avatar_url?: string
+          p_bio?: string
+          p_full_name?: string
+          p_nickname?: string
+          p_notifications_enabled?: boolean
+          p_private_profile?: boolean
+          p_school?: string
         }
         Returns: undefined
       }
@@ -688,6 +688,7 @@ export type Database = {
         Args: { p_club_id: string; p_permission: string }
         Returns: boolean
       }
+      user_is_club_member: { Args: { p_club_id: string }; Returns: boolean }
     }
     Enums: {
       [_ in never]: never
