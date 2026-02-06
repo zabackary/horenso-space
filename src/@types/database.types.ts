@@ -74,13 +74,6 @@ export type Database = {
             referencedRelation: "joined_clubs"
             referencedColumns: ["id"]
           },
-          {
-            foreignKeyName: "absence_report_forms_club_id_fkey"
-            columns: ["club_id"]
-            isOneToOne: false
-            referencedRelation: "public_clubs"
-            referencedColumns: ["id"]
-          },
         ]
       }
       absence_report_reviews: {
@@ -181,13 +174,6 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "absence_reports_club_id_fkey"
-            columns: ["club_id"]
-            isOneToOne: false
-            referencedRelation: "public_clubs"
-            referencedColumns: ["id"]
-          },
-          {
             foreignKeyName: "absence_reports_event_id_fkey"
             columns: ["event_id"]
             isOneToOne: false
@@ -255,13 +241,6 @@ export type Database = {
             referencedRelation: "joined_clubs"
             referencedColumns: ["id"]
           },
-          {
-            foreignKeyName: "calendar_events_club_id_fkey"
-            columns: ["club_id"]
-            isOneToOne: false
-            referencedRelation: "public_clubs"
-            referencedColumns: ["id"]
-          },
         ]
       }
       club_members: {
@@ -299,13 +278,6 @@ export type Database = {
             columns: ["club_id"]
             isOneToOne: false
             referencedRelation: "joined_clubs"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "club_members_club_id_fkey"
-            columns: ["club_id"]
-            isOneToOne: false
-            referencedRelation: "public_clubs"
             referencedColumns: ["id"]
           },
           {
@@ -396,13 +368,6 @@ export type Database = {
             referencedRelation: "joined_clubs"
             referencedColumns: ["id"]
           },
-          {
-            foreignKeyName: "feedback_submissions_club_id_fkey"
-            columns: ["club_id"]
-            isOneToOne: false
-            referencedRelation: "public_clubs"
-            referencedColumns: ["id"]
-          },
         ]
       }
       files: {
@@ -457,11 +422,46 @@ export type Database = {
             referencedRelation: "joined_clubs"
             referencedColumns: ["id"]
           },
+        ]
+      }
+      notifications: {
+        Row: {
+          club_id: string | null
+          content: string
+          created_at: string
+          id: string
+          read: boolean
+          user_id: string | null
+        }
+        Insert: {
+          club_id?: string | null
+          content: string
+          created_at?: string
+          id?: string
+          read?: boolean
+          user_id?: string | null
+        }
+        Update: {
+          club_id?: string | null
+          content?: string
+          created_at?: string
+          id?: string
+          read?: boolean
+          user_id?: string | null
+        }
+        Relationships: [
           {
-            foreignKeyName: "files_club_id_fkey"
+            foreignKeyName: "notifications_club_id_fkey"
             columns: ["club_id"]
             isOneToOne: false
-            referencedRelation: "public_clubs"
+            referencedRelation: "clubs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "notifications_club_id_fkey"
+            columns: ["club_id"]
+            isOneToOne: false
+            referencedRelation: "joined_clubs"
             referencedColumns: ["id"]
           },
         ]
@@ -532,13 +532,6 @@ export type Database = {
             referencedRelation: "joined_clubs"
             referencedColumns: ["id"]
           },
-          {
-            foreignKeyName: "roles_club_id_fkey"
-            columns: ["club_id"]
-            isOneToOne: false
-            referencedRelation: "public_clubs"
-            referencedColumns: ["id"]
-          },
         ]
       }
     }
@@ -582,118 +575,6 @@ export type Database = {
           public?: boolean | null
           school?: string | null
           website?: string | null
-        }
-        Relationships: []
-      }
-      notifications: {
-        Row: {
-          club_id: string | null
-          content: string | null
-          created_at: string | null
-          id: string | null
-          read: boolean | null
-          user_id: string | null
-        }
-        Insert: {
-          club_id?: string | null
-          content?: string | null
-          created_at?: string | null
-          id?: string | null
-          read?: boolean | null
-          user_id?: string | null
-        }
-        Update: {
-          club_id?: string | null
-          content?: string | null
-          created_at?: string | null
-          id?: string | null
-          read?: boolean | null
-          user_id?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "notifications_club_id_fkey"
-            columns: ["club_id"]
-            isOneToOne: false
-            referencedRelation: "clubs"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "notifications_club_id_fkey"
-            columns: ["club_id"]
-            isOneToOne: false
-            referencedRelation: "joined_clubs"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "notifications_club_id_fkey"
-            columns: ["club_id"]
-            isOneToOne: false
-            referencedRelation: "public_clubs"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      profiles: {
-        Row: {
-          avatar_url: string | null
-          bio: string | null
-          created_at: string | null
-          full_name: string | null
-          id: string | null
-          nickname: string | null
-          school: string | null
-        }
-        Insert: {
-          avatar_url?: string | null
-          bio?: string | null
-          created_at?: string | null
-          full_name?: string | null
-          id?: string | null
-          nickname?: string | null
-          school?: string | null
-        }
-        Update: {
-          avatar_url?: string | null
-          bio?: string | null
-          created_at?: string | null
-          full_name?: string | null
-          id?: string | null
-          nickname?: string | null
-          school?: string | null
-        }
-        Relationships: []
-      }
-      public_clubs: {
-        Row: {
-          active: boolean | null
-          created_at: string | null
-          description: string | null
-          id: string | null
-          name: string | null
-          public: boolean | null
-          school: string | null
-          website: string | null
-        }
-        Insert: {
-          active?: boolean | null
-          created_at?: string | null
-          description?: never
-          id?: string | null
-          name?: string | null
-          public?: boolean | null
-          school?: never
-          website?: never
-        }
-        Update: {
-          active?: boolean | null
-          created_at?: string | null
-          description?: never
-          id?: string | null
-          name?: string | null
-          public?: boolean | null
-          school?: never
-          website?: never
         }
         Relationships: []
       }
@@ -779,8 +660,30 @@ export type Database = {
           role_name: string
         }[]
       }
+      profiles_get: {
+        Args: { p_user_id: string }
+        Returns: unknown
+        SetofOptions: {
+          from: "*"
+          to: "profiles"
+          isOneToOne: true
+          isSetofReturn: false
+        }
+      }
       profiles_locale_get: { Args: never; Returns: string }
       profiles_locale_set: { Args: { new_locale: string }; Returns: undefined }
+      profiles_update_self: {
+        Args: {
+          p_avatar_url: string
+          p_bio: string
+          p_full_name: string
+          p_nickname: string
+          p_notifications_enabled: boolean
+          p_private_profile: boolean
+          p_school: string
+        }
+        Returns: undefined
+      }
       user_has_club_permission: {
         Args: { p_club_id: string; p_permission: string }
         Returns: boolean

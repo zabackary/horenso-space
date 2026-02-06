@@ -22,7 +22,8 @@ create function public.user_has_club_permission(p_club_id uuid, p_permission tex
 $$;
 
 -- Joined clubs view for easier permission checks
-create view public.joined_clubs as
+create view public.joined_clubs with ( security_invoker = on
+) as
 select
   *
 from
@@ -35,6 +36,7 @@ where
       club_members
     where
       club_members.club_id = clubs.id
-      and club_members.user_id = auth.uid()
+      and club_members.user_id = auth.uid(
+)
       and club_members.accepted = true);
 

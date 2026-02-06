@@ -54,31 +54,6 @@ create trigger add_creator_as_club_member
 
 alter table clubs enable row level security;
 
-create view public_clubs as
-select
-  id,
-  created_at,
-  name,
-  case when public then
-    description
-  else
-    null
-  end as description,
-  case when public then
-    school
-  else
-    null
-  end as school,
-  case when public then
-    website
-  else
-    null
-  end as website,
-  active,
-  public
-from
-  clubs;
-
 -- No RLS on public_clubs view by default
 -- RLS Policies for clubs table
 -- Users with canManageClub permission can create new clubs
