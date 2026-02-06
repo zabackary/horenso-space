@@ -5,7 +5,7 @@ import { Button, Flex, Heading, Text } from "@radix-ui/themes";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import styles from "./not-found.module.css";
+import styles from "./error.module.css";
 
 export const metadata: Metadata = {
   title: "404",

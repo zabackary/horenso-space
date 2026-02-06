@@ -1,8 +1,15 @@
 "use client";
 
 import * as Sentry from "@sentry/nextjs";
-import NextError from "next/error";
-import { useEffect } from "react";
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import styles from "./error.module.css";
+
+export const metadata: Metadata = {
+  title: "404",
+};
 
 export default function GlobalError({
   error,
@@ -13,14 +20,105 @@ export default function GlobalError({
     Sentry.captureException(error);
   }, [error]);
 
+  const [sentryConnected, setSentryConnected] = useState(true);
+
+  useEffect(() => {
+    Sentry.diagnoseSdkConnectivity().then((result) => {
+      setSentryConnected(typeof result === "undefined");
+    });
+  }, []);
+
+  const sawaratsukiLink = (
+    <Link
+      href="https://github.com/SAWARATSUKI/KawaiiLogos/blob/f1ed8e2c677943c3179bed7b0611fa3d3c315397/ResponseCode/500%20InternalServerError.png"
+      target="_blank"
+    >
+      SAWARATSUKI
+    </Link>
+  );
+
   return (
-    <html lang="en">
+    <html lang="en" className={styles.internalServerError}>
       <body>
-        {/* `NextError` is the default Next.js error page component. Its type
-        definition requires a `statusCode` prop. However, since the App Router
-        does not expose status codes for errors, we simply pass 0 to render a
-        generic error message. */}
-        <NextError statusCode={0} />
+        <footer className={styles.internalServerErrorHeader}>
+          <h1>Horenso SPACE</h1>
+        </footer>
+        <div className={styles.internalServerErrorContainer}>
+          <Image
+            className={styles.hero}
+            src="/status/500.png"
+            alt="500 Internal Server Error"
+            width={640}
+            height={360}
+            priority
+          />
+          <div className={styles.internalServerErrorButtons}>
+            <Link href="/" className={styles.internalServerErrorButton}>
+              Back to home
+            </Link>
+          </div>
+          <details className={styles.internalServerErrorDetails}>
+            <summary>
+              {sentryConnected ? (
+                "This error has automatically been reported."
+              ) : (
+                <span>
+                  Failed to send automatic error report. <em>Why?</em>
+                </span>
+              )}
+            </summary>
+            <div className={styles.internalServerErrorDetailsMessage}>
+              <p>
+                We automatically collect error reports to help us improve the
+                product using{" "}
+                <a
+                  href="https://sentry.io/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Sentry
+                </a>
+                .
+              </p>
+              {!sentryConnected && (
+                <>
+                  <p>Possible reasons for a failed connection include:</p>
+                  <ul>
+                    <li>
+                      You are using an ad blocker or privacy extension that
+                      blocks Sentry (most likely). Please disable it for this
+                      site and reload.
+                    </li>
+                    <li>Your network is blocking Sentry.</li>
+                    <li>
+                      There is a temporary issue connecting to Sentry. Please
+                      try again later.
+                    </li>
+                  </ul>
+                  <p>
+                    To report this error manually, please contact us and include
+                    the error digest below.
+                  </p>
+                </>
+              )}
+            </div>
+          </details>
+          <details className={styles.internalServerErrorDetails}>
+            <summary>Show error details</summary>
+            <pre className={styles.internalServerErrorDetailsMessage}>
+              {error.message}
+            </pre>
+          </details>
+        </div>
+        <footer className={styles.internalServerErrorFooter}>
+          <div className={styles.internalServerErrorDigest}>
+            If you report this error, include this digest:{" "}
+            <code>{error.digest}</code>
+          </div>
+          <p className={styles.internalServerErrorImageCredit}>
+            Image by {sawaratsukiLink}
+          </p>
+        </footer>
       </body>
     </html>
   );

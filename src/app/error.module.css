@@ -1,0 +1,187 @@
+.hero {
+  max-width: 100%;
+  height: unset;
+}
+
+html.internalServerError {
+  height: 100%;
+  color-scheme: light dark;
+
+  body {
+    margin: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    font-family:
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+      Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
+    --background: light-dark(
+      white,
+      color(display-p3 0.07 0.067 0.074)
+    ); /* background */
+    --on-background: light-dark(
+      color(display-p3 0.128 0.122 0.147),
+      color(display-p3 0.067 0.067 0.06)
+    ); /* gray-12 */
+    --surface: light-dark(
+      color(display-p3 0.584 0.765 0.008 / 0.15),
+      color(display-p3 0.216 0 0.49 / 0.416)
+    ); /* accent-a3 */
+    --on-surface: light-dark(
+      color(display-p3 0.386 0.482 0.227),
+      color(display-p3 0.229 0.107 0.515)
+    ); /* accent-11 */
+    --primary: light-dark(
+      color(display-p3 0.78 0.928 0.466),
+      color(display-p3 0.22 0.072 0.534)
+    ); /* accent-9 */
+    --on-primary: light-dark(#1d211c, #1d211c); /* accent-contrast */
+
+    background-color: var(--background);
+    color: var(--on-background);
+  }
+}
+
+.internalServerErrorContainer {
+  width: min(820px, calc(100% - 32px));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 24px 20px 10px;
+  gap: 12px;
+  margin: auto;
+}
+
+.internalServerErrorContainer h1 {
+  margin: 4px 0 0;
+  font-size: clamp(24px, 3vw, 36px);
+  color: var(--on-background);
+}
+
+.internalServerErrorContainer p {
+  margin: 0;
+}
+
+.internalServerErrorDetails {
+  width: min(720px, 100%);
+  border-radius: 24px;
+  border: 1px solid var(--on-surface);
+  text-align: left;
+  transition: background 0.2s ease;
+
+  &[open] {
+    border-radius: 12px;
+    background: var(--surface);
+  }
+}
+
+.internalServerErrorDetails summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--on-surface);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  gap: 12px;
+}
+
+.internalServerErrorDetails summary::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.internalServerErrorDetails[open] summary::after {
+  transform: rotate(-135deg);
+}
+
+.internalServerErrorDetails .internalServerErrorDetailsMessage {
+  margin: 12px 0 0;
+  font-size: 13px;
+  color: var(--on-surface);
+  white-space: pre-wrap;
+  word-break: break-word;
+  padding: 0 14px 12px 14px;
+}
+
+.internalServerErrorButtons {
+  margin-top: 8px;
+}
+
+.internalServerErrorButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 26px;
+  border-radius: 999px;
+  background-color: var(--primary);
+  color: var(--on-primary);
+  text-decoration: none;
+
+  &:hover {
+    filter: brightness(1.1);
+  }
+
+  &:active {
+    filter: brightness(1.3);
+  }
+}
+
+.internalServerErrorHeader {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 8px;
+  padding: 22px 14px;
+  background-color: var(--surface);
+  color: var(--on-surface);
+  box-sizing: border-box;
+
+  h1 {
+    margin: 0;
+    font-size: 24px;
+  }
+}
+
+.internalServerErrorFooter {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 8px;
+  padding: 4px 14px;
+  border-top: 1px solid var(--on-surface);
+  font-size: 13px;
+  box-sizing: border-box;
+
+  .internalServerErrorDigest code {
+    font-family: "SF Mono", "Roboto Mono", "Fira Code", monospace;
+    font-weight: 600;
+  }
+
+  .internalServerErrorImageCredit a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+
+    &:hover {
+      text-underline-offset: 2px;
+    }
+  }
+}
