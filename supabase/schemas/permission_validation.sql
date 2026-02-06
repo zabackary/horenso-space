@@ -13,15 +13,9 @@ create policy "Users can update their own absence reports if no reviews" on "abs
           arr.absence_report_id = absence_reports.id));
 
 -- Club members can view all members of clubs they belong to
-create policy "Club members can view other members" on club_members
-  for select
-    using (exists (
-      select
-        1
-      from
-        joined_clubs
-      where
-        joined_clubs.id = club_members.club_id));
+create policy "Club members can view other members" on public.club_members as permissive
+  for select to public
+    using (public.user_is_club_member(club_members.club_id));
 
 -- Users with canManageClub permission can insert new memberships (invite users)
 create policy "Club managers can invite new members" on club_members

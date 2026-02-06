@@ -1,23 +1,50 @@
 import { AppHeader } from "@/components/ui/app-header";
 import ClubCard from "@/components/ui/club-card";
+import { graphql } from "@/gql";
+import { query } from "@/lib/apollo/server";
 import { initLingui } from "@/lib/i18n/initLingui";
-import { createClient } from "@/lib/supabase/server";
+import { ResultOf } from "@graphql-typed-document-node/core";
 import { Trans } from "@lingui/react/macro";
 import { CrossCircledIcon } from "@radix-ui/react-icons";
 import { Button, Callout, Flex, Heading } from "@radix-ui/themes";
 import Link from "next/link";
 
+const joinedClubsQueryDocument = graphql(/* GraphQL */ `
+  query JoinedClubs {
+    joined_clubsCollection(first: 100) {
+      edges {
+        node {
+          id
+          name
+          school
+          description
+        }
+      }
+    }
+  }
+`);
+
 export default async function App({ params }: PageProps<"/app">) {
   const {} = await params;
   await initLingui();
-  const supabase = await createClient();
-  const { data: clubs, error: clubsError } = await supabase
-    .from("joined_clubs")
-    .select("*");
+  const { data, error } = await query<
+    ResultOf<typeof joinedClubsQueryDocument>
+  >({
+    query: joinedClubsQueryDocument,
+    errorPolicy: "all",
+  });
 
-  if (clubsError) {
-    console.error("couldn't fetch clubs:", clubsError);
+  if (error) {
+    console.error("couldn't fetch clubs:", error);
   }
+
+  const clubs = (data?.joined_clubsCollection?.edges.map((e) => e.node) ??
+    []) as {
+    id: string;
+    name: string;
+    school: string | null;
+    description?: string | null;
+  }[];
 
   return (
     <>
@@ -34,7 +61,7 @@ export default async function App({ params }: PageProps<"/app">) {
         <Heading size="7" as="h1">
           <Trans>Select a club</Trans>
         </Heading>
-        {clubs?.length ? (
+        {clubs.length ? (
           <Flex gap="4" wrap="wrap" justify="center">
             {clubs.map((club) => (
               <ClubCard key={club.id} club={club} />

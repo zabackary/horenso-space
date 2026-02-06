@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = T | null | undefined;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -203,6 +204,8 @@ export type Mutation = {
   deleteFromfeedback_submissionsCollection: Feedback_SubmissionsDeleteResponse;
   /** Deletes zero or more records from the `files` collection */
   deleteFromfilesCollection: FilesDeleteResponse;
+  /** Deletes zero or more records from the `joined_clubs` collection */
+  deleteFromjoined_clubsCollection: Joined_ClubsDeleteResponse;
   /** Deletes zero or more records from the `notifications` collection */
   deleteFromnotificationsCollection: NotificationsDeleteResponse;
   /** Deletes zero or more records from the `roles` collection */
@@ -223,6 +226,8 @@ export type Mutation = {
   insertIntofeedback_submissionsCollection?: Maybe<Feedback_SubmissionsInsertResponse>;
   /** Adds one or more `files` records to the collection */
   insertIntofilesCollection?: Maybe<FilesInsertResponse>;
+  /** Adds one or more `joined_clubs` records to the collection */
+  insertIntojoined_clubsCollection?: Maybe<Joined_ClubsInsertResponse>;
   /** Adds one or more `notifications` records to the collection */
   insertIntonotificationsCollection?: Maybe<NotificationsInsertResponse>;
   /** Adds one or more `roles` records to the collection */
@@ -249,6 +254,8 @@ export type Mutation = {
   updatefeedback_submissionsCollection: Feedback_SubmissionsUpdateResponse;
   /** Updates zero or more records in the `files` collection */
   updatefilesCollection: FilesUpdateResponse;
+  /** Updates zero or more records in the `joined_clubs` collection */
+  updatejoined_clubsCollection: Joined_ClubsUpdateResponse;
   /** Updates zero or more records in the `notifications` collection */
   updatenotificationsCollection: NotificationsUpdateResponse;
   /** Updates zero or more records in the `roles` collection */
@@ -313,6 +320,13 @@ export type MutationDeleteFromfilesCollectionArgs = {
 
 
 /** The root type for creating and mutating data */
+export type MutationDeleteFromjoined_ClubsCollectionArgs = {
+  atMost?: Scalars['Int']['input'];
+  filter?: InputMaybe<Joined_ClubsFilter>;
+};
+
+
+/** The root type for creating and mutating data */
 export type MutationDeleteFromnotificationsCollectionArgs = {
   atMost?: Scalars['Int']['input'];
   filter?: InputMaybe<NotificationsFilter>;
@@ -371,6 +385,12 @@ export type MutationInsertIntofeedback_SubmissionsCollectionArgs = {
 /** The root type for creating and mutating data */
 export type MutationInsertIntofilesCollectionArgs = {
   objects: Array<FilesInsertInput>;
+};
+
+
+/** The root type for creating and mutating data */
+export type MutationInsertIntojoined_ClubsCollectionArgs = {
+  objects: Array<Joined_ClubsInsertInput>;
 };
 
 
@@ -489,6 +509,14 @@ export type MutationUpdatefilesCollectionArgs = {
 
 
 /** The root type for creating and mutating data */
+export type MutationUpdatejoined_ClubsCollectionArgs = {
+  atMost?: Scalars['Int']['input'];
+  filter?: InputMaybe<Joined_ClubsFilter>;
+  set: Joined_ClubsUpdateInput;
+};
+
+
+/** The root type for creating and mutating data */
 export type MutationUpdatenotificationsCollectionArgs = {
   atMost?: Scalars['Int']['input'];
   filter?: InputMaybe<NotificationsFilter>;
@@ -554,6 +582,8 @@ export type Query = {
   feedback_submissionsCollection?: Maybe<Feedback_SubmissionsConnection>;
   /** A pagable collection of type `files` */
   filesCollection?: Maybe<FilesConnection>;
+  /** A pagable collection of type `joined_clubs` */
+  joined_clubsCollection?: Maybe<Joined_ClubsConnection>;
   /** Retrieve a record by its `ID` */
   node?: Maybe<Node>;
   /** A pagable collection of type `notifications` */
@@ -561,6 +591,7 @@ export type Query = {
   /** A pagable collection of type `roles` */
   rolesCollection?: Maybe<RolesConnection>;
   user_has_club_permission?: Maybe<Scalars['Boolean']['output']>;
+  user_is_club_member?: Maybe<Scalars['Boolean']['output']>;
 };
 
 
@@ -667,6 +698,18 @@ export type QueryFilesCollectionArgs = {
 
 
 /** The root type for querying data */
+export type QueryJoined_ClubsCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<Joined_ClubsFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<Joined_ClubsOrderBy>>;
+};
+
+
+/** The root type for querying data */
 export type QueryNodeArgs = {
   nodeId: Scalars['ID']['input'];
 };
@@ -700,6 +743,12 @@ export type QueryRolesCollectionArgs = {
 export type QueryUser_Has_Club_PermissionArgs = {
   p_club_id: Scalars['UUID']['input'];
   p_permission: Scalars['String']['input'];
+};
+
+
+/** The root type for querying data */
+export type QueryUser_Is_Club_MemberArgs = {
+  p_club_id: Scalars['UUID']['input'];
 };
 
 /** Boolean expression comparing fields on type "String" */
@@ -1723,6 +1772,120 @@ export type FilesUpdateResponse = {
   records: Array<Files>;
 };
 
+export type Joined_Clubs = Node & {
+  __typename?: 'joined_clubs';
+  absence_report_required_reviewer?: Maybe<Scalars['UUID']['output']>;
+  absence_report_schema?: Maybe<Scalars['JSON']['output']>;
+  active?: Maybe<Scalars['Boolean']['output']>;
+  created_at?: Maybe<Scalars['Datetime']['output']>;
+  created_by?: Maybe<Scalars['UUID']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['UUID']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  /** Globally Unique Record Identifier */
+  nodeId: Scalars['ID']['output'];
+  public?: Maybe<Scalars['Boolean']['output']>;
+  school?: Maybe<Scalars['String']['output']>;
+  website?: Maybe<Scalars['String']['output']>;
+};
+
+export type Joined_ClubsConnection = {
+  __typename?: 'joined_clubsConnection';
+  edges: Array<Joined_ClubsEdge>;
+  pageInfo: PageInfo;
+};
+
+export type Joined_ClubsDeleteResponse = {
+  __typename?: 'joined_clubsDeleteResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<Joined_Clubs>;
+};
+
+export type Joined_ClubsEdge = {
+  __typename?: 'joined_clubsEdge';
+  cursor: Scalars['String']['output'];
+  node: Joined_Clubs;
+};
+
+export type Joined_ClubsFilter = {
+  absence_report_required_reviewer?: InputMaybe<UuidFilter>;
+  active?: InputMaybe<BooleanFilter>;
+  /** Returns true only if all its inner filters are true, otherwise returns false */
+  and?: InputMaybe<Array<Joined_ClubsFilter>>;
+  created_at?: InputMaybe<DatetimeFilter>;
+  created_by?: InputMaybe<UuidFilter>;
+  description?: InputMaybe<StringFilter>;
+  id?: InputMaybe<UuidFilter>;
+  name?: InputMaybe<StringFilter>;
+  nodeId?: InputMaybe<IdFilter>;
+  /** Negates a filter */
+  not?: InputMaybe<Joined_ClubsFilter>;
+  /** Returns true if at least one of its inner filters is true, otherwise returns false */
+  or?: InputMaybe<Array<Joined_ClubsFilter>>;
+  public?: InputMaybe<BooleanFilter>;
+  school?: InputMaybe<StringFilter>;
+  website?: InputMaybe<StringFilter>;
+};
+
+export type Joined_ClubsInsertInput = {
+  absence_report_required_reviewer?: InputMaybe<Scalars['UUID']['input']>;
+  absence_report_schema?: InputMaybe<Scalars['JSON']['input']>;
+  active?: InputMaybe<Scalars['Boolean']['input']>;
+  created_at?: InputMaybe<Scalars['Datetime']['input']>;
+  created_by?: InputMaybe<Scalars['UUID']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['UUID']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  public?: InputMaybe<Scalars['Boolean']['input']>;
+  school?: InputMaybe<Scalars['String']['input']>;
+  website?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type Joined_ClubsInsertResponse = {
+  __typename?: 'joined_clubsInsertResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<Joined_Clubs>;
+};
+
+export type Joined_ClubsOrderBy = {
+  absence_report_required_reviewer?: InputMaybe<OrderByDirection>;
+  active?: InputMaybe<OrderByDirection>;
+  created_at?: InputMaybe<OrderByDirection>;
+  created_by?: InputMaybe<OrderByDirection>;
+  description?: InputMaybe<OrderByDirection>;
+  id?: InputMaybe<OrderByDirection>;
+  name?: InputMaybe<OrderByDirection>;
+  public?: InputMaybe<OrderByDirection>;
+  school?: InputMaybe<OrderByDirection>;
+  website?: InputMaybe<OrderByDirection>;
+};
+
+export type Joined_ClubsUpdateInput = {
+  absence_report_required_reviewer?: InputMaybe<Scalars['UUID']['input']>;
+  absence_report_schema?: InputMaybe<Scalars['JSON']['input']>;
+  active?: InputMaybe<Scalars['Boolean']['input']>;
+  created_at?: InputMaybe<Scalars['Datetime']['input']>;
+  created_by?: InputMaybe<Scalars['UUID']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['UUID']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  public?: InputMaybe<Scalars['Boolean']['input']>;
+  school?: InputMaybe<Scalars['String']['input']>;
+  website?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type Joined_ClubsUpdateResponse = {
+  __typename?: 'joined_clubsUpdateResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<Joined_Clubs>;
+};
+
 export type Notifications = Node & {
   __typename?: 'notifications';
   club_id?: Maybe<Scalars['UUID']['output']>;
@@ -1962,3 +2125,11 @@ export type RolesUpdateResponse = {
   /** Array of records impacted by the mutation */
   records: Array<Roles>;
 };
+
+export type JoinedClubsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type JoinedClubsQuery = { __typename: 'Query', joined_clubsCollection?: { __typename: 'joined_clubsConnection', edges: Array<{ __typename: 'joined_clubsEdge', node: { __typename: 'joined_clubs', id?: string | null, name?: string | null, school?: string | null, description?: string | null } }> } | null };
+
+
+export const JoinedClubsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"JoinedClubs"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"joined_clubsCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"IntValue","value":"100"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"school"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}}]}}]}}]}}]} as unknown as DocumentNode<JoinedClubsQuery, JoinedClubsQueryVariables>;

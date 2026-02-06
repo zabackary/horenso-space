@@ -142,7 +142,7 @@ msgstr "既にアカウントをお持ちですか？ {loginLink}"
 msgid "Already have an account? <0><1>Login</1></0>"
 msgstr "既にアカウントをお持ちですか？ <0><1>ログイン</1></0>"
 
-#: src/app/app/page.tsx:67
+#: src/app/app/page.tsx:84
 msgid "An error occurred"
 msgstr "エラーが発生しました"
 
@@ -327,7 +327,7 @@ msgstr "リンクをコピー"
 msgid "Create"
 msgstr "作成"
 
-#: src/app/app/page.tsx:73
+#: src/app/app/page.tsx:90
 msgid "Create a club"
 msgstr "部活を作成"
 
@@ -717,7 +717,7 @@ msgstr "招待リンクがクリップボードにコピーされました。"
 msgid "Invites"
 msgstr "招待"
 
-#: src/components/ui/club-card.tsx:65
+#: src/components/ui/club-card.tsx:69
 msgid "Join club"
 msgstr "クラブに参加"
 
@@ -861,7 +861,7 @@ msgstr "欠席連絡はありません"
 msgid "No additional data"
 msgstr "追加データがありません"
 
-#: src/app/app/page.tsx:56
+#: src/app/app/page.tsx:73
 msgid "No clubs found. You need an invite link to join a club."
 msgstr "部活が見つかりません。部活に参加するには招待リンクが必要です。"
 
@@ -1136,7 +1136,7 @@ msgstr "検索"
 msgid "Search docs"
 msgstr "ドキュメントの検索"
 
-#: src/app/app/page.tsx:45
+#: src/app/app/page.tsx:62
 msgid "Select a club"
 msgstr "部活を選択"
 

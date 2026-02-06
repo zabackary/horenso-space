@@ -142,7 +142,7 @@ msgstr ""
 msgid "Already have an account? <0><1>Login</1></0>"
 msgstr ""
 
-#: src/app/app/page.tsx:67
+#: src/app/app/page.tsx:84
 msgid "An error occurred"
 msgstr ""
 
@@ -327,7 +327,7 @@ msgstr ""
 msgid "Create"
 msgstr ""
 
-#: src/app/app/page.tsx:73
+#: src/app/app/page.tsx:90
 msgid "Create a club"
 msgstr ""
 
@@ -717,7 +717,7 @@ msgstr ""
 msgid "Invites"
 msgstr ""
 
-#: src/components/ui/club-card.tsx:65
+#: src/components/ui/club-card.tsx:69
 msgid "Join club"
 msgstr ""
 
@@ -861,7 +861,7 @@ msgstr ""
 msgid "No additional data"
 msgstr ""
 
-#: src/app/app/page.tsx:56
+#: src/app/app/page.tsx:73
 msgid "No clubs found. You need an invite link to join a club."
 msgstr ""
 
@@ -1136,7 +1136,7 @@ msgstr ""
 msgid "Search docs"
 msgstr ""
 
-#: src/app/app/page.tsx:45
+#: src/app/app/page.tsx:62
 msgid "Select a club"
 msgstr ""
 

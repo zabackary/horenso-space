@@ -1,4 +1,3 @@
-import type { Database } from "@/@types/database.types";
 import { Trans } from "@lingui/react/macro";
 import {
   Badge,
@@ -36,7 +35,12 @@ function stringToColor(str: string) {
 }
 
 export interface ClubCardProps {
-  club: Database["public"]["Views"]["joined_clubs"]["Row"];
+  club: {
+    id: string;
+    name: string;
+    school: string | null;
+    description?: string | null;
+  };
 }
 
 export default function ClubCard({ club }: ClubCardProps) {
