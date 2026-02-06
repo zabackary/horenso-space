@@ -260,7 +260,7 @@ msgstr "キャンセル"
 
 #: src/components/auth/login-auth-providers-settings.tsx:124
 msgid "Change password"
-msgstr "パスワードを変える"
+msgstr "パスワードを変更する"
 
 #: src/app/app/[id]/page.tsx:55
 msgid "Check your club events and meetings"
@@ -322,11 +322,11 @@ msgstr "レビュー/承認担当者を設定し、この役割に使用する�
 
 #: src/components/auth/login-auth-providers-settings.tsx:153
 msgid "Confirm new password"
-msgstr "新しいパスワードを確認してください"
+msgstr "新しいパスワードを再入力してください"
 
 #: src/components/auth/signup-form.tsx:144
 msgid "Confirm Password"
-msgstr "パスワードを確認"
+msgstr "パスワードを再入力してください"
 
 #: src/components/club-config/invite.tsx:213
 msgid "Copy link"
@@ -362,7 +362,7 @@ msgstr "部活を作成"
 #: src/app/app/[id]/calendar/calendar.tsx:426
 #: src/app/app/[id]/calendar/calendar.tsx:445
 msgid "Create event"
-msgstr "イベントを作成"
+msgstr "イベントを作成する"
 
 #: src/app/app/[id]/config/roles/roles-manager.tsx:52
 #: src/components/club-config/roles-manager.tsx:272
@@ -376,7 +376,7 @@ msgstr "新しいテンプレートを作成"
 #: src/app/app/[id]/config/roles/role-dialog.tsx:125
 #: src/components/club-config/roles-manager.tsx:295
 msgid "Create Role"
-msgstr "役職を作成"
+msgstr "役職を作成する"
 
 #: src/app/app/[id]/config/absence-forms/page.tsx:38
 msgid "Create template"
@@ -406,7 +406,7 @@ msgstr "削除"
 
 #: src/app/app/[id]/calendar/event-detail-drawer.tsx:242
 msgid "Delete event"
-msgstr "イベントを削除"
+msgstr "イベントを削除する"
 
 #: src/app/app/[id]/config/roles/roles-graph.tsx:71
 msgid "Delete role"
@@ -418,7 +418,7 @@ msgstr "この欠席届の用途を説明してください。"
 
 #: src/app/docs/[lang]/[[...slug]]/page.tsx:77
 msgid "Documentation"
-msgstr ""
+msgstr "書類"
 
 #: src/app/auth/login/page.tsx:62
 msgid "Don't have an account yet? {createAccountLink}"
@@ -426,7 +426,7 @@ msgstr "まだアカウントをお持ちではありませんか？ {createAcco
 
 #: src/app/app/[id]/calendar/calendar.tsx:484
 msgid "Download example CSV"
-msgstr "CSVの例をダウンロード"
+msgstr "CSVの例をダウンロードする"
 
 #: src/app/app/[id]/calendar/event-detail-drawer.tsx:185
 #: src/app/app/[id]/config/roles/roles-manager.tsx:37
@@ -753,7 +753,7 @@ msgstr "言語"
 
 #: src/app/docs/[lang]/[[...slug]]/page.tsx:81
 msgid "Languages"
-msgstr ""
+msgstr "言語"
 
 #. placeholder {0}: i18n.date(identity.last_sign_in_at, { dateStyle: "medium", timeStyle: "short", })
 #: src/components/auth/login-auth-providers-settings.tsx:200
@@ -856,7 +856,7 @@ msgstr "新しい質問"
 
 #: src/app/docs/[lang]/[[...slug]]/doc-navigation.tsx:54
 msgid "Next"
-msgstr ""
+msgstr "次へ"
 
 #: src/components/profile-editor.tsx:90
 msgid "Nickname"
@@ -907,7 +907,7 @@ msgstr "招待はありません"
 
 #: src/app/docs/[lang]/[[...slug]]/docs-search.tsx:55
 msgid "No matching docs"
-msgstr ""
+msgstr "一致するドキュメントはありません"
 
 #: src/components/club-config/members-manager.tsx:122
 msgid "No members yet."
@@ -1005,7 +1005,7 @@ msgstr "インポートをする有効なCSVファイルを一つ選択してく
 
 #: src/app/docs/[lang]/[[...slug]]/doc-navigation.tsx:37
 msgid "Previous"
-msgstr ""
+msgstr "前へ"
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx:226
 msgid "Previous Reviews"
@@ -1112,11 +1112,11 @@ msgstr "役職名が必要です"
 
 #: src/components/club-config/members-manager.tsx:147
 msgid "Role: {currentRoleLabel}"
-msgstr "役割: {currentRoleLabel}"
+msgstr "役職: {currentRoleLabel}"
 
 #: src/app/app/[id]/config/tabs.tsx:22
 msgid "Roles"
-msgstr "役割"
+msgstr "役職"
 
 #: src/app/app/[id]/calendar/create-event-card.tsx:123
 #: src/app/app/[id]/calendar/event-detail-drawer.tsx:217
@@ -1150,11 +1150,11 @@ msgstr "学校"
 
 #: src/app/docs/[lang]/[[...slug]]/docs-search.tsx:43
 msgid "Search"
-msgstr ""
+msgstr "検索"
 
 #: src/app/docs/[lang]/[[...slug]]/docs-search.tsx:47
 msgid "Search docs"
-msgstr ""
+msgstr "ドキュメントの検索"
 
 #: src/app/app/page.tsx:35
 #: src/components/ui/app-header.tsx:78
@@ -1213,7 +1213,7 @@ msgstr "部活の情報をお送りいただくと、問題をより深く理解
 
 #: src/app/maintenance/page.tsx:55
 msgid "Service Unavailable"
-msgstr ""
+msgstr "こちらのサービスは利用できません。"
 
 #: src/components/club-config/absence-form-editor.tsx:378
 msgid "Show"
@@ -1290,7 +1290,7 @@ msgstr "送信者"
 #. placeholder {0}: i18n.date(report.submittedAt, { dateStyle: "long", timeStyle: "long", })
 #: src/app/app/[id]/absences/(list)/list.tsx:73
 msgid "Submitted on {0}"
-msgstr ""
+msgstr "提出日時：{0}"
 
 #: src/components/club-config/absence-form-editor.tsx:254
 msgid "Text"
