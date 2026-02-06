@@ -1,3 +1,4 @@
+import { ApolloWrapper } from "@/lib/apollo/client";
 import { initLingui } from "@/lib/i18n/initLingui";
 import { LinguiClientProvider } from "@/lib/i18n/LinguiClientProvider";
 import { Theme } from "@radix-ui/themes";
@@ -57,12 +58,14 @@ export default async function RootLayout({
         <body
           className={`${hachiMaruPop.variable} ${notoSansJP.variable} ${gloriaHallelujah.variable} ${notoSans.variable}`}
         >
-          <LinguiClientProvider
-            initialLocale={i18n.locale}
-            initialMessages={i18n.messages}
-          >
-            <ThemeProvider attribute="class">{children}</ThemeProvider>
-          </LinguiClientProvider>
+          <ApolloWrapper>
+            <LinguiClientProvider
+              initialLocale={i18n.locale}
+              initialMessages={i18n.messages}
+            >
+              <ThemeProvider attribute="class">{children}</ThemeProvider>
+            </LinguiClientProvider>
+          </ApolloWrapper>
           <Analytics />
         </body>
       </Theme>
