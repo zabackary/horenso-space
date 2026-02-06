@@ -1283,6 +1283,10 @@ msgstr "このCSVファイルは無効です。イベント名、開始時間、
 msgid "The CSV file is empty or invalid."
 msgstr "このCSVには何も入っていないか、無効です。"
 
+#: src/components/user-share-actions.tsx:95
+msgid "The profile URL has been copied to your clipboard."
+msgstr ""
+
 #: src/app/app/[id]/calendar/day.tsx:213
 msgid "There are no reported absences for this day."
 msgstr "本日の欠席連絡はありません。"
@@ -1446,3 +1450,7 @@ msgstr "あなたの学校"
 #: src/components/profile-editor.tsx:105
 msgid "Your school name"
 msgstr "あなたの学校名"
+
+#: src/components/user-share-actions.tsx:96
+msgid "Your system share dialog should have opened."
+msgstr ""

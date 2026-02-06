@@ -2,7 +2,7 @@
 
 import type { Profile } from "@/lib/auth/getProfile";
 import { Trans, useLingui } from "@lingui/react/macro";
-import { AlertDialog, Button, Flex } from "@radix-ui/themes";
+import { AlertDialog, Button, Flex, VisuallyHidden } from "@radix-ui/themes";
 import { useState } from "react";
 
 export interface UserShareActionsProps {
@@ -89,6 +89,13 @@ export default function UserShareActions({ profile }: UserShareActionsProps) {
           <AlertDialog.Title>
             Profile shared{shareSuccessWasClipboard ? " to clipboard" : ""}
           </AlertDialog.Title>
+          <VisuallyHidden>
+            <AlertDialog.Description>
+              {shareSuccessWasClipboard
+                ? t`The profile URL has been copied to your clipboard.`
+                : t`Your system share dialog should have opened.`}
+            </AlertDialog.Description>
+          </VisuallyHidden>
           <Flex gap="3" mt="4" justify="end">
             <AlertDialog.Action>
               <Button
