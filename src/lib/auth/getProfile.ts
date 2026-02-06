@@ -1,5 +1,5 @@
-import type { SupabaseClient, User } from "@supabase/supabase-js";
 import type { Database } from "@/@types/database.types";
+import type { SupabaseClient, User } from "@supabase/supabase-js";
 
 export interface Profile {
   user: User;
@@ -25,18 +25,10 @@ export default async function getProfile(
   }
 
   const { data, error } = await supabase
-    .from("profiles")
-    .select("*")
-    .eq("id", user.id)
-    .abortSignal(signal ?? new AbortController().signal)
-    .single();
+    .rpc("profiles_get", { p_user_id: user.id })
+    .abortSignal(signal ?? new AbortController().signal);
   if (error) {
     throw error;
   }
-  return {
-    user,
-    ...data,
-    id: data?.id || "", // to satisfy the non-null constraint (it should be non-null in practice)
-    full_name: data?.full_name || "", // to satisfy the non-null constraint (it should be non-null in practice, since it is only null for other users)
-  };
+  return data as Profile; // cast to Profile type
 }
