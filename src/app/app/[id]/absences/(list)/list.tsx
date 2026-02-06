@@ -69,15 +69,17 @@ export default function AbsenceReportList({
                     <Text size="2">
                       <Trans>Submitted by</Trans> {report.user.fullName}
                     </Text>
-                    <Text size="1" color="gray">
-                      <Trans>
-                        Submitted on{" "}
-                        {i18n.date(report.submittedAt, {
-                          dateStyle: "long",
-                          timeStyle: "long",
-                        })}
-                      </Trans>
-                    </Text>
+                    {report.submittedAt && (
+                      <Text size="1" color="gray">
+                        <Trans>
+                          Submitted at{" "}
+                          {i18n.date(report.submittedAt, {
+                            dateStyle: "long",
+                            timeStyle: "long",
+                          })}
+                        </Trans>
+                      </Text>
+                    )}
                   </Flex>
                   <Flex justify="between" align="center">
                     <Text size="2">

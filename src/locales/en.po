@@ -17,7 +17,7 @@ msgstr ""
 msgid "{0, plural, one {# follow-up} other {# follow-ups} zero {No follow-ups}}"
 msgstr "{0, plural, one {# follow-up} other {# follow-ups} zero {No follow-ups}}"
 
-#: src/app/app/[id]/absences/(list)/list.tsx:92
+#: src/app/app/[id]/absences/(list)/list.tsx:94
 msgid "{0, plural, one {# review} other {# reviews}}"
 msgstr "{0, plural, one {# review} other {# reviews}}"
 
@@ -182,7 +182,7 @@ msgstr "An unspecified error occurred"
 msgid "Approval required for reports"
 msgstr "Approval required for reports"
 
-#: src/app/app/[id]/absences/(list)/list.tsx:103
+#: src/app/app/[id]/absences/(list)/list.tsx:105
 msgid "Approved"
 msgstr "Approved"
 
@@ -199,9 +199,7 @@ msgstr "Are you sure you want to delete this role? This action cannot be undone.
 msgid "Assigned Reports"
 msgstr "Assigned Reports"
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:194
-#: src/app/app/[id]/absences/(list)/list.tsx:84
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:141
+#: src/app/app/[id]/absences/(list)/list.tsx:86
 msgid "Assigned to"
 msgstr "Assigned to"
 
@@ -1012,9 +1010,7 @@ msgstr "Recent notifications"
 msgid "Reject"
 msgstr "Reject"
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:242
-#: src/app/app/[id]/absences/(list)/list.tsx:105
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:189
+#: src/app/app/[id]/absences/(list)/list.tsx:107
 msgid "Rejected"
 msgstr "Rejected"
 
@@ -1247,9 +1243,11 @@ msgstr "Static text content"
 msgid "Submit absence reports"
 msgstr "Submit absence reports"
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:154
+#: src/app/app/[id]/absences/(list)/list.tsx:74
+msgid "Submitted at {0}"
+msgstr "Submitted at {0}"
+
 #: src/app/app/[id]/absences/(list)/list.tsx:70
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:106
 msgid "Submitted by"
 msgstr "Submitted by"
 
@@ -1308,9 +1306,7 @@ msgstr "Type"
 msgid "Type in your email and we'll send you a link to reset your password"
 msgstr "Type in your email and we'll send you a link to reset your password"
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:197
-#: src/app/app/[id]/absences/(list)/list.tsx:86
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:144
+#: src/app/app/[id]/absences/(list)/list.tsx:88
 msgid "Unassigned"
 msgstr "Unassigned"
 

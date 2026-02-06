@@ -17,7 +17,7 @@ msgstr ""
 msgid "{0, plural, one {# follow-up} other {# follow-ups} zero {No follow-ups}}"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/list.tsx:92
+#: src/app/app/[id]/absences/(list)/list.tsx:94
 msgid "{0, plural, one {# review} other {# reviews}}"
 msgstr ""
 
@@ -182,7 +182,7 @@ msgstr "不明なエラーが発生しました"
 msgid "Approval required for reports"
 msgstr "報告には承認が必要です"
 
-#: src/app/app/[id]/absences/(list)/list.tsx:103
+#: src/app/app/[id]/absences/(list)/list.tsx:105
 msgid "Approved"
 msgstr "承認済み"
 
@@ -199,9 +199,7 @@ msgstr "この役割を削除してもよろしいですか？ この操作は�
 msgid "Assigned Reports"
 msgstr "割り当てられたレポート"
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:194
-#: src/app/app/[id]/absences/(list)/list.tsx:84
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:141
+#: src/app/app/[id]/absences/(list)/list.tsx:86
 msgid "Assigned to"
 msgstr "担当者"
 
@@ -1012,9 +1010,7 @@ msgstr "最近の通知"
 msgid "Reject"
 msgstr "拒否"
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:242
-#: src/app/app/[id]/absences/(list)/list.tsx:105
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:189
+#: src/app/app/[id]/absences/(list)/list.tsx:107
 msgid "Rejected"
 msgstr "拒否済み"
 
@@ -1247,9 +1243,11 @@ msgstr "固定テキスト・内容"
 msgid "Submit absence reports"
 msgstr "欠席報告を送信"
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:154
+#: src/app/app/[id]/absences/(list)/list.tsx:74
+msgid "Submitted at {0}"
+msgstr ""
+
 #: src/app/app/[id]/absences/(list)/list.tsx:70
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:106
 msgid "Submitted by"
 msgstr "送信者"
 
@@ -1308,9 +1306,7 @@ msgstr "種類"
 msgid "Type in your email and we'll send you a link to reset your password"
 msgstr "メールアドレスを入力すると、パスワードリセット用のリンクが送信されます"
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:197
-#: src/app/app/[id]/absences/(list)/list.tsx:86
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:144
+#: src/app/app/[id]/absences/(list)/list.tsx:88
 msgid "Unassigned"
 msgstr "割り当てなし"
 
