@@ -25,20 +25,15 @@ export default function ProfileEditor({
       const form = (event.target as HTMLInputElement | HTMLTextAreaElement)
         .form!;
       const formData = new FormData(form);
-      const data = Object.fromEntries(
-        formData.entries().map(([k, v]) => [
-          k,
-          // Convert empty strings to null, except for full_name since it has
-          // a not null constraint in the database.
-          v === "" && k !== "full_name" ? null : v,
-        ]),
-      );
 
       const supabase = createClient();
       const { error } = await supabase
-        .from("profiles")
-        .update(data)
-        .eq("id", profile?.id ?? "")
+        .rpc("profiles_update_self", {
+          p_full_name: formData.get("full_name") as string,
+          p_nickname: formData.get("nickname") as string | undefined,
+          p_school: formData.get("school") as string | undefined,
+          p_bio: formData.get("bio") as string | undefined,
+        })
         .single();
       if (error) {
         console.error("Error updating profile:", error);

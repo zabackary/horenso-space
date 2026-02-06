@@ -159,16 +159,13 @@ msgstr ""
 msgid "An error occurred while signing in: {0}"
 msgstr ""
 
-#: src/components/auth/signup-form.tsx:61
-#: src/components/auth/signup-form.tsx:90
+#: src/components/auth/signup-form.tsx:60
+#: src/components/auth/signup-form.tsx:89
 msgid "An error occurred while signing up: {0}"
 msgstr ""
 
-#: src/components/auth/login-auth-providers-settings.tsx:100
-#: src/components/auth/login-form.tsx:47
-#: src/components/auth/login-form.tsx:77
-#: src/components/auth/signup-form.tsx:62
-#: src/components/auth/signup-form.tsx:91
+#: src/components/auth/signup-form.tsx:61
+#: src/components/auth/signup-form.tsx:90
 msgid "An error occurred."
 msgstr ""
 
@@ -225,11 +222,11 @@ msgstr ""
 msgid "Back to home"
 msgstr ""
 
-#: src/components/profile-editor.tsx:117
+#: src/components/profile-editor.tsx:112
 msgid "Biography"
 msgstr ""
 
-#: src/components/profile-editor.tsx:123
+#: src/components/profile-editor.tsx:118
 msgid "Born in 〇〇."
 msgstr ""
 
@@ -314,7 +311,7 @@ msgstr ""
 msgid "Confirm new password"
 msgstr ""
 
-#: src/components/auth/signup-form.tsx:144
+#: src/components/auth/signup-form.tsx:143
 msgid "Confirm Password"
 msgstr ""
 
@@ -449,10 +446,7 @@ msgstr ""
 msgid "Edit template"
 msgstr ""
 
-#: src/components/auth/login-form.tsx:110
-#: src/components/auth/providers.tsx:18
-#: src/components/auth/signup-form.tsx:124
-#: src/components/forgot-password-form.tsx:80
+#: src/components/auth/signup-form.tsx:123
 msgid "Email"
 msgstr ""
 
@@ -515,7 +509,7 @@ msgstr ""
 msgid "Expires at: {0}"
 msgstr ""
 
-#: src/components/club-config/members-manager.tsx:85
+#: src/components/club-config/members-manager.tsx:98
 msgid "Failed to change member role. Please try again later."
 msgstr ""
 
@@ -545,7 +539,7 @@ msgstr ""
 msgid "Failed to join club"
 msgstr ""
 
-#: src/components/club-config/members-manager.tsx:101
+#: src/components/club-config/members-manager.tsx:114
 msgid "Failed to remove member. Please try again later."
 msgstr ""
 
@@ -595,8 +589,7 @@ msgstr ""
 msgid "Form Responses"
 msgstr ""
 
-#: src/components/auth/signup-form.tsx:147
-#: src/components/profile-editor.tsx:75
+#: src/components/profile-editor.tsx:70
 msgid "Full Name"
 msgstr ""
 
@@ -725,7 +718,7 @@ msgstr ""
 msgid "Join Club"
 msgstr ""
 
-#: src/components/ui/user-profile.tsx:57
+#: src/components/ui/user-profile.tsx:64
 msgid "Joined"
 msgstr ""
 
@@ -790,7 +783,7 @@ msgstr ""
 msgid "Manage club metadata, roles, and members"
 msgstr ""
 
-#: src/components/club-config/members-manager.tsx:108
+#: src/components/club-config/members-manager.tsx:121
 msgid "Manage members"
 msgstr ""
 
@@ -840,7 +833,7 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
-#: src/components/profile-editor.tsx:90
+#: src/components/profile-editor.tsx:85
 msgid "Nickname"
 msgstr ""
 
@@ -891,7 +884,7 @@ msgstr ""
 msgid "No matching docs"
 msgstr ""
 
-#: src/components/club-config/members-manager.tsx:122
+#: src/components/club-config/members-manager.tsx:135
 msgid "No members yet."
 msgstr ""
 
@@ -945,8 +938,7 @@ msgstr ""
 msgid "Page not found"
 msgstr ""
 
-#: src/components/auth/login-form.tsx:122
-#: src/components/auth/signup-form.tsx:136
+#: src/components/auth/signup-form.tsx:135
 msgid "Password"
 msgstr ""
 
@@ -1026,9 +1018,7 @@ msgstr ""
 msgid "Rejected"
 msgstr ""
 
-#: src/components/club-config/absence-form-editor.tsx:236
-#: src/components/club-config/absence-form-editor.tsx:354
-#: src/components/club-config/members-manager.tsx:169
+#: src/components/club-config/members-manager.tsx:182
 msgid "Remove"
 msgstr ""
 
@@ -1090,7 +1080,7 @@ msgstr ""
 msgid "Role name required"
 msgstr ""
 
-#: src/components/club-config/members-manager.tsx:147
+#: src/components/club-config/members-manager.tsx:160
 msgid "Role: {currentRoleLabel}"
 msgstr ""
 
@@ -1115,16 +1105,15 @@ msgstr ""
 msgid "Saved"
 msgstr ""
 
-#: src/components/profile-editor.tsx:66
+#: src/components/profile-editor.tsx:61
 msgid "Saved!"
 msgstr ""
 
-#: src/components/profile-editor.tsx:66
+#: src/components/profile-editor.tsx:61
 msgid "Saving..."
 msgstr ""
 
-#: src/components/club-create-form.tsx:91
-#: src/components/profile-editor.tsx:104
+#: src/components/profile-editor.tsx:99
 msgid "School"
 msgstr ""
 
@@ -1214,9 +1203,7 @@ msgstr ""
 #~ msgid "Sign in with Google"
 #~ msgstr ""
 
-#: src/app/auth/login/page.tsx:47
-#: src/components/auth/signup-form.tsx:160
-#: src/components/ui/app-header.tsx:120
+#: src/components/auth/signup-form.tsx:159
 msgid "Sign up"
 msgstr ""
 
@@ -1224,7 +1211,7 @@ msgstr ""
 msgid "Sign up to get started"
 msgstr ""
 
-#: src/components/auth/signup-form.tsx:109
+#: src/components/auth/signup-form.tsx:108
 msgid "Sign up with <0/>"
 msgstr ""
 
@@ -1331,12 +1318,11 @@ msgstr ""
 msgid "Understand quickly who's where and when"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:157
-#: src/components/ui/user-profile.tsx:47
+#: src/components/ui/user-profile.tsx:54
 msgid "Unknown"
 msgstr ""
 
-#: src/components/ui/user-profile.tsx:27
+#: src/components/ui/user-profile.tsx:26
 msgid "Unknown user"
 msgstr ""
 
@@ -1397,7 +1383,7 @@ msgstr ""
 msgid "Welcome!"
 msgstr ""
 
-#: src/components/profile-editor.tsx:96
+#: src/components/profile-editor.tsx:91
 msgid "What people call you"
 msgstr ""
 
@@ -1433,11 +1419,11 @@ msgstr ""
 msgid "Your feedback"
 msgstr ""
 
-#: src/components/profile-editor.tsx:81
+#: src/components/profile-editor.tsx:76
 msgid "Your full name"
 msgstr ""
 
-#: src/components/auth/signup-form.tsx:154
+#: src/components/auth/signup-form.tsx:153
 msgid "Your full name will not be shared with people outside of your clubs unless you choose to at a later time."
 msgstr ""
 
@@ -1445,6 +1431,6 @@ msgstr ""
 msgid "Your school"
 msgstr ""
 
-#: src/components/profile-editor.tsx:110
+#: src/components/profile-editor.tsx:105
 msgid "Your school name"
 msgstr ""

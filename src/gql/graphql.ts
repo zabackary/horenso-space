@@ -434,13 +434,13 @@ export type MutationProfiles_Locale_SetArgs = {
 
 /** The root type for creating and mutating data */
 export type MutationProfiles_Update_SelfArgs = {
-  p_avatar_url: Scalars['String']['input'];
-  p_bio: Scalars['String']['input'];
-  p_full_name: Scalars['String']['input'];
-  p_nickname: Scalars['String']['input'];
-  p_notifications_enabled: Scalars['Boolean']['input'];
-  p_private_profile: Scalars['Boolean']['input'];
-  p_school: Scalars['String']['input'];
+  p_avatar_url?: InputMaybe<Scalars['String']['input']>;
+  p_bio?: InputMaybe<Scalars['String']['input']>;
+  p_full_name?: InputMaybe<Scalars['String']['input']>;
+  p_nickname?: InputMaybe<Scalars['String']['input']>;
+  p_notifications_enabled?: InputMaybe<Scalars['Boolean']['input']>;
+  p_private_profile?: InputMaybe<Scalars['Boolean']['input']>;
+  p_school?: InputMaybe<Scalars['String']['input']>;
 };
 
 

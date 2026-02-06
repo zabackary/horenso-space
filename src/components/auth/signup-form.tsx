@@ -41,10 +41,9 @@ export function SignupForm(props: SignupFormProps) {
       if (error) throw error;
       // At this point there should be a profile created by the DB trigger
       if (user) {
-        const { error } = await supabase
-          .from("profiles")
-          .update({ full_name: fullName as any })
-          .eq("id", user.id);
+        const { error } = await supabase.rpc("profiles_update_self", {
+          p_full_name: fullName,
+        });
         if (error) {
           console.warn("Failed to update full name:", error);
         }
@@ -59,7 +58,7 @@ export function SignupForm(props: SignupFormProps) {
       setError(
         error instanceof Error
           ? t`An error occurred while signing up: ${error.message}`
-          : t`An error occurred.`
+          : t`An error occurred.`,
       );
     } finally {
       setIsLoading(null);
@@ -88,7 +87,7 @@ export function SignupForm(props: SignupFormProps) {
       setError(
         error instanceof Error
           ? t`An error occurred while signing up: ${error.message}`
-          : t`An error occurred.`
+          : t`An error occurred.`,
       );
       setIsLoading(null);
     }

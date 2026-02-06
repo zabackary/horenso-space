@@ -13,9 +13,8 @@ export default async function UserProfile({ id, className }: UserProfileProps) {
 
   // The public "profiles" view proxies public fields and resolves avatar_url
   const { data: profile, error } = await supabase
-    .from("profiles")
-    .select(`id, full_name, nickname, avatar_url, bio, school, created_at`)
-    .eq("id", id)
+    .rpc("profiles_get", { p_user_id: id })
+    .select("*")
     .maybeSingle();
 
   if (!profile || error) {
@@ -31,7 +30,15 @@ export default async function UserProfile({ id, className }: UserProfileProps) {
     );
   }
 
-  const { avatar_url, full_name, nickname, bio, school, created_at } = profile;
+  const { avatar_url, full_name, nickname, bio, school, created_at } =
+    profile as {
+      avatar_url: string | null;
+      full_name: string;
+      nickname: string | null;
+      bio: string | null;
+      school: string | null;
+      created_at: string | null;
+    };
 
   return (
     <Flex gap="4" align="center" className={className}>

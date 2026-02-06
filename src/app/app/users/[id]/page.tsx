@@ -34,7 +34,16 @@ export default async function UserPage({
             <Trans>Common Clubs</Trans>
           </Heading>
           <Flex gap="2" wrap="wrap">
-            <ClubCard club={mutualClubs[0].joined_clubs} />
+            <ClubCard
+              club={
+                mutualClubs[0].joined_clubs as {
+                  id: string;
+                  name: string;
+                  school: string | null;
+                  description?: string | null;
+                }
+              }
+            />
           </Flex>
         </Flex>
       )}
