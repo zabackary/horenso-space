@@ -19,7 +19,7 @@ msgid "{0, plural, one {# follow-up} other {# follow-ups} zero {No follow-ups}}"
 msgstr ""
 
 #. placeholder {0}: report.reviews.length
-#: src/app/app/[id]/absences/(list)/list.tsx:64
+#: src/app/app/[id]/absences/(list)/list.tsx:92
 msgid "{0, plural, one {# review} other {# reviews}}"
 msgstr ""
 
@@ -33,7 +33,7 @@ msgstr ""
 #~ msgstr ""
 
 #. placeholder {0}: new Date().getFullYear()
-#: src/app/page.tsx:78
+#: src/app/page.tsx:83
 msgid "©{0} Horenso SPACE"
 msgstr ""
 
@@ -80,12 +80,12 @@ msgstr ""
 msgid "Absences"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:278
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:279
 msgid "Accept"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:239
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:180
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:240
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:187
 msgid "Accepted"
 msgstr ""
 
@@ -97,7 +97,7 @@ msgstr ""
 msgid "Access club files"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:267
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:268
 msgid "Add comments (optional)"
 msgstr ""
 
@@ -126,7 +126,7 @@ msgstr ""
 msgid "Add role"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:263
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:264
 msgid "Add Your Review"
 msgstr ""
 
@@ -192,7 +192,7 @@ msgstr ""
 msgid "Approval required for reports"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/list.tsx:72
+#: src/app/app/[id]/absences/(list)/list.tsx:103
 msgid "Approved"
 msgstr ""
 
@@ -209,9 +209,9 @@ msgstr ""
 msgid "Assigned Reports"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:193
-#: src/app/app/[id]/absences/(list)/list.tsx:56
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:134
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:194
+#: src/app/app/[id]/absences/(list)/list.tsx:84
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:141
 msgid "Assigned to"
 msgstr ""
 
@@ -232,11 +232,11 @@ msgstr ""
 msgid "Back to home"
 msgstr ""
 
-#: src/components/profile-editor.tsx:109
+#: src/components/profile-editor.tsx:117
 msgid "Biography"
 msgstr ""
 
-#: src/components/profile-editor.tsx:115
+#: src/components/profile-editor.tsx:123
 msgid "Born in 〇〇."
 msgstr ""
 
@@ -386,7 +386,7 @@ msgstr ""
 msgid "Create your first absence report template"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:172
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:173
 #: src/app/app/[id]/absences/create/form.tsx:114
 msgid "Date"
 msgstr ""
@@ -414,6 +414,10 @@ msgstr ""
 
 #: src/components/club-config/absence-form-editor.tsx:479
 msgid "Describe the purpose of this absence form..."
+msgstr ""
+
+#: src/app/docs/[lang]/[[...slug]]/page.tsx:77
+msgid "Documentation"
 msgstr ""
 
 #: src/app/auth/login/page.tsx:62
@@ -486,8 +490,8 @@ msgstr ""
 msgid "Error updating password: {0}"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:162
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:114
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:163
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:121
 #: src/app/app/[id]/absences/create/form.tsx:87
 msgid "Event"
 msgstr ""
@@ -496,8 +500,8 @@ msgstr ""
 msgid "Event Absence"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:183
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:124
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:184
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:131
 msgid "Event date"
 msgstr ""
 
@@ -527,7 +531,7 @@ msgstr ""
 msgid "Expires at: {0}"
 msgstr ""
 
-#: src/components/club-config/members-manager.tsx:84
+#: src/components/club-config/members-manager.tsx:85
 msgid "Failed to change member role. Please try again later."
 msgstr ""
 
@@ -557,7 +561,7 @@ msgstr ""
 msgid "Failed to join club"
 msgstr ""
 
-#: src/components/club-config/members-manager.tsx:100
+#: src/components/club-config/members-manager.tsx:101
 msgid "Failed to remove member. Please try again later."
 msgstr ""
 
@@ -603,12 +607,12 @@ msgstr ""
 msgid "Form description"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:146
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:153
 msgid "Form Responses"
 msgstr ""
 
 #: src/components/auth/signup-form.tsx:147
-#: src/components/profile-editor.tsx:67
+#: src/components/profile-editor.tsx:75
 msgid "Full Name"
 msgstr ""
 
@@ -657,6 +661,11 @@ msgstr ""
 msgid "Graph"
 msgstr ""
 
+#: src/app/page.tsx:79
+#: src/components/ui/app-header-menu.tsx:40
+msgid "Help Center"
+msgstr ""
+
 #: src/components/club-config/absence-form-editor.tsx:374
 msgid "Hide"
 msgstr ""
@@ -685,6 +694,7 @@ msgstr ""
 msgid "If you registered using your email and password, you will receive a password reset email."
 msgstr ""
 
+#: src/app/maintenance/page.tsx:73
 #: src/app/not-found.tsx:57
 msgid "Image by {sawaratsukiLink}"
 msgstr ""
@@ -741,6 +751,10 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
+#: src/app/docs/[lang]/[[...slug]]/page.tsx:81
+msgid "Languages"
+msgstr ""
+
 #. placeholder {0}: i18n.date(identity.last_sign_in_at, { dateStyle: "medium", timeStyle: "short", })
 #: src/components/auth/login-auth-providers-settings.tsx:200
 msgid "Last used {0}"
@@ -758,7 +772,7 @@ msgstr ""
 msgid "List"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:110
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:111
 msgid "Loading..."
 msgstr ""
 
@@ -771,7 +785,7 @@ msgstr ""
 msgid "Log in"
 msgstr ""
 
-#: src/components/ui/app-header-menu.tsx:44
+#: src/components/ui/app-header-menu.tsx:49
 msgid "Log out"
 msgstr ""
 
@@ -794,7 +808,7 @@ msgstr ""
 msgid "Manage club metadata, roles, and members"
 msgstr ""
 
-#: src/components/club-config/members-manager.tsx:107
+#: src/components/club-config/members-manager.tsx:108
 msgid "Manage members"
 msgstr ""
 
@@ -840,7 +854,11 @@ msgstr ""
 msgid "New question"
 msgstr ""
 
-#: src/components/profile-editor.tsx:82
+#: src/app/docs/[lang]/[[...slug]]/doc-navigation.tsx:54
+msgid "Next"
+msgstr ""
+
+#: src/components/profile-editor.tsx:90
 msgid "Nickname"
 msgstr ""
 
@@ -856,8 +874,8 @@ msgstr ""
 #~ msgid "No absence reports for this day."
 #~ msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:212
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:155
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:213
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:162
 msgid "No additional data"
 msgstr ""
 
@@ -866,13 +884,12 @@ msgid "No clubs found. You need an invite link to join a club."
 msgstr ""
 
 #: src/app/app/[id]/absences/(list)/assigned/list.tsx:61
-#: src/app/app/[id]/absences/(list)/list.tsx:51
 msgid "No date"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:165
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:166
 #: src/app/app/[id]/absences/(list)/assigned/list.tsx:53
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:117
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:124
 msgid "No event"
 msgstr ""
 
@@ -880,7 +897,7 @@ msgstr ""
 msgid "No events for today."
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:160
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:167
 msgid "No form associated with this report"
 msgstr ""
 
@@ -888,7 +905,11 @@ msgstr ""
 msgid "No invites yet"
 msgstr ""
 
-#: src/components/club-config/members-manager.tsx:121
+#: src/app/docs/[lang]/[[...slug]]/docs-search.tsx:55
+msgid "No matching docs"
+msgstr ""
+
+#: src/components/club-config/members-manager.tsx:122
 msgid "No members yet."
 msgstr ""
 
@@ -982,7 +1003,11 @@ msgstr ""
 msgid "Please select one valid CSV file for import."
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:225
+#: src/app/docs/[lang]/[[...slug]]/doc-navigation.tsx:37
+msgid "Previous"
+msgstr ""
+
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:226
 msgid "Previous Reviews"
 msgstr ""
 
@@ -1011,19 +1036,19 @@ msgstr ""
 msgid "Recent notifications"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:285
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:286
 msgid "Reject"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:241
-#: src/app/app/[id]/absences/(list)/list.tsx:74
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:182
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:242
+#: src/app/app/[id]/absences/(list)/list.tsx:105
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:189
 msgid "Rejected"
 msgstr ""
 
 #: src/components/club-config/absence-form-editor.tsx:236
 #: src/components/club-config/absence-form-editor.tsx:354
-#: src/components/club-config/members-manager.tsx:163
+#: src/components/club-config/members-manager.tsx:169
 msgid "Remove"
 msgstr ""
 
@@ -1041,12 +1066,12 @@ msgstr ""
 msgid "Report details"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:205
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:99
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:206
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:100
 msgid "Report Details"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:135
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:136
 msgid "Report Review"
 msgstr ""
 
@@ -1067,7 +1092,7 @@ msgstr ""
 msgid "Reviewer role"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:170
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:177
 msgid "Reviews"
 msgstr ""
 
@@ -1085,7 +1110,7 @@ msgstr ""
 msgid "Role name required"
 msgstr ""
 
-#: src/components/club-config/members-manager.tsx:141
+#: src/components/club-config/members-manager.tsx:147
 msgid "Role: {currentRoleLabel}"
 msgstr ""
 
@@ -1110,17 +1135,25 @@ msgstr ""
 msgid "Saved"
 msgstr ""
 
-#: src/components/profile-editor.tsx:58
+#: src/components/profile-editor.tsx:66
 msgid "Saved!"
 msgstr ""
 
-#: src/components/profile-editor.tsx:58
+#: src/components/profile-editor.tsx:66
 msgid "Saving..."
 msgstr ""
 
 #: src/components/club-create-form.tsx:91
-#: src/components/profile-editor.tsx:96
+#: src/components/profile-editor.tsx:104
 msgid "School"
+msgstr ""
+
+#: src/app/docs/[lang]/[[...slug]]/docs-search.tsx:43
+msgid "Search"
+msgstr ""
+
+#: src/app/docs/[lang]/[[...slug]]/docs-search.tsx:47
+msgid "Search docs"
 msgstr ""
 
 #: src/app/app/page.tsx:35
@@ -1165,8 +1198,8 @@ msgstr ""
 msgid "Send feedback"
 msgstr ""
 
-#: src/components/ui/app-header-menu.tsx:39
-#: src/components/ui/app-header-menu.tsx:53
+#: src/components/ui/app-header-menu.tsx:44
+#: src/components/ui/app-header-menu.tsx:58
 msgid "Send Feedback"
 msgstr ""
 
@@ -1176,6 +1209,10 @@ msgstr ""
 
 #: src/components/feedback-form.tsx:96
 msgid "Sending your club information will help us better understand your problem to resolve it faster."
+msgstr ""
+
+#: src/app/maintenance/page.tsx:55
+msgid "Service Unavailable"
 msgstr ""
 
 #: src/components/club-config/absence-form-editor.tsx:378
@@ -1244,10 +1281,15 @@ msgstr ""
 msgid "Submit absence reports"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:153
-#: src/app/app/[id]/absences/(list)/list.tsx:46
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:105
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:154
+#: src/app/app/[id]/absences/(list)/list.tsx:70
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:106
 msgid "Submitted by"
+msgstr ""
+
+#. placeholder {0}: i18n.date(report.submittedAt, { dateStyle: "long", timeStyle: "long", })
+#: src/app/app/[id]/absences/(list)/list.tsx:73
+msgid "Submitted on {0}"
 msgstr ""
 
 #: src/components/club-config/absence-form-editor.tsx:254
@@ -1266,8 +1308,8 @@ msgstr ""
 msgid "There are no reported absences for this day."
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:119
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:85
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:120
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:86
 msgid "This report has been accepted"
 msgstr ""
 
@@ -1275,13 +1317,13 @@ msgstr ""
 #~ msgid "This report has been accepted."
 #~ msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:121
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:87
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:122
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:88
 msgid "This report has been rejected"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:129
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:94
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:130
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:95
 msgid "This report has not been reviewed yet."
 msgstr ""
 
@@ -1301,9 +1343,9 @@ msgstr ""
 msgid "Type in your email and we'll send you a link to reset your password"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:196
-#: src/app/app/[id]/absences/(list)/list.tsx:58
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:137
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:197
+#: src/app/app/[id]/absences/(list)/list.tsx:86
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:144
 msgid "Unassigned"
 msgstr ""
 
@@ -1311,8 +1353,7 @@ msgstr ""
 msgid "Understand quickly who's where and when"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:156
-#: src/app/app/[id]/absences/(list)/report-detail.tsx:108
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:157
 #: src/components/ui/user-profile.tsx:47
 msgid "Unknown"
 msgstr ""
@@ -1358,7 +1399,7 @@ msgstr ""
 msgid "View club calendar events"
 msgstr ""
 
-#: src/components/ui/app-header-menu.tsx:56
+#: src/components/ui/app-header-menu.tsx:61
 msgid "We appreciate your feedback to help us improve. Every message is read and considered."
 msgstr ""
 
@@ -1379,7 +1420,7 @@ msgstr ""
 msgid "Welcome!"
 msgstr ""
 
-#: src/components/profile-editor.tsx:88
+#: src/components/profile-editor.tsx:96
 msgid "What people call you"
 msgstr ""
 
@@ -1417,7 +1458,7 @@ msgstr ""
 msgid "Your feedback"
 msgstr ""
 
-#: src/components/profile-editor.tsx:73
+#: src/components/profile-editor.tsx:81
 msgid "Your full name"
 msgstr ""
 
@@ -1429,6 +1470,6 @@ msgstr ""
 msgid "Your school"
 msgstr ""
 
-#: src/components/profile-editor.tsx:102
+#: src/components/profile-editor.tsx:110
 msgid "Your school name"
 msgstr ""
