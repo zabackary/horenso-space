@@ -19,12 +19,9 @@ export default async function generalSettingsAction(formData: FormData) {
     throw new Error("Not authenticated");
   }
 
-  const { error } = await supabase
-    .from("profiles")
-    .update({
-      locale: language as string,
-    })
-    .eq("id", profile.id);
+  const { error } = await supabase.rpc("profiles_locale_set", {
+    new_locale: language as string,
+  });
 
   if (error) {
     throw error;

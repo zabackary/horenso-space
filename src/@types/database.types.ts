@@ -715,6 +715,8 @@ export type Database = {
           school: string
         }[]
       }
+      profiles_locale_get: { Args: never; Returns: string }
+      profiles_locale_set: { Args: { new_locale: string }; Returns: undefined }
       user_has_club_permission: {
         Args: { p_club_id: string; p_permission: string }
         Returns: boolean

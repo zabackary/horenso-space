@@ -26,7 +26,7 @@ export default async function getProfile(
 
   const { data, error } = await supabase
     .from("profiles")
-    .select("*")
+    .select("id, avatar_url, bio, created_at, full_name, nickname, school")
     .abortSignal(signal ?? new AbortController().signal)
     .eq("id", user.id)
     .single();
