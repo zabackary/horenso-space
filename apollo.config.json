@@ -1,0 +1,8 @@
+{
+  "client": {
+    "service": {
+      "name": "horenso-space",
+      "url": "http://localhost:54321/graphql/v1"
+    }
+  }
+}

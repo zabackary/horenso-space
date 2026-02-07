@@ -97,7 +97,6 @@ msgstr "部活ファイルにアクセス"
 msgid "Add comments (optional)"
 msgstr "コメントを追加（任意）"
 
-#: src/app/app/[id]/calendar/day.tsx:154
 #: src/app/app/[id]/page.tsx:60
 msgid "Add event"
 msgstr "イベントを追加"
@@ -1030,7 +1029,6 @@ msgstr "拒否済み"
 msgid "Remove"
 msgstr "削除"
 
-#: src/app/app/[id]/absences/(list)/layout.tsx:38
 #: src/app/app/[id]/page.tsx:73
 msgid "Report absence"
 msgstr "欠席を報告"

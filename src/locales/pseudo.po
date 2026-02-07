@@ -97,7 +97,6 @@ msgstr ""
 msgid "Add comments (optional)"
 msgstr ""
 
-#: src/app/app/[id]/calendar/day.tsx:154
 #: src/app/app/[id]/page.tsx:60
 msgid "Add event"
 msgstr ""
@@ -1030,7 +1029,6 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/layout.tsx:38
 #: src/app/app/[id]/page.tsx:73
 msgid "Report absence"
 msgstr ""

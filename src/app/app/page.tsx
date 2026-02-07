@@ -1,6 +1,6 @@
 import { AppHeader } from "@/components/ui/app-header";
 import ClubCard from "@/components/ui/club-card";
-import { graphql } from "@/gql";
+import { gql } from "@/gql";
 import { query } from "@/lib/apollo/server";
 import { initLingui } from "@/lib/i18n/initLingui";
 import { ResultOf } from "@graphql-typed-document-node/core";
@@ -9,7 +9,7 @@ import { CrossCircledIcon } from "@radix-ui/react-icons";
 import { Button, Callout, Flex, Heading } from "@radix-ui/themes";
 import Link from "next/link";
 
-const joinedClubsQueryDocument = graphql(/* GraphQL */ `
+const joinedClubsQueryDocument = gql(`
   query JoinedClubs {
     joined_clubsCollection(first: 100) {
       edges {

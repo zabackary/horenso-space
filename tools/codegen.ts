@@ -5,10 +5,12 @@ const config: CodegenConfig = {
   schema: "http://localhost:54321/graphql/v1",
   documents: "src/**/*.tsx",
   overwrite: true,
-  ignoreNoDocuments: true,
   generates: {
     "src/gql/": {
       preset: "client",
+      presetConfig: {
+        gqlTagName: "gql",
+      },
       documentTransforms: [addTypenameSelectionDocumentTransform],
       plugins: [],
       config: {

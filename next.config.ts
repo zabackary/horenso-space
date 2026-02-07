@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
         "@swc-contrib/plugin-graphql-codegen-client-preset",
         {
           artifactDirectory: "./src/gql",
-          gqlTagName: "graphql",
+          gqlTagName: "gql",
         },
       ],
     ],
