@@ -4,7 +4,16 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   experimental: {
     viewTransition: true,
-    swcPlugins: [["@lingui/swc-plugin", {}]],
+    swcPlugins: [
+      ["@lingui/swc-plugin", {}],
+      [
+        "@swc-contrib/plugin-graphql-codegen-client-preset",
+        {
+          artifactDirectory: "./src/gql",
+          gqlTagName: "graphql",
+        },
+      ],
+    ],
   },
   turbopack: {
     rules: {

@@ -124,6 +124,9 @@ importers:
       '@postgres-language-server/cli':
         specifier: ^0.19.0
         version: 0.19.0
+      '@swc-contrib/plugin-graphql-codegen-client-preset':
+        specifier: ^0.17.0
+        version: 0.17.0
       '@types/dagre':
         specifier: ^0.7.53
         version: 0.7.53
@@ -2667,6 +2670,10 @@ packages:
 
   '@supabase/supabase-js@2.57.4':
     resolution: {integrity: sha512-LcbTzFhHYdwfQ7TRPfol0z04rLEyHabpGYANME6wkQ/kLtKNmI+Vy+WEM8HxeOZAtByUFxoUTTLwhXmrh+CcVw==}
+
+  '@swc-contrib/plugin-graphql-codegen-client-preset@0.17.0':
+    resolution: {integrity: sha512-HKvWjKT/9ND5zz/L6JtIh5YjjczE44CzZogKz/Tg1rP/WULEqose9YGxog8uvHaqBaqRBgdHneVFIRSJk+UoVQ==}
+    engines: {node: '>=16'}
 
   '@swc/helpers@0.5.15':
     resolution: {integrity: sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g==}
@@ -7681,6 +7688,8 @@ snapshots:
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
+
+  '@swc-contrib/plugin-graphql-codegen-client-preset@0.17.0': {}
 
   '@swc/helpers@0.5.15':
     dependencies:
