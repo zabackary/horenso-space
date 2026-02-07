@@ -25,10 +25,22 @@ export default async function getProfile(
   }
 
   const { data, error } = await supabase
-    .rpc("profiles_get", { p_user_id: user.id })
-    .abortSignal(signal ?? new AbortController().signal);
+    .from("profiles")
+    .select("*")
+    .abortSignal(signal ?? new AbortController().signal)
+    .eq("id", user.id)
+    .single();
   if (error) {
     throw error;
   }
-  return data as Profile; // cast to Profile type
+  return {
+    user,
+    avatar_url: data.avatar_url,
+    bio: data.bio,
+    created_at: data.created_at,
+    full_name: data.full_name,
+    id: data.id,
+    nickname: data.nickname,
+    school: data.school,
+  };
 }

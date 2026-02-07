@@ -26,14 +26,20 @@ export default function ProfileEditor({
         .form!;
       const formData = new FormData(form);
 
+      const data = Object.fromEntries(
+        formData.entries().map(([k, v]) => [
+          k,
+          // Omit empty strings for optional fields
+          // full_name has a required constraint, so we don't omit it
+          k !== "full_name" && v === "" ? null : v,
+        ]),
+      );
+
       const supabase = createClient();
       const { error } = await supabase
-        .rpc("profiles_update_self", {
-          p_full_name: formData.get("full_name") as string,
-          p_nickname: formData.get("nickname") as string | undefined,
-          p_school: formData.get("school") as string | undefined,
-          p_bio: formData.get("bio") as string | undefined,
-        })
+        .from("profiles")
+        .update(data)
+        .eq("id", profile.id)
         .single();
       if (error) {
         console.error("Error updating profile:", error);

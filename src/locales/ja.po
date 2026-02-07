@@ -159,13 +159,13 @@ msgstr "部活の制作中にエラーが発生しました"
 msgid "An error occurred while signing in: {0}"
 msgstr "サインイン中にエラーが発生しました"
 
-#: src/components/auth/signup-form.tsx:60
-#: src/components/auth/signup-form.tsx:89
+#: src/components/auth/signup-form.tsx:63
+#: src/components/auth/signup-form.tsx:92
 msgid "An error occurred while signing up: {0}"
 msgstr "サインイン中にエラーが発生しました"
 
-#: src/components/auth/signup-form.tsx:61
-#: src/components/auth/signup-form.tsx:90
+#: src/components/auth/signup-form.tsx:64
+#: src/components/auth/signup-form.tsx:93
 msgid "An error occurred."
 msgstr "エラーが発生しました"
 
@@ -220,11 +220,11 @@ msgstr "戻る"
 msgid "Back to home"
 msgstr "ホームに戻る"
 
-#: src/components/profile-editor.tsx:112
+#: src/components/profile-editor.tsx:118
 msgid "Biography"
 msgstr "自己紹介"
 
-#: src/components/profile-editor.tsx:118
+#: src/components/profile-editor.tsx:124
 msgid "Born in 〇〇."
 msgstr "出身地"
 
@@ -309,7 +309,7 @@ msgstr "レビュー/承認担当者を設定し、この役割に使用する�
 msgid "Confirm new password"
 msgstr "新しいパスワードを再入力してください"
 
-#: src/components/auth/signup-form.tsx:143
+#: src/components/auth/signup-form.tsx:146
 msgid "Confirm Password"
 msgstr "パスワードを再入力してください"
 
@@ -448,7 +448,7 @@ msgstr "役職を編集する"
 msgid "Edit template"
 msgstr "テンプレートを編集する"
 
-#: src/components/auth/signup-form.tsx:123
+#: src/components/auth/signup-form.tsx:126
 msgid "Email"
 msgstr "メール"
 
@@ -599,7 +599,7 @@ msgstr "フォームの説明"
 msgid "Form Responses"
 msgstr "フォームへの回答"
 
-#: src/components/profile-editor.tsx:70
+#: src/components/profile-editor.tsx:76
 msgid "Full Name"
 msgstr "氏名"
 
@@ -843,7 +843,7 @@ msgstr "新しい質問"
 msgid "Next"
 msgstr "次へ"
 
-#: src/components/profile-editor.tsx:85
+#: src/components/profile-editor.tsx:91
 msgid "Nickname"
 msgstr "ニックネーム"
 
@@ -948,7 +948,7 @@ msgstr "選択肢"
 msgid "Page not found"
 msgstr "ページが見つかりません"
 
-#: src/components/auth/signup-form.tsx:135
+#: src/components/auth/signup-form.tsx:138
 msgid "Password"
 msgstr "パスワード"
 
@@ -1113,15 +1113,15 @@ msgstr "変更を保存"
 msgid "Saved"
 msgstr "保存済み"
 
-#: src/components/profile-editor.tsx:61
+#: src/components/profile-editor.tsx:67
 msgid "Saved!"
 msgstr "保存されました！"
 
-#: src/components/profile-editor.tsx:61
+#: src/components/profile-editor.tsx:67
 msgid "Saving..."
 msgstr "保存中．．．"
 
-#: src/components/profile-editor.tsx:99
+#: src/components/profile-editor.tsx:105
 msgid "School"
 msgstr "学校"
 
@@ -1215,7 +1215,7 @@ msgstr " <0/>でサインインする"
 #~ msgid "Sign in with Google"
 #~ msgstr "Googleでサインイン"
 
-#: src/components/auth/signup-form.tsx:159
+#: src/components/auth/signup-form.tsx:162
 msgid "Sign up"
 msgstr "新規登録"
 
@@ -1223,7 +1223,7 @@ msgstr "新規登録"
 msgid "Sign up to get started"
 msgstr "新規登録をして始めましょう"
 
-#: src/components/auth/signup-form.tsx:108
+#: src/components/auth/signup-form.tsx:111
 msgid "Sign up with <0/>"
 msgstr "<0/>で新規登録"
 
@@ -1399,7 +1399,7 @@ msgstr "おかえりなさい"
 msgid "Welcome!"
 msgstr "ようこそ！"
 
-#: src/components/profile-editor.tsx:91
+#: src/components/profile-editor.tsx:97
 msgid "What people call you"
 msgstr "よく呼ばれている名前"
 
@@ -1435,11 +1435,11 @@ msgstr "あなたの部活一覧"
 msgid "Your feedback"
 msgstr "フィードバック"
 
-#: src/components/profile-editor.tsx:76
+#: src/components/profile-editor.tsx:82
 msgid "Your full name"
 msgstr "あなたのフルネーム"
 
-#: src/components/auth/signup-form.tsx:153
+#: src/components/auth/signup-form.tsx:156
 msgid "Your full name will not be shared with people outside of your clubs unless you choose to at a later time."
 msgstr "設定で変更しない限り、あなたの氏名は部活外の人に公開されることはありません。"
 
@@ -1447,7 +1447,7 @@ msgstr "設定で変更しない限り、あなたの氏名は部活外の人に
 msgid "Your school"
 msgstr "あなたの学校"
 
-#: src/components/profile-editor.tsx:105
+#: src/components/profile-editor.tsx:111
 msgid "Your school name"
 msgstr "あなたの学校名"
 

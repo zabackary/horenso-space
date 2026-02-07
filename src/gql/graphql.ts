@@ -208,6 +208,8 @@ export type Mutation = {
   deleteFromjoined_clubsCollection: Joined_ClubsDeleteResponse;
   /** Deletes zero or more records from the `notifications` collection */
   deleteFromnotificationsCollection: NotificationsDeleteResponse;
+  /** Deletes zero or more records from the `profiles` collection */
+  deleteFromprofilesCollection: ProfilesDeleteResponse;
   /** Deletes zero or more records from the `roles` collection */
   deleteFromrolesCollection: RolesDeleteResponse;
   /** Adds one or more `absence_report_forms` records to the collection */
@@ -230,14 +232,13 @@ export type Mutation = {
   insertIntojoined_clubsCollection?: Maybe<Joined_ClubsInsertResponse>;
   /** Adds one or more `notifications` records to the collection */
   insertIntonotificationsCollection?: Maybe<NotificationsInsertResponse>;
+  /** Adds one or more `profiles` records to the collection */
+  insertIntoprofilesCollection?: Maybe<ProfilesInsertResponse>;
   /** Adds one or more `roles` records to the collection */
   insertIntorolesCollection?: Maybe<RolesInsertResponse>;
   invitations_accept?: Maybe<Scalars['Opaque']['output']>;
   invitations_create?: Maybe<Scalars['UUID']['output']>;
   invitations_delete?: Maybe<Scalars['Opaque']['output']>;
-  profiles_locale_get?: Maybe<Scalars['String']['output']>;
-  profiles_locale_set?: Maybe<Scalars['Opaque']['output']>;
-  profiles_update_self?: Maybe<Scalars['Opaque']['output']>;
   /** Updates zero or more records in the `absence_report_forms` collection */
   updateabsence_report_formsCollection: Absence_Report_FormsUpdateResponse;
   /** Updates zero or more records in the `absence_report_reviews` collection */
@@ -258,6 +259,8 @@ export type Mutation = {
   updatejoined_clubsCollection: Joined_ClubsUpdateResponse;
   /** Updates zero or more records in the `notifications` collection */
   updatenotificationsCollection: NotificationsUpdateResponse;
+  /** Updates zero or more records in the `profiles` collection */
+  updateprofilesCollection: ProfilesUpdateResponse;
   /** Updates zero or more records in the `roles` collection */
   updaterolesCollection: RolesUpdateResponse;
 };
@@ -334,6 +337,13 @@ export type MutationDeleteFromnotificationsCollectionArgs = {
 
 
 /** The root type for creating and mutating data */
+export type MutationDeleteFromprofilesCollectionArgs = {
+  atMost?: Scalars['Int']['input'];
+  filter?: InputMaybe<ProfilesFilter>;
+};
+
+
+/** The root type for creating and mutating data */
 export type MutationDeleteFromrolesCollectionArgs = {
   atMost?: Scalars['Int']['input'];
   filter?: InputMaybe<RolesFilter>;
@@ -401,6 +411,12 @@ export type MutationInsertIntonotificationsCollectionArgs = {
 
 
 /** The root type for creating and mutating data */
+export type MutationInsertIntoprofilesCollectionArgs = {
+  objects: Array<ProfilesInsertInput>;
+};
+
+
+/** The root type for creating and mutating data */
 export type MutationInsertIntorolesCollectionArgs = {
   objects: Array<RolesInsertInput>;
 };
@@ -423,24 +439,6 @@ export type MutationInvitations_CreateArgs = {
 /** The root type for creating and mutating data */
 export type MutationInvitations_DeleteArgs = {
   invitation_id: Scalars['UUID']['input'];
-};
-
-
-/** The root type for creating and mutating data */
-export type MutationProfiles_Locale_SetArgs = {
-  new_locale: Scalars['String']['input'];
-};
-
-
-/** The root type for creating and mutating data */
-export type MutationProfiles_Update_SelfArgs = {
-  p_avatar_url?: InputMaybe<Scalars['String']['input']>;
-  p_bio?: InputMaybe<Scalars['String']['input']>;
-  p_full_name?: InputMaybe<Scalars['String']['input']>;
-  p_nickname?: InputMaybe<Scalars['String']['input']>;
-  p_notifications_enabled?: InputMaybe<Scalars['Boolean']['input']>;
-  p_private_profile?: InputMaybe<Scalars['Boolean']['input']>;
-  p_school?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -525,6 +523,14 @@ export type MutationUpdatenotificationsCollectionArgs = {
 
 
 /** The root type for creating and mutating data */
+export type MutationUpdateprofilesCollectionArgs = {
+  atMost?: Scalars['Int']['input'];
+  filter?: InputMaybe<ProfilesFilter>;
+  set: ProfilesUpdateInput;
+};
+
+
+/** The root type for creating and mutating data */
 export type MutationUpdaterolesCollectionArgs = {
   atMost?: Scalars['Int']['input'];
   filter?: InputMaybe<RolesFilter>;
@@ -588,6 +594,8 @@ export type Query = {
   node?: Maybe<Node>;
   /** A pagable collection of type `notifications` */
   notificationsCollection?: Maybe<NotificationsConnection>;
+  /** A pagable collection of type `profiles` */
+  profilesCollection?: Maybe<ProfilesConnection>;
   /** A pagable collection of type `roles` */
   rolesCollection?: Maybe<RolesConnection>;
   user_has_club_permission?: Maybe<Scalars['Boolean']['output']>;
@@ -724,6 +732,18 @@ export type QueryNotificationsCollectionArgs = {
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<NotificationsOrderBy>>;
+};
+
+
+/** The root type for querying data */
+export type QueryProfilesCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<ProfilesFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<ProfilesOrderBy>>;
 };
 
 
@@ -1976,6 +1996,120 @@ export type NotificationsUpdateResponse = {
   affectedCount: Scalars['Int']['output'];
   /** Array of records impacted by the mutation */
   records: Array<Notifications>;
+};
+
+export type Profiles = Node & {
+  __typename?: 'profiles';
+  avatar_url?: Maybe<Scalars['String']['output']>;
+  bio?: Maybe<Scalars['String']['output']>;
+  created_at: Scalars['Datetime']['output'];
+  full_name: Scalars['String']['output'];
+  id: Scalars['UUID']['output'];
+  locale?: Maybe<Scalars['String']['output']>;
+  nickname?: Maybe<Scalars['String']['output']>;
+  /** Globally Unique Record Identifier */
+  nodeId: Scalars['ID']['output'];
+  private_profile: Scalars['Boolean']['output'];
+  push_notifications_preference: Scalars['JSON']['output'];
+  school?: Maybe<Scalars['String']['output']>;
+  updated_at: Scalars['Datetime']['output'];
+};
+
+export type ProfilesConnection = {
+  __typename?: 'profilesConnection';
+  edges: Array<ProfilesEdge>;
+  pageInfo: PageInfo;
+};
+
+export type ProfilesDeleteResponse = {
+  __typename?: 'profilesDeleteResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<Profiles>;
+};
+
+export type ProfilesEdge = {
+  __typename?: 'profilesEdge';
+  cursor: Scalars['String']['output'];
+  node: Profiles;
+};
+
+export type ProfilesFilter = {
+  /** Returns true only if all its inner filters are true, otherwise returns false */
+  and?: InputMaybe<Array<ProfilesFilter>>;
+  avatar_url?: InputMaybe<StringFilter>;
+  bio?: InputMaybe<StringFilter>;
+  created_at?: InputMaybe<DatetimeFilter>;
+  full_name?: InputMaybe<StringFilter>;
+  id?: InputMaybe<UuidFilter>;
+  locale?: InputMaybe<StringFilter>;
+  nickname?: InputMaybe<StringFilter>;
+  nodeId?: InputMaybe<IdFilter>;
+  /** Negates a filter */
+  not?: InputMaybe<ProfilesFilter>;
+  /** Returns true if at least one of its inner filters is true, otherwise returns false */
+  or?: InputMaybe<Array<ProfilesFilter>>;
+  private_profile?: InputMaybe<BooleanFilter>;
+  school?: InputMaybe<StringFilter>;
+  updated_at?: InputMaybe<DatetimeFilter>;
+};
+
+export type ProfilesInsertInput = {
+  avatar_url?: InputMaybe<Scalars['String']['input']>;
+  bio?: InputMaybe<Scalars['String']['input']>;
+  created_at?: InputMaybe<Scalars['Datetime']['input']>;
+  full_name?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['UUID']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  nickname?: InputMaybe<Scalars['String']['input']>;
+  private_profile?: InputMaybe<Scalars['Boolean']['input']>;
+  push_notifications_preference?: InputMaybe<Scalars['JSON']['input']>;
+  school?: InputMaybe<Scalars['String']['input']>;
+  updated_at?: InputMaybe<Scalars['Datetime']['input']>;
+};
+
+export type ProfilesInsertResponse = {
+  __typename?: 'profilesInsertResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<Profiles>;
+};
+
+export type ProfilesOrderBy = {
+  avatar_url?: InputMaybe<OrderByDirection>;
+  bio?: InputMaybe<OrderByDirection>;
+  created_at?: InputMaybe<OrderByDirection>;
+  full_name?: InputMaybe<OrderByDirection>;
+  id?: InputMaybe<OrderByDirection>;
+  locale?: InputMaybe<OrderByDirection>;
+  nickname?: InputMaybe<OrderByDirection>;
+  private_profile?: InputMaybe<OrderByDirection>;
+  school?: InputMaybe<OrderByDirection>;
+  updated_at?: InputMaybe<OrderByDirection>;
+};
+
+export type ProfilesUpdateInput = {
+  avatar_url?: InputMaybe<Scalars['String']['input']>;
+  bio?: InputMaybe<Scalars['String']['input']>;
+  created_at?: InputMaybe<Scalars['Datetime']['input']>;
+  full_name?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['UUID']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  nickname?: InputMaybe<Scalars['String']['input']>;
+  private_profile?: InputMaybe<Scalars['Boolean']['input']>;
+  push_notifications_preference?: InputMaybe<Scalars['JSON']['input']>;
+  school?: InputMaybe<Scalars['String']['input']>;
+  updated_at?: InputMaybe<Scalars['Datetime']['input']>;
+};
+
+export type ProfilesUpdateResponse = {
+  __typename?: 'profilesUpdateResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<Profiles>;
 };
 
 export type Roles = Node & {

@@ -41,9 +41,12 @@ export function SignupForm(props: SignupFormProps) {
       if (error) throw error;
       // At this point there should be a profile created by the DB trigger
       if (user) {
-        const { error } = await supabase.rpc("profiles_update_self", {
-          p_full_name: fullName,
-        });
+        const { error } = await supabase
+          .from("profiles")
+          .update({
+            full_name: fullName,
+          })
+          .eq("id", user.id);
         if (error) {
           console.warn("Failed to update full name:", error);
         }

@@ -159,13 +159,13 @@ msgstr ""
 msgid "An error occurred while signing in: {0}"
 msgstr ""
 
-#: src/components/auth/signup-form.tsx:60
-#: src/components/auth/signup-form.tsx:89
+#: src/components/auth/signup-form.tsx:63
+#: src/components/auth/signup-form.tsx:92
 msgid "An error occurred while signing up: {0}"
 msgstr ""
 
-#: src/components/auth/signup-form.tsx:61
-#: src/components/auth/signup-form.tsx:90
+#: src/components/auth/signup-form.tsx:64
+#: src/components/auth/signup-form.tsx:93
 msgid "An error occurred."
 msgstr ""
 
@@ -220,11 +220,11 @@ msgstr ""
 msgid "Back to home"
 msgstr ""
 
-#: src/components/profile-editor.tsx:112
+#: src/components/profile-editor.tsx:118
 msgid "Biography"
 msgstr ""
 
-#: src/components/profile-editor.tsx:118
+#: src/components/profile-editor.tsx:124
 msgid "Born in 〇〇."
 msgstr ""
 
@@ -309,7 +309,7 @@ msgstr ""
 msgid "Confirm new password"
 msgstr ""
 
-#: src/components/auth/signup-form.tsx:143
+#: src/components/auth/signup-form.tsx:146
 msgid "Confirm Password"
 msgstr ""
 
@@ -448,7 +448,7 @@ msgstr ""
 msgid "Edit template"
 msgstr ""
 
-#: src/components/auth/signup-form.tsx:123
+#: src/components/auth/signup-form.tsx:126
 msgid "Email"
 msgstr ""
 
@@ -599,7 +599,7 @@ msgstr ""
 msgid "Form Responses"
 msgstr ""
 
-#: src/components/profile-editor.tsx:70
+#: src/components/profile-editor.tsx:76
 msgid "Full Name"
 msgstr ""
 
@@ -843,7 +843,7 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
-#: src/components/profile-editor.tsx:85
+#: src/components/profile-editor.tsx:91
 msgid "Nickname"
 msgstr ""
 
@@ -948,7 +948,7 @@ msgstr ""
 msgid "Page not found"
 msgstr ""
 
-#: src/components/auth/signup-form.tsx:135
+#: src/components/auth/signup-form.tsx:138
 msgid "Password"
 msgstr ""
 
@@ -1113,15 +1113,15 @@ msgstr ""
 msgid "Saved"
 msgstr ""
 
-#: src/components/profile-editor.tsx:61
+#: src/components/profile-editor.tsx:67
 msgid "Saved!"
 msgstr ""
 
-#: src/components/profile-editor.tsx:61
+#: src/components/profile-editor.tsx:67
 msgid "Saving..."
 msgstr ""
 
-#: src/components/profile-editor.tsx:99
+#: src/components/profile-editor.tsx:105
 msgid "School"
 msgstr ""
 
@@ -1215,7 +1215,7 @@ msgstr ""
 #~ msgid "Sign in with Google"
 #~ msgstr ""
 
-#: src/components/auth/signup-form.tsx:159
+#: src/components/auth/signup-form.tsx:162
 msgid "Sign up"
 msgstr ""
 
@@ -1223,7 +1223,7 @@ msgstr ""
 msgid "Sign up to get started"
 msgstr ""
 
-#: src/components/auth/signup-form.tsx:108
+#: src/components/auth/signup-form.tsx:111
 msgid "Sign up with <0/>"
 msgstr ""
 
@@ -1399,7 +1399,7 @@ msgstr ""
 msgid "Welcome!"
 msgstr ""
 
-#: src/components/profile-editor.tsx:91
+#: src/components/profile-editor.tsx:97
 msgid "What people call you"
 msgstr ""
 
@@ -1435,11 +1435,11 @@ msgstr ""
 msgid "Your feedback"
 msgstr ""
 
-#: src/components/profile-editor.tsx:76
+#: src/components/profile-editor.tsx:82
 msgid "Your full name"
 msgstr ""
 
-#: src/components/auth/signup-form.tsx:153
+#: src/components/auth/signup-form.tsx:156
 msgid "Your full name will not be shared with people outside of your clubs unless you choose to at a later time."
 msgstr ""
 
@@ -1447,7 +1447,7 @@ msgstr ""
 msgid "Your school"
 msgstr ""
 
-#: src/components/profile-editor.tsx:105
+#: src/components/profile-editor.tsx:111
 msgid "Your school name"
 msgstr ""
 
