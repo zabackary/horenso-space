@@ -1,11 +1,28 @@
 import ClubCard from "@/components/ui/club-card";
 import UserProfile from "@/components/ui/user-profile";
+import { gql } from "@/gql";
+import { query } from "@/lib/apollo/server";
 import getProfile from "@/lib/auth/getProfile";
 import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
 import { Trans } from "@lingui/react/macro";
 import { Flex, Heading } from "@radix-ui/themes";
 import { redirect } from "next/navigation";
+
+const UserQuery = gql(`
+  query User($id: UUID!) {
+    club_membersCollection(filter: { user_id: { eq: $id } }) {
+      edges {
+        node {
+          clubs {
+            nodeId,
+            ...ClubCard
+          }
+        }
+      }
+    }
+  }
+`);
 
 export default async function UserPage({
   params,
@@ -20,10 +37,14 @@ export default async function UserPage({
     redirect("/app/users/me");
   }
 
-  const { data: mutualClubs } = await supabase
-    .from("club_members")
-    .select("joined_clubs(*)")
-    .eq("user_id", id);
+  const { data } = await query({
+    query: UserQuery,
+    variables: { id },
+  });
+
+  const mutualClubs = data?.club_membersCollection?.edges
+    .map((e) => e.node.clubs ?? [])
+    .flat();
 
   return (
     <Flex p="4" direction="column" gap="2">
@@ -34,16 +55,9 @@ export default async function UserPage({
             <Trans>Common Clubs</Trans>
           </Heading>
           <Flex gap="2" wrap="wrap">
-            <ClubCard
-              club={
-                mutualClubs[0].joined_clubs as {
-                  id: string;
-                  name: string;
-                  school: string | null;
-                  description?: string | null;
-                }
-              }
-            />
+            {mutualClubs.map((club) => (
+              <ClubCard key={club.nodeId} club={club} />
+            ))}
           </Flex>
         </Flex>
       )}

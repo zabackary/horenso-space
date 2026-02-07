@@ -2,22 +2,23 @@ import { AppHeader } from "@/components/ui/app-header";
 import ClubCard from "@/components/ui/club-card";
 import { gql } from "@/gql";
 import { query } from "@/lib/apollo/server";
+import getProfile from "@/lib/auth/getProfile";
 import { initLingui } from "@/lib/i18n/initLingui";
-import { ResultOf } from "@graphql-typed-document-node/core";
+import { createClient } from "@/lib/supabase/server";
 import { Trans } from "@lingui/react/macro";
 import { CrossCircledIcon } from "@radix-ui/react-icons";
 import { Button, Callout, Flex, Heading } from "@radix-ui/themes";
 import Link from "next/link";
 
-const joinedClubsQueryDocument = gql(`
-  query JoinedClubs {
-    joined_clubsCollection(first: 100) {
+const joinedClubsQuery = gql(`
+  query JoinedClubs($me: UUID!) {
+    club_membersCollection(filter: { user_id: { eq: $me } }) {
       edges {
         node {
-          id
-          name
-          school
-          description
+          clubs {
+            nodeId,
+            ...ClubCard
+          }
         }
       }
     }
@@ -27,24 +28,20 @@ const joinedClubsQueryDocument = gql(`
 export default async function App({ params }: PageProps<"/app">) {
   const {} = await params;
   await initLingui();
-  const { data, error } = await query<
-    ResultOf<typeof joinedClubsQueryDocument>
-  >({
-    query: joinedClubsQueryDocument,
-    errorPolicy: "all",
+
+  const supabase = await createClient();
+  const { data, error } = await query({
+    query: joinedClubsQuery,
+    variables: { me: (await getProfile(supabase))?.id ?? "" },
   });
 
   if (error) {
     console.error("couldn't fetch clubs:", error);
   }
 
-  const clubs = (data?.joined_clubsCollection?.edges.map((e) => e.node) ??
-    []) as {
-    id: string;
-    name: string;
-    school: string | null;
-    description?: string | null;
-  }[];
+  const clubs =
+    data?.club_membersCollection?.edges.map((e) => e.node.clubs ?? []).flat() ??
+    [];
 
   return (
     <>
@@ -64,7 +61,7 @@ export default async function App({ params }: PageProps<"/app">) {
         {clubs.length ? (
           <Flex gap="4" wrap="wrap" justify="center">
             {clubs.map((club) => (
-              <ClubCard key={club.id} club={club} />
+              <ClubCard key={club.nodeId} club={club} />
             ))}
           </Flex>
         ) : clubs ? (

@@ -1,3 +1,4 @@
+import { FragmentType, getFragmentData, gql } from "@/gql";
 import { Trans } from "@lingui/react/macro";
 import {
   Badge,
@@ -34,23 +35,28 @@ function stringToColor(str: string) {
   return color;
 }
 
+export const ClubCardFragment = gql(`
+  fragment ClubCard on clubs {
+    id
+    name
+    school
+    description
+  }
+`);
+
 export interface ClubCardProps {
-  club: {
-    id: string;
-    name: string;
-    school: string | null;
-    description?: string | null;
-  };
+  club: FragmentType<typeof ClubCardFragment>;
 }
 
-export default function ClubCard({ club }: ClubCardProps) {
+export default function ClubCard({ club: clubFragment }: ClubCardProps) {
+  const club = getFragmentData(ClubCardFragment, clubFragment);
   return (
     <Card
       key={club.id}
       className={styles["club-card"]}
       style={{
-        //@ts-expect-error: CSS variable
-        "--card-header-background": stringToColor(club.id!), // null assertion, see https://github.com/orgs/supabase/discussions/14151
+        // @ts-expect-error: CSS variable
+        "--card-header-background": stringToColor(club.id),
       }}
     >
       <Flex direction="column" gap="4">

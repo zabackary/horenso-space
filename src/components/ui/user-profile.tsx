@@ -11,7 +11,6 @@ export interface UserProfileProps {
 export default async function UserProfile({ id, className }: UserProfileProps) {
   const supabase = await createClient();
 
-  // The public "profiles" view proxies public fields and resolves avatar_url
   const { data: profile, error } = await supabase
     .rpc("profiles_get", { p_user_id: id })
     .select("*")
