@@ -466,6 +466,48 @@ export type Database = {
           },
         ]
       }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          bio: string | null
+          created_at: string
+          full_name: string
+          id: string
+          locale: string | null
+          nickname: string | null
+          private_profile: boolean
+          push_notifications_preference: Json
+          school: string | null
+          updated_at: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          full_name: string
+          id: string
+          locale?: string | null
+          nickname?: string | null
+          private_profile?: boolean
+          push_notifications_preference?: Json
+          school?: string | null
+          updated_at?: string
+        }
+        Update: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          full_name?: string
+          id?: string
+          locale?: string | null
+          nickname?: string | null
+          private_profile?: boolean
+          push_notifications_preference?: Json
+          school?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       roles: {
         Row: {
           absence_report_approval_required: boolean
@@ -662,27 +704,16 @@ export type Database = {
       }
       profiles_get: {
         Args: { p_user_id: string }
-        Returns: unknown
-        SetofOptions: {
-          from: "*"
-          to: "profiles"
-          isOneToOne: true
-          isSetofReturn: false
-        }
-      }
-      profiles_locale_get: { Args: never; Returns: string }
-      profiles_locale_set: { Args: { new_locale: string }; Returns: undefined }
-      profiles_update_self: {
-        Args: {
-          p_avatar_url?: string
-          p_bio?: string
-          p_full_name?: string
-          p_nickname?: string
-          p_notifications_enabled?: boolean
-          p_private_profile?: boolean
-          p_school?: string
-        }
-        Returns: undefined
+        Returns: {
+          avatar_url: string
+          bio: string
+          created_at: string
+          full_name: string
+          id: string
+          nickname: string
+          private_profile: boolean
+          school: string
+        }[]
       }
       user_has_club_permission: {
         Args: { p_club_id: string; p_permission: string }

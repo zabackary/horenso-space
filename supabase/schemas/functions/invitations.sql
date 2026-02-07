@@ -60,7 +60,7 @@ create function "public"."invitations_verify"(invitation_id uuid)
     private.invitations
     join public.clubs on invitations.club_id = clubs.id
     join public.roles on invitations.role_id = roles.id
-    join private.profiles on invitations.invited_by = profiles.id
+    join public.profiles on invitations.invited_by = profiles.id
   where
     invitations.id = $1
     and invitations.expires_at > now();
@@ -140,7 +140,7 @@ begin
       invitations.usage_count
     from
       private.invitations
-      join private.profiles on invitations.invited_by = profiles.id
+      join public.profiles on invitations.invited_by = profiles.id
       join public.roles on invitations.role_id = roles.id
     where
       invitations.club_id = $1;

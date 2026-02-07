@@ -121,9 +121,9 @@ importers:
       '@parcel/watcher':
         specifier: ^2.5.6
         version: 2.5.6
-      '@postgrestools/postgrestools':
-        specifier: ^0.15.1
-        version: 0.15.1
+      '@postgres-language-server/cli':
+        specifier: ^0.19.0
+        version: 0.19.0
       '@types/dagre':
         specifier: ^0.7.53
         version: 0.7.53
@@ -1557,52 +1557,51 @@ packages:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
 
-  '@postgrestools/cli-aarch64-apple-darwin@0.15.1':
-    resolution: {integrity: sha512-UTszdEJtSCo0hvDfhqzZX4FVgAdMr1ZKzZ1gH+vKuJRbb2/9LF7rgPtveNFQY75YydwgQcjoQ10gEBO0SrYACw==}
+  '@postgres-language-server/cli-aarch64-apple-darwin@0.19.0':
+    resolution: {integrity: sha512-gFsfB3eOeuqQCHMhxL4AlCju+/PULpuZsrXuNP7m27YSAq4NK8iDeDMi/ZT/6PtHaRpZRWX9SRPlEUhyJIIXOA==}
     engines: {node: '>=20'}
     cpu: [arm64]
     os: [darwin]
 
-  '@postgrestools/cli-aarch64-linux-gnu@0.15.1':
-    resolution: {integrity: sha512-ChihdugBqQtl6/18DgQvyf5bNYxSyFUkCcvsRpAfPAUjKu/uwwQKpg1MzkneAAn3Rov93IKddoS+6q5l9/undw==}
+  '@postgres-language-server/cli-aarch64-linux-gnu@0.19.0':
+    resolution: {integrity: sha512-RmKH7aT5VGLlhfSWYehu1k/9VCXLgrmLIhPiDgu04oI08kFY35Inxp6wESIxLzh4nrFiv45AhEKISdwtqfZz+A==}
     engines: {node: '>=20'}
     cpu: [arm64]
     os: [linux]
 
-  '@postgrestools/cli-aarch64-windows-msvc@0.15.1':
-    resolution: {integrity: sha512-hnVtwGyqLYy2eJi/EawE3tg2gcj4yKym0l1QFQQm73PqiHuqYi5/UXqK+DaPyAvx4UbIdxQYErzYVT1AkGwCuQ==}
+  '@postgres-language-server/cli-aarch64-windows-msvc@0.19.0':
+    resolution: {integrity: sha512-WjOtea0L6MJyBqfHlhl5IMlHMHUS3aCKUnZuEIqciqUlQnVcmjbbqI16sNUDxV7sF7d7Zcr5TTgT0aG9mJT5dQ==}
     engines: {node: '>=20'}
     cpu: [arm64]
     os: [win32]
 
-  '@postgrestools/cli-x86_64-apple-darwin@0.15.1':
-    resolution: {integrity: sha512-6QsX6ueEEckm/FxJ8j7iDg6+yFzNTtYU6gQFkpbiQdy5ZMgUA6aukOy606ZMpKV5k13Ofal3H/gpORR5IFSUGQ==}
+  '@postgres-language-server/cli-x86_64-apple-darwin@0.19.0':
+    resolution: {integrity: sha512-FkxrIppEg5aS9CeclIOry6nlC9X4OnycHVRlLnCL3sPub7A1o4okDnp0sYyIlMhKa1hfmOtKe2f3iGBFDIpuCw==}
     engines: {node: '>=20'}
     cpu: [x64]
     os: [darwin]
 
-  '@postgrestools/cli-x86_64-linux-gnu@0.15.1':
-    resolution: {integrity: sha512-bhrLsq+ljk0PqoJGLCrKSE/HcziTq3AotDML74ArkFSuzOCzULS8VYswWwQtxLhA/ACk3sNFrbMDsdCvk2b/FQ==}
+  '@postgres-language-server/cli-x86_64-linux-gnu@0.19.0':
+    resolution: {integrity: sha512-QbuV/CaPdXK0YJiDIu/oxz2wtW5FeVsn3jQIugDPPVo5XUUIL744FVJlVmMz1uuNGahPGUzgGh+18vWNfPGNBQ==}
     engines: {node: '>=20'}
     cpu: [x64]
     os: [linux]
 
-  '@postgrestools/cli-x86_64-linux-musl@0.15.1':
-    resolution: {integrity: sha512-NWIIIMVkMsDUB2QQRn0IKdakLveEElvn3U2asXky4jLBnPi4U9vs4Go+fl7NHIOmRVcf0E1cFW7MCkSbP+B5dQ==}
+  '@postgres-language-server/cli-x86_64-linux-musl@0.19.0':
+    resolution: {integrity: sha512-4YDvP2UnjD8LwTDorjz3cpaef1677v6t1WRjaD7xu54doB/ouUq6xvBwrp0uqwW0UXabLmPXUbm6AKewR4IVIQ==}
     engines: {node: '>=20'}
     cpu: [x64]
     os: [linux]
 
-  '@postgrestools/cli-x86_64-windows-msvc@0.15.1':
-    resolution: {integrity: sha512-ZJJPd0aT9T7ZDU0ObJwk4JE0EFqR1FRe+Oyk2p4aZ9FSw+QQb1RNXDg8CocWuLtJOLWDxGydnYBeyOqsB/pv+Q==}
+  '@postgres-language-server/cli-x86_64-windows-msvc@0.19.0':
+    resolution: {integrity: sha512-KUtN9/ZIosfgQ1HTnRcGFXMbbEi50W69zupFEDe4fJRoHLO9oPxxYl8yHeBYGHqCBIeNIAHKYqRtKB0GsithJw==}
     engines: {node: '>=20'}
     cpu: [x64]
     os: [win32]
 
-  '@postgrestools/postgrestools@0.15.1':
-    resolution: {integrity: sha512-Lg5oZ+cmGFUme6sZueGj+QxwV7d2MkR3+d9UKkIho+cfSXye+tnsOIYAS2SlAMFa6/FW9YEHQK6xksLnWPhQXg==}
+  '@postgres-language-server/cli@0.19.0':
+    resolution: {integrity: sha512-WsjNBB46XNelW6CgKjs9biBWKVYotUSaqb9JSUfp9O9pjtoNSVhlvdpdDM2CUdFBxYcxWSRB4bggCICG4XmIWA==}
     engines: {node: '>=20'}
-    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
     hasBin: true
 
   '@prisma/instrumentation@7.2.0':
@@ -2744,6 +2743,9 @@ packages:
   '@types/node@20.19.26':
     resolution: {integrity: sha512-0l6cjgF0XnihUpndDhk+nyD3exio3iKaYROSgvh/qSevPXax3L8p5DBRFjbvalnwatGgHEQn2R88y2fA3g4irg==}
 
+  '@types/node@20.19.32':
+    resolution: {integrity: sha512-Ez8QE4DMfhjjTsES9K2dwfV258qBui7qxUsoaixZDiTzbde4U12e1pXGNu/ECsUIOi5/zoCxAQxIhQnaUQ2VvA==}
+
   '@types/pg-pool@2.0.7':
     resolution: {integrity: sha512-U4CwmGVQcbEuqpyju8/ptOKg6gEC+Tqsvj2xS9o1g71bUh8twxnC6ZL5rZKCsGN0iyH0CwgUyc9VR5owNQF9Ng==}
 
@@ -3347,8 +3349,8 @@ packages:
   emoji-regex@9.2.2:
     resolution: {integrity: sha512-L18DaJsXSUk2+42pv8mLs5jJT2hqFkFE4j21wOmgbUqsZ2hL72NsUU785g9RXgo3s0ZNgVl42TiHp3ZtOv/Vyg==}
 
-  enhanced-resolve@5.18.4:
-    resolution: {integrity: sha512-LgQMM4WXU3QI+SYgEc2liRgznaD5ojbmY3sb8LxyguVkIg5FxdpTkvk72te2R38/TGKxH634oLxXRGY6d7AP+Q==}
+  enhanced-resolve@5.19.0:
+    resolution: {integrity: sha512-phv3E1Xl4tQOShqSte26C7Fl84EwUdZsyOuSSk9qtAGyyQs2s3jJzComh+Abf4g187lUUAvH+H26omrqia2aGg==}
     engines: {node: '>=10.13.0'}
 
   env-paths@2.2.1:
@@ -4621,8 +4623,8 @@ packages:
       uglify-js:
         optional: true
 
-  terser@5.44.1:
-    resolution: {integrity: sha512-t/R3R/n0MSwnnazuPpPNVO60LX0SKL45pyl9YlvxIdkH0Of7D5qM2EVe+yASRIlY5pZ73nclYJfNANGWPwFDZw==}
+  terser@5.46.0:
+    resolution: {integrity: sha512-jTwoImyr/QbOWFFso3YoU3ik0jBBDJ6JTOQiy/J2YxVJdZCc+5u7skhNwiOR3FQIygFqVUPHl7qbbxtjW2K3Qg==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -4763,8 +4765,8 @@ packages:
   vfile@6.0.3:
     resolution: {integrity: sha512-KzIbH/9tXat2u30jf+smMwFCsno4wHVdNmzFyL+T/L3UGqqk6JKfVqOFOZEpZSHADH1k40ab6NUIXZq422ov3Q==}
 
-  watchpack@2.4.4:
-    resolution: {integrity: sha512-c5EGNOiyxxV5qmTtAB7rbiXxi1ooX1pQKMLX/MIabJjRA0SJBQOjKF+KSVfHkr9U1cADPon0mRiVe/riyaiDUA==}
+  watchpack@2.5.1:
+    resolution: {integrity: sha512-Zn5uXdcFNIA1+1Ei5McRd+iRzfhENPCe7LeABkJtNulSxjma+l7ltNx55BWZkRlwRnpOgHqxnjyaDgJnNXnqzg==}
     engines: {node: '>=10.13.0'}
 
   wcwidth@1.0.1:
@@ -6499,36 +6501,36 @@ snapshots:
   '@pkgjs/parseargs@0.11.0':
     optional: true
 
-  '@postgrestools/cli-aarch64-apple-darwin@0.15.1':
+  '@postgres-language-server/cli-aarch64-apple-darwin@0.19.0':
     optional: true
 
-  '@postgrestools/cli-aarch64-linux-gnu@0.15.1':
+  '@postgres-language-server/cli-aarch64-linux-gnu@0.19.0':
     optional: true
 
-  '@postgrestools/cli-aarch64-windows-msvc@0.15.1':
+  '@postgres-language-server/cli-aarch64-windows-msvc@0.19.0':
     optional: true
 
-  '@postgrestools/cli-x86_64-apple-darwin@0.15.1':
+  '@postgres-language-server/cli-x86_64-apple-darwin@0.19.0':
     optional: true
 
-  '@postgrestools/cli-x86_64-linux-gnu@0.15.1':
+  '@postgres-language-server/cli-x86_64-linux-gnu@0.19.0':
     optional: true
 
-  '@postgrestools/cli-x86_64-linux-musl@0.15.1':
+  '@postgres-language-server/cli-x86_64-linux-musl@0.19.0':
     optional: true
 
-  '@postgrestools/cli-x86_64-windows-msvc@0.15.1':
+  '@postgres-language-server/cli-x86_64-windows-msvc@0.19.0':
     optional: true
 
-  '@postgrestools/postgrestools@0.15.1':
+  '@postgres-language-server/cli@0.19.0':
     optionalDependencies:
-      '@postgrestools/cli-aarch64-apple-darwin': 0.15.1
-      '@postgrestools/cli-aarch64-linux-gnu': 0.15.1
-      '@postgrestools/cli-aarch64-windows-msvc': 0.15.1
-      '@postgrestools/cli-x86_64-apple-darwin': 0.15.1
-      '@postgrestools/cli-x86_64-linux-gnu': 0.15.1
-      '@postgrestools/cli-x86_64-linux-musl': 0.15.1
-      '@postgrestools/cli-x86_64-windows-msvc': 0.15.1
+      '@postgres-language-server/cli-aarch64-apple-darwin': 0.19.0
+      '@postgres-language-server/cli-aarch64-linux-gnu': 0.19.0
+      '@postgres-language-server/cli-aarch64-windows-msvc': 0.19.0
+      '@postgres-language-server/cli-x86_64-apple-darwin': 0.19.0
+      '@postgres-language-server/cli-x86_64-linux-gnu': 0.19.0
+      '@postgres-language-server/cli-x86_64-linux-musl': 0.19.0
+      '@postgres-language-server/cli-x86_64-windows-msvc': 0.19.0
 
   '@prisma/instrumentation@7.2.0(@opentelemetry/api@1.9.0)':
     dependencies:
@@ -7769,6 +7771,10 @@ snapshots:
     dependencies:
       undici-types: 6.21.0
 
+  '@types/node@20.19.32':
+    dependencies:
+      undici-types: 6.21.0
+
   '@types/pg-pool@2.0.7':
     dependencies:
       '@types/pg': 8.15.6
@@ -8390,7 +8396,7 @@ snapshots:
 
   emoji-regex@9.2.2: {}
 
-  enhanced-resolve@5.18.4:
+  enhanced-resolve@5.19.0:
     dependencies:
       graceful-fs: 4.2.11
       tapable: 2.3.0
@@ -8805,7 +8811,7 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 20.19.26
+      '@types/node': 20.19.32
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
@@ -9948,10 +9954,10 @@ snapshots:
       jest-worker: 27.5.1
       schema-utils: 4.3.3
       serialize-javascript: 6.0.2
-      terser: 5.44.1
+      terser: 5.46.0
       webpack: 5.103.0
 
-  terser@5.44.1:
+  terser@5.46.0:
     dependencies:
       '@jridgewell/source-map': 0.3.11
       acorn: 8.15.0
@@ -10101,7 +10107,7 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  watchpack@2.4.4:
+  watchpack@2.5.1:
     dependencies:
       glob-to-regexp: 0.4.1
       graceful-fs: 4.2.11
@@ -10130,7 +10136,7 @@ snapshots:
       acorn-import-phases: 1.0.4(acorn@8.15.0)
       browserslist: 4.28.1
       chrome-trace-event: 1.0.4
-      enhanced-resolve: 5.18.4
+      enhanced-resolve: 5.19.0
       es-module-lexer: 1.7.0
       eslint-scope: 5.1.1
       events: 3.3.0
@@ -10143,7 +10149,7 @@ snapshots:
       schema-utils: 4.3.3
       tapable: 2.3.0
       terser-webpack-plugin: 5.3.16(webpack@5.103.0)
-      watchpack: 2.4.4
+      watchpack: 2.5.1
       webpack-sources: 3.3.3
     transitivePeerDependencies:
       - '@swc/core'

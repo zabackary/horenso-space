@@ -54,15 +54,3 @@ create policy "Authorized users can delete club files" on files
   for delete
     using (public.user_has_club_permission(club_id, 'canWriteFiles'));
 
--- Club members can view profiles of other members in their clubs
-create policy "Club members can view other member profiles" on private.profiles
-  for select
-    using (exists (
-      select
-        1
-      from
-        club_members cm1
-        inner join club_members cm2 on cm1.club_id = cm2.club_id
-      where
-        cm1.user_id = auth.uid() and cm2.user_id = private.profiles.id and cm1.accepted = true and cm2.accepted = true));
-

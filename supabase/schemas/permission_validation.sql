@@ -1,3 +1,15 @@
+--- Club members can view profiles of other members in their clubs
+create policy "Users can view profiles in their clubs" on public.profiles
+  for select to authenticated
+    using (exists (
+      select
+        1
+      from
+        public.club_members viewer
+        join public.club_members target on target.club_id = viewer.club_id
+      where
+        viewer.user_id = auth.uid() and target.user_id = public.profiles.id));
+
 -- Users with canWriteOwnReport permission can update their own reports if there
 -- are no reviews yet
 create policy "Users can update their own absence reports if no reviews" on "absence_reports"

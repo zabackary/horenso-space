@@ -39,10 +39,10 @@ create function public.absence_reports_get(p_club_id uuid, p_user_id uuid defaul
   from
     public.absence_reports ar
   left join public.calendar_events ce on ar.event_id = ce.id
-  left join private.profiles p_user on ar.user_id = p_user.id
+  left join public.profiles p_user on ar.user_id = p_user.id
   left join public.roles r on ar.assigned_to_role = r.id
   left join public.absence_report_reviews arr on ar.id = arr.absence_report_id
-  left join private.profiles p_reviewer on arr.reviewer_id = p_reviewer.id
+  left join public.profiles p_reviewer on arr.reviewer_id = p_reviewer.id
 where
   ar.club_id = p_club_id
   and(p_user_id is null
@@ -52,7 +52,6 @@ where
   and(p_report_id is null
     or ar.id = p_report_id)
 group by
-  -- pgt-ignore typecheck Seems to work fine
   ar.id,
   ar.user_id,
   p_user.full_name,
@@ -108,10 +107,10 @@ create function public.absence_reports_assigned_get(p_club_id uuid)
   from
     public.absence_reports ar
   left join public.calendar_events ce on ar.event_id = ce.id
-  left join private.profiles p_user on ar.user_id = p_user.id
+  left join public.profiles p_user on ar.user_id = p_user.id
   left join public.roles r on ar.assigned_to_role = r.id
   left join public.absence_report_reviews arr on ar.id = arr.absence_report_id
-  left join private.profiles p_reviewer on arr.reviewer_id = p_reviewer.id
+  left join public.profiles p_reviewer on arr.reviewer_id = p_reviewer.id
   inner join public.club_members cm on cm.role_id = ar.assigned_to_role
     and cm.user_id = auth.uid()
     and cm.accepted = true

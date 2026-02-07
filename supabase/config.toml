@@ -55,7 +55,7 @@ enabled = true
 # Supports glob patterns relative to supabase directory: "./schemas/*.sql"
 schema_paths = [
   "./schemas/extensions.sql",
-  "./schemas/private/profiles.sql",
+  "./schemas/public/profiles.sql",
   "./schemas/public/clubs.sql",
   "./schemas/public/absence_report_forms.sql",
   "./schemas/public/roles.sql",
