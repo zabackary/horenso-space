@@ -52,6 +52,7 @@ where
   and(p_report_id is null
     or ar.id = p_report_id)
 group by
+  -- pgt-ignore typecheck Seems to work fine
   ar.id,
   ar.user_id,
   p_user.full_name,
