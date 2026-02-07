@@ -14,5 +14,9 @@ export default defineConfig({
       include: ["src/"],
     },
   ],
+  formatOptions: {
+    // To reduce noise in diffs
+    lineNumbers: false,
+  },
   pseudoLocale: "pseudo",
 });
