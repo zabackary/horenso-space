@@ -13,7 +13,7 @@ const authLink = new SetContextLink(async ({ headers }, _) => {
     headers: {
       ...headers,
       Authorization: token ? `Bearer ${token}` : "",
-      apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "",
+      apikey: process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_OR_ANON_KEY ?? "",
     },
   };
 });
