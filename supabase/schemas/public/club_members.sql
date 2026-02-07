@@ -1,6 +1,6 @@
 create table club_members(
   club_id uuid references clubs(id) on delete cascade not null,
-  user_id uuid references auth.users(id) on delete cascade not null,
+  user_id uuid references public.profiles(id) on delete cascade not null,
   role_id uuid references roles(id) not null,
   joined_at timestamp with time zone default now() not null,
   accepted boolean default false not null,

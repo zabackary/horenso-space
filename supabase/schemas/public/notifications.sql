@@ -1,6 +1,6 @@
 create table notifications(
   id uuid primary key default gen_random_uuid(),
-  user_id uuid references auth.users(id) on delete cascade,
+  user_id uuid references public.profiles(id) on delete cascade,
   created_at timestamp with time zone default now() not null,
   club_id uuid references clubs(id) on delete cascade,
   read boolean default false not null,

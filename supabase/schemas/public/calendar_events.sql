@@ -8,7 +8,7 @@ create table calendar_events(
   location text,
   created_at timestamp with time zone default now() not null,
   updated_at timestamp with time zone default now() not null,
-  created_by uuid references auth.users(id) on delete set null
+  created_by uuid references public.profiles(id) on delete set null
 );
 
 create index on calendar_events(club_id);

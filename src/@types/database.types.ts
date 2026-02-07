@@ -112,6 +112,13 @@ export type Database = {
             referencedRelation: "absence_reports"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "absence_report_reviews_reviewer_id_fkey"
+            columns: ["reviewer_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
         ]
       }
       absence_reports: {
@@ -187,6 +194,13 @@ export type Database = {
             referencedRelation: "absence_report_forms"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "absence_reports_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
         ]
       }
       calendar_events: {
@@ -241,6 +255,13 @@ export type Database = {
             referencedRelation: "joined_clubs"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "calendar_events_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
         ]
       }
       club_members: {
@@ -287,6 +308,13 @@ export type Database = {
             referencedRelation: "roles"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "club_members_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
         ]
       }
       clubs: {
@@ -329,7 +357,22 @@ export type Database = {
           school?: string | null
           website?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "clubs_absence_report_required_reviewer_fkey"
+            columns: ["absence_report_required_reviewer"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "clubs_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       feedback_submissions: {
         Row: {
@@ -366,6 +409,13 @@ export type Database = {
             columns: ["club_id"]
             isOneToOne: false
             referencedRelation: "joined_clubs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "feedback_submissions_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
             referencedColumns: ["id"]
           },
         ]
@@ -422,6 +472,13 @@ export type Database = {
             referencedRelation: "joined_clubs"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "files_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
         ]
       }
       notifications: {
@@ -462,6 +519,13 @@ export type Database = {
             columns: ["club_id"]
             isOneToOne: false
             referencedRelation: "joined_clubs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "notifications_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
             referencedColumns: ["id"]
           },
         ]
@@ -618,7 +682,22 @@ export type Database = {
           school?: string | null
           website?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "clubs_absence_report_required_reviewer_fkey"
+            columns: ["absence_report_required_reviewer"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "clubs_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
       }
     }
     Functions: {

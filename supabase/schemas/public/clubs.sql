@@ -1,7 +1,7 @@
 create table clubs(
   id uuid primary key default gen_random_uuid(),
   created_at timestamp with time zone default now() not null,
-  created_by uuid references auth.users(id) on delete set null default auth.uid(),
+  created_by uuid references public.profiles(id) on delete set null default auth.uid(),
   name text not null,
   description text,
   school text,
@@ -9,7 +9,7 @@ create table clubs(
   active boolean default true not null,
   public boolean default true not null,
   absence_report_schema jsonb not null,
-  absence_report_required_reviewer uuid references auth.users(id) on delete set null
+  absence_report_required_reviewer uuid references public.profiles(id) on delete set null
 );
 
 create index on clubs(name);

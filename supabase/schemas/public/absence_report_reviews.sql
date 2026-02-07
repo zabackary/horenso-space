@@ -1,7 +1,7 @@
 create table absence_report_reviews(
   id uuid primary key default gen_random_uuid(),
   absence_report_id uuid references "absence_reports"(id) on delete cascade not null,
-  reviewer_id uuid references auth.users(id) on delete set null,
+  reviewer_id uuid references public.profiles(id) on delete set null,
   created_at timestamp with time zone default now() not null,
   updated_at timestamp with time zone default now() not null,
   accepted boolean not null,
