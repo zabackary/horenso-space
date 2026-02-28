@@ -858,7 +858,7 @@ msgstr ""
 msgid "No absence report templates found."
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/my/list.tsx
+#: src/app/app/[id]/absences/(list)/all/list.tsx
 msgid "No absence reports"
 msgstr ""
 
@@ -1423,6 +1423,10 @@ msgstr ""
 
 #: src/app/app/[id]/absences/create/page.tsx
 msgid "You do not have a configured absence report form. Please contact a club manager."
+msgstr ""
+
+#: src/app/app/[id]/absences/(list)/my/list.tsx
+msgid "You don't have any absence reports"
 msgstr ""
 
 #: src/components/club-config/absence-form-detail.tsx

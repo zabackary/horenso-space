@@ -858,7 +858,7 @@ msgstr "ニックネーム"
 msgid "No absence report templates found."
 msgstr "欠席レポートテンプレートが見つかりません。"
 
-#: src/app/app/[id]/absences/(list)/my/list.tsx
+#: src/app/app/[id]/absences/(list)/all/list.tsx
 msgid "No absence reports"
 msgstr "欠席連絡はありません"
 
@@ -1424,6 +1424,10 @@ msgstr "部活に招待されています"
 #: src/app/app/[id]/absences/create/page.tsx
 msgid "You do not have a configured absence report form. Please contact a club manager."
 msgstr "欠席届フォームが設​​定されていません。部活動の管理者にお問い合わせください。"
+
+#: src/app/app/[id]/absences/(list)/my/list.tsx
+msgid "You don't have any absence reports"
+msgstr ""
 
 #: src/components/club-config/absence-form-detail.tsx
 msgid "You have unsaved changes"

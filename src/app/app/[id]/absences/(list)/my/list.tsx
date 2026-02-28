@@ -36,7 +36,6 @@ export function MyReportsList({
   userId: string;
 }) {
   const { t } = useLingui();
-  console.log("load my reports", clubId, userId);
   const { data } = useSuspenseQuery(myReportsQuery, {
     variables: {
       clubId: clubId,
@@ -45,9 +44,11 @@ export function MyReportsList({
   });
   const reports = data?.absence_reportsCollection?.edges ?? [];
 
-  console.log("load", data);
   return reports.length <= 0 ? (
-    <EmptyState icon={<FileTextIcon />} title={t`No absence reports`} />
+    <EmptyState
+      icon={<FileTextIcon />}
+      title={t`You don't have any absence reports`}
+    />
   ) : (
     <Flex direction="column" gap="3" width="100%">
       {reports.map((report) => (

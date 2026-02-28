@@ -1,9 +1,11 @@
+import { ListLoading } from "@/components/loading";
 import getPermissionsForClub from "@/lib/auth/getPermissionsForClub";
 import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import getReports from "../getReports";
-import AbsenceReportList from "../list";
+import { AllReportsList } from "./list";
 
 export default async function Page({
   params,
@@ -23,10 +25,8 @@ export default async function Page({
   });
 
   return (
-    <AbsenceReportList
-      reports={reports}
-      clubId={id}
-      linkPathPrefix="/absences/all"
-    />
+    <Suspense fallback={<ListLoading withHeading={false} cards={true} />}>
+      <AllReportsList clubId={id} />
+    </Suspense>
   );
 }
