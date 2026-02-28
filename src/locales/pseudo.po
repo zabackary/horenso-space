@@ -17,7 +17,7 @@ msgstr ""
 msgid "{0, plural, one {# follow-up} other {# follow-ups} zero {No follow-ups}}"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/list.tsx
+#: src/components/ui/absence-report-card.tsx
 msgid "{0, plural, one {# review} other {# reviews}}"
 msgstr ""
 
@@ -185,7 +185,7 @@ msgstr ""
 msgid "Approval required for reports"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/list.tsx
+#: src/components/ui/absence-report-card.tsx
 msgid "Approved"
 msgstr ""
 
@@ -202,9 +202,7 @@ msgstr ""
 msgid "Assigned Reports"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
-#: src/app/app/[id]/absences/(list)/list.tsx
-#: src/app/app/[id]/absences/(list)/report-detail.tsx
+#: src/components/ui/absence-report-card.tsx
 msgid "Assigned to"
 msgstr ""
 
@@ -860,7 +858,7 @@ msgstr ""
 msgid "No absence report templates found."
 msgstr ""
 
-#: src/app/app/[id]/calendar/day.tsx
+#: src/app/app/[id]/absences/(list)/my/list.tsx
 msgid "No absence reports"
 msgstr ""
 
@@ -881,9 +879,7 @@ msgstr ""
 msgid "No date"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
-#: src/app/app/[id]/absences/(list)/assigned/list.tsx
-#: src/app/app/[id]/absences/(list)/report-detail.tsx
+#: src/components/ui/absence-report-card.tsx
 msgid "No event"
 msgstr ""
 
@@ -1032,9 +1028,7 @@ msgstr ""
 msgid "Reject"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
-#: src/app/app/[id]/absences/(list)/list.tsx
-#: src/app/app/[id]/absences/(list)/report-detail.tsx
+#: src/components/ui/absence-report-card.tsx
 msgid "Rejected"
 msgstr ""
 
@@ -1275,13 +1269,11 @@ msgstr ""
 msgid "Submit absence reports"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/list.tsx
+#: src/components/ui/absence-report-card.tsx
 msgid "Submitted at {0}"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
-#: src/app/app/[id]/absences/(list)/list.tsx
-#: src/app/app/[id]/absences/(list)/report-detail.tsx
+#: src/components/ui/absence-report-card.tsx
 msgid "Submitted by"
 msgstr ""
 
@@ -1344,9 +1336,7 @@ msgstr ""
 msgid "Type in your email and we'll send you a link to reset your password"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
-#: src/app/app/[id]/absences/(list)/list.tsx
-#: src/app/app/[id]/absences/(list)/report-detail.tsx
+#: src/components/ui/absence-report-card.tsx
 msgid "Unassigned"
 msgstr ""
 
@@ -1354,7 +1344,7 @@ msgstr ""
 msgid "Understand quickly who's where and when"
 msgstr ""
 
-#: src/components/ui/user-profile.tsx
+#: src/components/ui/absence-report-card.tsx
 msgid "Unknown"
 msgstr ""
 

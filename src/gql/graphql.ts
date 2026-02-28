@@ -239,6 +239,8 @@ export type Mutation = {
   invitations_accept?: Maybe<Scalars['Opaque']['output']>;
   invitations_create?: Maybe<Scalars['UUID']['output']>;
   invitations_delete?: Maybe<Scalars['Opaque']['output']>;
+  profiles_locale_get?: Maybe<Scalars['String']['output']>;
+  profiles_locale_set?: Maybe<Scalars['Opaque']['output']>;
   /** Updates zero or more records in the `absence_report_forms` collection */
   updateabsence_report_formsCollection: Absence_Report_FormsUpdateResponse;
   /** Updates zero or more records in the `absence_report_reviews` collection */
@@ -439,6 +441,12 @@ export type MutationInvitations_CreateArgs = {
 /** The root type for creating and mutating data */
 export type MutationInvitations_DeleteArgs = {
   invitation_id: Scalars['UUID']['input'];
+};
+
+
+/** The root type for creating and mutating data */
+export type MutationProfiles_Locale_SetArgs = {
+  new_locale: Scalars['String']['input'];
 };
 
 
@@ -959,6 +967,7 @@ export type Absence_Report_Reviews = Node & {
   id: Scalars['UUID']['output'];
   /** Globally Unique Record Identifier */
   nodeId: Scalars['ID']['output'];
+  profiles?: Maybe<Profiles>;
   reviewer_id?: Maybe<Scalars['UUID']['output']>;
   updated_at: Scalars['Datetime']['output'];
 };
@@ -1062,6 +1071,7 @@ export type Absence_Reports = Node & {
   id: Scalars['UUID']['output'];
   /** Globally Unique Record Identifier */
   nodeId: Scalars['ID']['output'];
+  profiles?: Maybe<Profiles>;
   roles?: Maybe<Roles>;
   updated_at: Scalars['Datetime']['output'];
   user_id?: Maybe<Scalars['UUID']['output']>;
@@ -1184,6 +1194,7 @@ export type Calendar_Events = Node & {
   location?: Maybe<Scalars['String']['output']>;
   /** Globally Unique Record Identifier */
   nodeId: Scalars['ID']['output'];
+  profiles?: Maybe<Profiles>;
   start_time: Scalars['Datetime']['output'];
   title: Scalars['String']['output'];
   updated_at: Scalars['Datetime']['output'];
@@ -1303,6 +1314,7 @@ export type Club_Members = Node & {
   joined_at: Scalars['Datetime']['output'];
   /** Globally Unique Record Identifier */
   nodeId: Scalars['ID']['output'];
+  profiles?: Maybe<Profiles>;
   role_id: Scalars['UUID']['output'];
   roles?: Maybe<Roles>;
   user_id: Scalars['UUID']['output'];
@@ -1402,6 +1414,7 @@ export type Clubs = Node & {
   /** Globally Unique Record Identifier */
   nodeId: Scalars['ID']['output'];
   notificationsCollection?: Maybe<NotificationsConnection>;
+  profiles?: Maybe<Profiles>;
   public: Scalars['Boolean']['output'];
   rolesCollection?: Maybe<RolesConnection>;
   school?: Maybe<Scalars['String']['output']>;
@@ -1602,6 +1615,7 @@ export type Feedback_Submissions = Node & {
   id: Scalars['UUID']['output'];
   /** Globally Unique Record Identifier */
   nodeId: Scalars['ID']['output'];
+  profiles?: Maybe<Profiles>;
   user_id?: Maybe<Scalars['UUID']['output']>;
 };
 
@@ -1692,6 +1706,7 @@ export type Files = Node & {
   id: Scalars['UUID']['output'];
   /** Globally Unique Record Identifier */
   nodeId: Scalars['ID']['output'];
+  profiles?: Maybe<Profiles>;
   updated_at: Scalars['Datetime']['output'];
   url: Scalars['String']['output'];
   user_id?: Maybe<Scalars['UUID']['output']>;
@@ -1915,6 +1930,7 @@ export type Notifications = Node & {
   id: Scalars['UUID']['output'];
   /** Globally Unique Record Identifier */
   nodeId: Scalars['ID']['output'];
+  profiles?: Maybe<Profiles>;
   read: Scalars['Boolean']['output'];
   user_id?: Maybe<Scalars['UUID']['output']>;
 };
@@ -2000,19 +2016,115 @@ export type NotificationsUpdateResponse = {
 
 export type Profiles = Node & {
   __typename?: 'profiles';
+  absence_report_reviewsCollection?: Maybe<Absence_Report_ReviewsConnection>;
+  absence_reportsCollection?: Maybe<Absence_ReportsConnection>;
   avatar_url?: Maybe<Scalars['String']['output']>;
   bio?: Maybe<Scalars['String']['output']>;
+  calendar_eventsCollection?: Maybe<Calendar_EventsConnection>;
+  club_membersCollection?: Maybe<Club_MembersConnection>;
+  clubsCollection?: Maybe<ClubsConnection>;
   created_at: Scalars['Datetime']['output'];
+  feedback_submissionsCollection?: Maybe<Feedback_SubmissionsConnection>;
+  filesCollection?: Maybe<FilesConnection>;
   full_name: Scalars['String']['output'];
   id: Scalars['UUID']['output'];
   locale?: Maybe<Scalars['String']['output']>;
   nickname?: Maybe<Scalars['String']['output']>;
   /** Globally Unique Record Identifier */
   nodeId: Scalars['ID']['output'];
+  notificationsCollection?: Maybe<NotificationsConnection>;
   private_profile: Scalars['Boolean']['output'];
   push_notifications_preference: Scalars['JSON']['output'];
   school?: Maybe<Scalars['String']['output']>;
   updated_at: Scalars['Datetime']['output'];
+};
+
+
+export type ProfilesAbsence_Report_ReviewsCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<Absence_Report_ReviewsFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<Absence_Report_ReviewsOrderBy>>;
+};
+
+
+export type ProfilesAbsence_ReportsCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<Absence_ReportsFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<Absence_ReportsOrderBy>>;
+};
+
+
+export type ProfilesCalendar_EventsCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<Calendar_EventsFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<Calendar_EventsOrderBy>>;
+};
+
+
+export type ProfilesClub_MembersCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<Club_MembersFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<Club_MembersOrderBy>>;
+};
+
+
+export type ProfilesClubsCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<ClubsFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<ClubsOrderBy>>;
+};
+
+
+export type ProfilesFeedback_SubmissionsCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<Feedback_SubmissionsFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<Feedback_SubmissionsOrderBy>>;
+};
+
+
+export type ProfilesFilesCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<FilesFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<FilesOrderBy>>;
+};
+
+
+export type ProfilesNotificationsCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<NotificationsFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<NotificationsOrderBy>>;
 };
 
 export type ProfilesConnection = {
@@ -2260,6 +2372,17 @@ export type RolesUpdateResponse = {
   records: Array<Roles>;
 };
 
+export type MyAbsenceReportsQueryVariables = Exact<{
+  clubId: Scalars['UUID']['input'];
+  userId: Scalars['UUID']['input'];
+}>;
+
+
+export type MyAbsenceReportsQuery = { __typename: 'Query', absence_reportsCollection?: { __typename: 'absence_reportsConnection', edges: Array<{ __typename: 'absence_reportsEdge', node: (
+        { __typename: 'absence_reports', id: string }
+        & { ' $fragmentRefs'?: { 'AbsenceReportCardFragment': AbsenceReportCardFragment } }
+      ) }> } | null };
+
 export type JoinedClubsQueryVariables = Exact<{
   me: Scalars['UUID']['input'];
 }>;
@@ -2280,8 +2403,12 @@ export type UserQuery = { __typename: 'Query', club_membersCollection?: { __type
           & { ' $fragmentRefs'?: { 'ClubCardFragment': ClubCardFragment } }
         ) | null } }> } | null };
 
+export type AbsenceReportCardFragment = { __typename: 'absence_reports', id: string, date?: string | null, created_at: string, assigned_to_role?: { __typename: 'roles', name: string } | null, reviews?: { __typename: 'absence_report_reviewsConnection', edges: Array<{ __typename: 'absence_report_reviewsEdge', node: { __typename: 'absence_report_reviews', id: string } }> } | null, event?: { __typename: 'calendar_events', id: string, title: string, start_time: string, end_time: string } | null, user?: { __typename: 'profiles', full_name: string, avatar_url?: string | null } | null } & { ' $fragmentName'?: 'AbsenceReportCardFragment' };
+
 export type ClubCardFragment = { __typename: 'clubs', id: string, name: string, school?: string | null, description?: string | null } & { ' $fragmentName'?: 'ClubCardFragment' };
 
+export const AbsenceReportCardFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"AbsenceReportCard"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"absence_reports"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"created_at"}},{"kind":"Field","alias":{"kind":"Name","value":"assigned_to_role"},"name":{"kind":"Name","value":"roles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"reviews"},"name":{"kind":"Name","value":"absence_report_reviewsCollection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}},{"kind":"Field","alias":{"kind":"Name","value":"event"},"name":{"kind":"Name","value":"calendar_events"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"start_time"}},{"kind":"Field","name":{"kind":"Name","value":"end_time"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"user"},"name":{"kind":"Name","value":"profiles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"full_name"}},{"kind":"Field","name":{"kind":"Name","value":"avatar_url"}}]}}]}}]} as unknown as DocumentNode<AbsenceReportCardFragment, unknown>;
 export const ClubCardFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ClubCard"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"clubs"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"school"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}}]} as unknown as DocumentNode<ClubCardFragment, unknown>;
+export const MyAbsenceReportsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"MyAbsenceReports"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"clubId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"userId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"absence_reportsCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"club_id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"clubId"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"user_id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"userId"}}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"orderBy"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"created_at"},"value":{"kind":"EnumValue","value":"DescNullsFirst"}}]}},{"kind":"Argument","name":{"kind":"Name","value":"offset"},"value":{"kind":"IntValue","value":"0"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"AbsenceReportCard"}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"AbsenceReportCard"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"absence_reports"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"created_at"}},{"kind":"Field","alias":{"kind":"Name","value":"assigned_to_role"},"name":{"kind":"Name","value":"roles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"reviews"},"name":{"kind":"Name","value":"absence_report_reviewsCollection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}},{"kind":"Field","alias":{"kind":"Name","value":"event"},"name":{"kind":"Name","value":"calendar_events"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"start_time"}},{"kind":"Field","name":{"kind":"Name","value":"end_time"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"user"},"name":{"kind":"Name","value":"profiles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"full_name"}},{"kind":"Field","name":{"kind":"Name","value":"avatar_url"}}]}}]}}]} as unknown as DocumentNode<MyAbsenceReportsQuery, MyAbsenceReportsQueryVariables>;
 export const JoinedClubsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"JoinedClubs"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"me"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"club_membersCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"user_id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"me"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"clubs"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"nodeId"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ClubCard"}}]}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ClubCard"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"clubs"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"school"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}}]} as unknown as DocumentNode<JoinedClubsQuery, JoinedClubsQueryVariables>;
 export const UserDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"User"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"club_membersCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"user_id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"clubs"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"nodeId"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ClubCard"}}]}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ClubCard"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"clubs"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"school"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}}]} as unknown as DocumentNode<UserQuery, UserQueryVariables>;

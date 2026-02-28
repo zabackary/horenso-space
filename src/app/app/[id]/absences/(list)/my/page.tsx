@@ -1,8 +1,8 @@
-import getProfile from "@/lib/auth/getProfile";
+import { ListLoading } from "@/components/loading";
 import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
-import getReports from "../getReports";
-import AbsenceReportList from "../list";
+import { Suspense } from "react";
+import { MyReportsList } from "./list";
 
 export default async function Page({
   params,
@@ -11,18 +11,11 @@ export default async function Page({
   await initLingui();
 
   const supabase = await createClient();
-  const reports = getProfile(supabase).then((profile) =>
-    getReports(supabase, {
-      clubId: id,
-      userId: profile!.id,
-    }),
-  );
+  const user = await supabase.auth.getUser();
 
   return (
-    <AbsenceReportList
-      reports={reports}
-      clubId={id}
-      linkPathPrefix="/absences/my"
-    />
+    <Suspense fallback={<ListLoading withHeading={false} cards={true} />}>
+      <MyReportsList clubId={id} userId={user.data.user?.id ?? ""} />
+    </Suspense>
   );
 }
