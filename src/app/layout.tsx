@@ -1,6 +1,7 @@
 import { ApolloWrapper } from "@/lib/apollo/client";
 import { initLingui } from "@/lib/i18n/initLingui";
 import { LinguiClientProvider } from "@/lib/i18n/LinguiClientProvider";
+import { createClient } from "@/lib/supabase/server";
 import { Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
 import { Analytics } from "@vercel/analytics/next";
@@ -51,6 +52,8 @@ export default async function RootLayout({
   params,
 }: LayoutProps<"/">) {
   const i18n = await initLingui();
+  const client = await createClient();
+  const token = (await client.auth.getSession()).data.session?.access_token;
 
   return (
     <html lang={i18n.locale} suppressHydrationWarning>
@@ -58,7 +61,7 @@ export default async function RootLayout({
         <body
           className={`${hachiMaruPop.variable} ${notoSansJP.variable} ${gloriaHallelujah.variable} ${notoSans.variable}`}
         >
-          <ApolloWrapper>
+          <ApolloWrapper initialServerToken={token}>
             <LinguiClientProvider
               initialLocale={i18n.locale}
               initialMessages={i18n.messages}
