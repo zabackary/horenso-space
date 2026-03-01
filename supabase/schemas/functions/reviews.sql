@@ -101,6 +101,7 @@ create function public.absence_reports_is_approved(p_report_id uuid)
 declare
   v_checked_roles uuid[] := array[]::uuid[];
   v_current_role_id uuid;
+  v_current_approved boolean;
   v_approval_required boolean;
   v_reviewer_role_id uuid;
 begin
@@ -116,12 +117,12 @@ begin
     ar.id = p_report_id;
   -- If no role found for report creator, report cannot be approved
   if v_current_role_id is null then
-    return false;
+    return null;
   end if;
   loop
     -- Check if we've already checked this role (prevent recursion loops)
     if v_current_role_id = any (v_checked_roles) then
-      return false;
+      return null;
     end if;
     v_checked_roles := array_append(v_checked_roles, v_current_role_id);
     -- Check if this role requires approval and get the reviewer role
@@ -141,9 +142,11 @@ begin
     if v_reviewer_role_id is null then
       return true;
     end if;
-    -- Check if someone with the reviewer role has accepted a review for this report
+    -- Check if someone with the reviewer role has a review for this report
     select
-      cm.role_id into v_current_role_id
+      cm.role_id,
+      arr.accepted into v_current_role_id,
+      v_current_approved
     from
       public.absence_report_reviews arr
       join public.club_members cm on cm.user_id = arr.reviewer_id
@@ -153,9 +156,13 @@ begin
       and cm.role_id = v_reviewer_role_id
       and arr.accepted = true
     limit 1;
-    -- If no review found from the next role, not fully approved
-    if v_current_role_id is null then
+    -- If the review is not accepted, report is not approved
+    if v_current_role_id is not null and not v_current_approved then
       return false;
+    end if;
+    -- If no review for this role yet, report is pending, return null
+    if v_current_role_id is null then
+      return null;
     end if;
     -- Move up to the reviewer role for next iteration
     v_current_role_id := v_reviewer_role_id;
