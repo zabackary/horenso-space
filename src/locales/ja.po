@@ -333,7 +333,7 @@ msgstr "リンクをコピー"
 
 #: src/components/user-share-actions.tsx
 msgid "Copy user ID"
-msgstr ""
+msgstr "ユーザーIDをコピーする"
 
 #: src/app/app/[id]/config/roles/role-dialog.tsx
 #: src/components/club-config/roles-manager.tsx
@@ -530,7 +530,7 @@ msgstr "有効期限: {0}"
 
 #: src/components/user-share-actions.tsx
 msgid "Failed to copy to clipboard: {message}"
-msgstr ""
+msgstr "クリップボードへのコピーに失敗しました：{message}"
 
 #: src/app/app/[id]/config/roles/roles-view.tsx
 #: src/components/club-config/roles-manager.tsx
@@ -577,7 +577,7 @@ msgstr "テンプレートを保存できませんでした。"
 
 #: src/components/user-share-actions.tsx
 msgid "Failed to share profile: {message}"
-msgstr ""
+msgstr "プロフィールの共有に失敗しました：{message}"
 
 #: src/app/app/[id]/absences/create/form.tsx
 msgid "Failed to submit absence report. Please try again."
@@ -665,7 +665,7 @@ msgstr "グラフ"
 #: src/app/page.tsx
 #: src/components/ui/app-header-menu.tsx
 msgid "Help Center"
-msgstr ""
+msgstr "ヘルプセンター"
 
 #: src/components/club-config/absence-form-editor.tsx
 msgid "Hide"
@@ -1257,7 +1257,7 @@ msgstr "こちらのサービスは利用できません。"
 
 #: src/components/user-share-actions.tsx
 msgid "Share profile"
-msgstr ""
+msgstr "プロフィールを共有する"
 
 #: src/components/club-config/absence-form-editor.tsx
 msgid "Show"
@@ -1327,7 +1327,7 @@ msgstr "欠席報告を送信"
 
 #: src/components/ui/absence-report-card.tsx
 msgid "Submitted at {0}"
-msgstr ""
+msgstr "提出日時：{0}"
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx
 msgid "Submitted by"
@@ -1351,7 +1351,7 @@ msgstr "このCSVには何も入っていないか、無効です。"
 
 #: src/components/user-share-actions.tsx
 msgid "The profile URL has been copied to your clipboard."
-msgstr ""
+msgstr "プロフィールのURLをコピーしました。"
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx
 msgid "The report is pending review"
