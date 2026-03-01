@@ -45,6 +45,18 @@ msgstr "簡単な説明"
 msgid "Absence forms"
 msgstr "欠席フォーム"
 
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+msgid "Absence is approved"
+msgstr ""
+
+#: src/app/app/[id]/absences/(list)/report-detail.tsx
+msgid "Absence is not approved"
+msgstr ""
+
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+msgid "Absence is rejected"
+msgstr ""
+
 #: src/app/app/[id]/config/roles/role-dialog.tsx
 #: src/components/club-config/roles-manager.tsx
 msgid "Absence report settings"
@@ -81,7 +93,6 @@ msgid "Accept"
 msgstr "承認"
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx
-#: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "Accepted"
 msgstr "承認済み"
 
@@ -202,7 +213,7 @@ msgstr "この役割を削除してもよろしいですか？ この操作は�
 msgid "Assigned Reports"
 msgstr "割り当てられたレポート"
 
-#: src/components/ui/absence-report-card.tsx
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
 msgid "Assigned to"
 msgstr "担当者"
 
@@ -378,7 +389,6 @@ msgid "Create your first absence report template"
 msgstr "最初の欠席レポートテンプレートを作成してください"
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx
-#: src/app/app/[id]/absences/create/form.tsx
 msgid "Date"
 msgstr "日付"
 
@@ -479,8 +489,6 @@ msgid "Error updating password: {0}"
 msgstr "パスワードの更新ができませんでした:{0}"
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx
-#: src/app/app/[id]/absences/(list)/report-detail.tsx
-#: src/app/app/[id]/absences/create/form.tsx
 msgid "Event"
 msgstr "イベント"
 
@@ -489,7 +497,6 @@ msgid "Event Absence"
 msgstr "イベントの欠席"
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx
-#: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "Event date"
 msgstr "イベントの日付"
 
@@ -764,6 +771,14 @@ msgstr " <0/> アカウントを連携する"
 msgid "List"
 msgstr "リスト"
 
+#: src/app/app/[id]/absences/(list)/report-detail.tsx
+msgid "Loading approval status..."
+msgstr ""
+
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+msgid "Loading report status..."
+msgstr ""
+
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx
 msgid "Loading..."
 msgstr "ロード中．．．"
@@ -867,7 +882,6 @@ msgstr "欠席連絡はありません"
 #~ msgstr "本日の欠席連絡はありません。"
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx
-#: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "No additional data"
 msgstr "追加データがありません"
 
@@ -879,7 +893,7 @@ msgstr "部活が見つかりません。部活に参加するには招待リン
 msgid "No date"
 msgstr "日付がありません"
 
-#: src/components/ui/absence-report-card.tsx
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
 msgid "No event"
 msgstr "イベントがありません"
 
@@ -890,6 +904,10 @@ msgstr "本日の行事はありません。"
 #: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "No form associated with this report"
 msgstr "このレポートに関連付けられたフォームはありません"
+
+#: src/app/app/[id]/absences/(list)/assigned/[reportId]/report-detail-with-review.tsx
+msgid "No form attached"
+msgstr ""
 
 #: src/components/club-config/invite.tsx
 msgid "No invites yet"
@@ -906,6 +924,10 @@ msgstr "一致するドキュメントはありません"
 #: src/app/app/[id]/page.tsx
 msgid "No notifications. Notifications are not finished yet but will appear here."
 msgstr "通知はありません。通知はまだ完了していませんが、ここに表示されます。"
+
+#: src/app/app/[id]/absences/(list)/assigned/list.tsx
+msgid "No reports assigned to you"
+msgstr ""
 
 #: src/app/app/[id]/absences/(list)/assigned/list.tsx
 msgid "No reports assigned to you."
@@ -1028,7 +1050,7 @@ msgstr "最近の通知"
 msgid "Reject"
 msgstr "拒否"
 
-#: src/components/ui/absence-report-card.tsx
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
 msgid "Rejected"
 msgstr "拒否済み"
 
@@ -1042,19 +1064,45 @@ msgstr "削除"
 msgid "Report absence"
 msgstr "欠席を報告"
 
+#: src/app/app/[id]/absences/(list)/report-detail.tsx
+msgid "Report accepted"
+msgstr ""
+
 #: src/app/app/[id]/absences/create/page.tsx
 msgid "Report an absence"
 msgstr "欠席を報告"
 
 #: src/app/app/[id]/absences/(list)/all/[reportId]/page.tsx
-#: src/app/app/[id]/absences/(list)/my/[reportId]/page.tsx
 msgid "Report details"
 msgstr "報告の詳細"
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx
-#: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "Report Details"
 msgstr "報告の詳細"
+
+#: src/app/app/[id]/absences/(list)/report-detail.tsx
+msgid "Report is approved"
+msgstr ""
+
+#: src/app/app/[id]/absences/(list)/report-detail.tsx
+msgid "Report is pending approval"
+msgstr ""
+
+#: src/app/app/[id]/absences/(list)/report-detail.tsx
+msgid "Report is rejected"
+msgstr ""
+
+#: src/app/app/[id]/absences/(list)/assigned/[reportId]/report-detail-with-review.tsx
+msgid "Report not found"
+msgstr ""
+
+#: src/app/app/[id]/absences/(list)/report-detail.tsx
+msgid "Report pending review"
+msgstr ""
+
+#: src/app/app/[id]/absences/(list)/report-detail.tsx
+msgid "Report rejected"
+msgstr ""
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx
 msgid "Report Review"
@@ -1067,6 +1115,14 @@ msgstr "パスワードをリセット"
 #: src/components/permission-text.tsx
 msgid "Review and respond to absence reports"
 msgstr "欠席報告を確認して返信する"
+
+#: src/app/app/[id]/absences/(list)/assigned/[reportId]/page.tsx
+msgid "Review Report"
+msgstr ""
+
+#: src/app/app/[id]/absences/(list)/assigned/[reportId]/report-detail-with-review.tsx
+msgid "Review submitted successfully"
+msgstr ""
 
 #: src/app/app/[id]/absences/(list)/assigned/list.tsx
 msgid "Reviewed"
@@ -1273,7 +1329,7 @@ msgstr "欠席報告を送信"
 msgid "Submitted at {0}"
 msgstr ""
 
-#: src/components/ui/absence-report-card.tsx
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
 msgid "Submitted by"
 msgstr "送信者"
 
@@ -1297,12 +1353,19 @@ msgstr "このCSVには何も入っていないか、無効です。"
 msgid "The profile URL has been copied to your clipboard."
 msgstr ""
 
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+msgid "The report is pending review"
+msgstr ""
+
+#: src/app/app/[id]/absences/(list)/report-detail.tsx
+msgid "The report pending review"
+msgstr ""
+
 #: src/app/app/[id]/calendar/day.tsx
 msgid "There are no reported absences for this day."
 msgstr "本日の欠席連絡はありません。"
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx
-#: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "This report has been accepted"
 msgstr "この報告は承認されました。"
 
@@ -1311,12 +1374,10 @@ msgstr "この報告は承認されました。"
 #~ msgstr "この報告は承認されました。"
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx
-#: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "This report has been rejected"
 msgstr "この報告は拒否されました。"
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx
-#: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "This report has not been reviewed yet."
 msgstr "この報告はまだ受理されていません。"
 
@@ -1336,7 +1397,7 @@ msgstr "種類"
 msgid "Type in your email and we'll send you a link to reset your password"
 msgstr "メールアドレスを入力すると、パスワードリセット用のリンクが送信されます"
 
-#: src/components/ui/absence-report-card.tsx
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
 msgid "Unassigned"
 msgstr "割り当てなし"
 
@@ -1344,7 +1405,7 @@ msgstr "割り当てなし"
 msgid "Understand quickly who's where and when"
 msgstr "誰がいつどこにいるのかをすぐに把握できます"
 
-#: src/components/ui/absence-report-card.tsx
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
 msgid "Unknown"
 msgstr "不明"
 

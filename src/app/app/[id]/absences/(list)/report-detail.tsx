@@ -1,8 +1,10 @@
 "use client";
 
 import AbsenceFormRenderer from "@/components/absence-form-renderer";
-import { createClient } from "@/lib/supabase/client";
+import { FragmentType, getFragmentData, gql } from "@/gql";
+import useAbsenceReportStatus from "@/lib/absences/useAbsenceReportStatus";
 import { Trans } from "@lingui/react/macro";
+import { CheckCircledIcon, CrossCircledIcon } from "@radix-ui/react-icons";
 import {
   Avatar,
   Badge,
@@ -12,90 +14,113 @@ import {
   Flex,
   Heading,
   Separator,
-  Spinner,
+  Skeleton,
   Text,
 } from "@radix-ui/themes";
-import { useEffect, useState } from "react";
-import { AbsenceReport } from "./getReports";
 
-export default function ReportDetail({
-  report,
-  clubId,
-}: {
-  report: AbsenceReport;
-  clubId: string;
-}) {
-  const [form, setForm] = useState<any>(null);
-  const [reportData, setReportData] = useState<any>(null);
-  const [formLoading, setFormLoading] = useState(true);
+export const AbsenceReportDetailFragment = gql(`
+  fragment AbsenceReportDetail on absence_reports {
+    id
+    date
+    created_at
+    data
 
-  useEffect(() => {
-    const abortController = new AbortController();
-    async function fetchForm() {
-      const supabase = createClient();
-      // Get the form ID and responses associated with this report
-      let reportData: Record<string, any> | null = null;
-      const { data: reportRes, error: reportError } = await supabase
-        .from("absence_reports")
-        .select("data, form_id")
-        .eq("id", report.id)
-        .abortSignal(abortController.signal)
-        .single();
-      if (reportError) {
-        throw reportError;
-      }
-      if (reportRes.form_id) {
-        setReportData(reportRes.data);
-        // Fetch the form structure
-        const { data, error } = await supabase
-          .from("absence_report_forms")
-          .select("questions")
-          .eq("id", reportRes.form_id)
-          .abortSignal(abortController.signal)
-          .single();
-        if (error) {
-          throw error;
-        } else {
-          setForm(data.questions);
+    assigned_to_role: roles {
+      name
+    }
+    form: absence_report_forms {
+      id
+      name
+      questions 
+    }
+
+    reviews: absence_report_reviewsCollection {
+      edges {
+        node {
+          id
+          created_at
+          accepted
+          comments
+          reviewer: profiles {
+            full_name
+          }
         }
-      } else {
-        setForm(null);
       }
     }
-    setFormLoading(true);
-    fetchForm()
-      .catch((err) => {
-        if (err.name === "AbortError" || err.message.includes("AbortError"))
-          return;
-        console.error("Error fetching form:", err);
-      })
-      .finally(() => {
-        setFormLoading(false);
-      });
-    return () => {
-      abortController.abort();
-    };
-  }, [report.id, clubId]);
+    
+    event: calendar_events {
+      id
+      title
+      start_time
+      end_time
+    }
+    user: profiles {
+      full_name
+      avatar_url
+    }
+  }
+`);
+
+export interface ReportDetailProps {
+  report: FragmentType<typeof AbsenceReportDetailFragment>;
+}
+
+export default function ReportDetail({
+  report: reportFragment,
+}: ReportDetailProps) {
+  const report = getFragmentData(AbsenceReportDetailFragment, reportFragment);
+  const reviews = report?.reviews?.edges ?? [];
+
+  const approvalStatus = useAbsenceReportStatus(report.id);
 
   return (
     <Flex direction="column" gap="4" flexGrow="1">
-      {report.reviews.length > 0 ? (
-        <Callout.Root color={report.approved ? "green" : "red"}>
-          <Callout.Text>
-            {report.approved ? (
-              <Trans>This report has been accepted</Trans>
-            ) : (
-              <Trans>This report has been rejected</Trans>
-            )}
-          </Callout.Text>
+      {approvalStatus ? (
+        <Callout.Root
+          color={
+            approvalStatus === "approved"
+              ? "green"
+              : approvalStatus === "rejected"
+                ? "red"
+                : "yellow"
+          }
+        >
+          {approvalStatus === "approved" && (
+            <>
+              <Callout.Icon>
+                <CheckCircledIcon />
+              </Callout.Icon>
+              <Callout.Text>
+                <Trans>Absence is approved</Trans>
+              </Callout.Text>
+            </>
+          )}
+          {approvalStatus === "rejected" && (
+            <>
+              <Callout.Icon>
+                <CrossCircledIcon />
+              </Callout.Icon>
+              <Callout.Text>
+                <Trans>Absence is rejected</Trans>
+              </Callout.Text>
+            </>
+          )}
+          {approvalStatus === "pending" && (
+            <Callout.Text>
+              <Trans>The report is pending review</Trans>
+            </Callout.Text>
+          )}
         </Callout.Root>
       ) : (
-        <Callout.Root color="yellow">
-          <Callout.Text>
-            <Trans>This report has not been reviewed yet.</Trans>
-          </Callout.Text>
-        </Callout.Root>
+        <Skeleton>
+          <Callout.Root>
+            <Callout.Text>
+              <Trans>Loading report status...</Trans>
+            </Callout.Text>
+          </Callout.Root>
+        </Skeleton>
       )}
+
       <Heading size="4" as="h3">
         <Trans>Report Details</Trans>
       </Heading>
@@ -108,11 +133,11 @@ export default function ReportDetail({
           <DataList.Value>
             <Avatar
               size="2"
-              src={report.user.avatarUrl || undefined}
-              alt={report.user.fullName}
-              fallback={report.user.fullName.charAt(0).toUpperCase()}
+              src={report.user?.avatar_url || undefined}
+              alt={report.user?.full_name}
+              fallback={report.user?.full_name?.charAt(0)?.toUpperCase() || "?"}
             />{" "}
-            {report.user.fullName}
+            {report.user?.full_name}
           </DataList.Value>
         </DataList.Item>
 
@@ -121,17 +146,17 @@ export default function ReportDetail({
             <Trans>Event</Trans>
           </DataList.Label>
           <DataList.Value>
-            {report.event?.name || <Trans>No event</Trans>}
+            {report.event?.title || <Trans>No event</Trans>}
           </DataList.Value>
         </DataList.Item>
 
-        {report.event?.startTime && (
+        {report.event?.start_time && (
           <DataList.Item>
             <DataList.Label>
               <Trans>Event date</Trans>
             </DataList.Label>
             <DataList.Value>
-              {new Date(report.event.startTime).toLocaleString()}
+              {new Date(report.event.start_time).toLocaleString()}
             </DataList.Value>
           </DataList.Item>
         )}
@@ -141,7 +166,7 @@ export default function ReportDetail({
             <Trans>Assigned to</Trans>
           </DataList.Label>
           <DataList.Value>
-            {report.assignedToRole?.roleName || <Trans>Unassigned</Trans>}
+            {report.assigned_to_role?.name || <Trans>Unassigned</Trans>}
           </DataList.Value>
         </DataList.Item>
       </DataList.Root>
@@ -152,11 +177,12 @@ export default function ReportDetail({
         <Heading size="3" mb="2" as="h4">
           <Trans>Form Responses</Trans>
         </Heading>
-        {formLoading ? (
-          <Spinner />
-        ) : form ? (
-          reportData && Object.keys(reportData).length > 0 ? (
-            <AbsenceFormRenderer form={form} values={reportData as any} />
+        {report.form?.questions ? (
+          report.data && Object.keys(report.data).length > 0 ? (
+            <AbsenceFormRenderer
+              form={JSON.parse(report.form.questions)}
+              values={JSON.parse(report.data)}
+            />
           ) : (
             <Text color="gray">
               <Trans>No additional data</Trans>
@@ -169,7 +195,7 @@ export default function ReportDetail({
         )}
       </div>
 
-      {report.reviews.length > 0 && (
+      {reviews.length > 0 && (
         <>
           <Separator size="4" />
           <div>
@@ -177,22 +203,29 @@ export default function ReportDetail({
               <Trans>Reviews</Trans>
             </Heading>
             <Flex direction="column" gap="2">
-              {report.reviews.map((review) => (
-                <Card key={review.id}>
+              {reviews.map((review) => (
+                <Card key={review.node.id}>
                   <Flex direction="column" gap="2">
                     <Flex justify="between" align="center">
-                      <Text weight="bold">{review.reviewer.fullName}</Text>
-                      <Badge size="2" color={review.accepted ? "green" : "red"}>
-                        {review.accepted ? (
+                      <Text weight="bold">
+                        {review.node.reviewer?.full_name}
+                      </Text>
+                      <Badge
+                        size="2"
+                        color={review.node.accepted ? "green" : "red"}
+                      >
+                        {review.node.accepted ? (
                           <Trans>Accepted</Trans>
                         ) : (
                           <Trans>Rejected</Trans>
                         )}
                       </Badge>
                     </Flex>
-                    {review.comments && <Text size="2">{review.comments}</Text>}
+                    {review.node.comments && (
+                      <Text size="2">{review.node.comments}</Text>
+                    )}
                     <Text size="1" color="gray">
-                      {new Date(review.createdAt).toLocaleString()}
+                      {new Date(review.node.created_at).toLocaleString()}
                     </Text>
                   </Flex>
                 </Card>

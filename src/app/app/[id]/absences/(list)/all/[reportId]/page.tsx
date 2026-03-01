@@ -1,3 +1,5 @@
+import { gql } from "@/gql/gql";
+import { query } from "@/lib/apollo/server";
 import getPermissionsForClub from "@/lib/auth/getPermissionsForClub";
 import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
@@ -6,8 +8,23 @@ import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { Flex, Heading, IconButton } from "@radix-ui/themes";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import getReports from "../../getReports";
 import ReportDetail from "../../report-detail";
+
+const AbsenceReportAllDetailQuery = gql(`
+  query AbsenceReportAllDetail($reportId: UUID!) {
+    absence_reportsCollection(
+      filter: {
+        id: { eq: $reportId }
+      }
+    ) {
+      edges {
+        node {
+          ...AbsenceReportDetail
+        }
+      }
+    }
+  }
+`);
 
 export default async function Page({
   params,
@@ -22,11 +39,19 @@ export default async function Page({
     notFound();
   }
 
-  // Fetch the report with all related data
-  const [report] = await getReports(supabase, {
-    clubId: id,
-    reportId: reportId,
-  });
+  // fetch the report
+  const report = (
+    await query({
+      query: AbsenceReportAllDetailQuery,
+      variables: {
+        reportId: reportId,
+      },
+    })
+  ).data?.absence_reportsCollection?.edges[0]?.node;
+
+  if (!report) {
+    notFound();
+  }
 
   return (
     <Flex direction="column" gap="4" p="4" width="100%">
@@ -40,7 +65,7 @@ export default async function Page({
           <Trans>Report details</Trans>
         </Heading>
       </Flex>
-      <ReportDetail report={report} clubId={id} />
+      <ReportDetail report={report} />
     </Flex>
   );
 }

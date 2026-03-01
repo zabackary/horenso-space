@@ -2,8 +2,10 @@
 
 import { submitReview } from "@/actions/reviews";
 import AbsenceFormRenderer from "@/components/absence-form-renderer";
+import useAbsenceReportStatus from "@/lib/absences/useAbsenceReportStatus";
 import { createClient } from "@/lib/supabase/client";
 import { Trans, useLingui } from "@lingui/react/macro";
+import { CheckCircledIcon, CrossCircledIcon } from "@radix-ui/react-icons";
 import {
   Button,
   Callout,
@@ -62,28 +64,7 @@ export default function ReportDetail({
     };
   }, [report.form_id, clubId]);
 
-  const [isAccepted, setIsAccepted] = useState<boolean | null>(null);
-  useEffect(() => {
-    const abortController = new AbortController();
-    async function fetchAcceptedStatus() {
-      const supabase = createClient();
-      const { data, error } = await supabase
-        .rpc("absence_reports_is_approved", {
-          p_report_id: report.id,
-        })
-        .abortSignal(abortController.signal);
-      if (error) {
-        if (!error.message.includes("AbortError"))
-          console.error("Failed to fetch accepted status:", error);
-        return;
-      }
-      setIsAccepted(data as boolean);
-    }
-    fetchAcceptedStatus();
-    return () => {
-      abortController.abort();
-    };
-  }, [report.id]);
+  const approvalStatus = useAbsenceReportStatus(report.id);
 
   const handleSubmit = async (accepted: boolean) => {
     setIsSubmitting(true);
@@ -104,32 +85,50 @@ export default function ReportDetail({
   return (
     <Card>
       <Flex direction="column" gap="4">
-        {isAccepted === null ? (
+        {approvalStatus ? (
+          <Callout.Root
+            color={
+              approvalStatus === "approved"
+                ? "green"
+                : approvalStatus === "rejected"
+                  ? "red"
+                  : "yellow"
+            }
+          >
+            {approvalStatus === "approved" && (
+              <>
+                <Callout.Icon>
+                  <CheckCircledIcon />
+                </Callout.Icon>
+                <Callout.Text>
+                  <Trans>Absence is approved</Trans>
+                </Callout.Text>
+              </>
+            )}
+            {approvalStatus === "rejected" && (
+              <>
+                <Callout.Icon>
+                  <CrossCircledIcon />
+                </Callout.Icon>
+                <Callout.Text>
+                  <Trans>Absence is rejected</Trans>
+                </Callout.Text>
+              </>
+            )}
+            {approvalStatus === "pending" && (
+              <Callout.Text>
+                <Trans>The report is pending review</Trans>
+              </Callout.Text>
+            )}
+          </Callout.Root>
+        ) : (
           <Skeleton>
             <Callout.Root>
               <Callout.Text>
-                <Trans>Loading...</Trans>
+                <Trans>Loading report status...</Trans>
               </Callout.Text>
             </Callout.Root>
           </Skeleton>
-        ) : reviews.length > 0 ? (
-          isAccepted !== null && (
-            <Callout.Root color={isAccepted ? "green" : "red"}>
-              <Callout.Text>
-                {isAccepted ? (
-                  <Trans>This report has been accepted</Trans>
-                ) : (
-                  <Trans>This report has been rejected</Trans>
-                )}
-              </Callout.Text>
-            </Callout.Root>
-          )
-        ) : (
-          <Callout.Root color={isAccepted ? "green" : "yellow"}>
-            <Callout.Text>
-              <Trans>This report has not been reviewed yet.</Trans>
-            </Callout.Text>
-          </Callout.Root>
         )}
 
         <Heading size="4">
