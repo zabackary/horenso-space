@@ -515,6 +515,10 @@ msgstr ""
 msgid "Expires at: {0}"
 msgstr ""
 
+#: src/app/app/club/invite/[id]/page.tsx
+msgid "Expires at: <0>{0}</0>"
+msgstr ""
+
 #: src/components/club-config/members-manager.tsx
 msgid "Failed to change member role. Please try again later."
 msgstr ""
@@ -1495,6 +1499,10 @@ msgstr ""
 
 #: src/app/app/[id]/config/roles/role-dialog.tsx
 msgid "You must set a reviewer for the role in order to require approval for absence reports. Note that if no reviewer is set, no reviews will be required for approval of this role's reports."
+msgstr ""
+
+#: src/app/app/club/invite/[id]/page.tsx
+msgid "You will be joining as: <0>{0}</0>."
 msgstr ""
 
 #: src/app/app/club/invite/[id]/page.tsx

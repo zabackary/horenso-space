@@ -50,27 +50,34 @@ export default async function JoinClubPage({
           <Text as="p" size="4" align="center">
             <Trans>You are invited to join a club</Trans>
           </Text>
-          <Card className={styles.card}>
-            <Flex
-              justify="center"
-              align="center"
-              direction="column"
-              p="2"
-              gap="1"
-              width="100%"
-            >
+          <Flex
+            justify="center"
+            align="center"
+            direction="column"
+            p="2"
+            gap="1"
+            width="100%"
+            minHeight="240px"
+            asChild
+            style={{ display: "flex" }}
+          >
+            <Card>
               <PaperPlaneIcon width={36} height={36} className={styles.plane} />
               <Heading as="h1" size="7" align="center">
                 {invite.club_name}
               </Heading>
-              <Heading as="h3" size="5" align="center" color="gray">
+              <Heading as="h2" size="5" align="center" color="gray">
                 <Trans>by {invite.invited_by_name}</Trans>
               </Heading>
-            </Flex>
-          </Card>
+            </Card>
+          </Flex>
           <Text as="p" size="4" align="center">
             <Trans>
               You will be joining as: <strong>{invite.role_name}</strong>.
+            </Trans>
+          </Text>
+          <Text as="p" size="4" align="center">
+            <Trans>
               Expires at:{" "}
               <strong>{new Date(invite.expires_at).toLocaleString()}</strong>
             </Trans>
