@@ -249,8 +249,7 @@ msgstr ""
 msgid "Calendar"
 msgstr ""
 
-#: src/app/app/[id]/calendar/event-detail-drawer.tsx
-#: src/app/app/[id]/calendar/event-detail-drawer.tsx
+#: src/components/club-config/invite.tsx
 msgid "Cancel"
 msgstr ""
 
@@ -277,6 +276,10 @@ msgstr ""
 #: src/components/club-config/metadata-form.tsx
 #: src/components/club-create-form.tsx
 msgid "Club description"
+msgstr ""
+
+#: src/components/club-config/invite.tsx
+msgid "Club invite link"
 msgstr ""
 
 #: src/components/club-config/invite.tsx
@@ -391,8 +394,7 @@ msgstr ""
 msgid "Day"
 msgstr ""
 
-#: src/app/app/[id]/calendar/event-detail-drawer.tsx
-#: src/app/app/[id]/calendar/event-detail-drawer.tsx
+#: src/components/club-config/invite.tsx
 msgid "Delete"
 msgstr ""
 
@@ -514,8 +516,8 @@ msgid "Expires at: {0}"
 msgstr ""
 
 #: src/components/club-config/members-manager.tsx
-#~ msgid "Failed to change member role. Please try again later."
-#~ msgstr ""
+msgid "Failed to change member role. Please try again later."
+msgstr ""
 
 #: src/components/user-share-actions.tsx
 msgid "Failed to copy to clipboard: {message}"
@@ -548,8 +550,12 @@ msgid "Failed to join club"
 msgstr ""
 
 #: src/components/club-config/members-manager.tsx
-#~ msgid "Failed to remove member. Please try again later."
-#~ msgstr ""
+msgid "Failed to load members data. Please try again later."
+msgstr ""
+
+#: src/components/club-config/members-manager.tsx
+msgid "Failed to remove member. Please try again later."
+msgstr ""
 
 #: src/components/club-config/metadata-form.tsx
 msgid "Failed to save club metadata. Please try again later."
@@ -714,11 +720,9 @@ msgid "Invite for role \"{0}\""
 msgstr ""
 
 #: src/components/club-config/invite.tsx
-#: src/components/club-config/invite.tsx
 msgid "Invite link copied to clipboard."
 msgstr ""
 
-#: src/app/app/[id]/config/tabs.tsx
 #: src/components/club-config/invite.tsx
 msgid "Invites"
 msgstr ""
@@ -805,8 +809,8 @@ msgid "Manage club metadata, roles, and members"
 msgstr ""
 
 #: src/components/club-config/members-manager.tsx
-#~ msgid "Manage members"
-#~ msgstr ""
+msgid "Manage members"
+msgstr ""
 
 #: src/app/app/[id]/config/roles/roles-view.tsx
 #: src/components/club-config/roles-manager.tsx
@@ -907,8 +911,8 @@ msgid "No matching docs"
 msgstr ""
 
 #: src/components/club-config/members-manager.tsx
-#~ msgid "No members yet."
-#~ msgstr ""
+msgid "No members yet."
+msgstr ""
 
 #: src/app/app/[id]/page.tsx
 msgid "No notifications. Notifications are not finished yet but will appear here."
@@ -924,6 +928,10 @@ msgstr ""
 
 #: src/app/app/[id]/absences/(list)/list.tsx
 msgid "No reports found."
+msgstr ""
+
+#: src/components/club-config/members-manager.tsx
+msgid "No role"
 msgstr ""
 
 #: src/app/app/[id]/config/absence-forms/page.tsx
@@ -1043,8 +1051,7 @@ msgstr ""
 msgid "Rejected"
 msgstr ""
 
-#: src/components/club-config/absence-form-editor.tsx
-#: src/components/club-config/absence-form-editor.tsx
+#: src/components/club-config/members-manager.tsx
 msgid "Remove"
 msgstr ""
 
@@ -1141,8 +1148,12 @@ msgid "Role name required"
 msgstr ""
 
 #: src/components/club-config/members-manager.tsx
-#~ msgid "Role: {currentRoleLabel}"
-#~ msgstr ""
+msgid "Role: {currentRoleLabel}"
+msgstr ""
+
+#: src/components/club-config/members-manager.tsx
+msgid "Role: {role}"
+msgstr ""
 
 #: src/app/app/[id]/config/tabs.tsx
 msgid "Roles"
@@ -1393,7 +1404,7 @@ msgstr ""
 msgid "Unknown"
 msgstr ""
 
-#: src/components/ui/user-profile.tsx
+#: src/components/club-config/members-manager.tsx
 msgid "Unknown user"
 msgstr ""
 
@@ -1464,6 +1475,10 @@ msgstr ""
 
 #: src/app/app/club/invite/[id]/page.tsx
 msgid "You are invited to join a club"
+msgstr ""
+
+#: src/components/club-config/members-manager.tsx
+msgid "You cannot remove yourself from the club."
 msgstr ""
 
 #: src/app/app/[id]/absences/create/page.tsx

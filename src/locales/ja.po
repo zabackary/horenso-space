@@ -249,8 +249,7 @@ msgstr "作成者: {0}"
 msgid "Calendar"
 msgstr "カレンダー"
 
-#: src/app/app/[id]/calendar/event-detail-drawer.tsx
-#: src/app/app/[id]/calendar/event-detail-drawer.tsx
+#: src/components/club-config/invite.tsx
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -278,6 +277,10 @@ msgstr "部活の設定"
 #: src/components/club-create-form.tsx
 msgid "Club description"
 msgstr "部活の説明"
+
+#: src/components/club-config/invite.tsx
+msgid "Club invite link"
+msgstr ""
 
 #: src/components/club-config/invite.tsx
 msgid "Club Invite Link"
@@ -391,8 +394,7 @@ msgstr "日付"
 msgid "Day"
 msgstr "日"
 
-#: src/app/app/[id]/calendar/event-detail-drawer.tsx
-#: src/app/app/[id]/calendar/event-detail-drawer.tsx
+#: src/components/club-config/invite.tsx
 msgid "Delete"
 msgstr "削除"
 
@@ -514,8 +516,8 @@ msgid "Expires at: {0}"
 msgstr "有効期限: {0}"
 
 #: src/components/club-config/members-manager.tsx
-#~ msgid "Failed to change member role. Please try again later."
-#~ msgstr "メンバーの役職を変更できませんでした。しばらくしてからもう一度お試しください。"
+msgid "Failed to change member role. Please try again later."
+msgstr "メンバーの役職を変更できませんでした。しばらくしてからもう一度お試しください。"
 
 #: src/components/user-share-actions.tsx
 msgid "Failed to copy to clipboard: {message}"
@@ -548,8 +550,12 @@ msgid "Failed to join club"
 msgstr "部活に参加できませんでした"
 
 #: src/components/club-config/members-manager.tsx
-#~ msgid "Failed to remove member. Please try again later."
-#~ msgstr "メンバーを削除できませんでした。後でもう一度お試しください。"
+msgid "Failed to load members data. Please try again later."
+msgstr ""
+
+#: src/components/club-config/members-manager.tsx
+msgid "Failed to remove member. Please try again later."
+msgstr "メンバーを削除できませんでした。後でもう一度お試しください。"
 
 #: src/components/club-config/metadata-form.tsx
 msgid "Failed to save club metadata. Please try again later."
@@ -714,11 +720,9 @@ msgid "Invite for role \"{0}\""
 msgstr "役職「{0}」への招待"
 
 #: src/components/club-config/invite.tsx
-#: src/components/club-config/invite.tsx
 msgid "Invite link copied to clipboard."
 msgstr "招待リンクがクリップボードにコピーされました。"
 
-#: src/app/app/[id]/config/tabs.tsx
 #: src/components/club-config/invite.tsx
 msgid "Invites"
 msgstr "招待"
@@ -805,8 +809,8 @@ msgid "Manage club metadata, roles, and members"
 msgstr "部活のメタデータ、役割、メンバーを管理"
 
 #: src/components/club-config/members-manager.tsx
-#~ msgid "Manage members"
-#~ msgstr "メンバーを管理"
+msgid "Manage members"
+msgstr "メンバーを管理"
 
 #: src/app/app/[id]/config/roles/roles-view.tsx
 #: src/components/club-config/roles-manager.tsx
@@ -907,8 +911,8 @@ msgid "No matching docs"
 msgstr "一致するドキュメントはありません"
 
 #: src/components/club-config/members-manager.tsx
-#~ msgid "No members yet."
-#~ msgstr "まだメンバーがいません。"
+msgid "No members yet."
+msgstr "まだメンバーがいません。"
 
 #: src/app/app/[id]/page.tsx
 msgid "No notifications. Notifications are not finished yet but will appear here."
@@ -925,6 +929,10 @@ msgstr "あなたに割り当てられたレポートはありません。"
 #: src/app/app/[id]/absences/(list)/list.tsx
 msgid "No reports found."
 msgstr "レポートが見つかりません。"
+
+#: src/components/club-config/members-manager.tsx
+msgid "No role"
+msgstr ""
 
 #: src/app/app/[id]/config/absence-forms/page.tsx
 msgid "No templates yet"
@@ -1043,8 +1051,7 @@ msgstr "拒否"
 msgid "Rejected"
 msgstr "拒否済み"
 
-#: src/components/club-config/absence-form-editor.tsx
-#: src/components/club-config/absence-form-editor.tsx
+#: src/components/club-config/members-manager.tsx
 msgid "Remove"
 msgstr "削除"
 
@@ -1141,8 +1148,12 @@ msgid "Role name required"
 msgstr "役職名が必要です"
 
 #: src/components/club-config/members-manager.tsx
-#~ msgid "Role: {currentRoleLabel}"
-#~ msgstr "役職: {currentRoleLabel}"
+msgid "Role: {currentRoleLabel}"
+msgstr "役職: {currentRoleLabel}"
+
+#: src/components/club-config/members-manager.tsx
+msgid "Role: {role}"
+msgstr ""
 
 #: src/app/app/[id]/config/tabs.tsx
 msgid "Roles"
@@ -1393,7 +1404,7 @@ msgstr "誰がいつどこにいるのかをすぐに把握できます"
 msgid "Unknown"
 msgstr "不明"
 
-#: src/components/ui/user-profile.tsx
+#: src/components/club-config/members-manager.tsx
 msgid "Unknown user"
 msgstr "不明なユーザー"
 
@@ -1465,6 +1476,10 @@ msgstr "年"
 #: src/app/app/club/invite/[id]/page.tsx
 msgid "You are invited to join a club"
 msgstr "部活に招待されています"
+
+#: src/components/club-config/members-manager.tsx
+msgid "You cannot remove yourself from the club."
+msgstr ""
 
 #: src/app/app/[id]/absences/create/page.tsx
 msgid "You do not have a configured absence report form. Please contact a club manager."

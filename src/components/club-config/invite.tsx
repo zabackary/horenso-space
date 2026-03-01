@@ -193,20 +193,17 @@ export default function InvitesManager({
                             e.preventDefault();
                             const url = `${window.location.origin}/app/club/invite/${invite.id}`;
                             if ("share" in navigator) {
-                              try {
-                                navigator
-                                  .share({
-                                    title: t`Club Invite Link`,
-                                    url,
-                                  })
-                                  .catch(() => {
-                                    navigator.clipboard.writeText(url);
-                                    alert(t`Invite link copied to clipboard.`);
-                                  });
-                              } catch (_) {
-                                navigator.clipboard.writeText(url);
-                                alert(t`Invite link copied to clipboard.`);
-                              }
+                              navigator
+                                .share({
+                                  title: t`Club invite link`,
+                                  url,
+                                })
+                                .catch(() => {
+                                  window.navigator.clipboard.writeText(url);
+                                });
+                            } else {
+                              window.navigator.clipboard.writeText(url);
+                              alert(t`Invite link copied to clipboard.`);
                             }
                           }}
                         >

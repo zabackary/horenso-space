@@ -1,3 +1,4 @@
+import MembersManager from "@/components/club-config/members-manager";
 import { initLingui } from "@/lib/i18n/initLingui";
 import { Box } from "@radix-ui/themes";
 
@@ -9,8 +10,7 @@ export default async function ClubMembersPage({
 
   return (
     <Box p="4">
-      Members manager is temporarily unavailable.
-      {/* <MembersManager clubId={id} /> */}
+      <MembersManager clubId={id} />
     </Box>
   );
 }
