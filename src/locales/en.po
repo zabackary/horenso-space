@@ -109,7 +109,6 @@ msgid "Add comments (optional)"
 msgstr "Add comments (optional)"
 
 #: src/app/app/[id]/calendar/day.tsx
-#: src/app/app/[id]/page.tsx
 msgid "Add event"
 msgstr "Add event"
 
@@ -252,10 +251,6 @@ msgstr "Calendar"
 
 #: src/app/app/[id]/calendar/event-detail-drawer.tsx
 #: src/app/app/[id]/calendar/event-detail-drawer.tsx
-#: src/app/app/[id]/config/roles/role-dialog.tsx
-#: src/components/club-config/invite.tsx
-#: src/components/club-config/roles-manager.tsx
-#: src/components/feedback-form.tsx
 msgid "Cancel"
 msgstr "Cancel"
 
@@ -398,10 +393,6 @@ msgstr "Day"
 
 #: src/app/app/[id]/calendar/event-detail-drawer.tsx
 #: src/app/app/[id]/calendar/event-detail-drawer.tsx
-#: src/app/app/[id]/config/roles/roles-manager.tsx
-#: src/components/club-config/absence-form-detail.tsx
-#: src/components/club-config/invite.tsx
-#: src/components/club-config/roles-manager.tsx
 msgid "Delete"
 msgstr "Delete"
 
@@ -430,8 +421,6 @@ msgid "Download example CSV"
 msgstr "Download example CSV"
 
 #: src/app/app/[id]/calendar/event-detail-drawer.tsx
-#: src/app/app/[id]/config/roles/roles-manager.tsx
-#: src/components/club-config/roles-manager.tsx
 msgid "Edit"
 msgstr "Edit"
 
@@ -873,7 +862,7 @@ msgstr "Nickname"
 msgid "No absence report templates found."
 msgstr "No absence report templates found."
 
-#: src/app/app/[id]/absences/(list)/all/list.tsx
+#: src/app/app/[id]/calendar/day.tsx
 msgid "No absence reports"
 msgstr "No absence reports"
 
@@ -1159,12 +1148,7 @@ msgstr "Role name required"
 msgid "Roles"
 msgstr "Roles"
 
-#: src/app/app/[id]/calendar/create-event-card.tsx
 #: src/app/app/[id]/calendar/event-detail-drawer.tsx
-#: src/app/app/[id]/config/roles/role-dialog.tsx
-#: src/app/app/users/me/general/page.tsx
-#: src/components/club-config/metadata-form.tsx
-#: src/components/club-config/roles-manager.tsx
 msgid "Save"
 msgstr "Save"
 

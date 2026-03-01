@@ -2,6 +2,7 @@
 
 import { deleteCalendarEvent, updateCalendarEvent } from "@/actions/calendar";
 import { Drawer } from "@/components/ui/drawer";
+import { FragmentType, getFragmentData, gql } from "@/gql";
 import { Trans, useLingui } from "@lingui/react/macro";
 import { Cross1Icon, Pencil1Icon, TrashIcon } from "@radix-ui/react-icons";
 import {
@@ -16,17 +17,21 @@ import { useCallback, useState } from "react";
 import styles from "./create-event-card.module.css";
 import EventForm, { type EventFormData } from "./event-form";
 
+export const EventDetailDrawerFragment = gql(`
+  fragment EventDetailDrawer on calendar_events {
+    id
+    title
+    start_time
+    end_time
+    description
+    location
+  }
+`);
+
 export interface EventDetailDrawerProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  event: {
-    id: string;
-    title: string;
-    startDate: string;
-    endDate: string;
-    description?: string;
-    location?: string;
-  };
+  event: FragmentType<typeof EventDetailDrawerFragment>;
   clubId: string;
   canWrite: boolean;
   onDelete?: () => void;
@@ -36,13 +41,15 @@ export interface EventDetailDrawerProps {
 export default function EventDetailDrawer({
   open,
   onOpenChange,
-  event,
+  event: eventFragment,
   clubId,
   canWrite,
   onDelete,
   onUpdate,
 }: EventDetailDrawerProps) {
   const { t } = useLingui();
+  const event = getFragmentData(EventDetailDrawerFragment, eventFragment);
+
   const [isEditing, setIsEditing] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -51,23 +58,22 @@ export default function EventDetailDrawer({
 
   // Form state - convert event to form data
   const eventToFormData = (event: {
-    id: string;
     title: string;
-    startDate: string;
-    endDate: string;
-    description?: string;
-    location?: string;
+    start_time: string;
+    end_time: string;
+    location?: string | null;
+    description?: string | null;
   }): EventFormData => {
     return {
       title: event.title,
-      startDate: new Date(event.startDate).toLocaleDateString("en-CA"),
-      startTime: new Date(event.startDate).toLocaleTimeString("en-GB", {
+      startDate: new Date(event.start_time).toLocaleDateString("en-CA"),
+      startTime: new Date(event.start_time).toLocaleTimeString("en-GB", {
         hour: "2-digit",
         minute: "2-digit",
         hour12: false,
       }),
-      endDate: new Date(event.endDate).toLocaleDateString("en-CA"),
-      endTime: new Date(event.endDate).toLocaleTimeString("en-GB", {
+      endDate: new Date(event.end_time).toLocaleDateString("en-CA"),
+      endTime: new Date(event.end_time).toLocaleTimeString("en-GB", {
         hour: "2-digit",
         minute: "2-digit",
         hour12: false,

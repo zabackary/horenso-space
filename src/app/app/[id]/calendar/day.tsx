@@ -1,7 +1,9 @@
 import { ListLoading } from "@/components/loading";
 import ClickableCard from "@/components/ui/clickable-card";
 import EmptyState from "@/components/ui/empty-state";
+import { gql } from "@/gql";
 import { createClient } from "@/lib/supabase/client";
+import { useSuspenseQuery } from "@apollo/client/react";
 import { Trans, useLingui } from "@lingui/react/macro";
 import {
   CalendarIcon,
@@ -10,11 +12,51 @@ import {
   TextIcon,
 } from "@radix-ui/react-icons";
 import { Box, Card, Flex, Heading, Separator, Text } from "@radix-ui/themes";
-import { Suspense, useEffect, useMemo, useState } from "react";
-import getReports, { AbsenceReport } from "../absences/(list)/getReports";
+import { Suspense, useMemo, useState } from "react";
 import AbsenceReportList from "../absences/(list)/list";
 import styles from "./day.module.css";
 import EventDetailDrawer from "./event-detail-drawer";
+
+const CalendarDayQuery = gql(`
+  query CalendarDay($clubId: UUID!, $date: Date!, $startDate: Datetime!, $endDate: Datetime!) {
+    calendar_eventsCollection(
+      filter: {
+        club_id: { eq: $clubId }
+        start_time: { gte: $startDate }
+        end_time: { lte: $endDate }
+      }
+      orderBy: {
+        start_time: AscNullsLast
+      }
+    ) {
+      edges {
+        node {
+          id
+          title
+          start_time
+          end_time
+          description
+          location
+          ...EventDetailDrawer
+        }
+      }
+    }
+
+    absence_reportsCollection(
+      filter: {
+        club_id: { eq: $clubId }
+        date: { eq: $date }
+      }
+    ) {
+      edges {
+        node {
+          id
+          ...AbsenceReportCard
+        }
+      }
+    }
+  }
+`);
 
 export interface DayCalendarProps {
   date: string;
@@ -41,90 +83,25 @@ export default function DayCalendar({
     return createClient();
   }, []);
 
-  const [events, setEvents] = useState<
-    | {
-        id: string;
-        title: string;
-        startDate: string;
-        endDate: string;
-        description?: string;
-        location?: string;
-      }[]
-    | null
-  >(null);
+  const { data, refetch } = useSuspenseQuery(CalendarDayQuery, {
+    variables: {
+      clubId,
+      date,
+      startDate: new Date(new Date(date).setHours(0, 0, 0, 0)).toISOString(),
+      endDate: new Date(new Date(date).setHours(23, 59, 59, 999)).toISOString(),
+    },
+  });
+
+  const events =
+    data?.calendar_eventsCollection?.edges.map((edge) => edge.node) ?? [];
+  const reports =
+    data?.absence_reportsCollection?.edges.map((edge) => ({
+      id: edge.node.id,
+      fragment: edge.node,
+    })) ?? [];
 
   const [selectedEventId, setSelectedEventId] = useState<string | null>(null);
   const [eventDrawerOpen, setEventDrawerOpen] = useState(false);
-  const [refreshTrigger, setRefreshTrigger] = useState(0);
-
-  useEffect(() => {
-    const abortController = new AbortController();
-
-    async function fetchEvents() {
-      const startOfDay = new Date(date);
-      startOfDay.setHours(0, 0, 0, 0);
-      const endOfDay = new Date(date);
-      endOfDay.setHours(23, 59, 59, 999);
-      const { data, error } = await supabase
-        .from("calendar_events")
-        .select("*")
-        .eq("club_id", clubId)
-        .gte("start_time", startOfDay.toISOString())
-        .lte("end_time", endOfDay.toISOString())
-        .order("start_time", { ascending: true })
-        .abortSignal(abortController.signal);
-
-      if (error) {
-        if (!error.message.includes("AbortError"))
-          console.error("Error fetching events:", error);
-      } else {
-        setEvents(
-          data.map((event) => ({
-            id: event.id,
-            title: event.title,
-            startDate: event.start_time,
-            endDate: event.end_time,
-            description: event.description || undefined,
-            location: event.location || undefined,
-          })),
-        );
-      }
-    }
-
-    setEvents(null);
-    fetchEvents();
-
-    return () => {
-      abortController.abort();
-    };
-  }, [date, clubId, supabase, refreshKey, refreshTrigger]);
-
-  const [reports, setReports] = useState<AbsenceReport[] | null>(null);
-  useEffect(() => {
-    if (!date) return;
-    const abortController = new AbortController();
-
-    async function fetchReports() {
-      const supabase = createClient();
-      const reports = await getReports(supabase, {
-        clubId,
-        date: new Date(date),
-      });
-      if (abortController.signal.aborted) return;
-      setReports(reports);
-    }
-
-    setReports(null);
-    fetchReports().catch((err) => {
-      if (err.name === "AbortError" || err.message.includes("AbortError"))
-        return;
-      console.error("Error fetching reports:", err);
-    });
-
-    return () => {
-      abortController.abort();
-    };
-  }, [date, clubId]);
 
   return (
     <div className={styles.container}>
@@ -170,8 +147,8 @@ export default function DayCalendar({
                 <Flex direction="column" gap="2">
                   <Heading size="5">{event.title}</Heading>
                   <Text size="2">
-                    {new Date(event.startDate).toLocaleTimeString()} -{" "}
-                    {new Date(event.endDate).toLocaleTimeString()}
+                    {new Date(event.start_time).toLocaleTimeString()} -{" "}
+                    {new Date(event.end_time).toLocaleTimeString()}
                   </Text>
                   {event.description && (
                     <Flex direction="row" gap="1" align="start">
@@ -202,7 +179,7 @@ export default function DayCalendar({
                 {reports !== null ? (
                   reports.length > 0 ? (
                     <AbsenceReportList
-                      reports={Promise.resolve(reports)}
+                      reports={reports}
                       clubId={clubId}
                       linkPathPrefix="/absences/all"
                     />
@@ -236,10 +213,10 @@ export default function DayCalendar({
             canWrite={canWrite}
             onDelete={() => {
               setEventDrawerOpen(false);
-              setRefreshTrigger((t) => t + 1);
+              refetch();
             }}
             onUpdate={() => {
-              setRefreshTrigger((t) => t + 1);
+              refetch();
             }}
           />
         )}
