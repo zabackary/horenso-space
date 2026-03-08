@@ -18,11 +18,11 @@ import styles from "./create-event-card.module.css";
 import EventForm, { type EventFormData } from "./event-form";
 
 export const EventDetailDrawerFragment = gql(`
-  fragment EventDetailDrawer on calendar_events {
+  fragment EventDetailDrawer on CalendarEvents {
     id
     title
-    start_time
-    end_time
+    startTime
+    endTime
     description
     location
   }
@@ -59,21 +59,21 @@ export default function EventDetailDrawer({
   // Form state - convert event to form data
   const eventToFormData = (event: {
     title: string;
-    start_time: string;
-    end_time: string;
+    startTime: string;
+    endTime: string;
     location?: string | null;
     description?: string | null;
   }): EventFormData => {
     return {
       title: event.title,
-      startDate: new Date(event.start_time).toLocaleDateString("en-CA"),
-      startTime: new Date(event.start_time).toLocaleTimeString("en-GB", {
+      startDate: new Date(event.startTime).toLocaleDateString("en-CA"),
+      startTime: new Date(event.startTime).toLocaleTimeString("en-GB", {
         hour: "2-digit",
         minute: "2-digit",
         hour12: false,
       }),
-      endDate: new Date(event.end_time).toLocaleDateString("en-CA"),
-      endTime: new Date(event.end_time).toLocaleTimeString("en-GB", {
+      endDate: new Date(event.endTime).toLocaleDateString("en-CA"),
+      endTime: new Date(event.endTime).toLocaleTimeString("en-GB", {
         hour: "2-digit",
         minute: "2-digit",
         hour12: false,

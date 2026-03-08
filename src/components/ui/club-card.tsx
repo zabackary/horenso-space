@@ -36,7 +36,7 @@ function stringToColor(str: string) {
 }
 
 export const ClubCardFragment = gql(`
-  fragment ClubCard on clubs {
+  fragment ClubCard on Clubs {
     id
     name
     school

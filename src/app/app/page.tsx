@@ -12,10 +12,10 @@ import Link from "next/link";
 
 const joinedClubsQuery = gql(`
   query JoinedClubs($me: UUID!) {
-    club_membersCollection(filter: { user_id: { eq: $me } }) {
+    clubMembersCollection(filter: { userId: { eq: $me } }) {
       edges {
         node {
-          clubs {
+          club {
             nodeId,
             ...ClubCard
           }
@@ -40,7 +40,7 @@ export default async function App({ params }: PageProps<"/app">) {
   }
 
   const clubs =
-    data?.club_membersCollection?.edges.map((e) => e.node.clubs ?? []).flat() ??
+    data?.clubMembersCollection?.edges.map((e) => e.node.club ?? []).flat() ??
     [];
 
   return (

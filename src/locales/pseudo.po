@@ -45,7 +45,7 @@ msgstr ""
 msgid "Absence forms"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "Absence is approved"
 msgstr ""
 
@@ -53,7 +53,7 @@ msgstr ""
 msgid "Absence is not approved"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "Absence is rejected"
 msgstr ""
 
@@ -92,7 +92,7 @@ msgstr ""
 msgid "Accept"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "Accepted"
 msgstr ""
 
@@ -212,7 +212,7 @@ msgstr ""
 msgid "Assigned Reports"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "Assigned to"
 msgstr ""
 
@@ -249,7 +249,8 @@ msgstr ""
 msgid "Calendar"
 msgstr ""
 
-#: src/components/club-config/invite.tsx
+#: src/app/app/[id]/calendar/event-detail-drawer.tsx
+#: src/app/app/[id]/calendar/event-detail-drawer.tsx
 msgid "Cancel"
 msgstr ""
 
@@ -394,7 +395,8 @@ msgstr ""
 msgid "Day"
 msgstr ""
 
-#: src/components/club-config/invite.tsx
+#: src/app/app/[id]/calendar/event-detail-drawer.tsx
+#: src/app/app/[id]/calendar/event-detail-drawer.tsx
 msgid "Delete"
 msgstr ""
 
@@ -479,7 +481,7 @@ msgstr ""
 msgid "Error updating password: {0}"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "Event"
 msgstr ""
 
@@ -487,7 +489,7 @@ msgstr ""
 msgid "Event Absence"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "Event date"
 msgstr ""
 
@@ -772,7 +774,7 @@ msgstr ""
 msgid "Loading approval status..."
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "Loading report status..."
 msgstr ""
 
@@ -878,7 +880,7 @@ msgstr ""
 #~ msgid "No absence reports for this day."
 #~ msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "No additional data"
 msgstr ""
 
@@ -890,7 +892,7 @@ msgstr ""
 msgid "No date"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "No event"
 msgstr ""
 
@@ -1051,7 +1053,7 @@ msgstr ""
 msgid "Reject"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "Rejected"
 msgstr ""
 
@@ -1072,11 +1074,11 @@ msgstr ""
 msgid "Report an absence"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/all/[reportId]/page.tsx
+#: src/app/app/[id]/absences/(list)/my/[reportId]/page.tsx
 msgid "Report details"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "Report Details"
 msgstr ""
 
@@ -1328,7 +1330,7 @@ msgstr ""
 msgid "Submitted at {0}"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "Submitted by"
 msgstr ""
 
@@ -1352,7 +1354,7 @@ msgstr ""
 msgid "The profile URL has been copied to your clipboard."
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "The report is pending review"
 msgstr ""
 
@@ -1396,7 +1398,7 @@ msgstr ""
 msgid "Type in your email and we'll send you a link to reset your password"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "Unassigned"
 msgstr ""
 
@@ -1404,7 +1406,7 @@ msgstr ""
 msgid "Understand quickly who's where and when"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/components/ui/absence-report-card.tsx
 msgid "Unknown"
 msgstr ""
 

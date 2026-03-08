@@ -10,11 +10,11 @@ import { Flex } from "@radix-ui/themes";
 
 const allReportsQuery = gql(`
   query AllAbsenceReports($clubId: UUID!) {
-    absence_reportsCollection(
+    absenceReportsCollection(
       filter: {
-        club_id: { eq: $clubId }
+        clubId: { eq: $clubId }
       }
-      orderBy: { created_at: DescNullsFirst }
+      orderBy: { createdAt: DescNullsFirst }
       offset: 0
     ) {
       edges {
@@ -34,7 +34,7 @@ export function AllReportsList({ clubId }: { clubId: string }) {
       clubId: clubId,
     },
   });
-  const reports = data?.absence_reportsCollection?.edges ?? [];
+  const reports = data?.absenceReportsCollection?.edges ?? [];
 
   return reports.length <= 0 ? (
     <EmptyState icon={<FileTextIcon />} title={t`No absence reports`} />

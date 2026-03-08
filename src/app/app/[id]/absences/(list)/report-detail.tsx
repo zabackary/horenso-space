@@ -19,44 +19,44 @@ import {
 } from "@radix-ui/themes";
 
 export const AbsenceReportDetailFragment = gql(`
-  fragment AbsenceReportDetail on absence_reports {
+  fragment AbsenceReportDetail on AbsenceReports {
     id
     date
-    created_at
+    createdAt
     data
 
-    assigned_to_role: roles {
+    assignedToRole: roles {
       name
     }
-    form: absence_report_forms {
+    form: form {
       id
       name
       questions 
     }
 
-    reviews: absence_report_reviewsCollection {
+    reviews: absenceReportReviewsCollection  {
       edges {
         node {
           id
-          created_at
+          createdAt
           accepted
           comments
-          reviewer: profiles {
-            full_name
+          reviewer {
+            fullName
           }
         }
       }
     }
     
-    event: calendar_events {
+    event {
       id
       title
-      start_time
-      end_time
+      startTime
+      endTime
     }
-    user: profiles {
-      full_name
-      avatar_url
+    user {
+      fullName
+      avatarUrl
     }
   }
 `);
@@ -133,11 +133,11 @@ export default function ReportDetail({
           <DataList.Value>
             <Avatar
               size="2"
-              src={report.user?.avatar_url || undefined}
-              alt={report.user?.full_name}
-              fallback={report.user?.full_name?.charAt(0)?.toUpperCase() || "?"}
+              src={report.user?.avatarUrl || undefined}
+              alt={report.user?.fullName}
+              fallback={report.user?.fullName?.charAt(0)?.toUpperCase() || "?"}
             />{" "}
-            {report.user?.full_name}
+            {report.user?.fullName}
           </DataList.Value>
         </DataList.Item>
 
@@ -150,13 +150,13 @@ export default function ReportDetail({
           </DataList.Value>
         </DataList.Item>
 
-        {report.event?.start_time && (
+        {report.event?.startTime && (
           <DataList.Item>
             <DataList.Label>
               <Trans>Event date</Trans>
             </DataList.Label>
             <DataList.Value>
-              {new Date(report.event.start_time).toLocaleString()}
+              {new Date(report.event.startTime).toLocaleString()}
             </DataList.Value>
           </DataList.Item>
         )}
@@ -166,7 +166,7 @@ export default function ReportDetail({
             <Trans>Assigned to</Trans>
           </DataList.Label>
           <DataList.Value>
-            {report.assigned_to_role?.name || <Trans>Unassigned</Trans>}
+            {report.assignedToRole?.name || <Trans>Unassigned</Trans>}
           </DataList.Value>
         </DataList.Item>
       </DataList.Root>
@@ -208,7 +208,7 @@ export default function ReportDetail({
                   <Flex direction="column" gap="2">
                     <Flex justify="between" align="center">
                       <Text weight="bold">
-                        {review.node.reviewer?.full_name}
+                        {review.node.reviewer?.fullName}
                       </Text>
                       <Badge
                         size="2"
@@ -225,7 +225,7 @@ export default function ReportDetail({
                       <Text size="2">{review.node.comments}</Text>
                     )}
                     <Text size="1" color="gray">
-                      {new Date(review.node.created_at).toLocaleString()}
+                      {new Date(review.node.createdAt).toLocaleString()}
                     </Text>
                   </Flex>
                 </Card>

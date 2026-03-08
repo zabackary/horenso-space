@@ -19,22 +19,22 @@ import EventDetailDrawer from "./event-detail-drawer";
 
 const CalendarDayQuery = gql(`
   query CalendarDay($clubId: UUID!, $date: Date!, $startDate: Datetime!, $endDate: Datetime!) {
-    calendar_eventsCollection(
+    calendarEventsCollection(
       filter: {
-        club_id: { eq: $clubId }
-        start_time: { gte: $startDate }
-        end_time: { lte: $endDate }
+        clubId: { eq: $clubId }
+        startTime: { gte: $startDate }
+        endTime: { lte: $endDate }
       }
       orderBy: {
-        start_time: AscNullsLast
+        startTime: AscNullsLast
       }
     ) {
       edges {
         node {
           id
           title
-          start_time
-          end_time
+          startTime
+          endTime
           description
           location
           ...EventDetailDrawer
@@ -42,9 +42,9 @@ const CalendarDayQuery = gql(`
       }
     }
 
-    absence_reportsCollection(
+    absenceReportsCollection(
       filter: {
-        club_id: { eq: $clubId }
+        clubId: { eq: $clubId }
         date: { eq: $date }
       }
     ) {
@@ -93,9 +93,9 @@ export default function DayCalendar({
   });
 
   const events =
-    data?.calendar_eventsCollection?.edges.map((edge) => edge.node) ?? [];
+    data?.calendarEventsCollection?.edges.map((edge) => edge.node) ?? [];
   const reports =
-    data?.absence_reportsCollection?.edges.map((edge) => ({
+    data?.absenceReportsCollection?.edges.map((edge) => ({
       id: edge.node.id,
       fragment: edge.node,
     })) ?? [];
@@ -147,8 +147,8 @@ export default function DayCalendar({
                 <Flex direction="column" gap="2">
                   <Heading size="5">{event.title}</Heading>
                   <Text size="2">
-                    {new Date(event.start_time).toLocaleTimeString()} -{" "}
-                    {new Date(event.end_time).toLocaleTimeString()}
+                    {new Date(event.startTime).toLocaleTimeString()} -{" "}
+                    {new Date(event.endTime).toLocaleTimeString()}
                   </Text>
                   {event.description && (
                     <Flex direction="row" gap="1" align="start">

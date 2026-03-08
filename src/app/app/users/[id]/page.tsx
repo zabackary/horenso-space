@@ -11,10 +11,10 @@ import { redirect } from "next/navigation";
 
 const UserQuery = gql(`
   query User($id: UUID!) {
-    club_membersCollection(filter: { user_id: { eq: $id } }) {
+    clubMembersCollection(filter: { userId: { eq: $id } }) {
       edges {
         node {
-          clubs {
+          club {
             nodeId,
             ...ClubCard
           }
@@ -42,8 +42,8 @@ export default async function UserPage({
     variables: { id },
   });
 
-  const mutualClubs = data?.club_membersCollection?.edges
-    .map((e) => e.node.clubs ?? [])
+  const mutualClubs = data?.clubMembersCollection?.edges
+    .map((e) => e.node.club ?? [])
     .flat();
 
   return (

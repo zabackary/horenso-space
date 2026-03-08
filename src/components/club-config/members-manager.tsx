@@ -22,30 +22,30 @@ import styles from "./members-manager.module.css";
 
 const MembersManagerQuery = gql(`
   query MembersManager($clubId: UUID!) {
-    club_membersCollection(
-      orderBy: { joined_at: DescNullsLast }
+    clubMembersCollection(
+      orderBy: { joinedAt: DescNullsLast }
       first: 100
-      filter: { club_id: { eq: $clubId } }
+      filter: { clubId: { eq: $clubId } }
     ) {
       edges {
         node {
-          user: profiles {
-            full_name
+          user {
+            fullName
             nickname
-            avatar_url
+            avatarUrl
           }
-          role: roles {
+          role {
             name
             id
           }
-          user_id
+          userId
         }
       }
     }
     rolesCollection(
       orderBy: { name: AscNullsLast }
       first: 100
-      filter: { club_id: { eq: $clubId } }
+      filter: { clubId: { eq: $clubId } }
     ) {
       edges {
         node {
@@ -59,9 +59,9 @@ const MembersManagerQuery = gql(`
 
 const ChangeMemberRoleMutation = gql(`
   mutation ChangeMemberRole($clubId: UUID!, $userId: UUID!, $roleId: UUID) {
-    updateclub_membersCollection(
-      set: {role_id: $roleId}
-      filter: {user_id: {eq: $userId}, club_id: {eq: $clubId}}
+    updateClubMembersCollection(
+      set: {roleId: $roleId}
+      filter: {userId: {eq: $userId}, clubId: {eq: $clubId}}
       atMost: 1
     ) {
       affectedCount
@@ -71,8 +71,8 @@ const ChangeMemberRoleMutation = gql(`
 
 const RemoveMemberMutation = gql(`
   mutation RemoveMember($clubId: UUID!, $userId: UUID!) {
-    deleteFromclub_membersCollection(
-      filter: {user_id: {eq: $userId}, club_id: {eq: $clubId}}
+    deleteFromClubMembersCollection(
+      filter: {userId: {eq: $userId}, clubId: {eq: $clubId}}
       atMost: 1
     ) {
       affectedCount
@@ -101,7 +101,7 @@ export default function MembersManager({ clubId }: { clubId: string }) {
     );
   }
 
-  const members = data?.club_membersCollection?.edges.map((e) => e.node) ?? [];
+  const members = data?.clubMembersCollection?.edges.map((e) => e.node) ?? [];
   const roles = data?.rolesCollection?.edges.map((e) => e.node) ?? [];
 
   const { t } = useLingui();
@@ -169,22 +169,20 @@ export default function MembersManager({ clubId }: { clubId: string }) {
         ) : (
           members.map((m) => {
             const displayName =
-              m.user?.full_name ?? m.user?.nickname ?? t`Unknown user`;
+              m.user?.fullName ?? m.user?.nickname ?? t`Unknown user`;
             const role = m.role?.name ?? t`No role`;
 
             return (
-              <Card key={m.user_id}>
+              <Card key={m.userId}>
                 <Flex align="center" gap="3" justify="between" width="100%">
                   <Avatar
                     fallback={displayName.charAt(0).toUpperCase()}
                     size="4"
-                    src={m.user?.avatar_url ?? undefined}
+                    src={m.user?.avatarUrl ?? undefined}
                   />
                   <Flex direction="column" style={{ flexGrow: 1 }} gap="1">
                     <RadixLink weight="bold" size="3" asChild>
-                      <Link href={`/app/users/${m.user_id}`}>
-                        {displayName}
-                      </Link>
+                      <Link href={`/app/users/${m.userId}`}>{displayName}</Link>
                     </RadixLink>
                     <Text size="2" color="gray">
                       <Trans>Role: {role}</Trans>
@@ -193,7 +191,7 @@ export default function MembersManager({ clubId }: { clubId: string }) {
                   <Flex align="center" gap="2">
                     <Select.Root
                       value={m.role?.id ?? undefined}
-                      onValueChange={(val) => changeRole(m.user_id, val)}
+                      onValueChange={(val) => changeRole(m.userId, val)}
                     >
                       <Select.Trigger />
                       <Select.Content>
@@ -205,7 +203,7 @@ export default function MembersManager({ clubId }: { clubId: string }) {
                       </Select.Content>
                     </Select.Root>
                     <Button
-                      onClick={() => removeMember(m.user_id)}
+                      onClick={() => removeMember(m.userId)}
                       variant="soft"
                       color="red"
                     >

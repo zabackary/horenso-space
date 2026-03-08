@@ -12,7 +12,7 @@ import ReportDetail from "../../report-detail";
 
 const AbsenceReportAllDetailQuery = gql(`
   query AbsenceReportAllDetail($reportId: UUID!) {
-    absence_reportsCollection(
+    absenceReportsCollection(
       filter: {
         id: { eq: $reportId }
       }
@@ -47,7 +47,7 @@ export default async function Page({
         reportId: reportId,
       },
     })
-  ).data?.absence_reportsCollection?.edges[0]?.node;
+  ).data?.absenceReportsCollection?.edges[0]?.node;
 
   if (!report) {
     notFound();

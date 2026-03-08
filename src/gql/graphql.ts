@@ -34,6 +34,440 @@ export type Scalars = {
   UUID: { input: string; output: string; }
 };
 
+export type AbsenceReportForms = Node & {
+  __typename?: 'AbsenceReportForms';
+  absenceReportsCollection?: Maybe<AbsenceReportsConnection>;
+  club?: Maybe<Clubs>;
+  clubId: Scalars['UUID']['output'];
+  createdAt: Scalars['Datetime']['output'];
+  id: Scalars['UUID']['output'];
+  name: Scalars['String']['output'];
+  /** Globally Unique Record Identifier */
+  nodeId: Scalars['ID']['output'];
+  questions: Scalars['JSON']['output'];
+  rolesCollection?: Maybe<RolesConnection>;
+  updatedAt: Scalars['Datetime']['output'];
+};
+
+
+export type AbsenceReportFormsAbsenceReportsCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<AbsenceReportsFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<AbsenceReportsOrderBy>>;
+};
+
+
+export type AbsenceReportFormsRolesCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<RolesFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<RolesOrderBy>>;
+};
+
+export type AbsenceReportFormsConnection = {
+  __typename?: 'AbsenceReportFormsConnection';
+  edges: Array<AbsenceReportFormsEdge>;
+  pageInfo: PageInfo;
+};
+
+export type AbsenceReportFormsDeleteResponse = {
+  __typename?: 'AbsenceReportFormsDeleteResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<AbsenceReportForms>;
+};
+
+export type AbsenceReportFormsEdge = {
+  __typename?: 'AbsenceReportFormsEdge';
+  cursor: Scalars['String']['output'];
+  node: AbsenceReportForms;
+};
+
+export type AbsenceReportFormsFilter = {
+  /** Returns true only if all its inner filters are true, otherwise returns false */
+  and?: InputMaybe<Array<AbsenceReportFormsFilter>>;
+  clubId?: InputMaybe<UuidFilter>;
+  createdAt?: InputMaybe<DatetimeFilter>;
+  id?: InputMaybe<UuidFilter>;
+  name?: InputMaybe<StringFilter>;
+  nodeId?: InputMaybe<IdFilter>;
+  /** Negates a filter */
+  not?: InputMaybe<AbsenceReportFormsFilter>;
+  /** Returns true if at least one of its inner filters is true, otherwise returns false */
+  or?: InputMaybe<Array<AbsenceReportFormsFilter>>;
+  updatedAt?: InputMaybe<DatetimeFilter>;
+};
+
+export type AbsenceReportFormsInsertInput = {
+  clubId?: InputMaybe<Scalars['UUID']['input']>;
+  createdAt?: InputMaybe<Scalars['Datetime']['input']>;
+  id?: InputMaybe<Scalars['UUID']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  questions?: InputMaybe<Scalars['JSON']['input']>;
+  updatedAt?: InputMaybe<Scalars['Datetime']['input']>;
+};
+
+export type AbsenceReportFormsInsertResponse = {
+  __typename?: 'AbsenceReportFormsInsertResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<AbsenceReportForms>;
+};
+
+export type AbsenceReportFormsOrderBy = {
+  clubId?: InputMaybe<OrderByDirection>;
+  createdAt?: InputMaybe<OrderByDirection>;
+  id?: InputMaybe<OrderByDirection>;
+  name?: InputMaybe<OrderByDirection>;
+  updatedAt?: InputMaybe<OrderByDirection>;
+};
+
+export type AbsenceReportFormsUpdateInput = {
+  clubId?: InputMaybe<Scalars['UUID']['input']>;
+  createdAt?: InputMaybe<Scalars['Datetime']['input']>;
+  id?: InputMaybe<Scalars['UUID']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  questions?: InputMaybe<Scalars['JSON']['input']>;
+  updatedAt?: InputMaybe<Scalars['Datetime']['input']>;
+};
+
+export type AbsenceReportFormsUpdateResponse = {
+  __typename?: 'AbsenceReportFormsUpdateResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<AbsenceReportForms>;
+};
+
+export type AbsenceReportReviews = Node & {
+  __typename?: 'AbsenceReportReviews';
+  absenceReport?: Maybe<AbsenceReports>;
+  absenceReportId: Scalars['UUID']['output'];
+  accepted: Scalars['Boolean']['output'];
+  comments?: Maybe<Scalars['String']['output']>;
+  createdAt: Scalars['Datetime']['output'];
+  id: Scalars['UUID']['output'];
+  /** Globally Unique Record Identifier */
+  nodeId: Scalars['ID']['output'];
+  reviewer?: Maybe<Profiles>;
+  reviewerId?: Maybe<Scalars['UUID']['output']>;
+  updatedAt: Scalars['Datetime']['output'];
+};
+
+export type AbsenceReportReviewsConnection = {
+  __typename?: 'AbsenceReportReviewsConnection';
+  edges: Array<AbsenceReportReviewsEdge>;
+  pageInfo: PageInfo;
+};
+
+export type AbsenceReportReviewsDeleteResponse = {
+  __typename?: 'AbsenceReportReviewsDeleteResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<AbsenceReportReviews>;
+};
+
+export type AbsenceReportReviewsEdge = {
+  __typename?: 'AbsenceReportReviewsEdge';
+  cursor: Scalars['String']['output'];
+  node: AbsenceReportReviews;
+};
+
+export type AbsenceReportReviewsFilter = {
+  absenceReportId?: InputMaybe<UuidFilter>;
+  accepted?: InputMaybe<BooleanFilter>;
+  /** Returns true only if all its inner filters are true, otherwise returns false */
+  and?: InputMaybe<Array<AbsenceReportReviewsFilter>>;
+  comments?: InputMaybe<StringFilter>;
+  createdAt?: InputMaybe<DatetimeFilter>;
+  id?: InputMaybe<UuidFilter>;
+  nodeId?: InputMaybe<IdFilter>;
+  /** Negates a filter */
+  not?: InputMaybe<AbsenceReportReviewsFilter>;
+  /** Returns true if at least one of its inner filters is true, otherwise returns false */
+  or?: InputMaybe<Array<AbsenceReportReviewsFilter>>;
+  reviewerId?: InputMaybe<UuidFilter>;
+  updatedAt?: InputMaybe<DatetimeFilter>;
+};
+
+export type AbsenceReportReviewsInsertInput = {
+  absenceReportId?: InputMaybe<Scalars['UUID']['input']>;
+  accepted?: InputMaybe<Scalars['Boolean']['input']>;
+  comments?: InputMaybe<Scalars['String']['input']>;
+  createdAt?: InputMaybe<Scalars['Datetime']['input']>;
+  id?: InputMaybe<Scalars['UUID']['input']>;
+  reviewerId?: InputMaybe<Scalars['UUID']['input']>;
+  updatedAt?: InputMaybe<Scalars['Datetime']['input']>;
+};
+
+export type AbsenceReportReviewsInsertResponse = {
+  __typename?: 'AbsenceReportReviewsInsertResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<AbsenceReportReviews>;
+};
+
+export type AbsenceReportReviewsOrderBy = {
+  absenceReportId?: InputMaybe<OrderByDirection>;
+  accepted?: InputMaybe<OrderByDirection>;
+  comments?: InputMaybe<OrderByDirection>;
+  createdAt?: InputMaybe<OrderByDirection>;
+  id?: InputMaybe<OrderByDirection>;
+  reviewerId?: InputMaybe<OrderByDirection>;
+  updatedAt?: InputMaybe<OrderByDirection>;
+};
+
+export type AbsenceReportReviewsUpdateInput = {
+  absenceReportId?: InputMaybe<Scalars['UUID']['input']>;
+  accepted?: InputMaybe<Scalars['Boolean']['input']>;
+  comments?: InputMaybe<Scalars['String']['input']>;
+  createdAt?: InputMaybe<Scalars['Datetime']['input']>;
+  id?: InputMaybe<Scalars['UUID']['input']>;
+  reviewerId?: InputMaybe<Scalars['UUID']['input']>;
+  updatedAt?: InputMaybe<Scalars['Datetime']['input']>;
+};
+
+export type AbsenceReportReviewsUpdateResponse = {
+  __typename?: 'AbsenceReportReviewsUpdateResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<AbsenceReportReviews>;
+};
+
+export type AbsenceReports = Node & {
+  __typename?: 'AbsenceReports';
+  absenceReportReviewsCollection?: Maybe<AbsenceReportReviewsConnection>;
+  absenceReportsStatusCollection?: Maybe<AbsenceReportsStatusConnection>;
+  assignedToRole?: Maybe<Scalars['UUID']['output']>;
+  club?: Maybe<Clubs>;
+  clubId: Scalars['UUID']['output'];
+  createdAt: Scalars['Datetime']['output'];
+  data: Scalars['JSON']['output'];
+  date?: Maybe<Scalars['Date']['output']>;
+  event?: Maybe<CalendarEvents>;
+  eventId?: Maybe<Scalars['UUID']['output']>;
+  form?: Maybe<AbsenceReportForms>;
+  formId?: Maybe<Scalars['UUID']['output']>;
+  id: Scalars['UUID']['output'];
+  /** Globally Unique Record Identifier */
+  nodeId: Scalars['ID']['output'];
+  roles?: Maybe<Roles>;
+  updatedAt: Scalars['Datetime']['output'];
+  user?: Maybe<Profiles>;
+  userId?: Maybe<Scalars['UUID']['output']>;
+};
+
+
+export type AbsenceReportsAbsenceReportReviewsCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<AbsenceReportReviewsFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<AbsenceReportReviewsOrderBy>>;
+};
+
+
+export type AbsenceReportsAbsenceReportsStatusCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<AbsenceReportsStatusFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<AbsenceReportsStatusOrderBy>>;
+};
+
+export type AbsenceReportsConnection = {
+  __typename?: 'AbsenceReportsConnection';
+  edges: Array<AbsenceReportsEdge>;
+  pageInfo: PageInfo;
+};
+
+export type AbsenceReportsDeleteResponse = {
+  __typename?: 'AbsenceReportsDeleteResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<AbsenceReports>;
+};
+
+export type AbsenceReportsEdge = {
+  __typename?: 'AbsenceReportsEdge';
+  cursor: Scalars['String']['output'];
+  node: AbsenceReports;
+};
+
+export type AbsenceReportsFilter = {
+  /** Returns true only if all its inner filters are true, otherwise returns false */
+  and?: InputMaybe<Array<AbsenceReportsFilter>>;
+  assignedToRole?: InputMaybe<UuidFilter>;
+  clubId?: InputMaybe<UuidFilter>;
+  createdAt?: InputMaybe<DatetimeFilter>;
+  date?: InputMaybe<DateFilter>;
+  eventId?: InputMaybe<UuidFilter>;
+  formId?: InputMaybe<UuidFilter>;
+  id?: InputMaybe<UuidFilter>;
+  nodeId?: InputMaybe<IdFilter>;
+  /** Negates a filter */
+  not?: InputMaybe<AbsenceReportsFilter>;
+  /** Returns true if at least one of its inner filters is true, otherwise returns false */
+  or?: InputMaybe<Array<AbsenceReportsFilter>>;
+  updatedAt?: InputMaybe<DatetimeFilter>;
+  userId?: InputMaybe<UuidFilter>;
+};
+
+export type AbsenceReportsInsertInput = {
+  assignedToRole?: InputMaybe<Scalars['UUID']['input']>;
+  clubId?: InputMaybe<Scalars['UUID']['input']>;
+  createdAt?: InputMaybe<Scalars['Datetime']['input']>;
+  data?: InputMaybe<Scalars['JSON']['input']>;
+  date?: InputMaybe<Scalars['Date']['input']>;
+  eventId?: InputMaybe<Scalars['UUID']['input']>;
+  formId?: InputMaybe<Scalars['UUID']['input']>;
+  id?: InputMaybe<Scalars['UUID']['input']>;
+  updatedAt?: InputMaybe<Scalars['Datetime']['input']>;
+  userId?: InputMaybe<Scalars['UUID']['input']>;
+};
+
+export type AbsenceReportsInsertResponse = {
+  __typename?: 'AbsenceReportsInsertResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<AbsenceReports>;
+};
+
+export type AbsenceReportsOrderBy = {
+  assignedToRole?: InputMaybe<OrderByDirection>;
+  clubId?: InputMaybe<OrderByDirection>;
+  createdAt?: InputMaybe<OrderByDirection>;
+  date?: InputMaybe<OrderByDirection>;
+  eventId?: InputMaybe<OrderByDirection>;
+  formId?: InputMaybe<OrderByDirection>;
+  id?: InputMaybe<OrderByDirection>;
+  updatedAt?: InputMaybe<OrderByDirection>;
+  userId?: InputMaybe<OrderByDirection>;
+};
+
+export type AbsenceReportsStatus = Node & {
+  __typename?: 'AbsenceReportsStatus';
+  club?: Maybe<Clubs>;
+  clubId?: Maybe<Scalars['UUID']['output']>;
+  isApproved?: Maybe<Scalars['Boolean']['output']>;
+  /** Globally Unique Record Identifier */
+  nodeId: Scalars['ID']['output'];
+  report?: Maybe<AbsenceReports>;
+  reportId?: Maybe<Scalars['UUID']['output']>;
+  reportUser?: Maybe<Profiles>;
+  reportUserId?: Maybe<Scalars['UUID']['output']>;
+};
+
+export type AbsenceReportsStatusConnection = {
+  __typename?: 'AbsenceReportsStatusConnection';
+  edges: Array<AbsenceReportsStatusEdge>;
+  pageInfo: PageInfo;
+};
+
+export type AbsenceReportsStatusDeleteResponse = {
+  __typename?: 'AbsenceReportsStatusDeleteResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<AbsenceReportsStatus>;
+};
+
+export type AbsenceReportsStatusEdge = {
+  __typename?: 'AbsenceReportsStatusEdge';
+  cursor: Scalars['String']['output'];
+  node: AbsenceReportsStatus;
+};
+
+export type AbsenceReportsStatusFilter = {
+  /** Returns true only if all its inner filters are true, otherwise returns false */
+  and?: InputMaybe<Array<AbsenceReportsStatusFilter>>;
+  clubId?: InputMaybe<UuidFilter>;
+  isApproved?: InputMaybe<BooleanFilter>;
+  nodeId?: InputMaybe<IdFilter>;
+  /** Negates a filter */
+  not?: InputMaybe<AbsenceReportsStatusFilter>;
+  /** Returns true if at least one of its inner filters is true, otherwise returns false */
+  or?: InputMaybe<Array<AbsenceReportsStatusFilter>>;
+  reportId?: InputMaybe<UuidFilter>;
+  reportUserId?: InputMaybe<UuidFilter>;
+};
+
+export type AbsenceReportsStatusInsertInput = {
+  clubId?: InputMaybe<Scalars['UUID']['input']>;
+  isApproved?: InputMaybe<Scalars['Boolean']['input']>;
+  reportId?: InputMaybe<Scalars['UUID']['input']>;
+  reportUserId?: InputMaybe<Scalars['UUID']['input']>;
+};
+
+export type AbsenceReportsStatusInsertResponse = {
+  __typename?: 'AbsenceReportsStatusInsertResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<AbsenceReportsStatus>;
+};
+
+export type AbsenceReportsStatusOrderBy = {
+  clubId?: InputMaybe<OrderByDirection>;
+  isApproved?: InputMaybe<OrderByDirection>;
+  reportId?: InputMaybe<OrderByDirection>;
+  reportUserId?: InputMaybe<OrderByDirection>;
+};
+
+export type AbsenceReportsStatusUpdateInput = {
+  clubId?: InputMaybe<Scalars['UUID']['input']>;
+  isApproved?: InputMaybe<Scalars['Boolean']['input']>;
+  reportId?: InputMaybe<Scalars['UUID']['input']>;
+  reportUserId?: InputMaybe<Scalars['UUID']['input']>;
+};
+
+export type AbsenceReportsStatusUpdateResponse = {
+  __typename?: 'AbsenceReportsStatusUpdateResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<AbsenceReportsStatus>;
+};
+
+export type AbsenceReportsUpdateInput = {
+  assignedToRole?: InputMaybe<Scalars['UUID']['input']>;
+  clubId?: InputMaybe<Scalars['UUID']['input']>;
+  createdAt?: InputMaybe<Scalars['Datetime']['input']>;
+  data?: InputMaybe<Scalars['JSON']['input']>;
+  date?: InputMaybe<Scalars['Date']['input']>;
+  eventId?: InputMaybe<Scalars['UUID']['input']>;
+  formId?: InputMaybe<Scalars['UUID']['input']>;
+  id?: InputMaybe<Scalars['UUID']['input']>;
+  updatedAt?: InputMaybe<Scalars['Datetime']['input']>;
+  userId?: InputMaybe<Scalars['UUID']['input']>;
+};
+
+export type AbsenceReportsUpdateResponse = {
+  __typename?: 'AbsenceReportsUpdateResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<AbsenceReports>;
+};
+
 /** Boolean expression comparing fields on type "BigFloat" */
 export type BigFloatFilter = {
   eq?: InputMaybe<Scalars['BigFloat']['input']>;
@@ -91,6 +525,443 @@ export type BooleanListFilter = {
   overlaps?: InputMaybe<Array<Scalars['Boolean']['input']>>;
 };
 
+export type CalendarEvents = Node & {
+  __typename?: 'CalendarEvents';
+  absenceReportsCollection?: Maybe<AbsenceReportsConnection>;
+  club?: Maybe<Clubs>;
+  clubId: Scalars['UUID']['output'];
+  createdAt: Scalars['Datetime']['output'];
+  createdBy?: Maybe<Scalars['UUID']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  endTime: Scalars['Datetime']['output'];
+  id: Scalars['UUID']['output'];
+  location?: Maybe<Scalars['String']['output']>;
+  /** Globally Unique Record Identifier */
+  nodeId: Scalars['ID']['output'];
+  profiles?: Maybe<Profiles>;
+  startTime: Scalars['Datetime']['output'];
+  title: Scalars['String']['output'];
+  updatedAt: Scalars['Datetime']['output'];
+};
+
+
+export type CalendarEventsAbsenceReportsCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<AbsenceReportsFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<AbsenceReportsOrderBy>>;
+};
+
+export type CalendarEventsConnection = {
+  __typename?: 'CalendarEventsConnection';
+  edges: Array<CalendarEventsEdge>;
+  pageInfo: PageInfo;
+};
+
+export type CalendarEventsDeleteResponse = {
+  __typename?: 'CalendarEventsDeleteResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<CalendarEvents>;
+};
+
+export type CalendarEventsEdge = {
+  __typename?: 'CalendarEventsEdge';
+  cursor: Scalars['String']['output'];
+  node: CalendarEvents;
+};
+
+export type CalendarEventsFilter = {
+  /** Returns true only if all its inner filters are true, otherwise returns false */
+  and?: InputMaybe<Array<CalendarEventsFilter>>;
+  clubId?: InputMaybe<UuidFilter>;
+  createdAt?: InputMaybe<DatetimeFilter>;
+  createdBy?: InputMaybe<UuidFilter>;
+  description?: InputMaybe<StringFilter>;
+  endTime?: InputMaybe<DatetimeFilter>;
+  id?: InputMaybe<UuidFilter>;
+  location?: InputMaybe<StringFilter>;
+  nodeId?: InputMaybe<IdFilter>;
+  /** Negates a filter */
+  not?: InputMaybe<CalendarEventsFilter>;
+  /** Returns true if at least one of its inner filters is true, otherwise returns false */
+  or?: InputMaybe<Array<CalendarEventsFilter>>;
+  startTime?: InputMaybe<DatetimeFilter>;
+  title?: InputMaybe<StringFilter>;
+  updatedAt?: InputMaybe<DatetimeFilter>;
+};
+
+export type CalendarEventsInsertInput = {
+  clubId?: InputMaybe<Scalars['UUID']['input']>;
+  createdAt?: InputMaybe<Scalars['Datetime']['input']>;
+  createdBy?: InputMaybe<Scalars['UUID']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  endTime?: InputMaybe<Scalars['Datetime']['input']>;
+  id?: InputMaybe<Scalars['UUID']['input']>;
+  location?: InputMaybe<Scalars['String']['input']>;
+  startTime?: InputMaybe<Scalars['Datetime']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  updatedAt?: InputMaybe<Scalars['Datetime']['input']>;
+};
+
+export type CalendarEventsInsertResponse = {
+  __typename?: 'CalendarEventsInsertResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<CalendarEvents>;
+};
+
+export type CalendarEventsOrderBy = {
+  clubId?: InputMaybe<OrderByDirection>;
+  createdAt?: InputMaybe<OrderByDirection>;
+  createdBy?: InputMaybe<OrderByDirection>;
+  description?: InputMaybe<OrderByDirection>;
+  endTime?: InputMaybe<OrderByDirection>;
+  id?: InputMaybe<OrderByDirection>;
+  location?: InputMaybe<OrderByDirection>;
+  startTime?: InputMaybe<OrderByDirection>;
+  title?: InputMaybe<OrderByDirection>;
+  updatedAt?: InputMaybe<OrderByDirection>;
+};
+
+export type CalendarEventsUpdateInput = {
+  clubId?: InputMaybe<Scalars['UUID']['input']>;
+  createdAt?: InputMaybe<Scalars['Datetime']['input']>;
+  createdBy?: InputMaybe<Scalars['UUID']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  endTime?: InputMaybe<Scalars['Datetime']['input']>;
+  id?: InputMaybe<Scalars['UUID']['input']>;
+  location?: InputMaybe<Scalars['String']['input']>;
+  startTime?: InputMaybe<Scalars['Datetime']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  updatedAt?: InputMaybe<Scalars['Datetime']['input']>;
+};
+
+export type CalendarEventsUpdateResponse = {
+  __typename?: 'CalendarEventsUpdateResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<CalendarEvents>;
+};
+
+export type ClubMembers = Node & {
+  __typename?: 'ClubMembers';
+  accepted: Scalars['Boolean']['output'];
+  club?: Maybe<Clubs>;
+  clubId: Scalars['UUID']['output'];
+  joinedAt: Scalars['Datetime']['output'];
+  /** Globally Unique Record Identifier */
+  nodeId: Scalars['ID']['output'];
+  role?: Maybe<Roles>;
+  roleId: Scalars['UUID']['output'];
+  user?: Maybe<Profiles>;
+  userId: Scalars['UUID']['output'];
+};
+
+export type ClubMembersConnection = {
+  __typename?: 'ClubMembersConnection';
+  edges: Array<ClubMembersEdge>;
+  pageInfo: PageInfo;
+};
+
+export type ClubMembersDeleteResponse = {
+  __typename?: 'ClubMembersDeleteResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<ClubMembers>;
+};
+
+export type ClubMembersEdge = {
+  __typename?: 'ClubMembersEdge';
+  cursor: Scalars['String']['output'];
+  node: ClubMembers;
+};
+
+export type ClubMembersFilter = {
+  accepted?: InputMaybe<BooleanFilter>;
+  /** Returns true only if all its inner filters are true, otherwise returns false */
+  and?: InputMaybe<Array<ClubMembersFilter>>;
+  clubId?: InputMaybe<UuidFilter>;
+  joinedAt?: InputMaybe<DatetimeFilter>;
+  nodeId?: InputMaybe<IdFilter>;
+  /** Negates a filter */
+  not?: InputMaybe<ClubMembersFilter>;
+  /** Returns true if at least one of its inner filters is true, otherwise returns false */
+  or?: InputMaybe<Array<ClubMembersFilter>>;
+  roleId?: InputMaybe<UuidFilter>;
+  userId?: InputMaybe<UuidFilter>;
+};
+
+export type ClubMembersInsertInput = {
+  accepted?: InputMaybe<Scalars['Boolean']['input']>;
+  clubId?: InputMaybe<Scalars['UUID']['input']>;
+  joinedAt?: InputMaybe<Scalars['Datetime']['input']>;
+  roleId?: InputMaybe<Scalars['UUID']['input']>;
+  userId?: InputMaybe<Scalars['UUID']['input']>;
+};
+
+export type ClubMembersInsertResponse = {
+  __typename?: 'ClubMembersInsertResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<ClubMembers>;
+};
+
+export type ClubMembersOrderBy = {
+  accepted?: InputMaybe<OrderByDirection>;
+  clubId?: InputMaybe<OrderByDirection>;
+  joinedAt?: InputMaybe<OrderByDirection>;
+  roleId?: InputMaybe<OrderByDirection>;
+  userId?: InputMaybe<OrderByDirection>;
+};
+
+export type ClubMembersUpdateInput = {
+  accepted?: InputMaybe<Scalars['Boolean']['input']>;
+  clubId?: InputMaybe<Scalars['UUID']['input']>;
+  joinedAt?: InputMaybe<Scalars['Datetime']['input']>;
+  roleId?: InputMaybe<Scalars['UUID']['input']>;
+  userId?: InputMaybe<Scalars['UUID']['input']>;
+};
+
+export type ClubMembersUpdateResponse = {
+  __typename?: 'ClubMembersUpdateResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<ClubMembers>;
+};
+
+export type Clubs = Node & {
+  __typename?: 'Clubs';
+  absenceReportFormsCollection?: Maybe<AbsenceReportFormsConnection>;
+  absenceReportRequiredReviewer?: Maybe<Scalars['UUID']['output']>;
+  absenceReportSchema: Scalars['JSON']['output'];
+  absenceReportsCollection?: Maybe<AbsenceReportsConnection>;
+  absenceReportsStatusCollection?: Maybe<AbsenceReportsStatusConnection>;
+  active: Scalars['Boolean']['output'];
+  calendarEventsCollection?: Maybe<CalendarEventsConnection>;
+  clubMembersCollection?: Maybe<ClubMembersConnection>;
+  createdAt: Scalars['Datetime']['output'];
+  createdBy?: Maybe<Scalars['UUID']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  feedbackSubmissionsCollection?: Maybe<FeedbackSubmissionsConnection>;
+  filesCollection?: Maybe<FilesConnection>;
+  id: Scalars['UUID']['output'];
+  name: Scalars['String']['output'];
+  /** Globally Unique Record Identifier */
+  nodeId: Scalars['ID']['output'];
+  notificationsCollection?: Maybe<NotificationsConnection>;
+  profiles?: Maybe<Profiles>;
+  public: Scalars['Boolean']['output'];
+  rolesCollection?: Maybe<RolesConnection>;
+  school?: Maybe<Scalars['String']['output']>;
+  website?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type ClubsAbsenceReportFormsCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<AbsenceReportFormsFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<AbsenceReportFormsOrderBy>>;
+};
+
+
+export type ClubsAbsenceReportsCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<AbsenceReportsFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<AbsenceReportsOrderBy>>;
+};
+
+
+export type ClubsAbsenceReportsStatusCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<AbsenceReportsStatusFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<AbsenceReportsStatusOrderBy>>;
+};
+
+
+export type ClubsCalendarEventsCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<CalendarEventsFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<CalendarEventsOrderBy>>;
+};
+
+
+export type ClubsClubMembersCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<ClubMembersFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<ClubMembersOrderBy>>;
+};
+
+
+export type ClubsFeedbackSubmissionsCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<FeedbackSubmissionsFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<FeedbackSubmissionsOrderBy>>;
+};
+
+
+export type ClubsFilesCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<FilesFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<FilesOrderBy>>;
+};
+
+
+export type ClubsNotificationsCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<NotificationsFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<NotificationsOrderBy>>;
+};
+
+
+export type ClubsRolesCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<RolesFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<RolesOrderBy>>;
+};
+
+export type ClubsConnection = {
+  __typename?: 'ClubsConnection';
+  edges: Array<ClubsEdge>;
+  pageInfo: PageInfo;
+};
+
+export type ClubsDeleteResponse = {
+  __typename?: 'ClubsDeleteResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<Clubs>;
+};
+
+export type ClubsEdge = {
+  __typename?: 'ClubsEdge';
+  cursor: Scalars['String']['output'];
+  node: Clubs;
+};
+
+export type ClubsFilter = {
+  absenceReportRequiredReviewer?: InputMaybe<UuidFilter>;
+  active?: InputMaybe<BooleanFilter>;
+  /** Returns true only if all its inner filters are true, otherwise returns false */
+  and?: InputMaybe<Array<ClubsFilter>>;
+  createdAt?: InputMaybe<DatetimeFilter>;
+  createdBy?: InputMaybe<UuidFilter>;
+  description?: InputMaybe<StringFilter>;
+  id?: InputMaybe<UuidFilter>;
+  name?: InputMaybe<StringFilter>;
+  nodeId?: InputMaybe<IdFilter>;
+  /** Negates a filter */
+  not?: InputMaybe<ClubsFilter>;
+  /** Returns true if at least one of its inner filters is true, otherwise returns false */
+  or?: InputMaybe<Array<ClubsFilter>>;
+  public?: InputMaybe<BooleanFilter>;
+  school?: InputMaybe<StringFilter>;
+  website?: InputMaybe<StringFilter>;
+};
+
+export type ClubsInsertInput = {
+  absenceReportRequiredReviewer?: InputMaybe<Scalars['UUID']['input']>;
+  absenceReportSchema?: InputMaybe<Scalars['JSON']['input']>;
+  active?: InputMaybe<Scalars['Boolean']['input']>;
+  createdAt?: InputMaybe<Scalars['Datetime']['input']>;
+  createdBy?: InputMaybe<Scalars['UUID']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['UUID']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  public?: InputMaybe<Scalars['Boolean']['input']>;
+  school?: InputMaybe<Scalars['String']['input']>;
+  website?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ClubsInsertResponse = {
+  __typename?: 'ClubsInsertResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<Clubs>;
+};
+
+export type ClubsOrderBy = {
+  absenceReportRequiredReviewer?: InputMaybe<OrderByDirection>;
+  active?: InputMaybe<OrderByDirection>;
+  createdAt?: InputMaybe<OrderByDirection>;
+  createdBy?: InputMaybe<OrderByDirection>;
+  description?: InputMaybe<OrderByDirection>;
+  id?: InputMaybe<OrderByDirection>;
+  name?: InputMaybe<OrderByDirection>;
+  public?: InputMaybe<OrderByDirection>;
+  school?: InputMaybe<OrderByDirection>;
+  website?: InputMaybe<OrderByDirection>;
+};
+
+export type ClubsUpdateInput = {
+  absenceReportRequiredReviewer?: InputMaybe<Scalars['UUID']['input']>;
+  absenceReportSchema?: InputMaybe<Scalars['JSON']['input']>;
+  active?: InputMaybe<Scalars['Boolean']['input']>;
+  createdAt?: InputMaybe<Scalars['Datetime']['input']>;
+  createdBy?: InputMaybe<Scalars['UUID']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['UUID']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  public?: InputMaybe<Scalars['Boolean']['input']>;
+  school?: InputMaybe<Scalars['String']['input']>;
+  website?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ClubsUpdateResponse = {
+  __typename?: 'ClubsUpdateResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<Clubs>;
+};
+
 /** Boolean expression comparing fields on type "Date" */
 export type DateFilter = {
   eq?: InputMaybe<Scalars['Date']['input']>;
@@ -131,6 +1002,207 @@ export type DatetimeListFilter = {
   eq?: InputMaybe<Array<Scalars['Datetime']['input']>>;
   is?: InputMaybe<FilterIs>;
   overlaps?: InputMaybe<Array<Scalars['Datetime']['input']>>;
+};
+
+export type FeedbackSubmissions = Node & {
+  __typename?: 'FeedbackSubmissions';
+  club?: Maybe<Clubs>;
+  clubId?: Maybe<Scalars['UUID']['output']>;
+  createdAt: Scalars['Datetime']['output'];
+  feedback: Scalars['String']['output'];
+  id: Scalars['UUID']['output'];
+  /** Globally Unique Record Identifier */
+  nodeId: Scalars['ID']['output'];
+  user?: Maybe<Profiles>;
+  userId?: Maybe<Scalars['UUID']['output']>;
+};
+
+export type FeedbackSubmissionsConnection = {
+  __typename?: 'FeedbackSubmissionsConnection';
+  edges: Array<FeedbackSubmissionsEdge>;
+  pageInfo: PageInfo;
+};
+
+export type FeedbackSubmissionsDeleteResponse = {
+  __typename?: 'FeedbackSubmissionsDeleteResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<FeedbackSubmissions>;
+};
+
+export type FeedbackSubmissionsEdge = {
+  __typename?: 'FeedbackSubmissionsEdge';
+  cursor: Scalars['String']['output'];
+  node: FeedbackSubmissions;
+};
+
+export type FeedbackSubmissionsFilter = {
+  /** Returns true only if all its inner filters are true, otherwise returns false */
+  and?: InputMaybe<Array<FeedbackSubmissionsFilter>>;
+  clubId?: InputMaybe<UuidFilter>;
+  createdAt?: InputMaybe<DatetimeFilter>;
+  feedback?: InputMaybe<StringFilter>;
+  id?: InputMaybe<UuidFilter>;
+  nodeId?: InputMaybe<IdFilter>;
+  /** Negates a filter */
+  not?: InputMaybe<FeedbackSubmissionsFilter>;
+  /** Returns true if at least one of its inner filters is true, otherwise returns false */
+  or?: InputMaybe<Array<FeedbackSubmissionsFilter>>;
+  userId?: InputMaybe<UuidFilter>;
+};
+
+export type FeedbackSubmissionsInsertInput = {
+  clubId?: InputMaybe<Scalars['UUID']['input']>;
+  createdAt?: InputMaybe<Scalars['Datetime']['input']>;
+  feedback?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['UUID']['input']>;
+  userId?: InputMaybe<Scalars['UUID']['input']>;
+};
+
+export type FeedbackSubmissionsInsertResponse = {
+  __typename?: 'FeedbackSubmissionsInsertResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<FeedbackSubmissions>;
+};
+
+export type FeedbackSubmissionsOrderBy = {
+  clubId?: InputMaybe<OrderByDirection>;
+  createdAt?: InputMaybe<OrderByDirection>;
+  feedback?: InputMaybe<OrderByDirection>;
+  id?: InputMaybe<OrderByDirection>;
+  userId?: InputMaybe<OrderByDirection>;
+};
+
+export type FeedbackSubmissionsUpdateInput = {
+  clubId?: InputMaybe<Scalars['UUID']['input']>;
+  createdAt?: InputMaybe<Scalars['Datetime']['input']>;
+  feedback?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['UUID']['input']>;
+  userId?: InputMaybe<Scalars['UUID']['input']>;
+};
+
+export type FeedbackSubmissionsUpdateResponse = {
+  __typename?: 'FeedbackSubmissionsUpdateResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<FeedbackSubmissions>;
+};
+
+export type Files = Node & {
+  __typename?: 'Files';
+  club?: Maybe<Clubs>;
+  clubId?: Maybe<Scalars['UUID']['output']>;
+  createdAt: Scalars['Datetime']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  fileName: Scalars['String']['output'];
+  fileSize: Scalars['BigInt']['output'];
+  fileType: Scalars['String']['output'];
+  id: Scalars['UUID']['output'];
+  /** Globally Unique Record Identifier */
+  nodeId: Scalars['ID']['output'];
+  updatedAt: Scalars['Datetime']['output'];
+  url: Scalars['String']['output'];
+  user?: Maybe<Profiles>;
+  userId?: Maybe<Scalars['UUID']['output']>;
+};
+
+export type FilesConnection = {
+  __typename?: 'FilesConnection';
+  edges: Array<FilesEdge>;
+  pageInfo: PageInfo;
+};
+
+export type FilesDeleteResponse = {
+  __typename?: 'FilesDeleteResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<Files>;
+};
+
+export type FilesEdge = {
+  __typename?: 'FilesEdge';
+  cursor: Scalars['String']['output'];
+  node: Files;
+};
+
+export type FilesFilter = {
+  /** Returns true only if all its inner filters are true, otherwise returns false */
+  and?: InputMaybe<Array<FilesFilter>>;
+  clubId?: InputMaybe<UuidFilter>;
+  createdAt?: InputMaybe<DatetimeFilter>;
+  description?: InputMaybe<StringFilter>;
+  fileName?: InputMaybe<StringFilter>;
+  fileSize?: InputMaybe<BigIntFilter>;
+  fileType?: InputMaybe<StringFilter>;
+  id?: InputMaybe<UuidFilter>;
+  nodeId?: InputMaybe<IdFilter>;
+  /** Negates a filter */
+  not?: InputMaybe<FilesFilter>;
+  /** Returns true if at least one of its inner filters is true, otherwise returns false */
+  or?: InputMaybe<Array<FilesFilter>>;
+  updatedAt?: InputMaybe<DatetimeFilter>;
+  url?: InputMaybe<StringFilter>;
+  userId?: InputMaybe<UuidFilter>;
+};
+
+export type FilesInsertInput = {
+  clubId?: InputMaybe<Scalars['UUID']['input']>;
+  createdAt?: InputMaybe<Scalars['Datetime']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  fileName?: InputMaybe<Scalars['String']['input']>;
+  fileSize?: InputMaybe<Scalars['BigInt']['input']>;
+  fileType?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['UUID']['input']>;
+  updatedAt?: InputMaybe<Scalars['Datetime']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+  userId?: InputMaybe<Scalars['UUID']['input']>;
+};
+
+export type FilesInsertResponse = {
+  __typename?: 'FilesInsertResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<Files>;
+};
+
+export type FilesOrderBy = {
+  clubId?: InputMaybe<OrderByDirection>;
+  createdAt?: InputMaybe<OrderByDirection>;
+  description?: InputMaybe<OrderByDirection>;
+  fileName?: InputMaybe<OrderByDirection>;
+  fileSize?: InputMaybe<OrderByDirection>;
+  fileType?: InputMaybe<OrderByDirection>;
+  id?: InputMaybe<OrderByDirection>;
+  updatedAt?: InputMaybe<OrderByDirection>;
+  url?: InputMaybe<OrderByDirection>;
+  userId?: InputMaybe<OrderByDirection>;
+};
+
+export type FilesUpdateInput = {
+  clubId?: InputMaybe<Scalars['UUID']['input']>;
+  createdAt?: InputMaybe<Scalars['Datetime']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  fileName?: InputMaybe<Scalars['String']['input']>;
+  fileSize?: InputMaybe<Scalars['BigInt']['input']>;
+  fileType?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['UUID']['input']>;
+  updatedAt?: InputMaybe<Scalars['Datetime']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+  userId?: InputMaybe<Scalars['UUID']['input']>;
+};
+
+export type FilesUpdateResponse = {
+  __typename?: 'FilesUpdateResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<Files>;
 };
 
 export enum FilterIs {
@@ -185,313 +1257,454 @@ export type IntListFilter = {
   overlaps?: InputMaybe<Array<Scalars['Int']['input']>>;
 };
 
+export type JoinedClubs = Node & {
+  __typename?: 'JoinedClubs';
+  absenceReportRequiredReviewer?: Maybe<Scalars['UUID']['output']>;
+  absenceReportSchema?: Maybe<Scalars['JSON']['output']>;
+  active?: Maybe<Scalars['Boolean']['output']>;
+  createdAt?: Maybe<Scalars['Datetime']['output']>;
+  createdBy?: Maybe<Scalars['UUID']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['UUID']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  /** Globally Unique Record Identifier */
+  nodeId: Scalars['ID']['output'];
+  public?: Maybe<Scalars['Boolean']['output']>;
+  school?: Maybe<Scalars['String']['output']>;
+  website?: Maybe<Scalars['String']['output']>;
+};
+
+export type JoinedClubsConnection = {
+  __typename?: 'JoinedClubsConnection';
+  edges: Array<JoinedClubsEdge>;
+  pageInfo: PageInfo;
+};
+
+export type JoinedClubsDeleteResponse = {
+  __typename?: 'JoinedClubsDeleteResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<JoinedClubs>;
+};
+
+export type JoinedClubsEdge = {
+  __typename?: 'JoinedClubsEdge';
+  cursor: Scalars['String']['output'];
+  node: JoinedClubs;
+};
+
+export type JoinedClubsFilter = {
+  absenceReportRequiredReviewer?: InputMaybe<UuidFilter>;
+  active?: InputMaybe<BooleanFilter>;
+  /** Returns true only if all its inner filters are true, otherwise returns false */
+  and?: InputMaybe<Array<JoinedClubsFilter>>;
+  createdAt?: InputMaybe<DatetimeFilter>;
+  createdBy?: InputMaybe<UuidFilter>;
+  description?: InputMaybe<StringFilter>;
+  id?: InputMaybe<UuidFilter>;
+  name?: InputMaybe<StringFilter>;
+  nodeId?: InputMaybe<IdFilter>;
+  /** Negates a filter */
+  not?: InputMaybe<JoinedClubsFilter>;
+  /** Returns true if at least one of its inner filters is true, otherwise returns false */
+  or?: InputMaybe<Array<JoinedClubsFilter>>;
+  public?: InputMaybe<BooleanFilter>;
+  school?: InputMaybe<StringFilter>;
+  website?: InputMaybe<StringFilter>;
+};
+
+export type JoinedClubsInsertInput = {
+  absenceReportRequiredReviewer?: InputMaybe<Scalars['UUID']['input']>;
+  absenceReportSchema?: InputMaybe<Scalars['JSON']['input']>;
+  active?: InputMaybe<Scalars['Boolean']['input']>;
+  createdAt?: InputMaybe<Scalars['Datetime']['input']>;
+  createdBy?: InputMaybe<Scalars['UUID']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['UUID']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  public?: InputMaybe<Scalars['Boolean']['input']>;
+  school?: InputMaybe<Scalars['String']['input']>;
+  website?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type JoinedClubsInsertResponse = {
+  __typename?: 'JoinedClubsInsertResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<JoinedClubs>;
+};
+
+export type JoinedClubsOrderBy = {
+  absenceReportRequiredReviewer?: InputMaybe<OrderByDirection>;
+  active?: InputMaybe<OrderByDirection>;
+  createdAt?: InputMaybe<OrderByDirection>;
+  createdBy?: InputMaybe<OrderByDirection>;
+  description?: InputMaybe<OrderByDirection>;
+  id?: InputMaybe<OrderByDirection>;
+  name?: InputMaybe<OrderByDirection>;
+  public?: InputMaybe<OrderByDirection>;
+  school?: InputMaybe<OrderByDirection>;
+  website?: InputMaybe<OrderByDirection>;
+};
+
+export type JoinedClubsUpdateInput = {
+  absenceReportRequiredReviewer?: InputMaybe<Scalars['UUID']['input']>;
+  absenceReportSchema?: InputMaybe<Scalars['JSON']['input']>;
+  active?: InputMaybe<Scalars['Boolean']['input']>;
+  createdAt?: InputMaybe<Scalars['Datetime']['input']>;
+  createdBy?: InputMaybe<Scalars['UUID']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['UUID']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  public?: InputMaybe<Scalars['Boolean']['input']>;
+  school?: InputMaybe<Scalars['String']['input']>;
+  website?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type JoinedClubsUpdateResponse = {
+  __typename?: 'JoinedClubsUpdateResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<JoinedClubs>;
+};
+
 /** The root type for creating and mutating data */
 export type Mutation = {
   __typename?: 'Mutation';
-  /** Deletes zero or more records from the `absence_report_forms` collection */
-  deleteFromabsence_report_formsCollection: Absence_Report_FormsDeleteResponse;
-  /** Deletes zero or more records from the `absence_report_reviews` collection */
-  deleteFromabsence_report_reviewsCollection: Absence_Report_ReviewsDeleteResponse;
-  /** Deletes zero or more records from the `absence_reports` collection */
-  deleteFromabsence_reportsCollection: Absence_ReportsDeleteResponse;
-  /** Deletes zero or more records from the `calendar_events` collection */
-  deleteFromcalendar_eventsCollection: Calendar_EventsDeleteResponse;
-  /** Deletes zero or more records from the `club_members` collection */
-  deleteFromclub_membersCollection: Club_MembersDeleteResponse;
-  /** Deletes zero or more records from the `clubs` collection */
-  deleteFromclubsCollection: ClubsDeleteResponse;
-  /** Deletes zero or more records from the `feedback_submissions` collection */
-  deleteFromfeedback_submissionsCollection: Feedback_SubmissionsDeleteResponse;
-  /** Deletes zero or more records from the `files` collection */
-  deleteFromfilesCollection: FilesDeleteResponse;
-  /** Deletes zero or more records from the `joined_clubs` collection */
-  deleteFromjoined_clubsCollection: Joined_ClubsDeleteResponse;
-  /** Deletes zero or more records from the `notifications` collection */
-  deleteFromnotificationsCollection: NotificationsDeleteResponse;
-  /** Deletes zero or more records from the `profiles` collection */
-  deleteFromprofilesCollection: ProfilesDeleteResponse;
-  /** Deletes zero or more records from the `roles` collection */
-  deleteFromrolesCollection: RolesDeleteResponse;
-  /** Adds one or more `absence_report_forms` records to the collection */
-  insertIntoabsence_report_formsCollection?: Maybe<Absence_Report_FormsInsertResponse>;
-  /** Adds one or more `absence_report_reviews` records to the collection */
-  insertIntoabsence_report_reviewsCollection?: Maybe<Absence_Report_ReviewsInsertResponse>;
-  /** Adds one or more `absence_reports` records to the collection */
-  insertIntoabsence_reportsCollection?: Maybe<Absence_ReportsInsertResponse>;
-  /** Adds one or more `calendar_events` records to the collection */
-  insertIntocalendar_eventsCollection?: Maybe<Calendar_EventsInsertResponse>;
-  /** Adds one or more `club_members` records to the collection */
-  insertIntoclub_membersCollection?: Maybe<Club_MembersInsertResponse>;
-  /** Adds one or more `clubs` records to the collection */
-  insertIntoclubsCollection?: Maybe<ClubsInsertResponse>;
-  /** Adds one or more `feedback_submissions` records to the collection */
-  insertIntofeedback_submissionsCollection?: Maybe<Feedback_SubmissionsInsertResponse>;
-  /** Adds one or more `files` records to the collection */
-  insertIntofilesCollection?: Maybe<FilesInsertResponse>;
-  /** Adds one or more `joined_clubs` records to the collection */
-  insertIntojoined_clubsCollection?: Maybe<Joined_ClubsInsertResponse>;
-  /** Adds one or more `notifications` records to the collection */
-  insertIntonotificationsCollection?: Maybe<NotificationsInsertResponse>;
-  /** Adds one or more `profiles` records to the collection */
-  insertIntoprofilesCollection?: Maybe<ProfilesInsertResponse>;
-  /** Adds one or more `roles` records to the collection */
-  insertIntorolesCollection?: Maybe<RolesInsertResponse>;
-  invitations_accept?: Maybe<Scalars['Opaque']['output']>;
-  invitations_create?: Maybe<Scalars['UUID']['output']>;
-  invitations_delete?: Maybe<Scalars['Opaque']['output']>;
-  profiles_locale_get?: Maybe<Scalars['String']['output']>;
-  profiles_locale_set?: Maybe<Scalars['Opaque']['output']>;
-  /** Updates zero or more records in the `absence_report_forms` collection */
-  updateabsence_report_formsCollection: Absence_Report_FormsUpdateResponse;
-  /** Updates zero or more records in the `absence_report_reviews` collection */
-  updateabsence_report_reviewsCollection: Absence_Report_ReviewsUpdateResponse;
-  /** Updates zero or more records in the `absence_reports` collection */
-  updateabsence_reportsCollection: Absence_ReportsUpdateResponse;
-  /** Updates zero or more records in the `calendar_events` collection */
-  updatecalendar_eventsCollection: Calendar_EventsUpdateResponse;
-  /** Updates zero or more records in the `club_members` collection */
-  updateclub_membersCollection: Club_MembersUpdateResponse;
-  /** Updates zero or more records in the `clubs` collection */
-  updateclubsCollection: ClubsUpdateResponse;
-  /** Updates zero or more records in the `feedback_submissions` collection */
-  updatefeedback_submissionsCollection: Feedback_SubmissionsUpdateResponse;
-  /** Updates zero or more records in the `files` collection */
-  updatefilesCollection: FilesUpdateResponse;
-  /** Updates zero or more records in the `joined_clubs` collection */
-  updatejoined_clubsCollection: Joined_ClubsUpdateResponse;
-  /** Updates zero or more records in the `notifications` collection */
-  updatenotificationsCollection: NotificationsUpdateResponse;
-  /** Updates zero or more records in the `profiles` collection */
-  updateprofilesCollection: ProfilesUpdateResponse;
-  /** Updates zero or more records in the `roles` collection */
-  updaterolesCollection: RolesUpdateResponse;
+  /** Deletes zero or more records from the `AbsenceReportForms` collection */
+  deleteFromAbsenceReportFormsCollection: AbsenceReportFormsDeleteResponse;
+  /** Deletes zero or more records from the `AbsenceReportReviews` collection */
+  deleteFromAbsenceReportReviewsCollection: AbsenceReportReviewsDeleteResponse;
+  /** Deletes zero or more records from the `AbsenceReports` collection */
+  deleteFromAbsenceReportsCollection: AbsenceReportsDeleteResponse;
+  /** Deletes zero or more records from the `AbsenceReportsStatus` collection */
+  deleteFromAbsenceReportsStatusCollection: AbsenceReportsStatusDeleteResponse;
+  /** Deletes zero or more records from the `CalendarEvents` collection */
+  deleteFromCalendarEventsCollection: CalendarEventsDeleteResponse;
+  /** Deletes zero or more records from the `ClubMembers` collection */
+  deleteFromClubMembersCollection: ClubMembersDeleteResponse;
+  /** Deletes zero or more records from the `Clubs` collection */
+  deleteFromClubsCollection: ClubsDeleteResponse;
+  /** Deletes zero or more records from the `FeedbackSubmissions` collection */
+  deleteFromFeedbackSubmissionsCollection: FeedbackSubmissionsDeleteResponse;
+  /** Deletes zero or more records from the `Files` collection */
+  deleteFromFilesCollection: FilesDeleteResponse;
+  /** Deletes zero or more records from the `JoinedClubs` collection */
+  deleteFromJoinedClubsCollection: JoinedClubsDeleteResponse;
+  /** Deletes zero or more records from the `Notifications` collection */
+  deleteFromNotificationsCollection: NotificationsDeleteResponse;
+  /** Deletes zero or more records from the `Profiles` collection */
+  deleteFromProfilesCollection: ProfilesDeleteResponse;
+  /** Deletes zero or more records from the `Roles` collection */
+  deleteFromRolesCollection: RolesDeleteResponse;
+  /** Adds one or more `AbsenceReportForms` records to the collection */
+  insertIntoAbsenceReportFormsCollection?: Maybe<AbsenceReportFormsInsertResponse>;
+  /** Adds one or more `AbsenceReportReviews` records to the collection */
+  insertIntoAbsenceReportReviewsCollection?: Maybe<AbsenceReportReviewsInsertResponse>;
+  /** Adds one or more `AbsenceReports` records to the collection */
+  insertIntoAbsenceReportsCollection?: Maybe<AbsenceReportsInsertResponse>;
+  /** Adds one or more `AbsenceReportsStatus` records to the collection */
+  insertIntoAbsenceReportsStatusCollection?: Maybe<AbsenceReportsStatusInsertResponse>;
+  /** Adds one or more `CalendarEvents` records to the collection */
+  insertIntoCalendarEventsCollection?: Maybe<CalendarEventsInsertResponse>;
+  /** Adds one or more `ClubMembers` records to the collection */
+  insertIntoClubMembersCollection?: Maybe<ClubMembersInsertResponse>;
+  /** Adds one or more `Clubs` records to the collection */
+  insertIntoClubsCollection?: Maybe<ClubsInsertResponse>;
+  /** Adds one or more `FeedbackSubmissions` records to the collection */
+  insertIntoFeedbackSubmissionsCollection?: Maybe<FeedbackSubmissionsInsertResponse>;
+  /** Adds one or more `Files` records to the collection */
+  insertIntoFilesCollection?: Maybe<FilesInsertResponse>;
+  /** Adds one or more `JoinedClubs` records to the collection */
+  insertIntoJoinedClubsCollection?: Maybe<JoinedClubsInsertResponse>;
+  /** Adds one or more `Notifications` records to the collection */
+  insertIntoNotificationsCollection?: Maybe<NotificationsInsertResponse>;
+  /** Adds one or more `Profiles` records to the collection */
+  insertIntoProfilesCollection?: Maybe<ProfilesInsertResponse>;
+  /** Adds one or more `Roles` records to the collection */
+  insertIntoRolesCollection?: Maybe<RolesInsertResponse>;
+  invitationsAccept?: Maybe<Scalars['Opaque']['output']>;
+  invitationsCreate?: Maybe<Scalars['UUID']['output']>;
+  invitationsDelete?: Maybe<Scalars['Opaque']['output']>;
+  profilesLocaleGet?: Maybe<Scalars['String']['output']>;
+  profilesLocaleSet?: Maybe<Scalars['Opaque']['output']>;
+  /** Updates zero or more records in the `AbsenceReportForms` collection */
+  updateAbsenceReportFormsCollection: AbsenceReportFormsUpdateResponse;
+  /** Updates zero or more records in the `AbsenceReportReviews` collection */
+  updateAbsenceReportReviewsCollection: AbsenceReportReviewsUpdateResponse;
+  /** Updates zero or more records in the `AbsenceReports` collection */
+  updateAbsenceReportsCollection: AbsenceReportsUpdateResponse;
+  /** Updates zero or more records in the `AbsenceReportsStatus` collection */
+  updateAbsenceReportsStatusCollection: AbsenceReportsStatusUpdateResponse;
+  /** Updates zero or more records in the `CalendarEvents` collection */
+  updateCalendarEventsCollection: CalendarEventsUpdateResponse;
+  /** Updates zero or more records in the `ClubMembers` collection */
+  updateClubMembersCollection: ClubMembersUpdateResponse;
+  /** Updates zero or more records in the `Clubs` collection */
+  updateClubsCollection: ClubsUpdateResponse;
+  /** Updates zero or more records in the `FeedbackSubmissions` collection */
+  updateFeedbackSubmissionsCollection: FeedbackSubmissionsUpdateResponse;
+  /** Updates zero or more records in the `Files` collection */
+  updateFilesCollection: FilesUpdateResponse;
+  /** Updates zero or more records in the `JoinedClubs` collection */
+  updateJoinedClubsCollection: JoinedClubsUpdateResponse;
+  /** Updates zero or more records in the `Notifications` collection */
+  updateNotificationsCollection: NotificationsUpdateResponse;
+  /** Updates zero or more records in the `Profiles` collection */
+  updateProfilesCollection: ProfilesUpdateResponse;
+  /** Updates zero or more records in the `Roles` collection */
+  updateRolesCollection: RolesUpdateResponse;
 };
 
 
 /** The root type for creating and mutating data */
-export type MutationDeleteFromabsence_Report_FormsCollectionArgs = {
+export type MutationDeleteFromAbsenceReportFormsCollectionArgs = {
   atMost?: Scalars['Int']['input'];
-  filter?: InputMaybe<Absence_Report_FormsFilter>;
+  filter?: InputMaybe<AbsenceReportFormsFilter>;
 };
 
 
 /** The root type for creating and mutating data */
-export type MutationDeleteFromabsence_Report_ReviewsCollectionArgs = {
+export type MutationDeleteFromAbsenceReportReviewsCollectionArgs = {
   atMost?: Scalars['Int']['input'];
-  filter?: InputMaybe<Absence_Report_ReviewsFilter>;
+  filter?: InputMaybe<AbsenceReportReviewsFilter>;
 };
 
 
 /** The root type for creating and mutating data */
-export type MutationDeleteFromabsence_ReportsCollectionArgs = {
+export type MutationDeleteFromAbsenceReportsCollectionArgs = {
   atMost?: Scalars['Int']['input'];
-  filter?: InputMaybe<Absence_ReportsFilter>;
+  filter?: InputMaybe<AbsenceReportsFilter>;
 };
 
 
 /** The root type for creating and mutating data */
-export type MutationDeleteFromcalendar_EventsCollectionArgs = {
+export type MutationDeleteFromAbsenceReportsStatusCollectionArgs = {
   atMost?: Scalars['Int']['input'];
-  filter?: InputMaybe<Calendar_EventsFilter>;
+  filter?: InputMaybe<AbsenceReportsStatusFilter>;
 };
 
 
 /** The root type for creating and mutating data */
-export type MutationDeleteFromclub_MembersCollectionArgs = {
+export type MutationDeleteFromCalendarEventsCollectionArgs = {
   atMost?: Scalars['Int']['input'];
-  filter?: InputMaybe<Club_MembersFilter>;
+  filter?: InputMaybe<CalendarEventsFilter>;
 };
 
 
 /** The root type for creating and mutating data */
-export type MutationDeleteFromclubsCollectionArgs = {
+export type MutationDeleteFromClubMembersCollectionArgs = {
+  atMost?: Scalars['Int']['input'];
+  filter?: InputMaybe<ClubMembersFilter>;
+};
+
+
+/** The root type for creating and mutating data */
+export type MutationDeleteFromClubsCollectionArgs = {
   atMost?: Scalars['Int']['input'];
   filter?: InputMaybe<ClubsFilter>;
 };
 
 
 /** The root type for creating and mutating data */
-export type MutationDeleteFromfeedback_SubmissionsCollectionArgs = {
+export type MutationDeleteFromFeedbackSubmissionsCollectionArgs = {
   atMost?: Scalars['Int']['input'];
-  filter?: InputMaybe<Feedback_SubmissionsFilter>;
+  filter?: InputMaybe<FeedbackSubmissionsFilter>;
 };
 
 
 /** The root type for creating and mutating data */
-export type MutationDeleteFromfilesCollectionArgs = {
+export type MutationDeleteFromFilesCollectionArgs = {
   atMost?: Scalars['Int']['input'];
   filter?: InputMaybe<FilesFilter>;
 };
 
 
 /** The root type for creating and mutating data */
-export type MutationDeleteFromjoined_ClubsCollectionArgs = {
+export type MutationDeleteFromJoinedClubsCollectionArgs = {
   atMost?: Scalars['Int']['input'];
-  filter?: InputMaybe<Joined_ClubsFilter>;
+  filter?: InputMaybe<JoinedClubsFilter>;
 };
 
 
 /** The root type for creating and mutating data */
-export type MutationDeleteFromnotificationsCollectionArgs = {
+export type MutationDeleteFromNotificationsCollectionArgs = {
   atMost?: Scalars['Int']['input'];
   filter?: InputMaybe<NotificationsFilter>;
 };
 
 
 /** The root type for creating and mutating data */
-export type MutationDeleteFromprofilesCollectionArgs = {
+export type MutationDeleteFromProfilesCollectionArgs = {
   atMost?: Scalars['Int']['input'];
   filter?: InputMaybe<ProfilesFilter>;
 };
 
 
 /** The root type for creating and mutating data */
-export type MutationDeleteFromrolesCollectionArgs = {
+export type MutationDeleteFromRolesCollectionArgs = {
   atMost?: Scalars['Int']['input'];
   filter?: InputMaybe<RolesFilter>;
 };
 
 
 /** The root type for creating and mutating data */
-export type MutationInsertIntoabsence_Report_FormsCollectionArgs = {
-  objects: Array<Absence_Report_FormsInsertInput>;
+export type MutationInsertIntoAbsenceReportFormsCollectionArgs = {
+  objects: Array<AbsenceReportFormsInsertInput>;
 };
 
 
 /** The root type for creating and mutating data */
-export type MutationInsertIntoabsence_Report_ReviewsCollectionArgs = {
-  objects: Array<Absence_Report_ReviewsInsertInput>;
+export type MutationInsertIntoAbsenceReportReviewsCollectionArgs = {
+  objects: Array<AbsenceReportReviewsInsertInput>;
 };
 
 
 /** The root type for creating and mutating data */
-export type MutationInsertIntoabsence_ReportsCollectionArgs = {
-  objects: Array<Absence_ReportsInsertInput>;
+export type MutationInsertIntoAbsenceReportsCollectionArgs = {
+  objects: Array<AbsenceReportsInsertInput>;
 };
 
 
 /** The root type for creating and mutating data */
-export type MutationInsertIntocalendar_EventsCollectionArgs = {
-  objects: Array<Calendar_EventsInsertInput>;
+export type MutationInsertIntoAbsenceReportsStatusCollectionArgs = {
+  objects: Array<AbsenceReportsStatusInsertInput>;
 };
 
 
 /** The root type for creating and mutating data */
-export type MutationInsertIntoclub_MembersCollectionArgs = {
-  objects: Array<Club_MembersInsertInput>;
+export type MutationInsertIntoCalendarEventsCollectionArgs = {
+  objects: Array<CalendarEventsInsertInput>;
 };
 
 
 /** The root type for creating and mutating data */
-export type MutationInsertIntoclubsCollectionArgs = {
+export type MutationInsertIntoClubMembersCollectionArgs = {
+  objects: Array<ClubMembersInsertInput>;
+};
+
+
+/** The root type for creating and mutating data */
+export type MutationInsertIntoClubsCollectionArgs = {
   objects: Array<ClubsInsertInput>;
 };
 
 
 /** The root type for creating and mutating data */
-export type MutationInsertIntofeedback_SubmissionsCollectionArgs = {
-  objects: Array<Feedback_SubmissionsInsertInput>;
+export type MutationInsertIntoFeedbackSubmissionsCollectionArgs = {
+  objects: Array<FeedbackSubmissionsInsertInput>;
 };
 
 
 /** The root type for creating and mutating data */
-export type MutationInsertIntofilesCollectionArgs = {
+export type MutationInsertIntoFilesCollectionArgs = {
   objects: Array<FilesInsertInput>;
 };
 
 
 /** The root type for creating and mutating data */
-export type MutationInsertIntojoined_ClubsCollectionArgs = {
-  objects: Array<Joined_ClubsInsertInput>;
+export type MutationInsertIntoJoinedClubsCollectionArgs = {
+  objects: Array<JoinedClubsInsertInput>;
 };
 
 
 /** The root type for creating and mutating data */
-export type MutationInsertIntonotificationsCollectionArgs = {
+export type MutationInsertIntoNotificationsCollectionArgs = {
   objects: Array<NotificationsInsertInput>;
 };
 
 
 /** The root type for creating and mutating data */
-export type MutationInsertIntoprofilesCollectionArgs = {
+export type MutationInsertIntoProfilesCollectionArgs = {
   objects: Array<ProfilesInsertInput>;
 };
 
 
 /** The root type for creating and mutating data */
-export type MutationInsertIntorolesCollectionArgs = {
+export type MutationInsertIntoRolesCollectionArgs = {
   objects: Array<RolesInsertInput>;
 };
 
 
 /** The root type for creating and mutating data */
-export type MutationInvitations_AcceptArgs = {
-  invitation_id: Scalars['UUID']['input'];
+export type MutationInvitationsAcceptArgs = {
+  invitationId: Scalars['UUID']['input'];
 };
 
 
 /** The root type for creating and mutating data */
-export type MutationInvitations_CreateArgs = {
-  expires_at: Scalars['Datetime']['input'];
-  new_club_id: Scalars['UUID']['input'];
-  role_id: Scalars['UUID']['input'];
+export type MutationInvitationsCreateArgs = {
+  expiresAt: Scalars['Datetime']['input'];
+  newClubId: Scalars['UUID']['input'];
+  roleId: Scalars['UUID']['input'];
 };
 
 
 /** The root type for creating and mutating data */
-export type MutationInvitations_DeleteArgs = {
-  invitation_id: Scalars['UUID']['input'];
+export type MutationInvitationsDeleteArgs = {
+  invitationId: Scalars['UUID']['input'];
 };
 
 
 /** The root type for creating and mutating data */
-export type MutationProfiles_Locale_SetArgs = {
-  new_locale: Scalars['String']['input'];
+export type MutationProfilesLocaleSetArgs = {
+  newLocale: Scalars['String']['input'];
 };
 
 
 /** The root type for creating and mutating data */
-export type MutationUpdateabsence_Report_FormsCollectionArgs = {
+export type MutationUpdateAbsenceReportFormsCollectionArgs = {
   atMost?: Scalars['Int']['input'];
-  filter?: InputMaybe<Absence_Report_FormsFilter>;
-  set: Absence_Report_FormsUpdateInput;
+  filter?: InputMaybe<AbsenceReportFormsFilter>;
+  set: AbsenceReportFormsUpdateInput;
 };
 
 
 /** The root type for creating and mutating data */
-export type MutationUpdateabsence_Report_ReviewsCollectionArgs = {
+export type MutationUpdateAbsenceReportReviewsCollectionArgs = {
   atMost?: Scalars['Int']['input'];
-  filter?: InputMaybe<Absence_Report_ReviewsFilter>;
-  set: Absence_Report_ReviewsUpdateInput;
+  filter?: InputMaybe<AbsenceReportReviewsFilter>;
+  set: AbsenceReportReviewsUpdateInput;
 };
 
 
 /** The root type for creating and mutating data */
-export type MutationUpdateabsence_ReportsCollectionArgs = {
+export type MutationUpdateAbsenceReportsCollectionArgs = {
   atMost?: Scalars['Int']['input'];
-  filter?: InputMaybe<Absence_ReportsFilter>;
-  set: Absence_ReportsUpdateInput;
+  filter?: InputMaybe<AbsenceReportsFilter>;
+  set: AbsenceReportsUpdateInput;
 };
 
 
 /** The root type for creating and mutating data */
-export type MutationUpdatecalendar_EventsCollectionArgs = {
+export type MutationUpdateAbsenceReportsStatusCollectionArgs = {
   atMost?: Scalars['Int']['input'];
-  filter?: InputMaybe<Calendar_EventsFilter>;
-  set: Calendar_EventsUpdateInput;
+  filter?: InputMaybe<AbsenceReportsStatusFilter>;
+  set: AbsenceReportsStatusUpdateInput;
 };
 
 
 /** The root type for creating and mutating data */
-export type MutationUpdateclub_MembersCollectionArgs = {
+export type MutationUpdateCalendarEventsCollectionArgs = {
   atMost?: Scalars['Int']['input'];
-  filter?: InputMaybe<Club_MembersFilter>;
-  set: Club_MembersUpdateInput;
+  filter?: InputMaybe<CalendarEventsFilter>;
+  set: CalendarEventsUpdateInput;
 };
 
 
 /** The root type for creating and mutating data */
-export type MutationUpdateclubsCollectionArgs = {
+export type MutationUpdateClubMembersCollectionArgs = {
+  atMost?: Scalars['Int']['input'];
+  filter?: InputMaybe<ClubMembersFilter>;
+  set: ClubMembersUpdateInput;
+};
+
+
+/** The root type for creating and mutating data */
+export type MutationUpdateClubsCollectionArgs = {
   atMost?: Scalars['Int']['input'];
   filter?: InputMaybe<ClubsFilter>;
   set: ClubsUpdateInput;
@@ -499,15 +1712,15 @@ export type MutationUpdateclubsCollectionArgs = {
 
 
 /** The root type for creating and mutating data */
-export type MutationUpdatefeedback_SubmissionsCollectionArgs = {
+export type MutationUpdateFeedbackSubmissionsCollectionArgs = {
   atMost?: Scalars['Int']['input'];
-  filter?: InputMaybe<Feedback_SubmissionsFilter>;
-  set: Feedback_SubmissionsUpdateInput;
+  filter?: InputMaybe<FeedbackSubmissionsFilter>;
+  set: FeedbackSubmissionsUpdateInput;
 };
 
 
 /** The root type for creating and mutating data */
-export type MutationUpdatefilesCollectionArgs = {
+export type MutationUpdateFilesCollectionArgs = {
   atMost?: Scalars['Int']['input'];
   filter?: InputMaybe<FilesFilter>;
   set: FilesUpdateInput;
@@ -515,15 +1728,15 @@ export type MutationUpdatefilesCollectionArgs = {
 
 
 /** The root type for creating and mutating data */
-export type MutationUpdatejoined_ClubsCollectionArgs = {
+export type MutationUpdateJoinedClubsCollectionArgs = {
   atMost?: Scalars['Int']['input'];
-  filter?: InputMaybe<Joined_ClubsFilter>;
-  set: Joined_ClubsUpdateInput;
+  filter?: InputMaybe<JoinedClubsFilter>;
+  set: JoinedClubsUpdateInput;
 };
 
 
 /** The root type for creating and mutating data */
-export type MutationUpdatenotificationsCollectionArgs = {
+export type MutationUpdateNotificationsCollectionArgs = {
   atMost?: Scalars['Int']['input'];
   filter?: InputMaybe<NotificationsFilter>;
   set: NotificationsUpdateInput;
@@ -531,7 +1744,7 @@ export type MutationUpdatenotificationsCollectionArgs = {
 
 
 /** The root type for creating and mutating data */
-export type MutationUpdateprofilesCollectionArgs = {
+export type MutationUpdateProfilesCollectionArgs = {
   atMost?: Scalars['Int']['input'];
   filter?: InputMaybe<ProfilesFilter>;
   set: ProfilesUpdateInput;
@@ -539,7 +1752,7 @@ export type MutationUpdateprofilesCollectionArgs = {
 
 
 /** The root type for creating and mutating data */
-export type MutationUpdaterolesCollectionArgs = {
+export type MutationUpdateRolesCollectionArgs = {
   atMost?: Scalars['Int']['input'];
   filter?: InputMaybe<RolesFilter>;
   set: RolesUpdateInput;
@@ -548,6 +1761,99 @@ export type MutationUpdaterolesCollectionArgs = {
 export type Node = {
   /** Retrieves a record by `ID` */
   nodeId: Scalars['ID']['output'];
+};
+
+export type Notifications = Node & {
+  __typename?: 'Notifications';
+  club?: Maybe<Clubs>;
+  clubId?: Maybe<Scalars['UUID']['output']>;
+  content: Scalars['String']['output'];
+  createdAt: Scalars['Datetime']['output'];
+  id: Scalars['UUID']['output'];
+  /** Globally Unique Record Identifier */
+  nodeId: Scalars['ID']['output'];
+  read: Scalars['Boolean']['output'];
+  user?: Maybe<Profiles>;
+  userId?: Maybe<Scalars['UUID']['output']>;
+};
+
+export type NotificationsConnection = {
+  __typename?: 'NotificationsConnection';
+  edges: Array<NotificationsEdge>;
+  pageInfo: PageInfo;
+};
+
+export type NotificationsDeleteResponse = {
+  __typename?: 'NotificationsDeleteResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<Notifications>;
+};
+
+export type NotificationsEdge = {
+  __typename?: 'NotificationsEdge';
+  cursor: Scalars['String']['output'];
+  node: Notifications;
+};
+
+export type NotificationsFilter = {
+  /** Returns true only if all its inner filters are true, otherwise returns false */
+  and?: InputMaybe<Array<NotificationsFilter>>;
+  clubId?: InputMaybe<UuidFilter>;
+  content?: InputMaybe<StringFilter>;
+  createdAt?: InputMaybe<DatetimeFilter>;
+  id?: InputMaybe<UuidFilter>;
+  nodeId?: InputMaybe<IdFilter>;
+  /** Negates a filter */
+  not?: InputMaybe<NotificationsFilter>;
+  /** Returns true if at least one of its inner filters is true, otherwise returns false */
+  or?: InputMaybe<Array<NotificationsFilter>>;
+  read?: InputMaybe<BooleanFilter>;
+  userId?: InputMaybe<UuidFilter>;
+};
+
+export type NotificationsInsertInput = {
+  clubId?: InputMaybe<Scalars['UUID']['input']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  createdAt?: InputMaybe<Scalars['Datetime']['input']>;
+  id?: InputMaybe<Scalars['UUID']['input']>;
+  read?: InputMaybe<Scalars['Boolean']['input']>;
+  userId?: InputMaybe<Scalars['UUID']['input']>;
+};
+
+export type NotificationsInsertResponse = {
+  __typename?: 'NotificationsInsertResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<Notifications>;
+};
+
+export type NotificationsOrderBy = {
+  clubId?: InputMaybe<OrderByDirection>;
+  content?: InputMaybe<OrderByDirection>;
+  createdAt?: InputMaybe<OrderByDirection>;
+  id?: InputMaybe<OrderByDirection>;
+  read?: InputMaybe<OrderByDirection>;
+  userId?: InputMaybe<OrderByDirection>;
+};
+
+export type NotificationsUpdateInput = {
+  clubId?: InputMaybe<Scalars['UUID']['input']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  createdAt?: InputMaybe<Scalars['Datetime']['input']>;
+  id?: InputMaybe<Scalars['UUID']['input']>;
+  read?: InputMaybe<Scalars['Boolean']['input']>;
+  userId?: InputMaybe<Scalars['UUID']['input']>;
+};
+
+export type NotificationsUpdateResponse = {
+  __typename?: 'NotificationsUpdateResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<Notifications>;
 };
 
 /** Boolean expression comparing fields on type "Opaque" */
@@ -576,104 +1882,340 @@ export type PageInfo = {
   startCursor?: Maybe<Scalars['String']['output']>;
 };
 
+export type Profiles = Node & {
+  __typename?: 'Profiles';
+  absenceReportReviewsCollection?: Maybe<AbsenceReportReviewsConnection>;
+  absenceReportsCollection?: Maybe<AbsenceReportsConnection>;
+  absenceReportsStatusCollection?: Maybe<AbsenceReportsStatusConnection>;
+  avatarUrl?: Maybe<Scalars['String']['output']>;
+  bio?: Maybe<Scalars['String']['output']>;
+  calendarEventsCollection?: Maybe<CalendarEventsConnection>;
+  clubMembersCollection?: Maybe<ClubMembersConnection>;
+  clubsCollection?: Maybe<ClubsConnection>;
+  createdAt: Scalars['Datetime']['output'];
+  feedbackSubmissionsCollection?: Maybe<FeedbackSubmissionsConnection>;
+  filesCollection?: Maybe<FilesConnection>;
+  fullName: Scalars['String']['output'];
+  id: Scalars['UUID']['output'];
+  locale?: Maybe<Scalars['String']['output']>;
+  nickname?: Maybe<Scalars['String']['output']>;
+  /** Globally Unique Record Identifier */
+  nodeId: Scalars['ID']['output'];
+  notificationsCollection?: Maybe<NotificationsConnection>;
+  privateProfile: Scalars['Boolean']['output'];
+  pushNotificationsPreference: Scalars['JSON']['output'];
+  school?: Maybe<Scalars['String']['output']>;
+  updatedAt: Scalars['Datetime']['output'];
+};
+
+
+export type ProfilesAbsenceReportReviewsCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<AbsenceReportReviewsFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<AbsenceReportReviewsOrderBy>>;
+};
+
+
+export type ProfilesAbsenceReportsCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<AbsenceReportsFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<AbsenceReportsOrderBy>>;
+};
+
+
+export type ProfilesAbsenceReportsStatusCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<AbsenceReportsStatusFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<AbsenceReportsStatusOrderBy>>;
+};
+
+
+export type ProfilesCalendarEventsCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<CalendarEventsFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<CalendarEventsOrderBy>>;
+};
+
+
+export type ProfilesClubMembersCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<ClubMembersFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<ClubMembersOrderBy>>;
+};
+
+
+export type ProfilesClubsCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<ClubsFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<ClubsOrderBy>>;
+};
+
+
+export type ProfilesFeedbackSubmissionsCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<FeedbackSubmissionsFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<FeedbackSubmissionsOrderBy>>;
+};
+
+
+export type ProfilesFilesCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<FilesFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<FilesOrderBy>>;
+};
+
+
+export type ProfilesNotificationsCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<NotificationsFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<NotificationsOrderBy>>;
+};
+
+export type ProfilesConnection = {
+  __typename?: 'ProfilesConnection';
+  edges: Array<ProfilesEdge>;
+  pageInfo: PageInfo;
+};
+
+export type ProfilesDeleteResponse = {
+  __typename?: 'ProfilesDeleteResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<Profiles>;
+};
+
+export type ProfilesEdge = {
+  __typename?: 'ProfilesEdge';
+  cursor: Scalars['String']['output'];
+  node: Profiles;
+};
+
+export type ProfilesFilter = {
+  /** Returns true only if all its inner filters are true, otherwise returns false */
+  and?: InputMaybe<Array<ProfilesFilter>>;
+  avatarUrl?: InputMaybe<StringFilter>;
+  bio?: InputMaybe<StringFilter>;
+  createdAt?: InputMaybe<DatetimeFilter>;
+  fullName?: InputMaybe<StringFilter>;
+  id?: InputMaybe<UuidFilter>;
+  locale?: InputMaybe<StringFilter>;
+  nickname?: InputMaybe<StringFilter>;
+  nodeId?: InputMaybe<IdFilter>;
+  /** Negates a filter */
+  not?: InputMaybe<ProfilesFilter>;
+  /** Returns true if at least one of its inner filters is true, otherwise returns false */
+  or?: InputMaybe<Array<ProfilesFilter>>;
+  privateProfile?: InputMaybe<BooleanFilter>;
+  school?: InputMaybe<StringFilter>;
+  updatedAt?: InputMaybe<DatetimeFilter>;
+};
+
+export type ProfilesInsertInput = {
+  avatarUrl?: InputMaybe<Scalars['String']['input']>;
+  bio?: InputMaybe<Scalars['String']['input']>;
+  createdAt?: InputMaybe<Scalars['Datetime']['input']>;
+  fullName?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['UUID']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  nickname?: InputMaybe<Scalars['String']['input']>;
+  privateProfile?: InputMaybe<Scalars['Boolean']['input']>;
+  pushNotificationsPreference?: InputMaybe<Scalars['JSON']['input']>;
+  school?: InputMaybe<Scalars['String']['input']>;
+  updatedAt?: InputMaybe<Scalars['Datetime']['input']>;
+};
+
+export type ProfilesInsertResponse = {
+  __typename?: 'ProfilesInsertResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<Profiles>;
+};
+
+export type ProfilesOrderBy = {
+  avatarUrl?: InputMaybe<OrderByDirection>;
+  bio?: InputMaybe<OrderByDirection>;
+  createdAt?: InputMaybe<OrderByDirection>;
+  fullName?: InputMaybe<OrderByDirection>;
+  id?: InputMaybe<OrderByDirection>;
+  locale?: InputMaybe<OrderByDirection>;
+  nickname?: InputMaybe<OrderByDirection>;
+  privateProfile?: InputMaybe<OrderByDirection>;
+  school?: InputMaybe<OrderByDirection>;
+  updatedAt?: InputMaybe<OrderByDirection>;
+};
+
+export type ProfilesUpdateInput = {
+  avatarUrl?: InputMaybe<Scalars['String']['input']>;
+  bio?: InputMaybe<Scalars['String']['input']>;
+  createdAt?: InputMaybe<Scalars['Datetime']['input']>;
+  fullName?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['UUID']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  nickname?: InputMaybe<Scalars['String']['input']>;
+  privateProfile?: InputMaybe<Scalars['Boolean']['input']>;
+  pushNotificationsPreference?: InputMaybe<Scalars['JSON']['input']>;
+  school?: InputMaybe<Scalars['String']['input']>;
+  updatedAt?: InputMaybe<Scalars['Datetime']['input']>;
+};
+
+export type ProfilesUpdateResponse = {
+  __typename?: 'ProfilesUpdateResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<Profiles>;
+};
+
 /** The root type for querying data */
 export type Query = {
   __typename?: 'Query';
-  /** A pagable collection of type `absence_report_forms` */
-  absence_report_formsCollection?: Maybe<Absence_Report_FormsConnection>;
-  /** A pagable collection of type `absence_report_reviews` */
-  absence_report_reviewsCollection?: Maybe<Absence_Report_ReviewsConnection>;
-  /** A pagable collection of type `absence_reports` */
-  absence_reportsCollection?: Maybe<Absence_ReportsConnection>;
-  absence_reports_is_approved?: Maybe<Scalars['Boolean']['output']>;
-  /** A pagable collection of type `calendar_events` */
-  calendar_eventsCollection?: Maybe<Calendar_EventsConnection>;
-  /** A pagable collection of type `club_members` */
-  club_membersCollection?: Maybe<Club_MembersConnection>;
-  /** A pagable collection of type `clubs` */
+  /** A pagable collection of type `AbsenceReportForms` */
+  absenceReportFormsCollection?: Maybe<AbsenceReportFormsConnection>;
+  /** A pagable collection of type `AbsenceReportReviews` */
+  absenceReportReviewsCollection?: Maybe<AbsenceReportReviewsConnection>;
+  /** A pagable collection of type `AbsenceReports` */
+  absenceReportsCollection?: Maybe<AbsenceReportsConnection>;
+  absenceReportsIsApproved?: Maybe<Scalars['Boolean']['output']>;
+  /** A pagable collection of type `AbsenceReportsStatus` */
+  absenceReportsStatusCollection?: Maybe<AbsenceReportsStatusConnection>;
+  /** A pagable collection of type `CalendarEvents` */
+  calendarEventsCollection?: Maybe<CalendarEventsConnection>;
+  /** A pagable collection of type `ClubMembers` */
+  clubMembersCollection?: Maybe<ClubMembersConnection>;
+  /** A pagable collection of type `Clubs` */
   clubsCollection?: Maybe<ClubsConnection>;
-  /** A pagable collection of type `feedback_submissions` */
-  feedback_submissionsCollection?: Maybe<Feedback_SubmissionsConnection>;
-  /** A pagable collection of type `files` */
+  /** A pagable collection of type `FeedbackSubmissions` */
+  feedbackSubmissionsCollection?: Maybe<FeedbackSubmissionsConnection>;
+  /** A pagable collection of type `Files` */
   filesCollection?: Maybe<FilesConnection>;
-  /** A pagable collection of type `joined_clubs` */
-  joined_clubsCollection?: Maybe<Joined_ClubsConnection>;
+  /** A pagable collection of type `JoinedClubs` */
+  joinedClubsCollection?: Maybe<JoinedClubsConnection>;
   /** Retrieve a record by its `ID` */
   node?: Maybe<Node>;
-  /** A pagable collection of type `notifications` */
+  /** A pagable collection of type `Notifications` */
   notificationsCollection?: Maybe<NotificationsConnection>;
-  /** A pagable collection of type `profiles` */
+  /** A pagable collection of type `Profiles` */
   profilesCollection?: Maybe<ProfilesConnection>;
-  /** A pagable collection of type `roles` */
+  /** A pagable collection of type `Roles` */
   rolesCollection?: Maybe<RolesConnection>;
-  user_has_club_permission?: Maybe<Scalars['Boolean']['output']>;
-  user_is_club_member?: Maybe<Scalars['Boolean']['output']>;
+  userHasClubPermission?: Maybe<Scalars['Boolean']['output']>;
+  userIsClubMember?: Maybe<Scalars['Boolean']['output']>;
 };
 
 
 /** The root type for querying data */
-export type QueryAbsence_Report_FormsCollectionArgs = {
+export type QueryAbsenceReportFormsCollectionArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
-  filter?: InputMaybe<Absence_Report_FormsFilter>;
+  filter?: InputMaybe<AbsenceReportFormsFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<Absence_Report_FormsOrderBy>>;
+  orderBy?: InputMaybe<Array<AbsenceReportFormsOrderBy>>;
 };
 
 
 /** The root type for querying data */
-export type QueryAbsence_Report_ReviewsCollectionArgs = {
+export type QueryAbsenceReportReviewsCollectionArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
-  filter?: InputMaybe<Absence_Report_ReviewsFilter>;
+  filter?: InputMaybe<AbsenceReportReviewsFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<Absence_Report_ReviewsOrderBy>>;
+  orderBy?: InputMaybe<Array<AbsenceReportReviewsOrderBy>>;
 };
 
 
 /** The root type for querying data */
-export type QueryAbsence_ReportsCollectionArgs = {
+export type QueryAbsenceReportsCollectionArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
-  filter?: InputMaybe<Absence_ReportsFilter>;
+  filter?: InputMaybe<AbsenceReportsFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<Absence_ReportsOrderBy>>;
+  orderBy?: InputMaybe<Array<AbsenceReportsOrderBy>>;
 };
 
 
 /** The root type for querying data */
-export type QueryAbsence_Reports_Is_ApprovedArgs = {
-  p_report_id: Scalars['UUID']['input'];
+export type QueryAbsenceReportsIsApprovedArgs = {
+  pReportId: Scalars['UUID']['input'];
 };
 
 
 /** The root type for querying data */
-export type QueryCalendar_EventsCollectionArgs = {
+export type QueryAbsenceReportsStatusCollectionArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
-  filter?: InputMaybe<Calendar_EventsFilter>;
+  filter?: InputMaybe<AbsenceReportsStatusFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<Calendar_EventsOrderBy>>;
+  orderBy?: InputMaybe<Array<AbsenceReportsStatusOrderBy>>;
 };
 
 
 /** The root type for querying data */
-export type QueryClub_MembersCollectionArgs = {
+export type QueryCalendarEventsCollectionArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
-  filter?: InputMaybe<Club_MembersFilter>;
+  filter?: InputMaybe<CalendarEventsFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<Club_MembersOrderBy>>;
+  orderBy?: InputMaybe<Array<CalendarEventsOrderBy>>;
+};
+
+
+/** The root type for querying data */
+export type QueryClubMembersCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<ClubMembersFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<ClubMembersOrderBy>>;
 };
 
 
@@ -690,14 +2232,14 @@ export type QueryClubsCollectionArgs = {
 
 
 /** The root type for querying data */
-export type QueryFeedback_SubmissionsCollectionArgs = {
+export type QueryFeedbackSubmissionsCollectionArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
-  filter?: InputMaybe<Feedback_SubmissionsFilter>;
+  filter?: InputMaybe<FeedbackSubmissionsFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<Feedback_SubmissionsOrderBy>>;
+  orderBy?: InputMaybe<Array<FeedbackSubmissionsOrderBy>>;
 };
 
 
@@ -714,14 +2256,14 @@ export type QueryFilesCollectionArgs = {
 
 
 /** The root type for querying data */
-export type QueryJoined_ClubsCollectionArgs = {
+export type QueryJoinedClubsCollectionArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
-  filter?: InputMaybe<Joined_ClubsFilter>;
+  filter?: InputMaybe<JoinedClubsFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<Joined_ClubsOrderBy>>;
+  orderBy?: InputMaybe<Array<JoinedClubsOrderBy>>;
 };
 
 
@@ -768,15 +2310,163 @@ export type QueryRolesCollectionArgs = {
 
 
 /** The root type for querying data */
-export type QueryUser_Has_Club_PermissionArgs = {
-  p_club_id: Scalars['UUID']['input'];
-  p_permission: Scalars['String']['input'];
+export type QueryUserHasClubPermissionArgs = {
+  pClubId: Scalars['UUID']['input'];
+  pPermission: Scalars['String']['input'];
 };
 
 
 /** The root type for querying data */
-export type QueryUser_Is_Club_MemberArgs = {
-  p_club_id: Scalars['UUID']['input'];
+export type QueryUserIsClubMemberArgs = {
+  pClubId: Scalars['UUID']['input'];
+};
+
+export type Roles = Node & {
+  __typename?: 'Roles';
+  absenceReportApprovalRequired: Scalars['Boolean']['output'];
+  absenceReportForm?: Maybe<Scalars['UUID']['output']>;
+  absenceReportForms?: Maybe<AbsenceReportForms>;
+  absenceReportReviewerRole?: Maybe<Scalars['UUID']['output']>;
+  absenceReportsCollection?: Maybe<AbsenceReportsConnection>;
+  club?: Maybe<Clubs>;
+  clubId?: Maybe<Scalars['UUID']['output']>;
+  clubMembersCollection?: Maybe<ClubMembersConnection>;
+  createdAt: Scalars['Datetime']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  id: Scalars['UUID']['output'];
+  name: Scalars['String']['output'];
+  /** Globally Unique Record Identifier */
+  nodeId: Scalars['ID']['output'];
+  permissions: Scalars['JSON']['output'];
+  roles?: Maybe<Roles>;
+  rolesCollection?: Maybe<RolesConnection>;
+  updatedAt: Scalars['Datetime']['output'];
+};
+
+
+export type RolesAbsenceReportsCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<AbsenceReportsFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<AbsenceReportsOrderBy>>;
+};
+
+
+export type RolesClubMembersCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<ClubMembersFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<ClubMembersOrderBy>>;
+};
+
+
+export type RolesRolesCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<RolesFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<RolesOrderBy>>;
+};
+
+export type RolesConnection = {
+  __typename?: 'RolesConnection';
+  edges: Array<RolesEdge>;
+  pageInfo: PageInfo;
+};
+
+export type RolesDeleteResponse = {
+  __typename?: 'RolesDeleteResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<Roles>;
+};
+
+export type RolesEdge = {
+  __typename?: 'RolesEdge';
+  cursor: Scalars['String']['output'];
+  node: Roles;
+};
+
+export type RolesFilter = {
+  absenceReportApprovalRequired?: InputMaybe<BooleanFilter>;
+  absenceReportForm?: InputMaybe<UuidFilter>;
+  absenceReportReviewerRole?: InputMaybe<UuidFilter>;
+  /** Returns true only if all its inner filters are true, otherwise returns false */
+  and?: InputMaybe<Array<RolesFilter>>;
+  clubId?: InputMaybe<UuidFilter>;
+  createdAt?: InputMaybe<DatetimeFilter>;
+  description?: InputMaybe<StringFilter>;
+  id?: InputMaybe<UuidFilter>;
+  name?: InputMaybe<StringFilter>;
+  nodeId?: InputMaybe<IdFilter>;
+  /** Negates a filter */
+  not?: InputMaybe<RolesFilter>;
+  /** Returns true if at least one of its inner filters is true, otherwise returns false */
+  or?: InputMaybe<Array<RolesFilter>>;
+  updatedAt?: InputMaybe<DatetimeFilter>;
+};
+
+export type RolesInsertInput = {
+  absenceReportApprovalRequired?: InputMaybe<Scalars['Boolean']['input']>;
+  absenceReportForm?: InputMaybe<Scalars['UUID']['input']>;
+  absenceReportReviewerRole?: InputMaybe<Scalars['UUID']['input']>;
+  clubId?: InputMaybe<Scalars['UUID']['input']>;
+  createdAt?: InputMaybe<Scalars['Datetime']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['UUID']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  permissions?: InputMaybe<Scalars['JSON']['input']>;
+  updatedAt?: InputMaybe<Scalars['Datetime']['input']>;
+};
+
+export type RolesInsertResponse = {
+  __typename?: 'RolesInsertResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<Roles>;
+};
+
+export type RolesOrderBy = {
+  absenceReportApprovalRequired?: InputMaybe<OrderByDirection>;
+  absenceReportForm?: InputMaybe<OrderByDirection>;
+  absenceReportReviewerRole?: InputMaybe<OrderByDirection>;
+  clubId?: InputMaybe<OrderByDirection>;
+  createdAt?: InputMaybe<OrderByDirection>;
+  description?: InputMaybe<OrderByDirection>;
+  id?: InputMaybe<OrderByDirection>;
+  name?: InputMaybe<OrderByDirection>;
+  updatedAt?: InputMaybe<OrderByDirection>;
+};
+
+export type RolesUpdateInput = {
+  absenceReportApprovalRequired?: InputMaybe<Scalars['Boolean']['input']>;
+  absenceReportForm?: InputMaybe<Scalars['UUID']['input']>;
+  absenceReportReviewerRole?: InputMaybe<Scalars['UUID']['input']>;
+  clubId?: InputMaybe<Scalars['UUID']['input']>;
+  createdAt?: InputMaybe<Scalars['Datetime']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['UUID']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  permissions?: InputMaybe<Scalars['JSON']['input']>;
+  updatedAt?: InputMaybe<Scalars['Datetime']['input']>;
+};
+
+export type RolesUpdateResponse = {
+  __typename?: 'RolesUpdateResponse';
+  /** Count of the records impacted by the mutation */
+  affectedCount: Scalars['Int']['output'];
+  /** Array of records impacted by the mutation */
+  records: Array<Roles>;
 };
 
 /** Boolean expression comparing fields on type "String" */
@@ -843,1542 +2533,13 @@ export type UuidListFilter = {
   overlaps?: InputMaybe<Array<Scalars['UUID']['input']>>;
 };
 
-export type Absence_Report_Forms = Node & {
-  __typename?: 'absence_report_forms';
-  absence_reportsCollection?: Maybe<Absence_ReportsConnection>;
-  club_id: Scalars['UUID']['output'];
-  clubs?: Maybe<Clubs>;
-  created_at: Scalars['Datetime']['output'];
-  id: Scalars['UUID']['output'];
-  name: Scalars['String']['output'];
-  /** Globally Unique Record Identifier */
-  nodeId: Scalars['ID']['output'];
-  questions: Scalars['JSON']['output'];
-  rolesCollection?: Maybe<RolesConnection>;
-  updated_at: Scalars['Datetime']['output'];
-};
-
-
-export type Absence_Report_FormsAbsence_ReportsCollectionArgs = {
-  after?: InputMaybe<Scalars['Cursor']['input']>;
-  before?: InputMaybe<Scalars['Cursor']['input']>;
-  filter?: InputMaybe<Absence_ReportsFilter>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<Absence_ReportsOrderBy>>;
-};
-
-
-export type Absence_Report_FormsRolesCollectionArgs = {
-  after?: InputMaybe<Scalars['Cursor']['input']>;
-  before?: InputMaybe<Scalars['Cursor']['input']>;
-  filter?: InputMaybe<RolesFilter>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<RolesOrderBy>>;
-};
-
-export type Absence_Report_FormsConnection = {
-  __typename?: 'absence_report_formsConnection';
-  edges: Array<Absence_Report_FormsEdge>;
-  pageInfo: PageInfo;
-};
-
-export type Absence_Report_FormsDeleteResponse = {
-  __typename?: 'absence_report_formsDeleteResponse';
-  /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int']['output'];
-  /** Array of records impacted by the mutation */
-  records: Array<Absence_Report_Forms>;
-};
-
-export type Absence_Report_FormsEdge = {
-  __typename?: 'absence_report_formsEdge';
-  cursor: Scalars['String']['output'];
-  node: Absence_Report_Forms;
-};
-
-export type Absence_Report_FormsFilter = {
-  /** Returns true only if all its inner filters are true, otherwise returns false */
-  and?: InputMaybe<Array<Absence_Report_FormsFilter>>;
-  club_id?: InputMaybe<UuidFilter>;
-  created_at?: InputMaybe<DatetimeFilter>;
-  id?: InputMaybe<UuidFilter>;
-  name?: InputMaybe<StringFilter>;
-  nodeId?: InputMaybe<IdFilter>;
-  /** Negates a filter */
-  not?: InputMaybe<Absence_Report_FormsFilter>;
-  /** Returns true if at least one of its inner filters is true, otherwise returns false */
-  or?: InputMaybe<Array<Absence_Report_FormsFilter>>;
-  updated_at?: InputMaybe<DatetimeFilter>;
-};
-
-export type Absence_Report_FormsInsertInput = {
-  club_id?: InputMaybe<Scalars['UUID']['input']>;
-  created_at?: InputMaybe<Scalars['Datetime']['input']>;
-  id?: InputMaybe<Scalars['UUID']['input']>;
-  name?: InputMaybe<Scalars['String']['input']>;
-  questions?: InputMaybe<Scalars['JSON']['input']>;
-  updated_at?: InputMaybe<Scalars['Datetime']['input']>;
-};
-
-export type Absence_Report_FormsInsertResponse = {
-  __typename?: 'absence_report_formsInsertResponse';
-  /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int']['output'];
-  /** Array of records impacted by the mutation */
-  records: Array<Absence_Report_Forms>;
-};
-
-export type Absence_Report_FormsOrderBy = {
-  club_id?: InputMaybe<OrderByDirection>;
-  created_at?: InputMaybe<OrderByDirection>;
-  id?: InputMaybe<OrderByDirection>;
-  name?: InputMaybe<OrderByDirection>;
-  updated_at?: InputMaybe<OrderByDirection>;
-};
-
-export type Absence_Report_FormsUpdateInput = {
-  club_id?: InputMaybe<Scalars['UUID']['input']>;
-  created_at?: InputMaybe<Scalars['Datetime']['input']>;
-  id?: InputMaybe<Scalars['UUID']['input']>;
-  name?: InputMaybe<Scalars['String']['input']>;
-  questions?: InputMaybe<Scalars['JSON']['input']>;
-  updated_at?: InputMaybe<Scalars['Datetime']['input']>;
-};
-
-export type Absence_Report_FormsUpdateResponse = {
-  __typename?: 'absence_report_formsUpdateResponse';
-  /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int']['output'];
-  /** Array of records impacted by the mutation */
-  records: Array<Absence_Report_Forms>;
-};
-
-export type Absence_Report_Reviews = Node & {
-  __typename?: 'absence_report_reviews';
-  absence_report_id: Scalars['UUID']['output'];
-  absence_reports?: Maybe<Absence_Reports>;
-  accepted: Scalars['Boolean']['output'];
-  comments?: Maybe<Scalars['String']['output']>;
-  created_at: Scalars['Datetime']['output'];
-  id: Scalars['UUID']['output'];
-  /** Globally Unique Record Identifier */
-  nodeId: Scalars['ID']['output'];
-  profiles?: Maybe<Profiles>;
-  reviewer_id?: Maybe<Scalars['UUID']['output']>;
-  updated_at: Scalars['Datetime']['output'];
-};
-
-export type Absence_Report_ReviewsConnection = {
-  __typename?: 'absence_report_reviewsConnection';
-  edges: Array<Absence_Report_ReviewsEdge>;
-  pageInfo: PageInfo;
-};
-
-export type Absence_Report_ReviewsDeleteResponse = {
-  __typename?: 'absence_report_reviewsDeleteResponse';
-  /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int']['output'];
-  /** Array of records impacted by the mutation */
-  records: Array<Absence_Report_Reviews>;
-};
-
-export type Absence_Report_ReviewsEdge = {
-  __typename?: 'absence_report_reviewsEdge';
-  cursor: Scalars['String']['output'];
-  node: Absence_Report_Reviews;
-};
-
-export type Absence_Report_ReviewsFilter = {
-  absence_report_id?: InputMaybe<UuidFilter>;
-  accepted?: InputMaybe<BooleanFilter>;
-  /** Returns true only if all its inner filters are true, otherwise returns false */
-  and?: InputMaybe<Array<Absence_Report_ReviewsFilter>>;
-  comments?: InputMaybe<StringFilter>;
-  created_at?: InputMaybe<DatetimeFilter>;
-  id?: InputMaybe<UuidFilter>;
-  nodeId?: InputMaybe<IdFilter>;
-  /** Negates a filter */
-  not?: InputMaybe<Absence_Report_ReviewsFilter>;
-  /** Returns true if at least one of its inner filters is true, otherwise returns false */
-  or?: InputMaybe<Array<Absence_Report_ReviewsFilter>>;
-  reviewer_id?: InputMaybe<UuidFilter>;
-  updated_at?: InputMaybe<DatetimeFilter>;
-};
-
-export type Absence_Report_ReviewsInsertInput = {
-  absence_report_id?: InputMaybe<Scalars['UUID']['input']>;
-  accepted?: InputMaybe<Scalars['Boolean']['input']>;
-  comments?: InputMaybe<Scalars['String']['input']>;
-  created_at?: InputMaybe<Scalars['Datetime']['input']>;
-  id?: InputMaybe<Scalars['UUID']['input']>;
-  reviewer_id?: InputMaybe<Scalars['UUID']['input']>;
-  updated_at?: InputMaybe<Scalars['Datetime']['input']>;
-};
-
-export type Absence_Report_ReviewsInsertResponse = {
-  __typename?: 'absence_report_reviewsInsertResponse';
-  /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int']['output'];
-  /** Array of records impacted by the mutation */
-  records: Array<Absence_Report_Reviews>;
-};
-
-export type Absence_Report_ReviewsOrderBy = {
-  absence_report_id?: InputMaybe<OrderByDirection>;
-  accepted?: InputMaybe<OrderByDirection>;
-  comments?: InputMaybe<OrderByDirection>;
-  created_at?: InputMaybe<OrderByDirection>;
-  id?: InputMaybe<OrderByDirection>;
-  reviewer_id?: InputMaybe<OrderByDirection>;
-  updated_at?: InputMaybe<OrderByDirection>;
-};
-
-export type Absence_Report_ReviewsUpdateInput = {
-  absence_report_id?: InputMaybe<Scalars['UUID']['input']>;
-  accepted?: InputMaybe<Scalars['Boolean']['input']>;
-  comments?: InputMaybe<Scalars['String']['input']>;
-  created_at?: InputMaybe<Scalars['Datetime']['input']>;
-  id?: InputMaybe<Scalars['UUID']['input']>;
-  reviewer_id?: InputMaybe<Scalars['UUID']['input']>;
-  updated_at?: InputMaybe<Scalars['Datetime']['input']>;
-};
-
-export type Absence_Report_ReviewsUpdateResponse = {
-  __typename?: 'absence_report_reviewsUpdateResponse';
-  /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int']['output'];
-  /** Array of records impacted by the mutation */
-  records: Array<Absence_Report_Reviews>;
-};
-
-export type Absence_Reports = Node & {
-  __typename?: 'absence_reports';
-  absence_report_forms?: Maybe<Absence_Report_Forms>;
-  absence_report_reviewsCollection?: Maybe<Absence_Report_ReviewsConnection>;
-  assigned_to_role?: Maybe<Scalars['UUID']['output']>;
-  calendar_events?: Maybe<Calendar_Events>;
-  club_id: Scalars['UUID']['output'];
-  clubs?: Maybe<Clubs>;
-  created_at: Scalars['Datetime']['output'];
-  data: Scalars['JSON']['output'];
-  date?: Maybe<Scalars['Date']['output']>;
-  event_id?: Maybe<Scalars['UUID']['output']>;
-  form_id?: Maybe<Scalars['UUID']['output']>;
-  id: Scalars['UUID']['output'];
-  /** Globally Unique Record Identifier */
-  nodeId: Scalars['ID']['output'];
-  profiles?: Maybe<Profiles>;
-  roles?: Maybe<Roles>;
-  updated_at: Scalars['Datetime']['output'];
-  user_id?: Maybe<Scalars['UUID']['output']>;
-};
-
-
-export type Absence_ReportsAbsence_Report_ReviewsCollectionArgs = {
-  after?: InputMaybe<Scalars['Cursor']['input']>;
-  before?: InputMaybe<Scalars['Cursor']['input']>;
-  filter?: InputMaybe<Absence_Report_ReviewsFilter>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<Absence_Report_ReviewsOrderBy>>;
-};
-
-export type Absence_ReportsConnection = {
-  __typename?: 'absence_reportsConnection';
-  edges: Array<Absence_ReportsEdge>;
-  pageInfo: PageInfo;
-};
-
-export type Absence_ReportsDeleteResponse = {
-  __typename?: 'absence_reportsDeleteResponse';
-  /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int']['output'];
-  /** Array of records impacted by the mutation */
-  records: Array<Absence_Reports>;
-};
-
-export type Absence_ReportsEdge = {
-  __typename?: 'absence_reportsEdge';
-  cursor: Scalars['String']['output'];
-  node: Absence_Reports;
-};
-
-export type Absence_ReportsFilter = {
-  /** Returns true only if all its inner filters are true, otherwise returns false */
-  and?: InputMaybe<Array<Absence_ReportsFilter>>;
-  assigned_to_role?: InputMaybe<UuidFilter>;
-  club_id?: InputMaybe<UuidFilter>;
-  created_at?: InputMaybe<DatetimeFilter>;
-  date?: InputMaybe<DateFilter>;
-  event_id?: InputMaybe<UuidFilter>;
-  form_id?: InputMaybe<UuidFilter>;
-  id?: InputMaybe<UuidFilter>;
-  nodeId?: InputMaybe<IdFilter>;
-  /** Negates a filter */
-  not?: InputMaybe<Absence_ReportsFilter>;
-  /** Returns true if at least one of its inner filters is true, otherwise returns false */
-  or?: InputMaybe<Array<Absence_ReportsFilter>>;
-  updated_at?: InputMaybe<DatetimeFilter>;
-  user_id?: InputMaybe<UuidFilter>;
-};
-
-export type Absence_ReportsInsertInput = {
-  assigned_to_role?: InputMaybe<Scalars['UUID']['input']>;
-  club_id?: InputMaybe<Scalars['UUID']['input']>;
-  created_at?: InputMaybe<Scalars['Datetime']['input']>;
-  data?: InputMaybe<Scalars['JSON']['input']>;
-  date?: InputMaybe<Scalars['Date']['input']>;
-  event_id?: InputMaybe<Scalars['UUID']['input']>;
-  form_id?: InputMaybe<Scalars['UUID']['input']>;
-  id?: InputMaybe<Scalars['UUID']['input']>;
-  updated_at?: InputMaybe<Scalars['Datetime']['input']>;
-  user_id?: InputMaybe<Scalars['UUID']['input']>;
-};
-
-export type Absence_ReportsInsertResponse = {
-  __typename?: 'absence_reportsInsertResponse';
-  /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int']['output'];
-  /** Array of records impacted by the mutation */
-  records: Array<Absence_Reports>;
-};
-
-export type Absence_ReportsOrderBy = {
-  assigned_to_role?: InputMaybe<OrderByDirection>;
-  club_id?: InputMaybe<OrderByDirection>;
-  created_at?: InputMaybe<OrderByDirection>;
-  date?: InputMaybe<OrderByDirection>;
-  event_id?: InputMaybe<OrderByDirection>;
-  form_id?: InputMaybe<OrderByDirection>;
-  id?: InputMaybe<OrderByDirection>;
-  updated_at?: InputMaybe<OrderByDirection>;
-  user_id?: InputMaybe<OrderByDirection>;
-};
-
-export type Absence_ReportsUpdateInput = {
-  assigned_to_role?: InputMaybe<Scalars['UUID']['input']>;
-  club_id?: InputMaybe<Scalars['UUID']['input']>;
-  created_at?: InputMaybe<Scalars['Datetime']['input']>;
-  data?: InputMaybe<Scalars['JSON']['input']>;
-  date?: InputMaybe<Scalars['Date']['input']>;
-  event_id?: InputMaybe<Scalars['UUID']['input']>;
-  form_id?: InputMaybe<Scalars['UUID']['input']>;
-  id?: InputMaybe<Scalars['UUID']['input']>;
-  updated_at?: InputMaybe<Scalars['Datetime']['input']>;
-  user_id?: InputMaybe<Scalars['UUID']['input']>;
-};
-
-export type Absence_ReportsUpdateResponse = {
-  __typename?: 'absence_reportsUpdateResponse';
-  /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int']['output'];
-  /** Array of records impacted by the mutation */
-  records: Array<Absence_Reports>;
-};
-
-export type Calendar_Events = Node & {
-  __typename?: 'calendar_events';
-  absence_reportsCollection?: Maybe<Absence_ReportsConnection>;
-  club_id: Scalars['UUID']['output'];
-  clubs?: Maybe<Clubs>;
-  created_at: Scalars['Datetime']['output'];
-  created_by?: Maybe<Scalars['UUID']['output']>;
-  description?: Maybe<Scalars['String']['output']>;
-  end_time: Scalars['Datetime']['output'];
-  id: Scalars['UUID']['output'];
-  location?: Maybe<Scalars['String']['output']>;
-  /** Globally Unique Record Identifier */
-  nodeId: Scalars['ID']['output'];
-  profiles?: Maybe<Profiles>;
-  start_time: Scalars['Datetime']['output'];
-  title: Scalars['String']['output'];
-  updated_at: Scalars['Datetime']['output'];
-};
-
-
-export type Calendar_EventsAbsence_ReportsCollectionArgs = {
-  after?: InputMaybe<Scalars['Cursor']['input']>;
-  before?: InputMaybe<Scalars['Cursor']['input']>;
-  filter?: InputMaybe<Absence_ReportsFilter>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<Absence_ReportsOrderBy>>;
-};
-
-export type Calendar_EventsConnection = {
-  __typename?: 'calendar_eventsConnection';
-  edges: Array<Calendar_EventsEdge>;
-  pageInfo: PageInfo;
-};
-
-export type Calendar_EventsDeleteResponse = {
-  __typename?: 'calendar_eventsDeleteResponse';
-  /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int']['output'];
-  /** Array of records impacted by the mutation */
-  records: Array<Calendar_Events>;
-};
-
-export type Calendar_EventsEdge = {
-  __typename?: 'calendar_eventsEdge';
-  cursor: Scalars['String']['output'];
-  node: Calendar_Events;
-};
-
-export type Calendar_EventsFilter = {
-  /** Returns true only if all its inner filters are true, otherwise returns false */
-  and?: InputMaybe<Array<Calendar_EventsFilter>>;
-  club_id?: InputMaybe<UuidFilter>;
-  created_at?: InputMaybe<DatetimeFilter>;
-  created_by?: InputMaybe<UuidFilter>;
-  description?: InputMaybe<StringFilter>;
-  end_time?: InputMaybe<DatetimeFilter>;
-  id?: InputMaybe<UuidFilter>;
-  location?: InputMaybe<StringFilter>;
-  nodeId?: InputMaybe<IdFilter>;
-  /** Negates a filter */
-  not?: InputMaybe<Calendar_EventsFilter>;
-  /** Returns true if at least one of its inner filters is true, otherwise returns false */
-  or?: InputMaybe<Array<Calendar_EventsFilter>>;
-  start_time?: InputMaybe<DatetimeFilter>;
-  title?: InputMaybe<StringFilter>;
-  updated_at?: InputMaybe<DatetimeFilter>;
-};
-
-export type Calendar_EventsInsertInput = {
-  club_id?: InputMaybe<Scalars['UUID']['input']>;
-  created_at?: InputMaybe<Scalars['Datetime']['input']>;
-  created_by?: InputMaybe<Scalars['UUID']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
-  end_time?: InputMaybe<Scalars['Datetime']['input']>;
-  id?: InputMaybe<Scalars['UUID']['input']>;
-  location?: InputMaybe<Scalars['String']['input']>;
-  start_time?: InputMaybe<Scalars['Datetime']['input']>;
-  title?: InputMaybe<Scalars['String']['input']>;
-  updated_at?: InputMaybe<Scalars['Datetime']['input']>;
-};
-
-export type Calendar_EventsInsertResponse = {
-  __typename?: 'calendar_eventsInsertResponse';
-  /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int']['output'];
-  /** Array of records impacted by the mutation */
-  records: Array<Calendar_Events>;
-};
-
-export type Calendar_EventsOrderBy = {
-  club_id?: InputMaybe<OrderByDirection>;
-  created_at?: InputMaybe<OrderByDirection>;
-  created_by?: InputMaybe<OrderByDirection>;
-  description?: InputMaybe<OrderByDirection>;
-  end_time?: InputMaybe<OrderByDirection>;
-  id?: InputMaybe<OrderByDirection>;
-  location?: InputMaybe<OrderByDirection>;
-  start_time?: InputMaybe<OrderByDirection>;
-  title?: InputMaybe<OrderByDirection>;
-  updated_at?: InputMaybe<OrderByDirection>;
-};
-
-export type Calendar_EventsUpdateInput = {
-  club_id?: InputMaybe<Scalars['UUID']['input']>;
-  created_at?: InputMaybe<Scalars['Datetime']['input']>;
-  created_by?: InputMaybe<Scalars['UUID']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
-  end_time?: InputMaybe<Scalars['Datetime']['input']>;
-  id?: InputMaybe<Scalars['UUID']['input']>;
-  location?: InputMaybe<Scalars['String']['input']>;
-  start_time?: InputMaybe<Scalars['Datetime']['input']>;
-  title?: InputMaybe<Scalars['String']['input']>;
-  updated_at?: InputMaybe<Scalars['Datetime']['input']>;
-};
-
-export type Calendar_EventsUpdateResponse = {
-  __typename?: 'calendar_eventsUpdateResponse';
-  /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int']['output'];
-  /** Array of records impacted by the mutation */
-  records: Array<Calendar_Events>;
-};
-
-export type Club_Members = Node & {
-  __typename?: 'club_members';
-  accepted: Scalars['Boolean']['output'];
-  club_id: Scalars['UUID']['output'];
-  clubs?: Maybe<Clubs>;
-  joined_at: Scalars['Datetime']['output'];
-  /** Globally Unique Record Identifier */
-  nodeId: Scalars['ID']['output'];
-  profiles?: Maybe<Profiles>;
-  role_id: Scalars['UUID']['output'];
-  roles?: Maybe<Roles>;
-  user_id: Scalars['UUID']['output'];
-};
-
-export type Club_MembersConnection = {
-  __typename?: 'club_membersConnection';
-  edges: Array<Club_MembersEdge>;
-  pageInfo: PageInfo;
-};
-
-export type Club_MembersDeleteResponse = {
-  __typename?: 'club_membersDeleteResponse';
-  /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int']['output'];
-  /** Array of records impacted by the mutation */
-  records: Array<Club_Members>;
-};
-
-export type Club_MembersEdge = {
-  __typename?: 'club_membersEdge';
-  cursor: Scalars['String']['output'];
-  node: Club_Members;
-};
-
-export type Club_MembersFilter = {
-  accepted?: InputMaybe<BooleanFilter>;
-  /** Returns true only if all its inner filters are true, otherwise returns false */
-  and?: InputMaybe<Array<Club_MembersFilter>>;
-  club_id?: InputMaybe<UuidFilter>;
-  joined_at?: InputMaybe<DatetimeFilter>;
-  nodeId?: InputMaybe<IdFilter>;
-  /** Negates a filter */
-  not?: InputMaybe<Club_MembersFilter>;
-  /** Returns true if at least one of its inner filters is true, otherwise returns false */
-  or?: InputMaybe<Array<Club_MembersFilter>>;
-  role_id?: InputMaybe<UuidFilter>;
-  user_id?: InputMaybe<UuidFilter>;
-};
-
-export type Club_MembersInsertInput = {
-  accepted?: InputMaybe<Scalars['Boolean']['input']>;
-  club_id?: InputMaybe<Scalars['UUID']['input']>;
-  joined_at?: InputMaybe<Scalars['Datetime']['input']>;
-  role_id?: InputMaybe<Scalars['UUID']['input']>;
-  user_id?: InputMaybe<Scalars['UUID']['input']>;
-};
-
-export type Club_MembersInsertResponse = {
-  __typename?: 'club_membersInsertResponse';
-  /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int']['output'];
-  /** Array of records impacted by the mutation */
-  records: Array<Club_Members>;
-};
-
-export type Club_MembersOrderBy = {
-  accepted?: InputMaybe<OrderByDirection>;
-  club_id?: InputMaybe<OrderByDirection>;
-  joined_at?: InputMaybe<OrderByDirection>;
-  role_id?: InputMaybe<OrderByDirection>;
-  user_id?: InputMaybe<OrderByDirection>;
-};
-
-export type Club_MembersUpdateInput = {
-  accepted?: InputMaybe<Scalars['Boolean']['input']>;
-  club_id?: InputMaybe<Scalars['UUID']['input']>;
-  joined_at?: InputMaybe<Scalars['Datetime']['input']>;
-  role_id?: InputMaybe<Scalars['UUID']['input']>;
-  user_id?: InputMaybe<Scalars['UUID']['input']>;
-};
-
-export type Club_MembersUpdateResponse = {
-  __typename?: 'club_membersUpdateResponse';
-  /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int']['output'];
-  /** Array of records impacted by the mutation */
-  records: Array<Club_Members>;
-};
-
-export type Clubs = Node & {
-  __typename?: 'clubs';
-  absence_report_formsCollection?: Maybe<Absence_Report_FormsConnection>;
-  absence_report_required_reviewer?: Maybe<Scalars['UUID']['output']>;
-  absence_report_schema: Scalars['JSON']['output'];
-  absence_reportsCollection?: Maybe<Absence_ReportsConnection>;
-  active: Scalars['Boolean']['output'];
-  calendar_eventsCollection?: Maybe<Calendar_EventsConnection>;
-  club_membersCollection?: Maybe<Club_MembersConnection>;
-  created_at: Scalars['Datetime']['output'];
-  created_by?: Maybe<Scalars['UUID']['output']>;
-  description?: Maybe<Scalars['String']['output']>;
-  feedback_submissionsCollection?: Maybe<Feedback_SubmissionsConnection>;
-  filesCollection?: Maybe<FilesConnection>;
-  id: Scalars['UUID']['output'];
-  name: Scalars['String']['output'];
-  /** Globally Unique Record Identifier */
-  nodeId: Scalars['ID']['output'];
-  notificationsCollection?: Maybe<NotificationsConnection>;
-  profiles?: Maybe<Profiles>;
-  public: Scalars['Boolean']['output'];
-  rolesCollection?: Maybe<RolesConnection>;
-  school?: Maybe<Scalars['String']['output']>;
-  website?: Maybe<Scalars['String']['output']>;
-};
-
-
-export type ClubsAbsence_Report_FormsCollectionArgs = {
-  after?: InputMaybe<Scalars['Cursor']['input']>;
-  before?: InputMaybe<Scalars['Cursor']['input']>;
-  filter?: InputMaybe<Absence_Report_FormsFilter>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<Absence_Report_FormsOrderBy>>;
-};
-
-
-export type ClubsAbsence_ReportsCollectionArgs = {
-  after?: InputMaybe<Scalars['Cursor']['input']>;
-  before?: InputMaybe<Scalars['Cursor']['input']>;
-  filter?: InputMaybe<Absence_ReportsFilter>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<Absence_ReportsOrderBy>>;
-};
-
-
-export type ClubsCalendar_EventsCollectionArgs = {
-  after?: InputMaybe<Scalars['Cursor']['input']>;
-  before?: InputMaybe<Scalars['Cursor']['input']>;
-  filter?: InputMaybe<Calendar_EventsFilter>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<Calendar_EventsOrderBy>>;
-};
-
-
-export type ClubsClub_MembersCollectionArgs = {
-  after?: InputMaybe<Scalars['Cursor']['input']>;
-  before?: InputMaybe<Scalars['Cursor']['input']>;
-  filter?: InputMaybe<Club_MembersFilter>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<Club_MembersOrderBy>>;
-};
-
-
-export type ClubsFeedback_SubmissionsCollectionArgs = {
-  after?: InputMaybe<Scalars['Cursor']['input']>;
-  before?: InputMaybe<Scalars['Cursor']['input']>;
-  filter?: InputMaybe<Feedback_SubmissionsFilter>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<Feedback_SubmissionsOrderBy>>;
-};
-
-
-export type ClubsFilesCollectionArgs = {
-  after?: InputMaybe<Scalars['Cursor']['input']>;
-  before?: InputMaybe<Scalars['Cursor']['input']>;
-  filter?: InputMaybe<FilesFilter>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<FilesOrderBy>>;
-};
-
-
-export type ClubsNotificationsCollectionArgs = {
-  after?: InputMaybe<Scalars['Cursor']['input']>;
-  before?: InputMaybe<Scalars['Cursor']['input']>;
-  filter?: InputMaybe<NotificationsFilter>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<NotificationsOrderBy>>;
-};
-
-
-export type ClubsRolesCollectionArgs = {
-  after?: InputMaybe<Scalars['Cursor']['input']>;
-  before?: InputMaybe<Scalars['Cursor']['input']>;
-  filter?: InputMaybe<RolesFilter>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<RolesOrderBy>>;
-};
-
-export type ClubsConnection = {
-  __typename?: 'clubsConnection';
-  edges: Array<ClubsEdge>;
-  pageInfo: PageInfo;
-};
-
-export type ClubsDeleteResponse = {
-  __typename?: 'clubsDeleteResponse';
-  /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int']['output'];
-  /** Array of records impacted by the mutation */
-  records: Array<Clubs>;
-};
-
-export type ClubsEdge = {
-  __typename?: 'clubsEdge';
-  cursor: Scalars['String']['output'];
-  node: Clubs;
-};
-
-export type ClubsFilter = {
-  absence_report_required_reviewer?: InputMaybe<UuidFilter>;
-  active?: InputMaybe<BooleanFilter>;
-  /** Returns true only if all its inner filters are true, otherwise returns false */
-  and?: InputMaybe<Array<ClubsFilter>>;
-  created_at?: InputMaybe<DatetimeFilter>;
-  created_by?: InputMaybe<UuidFilter>;
-  description?: InputMaybe<StringFilter>;
-  id?: InputMaybe<UuidFilter>;
-  name?: InputMaybe<StringFilter>;
-  nodeId?: InputMaybe<IdFilter>;
-  /** Negates a filter */
-  not?: InputMaybe<ClubsFilter>;
-  /** Returns true if at least one of its inner filters is true, otherwise returns false */
-  or?: InputMaybe<Array<ClubsFilter>>;
-  public?: InputMaybe<BooleanFilter>;
-  school?: InputMaybe<StringFilter>;
-  website?: InputMaybe<StringFilter>;
-};
-
-export type ClubsInsertInput = {
-  absence_report_required_reviewer?: InputMaybe<Scalars['UUID']['input']>;
-  absence_report_schema?: InputMaybe<Scalars['JSON']['input']>;
-  active?: InputMaybe<Scalars['Boolean']['input']>;
-  created_at?: InputMaybe<Scalars['Datetime']['input']>;
-  created_by?: InputMaybe<Scalars['UUID']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
-  id?: InputMaybe<Scalars['UUID']['input']>;
-  name?: InputMaybe<Scalars['String']['input']>;
-  public?: InputMaybe<Scalars['Boolean']['input']>;
-  school?: InputMaybe<Scalars['String']['input']>;
-  website?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type ClubsInsertResponse = {
-  __typename?: 'clubsInsertResponse';
-  /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int']['output'];
-  /** Array of records impacted by the mutation */
-  records: Array<Clubs>;
-};
-
-export type ClubsOrderBy = {
-  absence_report_required_reviewer?: InputMaybe<OrderByDirection>;
-  active?: InputMaybe<OrderByDirection>;
-  created_at?: InputMaybe<OrderByDirection>;
-  created_by?: InputMaybe<OrderByDirection>;
-  description?: InputMaybe<OrderByDirection>;
-  id?: InputMaybe<OrderByDirection>;
-  name?: InputMaybe<OrderByDirection>;
-  public?: InputMaybe<OrderByDirection>;
-  school?: InputMaybe<OrderByDirection>;
-  website?: InputMaybe<OrderByDirection>;
-};
-
-export type ClubsUpdateInput = {
-  absence_report_required_reviewer?: InputMaybe<Scalars['UUID']['input']>;
-  absence_report_schema?: InputMaybe<Scalars['JSON']['input']>;
-  active?: InputMaybe<Scalars['Boolean']['input']>;
-  created_at?: InputMaybe<Scalars['Datetime']['input']>;
-  created_by?: InputMaybe<Scalars['UUID']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
-  id?: InputMaybe<Scalars['UUID']['input']>;
-  name?: InputMaybe<Scalars['String']['input']>;
-  public?: InputMaybe<Scalars['Boolean']['input']>;
-  school?: InputMaybe<Scalars['String']['input']>;
-  website?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type ClubsUpdateResponse = {
-  __typename?: 'clubsUpdateResponse';
-  /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int']['output'];
-  /** Array of records impacted by the mutation */
-  records: Array<Clubs>;
-};
-
-export type Feedback_Submissions = Node & {
-  __typename?: 'feedback_submissions';
-  club_id?: Maybe<Scalars['UUID']['output']>;
-  clubs?: Maybe<Clubs>;
-  created_at: Scalars['Datetime']['output'];
-  feedback: Scalars['String']['output'];
-  id: Scalars['UUID']['output'];
-  /** Globally Unique Record Identifier */
-  nodeId: Scalars['ID']['output'];
-  profiles?: Maybe<Profiles>;
-  user_id?: Maybe<Scalars['UUID']['output']>;
-};
-
-export type Feedback_SubmissionsConnection = {
-  __typename?: 'feedback_submissionsConnection';
-  edges: Array<Feedback_SubmissionsEdge>;
-  pageInfo: PageInfo;
-};
-
-export type Feedback_SubmissionsDeleteResponse = {
-  __typename?: 'feedback_submissionsDeleteResponse';
-  /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int']['output'];
-  /** Array of records impacted by the mutation */
-  records: Array<Feedback_Submissions>;
-};
-
-export type Feedback_SubmissionsEdge = {
-  __typename?: 'feedback_submissionsEdge';
-  cursor: Scalars['String']['output'];
-  node: Feedback_Submissions;
-};
-
-export type Feedback_SubmissionsFilter = {
-  /** Returns true only if all its inner filters are true, otherwise returns false */
-  and?: InputMaybe<Array<Feedback_SubmissionsFilter>>;
-  club_id?: InputMaybe<UuidFilter>;
-  created_at?: InputMaybe<DatetimeFilter>;
-  feedback?: InputMaybe<StringFilter>;
-  id?: InputMaybe<UuidFilter>;
-  nodeId?: InputMaybe<IdFilter>;
-  /** Negates a filter */
-  not?: InputMaybe<Feedback_SubmissionsFilter>;
-  /** Returns true if at least one of its inner filters is true, otherwise returns false */
-  or?: InputMaybe<Array<Feedback_SubmissionsFilter>>;
-  user_id?: InputMaybe<UuidFilter>;
-};
-
-export type Feedback_SubmissionsInsertInput = {
-  club_id?: InputMaybe<Scalars['UUID']['input']>;
-  created_at?: InputMaybe<Scalars['Datetime']['input']>;
-  feedback?: InputMaybe<Scalars['String']['input']>;
-  id?: InputMaybe<Scalars['UUID']['input']>;
-  user_id?: InputMaybe<Scalars['UUID']['input']>;
-};
-
-export type Feedback_SubmissionsInsertResponse = {
-  __typename?: 'feedback_submissionsInsertResponse';
-  /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int']['output'];
-  /** Array of records impacted by the mutation */
-  records: Array<Feedback_Submissions>;
-};
-
-export type Feedback_SubmissionsOrderBy = {
-  club_id?: InputMaybe<OrderByDirection>;
-  created_at?: InputMaybe<OrderByDirection>;
-  feedback?: InputMaybe<OrderByDirection>;
-  id?: InputMaybe<OrderByDirection>;
-  user_id?: InputMaybe<OrderByDirection>;
-};
-
-export type Feedback_SubmissionsUpdateInput = {
-  club_id?: InputMaybe<Scalars['UUID']['input']>;
-  created_at?: InputMaybe<Scalars['Datetime']['input']>;
-  feedback?: InputMaybe<Scalars['String']['input']>;
-  id?: InputMaybe<Scalars['UUID']['input']>;
-  user_id?: InputMaybe<Scalars['UUID']['input']>;
-};
-
-export type Feedback_SubmissionsUpdateResponse = {
-  __typename?: 'feedback_submissionsUpdateResponse';
-  /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int']['output'];
-  /** Array of records impacted by the mutation */
-  records: Array<Feedback_Submissions>;
-};
-
-export type Files = Node & {
-  __typename?: 'files';
-  club_id?: Maybe<Scalars['UUID']['output']>;
-  clubs?: Maybe<Clubs>;
-  created_at: Scalars['Datetime']['output'];
-  description?: Maybe<Scalars['String']['output']>;
-  file_name: Scalars['String']['output'];
-  file_size: Scalars['BigInt']['output'];
-  file_type: Scalars['String']['output'];
-  id: Scalars['UUID']['output'];
-  /** Globally Unique Record Identifier */
-  nodeId: Scalars['ID']['output'];
-  profiles?: Maybe<Profiles>;
-  updated_at: Scalars['Datetime']['output'];
-  url: Scalars['String']['output'];
-  user_id?: Maybe<Scalars['UUID']['output']>;
-};
-
-export type FilesConnection = {
-  __typename?: 'filesConnection';
-  edges: Array<FilesEdge>;
-  pageInfo: PageInfo;
-};
-
-export type FilesDeleteResponse = {
-  __typename?: 'filesDeleteResponse';
-  /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int']['output'];
-  /** Array of records impacted by the mutation */
-  records: Array<Files>;
-};
-
-export type FilesEdge = {
-  __typename?: 'filesEdge';
-  cursor: Scalars['String']['output'];
-  node: Files;
-};
-
-export type FilesFilter = {
-  /** Returns true only if all its inner filters are true, otherwise returns false */
-  and?: InputMaybe<Array<FilesFilter>>;
-  club_id?: InputMaybe<UuidFilter>;
-  created_at?: InputMaybe<DatetimeFilter>;
-  description?: InputMaybe<StringFilter>;
-  file_name?: InputMaybe<StringFilter>;
-  file_size?: InputMaybe<BigIntFilter>;
-  file_type?: InputMaybe<StringFilter>;
-  id?: InputMaybe<UuidFilter>;
-  nodeId?: InputMaybe<IdFilter>;
-  /** Negates a filter */
-  not?: InputMaybe<FilesFilter>;
-  /** Returns true if at least one of its inner filters is true, otherwise returns false */
-  or?: InputMaybe<Array<FilesFilter>>;
-  updated_at?: InputMaybe<DatetimeFilter>;
-  url?: InputMaybe<StringFilter>;
-  user_id?: InputMaybe<UuidFilter>;
-};
-
-export type FilesInsertInput = {
-  club_id?: InputMaybe<Scalars['UUID']['input']>;
-  created_at?: InputMaybe<Scalars['Datetime']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
-  file_name?: InputMaybe<Scalars['String']['input']>;
-  file_size?: InputMaybe<Scalars['BigInt']['input']>;
-  file_type?: InputMaybe<Scalars['String']['input']>;
-  id?: InputMaybe<Scalars['UUID']['input']>;
-  updated_at?: InputMaybe<Scalars['Datetime']['input']>;
-  url?: InputMaybe<Scalars['String']['input']>;
-  user_id?: InputMaybe<Scalars['UUID']['input']>;
-};
-
-export type FilesInsertResponse = {
-  __typename?: 'filesInsertResponse';
-  /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int']['output'];
-  /** Array of records impacted by the mutation */
-  records: Array<Files>;
-};
-
-export type FilesOrderBy = {
-  club_id?: InputMaybe<OrderByDirection>;
-  created_at?: InputMaybe<OrderByDirection>;
-  description?: InputMaybe<OrderByDirection>;
-  file_name?: InputMaybe<OrderByDirection>;
-  file_size?: InputMaybe<OrderByDirection>;
-  file_type?: InputMaybe<OrderByDirection>;
-  id?: InputMaybe<OrderByDirection>;
-  updated_at?: InputMaybe<OrderByDirection>;
-  url?: InputMaybe<OrderByDirection>;
-  user_id?: InputMaybe<OrderByDirection>;
-};
-
-export type FilesUpdateInput = {
-  club_id?: InputMaybe<Scalars['UUID']['input']>;
-  created_at?: InputMaybe<Scalars['Datetime']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
-  file_name?: InputMaybe<Scalars['String']['input']>;
-  file_size?: InputMaybe<Scalars['BigInt']['input']>;
-  file_type?: InputMaybe<Scalars['String']['input']>;
-  id?: InputMaybe<Scalars['UUID']['input']>;
-  updated_at?: InputMaybe<Scalars['Datetime']['input']>;
-  url?: InputMaybe<Scalars['String']['input']>;
-  user_id?: InputMaybe<Scalars['UUID']['input']>;
-};
-
-export type FilesUpdateResponse = {
-  __typename?: 'filesUpdateResponse';
-  /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int']['output'];
-  /** Array of records impacted by the mutation */
-  records: Array<Files>;
-};
-
-export type Joined_Clubs = Node & {
-  __typename?: 'joined_clubs';
-  absence_report_required_reviewer?: Maybe<Scalars['UUID']['output']>;
-  absence_report_schema?: Maybe<Scalars['JSON']['output']>;
-  active?: Maybe<Scalars['Boolean']['output']>;
-  created_at?: Maybe<Scalars['Datetime']['output']>;
-  created_by?: Maybe<Scalars['UUID']['output']>;
-  description?: Maybe<Scalars['String']['output']>;
-  id?: Maybe<Scalars['UUID']['output']>;
-  name?: Maybe<Scalars['String']['output']>;
-  /** Globally Unique Record Identifier */
-  nodeId: Scalars['ID']['output'];
-  public?: Maybe<Scalars['Boolean']['output']>;
-  school?: Maybe<Scalars['String']['output']>;
-  website?: Maybe<Scalars['String']['output']>;
-};
-
-export type Joined_ClubsConnection = {
-  __typename?: 'joined_clubsConnection';
-  edges: Array<Joined_ClubsEdge>;
-  pageInfo: PageInfo;
-};
-
-export type Joined_ClubsDeleteResponse = {
-  __typename?: 'joined_clubsDeleteResponse';
-  /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int']['output'];
-  /** Array of records impacted by the mutation */
-  records: Array<Joined_Clubs>;
-};
-
-export type Joined_ClubsEdge = {
-  __typename?: 'joined_clubsEdge';
-  cursor: Scalars['String']['output'];
-  node: Joined_Clubs;
-};
-
-export type Joined_ClubsFilter = {
-  absence_report_required_reviewer?: InputMaybe<UuidFilter>;
-  active?: InputMaybe<BooleanFilter>;
-  /** Returns true only if all its inner filters are true, otherwise returns false */
-  and?: InputMaybe<Array<Joined_ClubsFilter>>;
-  created_at?: InputMaybe<DatetimeFilter>;
-  created_by?: InputMaybe<UuidFilter>;
-  description?: InputMaybe<StringFilter>;
-  id?: InputMaybe<UuidFilter>;
-  name?: InputMaybe<StringFilter>;
-  nodeId?: InputMaybe<IdFilter>;
-  /** Negates a filter */
-  not?: InputMaybe<Joined_ClubsFilter>;
-  /** Returns true if at least one of its inner filters is true, otherwise returns false */
-  or?: InputMaybe<Array<Joined_ClubsFilter>>;
-  public?: InputMaybe<BooleanFilter>;
-  school?: InputMaybe<StringFilter>;
-  website?: InputMaybe<StringFilter>;
-};
-
-export type Joined_ClubsInsertInput = {
-  absence_report_required_reviewer?: InputMaybe<Scalars['UUID']['input']>;
-  absence_report_schema?: InputMaybe<Scalars['JSON']['input']>;
-  active?: InputMaybe<Scalars['Boolean']['input']>;
-  created_at?: InputMaybe<Scalars['Datetime']['input']>;
-  created_by?: InputMaybe<Scalars['UUID']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
-  id?: InputMaybe<Scalars['UUID']['input']>;
-  name?: InputMaybe<Scalars['String']['input']>;
-  public?: InputMaybe<Scalars['Boolean']['input']>;
-  school?: InputMaybe<Scalars['String']['input']>;
-  website?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type Joined_ClubsInsertResponse = {
-  __typename?: 'joined_clubsInsertResponse';
-  /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int']['output'];
-  /** Array of records impacted by the mutation */
-  records: Array<Joined_Clubs>;
-};
-
-export type Joined_ClubsOrderBy = {
-  absence_report_required_reviewer?: InputMaybe<OrderByDirection>;
-  active?: InputMaybe<OrderByDirection>;
-  created_at?: InputMaybe<OrderByDirection>;
-  created_by?: InputMaybe<OrderByDirection>;
-  description?: InputMaybe<OrderByDirection>;
-  id?: InputMaybe<OrderByDirection>;
-  name?: InputMaybe<OrderByDirection>;
-  public?: InputMaybe<OrderByDirection>;
-  school?: InputMaybe<OrderByDirection>;
-  website?: InputMaybe<OrderByDirection>;
-};
-
-export type Joined_ClubsUpdateInput = {
-  absence_report_required_reviewer?: InputMaybe<Scalars['UUID']['input']>;
-  absence_report_schema?: InputMaybe<Scalars['JSON']['input']>;
-  active?: InputMaybe<Scalars['Boolean']['input']>;
-  created_at?: InputMaybe<Scalars['Datetime']['input']>;
-  created_by?: InputMaybe<Scalars['UUID']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
-  id?: InputMaybe<Scalars['UUID']['input']>;
-  name?: InputMaybe<Scalars['String']['input']>;
-  public?: InputMaybe<Scalars['Boolean']['input']>;
-  school?: InputMaybe<Scalars['String']['input']>;
-  website?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type Joined_ClubsUpdateResponse = {
-  __typename?: 'joined_clubsUpdateResponse';
-  /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int']['output'];
-  /** Array of records impacted by the mutation */
-  records: Array<Joined_Clubs>;
-};
-
-export type Notifications = Node & {
-  __typename?: 'notifications';
-  club_id?: Maybe<Scalars['UUID']['output']>;
-  clubs?: Maybe<Clubs>;
-  content: Scalars['String']['output'];
-  created_at: Scalars['Datetime']['output'];
-  id: Scalars['UUID']['output'];
-  /** Globally Unique Record Identifier */
-  nodeId: Scalars['ID']['output'];
-  profiles?: Maybe<Profiles>;
-  read: Scalars['Boolean']['output'];
-  user_id?: Maybe<Scalars['UUID']['output']>;
-};
-
-export type NotificationsConnection = {
-  __typename?: 'notificationsConnection';
-  edges: Array<NotificationsEdge>;
-  pageInfo: PageInfo;
-};
-
-export type NotificationsDeleteResponse = {
-  __typename?: 'notificationsDeleteResponse';
-  /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int']['output'];
-  /** Array of records impacted by the mutation */
-  records: Array<Notifications>;
-};
-
-export type NotificationsEdge = {
-  __typename?: 'notificationsEdge';
-  cursor: Scalars['String']['output'];
-  node: Notifications;
-};
-
-export type NotificationsFilter = {
-  /** Returns true only if all its inner filters are true, otherwise returns false */
-  and?: InputMaybe<Array<NotificationsFilter>>;
-  club_id?: InputMaybe<UuidFilter>;
-  content?: InputMaybe<StringFilter>;
-  created_at?: InputMaybe<DatetimeFilter>;
-  id?: InputMaybe<UuidFilter>;
-  nodeId?: InputMaybe<IdFilter>;
-  /** Negates a filter */
-  not?: InputMaybe<NotificationsFilter>;
-  /** Returns true if at least one of its inner filters is true, otherwise returns false */
-  or?: InputMaybe<Array<NotificationsFilter>>;
-  read?: InputMaybe<BooleanFilter>;
-  user_id?: InputMaybe<UuidFilter>;
-};
-
-export type NotificationsInsertInput = {
-  club_id?: InputMaybe<Scalars['UUID']['input']>;
-  content?: InputMaybe<Scalars['String']['input']>;
-  created_at?: InputMaybe<Scalars['Datetime']['input']>;
-  id?: InputMaybe<Scalars['UUID']['input']>;
-  read?: InputMaybe<Scalars['Boolean']['input']>;
-  user_id?: InputMaybe<Scalars['UUID']['input']>;
-};
-
-export type NotificationsInsertResponse = {
-  __typename?: 'notificationsInsertResponse';
-  /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int']['output'];
-  /** Array of records impacted by the mutation */
-  records: Array<Notifications>;
-};
-
-export type NotificationsOrderBy = {
-  club_id?: InputMaybe<OrderByDirection>;
-  content?: InputMaybe<OrderByDirection>;
-  created_at?: InputMaybe<OrderByDirection>;
-  id?: InputMaybe<OrderByDirection>;
-  read?: InputMaybe<OrderByDirection>;
-  user_id?: InputMaybe<OrderByDirection>;
-};
-
-export type NotificationsUpdateInput = {
-  club_id?: InputMaybe<Scalars['UUID']['input']>;
-  content?: InputMaybe<Scalars['String']['input']>;
-  created_at?: InputMaybe<Scalars['Datetime']['input']>;
-  id?: InputMaybe<Scalars['UUID']['input']>;
-  read?: InputMaybe<Scalars['Boolean']['input']>;
-  user_id?: InputMaybe<Scalars['UUID']['input']>;
-};
-
-export type NotificationsUpdateResponse = {
-  __typename?: 'notificationsUpdateResponse';
-  /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int']['output'];
-  /** Array of records impacted by the mutation */
-  records: Array<Notifications>;
-};
-
-export type Profiles = Node & {
-  __typename?: 'profiles';
-  absence_report_reviewsCollection?: Maybe<Absence_Report_ReviewsConnection>;
-  absence_reportsCollection?: Maybe<Absence_ReportsConnection>;
-  avatar_url?: Maybe<Scalars['String']['output']>;
-  bio?: Maybe<Scalars['String']['output']>;
-  calendar_eventsCollection?: Maybe<Calendar_EventsConnection>;
-  club_membersCollection?: Maybe<Club_MembersConnection>;
-  clubsCollection?: Maybe<ClubsConnection>;
-  created_at: Scalars['Datetime']['output'];
-  feedback_submissionsCollection?: Maybe<Feedback_SubmissionsConnection>;
-  filesCollection?: Maybe<FilesConnection>;
-  full_name: Scalars['String']['output'];
-  id: Scalars['UUID']['output'];
-  locale?: Maybe<Scalars['String']['output']>;
-  nickname?: Maybe<Scalars['String']['output']>;
-  /** Globally Unique Record Identifier */
-  nodeId: Scalars['ID']['output'];
-  notificationsCollection?: Maybe<NotificationsConnection>;
-  private_profile: Scalars['Boolean']['output'];
-  push_notifications_preference: Scalars['JSON']['output'];
-  school?: Maybe<Scalars['String']['output']>;
-  updated_at: Scalars['Datetime']['output'];
-};
-
-
-export type ProfilesAbsence_Report_ReviewsCollectionArgs = {
-  after?: InputMaybe<Scalars['Cursor']['input']>;
-  before?: InputMaybe<Scalars['Cursor']['input']>;
-  filter?: InputMaybe<Absence_Report_ReviewsFilter>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<Absence_Report_ReviewsOrderBy>>;
-};
-
-
-export type ProfilesAbsence_ReportsCollectionArgs = {
-  after?: InputMaybe<Scalars['Cursor']['input']>;
-  before?: InputMaybe<Scalars['Cursor']['input']>;
-  filter?: InputMaybe<Absence_ReportsFilter>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<Absence_ReportsOrderBy>>;
-};
-
-
-export type ProfilesCalendar_EventsCollectionArgs = {
-  after?: InputMaybe<Scalars['Cursor']['input']>;
-  before?: InputMaybe<Scalars['Cursor']['input']>;
-  filter?: InputMaybe<Calendar_EventsFilter>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<Calendar_EventsOrderBy>>;
-};
-
-
-export type ProfilesClub_MembersCollectionArgs = {
-  after?: InputMaybe<Scalars['Cursor']['input']>;
-  before?: InputMaybe<Scalars['Cursor']['input']>;
-  filter?: InputMaybe<Club_MembersFilter>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<Club_MembersOrderBy>>;
-};
-
-
-export type ProfilesClubsCollectionArgs = {
-  after?: InputMaybe<Scalars['Cursor']['input']>;
-  before?: InputMaybe<Scalars['Cursor']['input']>;
-  filter?: InputMaybe<ClubsFilter>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<ClubsOrderBy>>;
-};
-
-
-export type ProfilesFeedback_SubmissionsCollectionArgs = {
-  after?: InputMaybe<Scalars['Cursor']['input']>;
-  before?: InputMaybe<Scalars['Cursor']['input']>;
-  filter?: InputMaybe<Feedback_SubmissionsFilter>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<Feedback_SubmissionsOrderBy>>;
-};
-
-
-export type ProfilesFilesCollectionArgs = {
-  after?: InputMaybe<Scalars['Cursor']['input']>;
-  before?: InputMaybe<Scalars['Cursor']['input']>;
-  filter?: InputMaybe<FilesFilter>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<FilesOrderBy>>;
-};
-
-
-export type ProfilesNotificationsCollectionArgs = {
-  after?: InputMaybe<Scalars['Cursor']['input']>;
-  before?: InputMaybe<Scalars['Cursor']['input']>;
-  filter?: InputMaybe<NotificationsFilter>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<NotificationsOrderBy>>;
-};
-
-export type ProfilesConnection = {
-  __typename?: 'profilesConnection';
-  edges: Array<ProfilesEdge>;
-  pageInfo: PageInfo;
-};
-
-export type ProfilesDeleteResponse = {
-  __typename?: 'profilesDeleteResponse';
-  /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int']['output'];
-  /** Array of records impacted by the mutation */
-  records: Array<Profiles>;
-};
-
-export type ProfilesEdge = {
-  __typename?: 'profilesEdge';
-  cursor: Scalars['String']['output'];
-  node: Profiles;
-};
-
-export type ProfilesFilter = {
-  /** Returns true only if all its inner filters are true, otherwise returns false */
-  and?: InputMaybe<Array<ProfilesFilter>>;
-  avatar_url?: InputMaybe<StringFilter>;
-  bio?: InputMaybe<StringFilter>;
-  created_at?: InputMaybe<DatetimeFilter>;
-  full_name?: InputMaybe<StringFilter>;
-  id?: InputMaybe<UuidFilter>;
-  locale?: InputMaybe<StringFilter>;
-  nickname?: InputMaybe<StringFilter>;
-  nodeId?: InputMaybe<IdFilter>;
-  /** Negates a filter */
-  not?: InputMaybe<ProfilesFilter>;
-  /** Returns true if at least one of its inner filters is true, otherwise returns false */
-  or?: InputMaybe<Array<ProfilesFilter>>;
-  private_profile?: InputMaybe<BooleanFilter>;
-  school?: InputMaybe<StringFilter>;
-  updated_at?: InputMaybe<DatetimeFilter>;
-};
-
-export type ProfilesInsertInput = {
-  avatar_url?: InputMaybe<Scalars['String']['input']>;
-  bio?: InputMaybe<Scalars['String']['input']>;
-  created_at?: InputMaybe<Scalars['Datetime']['input']>;
-  full_name?: InputMaybe<Scalars['String']['input']>;
-  id?: InputMaybe<Scalars['UUID']['input']>;
-  locale?: InputMaybe<Scalars['String']['input']>;
-  nickname?: InputMaybe<Scalars['String']['input']>;
-  private_profile?: InputMaybe<Scalars['Boolean']['input']>;
-  push_notifications_preference?: InputMaybe<Scalars['JSON']['input']>;
-  school?: InputMaybe<Scalars['String']['input']>;
-  updated_at?: InputMaybe<Scalars['Datetime']['input']>;
-};
-
-export type ProfilesInsertResponse = {
-  __typename?: 'profilesInsertResponse';
-  /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int']['output'];
-  /** Array of records impacted by the mutation */
-  records: Array<Profiles>;
-};
-
-export type ProfilesOrderBy = {
-  avatar_url?: InputMaybe<OrderByDirection>;
-  bio?: InputMaybe<OrderByDirection>;
-  created_at?: InputMaybe<OrderByDirection>;
-  full_name?: InputMaybe<OrderByDirection>;
-  id?: InputMaybe<OrderByDirection>;
-  locale?: InputMaybe<OrderByDirection>;
-  nickname?: InputMaybe<OrderByDirection>;
-  private_profile?: InputMaybe<OrderByDirection>;
-  school?: InputMaybe<OrderByDirection>;
-  updated_at?: InputMaybe<OrderByDirection>;
-};
-
-export type ProfilesUpdateInput = {
-  avatar_url?: InputMaybe<Scalars['String']['input']>;
-  bio?: InputMaybe<Scalars['String']['input']>;
-  created_at?: InputMaybe<Scalars['Datetime']['input']>;
-  full_name?: InputMaybe<Scalars['String']['input']>;
-  id?: InputMaybe<Scalars['UUID']['input']>;
-  locale?: InputMaybe<Scalars['String']['input']>;
-  nickname?: InputMaybe<Scalars['String']['input']>;
-  private_profile?: InputMaybe<Scalars['Boolean']['input']>;
-  push_notifications_preference?: InputMaybe<Scalars['JSON']['input']>;
-  school?: InputMaybe<Scalars['String']['input']>;
-  updated_at?: InputMaybe<Scalars['Datetime']['input']>;
-};
-
-export type ProfilesUpdateResponse = {
-  __typename?: 'profilesUpdateResponse';
-  /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int']['output'];
-  /** Array of records impacted by the mutation */
-  records: Array<Profiles>;
-};
-
-export type Roles = Node & {
-  __typename?: 'roles';
-  absence_report_approval_required: Scalars['Boolean']['output'];
-  absence_report_form?: Maybe<Scalars['UUID']['output']>;
-  absence_report_forms?: Maybe<Absence_Report_Forms>;
-  absence_report_reviewer_role?: Maybe<Scalars['UUID']['output']>;
-  absence_reportsCollection?: Maybe<Absence_ReportsConnection>;
-  club_id?: Maybe<Scalars['UUID']['output']>;
-  club_membersCollection?: Maybe<Club_MembersConnection>;
-  clubs?: Maybe<Clubs>;
-  created_at: Scalars['Datetime']['output'];
-  description?: Maybe<Scalars['String']['output']>;
-  id: Scalars['UUID']['output'];
-  name: Scalars['String']['output'];
-  /** Globally Unique Record Identifier */
-  nodeId: Scalars['ID']['output'];
-  permissions: Scalars['JSON']['output'];
-  roles?: Maybe<Roles>;
-  rolesCollection?: Maybe<RolesConnection>;
-  updated_at: Scalars['Datetime']['output'];
-};
-
-
-export type RolesAbsence_ReportsCollectionArgs = {
-  after?: InputMaybe<Scalars['Cursor']['input']>;
-  before?: InputMaybe<Scalars['Cursor']['input']>;
-  filter?: InputMaybe<Absence_ReportsFilter>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<Absence_ReportsOrderBy>>;
-};
-
-
-export type RolesClub_MembersCollectionArgs = {
-  after?: InputMaybe<Scalars['Cursor']['input']>;
-  before?: InputMaybe<Scalars['Cursor']['input']>;
-  filter?: InputMaybe<Club_MembersFilter>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<Club_MembersOrderBy>>;
-};
-
-
-export type RolesRolesCollectionArgs = {
-  after?: InputMaybe<Scalars['Cursor']['input']>;
-  before?: InputMaybe<Scalars['Cursor']['input']>;
-  filter?: InputMaybe<RolesFilter>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<RolesOrderBy>>;
-};
-
-export type RolesConnection = {
-  __typename?: 'rolesConnection';
-  edges: Array<RolesEdge>;
-  pageInfo: PageInfo;
-};
-
-export type RolesDeleteResponse = {
-  __typename?: 'rolesDeleteResponse';
-  /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int']['output'];
-  /** Array of records impacted by the mutation */
-  records: Array<Roles>;
-};
-
-export type RolesEdge = {
-  __typename?: 'rolesEdge';
-  cursor: Scalars['String']['output'];
-  node: Roles;
-};
-
-export type RolesFilter = {
-  absence_report_approval_required?: InputMaybe<BooleanFilter>;
-  absence_report_form?: InputMaybe<UuidFilter>;
-  absence_report_reviewer_role?: InputMaybe<UuidFilter>;
-  /** Returns true only if all its inner filters are true, otherwise returns false */
-  and?: InputMaybe<Array<RolesFilter>>;
-  club_id?: InputMaybe<UuidFilter>;
-  created_at?: InputMaybe<DatetimeFilter>;
-  description?: InputMaybe<StringFilter>;
-  id?: InputMaybe<UuidFilter>;
-  name?: InputMaybe<StringFilter>;
-  nodeId?: InputMaybe<IdFilter>;
-  /** Negates a filter */
-  not?: InputMaybe<RolesFilter>;
-  /** Returns true if at least one of its inner filters is true, otherwise returns false */
-  or?: InputMaybe<Array<RolesFilter>>;
-  updated_at?: InputMaybe<DatetimeFilter>;
-};
-
-export type RolesInsertInput = {
-  absence_report_approval_required?: InputMaybe<Scalars['Boolean']['input']>;
-  absence_report_form?: InputMaybe<Scalars['UUID']['input']>;
-  absence_report_reviewer_role?: InputMaybe<Scalars['UUID']['input']>;
-  club_id?: InputMaybe<Scalars['UUID']['input']>;
-  created_at?: InputMaybe<Scalars['Datetime']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
-  id?: InputMaybe<Scalars['UUID']['input']>;
-  name?: InputMaybe<Scalars['String']['input']>;
-  permissions?: InputMaybe<Scalars['JSON']['input']>;
-  updated_at?: InputMaybe<Scalars['Datetime']['input']>;
-};
-
-export type RolesInsertResponse = {
-  __typename?: 'rolesInsertResponse';
-  /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int']['output'];
-  /** Array of records impacted by the mutation */
-  records: Array<Roles>;
-};
-
-export type RolesOrderBy = {
-  absence_report_approval_required?: InputMaybe<OrderByDirection>;
-  absence_report_form?: InputMaybe<OrderByDirection>;
-  absence_report_reviewer_role?: InputMaybe<OrderByDirection>;
-  club_id?: InputMaybe<OrderByDirection>;
-  created_at?: InputMaybe<OrderByDirection>;
-  description?: InputMaybe<OrderByDirection>;
-  id?: InputMaybe<OrderByDirection>;
-  name?: InputMaybe<OrderByDirection>;
-  updated_at?: InputMaybe<OrderByDirection>;
-};
-
-export type RolesUpdateInput = {
-  absence_report_approval_required?: InputMaybe<Scalars['Boolean']['input']>;
-  absence_report_form?: InputMaybe<Scalars['UUID']['input']>;
-  absence_report_reviewer_role?: InputMaybe<Scalars['UUID']['input']>;
-  club_id?: InputMaybe<Scalars['UUID']['input']>;
-  created_at?: InputMaybe<Scalars['Datetime']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
-  id?: InputMaybe<Scalars['UUID']['input']>;
-  name?: InputMaybe<Scalars['String']['input']>;
-  permissions?: InputMaybe<Scalars['JSON']['input']>;
-  updated_at?: InputMaybe<Scalars['Datetime']['input']>;
-};
-
-export type RolesUpdateResponse = {
-  __typename?: 'rolesUpdateResponse';
-  /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int']['output'];
-  /** Array of records impacted by the mutation */
-  records: Array<Roles>;
-};
-
 export type AbsenceReportAllDetailQueryVariables = Exact<{
   reportId: Scalars['UUID']['input'];
 }>;
 
 
-export type AbsenceReportAllDetailQuery = { __typename: 'Query', absence_reportsCollection?: { __typename: 'absence_reportsConnection', edges: Array<{ __typename: 'absence_reportsEdge', node: (
-        { __typename: 'absence_reports' }
+export type AbsenceReportAllDetailQuery = { __typename: 'Query', absenceReportsCollection?: { __typename: 'AbsenceReportsConnection', edges: Array<{ __typename: 'AbsenceReportsEdge', node: (
+        { __typename: 'AbsenceReports' }
         & { ' $fragmentRefs'?: { 'AbsenceReportDetailFragment': AbsenceReportDetailFragment } }
       ) }> } | null };
 
@@ -2387,8 +2548,8 @@ export type AllAbsenceReportsQueryVariables = Exact<{
 }>;
 
 
-export type AllAbsenceReportsQuery = { __typename: 'Query', absence_reportsCollection?: { __typename: 'absence_reportsConnection', edges: Array<{ __typename: 'absence_reportsEdge', node: (
-        { __typename: 'absence_reports', id: string }
+export type AllAbsenceReportsQuery = { __typename: 'Query', absenceReportsCollection?: { __typename: 'AbsenceReportsConnection', edges: Array<{ __typename: 'AbsenceReportsEdge', node: (
+        { __typename: 'AbsenceReports', id: string }
         & { ' $fragmentRefs'?: { 'AbsenceReportCardFragment': AbsenceReportCardFragment } }
       ) }> } | null };
 
@@ -2397,8 +2558,8 @@ export type AbsenceReportMyDetailQueryVariables = Exact<{
 }>;
 
 
-export type AbsenceReportMyDetailQuery = { __typename: 'Query', absence_reportsCollection?: { __typename: 'absence_reportsConnection', edges: Array<{ __typename: 'absence_reportsEdge', node: (
-        { __typename: 'absence_reports' }
+export type AbsenceReportMyDetailQuery = { __typename: 'Query', absenceReportsCollection?: { __typename: 'AbsenceReportsConnection', edges: Array<{ __typename: 'AbsenceReportsEdge', node: (
+        { __typename: 'AbsenceReports' }
         & { ' $fragmentRefs'?: { 'AbsenceReportDetailFragment': AbsenceReportDetailFragment } }
       ) }> } | null };
 
@@ -2408,12 +2569,12 @@ export type MyAbsenceReportsQueryVariables = Exact<{
 }>;
 
 
-export type MyAbsenceReportsQuery = { __typename: 'Query', absence_reportsCollection?: { __typename: 'absence_reportsConnection', edges: Array<{ __typename: 'absence_reportsEdge', node: (
-        { __typename: 'absence_reports', id: string }
+export type MyAbsenceReportsQuery = { __typename: 'Query', absenceReportsCollection?: { __typename: 'AbsenceReportsConnection', edges: Array<{ __typename: 'AbsenceReportsEdge', node: (
+        { __typename: 'AbsenceReports', id: string }
         & { ' $fragmentRefs'?: { 'AbsenceReportCardFragment': AbsenceReportCardFragment } }
       ) }> } | null };
 
-export type AbsenceReportDetailFragment = { __typename: 'absence_reports', id: string, date?: string | null, created_at: string, data: string, assigned_to_role?: { __typename: 'roles', name: string } | null, form?: { __typename: 'absence_report_forms', id: string, name: string, questions: string } | null, reviews?: { __typename: 'absence_report_reviewsConnection', edges: Array<{ __typename: 'absence_report_reviewsEdge', node: { __typename: 'absence_report_reviews', id: string, created_at: string, accepted: boolean, comments?: string | null, reviewer?: { __typename: 'profiles', full_name: string } | null } }> } | null, event?: { __typename: 'calendar_events', id: string, title: string, start_time: string, end_time: string } | null, user?: { __typename: 'profiles', full_name: string, avatar_url?: string | null } | null } & { ' $fragmentName'?: 'AbsenceReportDetailFragment' };
+export type AbsenceReportDetailFragment = { __typename: 'AbsenceReports', id: string, date?: string | null, createdAt: string, data: string, assignedToRole?: { __typename: 'Roles', name: string } | null, form?: { __typename: 'AbsenceReportForms', id: string, name: string, questions: string } | null, reviews?: { __typename: 'AbsenceReportReviewsConnection', edges: Array<{ __typename: 'AbsenceReportReviewsEdge', node: { __typename: 'AbsenceReportReviews', id: string, createdAt: string, accepted: boolean, comments?: string | null, reviewer?: { __typename: 'Profiles', fullName: string } | null } }> } | null, event?: { __typename: 'CalendarEvents', id: string, title: string, startTime: string, endTime: string } | null, user?: { __typename: 'Profiles', fullName: string, avatarUrl?: string | null } | null } & { ' $fragmentName'?: 'AbsenceReportDetailFragment' };
 
 export type CalendarDayQueryVariables = Exact<{
   clubId: Scalars['UUID']['input'];
@@ -2423,23 +2584,23 @@ export type CalendarDayQueryVariables = Exact<{
 }>;
 
 
-export type CalendarDayQuery = { __typename: 'Query', calendar_eventsCollection?: { __typename: 'calendar_eventsConnection', edges: Array<{ __typename: 'calendar_eventsEdge', node: (
-        { __typename: 'calendar_events', id: string, title: string, start_time: string, end_time: string, description?: string | null, location?: string | null }
+export type CalendarDayQuery = { __typename: 'Query', calendarEventsCollection?: { __typename: 'CalendarEventsConnection', edges: Array<{ __typename: 'CalendarEventsEdge', node: (
+        { __typename: 'CalendarEvents', id: string, title: string, startTime: string, endTime: string, description?: string | null, location?: string | null }
         & { ' $fragmentRefs'?: { 'EventDetailDrawerFragment': EventDetailDrawerFragment } }
-      ) }> } | null, absence_reportsCollection?: { __typename: 'absence_reportsConnection', edges: Array<{ __typename: 'absence_reportsEdge', node: (
-        { __typename: 'absence_reports', id: string }
+      ) }> } | null, absenceReportsCollection?: { __typename: 'AbsenceReportsConnection', edges: Array<{ __typename: 'AbsenceReportsEdge', node: (
+        { __typename: 'AbsenceReports', id: string }
         & { ' $fragmentRefs'?: { 'AbsenceReportCardFragment': AbsenceReportCardFragment } }
       ) }> } | null };
 
-export type EventDetailDrawerFragment = { __typename: 'calendar_events', id: string, title: string, start_time: string, end_time: string, description?: string | null, location?: string | null } & { ' $fragmentName'?: 'EventDetailDrawerFragment' };
+export type EventDetailDrawerFragment = { __typename: 'CalendarEvents', id: string, title: string, startTime: string, endTime: string, description?: string | null, location?: string | null } & { ' $fragmentName'?: 'EventDetailDrawerFragment' };
 
 export type JoinedClubsQueryVariables = Exact<{
   me: Scalars['UUID']['input'];
 }>;
 
 
-export type JoinedClubsQuery = { __typename: 'Query', club_membersCollection?: { __typename: 'club_membersConnection', edges: Array<{ __typename: 'club_membersEdge', node: { __typename: 'club_members', clubs?: (
-          { __typename: 'clubs', nodeId: string }
+export type JoinedClubsQuery = { __typename: 'Query', clubMembersCollection?: { __typename: 'ClubMembersConnection', edges: Array<{ __typename: 'ClubMembersEdge', node: { __typename: 'ClubMembers', club?: (
+          { __typename: 'Clubs', nodeId: string }
           & { ' $fragmentRefs'?: { 'ClubCardFragment': ClubCardFragment } }
         ) | null } }> } | null };
 
@@ -2448,8 +2609,8 @@ export type UserQueryVariables = Exact<{
 }>;
 
 
-export type UserQuery = { __typename: 'Query', club_membersCollection?: { __typename: 'club_membersConnection', edges: Array<{ __typename: 'club_membersEdge', node: { __typename: 'club_members', clubs?: (
-          { __typename: 'clubs', nodeId: string }
+export type UserQuery = { __typename: 'Query', clubMembersCollection?: { __typename: 'ClubMembersConnection', edges: Array<{ __typename: 'ClubMembersEdge', node: { __typename: 'ClubMembers', club?: (
+          { __typename: 'Clubs', nodeId: string }
           & { ' $fragmentRefs'?: { 'ClubCardFragment': ClubCardFragment } }
         ) | null } }> } | null };
 
@@ -2458,7 +2619,7 @@ export type MembersManagerQueryVariables = Exact<{
 }>;
 
 
-export type MembersManagerQuery = { __typename: 'Query', club_membersCollection?: { __typename: 'club_membersConnection', edges: Array<{ __typename: 'club_membersEdge', node: { __typename: 'club_members', user_id: string, user?: { __typename: 'profiles', full_name: string, nickname?: string | null, avatar_url?: string | null } | null, role?: { __typename: 'roles', name: string, id: string } | null } }> } | null, rolesCollection?: { __typename: 'rolesConnection', edges: Array<{ __typename: 'rolesEdge', node: { __typename: 'roles', id: string, name: string } }> } | null };
+export type MembersManagerQuery = { __typename: 'Query', clubMembersCollection?: { __typename: 'ClubMembersConnection', edges: Array<{ __typename: 'ClubMembersEdge', node: { __typename: 'ClubMembers', userId: string, user?: { __typename: 'Profiles', fullName: string, nickname?: string | null, avatarUrl?: string | null } | null, role?: { __typename: 'Roles', name: string, id: string } | null } }> } | null, rolesCollection?: { __typename: 'RolesConnection', edges: Array<{ __typename: 'RolesEdge', node: { __typename: 'Roles', id: string, name: string } }> } | null };
 
 export type ChangeMemberRoleMutationVariables = Exact<{
   clubId: Scalars['UUID']['input'];
@@ -2467,7 +2628,7 @@ export type ChangeMemberRoleMutationVariables = Exact<{
 }>;
 
 
-export type ChangeMemberRoleMutation = { __typename: 'Mutation', updateclub_membersCollection: { __typename: 'club_membersUpdateResponse', affectedCount: number } };
+export type ChangeMemberRoleMutation = { __typename: 'Mutation', updateClubMembersCollection: { __typename: 'ClubMembersUpdateResponse', affectedCount: number } };
 
 export type RemoveMemberMutationVariables = Exact<{
   clubId: Scalars['UUID']['input'];
@@ -2475,23 +2636,23 @@ export type RemoveMemberMutationVariables = Exact<{
 }>;
 
 
-export type RemoveMemberMutation = { __typename: 'Mutation', deleteFromclub_membersCollection: { __typename: 'club_membersDeleteResponse', affectedCount: number } };
+export type RemoveMemberMutation = { __typename: 'Mutation', deleteFromClubMembersCollection: { __typename: 'ClubMembersDeleteResponse', affectedCount: number } };
 
-export type AbsenceReportCardFragment = { __typename: 'absence_reports', id: string, date?: string | null, created_at: string, assigned_to_role?: { __typename: 'roles', name: string } | null, reviews?: { __typename: 'absence_report_reviewsConnection', edges: Array<{ __typename: 'absence_report_reviewsEdge', node: { __typename: 'absence_report_reviews', id: string } }> } | null, event?: { __typename: 'calendar_events', id: string, title: string, start_time: string, end_time: string } | null, user?: { __typename: 'profiles', full_name: string, avatar_url?: string | null } | null } & { ' $fragmentName'?: 'AbsenceReportCardFragment' };
+export type AbsenceReportCardFragment = { __typename: 'AbsenceReports', id: string, date?: string | null, createdAt: string, assignedToRole?: { __typename: 'Roles', name: string } | null, reviews?: { __typename: 'AbsenceReportReviewsConnection', edges: Array<{ __typename: 'AbsenceReportReviewsEdge', node: { __typename: 'AbsenceReportReviews', id: string } }> } | null, event?: { __typename: 'CalendarEvents', id: string, title: string, startTime: string, endTime: string } | null, user?: { __typename: 'Profiles', fullName: string, avatarUrl?: string | null } | null } & { ' $fragmentName'?: 'AbsenceReportCardFragment' };
 
-export type ClubCardFragment = { __typename: 'clubs', id: string, name: string, school?: string | null, description?: string | null } & { ' $fragmentName'?: 'ClubCardFragment' };
+export type ClubCardFragment = { __typename: 'Clubs', id: string, name: string, school?: string | null, description?: string | null } & { ' $fragmentName'?: 'ClubCardFragment' };
 
-export const AbsenceReportDetailFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"AbsenceReportDetail"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"absence_reports"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"created_at"}},{"kind":"Field","name":{"kind":"Name","value":"data"}},{"kind":"Field","alias":{"kind":"Name","value":"assigned_to_role"},"name":{"kind":"Name","value":"roles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"form"},"name":{"kind":"Name","value":"absence_report_forms"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"questions"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"reviews"},"name":{"kind":"Name","value":"absence_report_reviewsCollection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"created_at"}},{"kind":"Field","name":{"kind":"Name","value":"accepted"}},{"kind":"Field","name":{"kind":"Name","value":"comments"}},{"kind":"Field","alias":{"kind":"Name","value":"reviewer"},"name":{"kind":"Name","value":"profiles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"full_name"}}]}}]}}]}}]}},{"kind":"Field","alias":{"kind":"Name","value":"event"},"name":{"kind":"Name","value":"calendar_events"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"start_time"}},{"kind":"Field","name":{"kind":"Name","value":"end_time"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"user"},"name":{"kind":"Name","value":"profiles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"full_name"}},{"kind":"Field","name":{"kind":"Name","value":"avatar_url"}}]}}]}}]} as unknown as DocumentNode<AbsenceReportDetailFragment, unknown>;
-export const EventDetailDrawerFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"EventDetailDrawer"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"calendar_events"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"start_time"}},{"kind":"Field","name":{"kind":"Name","value":"end_time"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"location"}}]}}]} as unknown as DocumentNode<EventDetailDrawerFragment, unknown>;
-export const AbsenceReportCardFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"AbsenceReportCard"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"absence_reports"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"created_at"}},{"kind":"Field","alias":{"kind":"Name","value":"assigned_to_role"},"name":{"kind":"Name","value":"roles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"reviews"},"name":{"kind":"Name","value":"absence_report_reviewsCollection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}},{"kind":"Field","alias":{"kind":"Name","value":"event"},"name":{"kind":"Name","value":"calendar_events"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"start_time"}},{"kind":"Field","name":{"kind":"Name","value":"end_time"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"user"},"name":{"kind":"Name","value":"profiles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"full_name"}},{"kind":"Field","name":{"kind":"Name","value":"avatar_url"}}]}}]}}]} as unknown as DocumentNode<AbsenceReportCardFragment, unknown>;
-export const ClubCardFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ClubCard"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"clubs"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"school"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}}]} as unknown as DocumentNode<ClubCardFragment, unknown>;
-export const AbsenceReportAllDetailDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AbsenceReportAllDetail"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"reportId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"absence_reportsCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"reportId"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"AbsenceReportDetail"}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"AbsenceReportDetail"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"absence_reports"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"created_at"}},{"kind":"Field","name":{"kind":"Name","value":"data"}},{"kind":"Field","alias":{"kind":"Name","value":"assigned_to_role"},"name":{"kind":"Name","value":"roles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"form"},"name":{"kind":"Name","value":"absence_report_forms"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"questions"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"reviews"},"name":{"kind":"Name","value":"absence_report_reviewsCollection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"created_at"}},{"kind":"Field","name":{"kind":"Name","value":"accepted"}},{"kind":"Field","name":{"kind":"Name","value":"comments"}},{"kind":"Field","alias":{"kind":"Name","value":"reviewer"},"name":{"kind":"Name","value":"profiles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"full_name"}}]}}]}}]}}]}},{"kind":"Field","alias":{"kind":"Name","value":"event"},"name":{"kind":"Name","value":"calendar_events"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"start_time"}},{"kind":"Field","name":{"kind":"Name","value":"end_time"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"user"},"name":{"kind":"Name","value":"profiles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"full_name"}},{"kind":"Field","name":{"kind":"Name","value":"avatar_url"}}]}}]}}]} as unknown as DocumentNode<AbsenceReportAllDetailQuery, AbsenceReportAllDetailQueryVariables>;
-export const AllAbsenceReportsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AllAbsenceReports"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"clubId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"absence_reportsCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"club_id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"clubId"}}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"orderBy"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"created_at"},"value":{"kind":"EnumValue","value":"DescNullsFirst"}}]}},{"kind":"Argument","name":{"kind":"Name","value":"offset"},"value":{"kind":"IntValue","value":"0"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"AbsenceReportCard"}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"AbsenceReportCard"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"absence_reports"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"created_at"}},{"kind":"Field","alias":{"kind":"Name","value":"assigned_to_role"},"name":{"kind":"Name","value":"roles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"reviews"},"name":{"kind":"Name","value":"absence_report_reviewsCollection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}},{"kind":"Field","alias":{"kind":"Name","value":"event"},"name":{"kind":"Name","value":"calendar_events"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"start_time"}},{"kind":"Field","name":{"kind":"Name","value":"end_time"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"user"},"name":{"kind":"Name","value":"profiles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"full_name"}},{"kind":"Field","name":{"kind":"Name","value":"avatar_url"}}]}}]}}]} as unknown as DocumentNode<AllAbsenceReportsQuery, AllAbsenceReportsQueryVariables>;
-export const AbsenceReportMyDetailDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AbsenceReportMyDetail"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"reportId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"absence_reportsCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"reportId"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"AbsenceReportDetail"}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"AbsenceReportDetail"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"absence_reports"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"created_at"}},{"kind":"Field","name":{"kind":"Name","value":"data"}},{"kind":"Field","alias":{"kind":"Name","value":"assigned_to_role"},"name":{"kind":"Name","value":"roles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"form"},"name":{"kind":"Name","value":"absence_report_forms"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"questions"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"reviews"},"name":{"kind":"Name","value":"absence_report_reviewsCollection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"created_at"}},{"kind":"Field","name":{"kind":"Name","value":"accepted"}},{"kind":"Field","name":{"kind":"Name","value":"comments"}},{"kind":"Field","alias":{"kind":"Name","value":"reviewer"},"name":{"kind":"Name","value":"profiles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"full_name"}}]}}]}}]}}]}},{"kind":"Field","alias":{"kind":"Name","value":"event"},"name":{"kind":"Name","value":"calendar_events"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"start_time"}},{"kind":"Field","name":{"kind":"Name","value":"end_time"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"user"},"name":{"kind":"Name","value":"profiles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"full_name"}},{"kind":"Field","name":{"kind":"Name","value":"avatar_url"}}]}}]}}]} as unknown as DocumentNode<AbsenceReportMyDetailQuery, AbsenceReportMyDetailQueryVariables>;
-export const MyAbsenceReportsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"MyAbsenceReports"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"clubId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"userId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"absence_reportsCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"club_id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"clubId"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"user_id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"userId"}}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"orderBy"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"created_at"},"value":{"kind":"EnumValue","value":"DescNullsFirst"}}]}},{"kind":"Argument","name":{"kind":"Name","value":"offset"},"value":{"kind":"IntValue","value":"0"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"AbsenceReportCard"}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"AbsenceReportCard"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"absence_reports"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"created_at"}},{"kind":"Field","alias":{"kind":"Name","value":"assigned_to_role"},"name":{"kind":"Name","value":"roles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"reviews"},"name":{"kind":"Name","value":"absence_report_reviewsCollection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}},{"kind":"Field","alias":{"kind":"Name","value":"event"},"name":{"kind":"Name","value":"calendar_events"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"start_time"}},{"kind":"Field","name":{"kind":"Name","value":"end_time"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"user"},"name":{"kind":"Name","value":"profiles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"full_name"}},{"kind":"Field","name":{"kind":"Name","value":"avatar_url"}}]}}]}}]} as unknown as DocumentNode<MyAbsenceReportsQuery, MyAbsenceReportsQueryVariables>;
-export const CalendarDayDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"CalendarDay"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"clubId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"date"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Date"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"startDate"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Datetime"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"endDate"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Datetime"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"calendar_eventsCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"club_id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"clubId"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"start_time"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"gte"},"value":{"kind":"Variable","name":{"kind":"Name","value":"startDate"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"end_time"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"lte"},"value":{"kind":"Variable","name":{"kind":"Name","value":"endDate"}}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"orderBy"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"start_time"},"value":{"kind":"EnumValue","value":"AscNullsLast"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"start_time"}},{"kind":"Field","name":{"kind":"Name","value":"end_time"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"location"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"EventDetailDrawer"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"absence_reportsCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"club_id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"clubId"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"date"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"date"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"AbsenceReportCard"}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"EventDetailDrawer"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"calendar_events"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"start_time"}},{"kind":"Field","name":{"kind":"Name","value":"end_time"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"location"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"AbsenceReportCard"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"absence_reports"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"created_at"}},{"kind":"Field","alias":{"kind":"Name","value":"assigned_to_role"},"name":{"kind":"Name","value":"roles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"reviews"},"name":{"kind":"Name","value":"absence_report_reviewsCollection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}},{"kind":"Field","alias":{"kind":"Name","value":"event"},"name":{"kind":"Name","value":"calendar_events"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"start_time"}},{"kind":"Field","name":{"kind":"Name","value":"end_time"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"user"},"name":{"kind":"Name","value":"profiles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"full_name"}},{"kind":"Field","name":{"kind":"Name","value":"avatar_url"}}]}}]}}]} as unknown as DocumentNode<CalendarDayQuery, CalendarDayQueryVariables>;
-export const JoinedClubsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"JoinedClubs"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"me"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"club_membersCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"user_id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"me"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"clubs"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"nodeId"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ClubCard"}}]}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ClubCard"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"clubs"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"school"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}}]} as unknown as DocumentNode<JoinedClubsQuery, JoinedClubsQueryVariables>;
-export const UserDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"User"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"club_membersCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"user_id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"clubs"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"nodeId"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ClubCard"}}]}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ClubCard"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"clubs"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"school"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}}]} as unknown as DocumentNode<UserQuery, UserQueryVariables>;
-export const MembersManagerDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"MembersManager"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"clubId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"club_membersCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"orderBy"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"joined_at"},"value":{"kind":"EnumValue","value":"DescNullsLast"}}]}},{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"IntValue","value":"100"}},{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"club_id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"clubId"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","alias":{"kind":"Name","value":"user"},"name":{"kind":"Name","value":"profiles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"full_name"}},{"kind":"Field","name":{"kind":"Name","value":"nickname"}},{"kind":"Field","name":{"kind":"Name","value":"avatar_url"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"role"},"name":{"kind":"Name","value":"roles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"id"}}]}},{"kind":"Field","name":{"kind":"Name","value":"user_id"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"rolesCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"orderBy"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"name"},"value":{"kind":"EnumValue","value":"AscNullsLast"}}]}},{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"IntValue","value":"100"}},{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"club_id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"clubId"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}}]} as unknown as DocumentNode<MembersManagerQuery, MembersManagerQueryVariables>;
-export const ChangeMemberRoleDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"ChangeMemberRole"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"clubId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"userId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"roleId"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"updateclub_membersCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"set"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"role_id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"roleId"}}}]}},{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"user_id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"userId"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"club_id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"clubId"}}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"atMost"},"value":{"kind":"IntValue","value":"1"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"affectedCount"}}]}}]}}]} as unknown as DocumentNode<ChangeMemberRoleMutation, ChangeMemberRoleMutationVariables>;
-export const RemoveMemberDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"RemoveMember"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"clubId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"userId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"deleteFromclub_membersCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"user_id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"userId"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"club_id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"clubId"}}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"atMost"},"value":{"kind":"IntValue","value":"1"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"affectedCount"}}]}}]}}]} as unknown as DocumentNode<RemoveMemberMutation, RemoveMemberMutationVariables>;
+export const AbsenceReportDetailFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"AbsenceReportDetail"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"AbsenceReports"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"data"}},{"kind":"Field","alias":{"kind":"Name","value":"assignedToRole"},"name":{"kind":"Name","value":"roles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"form"},"name":{"kind":"Name","value":"form"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"questions"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"reviews"},"name":{"kind":"Name","value":"absenceReportReviewsCollection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"accepted"}},{"kind":"Field","name":{"kind":"Name","value":"comments"}},{"kind":"Field","name":{"kind":"Name","value":"reviewer"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"fullName"}}]}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"event"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"startTime"}},{"kind":"Field","name":{"kind":"Name","value":"endTime"}}]}},{"kind":"Field","name":{"kind":"Name","value":"user"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"fullName"}},{"kind":"Field","name":{"kind":"Name","value":"avatarUrl"}}]}}]}}]} as unknown as DocumentNode<AbsenceReportDetailFragment, unknown>;
+export const EventDetailDrawerFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"EventDetailDrawer"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"CalendarEvents"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"startTime"}},{"kind":"Field","name":{"kind":"Name","value":"endTime"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"location"}}]}}]} as unknown as DocumentNode<EventDetailDrawerFragment, unknown>;
+export const AbsenceReportCardFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"AbsenceReportCard"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"AbsenceReports"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","alias":{"kind":"Name","value":"assignedToRole"},"name":{"kind":"Name","value":"roles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"reviews"},"name":{"kind":"Name","value":"absenceReportReviewsCollection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"event"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"startTime"}},{"kind":"Field","name":{"kind":"Name","value":"endTime"}}]}},{"kind":"Field","name":{"kind":"Name","value":"user"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"fullName"}},{"kind":"Field","name":{"kind":"Name","value":"avatarUrl"}}]}}]}}]} as unknown as DocumentNode<AbsenceReportCardFragment, unknown>;
+export const ClubCardFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ClubCard"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Clubs"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"school"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}}]} as unknown as DocumentNode<ClubCardFragment, unknown>;
+export const AbsenceReportAllDetailDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AbsenceReportAllDetail"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"reportId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"absenceReportsCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"reportId"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"AbsenceReportDetail"}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"AbsenceReportDetail"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"AbsenceReports"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"data"}},{"kind":"Field","alias":{"kind":"Name","value":"assignedToRole"},"name":{"kind":"Name","value":"roles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"form"},"name":{"kind":"Name","value":"form"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"questions"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"reviews"},"name":{"kind":"Name","value":"absenceReportReviewsCollection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"accepted"}},{"kind":"Field","name":{"kind":"Name","value":"comments"}},{"kind":"Field","name":{"kind":"Name","value":"reviewer"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"fullName"}}]}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"event"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"startTime"}},{"kind":"Field","name":{"kind":"Name","value":"endTime"}}]}},{"kind":"Field","name":{"kind":"Name","value":"user"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"fullName"}},{"kind":"Field","name":{"kind":"Name","value":"avatarUrl"}}]}}]}}]} as unknown as DocumentNode<AbsenceReportAllDetailQuery, AbsenceReportAllDetailQueryVariables>;
+export const AllAbsenceReportsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AllAbsenceReports"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"clubId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"absenceReportsCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"clubId"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"clubId"}}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"orderBy"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"createdAt"},"value":{"kind":"EnumValue","value":"DescNullsFirst"}}]}},{"kind":"Argument","name":{"kind":"Name","value":"offset"},"value":{"kind":"IntValue","value":"0"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"AbsenceReportCard"}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"AbsenceReportCard"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"AbsenceReports"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","alias":{"kind":"Name","value":"assignedToRole"},"name":{"kind":"Name","value":"roles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"reviews"},"name":{"kind":"Name","value":"absenceReportReviewsCollection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"event"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"startTime"}},{"kind":"Field","name":{"kind":"Name","value":"endTime"}}]}},{"kind":"Field","name":{"kind":"Name","value":"user"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"fullName"}},{"kind":"Field","name":{"kind":"Name","value":"avatarUrl"}}]}}]}}]} as unknown as DocumentNode<AllAbsenceReportsQuery, AllAbsenceReportsQueryVariables>;
+export const AbsenceReportMyDetailDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AbsenceReportMyDetail"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"reportId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"absenceReportsCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"reportId"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"AbsenceReportDetail"}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"AbsenceReportDetail"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"AbsenceReports"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"data"}},{"kind":"Field","alias":{"kind":"Name","value":"assignedToRole"},"name":{"kind":"Name","value":"roles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"form"},"name":{"kind":"Name","value":"form"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"questions"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"reviews"},"name":{"kind":"Name","value":"absenceReportReviewsCollection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"accepted"}},{"kind":"Field","name":{"kind":"Name","value":"comments"}},{"kind":"Field","name":{"kind":"Name","value":"reviewer"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"fullName"}}]}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"event"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"startTime"}},{"kind":"Field","name":{"kind":"Name","value":"endTime"}}]}},{"kind":"Field","name":{"kind":"Name","value":"user"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"fullName"}},{"kind":"Field","name":{"kind":"Name","value":"avatarUrl"}}]}}]}}]} as unknown as DocumentNode<AbsenceReportMyDetailQuery, AbsenceReportMyDetailQueryVariables>;
+export const MyAbsenceReportsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"MyAbsenceReports"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"clubId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"userId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"absenceReportsCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"clubId"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"clubId"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"userId"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"userId"}}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"orderBy"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"createdAt"},"value":{"kind":"EnumValue","value":"DescNullsFirst"}}]}},{"kind":"Argument","name":{"kind":"Name","value":"offset"},"value":{"kind":"IntValue","value":"0"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"AbsenceReportCard"}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"AbsenceReportCard"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"AbsenceReports"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","alias":{"kind":"Name","value":"assignedToRole"},"name":{"kind":"Name","value":"roles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"reviews"},"name":{"kind":"Name","value":"absenceReportReviewsCollection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"event"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"startTime"}},{"kind":"Field","name":{"kind":"Name","value":"endTime"}}]}},{"kind":"Field","name":{"kind":"Name","value":"user"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"fullName"}},{"kind":"Field","name":{"kind":"Name","value":"avatarUrl"}}]}}]}}]} as unknown as DocumentNode<MyAbsenceReportsQuery, MyAbsenceReportsQueryVariables>;
+export const CalendarDayDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"CalendarDay"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"clubId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"date"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Date"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"startDate"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Datetime"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"endDate"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Datetime"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"calendarEventsCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"clubId"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"clubId"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"startTime"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"gte"},"value":{"kind":"Variable","name":{"kind":"Name","value":"startDate"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"endTime"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"lte"},"value":{"kind":"Variable","name":{"kind":"Name","value":"endDate"}}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"orderBy"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"startTime"},"value":{"kind":"EnumValue","value":"AscNullsLast"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"startTime"}},{"kind":"Field","name":{"kind":"Name","value":"endTime"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"location"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"EventDetailDrawer"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"absenceReportsCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"clubId"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"clubId"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"date"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"date"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"AbsenceReportCard"}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"EventDetailDrawer"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"CalendarEvents"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"startTime"}},{"kind":"Field","name":{"kind":"Name","value":"endTime"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"location"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"AbsenceReportCard"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"AbsenceReports"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","alias":{"kind":"Name","value":"assignedToRole"},"name":{"kind":"Name","value":"roles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"reviews"},"name":{"kind":"Name","value":"absenceReportReviewsCollection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"event"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"startTime"}},{"kind":"Field","name":{"kind":"Name","value":"endTime"}}]}},{"kind":"Field","name":{"kind":"Name","value":"user"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"fullName"}},{"kind":"Field","name":{"kind":"Name","value":"avatarUrl"}}]}}]}}]} as unknown as DocumentNode<CalendarDayQuery, CalendarDayQueryVariables>;
+export const JoinedClubsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"JoinedClubs"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"me"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"clubMembersCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"userId"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"me"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"club"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"nodeId"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ClubCard"}}]}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ClubCard"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Clubs"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"school"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}}]} as unknown as DocumentNode<JoinedClubsQuery, JoinedClubsQueryVariables>;
+export const UserDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"User"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"clubMembersCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"userId"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"club"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"nodeId"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ClubCard"}}]}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ClubCard"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Clubs"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"school"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}}]} as unknown as DocumentNode<UserQuery, UserQueryVariables>;
+export const MembersManagerDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"MembersManager"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"clubId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"clubMembersCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"orderBy"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"joinedAt"},"value":{"kind":"EnumValue","value":"DescNullsLast"}}]}},{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"IntValue","value":"100"}},{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"clubId"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"clubId"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"user"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"fullName"}},{"kind":"Field","name":{"kind":"Name","value":"nickname"}},{"kind":"Field","name":{"kind":"Name","value":"avatarUrl"}}]}},{"kind":"Field","name":{"kind":"Name","value":"role"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"id"}}]}},{"kind":"Field","name":{"kind":"Name","value":"userId"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"rolesCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"orderBy"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"name"},"value":{"kind":"EnumValue","value":"AscNullsLast"}}]}},{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"IntValue","value":"100"}},{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"clubId"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"clubId"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}}]} as unknown as DocumentNode<MembersManagerQuery, MembersManagerQueryVariables>;
+export const ChangeMemberRoleDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"ChangeMemberRole"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"clubId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"userId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"roleId"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"updateClubMembersCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"set"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"roleId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"roleId"}}}]}},{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"userId"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"userId"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"clubId"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"clubId"}}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"atMost"},"value":{"kind":"IntValue","value":"1"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"affectedCount"}}]}}]}}]} as unknown as DocumentNode<ChangeMemberRoleMutation, ChangeMemberRoleMutationVariables>;
+export const RemoveMemberDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"RemoveMember"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"clubId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"userId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UUID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"deleteFromClubMembersCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"userId"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"userId"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"clubId"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"clubId"}}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"atMost"},"value":{"kind":"IntValue","value":"1"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"affectedCount"}}]}}]}}]} as unknown as DocumentNode<RemoveMemberMutation, RemoveMemberMutationVariables>;

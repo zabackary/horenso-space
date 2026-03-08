@@ -5,16 +5,16 @@ import Link from "next/link";
 import ClickableCard from "./clickable-card";
 
 export const AbsenceReportCardFragment = gql(`
-  fragment AbsenceReportCard on absence_reports {
+  fragment AbsenceReportCard on AbsenceReports {
     id
     date
-    created_at
+    createdAt
 
-    assigned_to_role: roles {
+    assignedToRole: roles {
       name
     }
 
-    reviews: absence_report_reviewsCollection {
+    reviews: absenceReportReviewsCollection {
       edges {
         node {
           id
@@ -22,15 +22,15 @@ export const AbsenceReportCardFragment = gql(`
       }
     }
     
-    event: calendar_events {
+    event {
       id
       title
-      start_time
-      end_time
+      startTime
+      endTime
     }
-    user: profiles {
-      full_name
-      avatar_url
+    user {
+      fullName
+      avatarUrl
     }
   }
 `);
@@ -51,9 +51,9 @@ export default function AbsenceReportCard({
     <Flex direction="row" gap="2">
       <Avatar
         size="2"
-        src={report.user?.avatar_url ?? undefined}
-        alt={report.user?.full_name}
-        fallback={report.user?.full_name.charAt(0).toUpperCase() || "?"}
+        src={report.user?.avatarUrl ?? undefined}
+        alt={report.user?.fullName}
+        fallback={report.user?.fullName.charAt(0).toUpperCase() || "?"}
       />
       <Flex direction="column" gap="2">
         <Flex direction="column" gap="1">
@@ -62,16 +62,16 @@ export default function AbsenceReportCard({
               (report.date && i18n.date(report.date)) ??
               t`No event`}
             {/* Show event date if present */}
-            {report.event?.start_time && report.event?.end_time ? (
+            {report.event?.startTime && report.event?.endTime ? (
               <>
                 {" "}
                 <Badge size="1" color="blue">
-                  {i18n.date(report.event.start_time, {
+                  {i18n.date(report.event.startTime, {
                     dateStyle: "short",
                     timeStyle: "short",
                   })}{" "}
                   -{" "}
-                  {i18n.date(report.event.end_time, {
+                  {i18n.date(report.event.endTime, {
                     dateStyle: "short",
                     timeStyle: "short",
                   })}
@@ -81,13 +81,13 @@ export default function AbsenceReportCard({
           </Text>
           <Text size="2">
             <Trans>Submitted by</Trans>{" "}
-            {report.user?.full_name ?? <Trans>Unknown</Trans>}
+            {report.user?.fullName ?? <Trans>Unknown</Trans>}
           </Text>
-          {report.created_at && (
+          {report.createdAt && (
             <Text size="1" color="gray">
               <Trans>
                 Submitted at{" "}
-                {i18n.date(report.created_at, {
+                {i18n.date(report.createdAt, {
                   dateStyle: "long",
                   timeStyle: "long",
                 })}
@@ -98,7 +98,7 @@ export default function AbsenceReportCard({
         <Flex justify="between" align="center">
           <Text size="2">
             <Trans>Assigned to</Trans>{" "}
-            {report.assigned_to_role?.name || <Trans>Unassigned</Trans>}
+            {report.assignedToRole?.name || <Trans>Unassigned</Trans>}
           </Text>
           {(report.reviews?.edges.length ?? 0) > 0 && (
             <Flex gap="2">
