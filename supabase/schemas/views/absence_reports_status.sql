@@ -1,5 +1,5 @@
-create view public.absence_reports_status with ( security_invoker = true,
-security_barrier = true
+create view public.absence_reports_status with ( security_invoker = on,
+security_barrier = on
 ) as
 select
   ar.id as report_id,

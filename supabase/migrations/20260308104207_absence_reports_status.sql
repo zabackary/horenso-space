@@ -1,5 +1,5 @@
-create or replace view "public"."absence_reports_status" with ( security_invoker = true,
-security_barrier = true
+create or replace view "public"."absence_reports_status" with ( security_invoker = on,
+security_barrier = on
 ) as
 select
     id as report_id,
