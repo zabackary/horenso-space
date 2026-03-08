@@ -995,6 +995,10 @@ msgstr ""
 msgid "Passwords do not match."
 msgstr ""
 
+#: src/components/ui/absence-report-card.tsx
+msgid "Pending"
+msgstr ""
+
 #: src/app/app/[id]/config/roles/role-dialog.tsx
 #: src/components/club-config/roles-manager.tsx
 msgid "Permissions"

@@ -2,7 +2,6 @@
 
 import AbsenceFormRenderer from "@/components/absence-form-renderer";
 import { FragmentType, getFragmentData, gql } from "@/gql";
-import useAbsenceReportStatus from "@/lib/absences/useAbsenceReportStatus";
 import { Trans } from "@lingui/react/macro";
 import { CheckCircledIcon, CrossCircledIcon } from "@radix-ui/react-icons";
 import {
@@ -14,7 +13,6 @@ import {
   Flex,
   Heading,
   Separator,
-  Skeleton,
   Text,
 } from "@radix-ui/themes";
 
@@ -58,6 +56,14 @@ export const AbsenceReportDetailFragment = gql(`
       fullName
       avatarUrl
     }
+
+    status: absenceReportsStatusCollection {
+      edges {
+        node {
+          isApproved
+        }
+      }
+    }
   }
 `);
 
@@ -71,55 +77,39 @@ export default function ReportDetail({
   const report = getFragmentData(AbsenceReportDetailFragment, reportFragment);
   const reviews = report?.reviews?.edges ?? [];
 
-  const approvalStatus = useAbsenceReportStatus(report.id);
+  const isApproved = report.status?.edges[0]?.node.isApproved ?? null;
 
   return (
     <Flex direction="column" gap="4" flexGrow="1">
-      {approvalStatus ? (
-        <Callout.Root
-          color={
-            approvalStatus === "approved"
-              ? "green"
-              : approvalStatus === "rejected"
-                ? "red"
-                : "yellow"
-          }
-        >
-          {approvalStatus === "approved" && (
-            <>
-              <Callout.Icon>
-                <CheckCircledIcon />
-              </Callout.Icon>
-              <Callout.Text>
-                <Trans>Absence is approved</Trans>
-              </Callout.Text>
-            </>
-          )}
-          {approvalStatus === "rejected" && (
-            <>
-              <Callout.Icon>
-                <CrossCircledIcon />
-              </Callout.Icon>
-              <Callout.Text>
-                <Trans>Absence is rejected</Trans>
-              </Callout.Text>
-            </>
-          )}
-          {approvalStatus === "pending" && (
+      <Callout.Root
+        color={isApproved ? "green" : isApproved === false ? "red" : "yellow"}
+      >
+        {isApproved === true && (
+          <>
+            <Callout.Icon>
+              <CheckCircledIcon />
+            </Callout.Icon>
             <Callout.Text>
-              <Trans>The report is pending review</Trans>
+              <Trans>Absence is approved</Trans>
             </Callout.Text>
-          )}
-        </Callout.Root>
-      ) : (
-        <Skeleton>
-          <Callout.Root>
+          </>
+        )}
+        {isApproved === false && (
+          <>
+            <Callout.Icon>
+              <CrossCircledIcon />
+            </Callout.Icon>
             <Callout.Text>
-              <Trans>Loading report status...</Trans>
+              <Trans>Absence is rejected</Trans>
             </Callout.Text>
-          </Callout.Root>
-        </Skeleton>
-      )}
+          </>
+        )}
+        {isApproved === null && (
+          <Callout.Text>
+            <Trans>The report is pending review</Trans>
+          </Callout.Text>
+        )}
+      </Callout.Root>
 
       <Heading size="4" as="h3">
         <Trans>Report Details</Trans>

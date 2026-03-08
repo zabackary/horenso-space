@@ -32,6 +32,14 @@ export const AbsenceReportCardFragment = gql(`
       fullName
       avatarUrl
     }
+
+    status: absenceReportsStatusCollection {
+      edges {
+        node {
+          isApproved
+        }
+      }
+    }
   }
 `);
 
@@ -46,6 +54,8 @@ export default function AbsenceReportCard({
 }: AbsenceReportCardProps) {
   const report = getFragmentData(AbsenceReportCardFragment, reportFragment);
   const { t, i18n } = useLingui();
+
+  const approved = report.status?.edges[0]?.node.isApproved ?? null;
 
   const inner = (
     <Flex direction="row" gap="2">
@@ -100,25 +110,29 @@ export default function AbsenceReportCard({
             <Trans>Assigned to</Trans>{" "}
             {report.assignedToRole?.name || <Trans>Unassigned</Trans>}
           </Text>
-          {(report.reviews?.edges.length ?? 0) > 0 && (
-            <Flex gap="2">
-              <Badge size="1" color="gray">
-                <Plural
-                  value={report.reviews?.edges.length ?? 0}
-                  one="# review"
-                  other="# reviews"
-                />
-              </Badge>
-              {/* <Badge size="1" color={report.approved ? "green" : "red"}>
-                {report.approved ? (
-                  <Trans>Approved</Trans>
-                ) : (
-                  <Trans>Rejected</Trans>
-                )}
-              </Badge> */}
-            </Flex>
-          )}
         </Flex>
+      </Flex>
+      <Flex flexGrow="1" />
+      <Flex gap="2">
+        {(report.reviews?.edges.length ?? 0) > 0 && (
+          <Badge size="1" color="gray">
+            <Plural
+              value={report.reviews?.edges.length ?? 0}
+              one="# review"
+              other="# reviews"
+            />
+          </Badge>
+        )}
+        <Badge
+          size="1"
+          color={approved === null ? "gray" : approved ? "green" : "red"}
+        >
+          {approved === null
+            ? t`Pending`
+            : approved
+              ? t`Approved`
+              : t`Rejected`}
+        </Badge>
       </Flex>
     </Flex>
   );
