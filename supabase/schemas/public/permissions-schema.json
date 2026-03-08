@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft-07/schema",
-  "$comment": "Permissions schema for roles; please keep in sync with supabase/schemas/roles.sql and supabase/schemas/clubs.sql",
+  "$comment": "Permissions schema for roles; please keep in sync with supabase/schemas/public/clubs.sql and supabase/schemas/roles.sql",
   "type": "object",
   "properties": {
     "canWriteFiles": {
@@ -23,6 +23,14 @@
       "type": "boolean",
       "description": "Determines if the user can create and edit their own report reviews for others"
     },
+    "canDeleteOwnReport": {
+      "type": "boolean",
+      "description": "Determines if the user can delete their own reports"
+    },
+    "canDeleteAllReports": {
+      "type": "boolean",
+      "description": "Determines if the user can delete all reports"
+    },
     "canWriteCalendar": {
       "type": "boolean",
       "description": "Determines if the user can create and edit calendar events"
@@ -35,14 +43,5 @@
       "type": "boolean",
       "description": "Determines if the user can manage club settings and invite members"
     }
-  },
-  "required": [
-    "canWriteFiles",
-    "canReadFiles",
-    "canWriteOwnReport",
-    "canReadAllReports",
-    "canWriteCalendar",
-    "canReadCalendar",
-    "canManageClub"
-  ]
+  }
 }

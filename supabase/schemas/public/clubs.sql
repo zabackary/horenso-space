@@ -36,7 +36,9 @@ begin
       "canWriteReportReview": true,
       "canWriteCalendar": true,
       "canReadCalendar": true,
-      "canManageClub": true
+      "canManageClub": true,
+      "canDeleteOwnReport": true,
+      "canDeleteAllReports": true
     }'::jsonb)
     returning
       id into new_role_id;

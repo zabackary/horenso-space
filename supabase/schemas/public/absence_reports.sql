@@ -40,6 +40,17 @@ create policy "Authorized users can view all club reports" on absence_reports
   for select
     using (public.user_has_club_permission(club_id, 'canReadAllReports'));
 
+-- Users with canDeleteOwnReport permission can delete their own reports
+create policy "Users can delete their own absence reports" on absence_reports
+  for delete
+    using (user_id = auth.uid()
+      and public.user_has_club_permission(club_id, 'canDeleteOwnReport'));
+
+-- Users with canDeleteAllReports permission can delete any report in their clubs
+create policy "Authorized users can delete any club report" on absence_reports
+  for delete
+    using (public.user_has_club_permission(club_id, 'canDeleteAllReports'));
+
 -- Users assigned to review reports can view them
 create policy "Assigned reviewers can view reports" on absence_reports
   for select

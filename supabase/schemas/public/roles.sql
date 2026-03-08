@@ -9,53 +9,52 @@ create table roles(
   absence_report_form uuid references absence_report_forms(id) on delete set null,
   created_at timestamp with time zone default now() not null,
   updated_at timestamp with time zone default now() not null check (extensions.jsonb_matches_schema('{
-        "$schema": "https://json-schema.org/draft-07/schema",
-        "$comment": "Permissions schema for roles; please keep in sync with supabase/schemas/roles.sql",
-        "type": "object",
-        "properties": {
-          "canWriteFiles": {
-            "type": "boolean",
-            "description": "Determines if the user can upload and modify files"
-          },
-          "canReadFiles": {
-            "type": "boolean",
-            "description": "Determines if the user can view files"
-          },
-          "canWriteOwnReport": {
-            "type": "boolean",
-            "description": "Determines if the user can create and edit their own reports"
-          },
-          "canReadAllReports": {
-            "type": "boolean",
-            "description": "Determines if the user can view all reports"
-          },
-          "canWriteReportReview": {
-            "type": "boolean",
-            "description": "Determines if the user can create and edit their own report reviews for others"
-          },
-          "canWriteCalendar": {
-            "type": "boolean",
-            "description": "Determines if the user can create and edit calendar events"
-          },
-          "canReadCalendar": {
-            "type": "boolean",
-            "description": "Determines if the user can view calendar events"
-          },
-          "canManageClub": {
-            "type": "boolean",
-            "description": "Determines if the user can manage club settings and invite members"
-          }
-        },
-        "required": [
-          "canWriteFiles",
-          "canReadFiles",
-          "canWriteOwnReport",
-          "canReadAllReports",
-          "canWriteCalendar",
-          "canReadCalendar",
-          "canManageClub"
-        ]
-      }'::json, permissions))
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "$comment": "Permissions schema for roles; please keep in sync with supabase/schemas/public/clubs.sql and supabase/schemas/roles.sql",
+  "type": "object",
+  "properties": {
+    "canWriteFiles": {
+      "type": "boolean",
+      "description": "Determines if the user can upload and modify files"
+    },
+    "canReadFiles": {
+      "type": "boolean",
+      "description": "Determines if the user can view files"
+    },
+    "canWriteOwnReport": {
+      "type": "boolean",
+      "description": "Determines if the user can create and edit their own reports"
+    },
+    "canReadAllReports": {
+      "type": "boolean",
+      "description": "Determines if the user can view all reports"
+    },
+    "canWriteReportReview": {
+      "type": "boolean",
+      "description": "Determines if the user can create and edit their own report reviews for others"
+    },
+    "canDeleteOwnReport": {
+      "type": "boolean",
+      "description": "Determines if the user can delete their own reports"
+    },
+    "canDeleteAllReports": {
+      "type": "boolean",
+      "description": "Determines if the user can delete all reports"
+    },
+    "canWriteCalendar": {
+      "type": "boolean",
+      "description": "Determines if the user can create and edit calendar events"
+    },
+    "canReadCalendar": {
+      "type": "boolean",
+      "description": "Determines if the user can view calendar events"
+    },
+    "canManageClub": {
+      "type": "boolean",
+      "description": "Determines if the user can manage club settings and invite members"
+    }
+  }
+}'::json, permissions))
 );
 
 create index on roles(club_id);
