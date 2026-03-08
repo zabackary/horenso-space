@@ -400,8 +400,16 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
+#: src/components/permission-text.tsx
+msgid "Delete any absence report"
+msgstr ""
+
 #: src/app/app/[id]/calendar/event-detail-drawer.tsx
 msgid "Delete event"
+msgstr ""
+
+#: src/components/permission-text.tsx
+msgid "Delete own absence reports"
 msgstr ""
 
 #: src/app/app/[id]/config/roles/roles-graph.tsx

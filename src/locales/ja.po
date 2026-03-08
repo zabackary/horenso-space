@@ -400,9 +400,17 @@ msgstr "日"
 msgid "Delete"
 msgstr "削除"
 
+#: src/components/permission-text.tsx
+msgid "Delete any absence report"
+msgstr ""
+
 #: src/app/app/[id]/calendar/event-detail-drawer.tsx
 msgid "Delete event"
 msgstr "イベントを削除する"
+
+#: src/components/permission-text.tsx
+msgid "Delete own absence reports"
+msgstr ""
 
 #: src/app/app/[id]/config/roles/roles-graph.tsx
 msgid "Delete role"

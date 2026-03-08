@@ -9,6 +9,8 @@ export const PERMISSION_KEYS = [
   "canWriteCalendar",
   "canReadCalendar",
   "canManageClub",
+  "canDeleteOwnReport",
+  "canDeleteAnyReport",
 ] as const;
 
 export function PermissionText({
@@ -40,6 +42,16 @@ export function PermissionText({
     }
     case "canWriteFiles": {
       return <Trans>Upload and manage club files</Trans>;
+    }
+    case "canDeleteOwnReport": {
+      return <Trans>Delete own absence reports</Trans>;
+    }
+    case "canDeleteAnyReport": {
+      return <Trans>Delete any absence report</Trans>;
+    }
+    default: {
+      console.error("Unknown permission key:", permissionKey);
+      return permissionKey;
     }
   }
 }
