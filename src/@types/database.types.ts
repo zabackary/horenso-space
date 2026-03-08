@@ -113,6 +113,13 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "absence_report_reviews_absence_report_id_fkey"
+            columns: ["absence_report_id"]
+            isOneToOne: false
+            referencedRelation: "absence_reports_status"
+            referencedColumns: ["report_id"]
+          },
+          {
             foreignKeyName: "absence_report_reviews_reviewer_id_fkey"
             columns: ["reviewer_id"]
             isOneToOne: false
@@ -642,6 +649,49 @@ export type Database = {
       }
     }
     Views: {
+      absence_reports_status: {
+        Row: {
+          club_id: string | null
+          is_approved: boolean | null
+          report_id: string | null
+          report_user_id: string | null
+        }
+        Insert: {
+          club_id?: string | null
+          is_approved?: never
+          report_id?: string | null
+          report_user_id?: string | null
+        }
+        Update: {
+          club_id?: string | null
+          is_approved?: never
+          report_id?: string | null
+          report_user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "absence_reports_club_id_fkey"
+            columns: ["club_id"]
+            isOneToOne: false
+            referencedRelation: "clubs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "absence_reports_club_id_fkey"
+            columns: ["club_id"]
+            isOneToOne: false
+            referencedRelation: "joined_clubs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "absence_reports_user_id_fkey"
+            columns: ["report_user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       joined_clubs: {
         Row: {
           absence_report_required_reviewer: string | null

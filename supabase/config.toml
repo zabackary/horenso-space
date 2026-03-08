@@ -70,6 +70,7 @@ schema_paths = [
   # API
   "./schemas/functions/reviews.sql",
   "./schemas/functions/*.sql",
+  "./schemas/views/*.sql",
 ]
 
 [db.seed]
