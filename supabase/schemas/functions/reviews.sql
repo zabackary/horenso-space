@@ -154,7 +154,6 @@ begin
     where
       arr.absence_report_id = p_report_id
       and cm.role_id = v_reviewer_role_id
-      and arr.accepted = true
     limit 1;
     -- If the review is not accepted, report is not approved
     if v_current_role_id is not null and not v_current_approved then
