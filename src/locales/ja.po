@@ -47,15 +47,15 @@ msgstr "欠席フォーム"
 
 #: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "Absence is approved"
-msgstr ""
+msgstr "欠席は承認されました"
 
 #: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "Absence is not approved"
-msgstr ""
+msgstr "欠席は承認されていません"
 
 #: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "Absence is rejected"
-msgstr ""
+msgstr "欠席は拒否されました"
 
 #: src/app/app/[id]/config/roles/role-dialog.tsx
 #: src/components/club-config/roles-manager.tsx
@@ -281,7 +281,7 @@ msgstr "部活の説明"
 
 #: src/components/club-config/invite.tsx
 msgid "Club invite link"
-msgstr ""
+msgstr "部活の招待リンク"
 
 #: src/components/club-config/invite.tsx
 msgid "Club Invite Link"
@@ -402,7 +402,7 @@ msgstr "削除"
 
 #: src/components/permission-text.tsx
 msgid "Delete any absence report"
-msgstr ""
+msgstr "任意の欠席届の削除"
 
 #: src/app/app/[id]/calendar/event-detail-drawer.tsx
 msgid "Delete event"
@@ -410,7 +410,7 @@ msgstr "イベントを削除する"
 
 #: src/components/permission-text.tsx
 msgid "Delete own absence reports"
-msgstr ""
+msgstr "自身の欠席届の削除"
 
 #: src/app/app/[id]/config/roles/roles-graph.tsx
 msgid "Delete role"
@@ -527,7 +527,7 @@ msgstr "有効期限: {0}"
 
 #: src/app/app/club/invite/[id]/page.tsx
 msgid "Expires at: <0>{0}</0>"
-msgstr ""
+msgstr "有効期限: <0>{0}</0>"
 
 #: src/components/club-config/members-manager.tsx
 msgid "Failed to change member role. Please try again later."
@@ -565,7 +565,7 @@ msgstr "部活に参加できませんでした"
 
 #: src/components/club-config/members-manager.tsx
 msgid "Failed to load members data. Please try again later."
-msgstr ""
+msgstr "メンバーデータを開けませんでした。後でもう一度お試しください。"
 
 #: src/components/club-config/members-manager.tsx
 msgid "Failed to remove member. Please try again later."
@@ -780,11 +780,11 @@ msgstr "リスト"
 
 #: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "Loading approval status..."
-msgstr ""
+msgstr "承認状態をロード中．．．"
 
 #: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "Loading report status..."
-msgstr ""
+msgstr "報告状態をロード中．．．"
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx
 msgid "Loading..."
@@ -914,7 +914,7 @@ msgstr "このレポートに関連付けられたフォームはありません
 
 #: src/app/app/[id]/absences/(list)/assigned/[reportId]/report-detail-with-review.tsx
 msgid "No form attached"
-msgstr ""
+msgstr "添付されたフォームはありません"
 
 #: src/components/club-config/invite.tsx
 msgid "No invites yet"
@@ -934,7 +934,7 @@ msgstr "通知はありません。通知はまだ完了していませんが、
 
 #: src/app/app/[id]/absences/(list)/assigned/list.tsx
 msgid "No reports assigned to you"
-msgstr ""
+msgstr "あなたに割り当てられたレポートはありません"
 
 #: src/app/app/[id]/absences/(list)/assigned/list.tsx
 msgid "No reports assigned to you."
@@ -946,7 +946,7 @@ msgstr "レポートが見つかりません。"
 
 #: src/components/club-config/members-manager.tsx
 msgid "No role"
-msgstr ""
+msgstr "役割がありません"
 
 #: src/app/app/[id]/config/absence-forms/page.tsx
 msgid "No templates yet"
@@ -1005,7 +1005,7 @@ msgstr "パスワードが一致しません。"
 
 #: src/components/ui/absence-report-card.tsx
 msgid "Pending"
-msgstr ""
+msgstr "承認待ち"
 
 #: src/app/app/[id]/config/roles/role-dialog.tsx
 #: src/components/club-config/roles-manager.tsx
@@ -1080,7 +1080,7 @@ msgstr "欠席を報告"
 
 #: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "Report accepted"
-msgstr ""
+msgstr "報告は承認されました"
 
 #: src/app/app/[id]/absences/create/page.tsx
 msgid "Report an absence"
@@ -1096,27 +1096,27 @@ msgstr "報告の詳細"
 
 #: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "Report is approved"
-msgstr ""
+msgstr "報告は承認されました"
 
 #: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "Report is pending approval"
-msgstr ""
+msgstr "報告は承認待ちです"
 
 #: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "Report is rejected"
-msgstr ""
+msgstr "報告は拒否されました"
 
 #: src/app/app/[id]/absences/(list)/assigned/[reportId]/report-detail-with-review.tsx
 msgid "Report not found"
-msgstr ""
+msgstr "報告が見つかりませんでした"
 
 #: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "Report pending review"
-msgstr ""
+msgstr "報告はレビュー待ちです"
 
 #: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "Report rejected"
-msgstr ""
+msgstr "報告は拒否されました"
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx
 msgid "Report Review"
@@ -1132,11 +1132,11 @@ msgstr "欠席報告を確認して返信する"
 
 #: src/app/app/[id]/absences/(list)/assigned/[reportId]/page.tsx
 msgid "Review Report"
-msgstr ""
+msgstr "報告のレビュー"
 
 #: src/app/app/[id]/absences/(list)/assigned/[reportId]/report-detail-with-review.tsx
 msgid "Review submitted successfully"
-msgstr ""
+msgstr "レビューは送信されました"
 
 #: src/app/app/[id]/absences/(list)/assigned/list.tsx
 msgid "Reviewed"
@@ -1171,7 +1171,7 @@ msgstr "役職: {currentRoleLabel}"
 
 #: src/components/club-config/members-manager.tsx
 msgid "Role: {role}"
-msgstr ""
+msgstr "役職: {role}"
 
 #: src/app/app/[id]/config/tabs.tsx
 msgid "Roles"
@@ -1368,11 +1368,11 @@ msgstr "プロフィールのURLをコピーしました。"
 
 #: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "The report is pending review"
-msgstr ""
+msgstr "この報告はレビュー待ちです"
 
 #: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "The report pending review"
-msgstr ""
+msgstr "この報告はレビュー待ちです"
 
 #: src/app/app/[id]/calendar/day.tsx
 msgid "There are no reported absences for this day."
@@ -1497,7 +1497,7 @@ msgstr "部活に招待されています"
 
 #: src/components/club-config/members-manager.tsx
 msgid "You cannot remove yourself from the club."
-msgstr ""
+msgstr "あなたは自分を部活から削除することができません。"
 
 #: src/app/app/[id]/absences/create/page.tsx
 msgid "You do not have a configured absence report form. Please contact a club manager."
@@ -1505,7 +1505,7 @@ msgstr "欠席届フォームが設​​定されていません。部活動の
 
 #: src/app/app/[id]/absences/(list)/my/list.tsx
 msgid "You don't have any absence reports"
-msgstr ""
+msgstr "あなたが提出した欠席届はありません"
 
 #: src/components/club-config/absence-form-detail.tsx
 msgid "You have unsaved changes"
@@ -1517,7 +1517,7 @@ msgstr "欠席届の承認にはレビュー者を設定する必要がありま
 
 #: src/app/app/club/invite/[id]/page.tsx
 msgid "You will be joining as: <0>{0}</0>."
-msgstr ""
+msgstr "あなたは <0>{0}</0> として参加します。"
 
 #: src/app/app/club/invite/[id]/page.tsx
 msgid "You will be joining as: <0>{0}</0>. Expires at: <1>{1}</1>"
@@ -1549,4 +1549,4 @@ msgstr "あなたの学校名"
 
 #: src/components/user-share-actions.tsx
 msgid "Your system share dialog should have opened."
-msgstr ""
+msgstr "あなたのシステム共有ダイアログが開かれたはずです。"
