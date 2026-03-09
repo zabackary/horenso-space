@@ -10,7 +10,7 @@ export const PERMISSION_KEYS = [
   "canReadCalendar",
   "canManageClub",
   "canDeleteOwnReport",
-  "canDeleteAnyReport",
+  "canDeleteAllReports",
 ] as const;
 
 export function PermissionText({
@@ -46,7 +46,7 @@ export function PermissionText({
     case "canDeleteOwnReport": {
       return <Trans>Delete own absence reports</Trans>;
     }
-    case "canDeleteAnyReport": {
+    case "canDeleteAllReports": {
       return <Trans>Delete any absence report</Trans>;
     }
     default: {
