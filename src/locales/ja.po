@@ -203,6 +203,10 @@ msgstr "承認済み"
 msgid "Are you sure you want to delete this event? This action cannot be undone."
 msgstr "このイベントを削除してもよろしいですか？この操作は元に戻せません。"
 
+#: src/app/app/[id]/absences/(list)/report-detail.tsx
+msgid "Are you sure you want to delete this report? This action cannot be undone."
+msgstr ""
+
 #: src/app/app/[id]/config/roles/roles-view.tsx
 #: src/components/club-config/roles-manager.tsx
 msgid "Are you sure you want to delete this role? This action cannot be undone."
@@ -412,6 +416,10 @@ msgstr "イベントを削除する"
 msgid "Delete own absence reports"
 msgstr "自身の欠席届の削除"
 
+#: src/app/app/[id]/absences/(list)/report-detail.tsx
+msgid "Delete report"
+msgstr ""
+
 #: src/app/app/[id]/config/roles/roles-graph.tsx
 msgid "Delete role"
 msgstr "役職の削除"
@@ -554,6 +562,10 @@ msgstr "役職を削除できませんでした。後でもう一度お試しく
 #: src/components/club-config/absence-form-detail.tsx
 msgid "Failed to delete template."
 msgstr "テンプレートを削除できませんでした。"
+
+#: src/app/app/[id]/absences/(list)/report-detail.tsx
+msgid "Failed to delete the report. Please try again."
+msgstr ""
 
 #: src/components/club-config/invite.tsx
 msgid "Failed to generate invite. Please try again."
@@ -1086,7 +1098,7 @@ msgstr "報告は承認されました"
 msgid "Report an absence"
 msgstr "欠席を報告"
 
-#: src/app/app/[id]/absences/(list)/my/[reportId]/page.tsx
+#: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "Report details"
 msgstr "報告の詳細"
 

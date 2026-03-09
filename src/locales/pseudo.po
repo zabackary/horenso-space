@@ -203,6 +203,10 @@ msgstr ""
 msgid "Are you sure you want to delete this event? This action cannot be undone."
 msgstr ""
 
+#: src/app/app/[id]/absences/(list)/report-detail.tsx
+msgid "Are you sure you want to delete this report? This action cannot be undone."
+msgstr ""
+
 #: src/app/app/[id]/config/roles/roles-view.tsx
 #: src/components/club-config/roles-manager.tsx
 msgid "Are you sure you want to delete this role? This action cannot be undone."
@@ -412,6 +416,10 @@ msgstr ""
 msgid "Delete own absence reports"
 msgstr ""
 
+#: src/app/app/[id]/absences/(list)/report-detail.tsx
+msgid "Delete report"
+msgstr ""
+
 #: src/app/app/[id]/config/roles/roles-graph.tsx
 msgid "Delete role"
 msgstr ""
@@ -553,6 +561,10 @@ msgstr ""
 
 #: src/components/club-config/absence-form-detail.tsx
 msgid "Failed to delete template."
+msgstr ""
+
+#: src/app/app/[id]/absences/(list)/report-detail.tsx
+msgid "Failed to delete the report. Please try again."
 msgstr ""
 
 #: src/components/club-config/invite.tsx
@@ -1086,7 +1098,7 @@ msgstr ""
 msgid "Report an absence"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/my/[reportId]/page.tsx
+#: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "Report details"
 msgstr ""
 
