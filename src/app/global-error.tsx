@@ -1,6 +1,7 @@
 "use client";
 
 import * as Sentry from "@sentry/nextjs";
+import clsx from "clsx";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -52,15 +53,32 @@ export default function GlobalError({
             height={360}
             priority
           />
+          <p>
+            Telling us what happened can help us fix the issue faster. &middot;
+            何が起こったのかを伝えば、問題をより早く解決することができます
+          </p>
           <div className={styles.internalServerErrorButtons}>
-            <Link href="/" className={styles.internalServerErrorButton}>
+            <Link
+              href="/"
+              className={clsx(
+                styles.internalServerErrorButton,
+                styles.internalServerErrorOutlinedButton,
+              )}
+            >
               Back to home
+            </Link>
+            <Link
+              href="#"
+              className={styles.internalServerErrorButton}
+              onClick={() => Sentry.showReportDialog()}
+            >
+              Tell us what happened &middot; {/* japanese */} 問題を詳しく報告
             </Link>
           </div>
           <details className={styles.internalServerErrorDetails}>
             <summary>
               {sentryConnected ? (
-                "This error has automatically been reported."
+                "Some error details have been reported. 通知済みです。"
               ) : (
                 <span>
                   Failed to send automatic error report. <em>Why?</em>
@@ -111,10 +129,12 @@ export default function GlobalError({
           </details>
         </div>
         <footer className={styles.internalServerErrorFooter}>
-          <div className={styles.internalServerErrorDigest}>
-            If you report this error, include this digest:{" "}
-            <code>{error.digest}</code>
-          </div>
+          {error.digest && (
+            <div className={styles.internalServerErrorDigest}>
+              If you report this error, include this digest:{" "}
+              <code>{error.digest}</code>
+            </div>
+          )}
           <p className={styles.internalServerErrorImageCredit}>
             Image by {sawaratsukiLink}
           </p>

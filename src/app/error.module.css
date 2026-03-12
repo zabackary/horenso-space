@@ -19,27 +19,23 @@ html.internalServerError {
       -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
       Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 
-    --background: light-dark(
-      white,
-      color(display-p3 0.067 0.067 0.067)
-    ); /* background */
-    --on-background: light-dark(
-      color(display-p3 0.128 0.122 0.147),
-      color(display-p3 0.933 0.933 0.94)
-    ); /* gray-12 */
-    --surface: light-dark(
-      color(display-p3 0.584 0.765 0.008 / 0.15),
-      color(display-p3 0.69 1 0.38 / 0.101)
-    ); /* accent-a3 */
-    --on-surface: light-dark(
-      color(display-p3 0.386 0.482 0.227),
-      color(display-p3 0.771 0.893 0.485)
-    ); /* accent-11 */
-    --primary: light-dark(
-      color(display-p3 0.78 0.928 0.466),
-      color(display-p3 0.78 0.928 0.466)
-    ); /* accent-9 */
-    --on-primary: light-dark(#1d211c, #1d211c); /* accent-contrast */
+    --background: light-dark(white,
+        color(display-p3 0.067 0.067 0.067));
+    /* background */
+    --on-background: light-dark(color(display-p3 0.128 0.122 0.147),
+        color(display-p3 0.933 0.933 0.94));
+    /* gray-12 */
+    --surface: light-dark(color(display-p3 0.584 0.765 0.008 / 0.15),
+        color(display-p3 0.69 1 0.38 / 0.101));
+    /* accent-a3 */
+    --on-surface: light-dark(color(display-p3 0.386 0.482 0.227),
+        color(display-p3 0.771 0.893 0.485));
+    /* accent-11 */
+    --primary: light-dark(color(display-p3 0.78 0.928 0.466),
+        color(display-p3 0.78 0.928 0.466));
+    /* accent-9 */
+    --on-primary: light-dark(#1d211c, #1d211c);
+    /* accent-contrast */
 
     background-color: var(--background);
     color: var(--on-background);
@@ -117,6 +113,8 @@ html.internalServerError {
 
 .internalServerErrorButtons {
   margin-top: 8px;
+  display: flex;
+  gap: 12px;
 }
 
 .internalServerErrorButton {
@@ -128,6 +126,12 @@ html.internalServerError {
   background-color: var(--primary);
   color: var(--on-primary);
   text-decoration: none;
+
+  &.internalServerErrorOutlinedButton {
+    background-color: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+  }
 
   &:hover {
     filter: brightness(1.1);
