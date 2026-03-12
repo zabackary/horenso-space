@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/components/ui/app-header-menu.tsx
+msgid "(required)"
+msgstr "(required)"
+
 #: src/components/club-config/absence-form-editor.tsx
 msgid "{0, plural, one {# follow-up} other {# follow-ups} zero {No follow-ups}}"
 msgstr "{0, plural, one {# follow-up} other {# follow-ups} zero {No follow-ups}}"
@@ -103,6 +107,10 @@ msgstr "Access absence report forms"
 #: src/components/permission-text.tsx
 msgid "Access club files"
 msgstr "Access club files"
+
+#: src/components/ui/app-header-menu.tsx
+msgid "Add a screenshot"
+msgstr "Add a screenshot"
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx
 msgid "Add comments (optional)"
@@ -253,8 +261,7 @@ msgstr "by {0}"
 msgid "Calendar"
 msgstr "Calendar"
 
-#: src/app/app/[id]/calendar/event-detail-drawer.tsx
-#: src/app/app/[id]/calendar/event-detail-drawer.tsx
+#: src/components/ui/app-header-menu.tsx
 msgid "Cancel"
 msgstr "Cancel"
 
@@ -321,6 +328,10 @@ msgstr "Common Clubs"
 #: src/components/club-config/roles-manager.tsx
 msgid "Configure reviewer/approval and choose the template used for this role."
 msgstr "Configure reviewer/approval and choose the template used for this role."
+
+#: src/components/ui/app-header-menu.tsx
+msgid "Confirm"
+msgstr "Confirm"
 
 #: src/components/auth/login-auth-providers-settings.tsx
 msgid "Confirm new password"
@@ -428,6 +439,10 @@ msgstr "Delete role"
 msgid "Describe the purpose of this absence form..."
 msgstr "Describe the purpose of this absence form..."
 
+#: src/components/ui/app-header-menu.tsx
+msgid "Description"
+msgstr "Description"
+
 #: src/app/docs/[lang]/[[...slug]]/page.tsx
 msgid "Documentation"
 msgstr "Documentation"
@@ -470,10 +485,7 @@ msgstr "Edit Role"
 msgid "Edit template"
 msgstr "Edit template"
 
-#: src/components/auth/login-form.tsx
-#: src/components/auth/providers.tsx
-#: src/components/auth/signup-form.tsx
-#: src/components/forgot-password-form.tsx
+#: src/components/ui/app-header-menu.tsx
 msgid "Email"
 msgstr "Email"
 
@@ -683,18 +695,25 @@ msgstr "Google"
 msgid "Graph"
 msgstr "Graph"
 
-#: src/app/page.tsx
 #: src/components/ui/app-header-menu.tsx
+msgid "Help center"
+msgstr "Help center"
+
+#: src/app/page.tsx
 msgid "Help Center"
 msgstr "Help Center"
 
-#: src/components/club-config/absence-form-editor.tsx
+#: src/components/ui/app-header-menu.tsx
 msgid "Hide"
 msgstr "Hide"
 
 #: src/components/club-config/absence-form-editor.tsx
 msgid "Hide options"
 msgstr "Hide options"
+
+#: src/components/ui/app-header-menu.tsx
+msgid "Highlight"
+msgstr "Highlight"
 
 #: src/components/ui/app-header.tsx
 msgid "Home"
@@ -806,7 +825,6 @@ msgstr "Loading..."
 msgid "Location"
 msgstr "Location"
 
-#: src/app/auth/sign-up/page.tsx
 #: src/app/page.tsx
 msgid "Log in"
 msgstr "Log in"
@@ -862,6 +880,10 @@ msgstr "Multiple choice"
 #: src/app/app/[id]/absences/(list)/tab-nav.tsx
 msgid "My absences"
 msgstr "My absences"
+
+#: src/components/ui/app-header-menu.tsx
+msgid "Name"
+msgstr "Name"
 
 #: src/components/auth/login-auth-providers-settings.tsx
 msgid "Never used"
@@ -1081,9 +1103,17 @@ msgstr "Reject"
 msgid "Rejected"
 msgstr "Rejected"
 
-#: src/components/club-config/members-manager.tsx
+#: src/components/ui/app-header-menu.tsx
 msgid "Remove"
 msgstr "Remove"
+
+#: src/components/ui/app-header-menu.tsx
+msgid "Remove screenshot"
+msgstr "Remove screenshot"
+
+#: src/components/ui/app-header-menu.tsx
+msgid "Report a bug"
+msgstr "Report a bug"
 
 #: src/app/app/[id]/absences/(list)/layout.tsx
 #: src/app/app/[id]/page.tsx
@@ -1097,6 +1127,10 @@ msgstr "Report accepted"
 #: src/app/app/[id]/absences/create/page.tsx
 msgid "Report an absence"
 msgstr "Report an absence"
+
+#: src/components/ui/app-header-menu.tsx
+msgid "Report bug"
+msgstr "Report bug"
 
 #: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "Report details"
@@ -1259,6 +1293,10 @@ msgstr "Select role for new members"
 msgid "Select template"
 msgstr "Select template"
 
+#: src/components/ui/app-header-menu.tsx
+msgid "Send bug report"
+msgstr "Send bug report"
+
 #: src/components/feedback-form.tsx
 msgid "Send feedback"
 msgstr "Send feedback"
@@ -1365,6 +1403,10 @@ msgstr "Submitted by"
 #: src/components/club-config/absence-form-editor.tsx
 msgid "Text"
 msgstr "Text"
+
+#: src/components/ui/app-header-menu.tsx
+msgid "Thank you for your report!"
+msgstr "Thank you for your report!"
 
 #: src/app/app/[id]/calendar/calendar.tsx
 msgid "The CSV file header is invalid. Expected columns: title, start_time, end_time, [location], [description]."
@@ -1499,6 +1541,10 @@ msgstr "Welcome!"
 msgid "What people call you"
 msgstr "What people call you"
 
+#: src/components/ui/app-header-menu.tsx
+msgid "What's the bug? What did you expect?"
+msgstr "What's the bug? What did you expect?"
+
 #: src/app/app/[id]/calendar/calendar.tsx
 msgid "Year"
 msgstr "Year"
@@ -1551,6 +1597,10 @@ msgstr "Your full name"
 msgid "Your full name will not be shared with people outside of your clubs unless you choose to at a later time."
 msgstr "Your full name will not be shared with people outside of your clubs unless you choose to at a later time."
 
+#: src/components/ui/app-header-menu.tsx
+msgid "Your name"
+msgstr "Your name"
+
 #: src/components/club-create-form.tsx
 msgid "Your school"
 msgstr "Your school"
@@ -1562,3 +1612,7 @@ msgstr "Your school name"
 #: src/components/user-share-actions.tsx
 msgid "Your system share dialog should have opened."
 msgstr "Your system share dialog should have opened."
+
+#: src/components/ui/app-header-menu.tsx
+msgid "your.email@example.org"
+msgstr "your.email@example.org"

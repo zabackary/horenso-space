@@ -2,19 +2,50 @@
 
 import { logout } from "@/actions/auth";
 import { Profile } from "@/lib/auth/getProfile";
-import { Trans } from "@lingui/react/macro";
-import { Avatar, Dialog, DropdownMenu, IconButton } from "@radix-ui/themes";
+import { Trans, useLingui } from "@lingui/react/macro";
+import {
+  ChatBubbleIcon,
+  ExitIcon,
+  GearIcon,
+  QuestionMarkCircledIcon,
+} from "@radix-ui/react-icons";
+import { Avatar, DropdownMenu, IconButton } from "@radix-ui/themes";
+import * as Sentry from "@sentry/nextjs";
 import Link from "next/link";
-import { lazy, useState } from "react";
-
-const FeedbackForm = lazy(() => import("../feedback-form"));
 
 export interface AppHeaderMenuProps {
   profile: Profile;
 }
 
 export function AppHeaderMenu({ profile }: AppHeaderMenuProps) {
-  const [isOpen, setIsOpen] = useState(false);
+  const { t } = useLingui();
+
+  const handleReportBug = async () => {
+    const feedback = Sentry.getFeedback();
+    const dialog = await feedback?.createForm({
+      formTitle: t`Report a bug`,
+      submitButtonLabel: t`Send bug report`,
+      cancelButtonLabel: t`Cancel`,
+      confirmButtonLabel: t`Confirm`,
+      addScreenshotButtonLabel: t`Add a screenshot`,
+      removeScreenshotButtonLabel: t`Remove screenshot`,
+      nameLabel: t`Name`,
+      namePlaceholder: t`Your name`,
+      emailLabel: t`Email`,
+      emailPlaceholder: t`your.email@example.org`,
+      isRequiredLabel: t`(required)`,
+      messageLabel: t`Description`,
+      messagePlaceholder: t`What's the bug? What did you expect?`,
+      successMessageText: t`Thank you for your report!`,
+      highlightToolText: t`Highlight`,
+      hideToolText: t`Hide`,
+      removeHighlightText: t`Remove`,
+    });
+    if (dialog) {
+      dialog.appendToDom();
+      dialog.open();
+    }
+  };
 
   return (
     <>
@@ -32,40 +63,30 @@ export function AppHeaderMenu({ profile }: AppHeaderMenuProps) {
           <form style={{ display: "contents" }}>
             <DropdownMenu.Item asChild>
               <Link href="/app/users/me">
+                <GearIcon />
                 <Trans>Profile and settings</Trans>
               </Link>
             </DropdownMenu.Item>
             <DropdownMenu.Item asChild>
               <Link href="/docs">
-                <Trans>Help Center</Trans>
+                <QuestionMarkCircledIcon />
+                <Trans>Help center</Trans>
               </Link>
             </DropdownMenu.Item>
-            <DropdownMenu.Item onClick={() => setIsOpen(true)}>
-              <Trans>Send Feedback</Trans>
+            <DropdownMenu.Item onClick={() => handleReportBug()}>
+              <ChatBubbleIcon />
+              <Trans>Report bug</Trans>
             </DropdownMenu.Item>
             <DropdownMenu.Separator />
             <DropdownMenu.Item asChild>
               <button formAction={logout}>
+                <ExitIcon />
                 <Trans>Log out</Trans>
               </button>
             </DropdownMenu.Item>
           </form>
         </DropdownMenu.Content>
       </DropdownMenu.Root>
-      <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
-        <Dialog.Content>
-          <Dialog.Title>
-            <Trans>Send Feedback</Trans>
-          </Dialog.Title>
-          <Dialog.Description>
-            <Trans>
-              We appreciate your feedback to help us improve. Every message is
-              read and considered.
-            </Trans>
-          </Dialog.Description>
-          <FeedbackForm handleClose={() => setIsOpen(false)} />
-        </Dialog.Content>
-      </Dialog.Root>
     </>
   );
 }

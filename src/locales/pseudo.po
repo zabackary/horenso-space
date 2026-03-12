@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/components/ui/app-header-menu.tsx
+msgid "(required)"
+msgstr ""
+
 #: src/components/club-config/absence-form-editor.tsx
 msgid "{0, plural, one {# follow-up} other {# follow-ups} zero {No follow-ups}}"
 msgstr ""
@@ -102,6 +106,10 @@ msgstr ""
 
 #: src/components/permission-text.tsx
 msgid "Access club files"
+msgstr ""
+
+#: src/components/ui/app-header-menu.tsx
+msgid "Add a screenshot"
 msgstr ""
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx
@@ -253,8 +261,7 @@ msgstr ""
 msgid "Calendar"
 msgstr ""
 
-#: src/app/app/[id]/calendar/event-detail-drawer.tsx
-#: src/app/app/[id]/calendar/event-detail-drawer.tsx
+#: src/components/ui/app-header-menu.tsx
 msgid "Cancel"
 msgstr ""
 
@@ -320,6 +327,10 @@ msgstr ""
 #: src/app/app/[id]/config/roles/role-dialog.tsx
 #: src/components/club-config/roles-manager.tsx
 msgid "Configure reviewer/approval and choose the template used for this role."
+msgstr ""
+
+#: src/components/ui/app-header-menu.tsx
+msgid "Confirm"
 msgstr ""
 
 #: src/components/auth/login-auth-providers-settings.tsx
@@ -428,6 +439,10 @@ msgstr ""
 msgid "Describe the purpose of this absence form..."
 msgstr ""
 
+#: src/components/ui/app-header-menu.tsx
+msgid "Description"
+msgstr ""
+
 #: src/app/docs/[lang]/[[...slug]]/page.tsx
 msgid "Documentation"
 msgstr ""
@@ -470,10 +485,7 @@ msgstr ""
 msgid "Edit template"
 msgstr ""
 
-#: src/components/auth/login-form.tsx
-#: src/components/auth/providers.tsx
-#: src/components/auth/signup-form.tsx
-#: src/components/forgot-password-form.tsx
+#: src/components/ui/app-header-menu.tsx
 msgid "Email"
 msgstr ""
 
@@ -683,17 +695,24 @@ msgstr ""
 msgid "Graph"
 msgstr ""
 
-#: src/app/page.tsx
 #: src/components/ui/app-header-menu.tsx
+msgid "Help center"
+msgstr ""
+
+#: src/app/page.tsx
 msgid "Help Center"
 msgstr ""
 
-#: src/components/club-config/absence-form-editor.tsx
+#: src/components/ui/app-header-menu.tsx
 msgid "Hide"
 msgstr ""
 
 #: src/components/club-config/absence-form-editor.tsx
 msgid "Hide options"
+msgstr ""
+
+#: src/components/ui/app-header-menu.tsx
+msgid "Highlight"
 msgstr ""
 
 #: src/components/ui/app-header.tsx
@@ -806,7 +825,6 @@ msgstr ""
 msgid "Location"
 msgstr ""
 
-#: src/app/auth/sign-up/page.tsx
 #: src/app/page.tsx
 msgid "Log in"
 msgstr ""
@@ -861,6 +879,10 @@ msgstr ""
 
 #: src/app/app/[id]/absences/(list)/tab-nav.tsx
 msgid "My absences"
+msgstr ""
+
+#: src/components/ui/app-header-menu.tsx
+msgid "Name"
 msgstr ""
 
 #: src/components/auth/login-auth-providers-settings.tsx
@@ -1081,8 +1103,16 @@ msgstr ""
 msgid "Rejected"
 msgstr ""
 
-#: src/components/club-config/members-manager.tsx
+#: src/components/ui/app-header-menu.tsx
 msgid "Remove"
+msgstr ""
+
+#: src/components/ui/app-header-menu.tsx
+msgid "Remove screenshot"
+msgstr ""
+
+#: src/components/ui/app-header-menu.tsx
+msgid "Report a bug"
 msgstr ""
 
 #: src/app/app/[id]/absences/(list)/layout.tsx
@@ -1096,6 +1126,10 @@ msgstr ""
 
 #: src/app/app/[id]/absences/create/page.tsx
 msgid "Report an absence"
+msgstr ""
+
+#: src/components/ui/app-header-menu.tsx
+msgid "Report bug"
 msgstr ""
 
 #: src/app/app/[id]/absences/(list)/report-detail.tsx
@@ -1259,6 +1293,10 @@ msgstr ""
 msgid "Select template"
 msgstr ""
 
+#: src/components/ui/app-header-menu.tsx
+msgid "Send bug report"
+msgstr ""
+
 #: src/components/feedback-form.tsx
 msgid "Send feedback"
 msgstr ""
@@ -1364,6 +1402,10 @@ msgstr ""
 
 #: src/components/club-config/absence-form-editor.tsx
 msgid "Text"
+msgstr ""
+
+#: src/components/ui/app-header-menu.tsx
+msgid "Thank you for your report!"
 msgstr ""
 
 #: src/app/app/[id]/calendar/calendar.tsx
@@ -1499,6 +1541,10 @@ msgstr ""
 msgid "What people call you"
 msgstr ""
 
+#: src/components/ui/app-header-menu.tsx
+msgid "What's the bug? What did you expect?"
+msgstr ""
+
 #: src/app/app/[id]/calendar/calendar.tsx
 msgid "Year"
 msgstr ""
@@ -1551,6 +1597,10 @@ msgstr ""
 msgid "Your full name will not be shared with people outside of your clubs unless you choose to at a later time."
 msgstr ""
 
+#: src/components/ui/app-header-menu.tsx
+msgid "Your name"
+msgstr ""
+
 #: src/components/club-create-form.tsx
 msgid "Your school"
 msgstr ""
@@ -1561,4 +1611,8 @@ msgstr ""
 
 #: src/components/user-share-actions.tsx
 msgid "Your system share dialog should have opened."
+msgstr ""
+
+#: src/components/ui/app-header-menu.tsx
+msgid "your.email@example.org"
 msgstr ""

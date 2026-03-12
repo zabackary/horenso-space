@@ -59,3 +59,10 @@
   left: 0;
   right: 0;
 }
+
+:global(#sentry-feedback) {
+  --foreground: var(--gray-12);
+  --background: var(--color-background);
+  --accent-foreground: var(--accent-contrast);
+  --accent-background: var(--accent-9);
+}

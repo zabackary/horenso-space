@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/components/ui/app-header-menu.tsx
+msgid "(required)"
+msgstr ""
+
 #: src/components/club-config/absence-form-editor.tsx
 msgid "{0, plural, one {# follow-up} other {# follow-ups} zero {No follow-ups}}"
 msgstr ""
@@ -103,6 +107,10 @@ msgstr "欠席連絡フォームにアクセス"
 #: src/components/permission-text.tsx
 msgid "Access club files"
 msgstr "部活ファイルにアクセス"
+
+#: src/components/ui/app-header-menu.tsx
+msgid "Add a screenshot"
+msgstr ""
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx
 msgid "Add comments (optional)"
@@ -253,8 +261,7 @@ msgstr "作成者: {0}"
 msgid "Calendar"
 msgstr "カレンダー"
 
-#: src/app/app/[id]/calendar/event-detail-drawer.tsx
-#: src/app/app/[id]/calendar/event-detail-drawer.tsx
+#: src/components/ui/app-header-menu.tsx
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -321,6 +328,10 @@ msgstr "共通の部活"
 #: src/components/club-config/roles-manager.tsx
 msgid "Configure reviewer/approval and choose the template used for this role."
 msgstr "レビュー/承認担当者を設定し、この役割に使用するテンプレートを選択してください。"
+
+#: src/components/ui/app-header-menu.tsx
+msgid "Confirm"
+msgstr ""
 
 #: src/components/auth/login-auth-providers-settings.tsx
 msgid "Confirm new password"
@@ -428,6 +439,10 @@ msgstr "役職の削除"
 msgid "Describe the purpose of this absence form..."
 msgstr "この欠席届の用途を説明してください。"
 
+#: src/components/ui/app-header-menu.tsx
+msgid "Description"
+msgstr ""
+
 #: src/app/docs/[lang]/[[...slug]]/page.tsx
 msgid "Documentation"
 msgstr "書類"
@@ -470,10 +485,7 @@ msgstr "役職を編集する"
 msgid "Edit template"
 msgstr "テンプレートを編集する"
 
-#: src/components/auth/login-form.tsx
-#: src/components/auth/providers.tsx
-#: src/components/auth/signup-form.tsx
-#: src/components/forgot-password-form.tsx
+#: src/components/ui/app-header-menu.tsx
 msgid "Email"
 msgstr "メール"
 
@@ -683,18 +695,25 @@ msgstr "Google"
 msgid "Graph"
 msgstr "グラフ"
 
-#: src/app/page.tsx
 #: src/components/ui/app-header-menu.tsx
+msgid "Help center"
+msgstr ""
+
+#: src/app/page.tsx
 msgid "Help Center"
 msgstr "ヘルプセンター"
 
-#: src/components/club-config/absence-form-editor.tsx
+#: src/components/ui/app-header-menu.tsx
 msgid "Hide"
 msgstr "隠す"
 
 #: src/components/club-config/absence-form-editor.tsx
 msgid "Hide options"
 msgstr "選択肢を隠す"
+
+#: src/components/ui/app-header-menu.tsx
+msgid "Highlight"
+msgstr ""
 
 #: src/components/ui/app-header.tsx
 msgid "Home"
@@ -806,7 +825,6 @@ msgstr "ロード中．．．"
 msgid "Location"
 msgstr "場所"
 
-#: src/app/auth/sign-up/page.tsx
 #: src/app/page.tsx
 msgid "Log in"
 msgstr "ログイン"
@@ -862,6 +880,10 @@ msgstr "複数選択"
 #: src/app/app/[id]/absences/(list)/tab-nav.tsx
 msgid "My absences"
 msgstr "私の欠席連絡"
+
+#: src/components/ui/app-header-menu.tsx
+msgid "Name"
+msgstr ""
 
 #: src/components/auth/login-auth-providers-settings.tsx
 msgid "Never used"
@@ -1081,9 +1103,17 @@ msgstr "拒否"
 msgid "Rejected"
 msgstr "拒否済み"
 
-#: src/components/club-config/members-manager.tsx
+#: src/components/ui/app-header-menu.tsx
 msgid "Remove"
 msgstr "削除"
+
+#: src/components/ui/app-header-menu.tsx
+msgid "Remove screenshot"
+msgstr ""
+
+#: src/components/ui/app-header-menu.tsx
+msgid "Report a bug"
+msgstr ""
 
 #: src/app/app/[id]/absences/(list)/layout.tsx
 #: src/app/app/[id]/page.tsx
@@ -1097,6 +1127,10 @@ msgstr "報告は承認されました"
 #: src/app/app/[id]/absences/create/page.tsx
 msgid "Report an absence"
 msgstr "欠席を報告"
+
+#: src/components/ui/app-header-menu.tsx
+msgid "Report bug"
+msgstr ""
 
 #: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "Report details"
@@ -1259,6 +1293,10 @@ msgstr "新メンバーの役職を選択"
 msgid "Select template"
 msgstr "テンプレートを選択"
 
+#: src/components/ui/app-header-menu.tsx
+msgid "Send bug report"
+msgstr ""
+
 #: src/components/feedback-form.tsx
 msgid "Send feedback"
 msgstr "フィードバックを送信"
@@ -1365,6 +1403,10 @@ msgstr "送信者"
 #: src/components/club-config/absence-form-editor.tsx
 msgid "Text"
 msgstr "テキスト"
+
+#: src/components/ui/app-header-menu.tsx
+msgid "Thank you for your report!"
+msgstr ""
 
 #: src/app/app/[id]/calendar/calendar.tsx
 msgid "The CSV file header is invalid. Expected columns: title, start_time, end_time, [location], [description]."
@@ -1499,6 +1541,10 @@ msgstr "ようこそ！"
 msgid "What people call you"
 msgstr "よく呼ばれている名前"
 
+#: src/components/ui/app-header-menu.tsx
+msgid "What's the bug? What did you expect?"
+msgstr ""
+
 #: src/app/app/[id]/calendar/calendar.tsx
 msgid "Year"
 msgstr "年"
@@ -1551,6 +1597,10 @@ msgstr "あなたのフルネーム"
 msgid "Your full name will not be shared with people outside of your clubs unless you choose to at a later time."
 msgstr "設定で変更しない限り、あなたの氏名は部活外の人に公開されることはありません。"
 
+#: src/components/ui/app-header-menu.tsx
+msgid "Your name"
+msgstr ""
+
 #: src/components/club-create-form.tsx
 msgid "Your school"
 msgstr "あなたの学校"
@@ -1562,3 +1612,7 @@ msgstr "あなたの学校名"
 #: src/components/user-share-actions.tsx
 msgid "Your system share dialog should have opened."
 msgstr "あなたのシステム共有ダイアログが開かれたはずです。"
+
+#: src/components/ui/app-header-menu.tsx
+msgid "your.email@example.org"
+msgstr ""

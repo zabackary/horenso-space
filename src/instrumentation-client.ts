@@ -25,4 +25,18 @@ Sentry.init({
   enabled: process.env.NODE_ENV === "production",
 });
 
+Sentry.lazyLoadIntegration("feedbackIntegration")
+  .then((feedbackIntegration) => {
+    Sentry.addIntegration(
+      feedbackIntegration({
+        autoInject: false,
+        showBranding: false,
+      }),
+    );
+  })
+  .catch(() => {
+    // this can happen if e.g. a network error occurs,
+    // in this case User Feedback will not be enabled
+  });
+
 export const onRouterTransitionStart = Sentry.captureRouterTransitionStart;
