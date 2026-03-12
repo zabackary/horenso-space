@@ -1,3 +1,4 @@
+import * as Sentry from "@sentry/nextjs";
 import { createServerClient } from "@supabase/ssr";
 import { type NextRequest, NextResponse } from "next/server";
 
@@ -49,6 +50,14 @@ export async function updateSession(request: NextRequest) {
     url.pathname = "/auth/login";
     url.searchParams.set("next", request.nextUrl.pathname);
     return NextResponse.redirect(url);
+  }
+
+  // If we have a user, send it to Sentry.
+  if (user) {
+    Sentry.setUser({
+      id: user.sub,
+      email: user.email,
+    });
   }
 
   // IMPORTANT: You *must* return the supabaseResponse object as it is.

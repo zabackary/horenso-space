@@ -3,6 +3,7 @@
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 
 import * as Sentry from "@sentry/nextjs";
+import { createClient } from "./lib/supabase/client";
 
 Sentry.init({
   dsn: "https://87da66d67ac9ff09433369fbd8201e9f@o4510833382916096.ingest.us.sentry.io/4510833384488960",
@@ -37,6 +38,18 @@ Sentry.lazyLoadIntegration("feedbackIntegration")
   .catch(() => {
     // this can happen if e.g. a network error occurs,
     // in this case User Feedback will not be enabled
+  });
+
+createClient()
+  .auth.getSession()
+  .then(({ data }) => {
+    const user = data?.session?.user;
+    if (user) {
+      Sentry.setUser({
+        id: user.id,
+        email: user.email,
+      });
+    }
   });
 
 export const onRouterTransitionStart = Sentry.captureRouterTransitionStart;
