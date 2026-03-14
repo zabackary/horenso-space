@@ -1103,7 +1103,7 @@ msgstr "拒否"
 msgid "Rejected"
 msgstr "拒否済み"
 
-#: src/components/ui/app-header-menu.tsx
+#: src/components/club-config/members-manager.tsx
 msgid "Remove"
 msgstr "削除"
 

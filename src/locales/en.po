@@ -1103,7 +1103,7 @@ msgstr "Reject"
 msgid "Rejected"
 msgstr "Rejected"
 
-#: src/components/ui/app-header-menu.tsx
+#: src/components/club-config/members-manager.tsx
 msgid "Remove"
 msgstr "Remove"
 
