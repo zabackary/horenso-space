@@ -15,7 +15,7 @@ msgstr ""
 
 #: src/components/ui/app-header-menu.tsx
 msgid "(required)"
-msgstr ""
+msgstr "(必須)"
 
 #: src/components/club-config/absence-form-editor.tsx
 msgid "{0, plural, one {# follow-up} other {# follow-ups} zero {No follow-ups}}"
@@ -110,7 +110,7 @@ msgstr "部活ファイルにアクセス"
 
 #: src/components/ui/app-header-menu.tsx
 msgid "Add a screenshot"
-msgstr ""
+msgstr "スクリーンショットの追加"
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx
 msgid "Add comments (optional)"
@@ -331,7 +331,7 @@ msgstr "レビュー/承認担当者を設定し、この役割に使用する�
 
 #: src/components/ui/app-header-menu.tsx
 msgid "Confirm"
-msgstr ""
+msgstr "確定"
 
 #: src/components/auth/login-auth-providers-settings.tsx
 msgid "Confirm new password"
@@ -697,7 +697,7 @@ msgstr "グラフ"
 
 #: src/components/ui/app-header-menu.tsx
 msgid "Help center"
-msgstr ""
+msgstr "ヘルプセンター"
 
 #: src/app/page.tsx
 msgid "Help Center"
@@ -713,7 +713,7 @@ msgstr "選択肢を隠す"
 
 #: src/components/ui/app-header-menu.tsx
 msgid "Highlight"
-msgstr ""
+msgstr "ハイライト"
 
 #: src/components/ui/app-header.tsx
 msgid "Home"
@@ -883,7 +883,7 @@ msgstr "私の欠席連絡"
 
 #: src/components/ui/app-header-menu.tsx
 msgid "Name"
-msgstr ""
+msgstr "名前"
 
 #: src/components/auth/login-auth-providers-settings.tsx
 msgid "Never used"
@@ -1109,11 +1109,11 @@ msgstr "削除"
 
 #: src/components/ui/app-header-menu.tsx
 msgid "Remove screenshot"
-msgstr ""
+msgstr "スクリーンショットを削除する"
 
 #: src/components/ui/app-header-menu.tsx
 msgid "Report a bug"
-msgstr ""
+msgstr "バグの報告"
 
 #: src/app/app/[id]/absences/(list)/layout.tsx
 #: src/app/app/[id]/page.tsx
@@ -1295,7 +1295,7 @@ msgstr "テンプレートを選択"
 
 #: src/components/ui/app-header-menu.tsx
 msgid "Send bug report"
-msgstr ""
+msgstr "バグの報告"
 
 #: src/components/feedback-form.tsx
 msgid "Send feedback"
@@ -1406,7 +1406,7 @@ msgstr "テキスト"
 
 #: src/components/ui/app-header-menu.tsx
 msgid "Thank you for your report!"
-msgstr ""
+msgstr "ご報告ありがとうございます！"
 
 #: src/app/app/[id]/calendar/calendar.tsx
 msgid "The CSV file header is invalid. Expected columns: title, start_time, end_time, [location], [description]."
@@ -1543,7 +1543,7 @@ msgstr "よく呼ばれている名前"
 
 #: src/components/ui/app-header-menu.tsx
 msgid "What's the bug? What did you expect?"
-msgstr ""
+msgstr "バグはなんですか？何を求めていましたか？"
 
 #: src/app/app/[id]/calendar/calendar.tsx
 msgid "Year"
@@ -1599,7 +1599,7 @@ msgstr "設定で変更しない限り、あなたの氏名は部活外の人に
 
 #: src/components/ui/app-header-menu.tsx
 msgid "Your name"
-msgstr ""
+msgstr "名前"
 
 #: src/components/club-create-form.tsx
 msgid "Your school"
@@ -1615,4 +1615,4 @@ msgstr "あなたのシステム共有ダイアログが開かれたはずです
 
 #: src/components/ui/app-header-menu.tsx
 msgid "your.email@example.org"
-msgstr ""
+msgstr "your.email@example.org"
