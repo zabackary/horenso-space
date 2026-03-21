@@ -673,7 +673,7 @@ msgstr "招待を作成"
 
 #: src/components/club-config/invite.tsx
 msgid "Generate invites to allow others to join your club."
-msgstr "ほかの人が部活に参加するための正体を生成します。"
+msgstr "ほかの人が部活に参加するための招待を生成します。"
 
 #: src/app/page.tsx
 msgid "Get started"
