@@ -70,6 +70,12 @@ export default async function RootLayout({
             </LinguiClientProvider>
           </ApolloWrapper>
           <Analytics />
+          {/* Cloudflare Web Analytics */}
+          <script
+            defer
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon='{"token": "ab70fafc9e9748f0a82c946bc63069f8"}'
+          ></script>
         </body>
       </Theme>
     </html>
