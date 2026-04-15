@@ -1,11 +1,9 @@
 import { FullscreenCard } from "@/components/ui/fullscreen-card";
-import getProfile from "@/lib/auth/getProfile";
 import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
 import { Trans } from "@lingui/react/macro";
 import { CrossCircledIcon, PaperPlaneIcon } from "@radix-ui/react-icons";
 import { Button, Callout, Card, Flex, Heading, Text } from "@radix-ui/themes";
-import { redirect } from "next/navigation";
 import { joinClub } from "./actions";
 import styles from "./page.module.css";
 
@@ -18,15 +16,6 @@ export default async function JoinClubPage({
   const { error: searchError } = await searchParams;
 
   const supabase = await createClient();
-  const profile = await getProfile(supabase);
-  if (!profile) {
-    // redirect user to login if they are not signed in
-    // The user will be redirected back to this page after login
-    const searchParams = new URLSearchParams({
-      next: `/app/club/invite/${id}`,
-    });
-    redirect(`/auth/login?${searchParams.toString()}`);
-  }
   const { data: invite, error } = await supabase
     .rpc("invitations_verify", {
       invitation_id: id,

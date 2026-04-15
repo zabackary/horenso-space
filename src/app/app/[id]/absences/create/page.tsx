@@ -1,6 +1,5 @@
 import { AbsenceForm } from "@/@types/AbsenceForm";
 import { FullscreenCard } from "@/components/ui/fullscreen-card";
-import getProfile from "@/lib/auth/getProfile";
 import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
 import { Trans } from "@lingui/react/macro";
@@ -15,12 +14,26 @@ export default async function Page({
 
   const supabase = await createClient();
 
-  const profile = (await getProfile(supabase))!;
+  const userId = (await supabase.auth.getClaims()).data?.claims.sub;
+
+  if (!userId) {
+    return (
+      <FullscreenCard>
+        <Callout.Root variant="outline">
+          <Callout.Text>
+            <Trans>
+              You may be signed out. Please refresh the page and sign in again
+            </Trans>
+          </Callout.Text>
+        </Callout.Root>
+      </FullscreenCard>
+    );
+  }
 
   const { data: templateRawData, error: templateError } = await supabase
     .from("club_members")
     .select("roles (absence_report_forms (id, questions))")
-    .eq("user_id", profile.id)
+    .eq("user_id", userId)
     .eq("club_id", id)
     .single();
   const templateData = templateRawData?.roles?.absence_report_forms ?? null;
@@ -39,7 +52,7 @@ export default async function Page({
           title: event.title,
           startTime: new Date(event.start_time),
           endTime: new Date(event.end_time),
-        })) || []
+        })) || [],
     );
 
   return (

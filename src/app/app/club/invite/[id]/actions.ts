@@ -1,13 +1,11 @@
 "use server";
 
-import getProfile from "@/lib/auth/getProfile";
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/dist/client/components/navigation";
 
 export async function joinClub(invitationId: string) {
   const supabase = await createClient();
-  const profile = await getProfile(supabase);
-  if (!profile) {
+  if ((await supabase.auth.getClaims()).data?.claims.role !== "authenticated") {
     redirect("/login");
   }
 

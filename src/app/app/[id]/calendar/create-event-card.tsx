@@ -1,6 +1,5 @@
 "use client";
 
-import getProfile from "@/lib/auth/getProfile";
 import { createClient } from "@/lib/supabase/client";
 import { Trans, useLingui } from "@lingui/react/macro";
 import {
@@ -50,7 +49,13 @@ export default function CreateEventCard({
 
     try {
       const supabase = createClient();
-      const user = (await getProfile(supabase))!;
+      const userId = (await supabase.auth.getClaims()).data?.claims.sub;
+      if (!userId) {
+        setError(
+          t`You may be signed out. Please refresh the page and sign in again.`,
+        );
+        return;
+      }
 
       const startDateTime = new Date(
         `${formData.startDate}T${formData.startTime}:00`,
@@ -66,7 +71,7 @@ export default function CreateEventCard({
           club_id: clubId,
           start_time: startDateTime,
           end_time: endDateTime,
-          created_by: user.id,
+          created_by: userId,
           location: formData.location || undefined,
           description: formData.notes || undefined,
         })

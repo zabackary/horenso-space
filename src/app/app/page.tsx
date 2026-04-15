@@ -2,7 +2,6 @@ import { AppHeader } from "@/components/ui/app-header";
 import ClubCard from "@/components/ui/club-card";
 import { gql } from "@/gql";
 import { query } from "@/lib/apollo/server";
-import getProfile from "@/lib/auth/getProfile";
 import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
 import { Trans } from "@lingui/react/macro";
@@ -32,7 +31,7 @@ export default async function App({ params }: PageProps<"/app">) {
   const supabase = await createClient();
   const { data, error } = await query({
     query: joinedClubsQuery,
-    variables: { me: (await getProfile(supabase))?.id ?? "" },
+    variables: { me: (await supabase.auth.getClaims()).data?.claims.sub ?? "" },
   });
 
   if (error) {

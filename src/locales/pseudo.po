@@ -461,7 +461,7 @@ msgstr ""
 msgid "Create your first absence report template"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/create/form.tsx
 msgid "Date"
 msgstr ""
 
@@ -589,7 +589,7 @@ msgstr ""
 msgid "Error updating password: {0}"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/report-detail.tsx
+#: src/app/app/[id]/absences/create/form.tsx
 msgid "Event"
 msgstr ""
 
@@ -938,7 +938,7 @@ msgstr ""
 msgid "Location for row {0}"
 msgstr ""
 
-#: src/app/page.tsx
+#: src/app/auth/sign-up/page.tsx
 msgid "Log in"
 msgstr ""
 
@@ -1382,7 +1382,7 @@ msgstr ""
 msgid "Roles"
 msgstr ""
 
-#: src/app/app/[id]/calendar/event-detail-drawer.tsx
+#: src/app/app/[id]/calendar/create-event-card.tsx
 msgid "Save"
 msgstr ""
 
@@ -1518,8 +1518,6 @@ msgstr ""
 #~ msgstr ""
 
 #: src/app/auth/login/page.tsx
-#: src/components/auth/signup-form.tsx
-#: src/components/ui/app-header.tsx
 msgid "Sign up"
 msgstr ""
 
@@ -1763,6 +1761,14 @@ msgstr ""
 
 #: src/components/club-config/absence-form-detail.tsx
 msgid "You have unsaved changes"
+msgstr ""
+
+#: src/app/app/[id]/absences/create/page.tsx
+msgid "You may be signed out. Please refresh the page and sign in again"
+msgstr ""
+
+#: src/app/app/[id]/calendar/create-event-card.tsx
+msgid "You may be signed out. Please refresh the page and sign in again."
 msgstr ""
 
 #: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx

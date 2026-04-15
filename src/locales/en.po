@@ -461,7 +461,7 @@ msgstr "Create template"
 msgid "Create your first absence report template"
 msgstr "Create your first absence report template"
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/create/form.tsx
 msgid "Date"
 msgstr "Date"
 
@@ -589,7 +589,7 @@ msgstr "Error unlinking identity: {0}"
 msgid "Error updating password: {0}"
 msgstr "Error updating password: {0}"
 
-#: src/app/app/[id]/absences/(list)/report-detail.tsx
+#: src/app/app/[id]/absences/create/form.tsx
 msgid "Event"
 msgstr "Event"
 
@@ -938,7 +938,7 @@ msgstr "Location"
 msgid "Location for row {0}"
 msgstr "Location for row {0}"
 
-#: src/app/page.tsx
+#: src/app/auth/sign-up/page.tsx
 msgid "Log in"
 msgstr "Log in"
 
@@ -1382,7 +1382,7 @@ msgstr "Role: {role}"
 msgid "Roles"
 msgstr "Roles"
 
-#: src/app/app/[id]/calendar/event-detail-drawer.tsx
+#: src/app/app/[id]/calendar/create-event-card.tsx
 msgid "Save"
 msgstr "Save"
 
@@ -1518,8 +1518,6 @@ msgstr "Sign in with <0/>"
 #~ msgstr "Sign in with Google"
 
 #: src/app/auth/login/page.tsx
-#: src/components/auth/signup-form.tsx
-#: src/components/ui/app-header.tsx
 msgid "Sign up"
 msgstr "Sign up"
 
@@ -1764,6 +1762,14 @@ msgstr "You don't have any absence reports"
 #: src/components/club-config/absence-form-detail.tsx
 msgid "You have unsaved changes"
 msgstr "You have unsaved changes"
+
+#: src/app/app/[id]/absences/create/page.tsx
+msgid "You may be signed out. Please refresh the page and sign in again"
+msgstr "You may be signed out. Please refresh the page and sign in again"
+
+#: src/app/app/[id]/calendar/create-event-card.tsx
+msgid "You may be signed out. Please refresh the page and sign in again."
+msgstr "You may be signed out. Please refresh the page and sign in again."
 
 #: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
 msgid "You must be signed in to import events."

@@ -2,7 +2,6 @@
 
 import { AbsenceForm } from "@/@types/AbsenceForm";
 import AbsenceFormRenderer from "@/components/absence-form-renderer";
-import getProfile from "@/lib/auth/getProfile";
 import { createClient } from "@/lib/supabase/client";
 import { Trans, useLingui } from "@lingui/react/macro";
 import { CrossCircledIcon } from "@radix-ui/react-icons";
@@ -49,7 +48,13 @@ export default function Form({
 
   const handleSubmit = async () => {
     const supabase = createClient();
-    const user = await getProfile(supabase);
+    const userId = (await supabase.auth.getClaims()).data?.claims.sub;
+    if (!userId) {
+      setError(
+        t`You may be signed out. Please refresh the page and sign in again.`,
+      );
+      return;
+    }
     const { data: res, error } = await supabase.from("absence_reports").insert([
       {
         club_id: clubId,
@@ -57,7 +62,7 @@ export default function Form({
         date: date ?? undefined,
         form_id: template.id,
         data: data ?? {},
-        user_id: user!.id,
+        user_id: userId,
       },
     ]);
     if (error) {

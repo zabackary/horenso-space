@@ -1,5 +1,4 @@
 import { LoginForm } from "@/components/auth/login-form";
-import getProfile from "@/lib/auth/getProfile";
 import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
 import { Trans } from "@lingui/react/macro";
@@ -21,13 +20,13 @@ export default async function LoginPage(
   props: PropsWithChildren<{
     params: Promise<{ lang: string }>;
     searchParams: Promise<LoginPageSearchParams>;
-  }>
+  }>,
 ) {
   const { lang } = await props.params;
   await initLingui();
   const supabase = await createClient();
-  const profile = await getProfile(supabase);
-  if (profile) {
+
+  if ((await supabase.auth.getClaims()).data?.claims.role === "authenticated") {
     // redirect user to the app if they are already signed in
     redirect("/app", RedirectType.replace);
   }

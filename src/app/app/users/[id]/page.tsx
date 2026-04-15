@@ -2,7 +2,6 @@ import ClubCard from "@/components/ui/club-card";
 import UserProfile from "@/components/ui/user-profile";
 import { gql } from "@/gql";
 import { query } from "@/lib/apollo/server";
-import getProfile from "@/lib/auth/getProfile";
 import { initLingui } from "@/lib/i18n/initLingui";
 import { createClient } from "@/lib/supabase/server";
 import { Trans } from "@lingui/react/macro";
@@ -31,9 +30,9 @@ export default async function UserPage({
   await initLingui();
 
   const supabase = await createClient();
-  const ownProfile = await getProfile(supabase);
+  const myUserId = (await supabase.auth.getClaims()).data?.claims.sub;
 
-  if (ownProfile?.id === id) {
+  if (id === myUserId) {
     redirect("/app/users/me");
   }
 
