@@ -1,6 +1,5 @@
 "use client";
 
-import { importCalendarEventsFromCSV } from "@/actions/calendar";
 import { Drawer } from "@/components/ui/drawer";
 import { useMediaQuery } from "@/lib/useMediaQuery";
 import { Trans, useLingui } from "@lingui/react/macro";
@@ -11,8 +10,6 @@ import {
   PlusIcon,
 } from "@radix-ui/react-icons";
 import {
-  Button,
-  Dialog,
   Flex,
   Heading,
   IconButton,
@@ -21,6 +18,7 @@ import {
   VisuallyHidden,
 } from "@radix-ui/themes";
 import { memo, useEffect, useState } from "react";
+import CalendarCsvImportSheet from "./calendar-csv-import-sheet";
 import styles from "./calendar.module.css";
 import CreateEventCard from "./create-event-card";
 import DayCalendar from "./day";
@@ -36,7 +34,6 @@ interface ModePickerProps {
 }
 
 export function ModePicker({ mode, setMode }: ModePickerProps) {
-  const { t } = useLingui();
   return (
     <Select.Root
       value={mode}
@@ -93,6 +90,7 @@ export default function Calendar({
   });
 
   const [createDrawerOpen, setCreateDrawerOpen] = useState(false);
+  const [csvImportSheetOpen, setCsvImportSheetOpen] = useState(false);
 
   const [refreshKey, setRefreshKey] = useState(0);
 
@@ -114,107 +112,6 @@ export default function Calendar({
 
   const handleModeChange = (newMode: "year" | "month" | "day") => {
     setMode(newMode);
-  };
-
-  const [csvImporting, setCSVImporting] = useState(false);
-  const [csvImportError, setCSVImportError] = useState<string | null>(null);
-  const handleExampleCSVDownload = () => {
-    const exampleCSV = `title,start_time,end_time,location,description
-${t`Club meeting`},2024-07-01T10:00:00Z,2024-07-01T11:00:00Z,${t`Optional room`},${t`Optional description`}
-`;
-    const blob = new Blob([exampleCSV], { type: "text/csv" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = t`example-calendar-events.csv`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  };
-  const handleCSVImport = () => {
-    setCreateDrawerOpen(false);
-    setCSVImportError(null);
-    setCSVImporting(true);
-    const element = document.createElement("input");
-    element.type = "file";
-    element.accept = ".csv,text/csv";
-    element.onchange = async (e: Event) => {
-      const target = e.target as HTMLInputElement;
-      if (
-        target.files &&
-        target.files.length > 0 &&
-        target.files[0].type === "text/csv"
-      ) {
-        const file = target.files[0];
-
-        // Verify the file content and convert dates to UTC
-        console.log("Importing CSV file:", file);
-        const content = await file.text();
-        // verify content format
-        const lines = content.trimEnd().split("\n");
-        if (lines.length < 2) {
-          setCSVImportError(t`The CSV file is empty or invalid.`);
-          setCSVImporting(false);
-          return;
-        }
-        const header = lines[0].trim().split(",");
-        if (
-          header.length < 3 ||
-          header[0] !== "title" ||
-          header[1] !== "start_time" ||
-          header[2] !== "end_time"
-        ) {
-          setCSVImportError(
-            t`The CSV file header is invalid. Expected columns: title, start_time, end_time, [location], [description].`,
-          );
-          return;
-        }
-        // convert start_time and end_time to UTC ISO strings
-        // (assuming they are in local time in the CSV)
-        const processedLines = [
-          header.join(","),
-          ...lines.slice(1).map((line) => {
-            const cols = line.trim().split(",");
-            if (cols.length < 3) {
-              // error for this line
-              setCSVImportError(
-                t`One or more rows in the CSV file are invalid. Each row must have at least title, start_time, and end_time.`,
-              );
-              return line;
-            }
-            const startTime = new Date(cols[1]);
-            const endTime = new Date(cols[2]);
-            cols[1] = startTime.toISOString();
-            cols[2] = endTime.toISOString();
-            return cols.join(",");
-          }),
-        ].join("\n");
-
-        // Call the server action to import
-        try {
-          await importCalendarEventsFromCSV(clubId, processedLines);
-        } catch (error) {
-          console.error("Error importing CSV:", error);
-          setCSVImportError(
-            (existingError) => existingError || (error as Error).message,
-          );
-          return;
-        }
-
-        // After processing, refresh the calendar view
-        setCSVImporting(false);
-        setRefreshKey((key) => key + 1);
-      } else {
-        console.error("No file selected for CSV import.");
-        setCSVImportError(t`Please select one valid CSV file for import.`);
-        setCSVImporting(false);
-      }
-    };
-    element.oncancel = () => {
-      setCSVImporting(false);
-    };
-    element.click();
   };
 
   const isSmall = useMediaQuery("(max-width: 600px)");
@@ -459,38 +356,23 @@ ${t`Club meeting`},2024-07-01T10:00:00Z,2024-07-01T11:00:00Z,${t`Optional room`}
                   setCreateDrawerOpen(false);
                   setRefreshKey((key) => key + 1);
                 }}
-                onCSVImport={handleCSVImport}
+                onCSVImport={() => {
+                  setCreateDrawerOpen(false);
+                  setCsvImportSheetOpen(true);
+                }}
               />
             </Drawer.Content>
           </Drawer.Portal>
         </Drawer.Root>
       )}
-      {csvImporting && (
-        <Dialog.Root open={csvImporting}>
-          <Dialog.Content>
-            <Dialog.Title>
-              <Trans>Importing CSV</Trans>
-            </Dialog.Title>
-            <Dialog.Description>
-              {csvImportError ? (
-                <>{csvImportError}</>
-              ) : (
-                <Trans>Importing CSV file, please wait...</Trans>
-              )}
-            </Dialog.Description>
-            {csvImportError ? (
-              <Flex direction="row" justify="end" align="center" gap="2" mt="4">
-                <Button variant="soft" onClick={handleExampleCSVDownload}>
-                  <Trans>Download example CSV</Trans>
-                </Button>
-                <Button variant="solid" onClick={() => setCSVImporting(false)}>
-                  <Trans>Close</Trans>
-                </Button>
-              </Flex>
-            ) : null}
-          </Dialog.Content>
-        </Dialog.Root>
-      )}
+      <CalendarCsvImportSheet
+        clubId={clubId}
+        open={csvImportSheetOpen}
+        onOpenChange={setCsvImportSheetOpen}
+        onImported={() => {
+          setRefreshKey((key) => key + 1);
+        }}
+      />
     </>
   );
 }

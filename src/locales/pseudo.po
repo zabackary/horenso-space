@@ -17,6 +17,10 @@ msgstr ""
 msgid "(required)"
 msgstr ""
 
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "{0, plural, one {# event} other {# events}}"
+msgstr ""
+
 #: src/components/club-config/absence-form-editor.tsx
 msgid "{0, plural, one {# follow-up} other {# follow-ups} zero {No follow-ups}}"
 msgstr ""
@@ -33,12 +37,36 @@ msgstr ""
 #~ msgid "{0} reviews"
 #~ msgstr ""
 
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "{0} row(s) ready, {invalidRowCount} row(s) need attention."
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "{importedCount} row(s) imported, {failedCount} row(s) need attention."
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "{importedCount} row(s) imported. Fix the warning rows and import again if needed."
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "{readyRowCount} ready row(s), {issueRowCount} warning row(s)"
+msgstr ""
+
 #: src/app/page.tsx
 msgid "©{0} Horenso SPACE"
 msgstr ""
 
 #: src/app/page.tsx
 msgid "<0>Improve</0> your club communication"
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "2026-04-15 10:00"
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "2026-04-15 11:00"
 msgstr ""
 
 #: src/components/club-create-form.tsx
@@ -261,7 +289,7 @@ msgstr ""
 msgid "Calendar"
 msgstr ""
 
-#: src/components/ui/app-header-menu.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
 msgid "Cancel"
 msgstr ""
 
@@ -275,6 +303,26 @@ msgstr ""
 
 #: src/components/forgot-password-form.tsx
 msgid "Check your email"
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "Choose another file"
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "Choose CSV file"
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "Choose description column"
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "Choose location column"
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "Choose title column"
 msgstr ""
 
 #: src/app/app/[id]/calendar/calendar.tsx
@@ -318,6 +366,18 @@ msgstr ""
 
 #: src/components/club-config/absence-form-editor.tsx
 msgid "Collapse all"
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "Column"
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "Column mapping"
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "Combined date and time"
 msgstr ""
 
 #: src/app/app/users/[id]/page.tsx
@@ -374,7 +434,6 @@ msgstr ""
 msgid "Create club"
 msgstr ""
 
-#: src/app/app/[id]/calendar/[...date]/page.tsx
 #: src/app/app/[id]/calendar/calendar.tsx
 #: src/app/app/[id]/calendar/calendar.tsx
 msgid "Create event"
@@ -404,6 +463,10 @@ msgstr ""
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx
 msgid "Date"
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "Date and time columns"
 msgstr ""
 
 #: src/app/app/[id]/calendar/calendar.tsx
@@ -439,8 +502,13 @@ msgstr ""
 msgid "Describe the purpose of this absence form..."
 msgstr ""
 
-#: src/components/ui/app-header-menu.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
 msgid "Description"
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "Description for row {0}"
 msgstr ""
 
 #: src/app/docs/[lang]/[[...slug]]/page.tsx
@@ -471,6 +539,10 @@ msgstr ""
 msgid "Edit Event"
 msgstr ""
 
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "Edit imported calendar rows before saving them."
+msgstr ""
+
 #: src/app/app/[id]/config/roles/roles-graph.tsx
 msgid "Edit role"
 msgstr ""
@@ -492,6 +564,14 @@ msgstr ""
 #: src/app/app/[id]/calendar/create-event-card.tsx
 #~ msgid "End date and time"
 #~ msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "End time"
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "End time for row {0}"
+msgstr ""
 
 #: src/app/auth/error/page.tsx
 msgid "Error code:"
@@ -527,6 +607,10 @@ msgstr ""
 
 #: src/app/app/[id]/calendar/event-form.tsx
 msgid "Event name"
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "Event title for row {0}"
 msgstr ""
 
 #: src/app/app/[id]/calendar/calendar.tsx
@@ -627,6 +711,10 @@ msgstr ""
 
 #: src/app/page.tsx
 msgid "Find your shared documents easily"
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "First row contains headers"
 msgstr ""
 
 #: src/app/page.tsx
@@ -744,8 +832,24 @@ msgstr ""
 #~ msgid "Image by <0>SAWARATSUKI</0>"
 #~ msgstr ""
 
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "Import events"
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "Import events from CSV"
+msgstr ""
+
 #: src/app/app/[id]/calendar/create-event-card.tsx
 msgid "Import from CSV"
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "Import valid rows"
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "Imported"
 msgstr ""
 
 #: src/app/app/[id]/calendar/calendar.tsx
@@ -770,6 +874,10 @@ msgstr ""
 
 #: src/components/club-config/invite.tsx
 msgid "Invites"
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "Issues detected in {issueRowCount} out of {rowCount} row(s). You may need to adjust the columns by clicking the headers in the table below or edit your CSV."
 msgstr ""
 
 #: src/components/ui/club-card.tsx
@@ -821,8 +929,13 @@ msgstr ""
 msgid "Loading..."
 msgstr ""
 
-#: src/app/app/[id]/calendar/event-form.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
 msgid "Location"
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "Location for row {0}"
 msgstr ""
 
 #: src/app/page.tsx
@@ -859,6 +972,14 @@ msgstr ""
 #: src/app/app/[id]/config/roles/roles-view.tsx
 #: src/components/club-config/roles-manager.tsx
 msgid "Manage roles"
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "Map columns from your CSV, optionally combine date and time columns, and review warning rows before importing."
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "Map your CSV columns and review each event before importing."
 msgstr ""
 
 #: src/app/app/[id]/config/tabs.tsx
@@ -930,6 +1051,10 @@ msgstr ""
 msgid "No clubs found. You need an invite link to join a club."
 msgstr ""
 
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "No data rows found."
+msgstr ""
+
 #: src/app/app/[id]/absences/(list)/assigned/list.tsx
 msgid "No date"
 msgstr ""
@@ -940,6 +1065,10 @@ msgstr ""
 
 #: src/app/app/[id]/calendar/day.tsx
 msgid "No events for today."
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "No file selected yet"
 msgstr ""
 
 #: src/app/app/[id]/absences/(list)/report-detail.tsx
@@ -982,8 +1111,22 @@ msgstr ""
 msgid "No role"
 msgstr ""
 
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "No source"
+msgstr ""
+
 #: src/app/app/[id]/config/absence-forms/page.tsx
 msgid "No templates yet"
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "No valid rows are ready to import."
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "Not mapped"
 msgstr ""
 
 #: src/app/app/[id]/calendar/event-form.tsx
@@ -1091,6 +1234,14 @@ msgstr ""
 msgid "Questions"
 msgstr ""
 
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "Reading CSV file..."
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "Ready"
+msgstr ""
+
 #: src/app/app/[id]/page.tsx
 msgid "Recent notifications"
 msgstr ""
@@ -1103,7 +1254,7 @@ msgstr ""
 msgid "Rejected"
 msgstr ""
 
-#: src/components/club-config/members-manager.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
 msgid "Remove"
 msgstr ""
 
@@ -1174,6 +1325,14 @@ msgstr ""
 
 #: src/components/permission-text.tsx
 msgid "Review and respond to absence reports"
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "Review calendar CSV import"
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "Review CSV data before importing it into the calendar."
 msgstr ""
 
 #: src/app/app/[id]/absences/(list)/assigned/[reportId]/page.tsx
@@ -1260,6 +1419,10 @@ msgstr ""
 msgid "Select a club"
 msgstr ""
 
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "Select a CSV file to preview its rows."
+msgstr ""
+
 #: src/app/app/[id]/absences/(list)/assigned/list.tsx
 msgid "Select a report to review"
 msgstr ""
@@ -1289,6 +1452,14 @@ msgstr ""
 msgid "Select role for new members"
 msgstr ""
 
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "Select source CSV column for {label}"
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "Select source CSV column(s)"
+msgstr ""
+
 #: src/app/app/[id]/config/absence-forms/sidebar.tsx
 msgid "Select template"
 msgstr ""
@@ -1312,6 +1483,10 @@ msgstr ""
 
 #: src/components/feedback-form.tsx
 msgid "Sending your club information will help us better understand your problem to resolve it faster."
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "Separate date/time columns"
 msgstr ""
 
 #: src/app/maintenance/page.tsx
@@ -1364,6 +1539,10 @@ msgstr ""
 #~ msgid "Sign up with Google"
 #~ msgstr ""
 
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "Single date/time column"
+msgstr ""
+
 #: src/app/auth/error/page.tsx
 msgid "Something went wrong"
 msgstr ""
@@ -1376,12 +1555,24 @@ msgstr ""
 #~ msgid "Start date and time"
 #~ msgstr ""
 
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "Start time"
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "Start time for row {0}"
+msgstr ""
+
 #: src/components/club-config/absence-form-editor.tsx
 msgid "Static text"
 msgstr ""
 
 #: src/components/club-config/absence-form-editor.tsx
 msgid "Static text content"
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "Status"
 msgstr ""
 
 #: src/components/permission-text.tsx
@@ -1454,6 +1645,11 @@ msgstr ""
 
 #: src/components/club-config/absence-form-editor.tsx
 msgid "Time"
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "Title"
 msgstr ""
 
 #: src/components/club-config/absence-form-editor.tsx
@@ -1567,6 +1763,10 @@ msgstr ""
 
 #: src/components/club-config/absence-form-detail.tsx
 msgid "You have unsaved changes"
+msgstr ""
+
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+msgid "You must be signed in to import events."
 msgstr ""
 
 #: src/app/app/[id]/config/roles/role-dialog.tsx
