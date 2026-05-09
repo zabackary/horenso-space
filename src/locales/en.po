@@ -364,6 +364,14 @@ msgstr "Club privacy: {0}"
 msgid "Club settings"
 msgstr "Club settings"
 
+#: src/components/ui/user-link.tsx
+msgid "Clubs"
+msgstr "Clubs"
+
+#: src/components/ui/user-link.tsx
+msgid "Clubs:"
+msgstr "Clubs:"
+
 #: src/components/club-config/absence-form-editor.tsx
 msgid "Collapse all"
 msgstr "Collapse all"
@@ -588,7 +596,7 @@ msgstr "Error unlinking identity: {0}"
 msgid "Error updating password: {0}"
 msgstr "Error updating password: {0}"
 
-#: src/app/app/[id]/absences/create/form.tsx
+#: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "Event"
 msgstr "Event"
 
@@ -979,6 +987,18 @@ msgstr "Map columns from your CSV, optionally combine date and time columns, and
 msgid "Map your CSV columns and review each event before importing."
 msgstr "Map your CSV columns and review each event before importing."
 
+#: src/components/ui/user-link.tsx
+msgid "Member of \"{0}\""
+msgstr "Member of \"{0}\""
+
+#: src/components/ui/user-link.tsx
+msgid "Member of \"{0}\"\""
+msgstr "Member of \"{0}\"\""
+
+#: src/components/ui/user-link.tsx
+msgid "Member of {0}"
+msgstr "Member of {0}"
+
 #: src/app/app/[id]/config/tabs.tsx
 msgid "Members"
 msgstr "Members"
@@ -1251,7 +1271,7 @@ msgstr "Reject"
 msgid "Rejected"
 msgstr "Rejected"
 
-#: src/components/ui/app-header-menu.tsx
+#: src/components/club-config/members-manager.tsx
 msgid "Remove"
 msgstr "Remove"
 
@@ -1581,6 +1601,14 @@ msgstr "Submitted at {0}"
 msgid "Submitted by"
 msgstr "Submitted by"
 
+#: src/components/ui/absence-report-card.tsx
+msgid "Submitted by <0>{0}</0>"
+msgstr "Submitted by <0>{0}</0>"
+
+#: src/components/ui/absence-report-card.tsx
+msgid "Submitted by <0></0>"
+msgstr "Submitted by <0></0>"
+
 #: src/app/app/[id]/absences/(list)/list.tsx
 #~ msgid "Submitted on {0}"
 #~ msgstr "Submitted on {0}"
@@ -1705,6 +1733,10 @@ msgstr "View all absence reports"
 #: src/components/permission-text.tsx
 msgid "View club calendar events"
 msgstr "View club calendar events"
+
+#: src/components/ui/user-link.tsx
+msgid "View profile"
+msgstr "View profile"
 
 #: src/components/ui/app-header-menu.tsx
 msgid "We appreciate your feedback to help us improve. Every message is read and considered."

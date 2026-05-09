@@ -1,6 +1,7 @@
 "use client";
 
 import AbsenceFormRenderer from "@/components/absence-form-renderer";
+import { UserLink } from "@/components/ui/user-link";
 import { FragmentType, getFragmentData, gql } from "@/gql";
 import { useMutation } from "@apollo/client/react";
 import { Trans, useLingui } from "@lingui/react/macro";
@@ -49,8 +50,10 @@ export const AbsenceReportDetailFragment = gql(`
           createdAt
           accepted
           comments
+          reviewerId
           reviewer {
             fullName
+            avatarUrl
           }
         }
       }
@@ -62,6 +65,7 @@ export const AbsenceReportDetailFragment = gql(`
       startTime
       endTime
     }
+    userId
     user {
       fullName
       avatarUrl
@@ -204,17 +208,26 @@ export default function ReportDetail({
               <Trans>Submitted by</Trans>
             </DataList.Label>
             <DataList.Value>
-              <Flex align="center" gap="2">
-                <Avatar
-                  size="2"
-                  src={report.user?.avatarUrl || undefined}
-                  alt={report.user?.fullName}
-                  fallback={
-                    report.user?.fullName?.charAt(0)?.toUpperCase() || "?"
-                  }
-                />
-                <Text>{report.user?.fullName}</Text>
-              </Flex>
+              <UserLink userId={report.userId ?? undefined}>
+                <Flex align="center" gap="2">
+                  <Avatar
+                    size="2"
+                    src={report.user?.avatarUrl || undefined}
+                    alt={report.user?.fullName}
+                    fallback={
+                      report.user?.fullName?.charAt(0)?.toUpperCase() || "?"
+                    }
+                  />
+                  <Text
+                    style={{
+                      textDecoration: "underline",
+                      textDecorationStyle: "dotted",
+                    }}
+                  >
+                    {report.user?.fullName}
+                  </Text>
+                </Flex>
+              </UserLink>
             </DataList.Value>
           </DataList.Item>
 
@@ -284,9 +297,29 @@ export default function ReportDetail({
                   <Card key={review.node.id}>
                     <Flex direction="column" gap="2">
                       <Flex justify="between" align="center">
-                        <Text weight="bold">
-                          {review.node.reviewer?.fullName}
-                        </Text>
+                        <UserLink userId={review.node.reviewerId ?? undefined}>
+                          <Flex align="center" gap="2">
+                            <Avatar
+                              size="2"
+                              src={review.node.reviewer?.avatarUrl || undefined}
+                              alt={review.node.reviewer?.fullName}
+                              fallback={
+                                review.node.reviewer?.fullName
+                                  ?.charAt(0)
+                                  ?.toUpperCase() || "?"
+                              }
+                            />
+                            <Text
+                              style={{
+                                textDecoration: "underline",
+                                textDecorationStyle: "dotted",
+                              }}
+                              weight="bold"
+                            >
+                              {review.node.reviewer?.fullName}
+                            </Text>
+                          </Flex>
+                        </UserLink>
                         <Badge
                           size="2"
                           color={review.node.accepted ? "green" : "red"}

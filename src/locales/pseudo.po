@@ -364,6 +364,14 @@ msgstr ""
 msgid "Club settings"
 msgstr ""
 
+#: src/components/ui/user-link.tsx
+msgid "Clubs"
+msgstr ""
+
+#: src/components/ui/user-link.tsx
+msgid "Clubs:"
+msgstr ""
+
 #: src/components/club-config/absence-form-editor.tsx
 msgid "Collapse all"
 msgstr ""
@@ -588,7 +596,7 @@ msgstr ""
 msgid "Error updating password: {0}"
 msgstr ""
 
-#: src/app/app/[id]/absences/create/form.tsx
+#: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "Event"
 msgstr ""
 
@@ -979,6 +987,18 @@ msgstr ""
 msgid "Map your CSV columns and review each event before importing."
 msgstr ""
 
+#: src/components/ui/user-link.tsx
+msgid "Member of \"{0}\""
+msgstr ""
+
+#: src/components/ui/user-link.tsx
+msgid "Member of \"{0}\"\""
+msgstr ""
+
+#: src/components/ui/user-link.tsx
+msgid "Member of {0}"
+msgstr ""
+
 #: src/app/app/[id]/config/tabs.tsx
 msgid "Members"
 msgstr ""
@@ -1251,7 +1271,7 @@ msgstr ""
 msgid "Rejected"
 msgstr ""
 
-#: src/components/ui/app-header-menu.tsx
+#: src/components/club-config/members-manager.tsx
 msgid "Remove"
 msgstr ""
 
@@ -1581,6 +1601,14 @@ msgstr ""
 msgid "Submitted by"
 msgstr ""
 
+#: src/components/ui/absence-report-card.tsx
+msgid "Submitted by <0>{0}</0>"
+msgstr ""
+
+#: src/components/ui/absence-report-card.tsx
+msgid "Submitted by <0></0>"
+msgstr ""
+
 #: src/app/app/[id]/absences/(list)/list.tsx
 #~ msgid "Submitted on {0}"
 #~ msgstr ""
@@ -1704,6 +1732,10 @@ msgstr ""
 
 #: src/components/permission-text.tsx
 msgid "View club calendar events"
+msgstr ""
+
+#: src/components/ui/user-link.tsx
+msgid "View profile"
 msgstr ""
 
 #: src/components/ui/app-header-menu.tsx

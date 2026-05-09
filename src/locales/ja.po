@@ -364,6 +364,14 @@ msgstr "部活のプライバシー: {0}"
 msgid "Club settings"
 msgstr "部活の設定"
 
+#: src/components/ui/user-link.tsx
+msgid "Clubs"
+msgstr ""
+
+#: src/components/ui/user-link.tsx
+msgid "Clubs:"
+msgstr ""
+
 #: src/components/club-config/absence-form-editor.tsx
 msgid "Collapse all"
 msgstr "すべて折りたたむ"
@@ -588,7 +596,7 @@ msgstr "個人情報との接続の切除に失敗しました:{0}"
 msgid "Error updating password: {0}"
 msgstr "パスワードの更新ができませんでした:{0}"
 
-#: src/app/app/[id]/absences/create/form.tsx
+#: src/app/app/[id]/absences/(list)/report-detail.tsx
 msgid "Event"
 msgstr "イベント"
 
@@ -979,6 +987,18 @@ msgstr "CSVの内容を確認し、必要なら日付と時刻の行を合わせ
 msgid "Map your CSV columns and review each event before importing."
 msgstr "CSVの行を確認し、インポート前最後のチェックをしてください。"
 
+#: src/components/ui/user-link.tsx
+msgid "Member of \"{0}\""
+msgstr ""
+
+#: src/components/ui/user-link.tsx
+msgid "Member of \"{0}\"\""
+msgstr ""
+
+#: src/components/ui/user-link.tsx
+msgid "Member of {0}"
+msgstr ""
+
 #: src/app/app/[id]/config/tabs.tsx
 msgid "Members"
 msgstr "メンバー"
@@ -1251,7 +1271,7 @@ msgstr "拒否"
 msgid "Rejected"
 msgstr "拒否済み"
 
-#: src/components/ui/app-header-menu.tsx
+#: src/components/club-config/members-manager.tsx
 msgid "Remove"
 msgstr "削除"
 
@@ -1581,6 +1601,14 @@ msgstr "提出日時：{0}"
 msgid "Submitted by"
 msgstr "送信者"
 
+#: src/components/ui/absence-report-card.tsx
+msgid "Submitted by <0>{0}</0>"
+msgstr ""
+
+#: src/components/ui/absence-report-card.tsx
+msgid "Submitted by <0></0>"
+msgstr ""
+
 #: src/app/app/[id]/absences/(list)/list.tsx
 #~ msgid "Submitted on {0}"
 #~ msgstr "提出日時：{0}"
@@ -1705,6 +1733,10 @@ msgstr "すべての欠席報告を表示"
 #: src/components/permission-text.tsx
 msgid "View club calendar events"
 msgstr "部活のカレンダーイベントを表示"
+
+#: src/components/ui/user-link.tsx
+msgid "View profile"
+msgstr ""
 
 #: src/components/ui/app-header-menu.tsx
 msgid "We appreciate your feedback to help us improve. Every message is read and considered."

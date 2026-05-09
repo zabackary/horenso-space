@@ -18,6 +18,7 @@ import {
 } from "@radix-ui/themes";
 import Link from "next/link";
 import { useState } from "react";
+import { UserLink } from "../ui/user-link";
 import styles from "./members-manager.module.css";
 
 const MembersManagerQuery = gql(`
@@ -175,15 +176,21 @@ export default function MembersManager({ clubId }: { clubId: string }) {
             return (
               <Card key={m.userId}>
                 <Flex align="center" gap="3" justify="between" width="100%">
-                  <Avatar
-                    fallback={displayName.charAt(0).toUpperCase()}
-                    size="4"
-                    src={m.user?.avatarUrl ?? undefined}
-                  />
+                  <UserLink userId={m.userId}>
+                    <Avatar
+                      fallback={displayName.charAt(0).toUpperCase()}
+                      size="4"
+                      src={m.user?.avatarUrl ?? undefined}
+                    />
+                  </UserLink>
                   <Flex direction="column" style={{ flexGrow: 1 }} gap="1">
-                    <RadixLink weight="bold" size="3" asChild>
-                      <Link href={`/app/users/${m.userId}`}>{displayName}</Link>
-                    </RadixLink>
+                    <UserLink userId={m.userId}>
+                      <RadixLink weight="bold" size="3" asChild>
+                        <Link href={`/app/users/${m.userId}`}>
+                          {displayName}
+                        </Link>
+                      </RadixLink>
+                    </UserLink>
                     <Text size="2" color="gray">
                       <Trans>Role: {role}</Trans>
                     </Text>
