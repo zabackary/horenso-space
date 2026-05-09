@@ -269,18 +269,23 @@ export default function ReportDetail({
               onChange={(e) => setComments(e.target.value)}
               rows={4}
             />
-            <Flex gap="2">
+            <Flex gap="2" alignSelf="stretch">
               <Button
                 color="green"
                 onClick={() => handleSubmit(true)}
                 loading={isSubmitting}
+                size="3"
+                style={{ flex: 1 }}
               >
                 <Trans>Accept</Trans>
               </Button>
               <Button
                 color="red"
+                variant="outline"
                 onClick={() => handleSubmit(false)}
                 loading={isSubmitting}
+                size="3"
+                style={{ flex: 1 }}
               >
                 <Trans>Reject</Trans>
               </Button>
