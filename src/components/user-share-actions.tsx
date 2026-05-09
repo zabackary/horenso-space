@@ -21,7 +21,7 @@ export default function UserShareActions({ profile }: UserShareActionsProps) {
   const handleShareProfile = () => {
     const profileUrl = `${window.location.origin}/app/users/${profile.id}`;
     const shareData = {
-      title: `${profile.full_name}'s profile on Horenso Space`,
+      title: `${profile.fullName}'s profile on Horenso Space`,
       url: profileUrl,
     };
     const shareViaClipboard = async () => {

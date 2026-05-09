@@ -53,9 +53,9 @@ export function AppHeaderMenu({ profile }: AppHeaderMenuProps) {
         <DropdownMenu.Trigger>
           <IconButton variant="ghost">
             <Avatar
-              src={profile.avatar_url ?? undefined}
-              alt={profile.full_name}
-              fallback={profile.full_name.charAt(0).toUpperCase()}
+              src={profile.avatarUrl ?? undefined}
+              alt={profile.fullName}
+              fallback={profile.fullName.charAt(0).toUpperCase()}
             />
           </IconButton>
         </DropdownMenu.Trigger>

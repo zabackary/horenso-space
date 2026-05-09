@@ -3,10 +3,10 @@ import type { SupabaseClient, User } from "@supabase/supabase-js";
 
 export interface Profile {
   user: User;
-  avatar_url: string | null;
+  avatarUrl: string | null;
   bio: string | null;
-  created_at: string | null;
-  full_name: string;
+  createdAt: string | null;
+  fullName: string;
   id: string;
   nickname: string | null;
   school: string | null;
@@ -35,10 +35,10 @@ export default async function getProfile(
   }
   return {
     user,
-    avatar_url: data.avatar_url,
+    avatarUrl: data.avatar_url,
     bio: data.bio,
-    created_at: data.created_at,
-    full_name: data.full_name,
+    createdAt: data.created_at,
+    fullName: data.full_name,
     id: data.id,
     nickname: data.nickname,
     school: data.school,

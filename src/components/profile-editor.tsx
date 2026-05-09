@@ -78,7 +78,7 @@ export default function ProfileEditor({
       </Text>
       <TextField.Root
         name="full_name"
-        defaultValue={profile.full_name}
+        defaultValue={profile.fullName}
         placeholder={t`Your full name`}
         type="text"
         required
