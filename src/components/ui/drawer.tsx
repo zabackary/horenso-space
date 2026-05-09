@@ -1,4 +1,4 @@
-import { Box } from "@radix-ui/themes";
+import { Box, Theme } from "@radix-ui/themes";
 import {
   DrawerClose,
   DrawerContent,
@@ -39,13 +39,15 @@ function Content({
   ...props
 }: React.ComponentProps<typeof DrawerContent>) {
   return (
-    <DrawerContent
-      {...props}
-      className={clsx(styles.content, className)}
-      transformTemplate={transformTemplate}
-    >
-      <Box className={styles["content-inner"]}>{children}</Box>
-    </DrawerContent>
+    <Theme asChild>
+      <DrawerContent
+        {...props}
+        className={clsx(styles.content, className)}
+        transformTemplate={transformTemplate}
+      >
+        <Box className={styles["content-inner"]}>{children}</Box>
+      </DrawerContent>
+    </Theme>
   );
 }
 
