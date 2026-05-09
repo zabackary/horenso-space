@@ -199,20 +199,22 @@ export default function ReportDetail({
         </Heading>
 
         <DataList.Root>
-          <DataList.Item>
+          <DataList.Item align="center">
             <DataList.Label>
               <Trans>Submitted by</Trans>
             </DataList.Label>
             <DataList.Value>
-              <Avatar
-                size="2"
-                src={report.user?.avatarUrl || undefined}
-                alt={report.user?.fullName}
-                fallback={
-                  report.user?.fullName?.charAt(0)?.toUpperCase() || "?"
-                }
-              />{" "}
-              {report.user?.fullName}
+              <Flex align="center" gap="2">
+                <Avatar
+                  size="2"
+                  src={report.user?.avatarUrl || undefined}
+                  alt={report.user?.fullName}
+                  fallback={
+                    report.user?.fullName?.charAt(0)?.toUpperCase() || "?"
+                  }
+                />
+                <Text>{report.user?.fullName}</Text>
+              </Flex>
             </DataList.Value>
           </DataList.Item>
 
