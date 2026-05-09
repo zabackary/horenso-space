@@ -120,14 +120,16 @@ function YearCard({
   clubId: string;
 }) {
   const [highlightDates, setHighlightDates] = useState<string[]>([]);
+  const yearStart = useMemo(() => new Date(year, 0, 1), [year]);
+  const nextYearStart = useMemo(() => new Date(year + 1, 0, 1), [year]);
   useEffect(() => {
     const abortController = new AbortController();
     supabase
       .from("calendar_events")
       .select("start_time, end_time")
       .eq("club_id", clubId)
-      .gte("start_time", new Date(year, 0, 0).toISOString())
-      .lt("end_time", new Date(year + 1, 0, 0).toISOString())
+      .lt("start_time", nextYearStart.toISOString())
+      .gte("end_time", yearStart.toISOString())
       .abortSignal(abortController.signal)
       .then(({ data, error }) => {
         if (error) {
@@ -135,7 +137,12 @@ function YearCard({
             console.error("failed to fetch events to highlight:", error);
           return;
         }
-        const dateToISO = (date: Date) => date.toISOString().substring(0, 10);
+        const dateToISO = (date: Date) =>
+          `${date.getFullYear().toString().padStart(4, "0")}-${(
+            date.getMonth() + 1
+          )
+            .toString()
+            .padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}`;
         setHighlightDates([
           ...new Set(
             (data ?? []).flatMap(({ start_time, end_time }) => {
@@ -158,7 +165,7 @@ function YearCard({
     return () => {
       abortController.abort();
     };
-  }, [year, supabase]);
+  }, [clubId, nextYearStart, supabase, year, yearStart]);
 
   return (
     <Flex p="4" className={styles.yearCard}>

@@ -148,14 +148,16 @@ function MonthCard({
   const [highlightDates, setHighlightDates] = useState<
     { date: number; title: string; id: string }[]
   >([]);
+  const monthStart = useMemo(() => new Date(year, month - 1, 1), [year, month]);
+  const nextMonthStart = useMemo(() => new Date(year, month, 1), [year, month]);
   useEffect(() => {
     const abortController = new AbortController();
     supabase
       .from("calendar_events")
       .select("start_time, end_time, title, id")
       .eq("club_id", clubId)
-      .gte("start_time", new Date(year, month - 1, 0).toISOString())
-      .lt("end_time", new Date(year, month, 0).toISOString())
+      .lt("start_time", nextMonthStart.toISOString())
+      .gte("end_time", monthStart.toISOString())
       .abortSignal(abortController.signal)
       .then(({ data, error }) => {
         if (error) {
@@ -189,7 +191,7 @@ function MonthCard({
     return () => {
       abortController.abort();
     };
-  }, [year, supabase, refreshKey]);
+  }, [clubId, month, monthStart, nextMonthStart, refreshKey, supabase, year]);
 
   // Render a grid of dates for the month
   const daysInMonth = useMemo(
