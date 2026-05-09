@@ -44,3 +44,6 @@ next-env.d.ts
 /.direnv
 # Sentry Config File
 .env.sentry-build-plugin
+
+# backups of user data
+backups/

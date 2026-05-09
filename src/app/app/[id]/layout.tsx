@@ -22,7 +22,7 @@ export default async function ClubIdLayout({
     .eq("id", id)
     .single();
   if (!club) {
-    throw new Error("Club not found");
+    notFound();
   }
 
   return (

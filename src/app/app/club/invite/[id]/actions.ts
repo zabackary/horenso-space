@@ -15,7 +15,7 @@ export async function joinClub(invitationId: string) {
       .throwOnError();
   } catch (error) {
     console.error("Failed to join club:", error);
-    redirect("?error");
+    redirect(`/app/club/invite/${invitationId}?error`);
   }
 
   redirect(`/app/`);
