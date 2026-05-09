@@ -289,7 +289,7 @@ msgstr ""
 msgid "Calendar"
 msgstr ""
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/components/ui/app-header-menu.tsx
 msgid "Cancel"
 msgstr ""
 
@@ -414,7 +414,7 @@ msgstr ""
 msgid "Create"
 msgstr ""
 
-#: src/app/app/page.tsx
+#: src/components/ui/app-header-menu.tsx
 msgid "Create a club"
 msgstr ""
 
@@ -502,8 +502,7 @@ msgstr ""
 msgid "Describe the purpose of this absence form..."
 msgstr ""
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/components/ui/app-header-menu.tsx
 msgid "Description"
 msgstr ""
 
@@ -733,7 +732,6 @@ msgstr ""
 msgid "Form Responses"
 msgstr ""
 
-#: src/components/auth/signup-form.tsx
 #: src/components/profile-editor.tsx
 msgid "Full Name"
 msgstr ""
@@ -803,7 +801,7 @@ msgstr ""
 msgid "Highlight"
 msgstr ""
 
-#: src/components/ui/app-header.tsx
+#: src/components/ui/app-header-menu.tsx
 msgid "Home"
 msgstr ""
 
@@ -946,7 +944,6 @@ msgstr ""
 msgid "Log out"
 msgstr ""
 
-#: src/components/auth/login-form.tsx
 #: src/components/ui/app-header.tsx
 msgid "Login"
 msgstr ""
@@ -1254,7 +1251,7 @@ msgstr ""
 msgid "Rejected"
 msgstr ""
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/components/ui/app-header-menu.tsx
 msgid "Remove"
 msgstr ""
 
@@ -1402,7 +1399,6 @@ msgstr ""
 msgid "Saving..."
 msgstr ""
 
-#: src/components/club-create-form.tsx
 #: src/components/profile-editor.tsx
 msgid "School"
 msgstr ""
@@ -1415,7 +1411,7 @@ msgstr ""
 msgid "Search docs"
 msgstr ""
 
-#: src/app/app/page.tsx
+#: src/components/ui/app-header-menu.tsx
 msgid "Select a club"
 msgstr ""
 
@@ -1517,7 +1513,7 @@ msgstr ""
 #~ msgid "Sign in with Google"
 #~ msgstr ""
 
-#: src/app/auth/login/page.tsx
+#: src/components/ui/app-header.tsx
 msgid "Sign up"
 msgstr ""
 

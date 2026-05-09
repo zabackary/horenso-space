@@ -57,10 +57,10 @@ export default async function RootLayout({
 
   return (
     <html lang={i18n.locale} suppressHydrationWarning>
-      <Theme accentColor="lime" grayColor="mauve" radius="full" asChild>
-        <body
-          className={`${hachiMaruPop.variable} ${notoSansJP.variable} ${gloriaHallelujah.variable} ${notoSans.variable}`}
-        >
+      <body
+        className={`${hachiMaruPop.variable} ${notoSansJP.variable} ${gloriaHallelujah.variable} ${notoSans.variable}`}
+      >
+        <Theme accentColor="lime" grayColor="mauve" radius="full">
           <ApolloWrapper initialServerToken={token}>
             <LinguiClientProvider
               initialLocale={i18n.locale}
@@ -69,15 +69,15 @@ export default async function RootLayout({
               <ThemeProvider attribute="class">{children}</ThemeProvider>
             </LinguiClientProvider>
           </ApolloWrapper>
-          <Analytics />
-          {/* Cloudflare Web Analytics */}
-          <script
-            defer
-            src="https://static.cloudflareinsights.com/beacon.min.js"
-            data-cf-beacon='{"token": "ab70fafc9e9748f0a82c946bc63069f8"}'
-          ></script>
-        </body>
-      </Theme>
+        </Theme>
+        <Analytics />
+        {/* Cloudflare Web Analytics */}
+        <script
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token": "ab70fafc9e9748f0a82c946bc63069f8"}'
+        ></script>
+      </body>
     </html>
   );
 }

@@ -289,7 +289,7 @@ msgstr "作成者: {0}"
 msgid "Calendar"
 msgstr "カレンダー"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/components/ui/app-header-menu.tsx
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -414,7 +414,7 @@ msgstr "ユーザーIDをコピーする"
 msgid "Create"
 msgstr "作成"
 
-#: src/app/app/page.tsx
+#: src/components/ui/app-header-menu.tsx
 msgid "Create a club"
 msgstr "部活を作成"
 
@@ -502,8 +502,7 @@ msgstr "役職の削除"
 msgid "Describe the purpose of this absence form..."
 msgstr "この欠席届の用途を説明してください。"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/components/ui/app-header-menu.tsx
 msgid "Description"
 msgstr "備考欄"
 
@@ -733,7 +732,6 @@ msgstr "フォームの説明"
 msgid "Form Responses"
 msgstr "フォームへの回答"
 
-#: src/components/auth/signup-form.tsx
 #: src/components/profile-editor.tsx
 msgid "Full Name"
 msgstr "氏名"
@@ -803,7 +801,7 @@ msgstr "選択肢を隠す"
 msgid "Highlight"
 msgstr "ハイライト"
 
-#: src/components/ui/app-header.tsx
+#: src/components/ui/app-header-menu.tsx
 msgid "Home"
 msgstr "ホーム"
 
@@ -946,7 +944,6 @@ msgstr "ログイン"
 msgid "Log out"
 msgstr "ログアウト"
 
-#: src/components/auth/login-form.tsx
 #: src/components/ui/app-header.tsx
 msgid "Login"
 msgstr "ログイン"
@@ -1254,7 +1251,7 @@ msgstr "拒否"
 msgid "Rejected"
 msgstr "拒否済み"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/components/ui/app-header-menu.tsx
 msgid "Remove"
 msgstr "削除"
 
@@ -1402,7 +1399,6 @@ msgstr "保存されました！"
 msgid "Saving..."
 msgstr "保存中．．．"
 
-#: src/components/club-create-form.tsx
 #: src/components/profile-editor.tsx
 msgid "School"
 msgstr "学校"
@@ -1415,7 +1411,7 @@ msgstr "検索"
 msgid "Search docs"
 msgstr "ドキュメントの検索"
 
-#: src/app/app/page.tsx
+#: src/components/ui/app-header-menu.tsx
 msgid "Select a club"
 msgstr "部活を選択"
 
@@ -1517,7 +1513,7 @@ msgstr " <0/>でサインインする"
 #~ msgid "Sign in with Google"
 #~ msgstr "Googleでサインイン"
 
-#: src/app/auth/login/page.tsx
+#: src/components/ui/app-header.tsx
 msgid "Sign up"
 msgstr "新規登録"
 

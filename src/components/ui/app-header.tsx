@@ -1,21 +1,41 @@
-import getProfile from "@/lib/auth/getProfile";
+import { gql } from "@/gql";
+import { query } from "@/lib/apollo/server";
 import { createClient } from "@/lib/supabase/server";
 import { Trans } from "@lingui/react/macro";
-import { HomeIcon } from "@radix-ui/react-icons";
-import {
-  Badge,
-  Box,
-  Button,
-  DropdownMenu,
-  Flex,
-  Heading,
-  Tooltip,
-} from "@radix-ui/themes";
+import { Box, Button, Flex, Heading } from "@radix-ui/themes";
 import clsx from "clsx";
 import Link from "next/link";
 import type { ComponentPropsWithoutRef } from "react";
 import { AppHeaderMenu } from "./app-header-menu";
 import styles from "./app-header.module.css";
+
+const appHeaderQuery = gql(`
+  query AppHeader($me: UUID) {
+    clubMembersCollection(filter: { userId: { eq: $me } }) {
+      edges {
+        node {
+          club {
+            name,
+            id
+          }
+        }
+      }
+    }
+    profilesCollection(filter: { id: { eq: $me } }) {
+      edges {
+        node {
+          id
+          avatarUrl
+          bio
+          createdAt
+          fullName
+          nickname
+          school
+        }
+      }
+    }
+  }
+`);
 
 export interface AppHeaderProps extends ComponentPropsWithoutRef<"header"> {
   header?: {
@@ -31,10 +51,16 @@ export async function AppHeader({
   ...props
 }: AppHeaderProps) {
   const supabase = await createClient();
-  const profile = await getProfile(supabase);
-  const { data: clubs } = await supabase
-    .from("joined_clubs")
-    .select("id, name, school");
+  const { data } = await query({
+    query: appHeaderQuery,
+    variables: {
+      me: (await supabase.auth.getClaims()).data?.claims.sub ?? null,
+    },
+  });
+  const clubs =
+    data?.clubMembersCollection?.edges.map((e) => e.node.club ?? []).flat() ??
+    [];
+  const profile = data?.profilesCollection?.edges[0]?.node ?? null;
 
   return (
     <Flex
@@ -46,7 +72,7 @@ export async function AppHeader({
       className={clsx(
         styles.header,
         props.className,
-        disableSticky ? "" : styles.sticky
+        disableSticky ? "" : styles.sticky,
       )}
     >
       <header>
@@ -72,41 +98,7 @@ export async function AppHeader({
         <Box flexGrow="1" />
         {profile && clubs ? (
           <>
-            {clubs ? (
-              <DropdownMenu.Root>
-                <Tooltip
-                  content={<Trans>Select a club</Trans>}
-                  style={{ zIndex: 1 }}
-                >
-                  <DropdownMenu.Trigger>
-                    <Button size="3" variant="outline">
-                      <HomeIcon />
-                      <Badge>{clubs.length}</Badge>
-                    </Button>
-                  </DropdownMenu.Trigger>
-                </Tooltip>
-                <DropdownMenu.Content align="center" style={{ zIndex: 1 }}>
-                  <DropdownMenu.Item asChild>
-                    <Link href="/app">
-                      <Trans>Home</Trans>
-                    </Link>
-                  </DropdownMenu.Item>
-                  <DropdownMenu.Separator />
-                  {clubs.map((club) => (
-                    <DropdownMenu.Item asChild key={club.id}>
-                      <Link href={`/app/${club.id}`}>{club.name}</Link>
-                    </DropdownMenu.Item>
-                  ))}
-                </DropdownMenu.Content>
-              </DropdownMenu.Root>
-            ) : (
-              <Button asChild size="3" variant="outline">
-                <Link href="/app/club/create">
-                  <Trans>Create a Club</Trans>
-                </Link>
-              </Button>
-            )}
-            <AppHeaderMenu profile={profile} />
+            <AppHeaderMenu profile={profile} clubs={clubs} />
           </>
         ) : (
           <>
