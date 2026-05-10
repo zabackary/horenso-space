@@ -210,9 +210,6 @@ msgstr "An error occurred while signing in: {0}"
 msgid "An error occurred while signing up: {0}"
 msgstr "An error occurred while signing up: {0}"
 
-#: src/components/auth/login-auth-providers-settings.tsx
-#: src/components/auth/login-form.tsx
-#: src/components/auth/login-form.tsx
 #: src/components/auth/signup-form.tsx
 #: src/components/auth/signup-form.tsx
 msgid "An error occurred."
@@ -221,6 +218,10 @@ msgstr "An error occurred."
 #: src/app/app/[id]/calendar/year.tsx
 msgid "An event is scheduled on this day."
 msgstr "An event is scheduled on this day."
+
+#: src/components/profile-editor.tsx
+msgid "An unexpected error occurred. Please try again."
+msgstr "An unexpected error occurred. Please try again."
 
 #: src/app/auth/error/page.tsx
 msgid "An unspecified error occurred"
@@ -530,7 +531,7 @@ msgstr "Don't have an account yet? {createAccountLink}"
 msgid "Download example CSV"
 msgstr "Download example CSV"
 
-#: src/app/app/[id]/calendar/event-detail-drawer.tsx
+#: src/components/profile-editor.tsx
 msgid "Edit"
 msgstr "Edit"
 
@@ -564,7 +565,16 @@ msgstr "Edit Role"
 msgid "Edit template"
 msgstr "Edit template"
 
-#: src/components/ui/app-header-menu.tsx
+#: src/components/profile-editor.tsx
+msgid "Edit with Gravatar"
+msgstr "Edit with Gravatar"
+
+#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx
+msgid "Edit your profile picture on Gravatar."
+msgstr "Edit your profile picture on Gravatar."
+
+#: src/components/auth/signup-form.tsx
 msgid "Email"
 msgstr "Email"
 
@@ -592,9 +602,21 @@ msgstr "Error linking identity: {0}"
 msgid "Error unlinking identity: {0}"
 msgstr "Error unlinking identity: {0}"
 
+#: src/components/profile-editor.tsx
+msgid "Error updating from Gravatar: {0}"
+msgstr "Error updating from Gravatar: {0}"
+
+#: src/components/profile-editor.tsx
+msgid "Error updating from Gravatar: {message}"
+msgstr "Error updating from Gravatar: {message}"
+
 #: src/components/auth/login-auth-providers-settings.tsx
 msgid "Error updating password: {0}"
 msgstr "Error updating password: {0}"
+
+#: src/components/profile-editor.tsx
+msgid "Error updating profile."
+msgstr "Error updating profile."
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx
 msgid "Event"
@@ -670,6 +692,10 @@ msgstr "Failed to delete template."
 msgid "Failed to delete the report. Please try again."
 msgstr "Failed to delete the report. Please try again."
 
+#: src/components/profile-editor.tsx
+msgid "Failed to fetch user information. Please try again."
+msgstr "Failed to fetch user information. Please try again."
+
 #: src/components/club-config/invite.tsx
 msgid "Failed to generate invite. Please try again."
 msgstr "Failed to generate invite. Please try again."
@@ -710,6 +736,10 @@ msgstr "Failed to submit absence report. Please try again."
 #: src/components/feedback-form.tsx
 msgid "Failed to submit feedback. Please try again later."
 msgstr "Failed to submit feedback. Please try again later."
+
+#: src/components/profile-editor.tsx
+msgid "Failed to update profile with Gravatar. Please try again."
+msgstr "Failed to update profile with Gravatar. Please try again."
 
 #: src/app/app/[id]/config/roles/role-dialog.tsx
 #: src/components/club-config/roles-manager.tsx
@@ -788,6 +818,10 @@ msgstr "Google"
 #: src/app/app/[id]/config/roles/roles-view.tsx
 msgid "Graph"
 msgstr "Graph"
+
+#: src/components/auth/signup-form.tsx
+msgid "Great!"
+msgstr "Great!"
 
 #: src/components/ui/app-header-menu.tsx
 msgid "Help center"
@@ -1096,6 +1130,18 @@ msgstr "No form associated with this report"
 msgid "No form attached"
 msgstr "No form attached"
 
+#: src/components/profile-editor.tsx
+msgid "No Gravatar found for the email associated with your account. You will need to first upload a profile picture to Gravatar using that email before updating your profile picture on Horenso SPACE."
+msgstr "No Gravatar found for the email associated with your account. You will need to first upload a profile picture to Gravatar using that email before updating your profile picture on Horenso SPACE."
+
+#: src/components/profile-editor.tsx
+msgid "No Gravatar found for your email. First upload a profile picture to Gravatar using that email before updating your profile picture on Horenso SPACE."
+msgstr "No Gravatar found for your email. First upload a profile picture to Gravatar using that email before updating your profile picture on Horenso SPACE."
+
+#: src/components/profile-editor.tsx
+msgid "No Gravatar found for your email. Upload a profile picture to Gravatar using that email then try again."
+msgstr "No Gravatar found for your email. Upload a profile picture to Gravatar using that email then try again."
+
 #: src/components/club-config/invite.tsx
 msgid "No invites yet"
 msgstr "No invites yet"
@@ -1180,7 +1226,6 @@ msgstr "Options"
 msgid "Page not found"
 msgstr "Page not found"
 
-#: src/components/auth/login-form.tsx
 #: src/components/auth/signup-form.tsx
 msgid "Password"
 msgstr "Password"
@@ -1242,6 +1287,34 @@ msgstr "Profile"
 #: src/components/ui/app-header-menu.tsx
 msgid "Profile and settings"
 msgstr "Profile and settings"
+
+#: src/components/profile-editor.tsx
+msgid "Profile Picture"
+msgstr "Profile Picture"
+
+#: src/components/profile-editor.tsx
+msgid "Profile picture of {0}"
+msgstr "Profile picture of {0}"
+
+#: src/components/profile-editor.tsx
+msgid "Profile pictures from Google accounts with the \"only show my profile picture to people I interact with\" setting enabled may not be visible."
+msgstr "Profile pictures from Google accounts with the \"only show my profile picture to people I interact with\" setting enabled may not be visible."
+
+#: src/components/profile-editor.tsx
+msgid "Profile pictures on Horenso SPACE are managed with Gravatar. Update your profile picture on Gravatar then click \"Use Gravatar\". If you created your account with certain SNS services <0><1>such as Google</1></0>, your profile picture is may be been set automatically."
+msgstr "Profile pictures on Horenso SPACE are managed with Gravatar. Update your profile picture on Gravatar then click \"Use Gravatar\". If you created your account with certain SNS services <0><1>such as Google</1></0>, your profile picture is may be been set automatically."
+
+#: src/components/profile-editor.tsx
+msgid "Profile pictures on Horenso SPACE are managed with Gravatar. Update your profile picture on Gravatar then click \"Use Gravatar\". If you created your account with certain SNS services <0><1>such as Google</1></0>, your profile picture is set automatically. Otherwise,"
+msgstr "Profile pictures on Horenso SPACE are managed with Gravatar. Update your profile picture on Gravatar then click \"Use Gravatar\". If you created your account with certain SNS services <0><1>such as Google</1></0>, your profile picture is set automatically. Otherwise,"
+
+#: src/components/profile-editor.tsx
+msgid "Profile pictures on Horenso SPACE are managed with Gravatar. Update your profile picture on Gravatar then click \"Use Gravatar\". If you created your account with certain SNS services <0><1>such as Google</1></0>, your profile picture may be been set automatically."
+msgstr "Profile pictures on Horenso SPACE are managed with Gravatar. Update your profile picture on Gravatar then click \"Use Gravatar\". If you created your account with certain SNS services <0><1>such as Google</1></0>, your profile picture may be been set automatically."
+
+#: src/components/profile-editor.tsx
+msgid "Profile pictures on Horenso SPACE are managed with Gravatar. Update your profile picture on Gravatar then click \"Use Gravatar\". If you created your account with certain SNS services <0><1>such as Google</1></0>, your profile picture may have been set automatically."
+msgstr "Profile pictures on Horenso SPACE are managed with Gravatar. Update your profile picture on Gravatar then click \"Use Gravatar\". If you created your account with certain SNS services <0><1>such as Google</1></0>, your profile picture may have been set automatically."
 
 #: src/components/club-config/metadata-form.tsx
 msgid "Public"
@@ -1533,7 +1606,7 @@ msgstr "Sign in with <0/>"
 #~ msgid "Sign in with Google"
 #~ msgstr "Sign in with Google"
 
-#: src/components/ui/app-header.tsx
+#: src/components/auth/signup-form.tsx
 msgid "Sign up"
 msgstr "Sign up"
 
@@ -1706,6 +1779,10 @@ msgstr "Unlink account"
 msgid "Untitled form"
 msgstr "Untitled form"
 
+#: src/components/profile-editor.tsx
+msgid "Update from Gravatar"
+msgstr "Update from Gravatar"
+
 #: src/components/auth/login-auth-providers-settings.tsx
 msgid "Update password"
 msgstr "Update password"
@@ -1717,6 +1794,14 @@ msgstr "Updated at: {0}"
 #: src/components/permission-text.tsx
 msgid "Upload and manage club files"
 msgstr "Upload and manage club files"
+
+#: src/components/profile-editor.tsx
+msgid "Use Gravatar for {0}"
+msgstr "Use Gravatar for {0}"
+
+#: src/components/profile-editor.tsx
+msgid "Use my Gravatar"
+msgstr "Use my Gravatar"
 
 #: src/components/club-config/invite.tsx
 #~ msgid "Used {0} times"
@@ -1746,6 +1831,14 @@ msgstr "We appreciate your feedback to help us improve. Every message is read an
 msgid "We emailed you a password reset link"
 msgstr "We emailed you a password reset link"
 
+#: src/components/auth/signup-form.tsx
+msgid "We found your Gravatar!"
+msgstr "We found your Gravatar!"
+
+#: src/components/auth/signup-form.tsx
+msgid "We found your Gravatar! This will be used as your profile picture."
+msgstr "We found your Gravatar! This will be used as your profile picture."
+
 #: src/components/club-config/metadata-form.tsx
 #: src/components/club-create-form.tsx
 msgid "Website"
@@ -1754,6 +1847,10 @@ msgstr "Website"
 #: src/app/auth/login/page.tsx
 msgid "Welcome back"
 msgstr "Welcome back"
+
+#: src/components/auth/signup-form.tsx
+msgid "Welcome, {fullName}!"
+msgstr "Welcome, {fullName}!"
 
 #: src/app/auth/sign-up/page.tsx
 msgid "Welcome!"
@@ -1767,6 +1864,14 @@ msgstr "What people call you"
 msgid "What's the bug? What did you expect?"
 msgstr "What's the bug? What did you expect?"
 
+#: src/components/profile-editor.tsx
+msgid "When you create your account with certain SNS services <0><1>such as Google</1></0>, your profile picture is set automatically. However, if you wish to change it, profile pictures on Horenso SPACE are managed through Gravatar. First, upload your profile picture to Gravatar using the same email as your Horenso SPACE account. Then, click the \"Update\" button below to update your profile picture on Horenso SPACE."
+msgstr "When you create your account with certain SNS services <0><1>such as Google</1></0>, your profile picture is set automatically. However, if you wish to change it, profile pictures on Horenso SPACE are managed through Gravatar. First, upload your profile picture to Gravatar using the same email as your Horenso SPACE account. Then, click the \"Update\" button below to update your profile picture on Horenso SPACE."
+
+#: src/components/profile-editor.tsx
+msgid "When you create your account with certain SNS services <0><1>such as Google</1></0>, your profile picture is set automatically. Otherwise, to change your profile picture, update your Gravatar with the email you use for Horenso SPACE and click \"Update from Gravatar\"."
+msgstr "When you create your account with certain SNS services <0><1>such as Google</1></0>, your profile picture is set automatically. Otherwise, to change your profile picture, update your Gravatar with the email you use for Horenso SPACE and click \"Update from Gravatar\"."
+
 #: src/app/app/[id]/calendar/calendar.tsx
 msgid "Year"
 msgstr "Year"
@@ -1775,6 +1880,10 @@ msgstr "Year"
 msgid "You are invited to join a club"
 msgstr "You are invited to join a club"
 
+#: src/components/profile-editor.tsx
+msgid "You are not authorized to perform this action."
+msgstr "You are not authorized to perform this action."
+
 #: src/components/club-config/members-manager.tsx
 msgid "You cannot remove yourself from the club."
 msgstr "You cannot remove yourself from the club."
@@ -1782,6 +1891,15 @@ msgstr "You cannot remove yourself from the club."
 #: src/app/app/[id]/absences/create/page.tsx
 msgid "You do not have a configured absence report form. Please contact a club manager."
 msgstr "You do not have a configured absence report form. Please contact a club manager."
+
+#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx
+msgid "You don't have an email with your account. Add one in your login settings first."
+msgstr "You don't have an email with your account. Add one in your login settings first."
+
+#: src/components/profile-editor.tsx
+msgid "You don't have an email with your account. Please add one before updating from your Gravatar."
+msgstr "You don't have an email with your account. Please add one before updating from your Gravatar."
 
 #: src/app/app/[id]/absences/(list)/my/list.tsx
 msgid "You don't have any absence reports"
@@ -1834,6 +1952,10 @@ msgstr "Your full name will not be shared with people outside of your clubs unle
 #: src/components/ui/app-header-menu.tsx
 msgid "Your name"
 msgstr "Your name"
+
+#: src/components/auth/signup-form.tsx
+msgid "Your profile picture"
+msgstr "Your profile picture"
 
 #: src/components/club-create-form.tsx
 msgid "Your school"

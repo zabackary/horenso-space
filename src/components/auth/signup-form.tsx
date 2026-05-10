@@ -1,10 +1,19 @@
 "use client";
 
 import { revalidateRoot } from "@/actions/auth";
+import { gravatarUpdateAction } from "@/actions/profile";
 import { createClient } from "@/lib/supabase/client";
 import { Trans, useLingui } from "@lingui/react/macro";
 import { CrossCircledIcon } from "@radix-ui/react-icons";
-import { Button, Callout, Flex, Text, TextField } from "@radix-ui/themes";
+import {
+  Avatar,
+  Button,
+  Callout,
+  Dialog,
+  Flex,
+  Text,
+  TextField,
+} from "@radix-ui/themes";
 import { Provider } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -23,6 +32,23 @@ export function SignupForm(props: SignupFormProps) {
   const [isLoading, setIsLoading] = useState<Provider | "email" | null>(null);
   const router = useRouter();
   const { t } = useLingui();
+
+  const [gravatarSuccessUrl, setGravatarSuccessUrl] = useState<string | null>(
+    null,
+  );
+  const [gravatarSuccessClosedCallback, setGravatarSuccessClosedCallback] =
+    useState<(() => void) | null>(null);
+  const tryGravatarUpdate = async () => {
+    const { data } = await gravatarUpdateAction();
+    if (data) {
+      setGravatarSuccessUrl(data.newAvatarUrl);
+      await new Promise<void>((resolve) => {
+        setGravatarSuccessClosedCallback(() => resolve);
+      });
+    }
+    // We don't care if we failed to update the gravatar - it's a nice-to-have,
+    // not critical.
+  };
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -51,6 +77,7 @@ export function SignupForm(props: SignupFormProps) {
           console.warn("Failed to update full name:", error);
         }
       }
+      await tryGravatarUpdate();
       revalidateRoot();
       if (props.next) {
         router.push(props.next);
@@ -86,6 +113,19 @@ export function SignupForm(props: SignupFormProps) {
         },
       });
       if (error) throw error;
+      const userId = (await supabase.auth.getClaims()).data?.claims.sub;
+      if (userId) {
+        // check if they already have a avatar (created in the db)
+        const { data: profile } = await supabase
+          .from("profiles")
+          .select("avatar_url")
+          .eq("id", userId)
+          .single();
+        if (profile && !profile.avatar_url) {
+          // no avatar, so try to update with gravatar
+          await tryGravatarUpdate();
+        }
+      }
     } catch (error: unknown) {
       setError(
         error instanceof Error
@@ -97,71 +137,108 @@ export function SignupForm(props: SignupFormProps) {
   };
 
   return (
-    <form onSubmit={handleLogin}>
-      <Flex direction="column" gap="2" my="4">
-        <Flex direction="row" gap="2" align="stretch" justify="center">
-          {SUPPORTED_OAUTH_PROVIDERS.map((provider) => (
-            <Button
-              variant="outline"
-              onClick={() => handleOauthLogin(provider)}
-              loading={isLoading === provider}
-              type="button"
-              key={provider}
-            >
-              <Trans>
-                Sign up with <OauthProviderName provider={provider} />
-              </Trans>
-            </Button>
-          ))}
+    <>
+      <form onSubmit={handleLogin}>
+        <Flex direction="column" gap="2" my="4">
+          <Flex direction="row" gap="2" align="stretch" justify="center">
+            {SUPPORTED_OAUTH_PROVIDERS.map((provider) => (
+              <Button
+                variant="outline"
+                onClick={() => handleOauthLogin(provider)}
+                loading={isLoading === provider}
+                type="button"
+                key={provider}
+              >
+                <Trans>
+                  Sign up with <OauthProviderName provider={provider} />
+                </Trans>
+              </Button>
+            ))}
+          </Flex>
+          {error && (
+            <Callout.Root color="red">
+              <Callout.Icon>
+                <CrossCircledIcon />
+              </Callout.Icon>
+              <Callout.Text>{error}</Callout.Text>
+            </Callout.Root>
+          )}
+          <TextField.Root
+            placeholder={t`Email`}
+            required
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <TextField.Root
+            id="password"
+            type="password"
+            required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder={t`Password`}
+          />
+          <TextField.Root
+            id="confirm-password"
+            type="password"
+            required
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            placeholder={t`Confirm Password`}
+          />
+          <TextField.Root
+            placeholder={t`Full Name`}
+            required
+            type="text"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
+          />
+          <Text size="1" color="gray" as="p">
+            <Trans>
+              Your full name will not be shared with people outside of your
+              clubs unless you choose to at a later time.
+            </Trans>
+          </Text>
+          <Button type="submit" loading={isLoading === "email"}>
+            <Trans>Sign up</Trans>
+          </Button>
         </Flex>
-        {error && (
-          <Callout.Root color="red">
-            <Callout.Icon>
-              <CrossCircledIcon />
-            </Callout.Icon>
-            <Callout.Text>{error}</Callout.Text>
-          </Callout.Root>
-        )}
-        <TextField.Root
-          placeholder={t`Email`}
-          required
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <TextField.Root
-          id="password"
-          type="password"
-          required
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder={t`Password`}
-        />
-        <TextField.Root
-          id="confirm-password"
-          type="password"
-          required
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          placeholder={t`Confirm Password`}
-        />
-        <TextField.Root
-          placeholder={t`Full Name`}
-          required
-          type="text"
-          value={fullName}
-          onChange={(e) => setFullName(e.target.value)}
-        />
-        <Text size="1" color="gray" as="p">
-          <Trans>
-            Your full name will not be shared with people outside of your clubs
-            unless you choose to at a later time.
-          </Trans>
-        </Text>
-        <Button type="submit" loading={isLoading === "email"}>
-          <Trans>Sign up</Trans>
-        </Button>
-      </Flex>
-    </form>
+      </form>
+      <Dialog.Root
+        open={!!gravatarSuccessUrl}
+        onOpenChange={() => {
+          setGravatarSuccessUrl(null);
+          if (gravatarSuccessClosedCallback) {
+            gravatarSuccessClosedCallback();
+            setGravatarSuccessClosedCallback(null);
+          }
+        }}
+      >
+        <Dialog.Content asChild>
+          <Flex direction="column" align="center" gap="2">
+            <Dialog.Title>
+              <Trans>Welcome, {fullName}!</Trans>
+            </Dialog.Title>
+            <Dialog.Description>
+              <Trans>
+                We found your Gravatar! This will be used as your profile
+                picture.
+              </Trans>
+            </Dialog.Description>
+            <Avatar
+              src={gravatarSuccessUrl ?? undefined}
+              alt={t`Your profile picture`}
+              size="7"
+              fallback="?"
+            />
+            <Dialog.Close>
+              <Button mt="4" size="4">
+                <Trans>Great!</Trans>
+              </Button>
+            </Dialog.Close>
+          </Flex>
+        </Dialog.Content>
+      </Dialog.Root>
+    </>
   );
 }
