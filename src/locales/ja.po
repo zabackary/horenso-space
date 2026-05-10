@@ -366,11 +366,11 @@ msgstr "部活の設定"
 
 #: src/components/ui/user-link.tsx
 msgid "Clubs"
-msgstr ""
+msgstr "部活一覧"
 
 #: src/components/ui/user-link.tsx
 msgid "Clubs:"
-msgstr ""
+msgstr "部活一覧："
 
 #: src/components/club-config/absence-form-editor.tsx
 msgid "Collapse all"
@@ -989,15 +989,15 @@ msgstr "CSVの行を確認し、インポート前最後のチェックをして
 
 #: src/components/ui/user-link.tsx
 msgid "Member of \"{0}\""
-msgstr ""
+msgstr "\"{0}\"のメンバー"
 
 #: src/components/ui/user-link.tsx
 msgid "Member of \"{0}\"\""
-msgstr ""
+msgstr "\"{0}\"\"のメンバー"
 
 #: src/components/ui/user-link.tsx
 msgid "Member of {0}"
-msgstr ""
+msgstr "{0}のメンバー"
 
 #: src/app/app/[id]/config/tabs.tsx
 msgid "Members"
