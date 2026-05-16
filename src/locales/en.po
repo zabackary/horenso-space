@@ -49,6 +49,10 @@ msgstr "{importedCount} row(s) imported, {failedCount} row(s) need attention."
 msgid "{importedCount} row(s) imported. Fix the warning rows and import again if needed."
 msgstr "{importedCount} row(s) imported. Fix the warning rows and import again if needed."
 
+#: src/app/app/[id]/calendar/[year]/[month]/Month.tsx
+msgid "{multiDayNumber} of {multiDayTotal}"
+msgstr "{multiDayNumber} of {multiDayTotal}"
+
 #: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
 msgid "{readyRowCount} ready row(s), {issueRowCount} warning row(s)"
 msgstr "{readyRowCount} ready row(s), {issueRowCount} warning row(s)"
@@ -431,6 +435,10 @@ msgstr "Create a club"
 msgid "Create a Club"
 msgstr "Create a Club"
 
+#: src/app/app/[id]/calendar/CalendarNavigation.tsx
+msgid "Create a new event"
+msgstr "Create a new event"
+
 #: src/app/app/[id]/calendar/calendar.tsx
 msgid "Create a new event for your club."
 msgstr "Create a new event for your club."
@@ -443,10 +451,14 @@ msgstr "Create and edit calendar events"
 msgid "Create club"
 msgstr "Create club"
 
-#: src/app/app/[id]/calendar/calendar.tsx
-#: src/app/app/[id]/calendar/calendar.tsx
+#: src/app/app/[id]/calendar/CalendarNavigation.tsx
+#: src/app/app/[id]/calendar/CalendarNavigation.tsx
 msgid "Create event"
 msgstr "Create event"
+
+#: src/app/app/[id]/calendar/CalendarNavigation.tsx
+msgid "Create Event"
+msgstr "Create Event"
 
 #: src/app/app/[id]/config/roles/roles-manager.tsx
 #: src/components/club-config/roles-manager.tsx
@@ -637,6 +649,10 @@ msgstr "Event details for {0}"
 #: src/app/app/[id]/calendar/event-form.tsx
 msgid "Event name"
 msgstr "Event name"
+
+#: src/app/app/[id]/calendar/[year]/[month]/Month.tsx
+msgid "Event spans {multiDayTotal} days (day {multiDayNumber})"
+msgstr "Event spans {multiDayTotal} days (day {multiDayNumber})"
 
 #: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
 msgid "Event title for row {0}"
@@ -969,8 +985,7 @@ msgstr "Loading report status..."
 msgid "Loading..."
 msgstr "Loading..."
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/event-form.tsx
 msgid "Location"
 msgstr "Location"
 
@@ -1086,7 +1101,7 @@ msgstr "Nickname"
 msgid "No absence report templates found."
 msgstr "No absence report templates found."
 
-#: src/app/app/[id]/absences/(list)/list.tsx
+#: src/app/app/[id]/calendar/[year]/[month]/[day]/Day.tsx
 msgid "No absence reports"
 msgstr "No absence reports"
 

@@ -49,6 +49,10 @@ msgstr "{importedCount}　行をインポートし、{failedCount}　行にエ�
 msgid "{importedCount} row(s) imported. Fix the warning rows and import again if needed."
 msgstr "{importedCount} 行インポートしました。必要なら他の行を修正し、再度インポートしてください。"
 
+#: src/app/app/[id]/calendar/[year]/[month]/Month.tsx
+msgid "{multiDayNumber} of {multiDayTotal}"
+msgstr ""
+
 #: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
 msgid "{readyRowCount} ready row(s), {issueRowCount} warning row(s)"
 msgstr "使用可能な行数：{readyRowCount}、エラーが見つかった行数：{issueRowCount}"
@@ -431,6 +435,10 @@ msgstr "部活を作成"
 msgid "Create a Club"
 msgstr "部活を作成"
 
+#: src/app/app/[id]/calendar/CalendarNavigation.tsx
+msgid "Create a new event"
+msgstr ""
+
 #: src/app/app/[id]/calendar/calendar.tsx
 msgid "Create a new event for your club."
 msgstr "新しいイベントを制作する"
@@ -443,10 +451,14 @@ msgstr "カレンダーイベントの作成と編集"
 msgid "Create club"
 msgstr "部活を作成"
 
-#: src/app/app/[id]/calendar/calendar.tsx
-#: src/app/app/[id]/calendar/calendar.tsx
+#: src/app/app/[id]/calendar/CalendarNavigation.tsx
+#: src/app/app/[id]/calendar/CalendarNavigation.tsx
 msgid "Create event"
 msgstr "イベントを作成する"
+
+#: src/app/app/[id]/calendar/CalendarNavigation.tsx
+msgid "Create Event"
+msgstr ""
 
 #: src/app/app/[id]/config/roles/roles-manager.tsx
 #: src/components/club-config/roles-manager.tsx
@@ -637,6 +649,10 @@ msgstr "{0}の詳細"
 #: src/app/app/[id]/calendar/event-form.tsx
 msgid "Event name"
 msgstr "イベント名"
+
+#: src/app/app/[id]/calendar/[year]/[month]/Month.tsx
+msgid "Event spans {multiDayTotal} days (day {multiDayNumber})"
+msgstr ""
 
 #: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
 msgid "Event title for row {0}"
@@ -969,8 +985,7 @@ msgstr "報告状態をロード中．．．"
 msgid "Loading..."
 msgstr "ロード中．．．"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/event-form.tsx
 msgid "Location"
 msgstr "場所"
 
@@ -1086,7 +1101,7 @@ msgstr "ニックネーム"
 msgid "No absence report templates found."
 msgstr "欠席レポートテンプレートが見つかりません。"
 
-#: src/app/app/[id]/absences/(list)/list.tsx
+#: src/app/app/[id]/calendar/[year]/[month]/[day]/Day.tsx
 msgid "No absence reports"
 msgstr "欠席連絡はありません"
 

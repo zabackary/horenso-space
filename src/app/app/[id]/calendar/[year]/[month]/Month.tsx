@@ -2,7 +2,8 @@
 
 import { gql } from "@/gql";
 import { useSuspenseQuery } from "@apollo/client/react";
-import { Box, Flex, Grid, Heading, Skeleton } from "@radix-ui/themes";
+import { useLingui } from "@lingui/react/macro";
+import { Box, Flex, Grid, Heading, Skeleton, Tooltip } from "@radix-ui/themes";
 import clsx from "clsx";
 import { useMemo } from "react";
 import useNavigateToDate from "../../useNavigateToDate";
@@ -39,6 +40,8 @@ export default function MonthCalendar({
   date: string;
   clubId: string;
 }) {
+  const { t } = useLingui();
+
   const today = useMemo(() => {
     return new Date().toISOString().split("T")[0];
   }, []);
@@ -59,17 +62,28 @@ export default function MonthCalendar({
   const dateMap = useMemo(() => {
     const dateMap: Record<
       number,
-      { title: string; id: string; startTime: string; endTime: string }[]
+      {
+        title: string;
+        id: string;
+        startTime: string;
+        endTime: string;
+
+        multiDayNumber: number;
+        multiDayTotal: number;
+      }[]
     > = {};
     (data?.calendarEventsCollection?.edges ?? []).forEach(({ node }) => {
       const startDate = new Date(node.startTime).getDate();
       const endDate = new Date(node.endTime).getDate();
       for (let d = startDate; d <= endDate; d++) {
-        const key = new Date(node.startTime).getDate();
-        if (!dateMap[key]) {
-          dateMap[key] = [];
+        if (!dateMap[d]) {
+          dateMap[d] = [];
         }
-        dateMap[key].push(node);
+        dateMap[d].push({
+          ...node,
+          multiDayNumber: d - startDate + 1,
+          multiDayTotal: endDate - startDate + 1,
+        });
       }
     });
     return dateMap;
@@ -155,11 +169,22 @@ export default function MonthCalendar({
                   {day}
                 </Heading>
                 {events.length > 0
-                  ? events.map(({ title, id }) => (
-                      <Box key={id} className={styles.dayCellEvent}>
-                        {title}
-                      </Box>
-                    ))
+                  ? events.map(
+                      ({ title, id, multiDayNumber, multiDayTotal }) => (
+                        <Box key={id} className={styles.dayCellEvent}>
+                          {multiDayTotal > 1 && (
+                            <Tooltip
+                              content={t`Event spans ${multiDayTotal} days (day ${multiDayNumber})`}
+                            >
+                              <Box className={styles.dayCellEventCount}>
+                                {multiDayNumber}/{multiDayTotal}
+                              </Box>
+                            </Tooltip>
+                          )}
+                          {title}
+                        </Box>
+                      ),
+                    )
                   : null}
               </Box>
             );

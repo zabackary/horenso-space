@@ -75,5 +75,16 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+
+    .dayCellEventCount {
+      font-size: calc(var(--font-size-1) * 0.8);
+      background-color: var(--accent-a6);
+      color: var(--accent-11);
+      border-radius: 4px;
+      padding: 0 var(--space-1);
+      margin-right: var(--space-1);
+      vertical-align: middle;
+      display: inline;
+    }
   }
 }

@@ -49,6 +49,10 @@ msgstr ""
 msgid "{importedCount} row(s) imported. Fix the warning rows and import again if needed."
 msgstr ""
 
+#: src/app/app/[id]/calendar/[year]/[month]/Month.tsx
+msgid "{multiDayNumber} of {multiDayTotal}"
+msgstr ""
+
 #: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
 msgid "{readyRowCount} ready row(s), {issueRowCount} warning row(s)"
 msgstr ""
@@ -431,6 +435,10 @@ msgstr ""
 msgid "Create a Club"
 msgstr ""
 
+#: src/app/app/[id]/calendar/CalendarNavigation.tsx
+msgid "Create a new event"
+msgstr ""
+
 #: src/app/app/[id]/calendar/calendar.tsx
 msgid "Create a new event for your club."
 msgstr ""
@@ -443,9 +451,13 @@ msgstr ""
 msgid "Create club"
 msgstr ""
 
-#: src/app/app/[id]/calendar/calendar.tsx
-#: src/app/app/[id]/calendar/calendar.tsx
+#: src/app/app/[id]/calendar/CalendarNavigation.tsx
+#: src/app/app/[id]/calendar/CalendarNavigation.tsx
 msgid "Create event"
+msgstr ""
+
+#: src/app/app/[id]/calendar/CalendarNavigation.tsx
+msgid "Create Event"
 msgstr ""
 
 #: src/app/app/[id]/config/roles/roles-manager.tsx
@@ -636,6 +648,10 @@ msgstr ""
 
 #: src/app/app/[id]/calendar/event-form.tsx
 msgid "Event name"
+msgstr ""
+
+#: src/app/app/[id]/calendar/[year]/[month]/Month.tsx
+msgid "Event spans {multiDayTotal} days (day {multiDayNumber})"
 msgstr ""
 
 #: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
@@ -969,8 +985,7 @@ msgstr ""
 msgid "Loading..."
 msgstr ""
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/event-form.tsx
 msgid "Location"
 msgstr ""
 
@@ -1086,7 +1101,7 @@ msgstr ""
 msgid "No absence report templates found."
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/list.tsx
+#: src/app/app/[id]/calendar/[year]/[month]/[day]/Day.tsx
 msgid "No absence reports"
 msgstr ""
 
