@@ -932,8 +932,8 @@ msgstr ""
 msgid "Joined"
 msgstr ""
 
-#: src/app/app/users/me/general/page.tsx
-#: src/app/app/users/me/general/page.tsx
+#: src/app/app/users/me/general/GeneralSettingsForm.tsx
+#: src/app/app/users/me/general/GeneralSettingsForm.tsx
 msgid "Language"
 msgstr ""
 
@@ -1472,7 +1472,7 @@ msgstr ""
 msgid "Roles"
 msgstr ""
 
-#: src/app/app/[id]/calendar/create-event-card.tsx
+#: src/app/app/users/me/general/GeneralSettingsForm.tsx
 msgid "Save"
 msgstr ""
 

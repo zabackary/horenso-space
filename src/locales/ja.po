@@ -932,8 +932,8 @@ msgstr "クラブに参加"
 msgid "Joined"
 msgstr "参加済み"
 
-#: src/app/app/users/me/general/page.tsx
-#: src/app/app/users/me/general/page.tsx
+#: src/app/app/users/me/general/GeneralSettingsForm.tsx
+#: src/app/app/users/me/general/GeneralSettingsForm.tsx
 msgid "Language"
 msgstr "言語"
 
@@ -1460,7 +1460,7 @@ msgstr "役職: {role}"
 msgid "Roles"
 msgstr "役職"
 
-#: src/app/app/[id]/calendar/create-event-card.tsx
+#: src/app/app/users/me/general/GeneralSettingsForm.tsx
 msgid "Save"
 msgstr "保存"
 
