@@ -36,6 +36,7 @@ export default function AbsenceReportList({
             <AbsenceReportCard
               report={report.fragment}
               href={`/app/${clubId}/${linkPathPrefix}/${report.id}`}
+              key={report.id}
             />
           ))
         )}
