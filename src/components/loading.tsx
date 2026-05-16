@@ -11,12 +11,14 @@ export function FullPageLoading() {
 export interface ListLoadingProps {
   withHeading?: boolean;
   cards?: boolean;
+  num?: number;
 }
 
 export function ListLoading({
   p = "4",
   withHeading = true,
   cards = false,
+  num = 3,
   ...props
 }: ListLoadingProps & React.ComponentPropsWithoutRef<typeof Flex>) {
   return (
@@ -35,7 +37,7 @@ export function ListLoading({
           <Heading size="3">Heading name</Heading>
         </Skeleton>
       )}
-      {new Array(3)
+      {new Array(num)
         .fill(0)
         .map((_, index) =>
           cards ? (
