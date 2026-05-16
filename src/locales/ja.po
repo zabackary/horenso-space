@@ -435,7 +435,7 @@ msgstr "部活を作成"
 msgid "Create a Club"
 msgstr "部活を作成"
 
-#: src/app/app/[id]/calendar/CalendarNavigation.tsx
+#: src/app/app/[id]/calendar/AddEventDrawers.tsx
 msgid "Create a new event"
 msgstr ""
 
@@ -451,7 +451,6 @@ msgstr "カレンダーイベントの作成と編集"
 msgid "Create club"
 msgstr "部活を作成"
 
-#: src/app/app/[id]/calendar/CalendarNavigation.tsx
 #: src/app/app/[id]/calendar/CalendarNavigation.tsx
 msgid "Create event"
 msgstr "イベントを作成する"

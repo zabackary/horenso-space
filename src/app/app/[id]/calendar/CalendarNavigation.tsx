@@ -1,21 +1,14 @@
 "use client";
 
-import { Drawer } from "@/components/ui/drawer";
-import { Trans, useLingui } from "@lingui/react/macro";
+import { useLingui } from "@lingui/react/macro";
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
   CalendarIcon,
   PlusIcon,
 } from "@radix-ui/react-icons";
-import {
-  Box,
-  Flex,
-  Heading,
-  IconButton,
-  Separator,
-  VisuallyHidden,
-} from "@radix-ui/themes";
+import { Box, Flex, Heading, IconButton, Separator } from "@radix-ui/themes";
+import dynamic from "next/dynamic";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import {
   PropsWithChildren,
@@ -30,12 +23,13 @@ import { ModePicker } from "./ModePicker";
 import { YearCalendarSkeleton } from "./[year]/Year";
 import { MonthCalendarSkeleton } from "./[year]/[month]/Month";
 import { DayCalendarSkeleton } from "./[year]/[month]/[day]/Day";
-import CreateEventCard from "./create-event-card";
 import useNavigateToDate, { buildCalendarPath } from "./useNavigateToDate";
 
 const SWIPE_NAVIGATION_TRANSITION_DURATION = 200;
 const SWIPE_VELOCITY_SAMPLE_DURATION = 100; // ms
 const SWIPE_VELOCITY_THRESHOLD = 500; // pixels per second
+
+const AddEventDrawers = dynamic(() => import("./AddEventDrawers"));
 
 export default function CalendarNavigation({
   children,
@@ -495,38 +489,11 @@ export default function CalendarNavigation({
           >
             <PlusIcon width="28" height="28" />
           </IconButton>
-          <Drawer.Root
-            open={createDrawerOpen}
-            onOpenChange={setCreateDrawerOpen}
-            snapPoints={[420, "100%"]}
-          >
-            <Drawer.Portal>
-              <Drawer.Overlay />
-              <Drawer.Content>
-                <VisuallyHidden>
-                  <Drawer.Title>
-                    <Trans>Create event</Trans>
-                  </Drawer.Title>
-                </VisuallyHidden>
-                <VisuallyHidden>
-                  <Drawer.Description>
-                    <Trans>Create a new event</Trans>
-                  </Drawer.Description>
-                </VisuallyHidden>
-                <CreateEventCard
-                  withPadding
-                  onCancel={() => {
-                    setCreateDrawerOpen(false);
-                  }}
-                  onCreate={() => {
-                    setCreateDrawerOpen(false);
-                    // TODO: navigate to the created event
-                  }}
-                  clubId={clubId}
-                />
-              </Drawer.Content>
-            </Drawer.Portal>
-          </Drawer.Root>
+          <AddEventDrawers
+            clubId={clubId}
+            createDrawerOpen={createDrawerOpen}
+            setCreateDrawerOpen={setCreateDrawerOpen}
+          />
         </>
       )}
     </Flex>

@@ -435,7 +435,7 @@ msgstr ""
 msgid "Create a Club"
 msgstr ""
 
-#: src/app/app/[id]/calendar/CalendarNavigation.tsx
+#: src/app/app/[id]/calendar/AddEventDrawers.tsx
 msgid "Create a new event"
 msgstr ""
 
@@ -451,7 +451,6 @@ msgstr ""
 msgid "Create club"
 msgstr ""
 
-#: src/app/app/[id]/calendar/CalendarNavigation.tsx
 #: src/app/app/[id]/calendar/CalendarNavigation.tsx
 msgid "Create event"
 msgstr ""
