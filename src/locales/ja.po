@@ -49,6 +49,10 @@ msgstr "{importedCount}　行をインポートし、{failedCount}　行にエ�
 msgid "{importedCount} row(s) imported. Fix the warning rows and import again if needed."
 msgstr "{importedCount} 行インポートしました。必要なら他の行を修正し、再度インポートしてください。"
 
+#: src/app/app/[id]/calendar/[year]/[month]/Month.tsx
+msgid "{multiDayNumber} of {multiDayTotal}"
+msgstr ""
+
 #: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
 msgid "{readyRowCount} ready row(s), {issueRowCount} warning row(s)"
 msgstr "使用可能な行数：{readyRowCount}、エラーが見つかった行数：{issueRowCount}"
@@ -112,7 +116,7 @@ msgstr "欠席報告のテンプレート"
 msgid "Absence reports"
 msgstr "欠席報告"
 
-#: src/app/app/[id]/calendar/day.tsx
+#: src/app/app/[id]/calendar/[year]/[month]/[day]/Day.tsx
 msgid "Absence reports for this day"
 msgstr "本日の欠席者"
 
@@ -215,7 +219,7 @@ msgstr "サインイン中にエラーが発生しました"
 msgid "An error occurred."
 msgstr "エラーが発生しました"
 
-#: src/app/app/[id]/calendar/year.tsx
+#: src/app/app/[id]/calendar/[year]/Year.tsx
 msgid "An event is scheduled on this day."
 msgstr "この日にはイベントが予定されています。"
 
@@ -430,6 +434,10 @@ msgstr "部活を作成"
 msgid "Create a Club"
 msgstr "部活を作成"
 
+#: src/app/app/[id]/calendar/AddEventDrawers.tsx
+msgid "Create a new event"
+msgstr ""
+
 #: src/app/app/[id]/calendar/calendar.tsx
 msgid "Create a new event for your club."
 msgstr "新しいイベントを制作する"
@@ -442,10 +450,13 @@ msgstr "カレンダーイベントの作成と編集"
 msgid "Create club"
 msgstr "部活を作成"
 
-#: src/app/app/[id]/calendar/calendar.tsx
-#: src/app/app/[id]/calendar/calendar.tsx
+#: src/app/app/[id]/calendar/CalendarNavigation.tsx
 msgid "Create event"
 msgstr "イベントを作成する"
+
+#: src/app/app/[id]/calendar/CalendarNavigation.tsx
+msgid "Create Event"
+msgstr ""
 
 #: src/app/app/[id]/config/roles/roles-manager.tsx
 #: src/components/club-config/roles-manager.tsx
@@ -477,7 +488,7 @@ msgstr "日付"
 msgid "Date and time columns"
 msgstr "日時の行"
 
-#: src/app/app/[id]/calendar/calendar.tsx
+#: src/app/app/[id]/calendar/ModePicker.tsx
 msgid "Day"
 msgstr "日"
 
@@ -636,6 +647,10 @@ msgstr "{0}の詳細"
 #: src/app/app/[id]/calendar/event-form.tsx
 msgid "Event name"
 msgstr "イベント名"
+
+#: src/app/app/[id]/calendar/[year]/[month]/Month.tsx
+msgid "Event spans {multiDayTotal} days (day {multiDayNumber})"
+msgstr ""
 
 #: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
 msgid "Event title for row {0}"
@@ -806,7 +821,7 @@ msgstr "サインアップ"
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/app/app/[id]/calendar/calendar.tsx
+#: src/app/app/[id]/calendar/CalendarNavigation.tsx
 msgid "Go to today"
 msgstr "今日"
 
@@ -968,8 +983,7 @@ msgstr "報告状態をロード中．．．"
 msgid "Loading..."
 msgstr "ロード中．．．"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/event-form.tsx
 msgid "Location"
 msgstr "場所"
 
@@ -1040,7 +1054,7 @@ msgstr "メンバー"
 msgid "Metadata"
 msgstr "メタデータ"
 
-#: src/app/app/[id]/calendar/calendar.tsx
+#: src/app/app/[id]/calendar/ModePicker.tsx
 msgid "Month"
 msgstr "月"
 
@@ -1085,7 +1099,7 @@ msgstr "ニックネーム"
 msgid "No absence report templates found."
 msgstr "欠席レポートテンプレートが見つかりません。"
 
-#: src/app/app/[id]/calendar/day.tsx
+#: src/app/app/[id]/calendar/[year]/[month]/[day]/Day.tsx
 msgid "No absence reports"
 msgstr "欠席連絡はありません"
 
@@ -1113,7 +1127,7 @@ msgstr "日付がありません"
 msgid "No event"
 msgstr "イベントがありません"
 
-#: src/app/app/[id]/calendar/day.tsx
+#: src/app/app/[id]/calendar/[year]/[month]/[day]/Day.tsx
 msgid "No events for today."
 msgstr "本日の行事はありません。"
 
@@ -1700,7 +1714,7 @@ msgstr "この報告はレビュー待ちです"
 msgid "The report pending review"
 msgstr "この報告はレビュー待ちです"
 
-#: src/app/app/[id]/calendar/day.tsx
+#: src/app/app/[id]/calendar/[year]/[month]/[day]/Day.tsx
 msgid "There are no reported absences for this day."
 msgstr "本日の欠席連絡はありません。"
 
@@ -1858,7 +1872,7 @@ msgstr ""
 msgid "When you create your account with certain SNS services <0><1>such as Google</1></0>, your profile picture is set automatically. Otherwise, to change your profile picture, update your Gravatar with the email you use for Horenso SPACE and click \"Update from Gravatar\"."
 msgstr ""
 
-#: src/app/app/[id]/calendar/calendar.tsx
+#: src/app/app/[id]/calendar/ModePicker.tsx
 msgid "Year"
 msgstr "年"
 

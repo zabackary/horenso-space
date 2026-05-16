@@ -1,8 +1,9 @@
+"use client";
+
 import { ListLoading } from "@/components/loading";
 import ClickableCard from "@/components/ui/clickable-card";
 import EmptyState from "@/components/ui/empty-state";
 import { gql } from "@/gql";
-import { createClient } from "@/lib/supabase/client";
 import { useSuspenseQuery } from "@apollo/client/react";
 import { Trans, useLingui } from "@lingui/react/macro";
 import {
@@ -11,11 +12,19 @@ import {
   GlobeIcon,
   TextIcon,
 } from "@radix-ui/react-icons";
-import { Box, Card, Flex, Heading, Separator, Text } from "@radix-ui/themes";
-import { Suspense, useMemo, useState } from "react";
-import AbsenceReportList from "../absences/(list)/list";
-import styles from "./day.module.css";
-import EventDetailDrawer from "./event-detail-drawer";
+import {
+  Box,
+  Card,
+  Flex,
+  Heading,
+  Separator,
+  Skeleton,
+  Text,
+} from "@radix-ui/themes";
+import { Suspense, useState } from "react";
+import AbsenceReportList from "../../../../absences/(list)/list";
+import EventDetailDrawer from "../../../event-detail-drawer";
+import styles from "./Day.module.css";
 
 const CalendarDayQuery = gql(`
   query CalendarDay($clubId: UUID!, $date: Date!, $startDate: Datetime!, $endDate: Datetime!) {
@@ -71,17 +80,12 @@ export interface DayCalendarProps {
 
 export default function DayCalendar({
   date,
-  onDateChange,
   createEvent,
   clubId,
-  refreshKey,
   canReadAllReports,
   canWrite = false,
 }: DayCalendarProps) {
   const { t } = useLingui();
-  const supabase = useMemo(() => {
-    return createClient();
-  }, []);
 
   const { data, refetch } = useSuspenseQuery(CalendarDayQuery, {
     variables: {
@@ -221,5 +225,29 @@ export default function DayCalendar({
           />
         )}
     </div>
+  );
+}
+
+export function DayCalendarSkeleton({ date }: { date?: string }) {
+  return (
+    <Flex direction="column" className={styles.container}>
+      <Flex direction="column" align="center" gap="2" className={styles.header}>
+        <Heading size="5" as="h3" align="center">
+          {date ? (
+            new Date(date).toLocaleDateString(undefined, {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })
+          ) : (
+            <Skeleton>Loading...</Skeleton>
+          )}
+        </Heading>
+        <Separator />
+      </Flex>
+      <Box width="100%" p="4">
+        <ListLoading withHeading={false} />
+      </Box>
+    </Flex>
   );
 }
