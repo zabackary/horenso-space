@@ -25,7 +25,7 @@ function transformTemplate<T>(y: T) {
   if (typeof y === "number") {
     if (y < -window.innerHeight) {
       // Stretch animation
-      return `scaleY(${1 + (Math.abs(y + window.innerHeight) / window.innerHeight) * 0.5}) translate3d(0, 0%, 0)`;
+      return `scaleY(${1 + (Math.abs(y + window.innerHeight) / window.innerHeight) * 0.3}) translate3d(0, 0%, 0)`;
     }
     return `translate3d(0, calc(100% + ${y}px), 0)`;
   } else {
