@@ -134,11 +134,13 @@ export default function EventForm({
               type="date"
               value={data.startDate}
               onChange={(e) => handleChange("startDate", e.target.value)}
+              required
             />
             <TextField.Root
               type="time"
               value={data.startTime}
               onChange={(e) => handleChange("startTime", e.target.value)}
+              required
             />
           </Grid>
           <Grid columns="2" gap="2">
@@ -146,11 +148,13 @@ export default function EventForm({
               type="date"
               value={data.endDate}
               onChange={(e) => handleChange("endDate", e.target.value)}
+              required
             />
             <TextField.Root
               type="time"
               value={data.endTime}
               onChange={(e) => handleChange("endTime", e.target.value)}
+              required
             />
           </Grid>
         </Grid>
