@@ -15,11 +15,5 @@ export default async function CalendarMonthPage({
     notFound();
   }
 
-  return (
-    <MonthCalendar
-      clubId={id}
-      date={`${year}-${month}`}
-      canCreateEvent // TODO: check permissions
-    />
-  );
+  return <MonthCalendar clubId={id} date={`${year}-${month}`} />;
 }

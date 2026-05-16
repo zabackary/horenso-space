@@ -2,7 +2,7 @@
 
 import { gql } from "@/gql";
 import { useSuspenseQuery } from "@apollo/client/react";
-import { Box, Button, Flex, Grid, Heading, Skeleton } from "@radix-ui/themes";
+import { Box, Flex, Grid, Heading, Skeleton } from "@radix-ui/themes";
 import clsx from "clsx";
 import { useMemo } from "react";
 import useNavigateToDate from "../../useNavigateToDate";
@@ -34,15 +34,10 @@ const CalendarMonthQuery = gql(`
 
 export default function MonthCalendar({
   date,
-  onCreateEvent,
   clubId,
-  canCreateEvent,
 }: {
   date: string;
-  onCreateEvent?: (date: string) => void;
   clubId: string;
-  canCreateEvent?: boolean;
-  refreshKey?: string;
 }) {
   const today = useMemo(() => {
     return new Date().toISOString().split("T")[0];
@@ -159,27 +154,13 @@ export default function MonthCalendar({
                 >
                   {day}
                 </Heading>
-                {events.length > 0 ? (
-                  events.map(({ title, id }) => (
-                    <Box key={id} className={styles.dayCellEvent}>
-                      {title}
-                    </Box>
-                  ))
-                ) : canCreateEvent ? (
-                  <Button
-                    className={styles.dayCellCreate}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      if (onCreateEvent) {
-                        onCreateEvent(
-                          `${date}-${day.toString().padStart(2, "0")}`,
-                        );
-                      }
-                    }}
-                  >
-                    Create event
-                  </Button>
-                ) : null}
+                {events.length > 0
+                  ? events.map(({ title, id }) => (
+                      <Box key={id} className={styles.dayCellEvent}>
+                        {title}
+                      </Box>
+                    ))
+                  : null}
               </Box>
             );
           }

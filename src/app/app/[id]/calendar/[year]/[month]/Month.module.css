@@ -76,19 +76,4 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-
-  .dayCellCreate {
-    opacity: 0;
-    transition: opacity 0.2s ease-in-out;
-    border-radius: 8px;
-    padding: var(--space-1);
-    background-color: var(--accent-5);
-    color: var(--accent-11);
-    width: 100%;
-    border: 1px dashed var(--accent-8);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    display: block;
-  }
 }
