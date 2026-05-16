@@ -144,7 +144,7 @@ msgstr ""
 msgid "Add comments (optional)"
 msgstr ""
 
-#: src/app/app/[id]/calendar/day.tsx
+#: src/app/app/[id]/page.tsx
 msgid "Add event"
 msgstr ""
 
@@ -266,7 +266,6 @@ msgid "Attach this club's information"
 msgstr ""
 
 #: src/app/app/[id]/calendar/[...date]/page.tsx
-#: src/app/app/club/create/page.tsx
 msgid "Back"
 msgstr ""
 
@@ -1356,7 +1355,6 @@ msgstr ""
 msgid "Report a bug"
 msgstr ""
 
-#: src/app/app/[id]/absences/(list)/layout.tsx
 #: src/app/app/[id]/page.tsx
 msgid "Report absence"
 msgstr ""

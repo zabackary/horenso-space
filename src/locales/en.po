@@ -144,7 +144,7 @@ msgstr "Add a screenshot"
 msgid "Add comments (optional)"
 msgstr "Add comments (optional)"
 
-#: src/app/app/[id]/calendar/day.tsx
+#: src/app/app/[id]/page.tsx
 msgid "Add event"
 msgstr "Add event"
 
@@ -266,7 +266,6 @@ msgid "Attach this club's information"
 msgstr "Attach this club's information"
 
 #: src/app/app/[id]/calendar/[...date]/page.tsx
-#: src/app/app/club/create/page.tsx
 msgid "Back"
 msgstr "Back"
 
@@ -1356,7 +1355,6 @@ msgstr "Remove screenshot"
 msgid "Report a bug"
 msgstr "Report a bug"
 
-#: src/app/app/[id]/absences/(list)/layout.tsx
 #: src/app/app/[id]/page.tsx
 msgid "Report absence"
 msgstr "Report absence"
