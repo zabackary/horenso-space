@@ -34,6 +34,8 @@ import CreateEventCard from "./create-event-card";
 import useNavigateToDate, { buildCalendarPath } from "./useNavigateToDate";
 
 const SWIPE_NAVIGATION_TRANSITION_DURATION = 200;
+const SWIPE_VELOCITY_SAMPLE_DURATION = 100; // ms
+const SWIPE_VELOCITY_THRESHOLD = 500; // pixels per second
 
 export default function CalendarNavigation({
   children,
@@ -194,6 +196,7 @@ export default function CalendarNavigation({
   // MARK: Swipe navigation for mobile
   const router = useRouter();
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [touchStartY, setTouchStartY] = useState<number | null>(null);
   const [swipeDirection, setSwipeDirection] = useState<
     "next" | "previous" | null
   >(null);
@@ -201,12 +204,36 @@ export default function CalendarNavigation({
   const nextContentPreviewRef = useRef<HTMLDivElement>(null);
   const handleTouchStart = (e: TouchEvent) => {
     setTouchStartX(e.touches[0].clientX);
+    setTouchStartY(e.touches[0].clientY);
   };
+  const touchXHistoryRef = useRef<{ x: number; timestamp: number }[]>([]);
   const handleTouchMove = (e: TouchEvent) => {
-    e.preventDefault();
     if (touchStartX === null) return;
     const touchCurrentX = e.touches[0].clientX;
     const deltaX = touchCurrentX - touchStartX;
+    const touchCurrentY = e.touches[0].clientY;
+    const deltaY = touchCurrentY - (touchStartY ?? 0);
+
+    // If the user is scrolling vertically more than they are swiping horizontally
+    // and we haven't already determined the swipe direction, don't do anything
+    // this allows users to scroll the page without triggering the swipe navigation
+    if (
+      Math.abs(deltaY) * 2 > Math.abs(deltaX) && // we really want to make sure it's a vertical scroll, so we use a multiplier
+      swipeDirection === null
+    ) {
+      return;
+    }
+
+    touchXHistoryRef.current.push({
+      x: touchCurrentX,
+      timestamp: performance.now(),
+    });
+    touchXHistoryRef.current = touchXHistoryRef.current.filter(
+      (entry) =>
+        performance.now() - entry.timestamp < SWIPE_VELOCITY_SAMPLE_DURATION,
+    );
+
+    e.preventDefault(); // Prevent vertical scrolling while swiping horizontally
 
     document.body.style.setProperty("overscroll-behavior", "none");
 
@@ -270,10 +297,26 @@ export default function CalendarNavigation({
     const deltaX = touchEndX - touchStartX;
     setTouchStartX(null);
 
+    // Approximate velocity by looking at the last touch movement
+    let touchXVelocity = 0;
+    if (touchXHistoryRef.current.length > 1) {
+      const firstEntry = touchXHistoryRef.current[0];
+      const lastEntry =
+        touchXHistoryRef.current[touchXHistoryRef.current.length - 1];
+      const deltaXForVelocity = lastEntry.x - firstEntry.x;
+      const deltaTimeForVelocity =
+        (lastEntry.timestamp - firstEntry.timestamp) / 1000; // convert to seconds
+      touchXVelocity = deltaXForVelocity / deltaTimeForVelocity; // pixels per second
+    }
+
     document.body.style.setProperty("overscroll-behavior", "auto");
 
     const threshold = window.innerWidth / 2; // Minimum distance for a swipe
-    if (Math.abs(deltaX) > threshold) {
+    if (
+      (Math.abs(deltaX) > threshold ||
+        Math.abs(touchXVelocity) > SWIPE_VELOCITY_THRESHOLD) &&
+      swipeDirection !== null
+    ) {
       if (deltaX > 0) {
         handleNavigatePrevious();
       } else if (deltaX < 0) {
@@ -311,7 +354,8 @@ export default function CalendarNavigation({
           startTime: Date.now(),
         };
       }
-    } else {
+    } else if (swipeDirection !== null) {
+      // We cancel the swipe navigation and animate everything back to the original position
       if (contentRef.current) {
         // Animate back to the original position
         contentRef.current.animate(
