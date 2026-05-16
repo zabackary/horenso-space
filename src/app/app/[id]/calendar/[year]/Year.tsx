@@ -7,6 +7,7 @@ import {
   Grid,
   Heading,
   Link as RadixLink,
+  Skeleton,
 } from "@radix-ui/themes";
 import clsx from "clsx";
 import Link from "next/link";
@@ -57,6 +58,52 @@ export function YearCalendar({ date }: { date: string }) {
                 </RadixLink>
               </Heading>
               <MemorizedMonthPreview year={year} month={month} />
+            </Flex>
+          </Box>
+        ))}
+      </Grid>
+    </Flex>
+  );
+}
+
+export function YearCalendarSkeleton({ date }: { date?: string }) {
+  return (
+    <Flex p="4" className={styles.yearCard}>
+      <Heading size="5" as="h3" align="center">
+        {date ? (
+          new Date(date).toLocaleDateString(undefined, {
+            year: "numeric",
+          })
+        ) : (
+          <Skeleton>Loading...</Skeleton>
+        )}
+      </Heading>
+      <Grid
+        columns={{
+          xs: "2",
+          sm: "3",
+          md: "4",
+        }}
+        gap="4"
+        mt="4"
+        width="100%"
+        flexGrow="1"
+      >
+        {Array.from({ length: 12 }, (_, i) => i + 1).map((month) => (
+          <Box key={month} className={styles.monthCard}>
+            <Flex direction="column" align="center" justify="center">
+              <Skeleton>
+                <Heading size="2" mb="2" asChild>
+                  <RadixLink asChild>
+                    <span>
+                      {new Date(0, month - 1).toLocaleDateString(undefined, {
+                        month: "long",
+                      })}
+                    </span>
+                  </RadixLink>
+                </Heading>
+              </Skeleton>
+              <Skeleton height="80px" width="100%" />
             </Flex>
           </Box>
         ))}

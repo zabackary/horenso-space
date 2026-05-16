@@ -2,7 +2,7 @@
 
 import { gql } from "@/gql";
 import { useSuspenseQuery } from "@apollo/client/react";
-import { Box, Button, Flex, Grid, Heading } from "@radix-ui/themes";
+import { Box, Button, Flex, Grid, Heading, Skeleton } from "@radix-ui/themes";
 import clsx from "clsx";
 import { useMemo } from "react";
 import useNavigateToDate from "../../useNavigateToDate";
@@ -45,7 +45,7 @@ export default function MonthCalendar({
   refreshKey?: string;
 }) {
   const today = useMemo(() => {
-    return (new Date().toISOString().split("T")[0]);
+    return new Date().toISOString().split("T")[0];
   }, []);
 
   const { data } = useSuspenseQuery(CalendarMonthQuery, {
@@ -148,7 +148,15 @@ export default function MonthCalendar({
                   );
                 }}
               >
-                <Heading size="5" as="h4" className={today === `${date}-${day.toString().padStart(2, "0")}` ? styles.today : ""}>
+                <Heading
+                  size="5"
+                  as="h4"
+                  className={
+                    today === `${date}-${day.toString().padStart(2, "0")}`
+                      ? styles.today
+                      : ""
+                  }
+                >
                   {day}
                 </Heading>
                 {events.length > 0 ? (
@@ -176,6 +184,40 @@ export default function MonthCalendar({
             );
           }
         })}
+      </Grid>
+    </Flex>
+  );
+}
+
+export function MonthCalendarSkeleton({ date }: { date?: string }) {
+  return (
+    <Flex direction="column" className={styles.monthCard}>
+      <Heading size="5" as="h3" align="center">
+        {date ? (
+          new Date(date).toLocaleDateString(undefined, {
+            month: "long",
+            year: "numeric",
+          })
+        ) : (
+          <Skeleton>Loading...</Skeleton>
+        )}
+      </Heading>
+      <Grid
+        columns="7"
+        rows="5"
+        gap="1"
+        p="2"
+        width="100%"
+        className={styles.monthGrid}
+      >
+        {Array.from({ length: 35 }, (_, i) => (
+          <Skeleton key={i}>
+            <Box
+              className={clsx(styles.dayCell, styles.dayCellDimmed)}
+              height="80px"
+            />
+          </Skeleton>
+        ))}
       </Grid>
     </Flex>
   );

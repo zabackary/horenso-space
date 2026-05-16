@@ -12,7 +12,15 @@ import {
   GlobeIcon,
   TextIcon,
 } from "@radix-ui/react-icons";
-import { Box, Card, Flex, Heading, Separator, Text } from "@radix-ui/themes";
+import {
+  Box,
+  Card,
+  Flex,
+  Heading,
+  Separator,
+  Skeleton,
+  Text,
+} from "@radix-ui/themes";
 import { Suspense, useState } from "react";
 import AbsenceReportList from "../../../../absences/(list)/list";
 import EventDetailDrawer from "../../../event-detail-drawer";
@@ -217,5 +225,29 @@ export default function DayCalendar({
           />
         )}
     </div>
+  );
+}
+
+export function DayCalendarSkeleton({ date }: { date?: string }) {
+  return (
+    <Flex direction="column" className={styles.container}>
+      <Flex direction="column" align="center" gap="2" className={styles.header}>
+        <Heading size="5" as="h3" align="center">
+          {date ? (
+            new Date(date).toLocaleDateString(undefined, {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })
+          ) : (
+            <Skeleton>Loading...</Skeleton>
+          )}
+        </Heading>
+        <Separator />
+      </Flex>
+      <Box width="100%" p="4">
+        <ListLoading withHeading={false} />
+      </Box>
+    </Flex>
   );
 }

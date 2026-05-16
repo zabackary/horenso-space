@@ -6,12 +6,24 @@ import {
   ArrowRightIcon,
   CalendarIcon,
 } from "@radix-ui/react-icons";
-import { Flex, Heading, IconButton, Separator } from "@radix-ui/themes";
-import { usePathname } from "next/navigation";
-import { PropsWithChildren, useEffect, useState } from "react";
+import { Box, Flex, Heading, IconButton, Separator } from "@radix-ui/themes";
+import { usePathname, useRouter } from "next/navigation";
+import {
+  PropsWithChildren,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import styles from "./CalendarNavigation.module.css";
 import { ModePicker } from "./ModePicker";
-import useNavigateToDate from "./useNavigateToDate";
+import { YearCalendarSkeleton } from "./[year]/Year";
+import { MonthCalendarSkeleton } from "./[year]/[month]/Month";
+import { DayCalendarSkeleton } from "./[year]/[month]/[day]/Day";
+import useNavigateToDate, { buildCalendarPath } from "./useNavigateToDate";
+
+const SWIPE_NAVIGATION_TRANSITION_DURATION = 200;
 
 export default function CalendarNavigation({ children }: PropsWithChildren) {
   const { t } = useLingui();
@@ -23,9 +35,6 @@ export default function CalendarNavigation({ children }: PropsWithChildren) {
   const path = usePathname();
   // Extract the year/month/day from the path
   const segments = path.split("/");
-  const pathPrefix = segments
-    .slice(0, segments.indexOf("calendar") + 1)
-    .join("/");
   const [yearString, monthString, dayString] = segments.slice(
     segments.indexOf("calendar") + 1,
   );
@@ -54,7 +63,7 @@ export default function CalendarNavigation({ children }: PropsWithChildren) {
     if (day !== clientDay && day !== undefined) setClientDay(day);
   }, [year, month, day]);
 
-  // Navigation
+  // MARK: Navigation
   const navigateToDate = useNavigateToDate();
   const handleModeChange = (newMode: "year" | "month" | "day") => {
     if (newMode === "year") {
@@ -86,16 +95,16 @@ export default function CalendarNavigation({ children }: PropsWithChildren) {
       navigateToDate(todayYear, todayMonth, todayDay);
     }
   };
-  const handleNavigatePrevious = () => {
+  const previousNavigateTarget: [number, number?, number?] = useMemo(() => {
     if (mode === "year") {
-      navigateToDate((clientYear ?? todayYear) - 1);
+      return [(clientYear ?? todayYear) - 1];
     } else if (mode === "month") {
       const month = clientMonth ?? todayMonth;
       const year = clientYear ?? todayYear;
       if (month === 1) {
-        navigateToDate(year - 1, 12);
+        return [year - 1, 12];
       } else {
-        navigateToDate(year, month - 1);
+        return [year, month - 1];
       }
     } else if (mode === "day") {
       const day = clientDay ?? todayDay;
@@ -103,26 +112,35 @@ export default function CalendarNavigation({ children }: PropsWithChildren) {
       const year = clientYear ?? todayYear;
       if (day === 1) {
         if (month === 1) {
-          navigateToDate(year - 1, 12, 31);
+          return [year - 1, 12, 31];
         } else {
           const lastDayOfPreviousMonth = new Date(year, month - 1, 0).getDate();
-          navigateToDate(year, month - 1, lastDayOfPreviousMonth);
+          return [year, month - 1, lastDayOfPreviousMonth];
         }
       } else {
-        navigateToDate(year, month, day - 1);
+        return [year, month, day - 1];
       }
     }
-  };
-  const handleNavigateNext = () => {
+    return [todayYear];
+  }, [
+    mode,
+    clientYear,
+    clientMonth,
+    clientDay,
+    todayYear,
+    todayMonth,
+    todayDay,
+  ]);
+  const nextNavigateTarget: [number, number?, number?] = useMemo(() => {
     if (mode === "year") {
-      navigateToDate((clientYear ?? todayYear) + 1);
+      return [(clientYear ?? todayYear) + 1];
     } else if (mode === "month") {
       const month = clientMonth ?? todayMonth;
       const year = clientYear ?? todayYear;
       if (month === 12) {
-        navigateToDate(year + 1, 1);
+        return [year + 1, 1];
       } else {
-        navigateToDate(year, month + 1);
+        return [year, month + 1];
       }
     } else if (mode === "day") {
       const day = clientDay ?? todayDay;
@@ -131,16 +149,202 @@ export default function CalendarNavigation({ children }: PropsWithChildren) {
       const lastDayOfMonth = new Date(year, month, 0).getDate();
       if (day === lastDayOfMonth) {
         if (month === 12) {
-          navigateToDate(year + 1, 1, 1);
+          return [year + 1, 1, 1];
         } else {
-          navigateToDate(year, month + 1, 1);
+          return [year, month + 1, 1];
         }
       } else {
-        navigateToDate(year, month, day + 1);
+        return [year, month, day + 1];
+      }
+    }
+    return [todayYear];
+  }, [
+    mode,
+    clientYear,
+    clientMonth,
+    clientDay,
+    todayYear,
+    todayMonth,
+    todayDay,
+  ]);
+  const handleNavigatePrevious = () => {
+    navigateToDate(...previousNavigateTarget);
+  };
+  const handleNavigateNext = () => {
+    navigateToDate(...nextNavigateTarget);
+  };
+
+  // MARK: Swipe navigation for mobile
+  const router = useRouter();
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [swipeDirection, setSwipeDirection] = useState<
+    "next" | "previous" | null
+  >(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const nextContentPreviewRef = useRef<HTMLDivElement>(null);
+  const handleTouchStart = (e: TouchEvent) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+  const handleTouchMove = (e: TouchEvent) => {
+    e.preventDefault();
+    if (touchStartX === null) return;
+    const touchCurrentX = e.touches[0].clientX;
+    const deltaX = touchCurrentX - touchStartX;
+
+    document.body.style.setProperty("overscroll-behavior", "none");
+
+    if (contentRef.current) {
+      contentRef.current.style.transform = `translate3d(${deltaX}px, 0, 0)`;
+    }
+    if (nextContentPreviewRef.current) {
+      // Move the preview into view
+      const direction = deltaX > 0 ? -1 : 1;
+      nextContentPreviewRef.current.style.transform = `translate3d(${deltaX + direction * window.innerWidth}px, 0, 0)`;
+    }
+    // Set swipe direction for preview (opposite of the swipe direction)
+    if (deltaX > 0) {
+      if (swipeDirection !== "previous") {
+        setSwipeDirection("previous");
+        router.prefetch(buildCalendarPath(path, ...previousNavigateTarget));
+      }
+    } else if (deltaX < 0) {
+      if (swipeDirection !== "next") {
+        setSwipeDirection("next");
+        router.prefetch(buildCalendarPath(path, ...nextNavigateTarget));
       }
     }
   };
+  const targetSwipeNavigateData = useRef<
+    | {
+        path: string;
+        startTime: number;
+      }
+    | undefined
+  >(undefined);
+  const tryFinishSwipeNavigation = useCallback(() => {
+    if (targetSwipeNavigateData.current?.path !== path) return;
+    if (
+      Date.now() - (targetSwipeNavigateData.current.startTime ?? 0) <
+      SWIPE_NAVIGATION_TRANSITION_DURATION
+    ) {
+      // If the route has changed but the transition hasn't finished, wait the remaining transition duration before finishing
+      setTimeout(
+        () => {
+          tryFinishSwipeNavigation();
+        },
+        SWIPE_NAVIGATION_TRANSITION_DURATION -
+          (Date.now() - (targetSwipeNavigateData.current.startTime ?? 0)),
+      );
+      return;
+    }
+    if (contentRef.current) {
+      contentRef.current.style.transform = "translateX(0)";
+    }
+    if (nextContentPreviewRef.current) {
+      // Get it off the screen.
+      // Probably not needed since the component will unmount, but just in case
+      nextContentPreviewRef.current.style.transform = `translateX(${window.innerWidth}px)`;
+    }
+    setSwipeDirection(null);
+  }, [path]);
+  const handleTouchEnd = (e: TouchEvent) => {
+    if (touchStartX === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const deltaX = touchEndX - touchStartX;
+    setTouchStartX(null);
 
+    document.body.style.setProperty("overscroll-behavior", "auto");
+
+    const threshold = window.innerWidth / 2; // Minimum distance for a swipe
+    if (Math.abs(deltaX) > threshold) {
+      if (deltaX > 0) {
+        handleNavigatePrevious();
+      } else if (deltaX < 0) {
+        handleNavigateNext();
+      }
+      // Animate the content sliding out and preview sliding in before the route changes
+      if (contentRef.current && nextContentPreviewRef.current) {
+        const direction = deltaX > 0 ? 1 : -1;
+        contentRef.current.animate(
+          [
+            { transform: `translate3d(${deltaX}px, 0, 0)` },
+            {
+              transform: `translate3d(${direction * window.innerWidth}px, 0, 0)`,
+            },
+          ],
+          { duration: 200, easing: "ease-out" },
+        );
+        nextContentPreviewRef.current.animate(
+          [
+            {
+              transform: `translate3d(${deltaX + -direction * window.innerWidth}px, 0, 0)`,
+            },
+            { transform: "translate3d(0, 0, 0)" },
+          ],
+          { duration: 200, easing: "ease-out" },
+        );
+        contentRef.current.style.transform = `translate3d(${direction * window.innerWidth}px, 0, 0)`;
+        nextContentPreviewRef.current.style.transform = "translate3d(0, 0, 0)";
+
+        targetSwipeNavigateData.current = {
+          path: buildCalendarPath(
+            path,
+            ...(deltaX > 0 ? previousNavigateTarget : nextNavigateTarget),
+          ),
+          startTime: Date.now(),
+        };
+      }
+    } else {
+      if (contentRef.current) {
+        // Animate back to the original position
+        contentRef.current.animate(
+          [
+            { transform: `translate3d(${deltaX}px, 0, 0)` },
+            { transform: "translate3d(0, 0, 0)" },
+          ],
+          { duration: 200, easing: "ease-out" },
+        );
+        contentRef.current.style.transform = "translate3d(0, 0, 0)";
+      }
+      if (nextContentPreviewRef.current) {
+        // Move the preview back off-screen
+        const direction = deltaX > 0 ? -1 : 1;
+        nextContentPreviewRef.current.animate(
+          [
+            {
+              transform: `translate3d(${deltaX + direction * window.innerWidth}px, 0, 0)`,
+            },
+            {
+              transform: `translate3d(${direction * window.innerWidth}px, 0, 0)`,
+            },
+          ],
+          { duration: 200, easing: "ease-out" },
+        );
+        nextContentPreviewRef.current.style.transform = `translate3d(${direction * window.innerWidth}px, 0, 0)`;
+        setTimeout(() => {
+          // Remove the preview after the animation
+          setSwipeDirection(null);
+        }, 200);
+      }
+    }
+  };
+  const setContentWrapperRef = (el: HTMLDivElement | null) => {
+    if (el) {
+      el.addEventListener("touchstart", handleTouchStart, { passive: true });
+      el.addEventListener("touchmove", handleTouchMove, { passive: false });
+      el.addEventListener("touchend", handleTouchEnd, { passive: true });
+      return () => {
+        el.removeEventListener("touchstart", handleTouchStart);
+        el.removeEventListener("touchmove", handleTouchMove);
+        el.removeEventListener("touchend", handleTouchEnd);
+      };
+    }
+  };
+  useEffect(() => {
+    tryFinishSwipeNavigation();
+  }, [path, tryFinishSwipeNavigation]);
+
+  // MARK: Render
   return (
     <Flex
       direction="column"
@@ -173,7 +377,49 @@ export default function CalendarNavigation({ children }: PropsWithChildren) {
         </IconButton>
       </Flex>
       <Separator className={styles.divider} />
-      {children}
+      <Box
+        className={styles.contentWrapper}
+        style={{
+          touchAction: swipeDirection !== null ? "none" : "auto",
+        }}
+        ref={setContentWrapperRef}
+      >
+        <Box flexGrow="1" className={styles.content} ref={contentRef}>
+          {children}
+        </Box>
+        {swipeDirection !== null && (
+          <Box
+            className={styles.nextContentPreview}
+            ref={nextContentPreviewRef}
+          >
+            {mode === "year" ? (
+              <YearCalendarSkeleton
+                date={
+                  swipeDirection === "next"
+                    ? String(nextNavigateTarget[0]).padStart(4, "0")
+                    : String(previousNavigateTarget[0]).padStart(4, "0")
+                }
+              />
+            ) : mode === "month" ? (
+              <MonthCalendarSkeleton
+                date={
+                  swipeDirection === "next"
+                    ? `${String(nextNavigateTarget[0]).padStart(4, "0")}-${String(nextNavigateTarget[1] ?? todayMonth).padStart(2, "0")}`
+                    : `${String(previousNavigateTarget[0]).padStart(4, "0")}-${String(previousNavigateTarget[1] ?? todayMonth).padStart(2, "0")}`
+                }
+              />
+            ) : (
+              <DayCalendarSkeleton
+                date={
+                  swipeDirection === "next"
+                    ? `${String(nextNavigateTarget[0]).padStart(4, "0")}-${String(nextNavigateTarget[1] ?? todayMonth).padStart(2, "0")}-${String(nextNavigateTarget[2] ?? todayDay).padStart(2, "0")}`
+                    : `${String(previousNavigateTarget[0]).padStart(4, "0")}-${String(previousNavigateTarget[1] ?? todayMonth).padStart(2, "0")}-${String(previousNavigateTarget[2] ?? todayDay).padStart(2, "0")}`
+                }
+              />
+            )}
+          </Box>
+        )}
+      </Box>
     </Flex>
   );
 }
