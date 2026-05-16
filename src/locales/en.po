@@ -112,7 +112,7 @@ msgstr "Absence report templates"
 msgid "Absence reports"
 msgstr "Absence reports"
 
-#: src/app/app/[id]/calendar/day.tsx
+#: src/app/app/[id]/calendar/[year]/[month]/[day]/Day.tsx
 msgid "Absence reports for this day"
 msgstr "Absence reports for this day"
 
@@ -144,7 +144,7 @@ msgstr "Add a screenshot"
 msgid "Add comments (optional)"
 msgstr "Add comments (optional)"
 
-#: src/app/app/[id]/calendar/day.tsx
+#: src/app/app/[id]/calendar/[year]/[month]/[day]/Day.tsx
 msgid "Add event"
 msgstr "Add event"
 
@@ -215,7 +215,7 @@ msgstr "An error occurred while signing up: {0}"
 msgid "An error occurred."
 msgstr "An error occurred."
 
-#: src/app/app/[id]/calendar/year.tsx
+#: src/app/app/[id]/calendar/[year]/Year.tsx
 msgid "An event is scheduled on this day."
 msgstr "An event is scheduled on this day."
 
@@ -478,7 +478,7 @@ msgstr "Date"
 msgid "Date and time columns"
 msgstr "Date and time columns"
 
-#: src/app/app/[id]/calendar/calendar.tsx
+#: src/app/app/[id]/calendar/ModePicker.tsx
 msgid "Day"
 msgstr "Day"
 
@@ -807,7 +807,7 @@ msgstr "Get started"
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/app/app/[id]/calendar/calendar.tsx
+#: src/app/app/[id]/calendar/CalendarNavigation.tsx
 msgid "Go to today"
 msgstr "Go to today"
 
@@ -1041,7 +1041,7 @@ msgstr "Members"
 msgid "Metadata"
 msgstr "Metadata"
 
-#: src/app/app/[id]/calendar/calendar.tsx
+#: src/app/app/[id]/calendar/ModePicker.tsx
 msgid "Month"
 msgstr "Month"
 
@@ -1086,7 +1086,7 @@ msgstr "Nickname"
 msgid "No absence report templates found."
 msgstr "No absence report templates found."
 
-#: src/app/app/[id]/calendar/day.tsx
+#: src/app/app/[id]/absences/(list)/list.tsx
 msgid "No absence reports"
 msgstr "No absence reports"
 
@@ -1114,7 +1114,7 @@ msgstr "No date"
 msgid "No event"
 msgstr "No event"
 
-#: src/app/app/[id]/calendar/day.tsx
+#: src/app/app/[id]/calendar/[year]/[month]/[day]/Day.tsx
 msgid "No events for today."
 msgstr "No events for today."
 
@@ -1714,7 +1714,7 @@ msgstr "The report is pending review"
 msgid "The report pending review"
 msgstr "The report pending review"
 
-#: src/app/app/[id]/calendar/day.tsx
+#: src/app/app/[id]/calendar/[year]/[month]/[day]/Day.tsx
 msgid "There are no reported absences for this day."
 msgstr "There are no reported absences for this day."
 
@@ -1872,7 +1872,7 @@ msgstr "When you create your account with certain SNS services <0><1>such as Goo
 msgid "When you create your account with certain SNS services <0><1>such as Google</1></0>, your profile picture is set automatically. Otherwise, to change your profile picture, update your Gravatar with the email you use for Horenso SPACE and click \"Update from Gravatar\"."
 msgstr "When you create your account with certain SNS services <0><1>such as Google</1></0>, your profile picture is set automatically. Otherwise, to change your profile picture, update your Gravatar with the email you use for Horenso SPACE and click \"Update from Gravatar\"."
 
-#: src/app/app/[id]/calendar/calendar.tsx
+#: src/app/app/[id]/calendar/ModePicker.tsx
 msgid "Year"
 msgstr "Year"
 

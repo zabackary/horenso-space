@@ -1,8 +1,9 @@
+"use client";
+
 import { ListLoading } from "@/components/loading";
 import ClickableCard from "@/components/ui/clickable-card";
 import EmptyState from "@/components/ui/empty-state";
 import { gql } from "@/gql";
-import { createClient } from "@/lib/supabase/client";
 import { useSuspenseQuery } from "@apollo/client/react";
 import { Trans, useLingui } from "@lingui/react/macro";
 import {
@@ -12,10 +13,10 @@ import {
   TextIcon,
 } from "@radix-ui/react-icons";
 import { Box, Card, Flex, Heading, Separator, Text } from "@radix-ui/themes";
-import { Suspense, useMemo, useState } from "react";
-import AbsenceReportList from "../absences/(list)/list";
-import styles from "./day.module.css";
-import EventDetailDrawer from "./event-detail-drawer";
+import { Suspense, useState } from "react";
+import AbsenceReportList from "../../../../absences/(list)/list";
+import EventDetailDrawer from "../../../event-detail-drawer";
+import styles from "./Day.module.css";
 
 const CalendarDayQuery = gql(`
   query CalendarDay($clubId: UUID!, $date: Date!, $startDate: Datetime!, $endDate: Datetime!) {
@@ -71,17 +72,12 @@ export interface DayCalendarProps {
 
 export default function DayCalendar({
   date,
-  onDateChange,
   createEvent,
   clubId,
-  refreshKey,
   canReadAllReports,
   canWrite = false,
 }: DayCalendarProps) {
   const { t } = useLingui();
-  const supabase = useMemo(() => {
-    return createClient();
-  }, []);
 
   const { data, refetch } = useSuspenseQuery(CalendarDayQuery, {
     variables: {

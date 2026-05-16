@@ -112,7 +112,7 @@ msgstr ""
 msgid "Absence reports"
 msgstr ""
 
-#: src/app/app/[id]/calendar/day.tsx
+#: src/app/app/[id]/calendar/[year]/[month]/[day]/Day.tsx
 msgid "Absence reports for this day"
 msgstr ""
 
@@ -144,7 +144,7 @@ msgstr ""
 msgid "Add comments (optional)"
 msgstr ""
 
-#: src/app/app/[id]/calendar/day.tsx
+#: src/app/app/[id]/calendar/[year]/[month]/[day]/Day.tsx
 msgid "Add event"
 msgstr ""
 
@@ -215,7 +215,7 @@ msgstr ""
 msgid "An error occurred."
 msgstr ""
 
-#: src/app/app/[id]/calendar/year.tsx
+#: src/app/app/[id]/calendar/[year]/Year.tsx
 msgid "An event is scheduled on this day."
 msgstr ""
 
@@ -478,7 +478,7 @@ msgstr ""
 msgid "Date and time columns"
 msgstr ""
 
-#: src/app/app/[id]/calendar/calendar.tsx
+#: src/app/app/[id]/calendar/ModePicker.tsx
 msgid "Day"
 msgstr ""
 
@@ -807,7 +807,7 @@ msgstr ""
 msgid "GitHub"
 msgstr ""
 
-#: src/app/app/[id]/calendar/calendar.tsx
+#: src/app/app/[id]/calendar/CalendarNavigation.tsx
 msgid "Go to today"
 msgstr ""
 
@@ -1041,7 +1041,7 @@ msgstr ""
 msgid "Metadata"
 msgstr ""
 
-#: src/app/app/[id]/calendar/calendar.tsx
+#: src/app/app/[id]/calendar/ModePicker.tsx
 msgid "Month"
 msgstr ""
 
@@ -1086,7 +1086,7 @@ msgstr ""
 msgid "No absence report templates found."
 msgstr ""
 
-#: src/app/app/[id]/calendar/day.tsx
+#: src/app/app/[id]/absences/(list)/list.tsx
 msgid "No absence reports"
 msgstr ""
 
@@ -1114,7 +1114,7 @@ msgstr ""
 msgid "No event"
 msgstr ""
 
-#: src/app/app/[id]/calendar/day.tsx
+#: src/app/app/[id]/calendar/[year]/[month]/[day]/Day.tsx
 msgid "No events for today."
 msgstr ""
 
@@ -1714,7 +1714,7 @@ msgstr ""
 msgid "The report pending review"
 msgstr ""
 
-#: src/app/app/[id]/calendar/day.tsx
+#: src/app/app/[id]/calendar/[year]/[month]/[day]/Day.tsx
 msgid "There are no reported absences for this day."
 msgstr ""
 
@@ -1872,7 +1872,7 @@ msgstr ""
 msgid "When you create your account with certain SNS services <0><1>such as Google</1></0>, your profile picture is set automatically. Otherwise, to change your profile picture, update your Gravatar with the email you use for Horenso SPACE and click \"Update from Gravatar\"."
 msgstr ""
 
-#: src/app/app/[id]/calendar/calendar.tsx
+#: src/app/app/[id]/calendar/ModePicker.tsx
 msgid "Year"
 msgstr ""
 

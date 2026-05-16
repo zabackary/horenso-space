@@ -8,11 +8,6 @@
   border-radius: var(--radius-5);
 }
 
-.swiper {
-  width: 100%;
-  flex-grow: 1;
-}
-
 .header {
   flex-grow: 1;
   text-align: left;
