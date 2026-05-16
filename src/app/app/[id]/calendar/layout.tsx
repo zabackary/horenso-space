@@ -1,4 +1,6 @@
+import getPermissionsForClub from "@/lib/auth/getPermissionsForClub";
 import { initLingui } from "@/lib/i18n/initLingui";
+import { createClient } from "@/lib/supabase/server";
 import CalendarNavigation from "./CalendarNavigation";
 
 export default async function Layout({
@@ -8,5 +10,14 @@ export default async function Layout({
   const { id } = await params;
   await initLingui();
 
-  return <CalendarNavigation>{children}</CalendarNavigation>;
+  const { permissions } = await getPermissionsForClub(await createClient(), id);
+
+  return (
+    <CalendarNavigation
+      canWrite={permissions.includes("canWriteCalendar")}
+      clubId={id}
+    >
+      {children}
+    </CalendarNavigation>
+  );
 }

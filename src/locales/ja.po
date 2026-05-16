@@ -148,7 +148,7 @@ msgstr "スクリーンショットの追加"
 msgid "Add comments (optional)"
 msgstr "コメントを追加（任意）"
 
-#: src/app/app/[id]/calendar/[year]/[month]/[day]/Day.tsx
+#: src/app/app/[id]/page.tsx
 msgid "Add event"
 msgstr "イベントを追加"
 
@@ -1359,7 +1359,6 @@ msgstr "スクリーンショットを削除する"
 msgid "Report a bug"
 msgstr "バグの報告"
 
-#: src/app/app/[id]/absences/(list)/layout.tsx
 #: src/app/app/[id]/page.tsx
 msgid "Report absence"
 msgstr "欠席を報告"

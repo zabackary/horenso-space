@@ -58,7 +58,7 @@ export default async function ClubPage({ params }: PageProps<"/app/[id]">) {
           permissions.permissions.includes("canWriteCalendar")
             ? {
                 label: <Trans>Add event</Trans>,
-                href: `/app/${id}/calendar/create`,
+                href: `/app/${id}/calendar/?create=true`,
               }
             : undefined
         }

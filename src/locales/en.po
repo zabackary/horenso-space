@@ -148,7 +148,7 @@ msgstr "Add a screenshot"
 msgid "Add comments (optional)"
 msgstr "Add comments (optional)"
 
-#: src/app/app/[id]/calendar/[year]/[month]/[day]/Day.tsx
+#: src/app/app/[id]/page.tsx
 msgid "Add event"
 msgstr "Add event"
 
@@ -1371,7 +1371,6 @@ msgstr "Remove screenshot"
 msgid "Report a bug"
 msgstr "Report a bug"
 
-#: src/app/app/[id]/absences/(list)/layout.tsx
 #: src/app/app/[id]/page.tsx
 msgid "Report absence"
 msgstr "Report absence"

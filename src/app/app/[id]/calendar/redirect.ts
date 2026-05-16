@@ -10,7 +10,7 @@ export default function CalendarRedirect({ id }: { id: string }) {
       date.getMonth() + 1
     )
       .toString()
-      .padStart(2, "0")}`;
+      .padStart(2, "0")}${window.location.search}`;
     redirect(pathname);
   }, []);
   return null;
