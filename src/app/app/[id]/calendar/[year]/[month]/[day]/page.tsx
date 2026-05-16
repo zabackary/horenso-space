@@ -1,4 +1,6 @@
+import getPermissionsForClub from "@/lib/auth/getPermissionsForClub";
 import { initLingui } from "@/lib/i18n/initLingui";
+import { createClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
 import DayCalendar from "./Day";
 
@@ -15,12 +17,15 @@ export default async function CalendarDayPage({
     notFound();
   }
 
+  const supabase = await createClient();
+  const { permissions } = await getPermissionsForClub(supabase, id);
+
   return (
     <DayCalendar
       clubId={id}
       date={`${year}-${month}-${day}`}
-      canWrite // TODO: check permissions
-      canReadAllReports // TODO: check permissions
+      canWrite={permissions.includes("canWriteCalendar")}
+      canReadAllReports={permissions.includes("canReadAllReports")}
     />
   );
 }
