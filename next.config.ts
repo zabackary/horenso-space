@@ -31,7 +31,7 @@ export default withSentryConfig(nextConfig, {
 
   org: "horenso-space",
 
-  project: "javascript-nextjs",
+  project: "horenso-space",
 
   // Only print logs for uploading source maps in CI
   silent: !process.env.CI,
