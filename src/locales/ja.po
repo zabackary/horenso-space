@@ -225,7 +225,7 @@ msgstr "この日にはイベントが予定されています。"
 
 #: src/components/profile-editor.tsx
 msgid "An unexpected error occurred. Please try again."
-msgstr ""
+msgstr "エラーが発生しました。もう一度お試しください。"
 
 #: src/app/auth/error/page.tsx
 msgid "An unspecified error occurred"
@@ -436,11 +436,11 @@ msgstr "部活を作成"
 
 #: src/app/app/[id]/calendar/AddEventDrawers.tsx
 msgid "Create a new event"
-msgstr ""
+msgstr "新しいイベントの作成"
 
 #: src/app/app/[id]/calendar/calendar.tsx
 msgid "Create a new event for your club."
-msgstr "新しいイベントを制作する"
+msgstr "新しいイベントを作成する"
 
 #: src/components/permission-text.tsx
 msgid "Create and edit calendar events"
@@ -456,7 +456,7 @@ msgstr "イベントを作成する"
 
 #: src/app/app/[id]/calendar/CalendarNavigation.tsx
 msgid "Create Event"
-msgstr ""
+msgstr "イベントの作成"
 
 #: src/app/app/[id]/config/roles/roles-manager.tsx
 #: src/components/club-config/roles-manager.tsx
@@ -577,12 +577,12 @@ msgstr "テンプレートを編集する"
 
 #: src/components/profile-editor.tsx
 msgid "Edit with Gravatar"
-msgstr ""
+msgstr "Gravatarで編集する"
 
 #: src/components/profile-editor.tsx
 #: src/components/profile-editor.tsx
 msgid "Edit your profile picture on Gravatar."
-msgstr ""
+msgstr "Gravatarでプロフィール画像を編集する"
 
 #: src/components/auth/signup-form.tsx
 msgid "Email"
@@ -614,11 +614,11 @@ msgstr "個人情報との接続の切除に失敗しました:{0}"
 
 #: src/components/profile-editor.tsx
 msgid "Error updating from Gravatar: {0}"
-msgstr ""
+msgstr "Gravatarからの更新に失敗しました: {0}"
 
 #: src/components/profile-editor.tsx
 msgid "Error updating from Gravatar: {message}"
-msgstr ""
+msgstr "Gravatarからの更新に失敗しました: {message}"
 
 #: src/components/auth/login-auth-providers-settings.tsx
 msgid "Error updating password: {0}"
@@ -626,7 +626,7 @@ msgstr "パスワードの更新ができませんでした:{0}"
 
 #: src/components/profile-editor.tsx
 msgid "Error updating profile."
-msgstr ""
+msgstr "プロフィールの更新中にエラーが発生しました"
 
 #: src/app/app/[id]/absences/(list)/assigned/detail.tsx
 msgid "Event"
@@ -708,7 +708,7 @@ msgstr "報告の削除に失敗しました。もう一度お試しください
 
 #: src/components/profile-editor.tsx
 msgid "Failed to fetch user information. Please try again."
-msgstr ""
+msgstr "ユーザー情報を取得できませんでした。もう一度お試しください。"
 
 #: src/components/club-config/invite.tsx
 msgid "Failed to generate invite. Please try again."
@@ -753,7 +753,7 @@ msgstr "フィードバックを送信できませんでした。後でもう一
 
 #: src/components/profile-editor.tsx
 msgid "Failed to update profile with Gravatar. Please try again."
-msgstr ""
+msgstr "Gravatarのプロフィール画像の更新に失敗しました。もう一度お試しください。"
 
 #: src/app/app/[id]/config/roles/role-dialog.tsx
 #: src/components/club-config/roles-manager.tsx
@@ -835,7 +835,7 @@ msgstr "グラフ"
 
 #: src/components/auth/signup-form.tsx
 msgid "Great!"
-msgstr ""
+msgstr "最高！"
 
 #: src/components/ui/app-header-menu.tsx
 msgid "Help center"
@@ -1145,15 +1145,15 @@ msgstr "添付されたフォームはありません"
 
 #: src/components/profile-editor.tsx
 msgid "No Gravatar found for the email associated with your account. You will need to first upload a profile picture to Gravatar using that email before updating your profile picture on Horenso SPACE."
-msgstr ""
+msgstr "このメールアドレスと連携したGravatarのアカウントが見つかりませんでした。Gravatarでプロフィール画像をアップロードしてから報連相Spaceのプロフィール画像を更新してください。"
 
 #: src/components/profile-editor.tsx
 msgid "No Gravatar found for your email. First upload a profile picture to Gravatar using that email before updating your profile picture on Horenso SPACE."
-msgstr ""
+msgstr "このメールアドレスと連携したGravatarのアカウントが見つかりませんでした。Gravatarでプロフィール画像をアップロードしてから報連相Spaceのプロフィール画像を更新してください。"
 
 #: src/components/profile-editor.tsx
 msgid "No Gravatar found for your email. Upload a profile picture to Gravatar using that email then try again."
-msgstr ""
+msgstr "このメールアドレスと連携したGravatarのアカウントが見つかりませんでした。Gravatarでプロフィール画像をアップロードしてから報連相Spaceのプロフィール画像を更新してください。"
 
 #: src/components/club-config/invite.tsx
 msgid "No invites yet"
@@ -1303,19 +1303,19 @@ msgstr "プロフィールと設定"
 
 #: src/components/profile-editor.tsx
 msgid "Profile Picture"
-msgstr ""
+msgstr "プロフィール画像"
 
 #: src/components/profile-editor.tsx
 msgid "Profile picture of {0}"
-msgstr ""
+msgstr "{0} のプロフィール画像"
 
 #: src/components/profile-editor.tsx
 msgid "Profile pictures from Google accounts with the \"only show my profile picture to people I interact with\" setting enabled may not be visible."
-msgstr ""
+msgstr "Googleアカウントの設定が「やり取りしているユーザーのみにプロフィール画像を表示」になっている場合は、表示することができない場合があります。"
 
 #: src/components/profile-editor.tsx
 msgid "Profile pictures on Horenso SPACE are managed with Gravatar. Update your profile picture on Gravatar then click \"Use Gravatar\". If you created your account with certain SNS services <0><1>such as Google</1></0>, your profile picture may have been set automatically."
-msgstr ""
+msgstr "報連相Spaceのプロフィール画像はGravatarで管理されています。Gravatar上でプロフィール画像を更新してから、「Gravatarを使用する」を選択してください。もしGoogleなどのSNSサービスでアカウントを制作した場合はプロフィール画像が引き継がれている可能性があります。"
 
 #: src/components/club-config/metadata-form.tsx
 msgid "Public"
@@ -1676,11 +1676,11 @@ msgstr "送信者"
 
 #: src/components/ui/absence-report-card.tsx
 msgid "Submitted by <0>{0}</0>"
-msgstr ""
+msgstr "<0>{0}</0> に提出されました"
 
 #: src/components/ui/absence-report-card.tsx
 msgid "Submitted by <0></0>"
-msgstr ""
+msgstr "<0></0> に提出されました"
 
 #: src/app/app/[id]/absences/(list)/list.tsx
 #~ msgid "Submitted on {0}"
@@ -1781,7 +1781,7 @@ msgstr "無題のフォーム"
 
 #: src/components/profile-editor.tsx
 msgid "Update from Gravatar"
-msgstr ""
+msgstr "Gravatarから更新する"
 
 #: src/components/auth/login-auth-providers-settings.tsx
 msgid "Update password"
@@ -1797,11 +1797,11 @@ msgstr "部活ファイルのアップロードと管理"
 
 #: src/components/profile-editor.tsx
 msgid "Use Gravatar for {0}"
-msgstr ""
+msgstr "{0} にGravatarを用いる"
 
 #: src/components/profile-editor.tsx
 msgid "Use my Gravatar"
-msgstr ""
+msgstr "私のGravatarを使用する"
 
 #: src/components/club-config/invite.tsx
 #~ msgid "Used {0} times"
@@ -1821,7 +1821,7 @@ msgstr "部活のカレンダーイベントを表示"
 
 #: src/components/ui/user-link.tsx
 msgid "View profile"
-msgstr ""
+msgstr "プロフィールを見る"
 
 #: src/components/ui/app-header-menu.tsx
 msgid "We appreciate your feedback to help us improve. Every message is read and considered."
@@ -1833,11 +1833,11 @@ msgstr "パスワードリセット用のリンクをメールでお送りしま
 
 #: src/components/auth/signup-form.tsx
 msgid "We found your Gravatar!"
-msgstr ""
+msgstr "あなたのGravatarを見つけました！"
 
 #: src/components/auth/signup-form.tsx
 msgid "We found your Gravatar! This will be used as your profile picture."
-msgstr ""
+msgstr "あなたのGravatarを見つけました！あなたのプロフィール画像として使用されます。"
 
 #: src/components/club-config/metadata-form.tsx
 #: src/components/club-create-form.tsx
@@ -1850,7 +1850,7 @@ msgstr "おかえりなさい"
 
 #: src/components/auth/signup-form.tsx
 msgid "Welcome, {fullName}!"
-msgstr ""
+msgstr "{fullName} さんようこそ！"
 
 #: src/app/auth/sign-up/page.tsx
 msgid "Welcome!"
@@ -1866,11 +1866,11 @@ msgstr "バグはなんですか？何を求めていましたか？"
 
 #: src/components/profile-editor.tsx
 msgid "When you create your account with certain SNS services <0><1>such as Google</1></0>, your profile picture is set automatically. However, if you wish to change it, profile pictures on Horenso SPACE are managed through Gravatar. First, upload your profile picture to Gravatar using the same email as your Horenso SPACE account. Then, click the \"Update\" button below to update your profile picture on Horenso SPACE."
-msgstr ""
+msgstr "SNSサービス等でアカウントを制作した場合はプロフィール画像が自動で設定されています。もし変更したい場合は、Gravatarに画像をアップロードし、「更新」ボタンを押して更新してください。"
 
 #: src/components/profile-editor.tsx
 msgid "When you create your account with certain SNS services <0><1>such as Google</1></0>, your profile picture is set automatically. Otherwise, to change your profile picture, update your Gravatar with the email you use for Horenso SPACE and click \"Update from Gravatar\"."
-msgstr ""
+msgstr "SNSサービス等でアカウントを制作した場合はプロフィール画像が自動で設定されています。もし変更したい場合は、Gravatarに画像をアップロードし、「更新」ボタンを押して更新してください。"
 
 #: src/app/app/[id]/calendar/ModePicker.tsx
 msgid "Year"
@@ -1882,7 +1882,7 @@ msgstr "部活に招待されています"
 
 #: src/components/profile-editor.tsx
 msgid "You are not authorized to perform this action."
-msgstr ""
+msgstr "あなたはこの行動をすることが許されていません"
 
 #: src/components/club-config/members-manager.tsx
 msgid "You cannot remove yourself from the club."
@@ -1895,11 +1895,11 @@ msgstr "欠席届フォームが設​​定されていません。部活動の
 #: src/components/profile-editor.tsx
 #: src/components/profile-editor.tsx
 msgid "You don't have an email with your account. Add one in your login settings first."
-msgstr ""
+msgstr "このアカウントにつながっているメールアドレスがありません。一つ連携してください。"
 
 #: src/components/profile-editor.tsx
 msgid "You don't have an email with your account. Please add one before updating from your Gravatar."
-msgstr ""
+msgstr "このアカウントにはメールアドレスが連携されていません。Gravatarを使用する前に一つ連携してください。"
 
 #: src/app/app/[id]/absences/(list)/my/list.tsx
 msgid "You don't have any absence reports"
@@ -1955,7 +1955,7 @@ msgstr "名前"
 
 #: src/components/auth/signup-form.tsx
 msgid "Your profile picture"
-msgstr ""
+msgstr "あなたのプロフィール画像"
 
 #: src/components/club-create-form.tsx
 msgid "Your school"
