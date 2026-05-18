@@ -1,7 +1,6 @@
 "use client";
 
-import { gql } from "@/gql";
-import { createClient } from "@/lib/supabase/client";
+import { gql } from "@apollo/client";
 import { useMutation, useSuspenseQuery } from "@apollo/client/react";
 import { Trans, useLingui } from "@lingui/react/macro";
 import { CrossCircledIcon, TrashIcon } from "@radix-ui/react-icons";
@@ -18,16 +17,62 @@ import {
 } from "@radix-ui/themes";
 import Link from "next/link";
 import { useState } from "react";
+import PaginationControls from "@/components/ui/pagination-controls";
+import { createClient } from "@/lib/supabase/client";
 import { UserLink } from "../ui/user-link";
 import styles from "./members-manager.module.css";
 
-const MembersManagerQuery = gql(`
-  query MembersManager($clubId: UUID!) {
+const PAGE_SIZE = 20;
+
+type MembersManagerQueryData = {
+  clubMembersCollection?: {
+    pageInfo: {
+      hasNextPage: boolean;
+      endCursor: string | null;
+    };
+    edges: Array<{
+      node: {
+        userId: string;
+        user?: {
+          fullName: string;
+          nickname?: string | null;
+          avatarUrl?: string | null;
+        } | null;
+        role?: {
+          name: string;
+          id: string;
+        } | null;
+      };
+    }>;
+  } | null;
+  rolesCollection?: {
+    edges: Array<{
+      node: {
+        id: string;
+        name: string;
+      };
+    }>;
+  } | null;
+};
+
+type MembersManagerQueryVariables = {
+  clubId: string;
+  first: number;
+  after: string | null;
+};
+
+const MembersManagerQuery = gql`
+  query MembersManager($clubId: UUID!, $first: Int!, $after: Cursor) {
     clubMembersCollection(
       orderBy: { joinedAt: DescNullsLast }
-      first: 100
+      first: $first
+      after: $after
       filter: { clubId: { eq: $clubId } }
     ) {
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
       edges {
         node {
           user {
@@ -56,9 +101,9 @@ const MembersManagerQuery = gql(`
       }
     }
   }
-`);
+`;
 
-const ChangeMemberRoleMutation = gql(`
+const ChangeMemberRoleMutation = gql`
   mutation ChangeMemberRole($clubId: UUID!, $userId: UUID!, $roleId: UUID) {
     updateClubMembersCollection(
       set: {roleId: $roleId}
@@ -68,9 +113,9 @@ const ChangeMemberRoleMutation = gql(`
       affectedCount
     }
   }
-`);
+`;
 
-const RemoveMemberMutation = gql(`
+const RemoveMemberMutation = gql`
   mutation RemoveMember($clubId: UUID!, $userId: UUID!) {
     deleteFromClubMembersCollection(
       filter: {userId: {eq: $userId}, clubId: {eq: $clubId}}
@@ -79,13 +124,21 @@ const RemoveMemberMutation = gql(`
       affectedCount
     }
   }
-`);
+`;
 
 export default function MembersManager({ clubId }: { clubId: string }) {
   const [error, setError] = useState<string | null>(null);
+  const [after, setAfter] = useState<string | null>(null);
+  const [previousCursors, setPreviousCursors] = useState<(string | null)[]>([]);
+  const { t } = useLingui();
+  const [changeMemberRole] = useMutation(ChangeMemberRoleMutation);
+  const [removeMemberMutation] = useMutation(RemoveMemberMutation);
 
-  const { data, error: queryError } = useSuspenseQuery(MembersManagerQuery, {
-    variables: { clubId },
+  const { data, error: queryError } = useSuspenseQuery<
+    MembersManagerQueryData,
+    MembersManagerQueryVariables
+  >(MembersManagerQuery, {
+    variables: { clubId, first: PAGE_SIZE, after },
   });
 
   if (queryError) {
@@ -102,12 +155,10 @@ export default function MembersManager({ clubId }: { clubId: string }) {
     );
   }
 
-  const members = data?.clubMembersCollection?.edges.map((e) => e.node) ?? [];
+  const membersCollection = data?.clubMembersCollection;
+  const members = membersCollection?.edges.map((e) => e.node) ?? [];
+  const pageInfo = membersCollection?.pageInfo;
   const roles = data?.rolesCollection?.edges.map((e) => e.node) ?? [];
-
-  const { t } = useLingui();
-
-  const [changeMemberRole] = useMutation(ChangeMemberRoleMutation);
 
   async function changeRole(memberUserId: string, newRoleId: string) {
     setError(null);
@@ -121,8 +172,6 @@ export default function MembersManager({ clubId }: { clubId: string }) {
       setError(t`Failed to change member role. Please try again later.`);
     }
   }
-
-  const [removeMemberMutation] = useMutation(RemoveMemberMutation);
 
   async function removeMember(memberUserId: string) {
     setError(null);
@@ -221,6 +270,23 @@ export default function MembersManager({ clubId }: { clubId: string }) {
               </Card>
             );
           })
+        )}
+        {members.length > 0 && (
+          <PaginationControls
+            label={`Showing ${members.length} members`}
+            hasPrevious={previousCursors.length > 0}
+            hasNext={Boolean(pageInfo?.hasNextPage && pageInfo.endCursor)}
+            onPrevious={() => {
+              const previous = previousCursors.at(-1) ?? null;
+              setPreviousCursors((current) => current.slice(0, -1));
+              setAfter(previous);
+            }}
+            onNext={() => {
+              if (!pageInfo?.hasNextPage || !pageInfo.endCursor) return;
+              setPreviousCursors((current) => [...current, after]);
+              setAfter(pageInfo.endCursor);
+            }}
+          />
         )}
       </Flex>
     </Flex>

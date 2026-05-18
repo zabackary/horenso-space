@@ -1,15 +1,25 @@
 "use client";
 
-import type { Database } from "@/@types/database.types";
-import { createClient } from "@/lib/supabase/client";
 import { Trans, useLingui } from "@lingui/react/macro";
 import { Flex, Heading, SegmentedControl, Skeleton } from "@radix-ui/themes";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { lazy, Suspense, use, useCallback, useEffect, useState } from "react";
-import RoleDialog, { Role } from "./role-dialog";
+import {
+  lazy,
+  Suspense,
+  use,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
+import type { Database } from "@/@types/database.types";
+import PaginationControls from "@/components/ui/pagination-controls";
+import { createClient } from "@/lib/supabase/client";
+import RoleDialog, { type Role } from "./role-dialog";
 import RolesManager from "./roles-manager";
 
 const RolesGraph = lazy(() => import("./roles-graph"));
+const PAGE_SIZE = 20;
 
 type RolesViewProps = {
   clubId: string;
@@ -50,30 +60,44 @@ export default function RolesView({
       absenceReportReviewerRole: r.absence_report_reviewer_role ?? null,
       absenceReportApprovalRequired: r.absence_report_approval_required,
       absenceReportFormId: r.absence_report_form ?? null,
-    }))
+    })),
   );
   const [forms] = useState<{ id: string; name: string }[]>(() =>
-    (formsInitial ?? []).map((f) => ({ id: f.id, name: f.name }))
+    (formsInitial ?? []).map((f) => ({ id: f.id, name: f.name })),
   );
 
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
+  const search = searchParams.toString();
   const viewParam = searchParams.get("view") ?? "list";
   const [view, setView] = useState<"list" | "graph">(
-    viewParam === "graph" ? "graph" : "list"
+    viewParam === "graph" ? "graph" : "list",
   );
 
   useEffect(() => {
-    const params = new URLSearchParams(searchParams.toString());
+    const params = new URLSearchParams(search);
     params.set("view", view);
     router.replace(`${pathname}?${params.toString()}`);
-  }, [view, router, pathname, searchParams.toString()]);
+  }, [view, router, pathname, search]);
 
   const [dialogOpen, setDialogOpen] = useState(false);
   const [dialogMode, setDialogMode] = useState<"new" | "edit">("new");
   const [selectedRole, setSelectedRole] = useState<Role | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const pagedRoles = useMemo(
+    () => roles.slice(currentPage * PAGE_SIZE, (currentPage + 1) * PAGE_SIZE),
+    [roles, currentPage],
+  );
+  const hasPreviousPage = currentPage > 0;
+  const hasNextPage = (currentPage + 1) * PAGE_SIZE < roles.length;
+
+  useEffect(() => {
+    const maxPage = Math.max(Math.ceil(roles.length / PAGE_SIZE) - 1, 0);
+    setCurrentPage((page) => Math.min(page, maxPage));
+  }, [roles.length]);
 
   function openCreate() {
     setSelectedRole(null);
@@ -87,12 +111,12 @@ export default function RolesView({
       setDialogMode("edit");
       setDialogOpen(true);
     },
-    [roles]
+    [roles],
   );
 
   async function onSave(
     roleId: string,
-    payload: Omit<Role, "id"> & { name: string }
+    payload: Omit<Role, "id"> & { name: string },
   ) {
     setError(null);
     const supabase = createClient();
@@ -123,8 +147,8 @@ export default function RolesView({
                   payload.absenceReportApprovalRequired,
                 absenceReportFormId: payload.absenceReportFormId,
               }
-            : r
-        )
+            : r,
+        ),
       );
       setDialogOpen(false);
     } catch (e) {
@@ -178,7 +202,7 @@ export default function RolesView({
   async function deleteRole(roleId: string) {
     if (
       !confirm(
-        t`Are you sure you want to delete this role? This action cannot be undone.`
+        t`Are you sure you want to delete this role? This action cannot be undone.`,
       )
     )
       return;
@@ -213,12 +237,25 @@ export default function RolesView({
       </Flex>
 
       {view === "list" ? (
-        <RolesManager
-          roles={roles}
-          onEditRole={openEdit}
-          onCreateRole={openCreate}
-          onDeleteRole={deleteRole}
-        />
+        <Flex direction="column" gap="3">
+          <RolesManager
+            roles={pagedRoles}
+            onEditRole={openEdit}
+            onCreateRole={openCreate}
+            onDeleteRole={deleteRole}
+          />
+          {roles.length > 0 && (
+            <PaginationControls
+              label={`Showing ${pagedRoles.length} of ${roles.length} roles`}
+              hasPrevious={hasPreviousPage}
+              hasNext={hasNextPage}
+              onPrevious={() => setCurrentPage((page) => Math.max(page - 1, 0))}
+              onNext={() =>
+                setCurrentPage((page) => (hasNextPage ? page + 1 : page))
+              }
+            />
+          )}
+        </Flex>
       ) : (
         <Suspense fallback={<Skeleton height="100%" />}>
           <RolesGraph
@@ -247,14 +284,14 @@ export default function RolesView({
 }
 
 export function normalizePermissions(
-  p: Database["public"]["Tables"]["roles"]["Row"]["permissions"]
+  p: Database["public"]["Tables"]["roles"]["Row"]["permissions"],
 ): Record<string, boolean> {
   if (!p || typeof p !== "object" || Array.isArray(p)) return {};
   const entries = Object.entries(
     p as Record<
       string,
       Database["public"]["Tables"]["roles"]["Row"]["permissions"]
-    >
+    >,
   );
   const out: Record<string, boolean> = {};
   entries.forEach(([k, v]) => {

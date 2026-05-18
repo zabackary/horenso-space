@@ -1,32 +1,94 @@
 "use client";
 
-import AbsenceReportCard from "@/components/ui/absence-report-card";
-import EmptyState from "@/components/ui/empty-state";
-import { gql } from "@/gql";
+import { gql } from "@apollo/client";
 import { useSuspenseQuery } from "@apollo/client/react";
 import { useLingui } from "@lingui/react/macro";
 import { FileTextIcon } from "@radix-ui/react-icons";
 import { Flex } from "@radix-ui/themes";
+import { useState } from "react";
+import type { AbsenceReportCardProps } from "@/components/ui/absence-report-card";
+import AbsenceReportCard from "@/components/ui/absence-report-card";
+import EmptyState from "@/components/ui/empty-state";
+import PaginationControls from "@/components/ui/pagination-controls";
 
-const myReportsQuery = gql(`
-  query MyAbsenceReports($clubId: UUID!, $userId: UUID!) {
+const PAGE_SIZE = 20;
+
+type MyReportsQueryData = {
+  absenceReportsCollection?: {
+    pageInfo: {
+      hasNextPage: boolean;
+      endCursor: string | null;
+    };
+    edges: Array<{
+      node: AbsenceReportCardProps["report"] & { id: string };
+    }>;
+  } | null;
+};
+
+type MyReportsQueryVariables = {
+  clubId: string;
+  userId: string;
+  first: number;
+  after: string | null;
+};
+
+const myReportsQuery = gql`
+  query MyAbsenceReports(
+    $clubId: UUID!
+    $userId: UUID!
+    $first: Int!
+    $after: Cursor
+  ) {
     absenceReportsCollection(
       filter: {
         clubId: { eq: $clubId }
         userId: { eq: $userId }
       }
       orderBy: { createdAt: DescNullsFirst }
-      offset: 0
+      first: $first
+      after: $after
     ) {
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
       edges {
         node {
-          id,
-          ...AbsenceReportCard
+          id
+          date
+          createdAt
+          assignedToRole: roles {
+            name
+          }
+          reviews: absenceReportReviewsCollection {
+            edges {
+              node {
+                id
+              }
+            }
+          }
+          event {
+            id
+            title
+            startTime
+            endTime
+          }
+          user {
+            fullName
+            avatarUrl
+          }
+          status: absenceReportsStatusCollection {
+            edges {
+              node {
+                isApproved
+              }
+            }
+          }
         }
       }
     }
   }
-`);
+`;
 
 export function MyReportsList({
   clubId,
@@ -36,13 +98,23 @@ export function MyReportsList({
   userId: string;
 }) {
   const { t } = useLingui();
-  const { data } = useSuspenseQuery(myReportsQuery, {
+  const [after, setAfter] = useState<string | null>(null);
+  const [previousCursors, setPreviousCursors] = useState<(string | null)[]>([]);
+
+  const { data } = useSuspenseQuery<
+    MyReportsQueryData,
+    MyReportsQueryVariables
+  >(myReportsQuery, {
     variables: {
-      clubId: clubId,
-      userId: userId,
+      clubId,
+      userId,
+      first: PAGE_SIZE,
+      after,
     },
   });
-  const reports = data?.absenceReportsCollection?.edges ?? [];
+  const collection = data?.absenceReportsCollection;
+  const reports = collection?.edges ?? [];
+  const pageInfo = collection?.pageInfo;
 
   return reports.length <= 0 ? (
     <EmptyState
@@ -58,6 +130,21 @@ export function MyReportsList({
           href={`/app/${clubId}/absences/my/${report.node.id}`}
         />
       ))}
+      <PaginationControls
+        label={`Showing ${reports.length} reports`}
+        hasPrevious={previousCursors.length > 0}
+        hasNext={Boolean(pageInfo?.hasNextPage && pageInfo.endCursor)}
+        onPrevious={() => {
+          const previous = previousCursors.at(-1) ?? null;
+          setPreviousCursors((current) => current.slice(0, -1));
+          setAfter(previous);
+        }}
+        onNext={() => {
+          if (!pageInfo?.hasNextPage || !pageInfo.endCursor) return;
+          setPreviousCursors((current) => [...current, after]);
+          setAfter(pageInfo.endCursor);
+        }}
+      />
     </Flex>
   );
 }
