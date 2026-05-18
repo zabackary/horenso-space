@@ -246,7 +246,7 @@ export default function RolesView({
           />
           {roles.length > 0 && (
             <PaginationControls
-              label={`Showing ${pagedRoles.length} of ${roles.length} roles`}
+              label={`Showing ${pagedRoles.length} roles on this page`}
               hasPrevious={hasPreviousPage}
               hasNext={hasNextPage}
               onPrevious={() => setCurrentPage((page) => Math.max(page - 1, 0))}
