@@ -273,7 +273,7 @@ export default function MembersManager({ clubId }: { clubId: string }) {
         )}
         {members.length > 0 && (
           <PaginationControls
-            label={`Showing ${members.length} members on this page`}
+            label={t`Showing ${members.length} members on this page`}
             hasPrevious={previousCursors.length > 0}
             hasNext={Boolean(pageInfo?.hasNextPage && pageInfo.endCursor)}
             onPrevious={() => {

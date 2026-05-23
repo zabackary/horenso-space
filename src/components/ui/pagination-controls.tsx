@@ -1,3 +1,4 @@
+import { Trans } from "@lingui/react/macro";
 import { Button, Flex, Text } from "@radix-ui/themes";
 
 type PaginationControlsProps = {
@@ -22,10 +23,10 @@ export default function PaginationControls({
       </Text>
       <Flex gap="2">
         <Button variant="soft" onClick={onPrevious} disabled={!hasPrevious}>
-          Previous
+          <Trans>Previous</Trans>
         </Button>
         <Button variant="soft" onClick={onNext} disabled={!hasNext}>
-          Next
+          <Trans>Next</Trans>
         </Button>
       </Flex>
     </Flex>

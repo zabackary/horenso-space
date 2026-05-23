@@ -7,9 +7,7 @@ import { FileTextIcon } from "@radix-ui/react-icons";
 import { Flex } from "@radix-ui/themes";
 import { useState } from "react";
 import type { AbsenceReportCardProps } from "@/components/ui/absence-report-card";
-import AbsenceReportCard, {
-  AbsenceReportCardFragment,
-} from "@/components/ui/absence-report-card";
+import AbsenceReportCard from "@/components/ui/absence-report-card";
 import EmptyState from "@/components/ui/empty-state";
 import PaginationControls from "@/components/ui/pagination-controls";
 
@@ -50,12 +48,39 @@ const allReportsQuery = gql`
       edges {
         node {
           id
-          ...AbsenceReportCard
+          date
+          createdAt
+          assignedToRole: roles {
+            name
+          }
+          reviews: absenceReportReviewsCollection {
+            edges {
+              node {
+                id
+              }
+            }
+          }
+          event {
+            id
+            title
+            startTime
+            endTime
+          }
+          user {
+            fullName
+            avatarUrl
+          }
+          status: absenceReportsStatusCollection {
+            edges {
+              node {
+                isApproved
+              }
+            }
+          }
         }
       }
     }
   }
-  ${AbsenceReportCardFragment}
 `;
 
 export function AllReportsList({ clubId }: { clubId: string }) {
@@ -89,7 +114,7 @@ export function AllReportsList({ clubId }: { clubId: string }) {
         />
       ))}
       <PaginationControls
-        label={`Showing ${reports.length} reports on this page`}
+        label={t`Showing ${reports.length} reports on this page`}
         hasPrevious={previousCursors.length > 0}
         hasNext={Boolean(pageInfo?.hasNextPage && pageInfo.endCursor)}
         onPrevious={() => {
