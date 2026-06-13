@@ -118,28 +118,31 @@ create function public.absence_reports_assigned_get(p_club_id uuid)
 where
   ar.club_id = p_club_id
   and not exists(
+    -- Check if someone from the assigned role has already reviewed the report
     select
       1
     from
-      public.absence_report_reviews arr_reviewer
+      public.absence_report_reviews arr2
+      join public.club_members cm2 on cm2.user_id = arr2.reviewer_id
+        and cm2.accepted = true
     where
-      arr_reviewer.absence_report_id = ar.id
-      and arr_reviewer.reviewer_id = auth.uid())
-group by
-  -- pgt-ignore typecheck Seems to work fine
-  ar.id,
-  ar.user_id,
-  p_user.full_name,
-  ar.date,
-  ce.id,
-  ce.title,
-  ce.start_time,
-  ce.end_time,
-  ar.assigned_to_role,
-  r.name,
-  ar.data,
-  ar.form_id
-order by
-  ar.date desc nulls last;
+      arr2.absence_report_id = ar.id
+      and cm2.role_id = ar.assigned_to_role)
+  group by
+    -- pgt-ignore typecheck Seems to work fine
+    ar.id,
+    ar.user_id,
+    p_user.full_name,
+    ar.date,
+    ce.id,
+    ce.title,
+    ce.start_time,
+    ce.end_time,
+    ar.assigned_to_role,
+    r.name,
+    ar.data,
+    ar.form_id
+  order by
+    ar.date desc nulls last;
 $$;
 
