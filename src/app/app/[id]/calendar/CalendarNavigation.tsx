@@ -9,6 +9,7 @@ import {
 } from "@radix-ui/react-icons";
 import { Box, Flex, Heading, IconButton, Separator } from "@radix-ui/themes";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import {
   PropsWithChildren,
@@ -99,15 +100,16 @@ export default function CalendarNavigation({
       );
     }
   };
-  const handleNavigateToday = () => {
+  const todayNavigateTarget: [number, number?, number?] = useMemo(() => {
     if (mode === "year") {
-      navigateToDate(todayYear);
+      return [todayYear];
     } else if (mode === "month") {
-      navigateToDate(todayYear, todayMonth);
+      return [todayYear, todayMonth];
     } else if (mode === "day") {
-      navigateToDate(todayYear, todayMonth, todayDay);
+      return [todayYear, todayMonth, todayDay];
     }
-  };
+    return [todayYear];
+  }, [mode, todayYear, todayMonth, todayDay]);
   const previousNavigateTarget: [number, number?, number?] = useMemo(() => {
     if (mode === "year") {
       return [(clientYear ?? todayYear) - 1];
@@ -425,15 +427,27 @@ export default function CalendarNavigation({
           variant={isToday ? "soft" : "outline"}
           size="3"
           aria-label={t`Go to today`}
-          onClick={handleNavigateToday}
+          asChild
         >
-          <CalendarIcon />
+          <Link href={buildCalendarPath(path, ...todayNavigateTarget)}>
+            <CalendarIcon />
+          </Link>
         </IconButton>
-        <IconButton variant="surface" size="3" onClick={handleNavigatePrevious}>
-          <ArrowLeftIcon />
+        <IconButton variant="surface" size="3" asChild>
+          <Link
+            href={buildCalendarPath(path, ...previousNavigateTarget)}
+            transitionTypes={["slide-left"]}
+          >
+            <ArrowLeftIcon />
+          </Link>
         </IconButton>
-        <IconButton variant="surface" size="3" onClick={handleNavigateNext}>
-          <ArrowRightIcon />
+        <IconButton variant="surface" size="3" asChild>
+          <Link
+            href={buildCalendarPath(path, ...nextNavigateTarget)}
+            transitionTypes={["slide-right"]}
+          >
+            <ArrowRightIcon />
+          </Link>
         </IconButton>
       </Flex>
       <Separator className={styles.divider} />
