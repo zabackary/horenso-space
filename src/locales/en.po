@@ -13,1974 +13,1974 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/ui/app-header-menu.tsx
+#: src/components/ui/app-header-menu.tsx:
 msgid "(required)"
 msgstr "(required)"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "{0, plural, one {# event} other {# events}}"
 msgstr "{0, plural, one {# event} other {# events}}"
 
-#: src/components/club-config/absence-form-editor.tsx
+#: src/components/club-config/absence-form-editor.tsx:
 msgid "{0, plural, one {# follow-up} other {# follow-ups} zero {No follow-ups}}"
 msgstr "{0, plural, one {# follow-up} other {# follow-ups} zero {No follow-ups}}"
 
-#: src/components/ui/absence-report-card.tsx
+#: src/components/ui/absence-report-card.tsx:
 msgid "{0, plural, one {# review} other {# reviews}}"
 msgstr "{0, plural, one {# review} other {# reviews}}"
 
-#: src/components/club-config/invite.tsx
+#: src/components/club-config/invite.tsx:
 msgid "{0, plural, one {used 1 time} other {used # times}}"
 msgstr "{0, plural, one {used 1 time} other {used # times}}"
 
-#: src/app/app/[id]/absences/(list)/list.tsx
+#: src/app/app/[id]/absences/(list)/list.tsx:
 #~ msgid "{0} reviews"
 #~ msgstr "{0} reviews"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "{0} row(s) ready, {invalidRowCount} row(s) need attention."
 msgstr "{0} row(s) ready, {invalidRowCount} row(s) need attention."
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "{importedCount} row(s) imported, {failedCount} row(s) need attention."
 msgstr "{importedCount} row(s) imported, {failedCount} row(s) need attention."
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "{importedCount} row(s) imported. Fix the warning rows and import again if needed."
 msgstr "{importedCount} row(s) imported. Fix the warning rows and import again if needed."
 
-#: src/app/app/[id]/calendar/[year]/[month]/Month.tsx
+#: src/app/app/[id]/calendar/[year]/[month]/Month.tsx:
 msgid "{multiDayNumber} of {multiDayTotal}"
 msgstr "{multiDayNumber} of {multiDayTotal}"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "{readyRowCount} ready row(s), {issueRowCount} warning row(s)"
 msgstr "{readyRowCount} ready row(s), {issueRowCount} warning row(s)"
 
-#: src/app/page.tsx
+#: src/app/page.tsx:
 msgid "©{0} Horenso SPACE"
 msgstr "©{0} Horenso SPACE"
 
-#: src/app/page.tsx
+#: src/app/page.tsx:
 msgid "<0>Improve</0> your club communication"
 msgstr "<0>Improve</0> your club communication"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "2026-04-15 10:00"
 msgstr "2026-04-15 10:00"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "2026-04-15 11:00"
 msgstr "2026-04-15 11:00"
 
-#: src/components/club-create-form.tsx
+#: src/components/club-create-form.tsx:
 msgid "A short description"
 msgstr "A short description"
 
-#: src/app/app/[id]/config/tabs.tsx
+#: src/app/app/[id]/config/tabs.tsx:
 msgid "Absence forms"
 msgstr "Absence forms"
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:
 msgid "Absence is approved"
 msgstr "Absence is approved"
 
-#: src/app/app/[id]/absences/(list)/report-detail.tsx
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:
 msgid "Absence is not approved"
 msgstr "Absence is not approved"
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:
 msgid "Absence is rejected"
 msgstr "Absence is rejected"
 
-#: src/app/app/[id]/config/roles/role-dialog.tsx
-#: src/components/club-config/roles-manager.tsx
+#: src/app/app/[id]/config/roles/role-dialog.tsx:
+#: src/components/club-config/roles-manager.tsx:
 msgid "Absence report settings"
 msgstr "Absence report settings"
 
-#: src/app/app/[id]/config/roles/role-dialog.tsx
-#: src/components/club-config/roles-manager.tsx
+#: src/app/app/[id]/config/roles/role-dialog.tsx:
+#: src/components/club-config/roles-manager.tsx:
 msgid "Absence report template"
 msgstr "Absence report template"
 
-#: src/app/app/[id]/config/roles/role-dialog.tsx
-#: src/components/club-config/roles-manager.tsx
+#: src/app/app/[id]/config/roles/role-dialog.tsx:
+#: src/components/club-config/roles-manager.tsx:
 msgid "Absence report template must be selected"
 msgstr "Absence report template must be selected"
 
-#: src/app/app/[id]/config/absence-forms/sidebar.tsx
+#: src/app/app/[id]/config/absence-forms/sidebar.tsx:
 msgid "Absence report templates"
 msgstr "Absence report templates"
 
-#: src/app/app/[id]/page.tsx
+#: src/app/app/[id]/page.tsx:
 msgid "Absence reports"
 msgstr "Absence reports"
 
-#: src/app/app/[id]/calendar/[year]/[month]/[day]/Day.tsx
+#: src/app/app/[id]/calendar/[year]/[month]/[day]/Day.tsx:
 msgid "Absence reports for this day"
 msgstr "Absence reports for this day"
 
-#: src/app/app/[id]/absences/(list)/layout.tsx
+#: src/app/app/[id]/absences/(list)/layout.tsx:
 msgid "Absences"
 msgstr "Absences"
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:
 msgid "Accept"
 msgstr "Accept"
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:
 msgid "Accepted"
 msgstr "Accepted"
 
-#: src/app/app/[id]/page.tsx
+#: src/app/app/[id]/page.tsx:
 msgid "Access absence report forms"
 msgstr "Access absence report forms"
 
-#: src/components/permission-text.tsx
+#: src/components/permission-text.tsx:
 msgid "Access club files"
 msgstr "Access club files"
 
-#: src/components/ui/app-header-menu.tsx
+#: src/components/ui/app-header-menu.tsx:
 msgid "Add a screenshot"
 msgstr "Add a screenshot"
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:
 msgid "Add comments (optional)"
 msgstr "Add comments (optional)"
 
-#: src/app/app/[id]/page.tsx
+#: src/app/app/[id]/page.tsx:
 msgid "Add event"
 msgstr "Add event"
 
-#: src/components/club-config/absence-form-editor.tsx
+#: src/components/club-config/absence-form-editor.tsx:
 msgid "Add follow-up"
 msgstr "Add follow-up"
 
-#: src/components/club-config/absence-form-editor.tsx
+#: src/components/club-config/absence-form-editor.tsx:
 msgid "Add follow-up question"
 msgstr "Add follow-up question"
 
-#: src/components/club-config/absence-form-editor.tsx
+#: src/components/club-config/absence-form-editor.tsx:
 msgid "Add option"
 msgstr "Add option"
 
-#: src/components/club-config/absence-form-editor.tsx
+#: src/components/club-config/absence-form-editor.tsx:
 msgid "Add question"
 msgstr "Add question"
 
-#: src/app/app/[id]/config/roles/roles-graph.tsx
+#: src/app/app/[id]/config/roles/roles-graph.tsx:
 msgid "Add role"
 msgstr "Add role"
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:
 msgid "Add Your Review"
 msgstr "Add Your Review"
 
-#: src/app/app/[id]/absences/(list)/tab-nav.tsx
+#: src/app/app/[id]/absences/(list)/tab-nav.tsx:
 msgid "All absences"
 msgstr "All absences"
 
-#: src/components/club-config/absence-form-editor.tsx
+#: src/components/club-config/absence-form-editor.tsx:
 msgid "Allow multiple lines"
 msgstr "Allow multiple lines"
 
-#: src/app/auth/sign-up/page.tsx
+#: src/app/auth/sign-up/page.tsx:
 msgid "Already have an account? {loginLink}"
 msgstr "Already have an account? {loginLink}"
 
-#: src/components/forgot-password-form.tsx
+#: src/components/forgot-password-form.tsx:91
 msgid "Already have an account? <0><1>Login</1></0>"
 msgstr "Already have an account? <0><1>Login</1></0>"
 
-#: src/app/app/page.tsx
+#: src/app/app/page.tsx:
 msgid "An error occurred"
 msgstr "An error occurred"
 
-#: src/components/club-create-form.tsx
+#: src/components/club-create-form.tsx:
 msgid "An error occurred while creating the club: {0}"
 msgstr "An error occurred while creating the club: {0}"
 
-#: src/components/club-create-form.tsx
+#: src/components/club-create-form.tsx:
 msgid "An error occurred while creating the club."
 msgstr "An error occurred while creating the club."
 
-#: src/components/auth/login-form.tsx
-#: src/components/auth/login-form.tsx
+#: src/components/auth/login-form.tsx:
+#: src/components/auth/login-form.tsx:
 msgid "An error occurred while signing in: {0}"
 msgstr "An error occurred while signing in: {0}"
 
-#: src/components/auth/signup-form.tsx
-#: src/components/auth/signup-form.tsx
+#: src/components/auth/signup-form.tsx:
+#: src/components/auth/signup-form.tsx:
 msgid "An error occurred while signing up: {0}"
 msgstr "An error occurred while signing up: {0}"
 
-#: src/components/auth/signup-form.tsx
-#: src/components/auth/signup-form.tsx
+#: src/components/auth/signup-form.tsx:
+#: src/components/auth/signup-form.tsx:
 msgid "An error occurred."
 msgstr "An error occurred."
 
-#: src/app/app/[id]/calendar/[year]/Year.tsx
+#: src/app/app/[id]/calendar/[year]/Year.tsx:
 msgid "An event is scheduled on this day."
 msgstr "An event is scheduled on this day."
 
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
 msgid "An unexpected error occurred. Please try again."
 msgstr "An unexpected error occurred. Please try again."
 
-#: src/app/auth/error/page.tsx
+#: src/app/auth/error/page.tsx:
 msgid "An unspecified error occurred"
 msgstr "An unspecified error occurred"
 
-#: src/app/app/[id]/config/roles/role-dialog.tsx
-#: src/components/club-config/roles-manager.tsx
+#: src/app/app/[id]/config/roles/role-dialog.tsx:
+#: src/components/club-config/roles-manager.tsx:
 msgid "Approval required for reports"
 msgstr "Approval required for reports"
 
-#: src/components/ui/absence-report-card.tsx
+#: src/components/ui/absence-report-card.tsx:
 msgid "Approved"
 msgstr "Approved"
 
-#: src/app/app/[id]/calendar/event-detail-drawer.tsx
+#: src/app/app/[id]/calendar/event-detail-drawer.tsx:
 msgid "Are you sure you want to delete this event? This action cannot be undone."
 msgstr "Are you sure you want to delete this event? This action cannot be undone."
 
-#: src/app/app/[id]/absences/(list)/report-detail.tsx
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:
 msgid "Are you sure you want to delete this report? This action cannot be undone."
 msgstr "Are you sure you want to delete this report? This action cannot be undone."
 
-#: src/app/app/[id]/config/roles/roles-view.tsx
-#: src/components/club-config/roles-manager.tsx
+#: src/app/app/[id]/config/roles/roles-view.tsx:
+#: src/components/club-config/roles-manager.tsx:
 msgid "Are you sure you want to delete this role? This action cannot be undone."
 msgstr "Are you sure you want to delete this role? This action cannot be undone."
 
-#: src/app/app/[id]/absences/(list)/assigned/list.tsx
+#: src/app/app/[id]/absences/(list)/assigned/list.tsx:
 msgid "Assigned Reports"
 msgstr "Assigned Reports"
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:
 msgid "Assigned to"
 msgstr "Assigned to"
 
-#: src/app/app/[id]/absences/(list)/tab-nav.tsx
+#: src/app/app/[id]/absences/(list)/tab-nav.tsx:
 msgid "Assigned to me"
 msgstr "Assigned to me"
 
-#: src/components/feedback-form.tsx
+#: src/components/feedback-form.tsx:
 msgid "Attach this club's information"
 msgstr "Attach this club's information"
 
-#: src/app/app/[id]/calendar/[...date]/page.tsx
+#: src/app/app/[id]/calendar/[...date]/page.tsx:
 msgid "Back"
 msgstr "Back"
 
-#: src/app/not-found.tsx
+#: src/app/not-found.tsx:
 msgid "Back to home"
 msgstr "Back to home"
 
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
 msgid "Biography"
 msgstr "Biography"
 
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
 msgid "Born in 〇〇."
 msgstr "Born in 〇〇."
 
-#: src/app/app/club/invite/[id]/page.tsx
+#: src/app/app/club/invite/[id]/page.tsx:
 msgid "by {0}"
 msgstr "by {0}"
 
-#: src/app/app/[id]/page.tsx
+#: src/app/app/[id]/page.tsx:
 msgid "Calendar"
 msgstr "Calendar"
 
-#: src/components/ui/app-header-menu.tsx
+#: src/components/ui/app-header-menu.tsx:
 msgid "Cancel"
 msgstr "Cancel"
 
-#: src/components/auth/login-auth-providers-settings.tsx
+#: src/components/auth/login-auth-providers-settings.tsx:
 msgid "Change password"
 msgstr "Change password"
 
-#: src/app/app/[id]/page.tsx
+#: src/app/app/[id]/page.tsx:
 msgid "Check your club events and meetings"
 msgstr "Check your club events and meetings"
 
-#: src/components/forgot-password-form.tsx
+#: src/components/forgot-password-form.tsx:49
 msgid "Check your email"
 msgstr "Check your email"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "Choose another file"
 msgstr "Choose another file"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "Choose CSV file"
 msgstr "Choose CSV file"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "Choose description column"
 msgstr "Choose description column"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "Choose location column"
 msgstr "Choose location column"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "Choose title column"
 msgstr "Choose title column"
 
-#: src/app/app/[id]/calendar/calendar.tsx
+#: src/app/app/[id]/calendar/calendar.tsx:
 msgid "Close"
 msgstr "Close"
 
-#: src/app/app/[id]/config/layout.tsx
+#: src/app/app/[id]/config/layout.tsx:
 msgid "Club configuration"
 msgstr "Club configuration"
 
-#: src/components/club-config/metadata-form.tsx
-#: src/components/club-create-form.tsx
+#: src/components/club-config/metadata-form.tsx:
+#: src/components/club-create-form.tsx:
 msgid "Club description"
 msgstr "Club description"
 
-#: src/components/club-config/invite.tsx
+#: src/components/club-config/invite.tsx:
 msgid "Club invite link"
 msgstr "Club invite link"
 
-#: src/components/club-config/invite.tsx
+#: src/components/club-config/invite.tsx:
 msgid "Club Invite Link"
 msgstr "Club Invite Link"
 
-#: src/app/app/[id]/calendar/calendar.tsx
+#: src/app/app/[id]/calendar/calendar.tsx:
 msgid "Club meeting"
 msgstr "Club meeting"
 
-#: src/components/club-config/metadata-form.tsx
-#: src/components/club-create-form.tsx
+#: src/components/club-config/metadata-form.tsx:
+#: src/components/club-create-form.tsx:
 msgid "Club name"
 msgstr "Club name"
 
-#: src/components/club-config/metadata-form.tsx
-#: src/components/club-create-form.tsx
+#: src/components/club-config/metadata-form.tsx:
+#: src/components/club-create-form.tsx:
 msgid "Club privacy: {0}"
 msgstr "Club privacy: {0}"
 
-#: src/app/app/[id]/page.tsx
+#: src/app/app/[id]/page.tsx:
 msgid "Club settings"
 msgstr "Club settings"
 
-#: src/components/ui/user-link.tsx
+#: src/components/ui/user-link.tsx:
 msgid "Clubs"
 msgstr "Clubs"
 
-#: src/components/ui/user-link.tsx
+#: src/components/ui/user-link.tsx:
 msgid "Clubs:"
 msgstr "Clubs:"
 
-#: src/components/club-config/absence-form-editor.tsx
+#: src/components/club-config/absence-form-editor.tsx:
 msgid "Collapse all"
 msgstr "Collapse all"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "Column"
 msgstr "Column"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "Column mapping"
 msgstr "Column mapping"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "Combined date and time"
 msgstr "Combined date and time"
 
-#: src/app/app/users/[id]/page.tsx
+#: src/app/app/users/[id]/page.tsx:
 msgid "Common Clubs"
 msgstr "Common Clubs"
 
-#: src/app/app/[id]/config/roles/role-dialog.tsx
-#: src/components/club-config/roles-manager.tsx
+#: src/app/app/[id]/config/roles/role-dialog.tsx:
+#: src/components/club-config/roles-manager.tsx:
 msgid "Configure reviewer/approval and choose the template used for this role."
 msgstr "Configure reviewer/approval and choose the template used for this role."
 
-#: src/components/ui/app-header-menu.tsx
+#: src/components/ui/app-header-menu.tsx:
 msgid "Confirm"
 msgstr "Confirm"
 
-#: src/components/auth/login-auth-providers-settings.tsx
+#: src/components/auth/login-auth-providers-settings.tsx:
 msgid "Confirm new password"
 msgstr "Confirm new password"
 
-#: src/components/auth/signup-form.tsx
+#: src/components/auth/signup-form.tsx:
 msgid "Confirm Password"
 msgstr "Confirm Password"
 
-#: src/components/club-config/invite.tsx
+#: src/components/club-config/invite.tsx:
 msgid "Copy link"
 msgstr "Copy link"
 
-#: src/components/user-share-actions.tsx
+#: src/components/user-share-actions.tsx:
 msgid "Copy user ID"
 msgstr "Copy user ID"
 
-#: src/app/app/[id]/config/roles/role-dialog.tsx
-#: src/components/club-config/roles-manager.tsx
+#: src/app/app/[id]/config/roles/role-dialog.tsx:
+#: src/components/club-config/roles-manager.tsx:
 msgid "Create"
 msgstr "Create"
 
-#: src/components/ui/app-header-menu.tsx
+#: src/components/ui/app-header-menu.tsx:
 msgid "Create a club"
 msgstr "Create a club"
 
-#: src/components/ui/app-header.tsx
+#: src/components/ui/app-header.tsx:
 msgid "Create a Club"
 msgstr "Create a Club"
 
-#: src/app/app/[id]/calendar/AddEventDrawers.tsx
+#: src/app/app/[id]/calendar/AddEventDrawers.tsx:
 msgid "Create a new event"
 msgstr "Create a new event"
 
-#: src/app/app/[id]/calendar/calendar.tsx
+#: src/app/app/[id]/calendar/calendar.tsx:
 msgid "Create a new event for your club."
 msgstr "Create a new event for your club."
 
-#: src/components/permission-text.tsx
+#: src/components/permission-text.tsx:
 msgid "Create and edit calendar events"
 msgstr "Create and edit calendar events"
 
-#: src/components/club-create-form.tsx
+#: src/components/club-create-form.tsx:
 msgid "Create club"
 msgstr "Create club"
 
-#: src/app/app/[id]/calendar/CalendarNavigation.tsx
+#: src/app/app/[id]/calendar/CalendarNavigation.tsx:
 msgid "Create event"
 msgstr "Create event"
 
-#: src/app/app/[id]/calendar/CalendarNavigation.tsx
+#: src/app/app/[id]/calendar/CalendarNavigation.tsx:
 msgid "Create Event"
 msgstr "Create Event"
 
-#: src/app/app/[id]/config/roles/roles-manager.tsx
-#: src/components/club-config/roles-manager.tsx
+#: src/app/app/[id]/config/roles/roles-manager.tsx:
+#: src/components/club-config/roles-manager.tsx:
 msgid "Create new role"
 msgstr "Create new role"
 
-#: src/app/app/[id]/config/absence-forms/sidebar.tsx
+#: src/app/app/[id]/config/absence-forms/sidebar.tsx:
 msgid "Create new template"
 msgstr "Create new template"
 
-#: src/app/app/[id]/config/roles/role-dialog.tsx
-#: src/components/club-config/roles-manager.tsx
+#: src/app/app/[id]/config/roles/role-dialog.tsx:
+#: src/components/club-config/roles-manager.tsx:
 msgid "Create Role"
 msgstr "Create Role"
 
-#: src/app/app/[id]/config/absence-forms/page.tsx
+#: src/app/app/[id]/config/absence-forms/page.tsx:
 msgid "Create template"
 msgstr "Create template"
 
-#: src/app/app/[id]/config/absence-forms/page.tsx
+#: src/app/app/[id]/config/absence-forms/page.tsx:
 msgid "Create your first absence report template"
 msgstr "Create your first absence report template"
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:
 msgid "Date"
 msgstr "Date"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "Date and time columns"
 msgstr "Date and time columns"
 
-#: src/app/app/[id]/calendar/ModePicker.tsx
+#: src/app/app/[id]/calendar/ModePicker.tsx:
 msgid "Day"
 msgstr "Day"
 
-#: src/app/app/[id]/calendar/event-detail-drawer.tsx
-#: src/app/app/[id]/calendar/event-detail-drawer.tsx
+#: src/app/app/[id]/calendar/event-detail-drawer.tsx:
+#: src/app/app/[id]/calendar/event-detail-drawer.tsx:
 msgid "Delete"
 msgstr "Delete"
 
-#: src/components/permission-text.tsx
+#: src/components/permission-text.tsx:
 msgid "Delete any absence report"
 msgstr "Delete any absence report"
 
-#: src/app/app/[id]/calendar/event-detail-drawer.tsx
+#: src/app/app/[id]/calendar/event-detail-drawer.tsx:
 msgid "Delete event"
 msgstr "Delete event"
 
-#: src/components/permission-text.tsx
+#: src/components/permission-text.tsx:
 msgid "Delete own absence reports"
 msgstr "Delete own absence reports"
 
-#: src/app/app/[id]/absences/(list)/report-detail.tsx
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:
 msgid "Delete report"
 msgstr "Delete report"
 
-#: src/app/app/[id]/config/roles/roles-graph.tsx
+#: src/app/app/[id]/config/roles/roles-graph.tsx:
 msgid "Delete role"
 msgstr "Delete role"
 
-#: src/components/club-config/absence-form-editor.tsx
+#: src/components/club-config/absence-form-editor.tsx:
 msgid "Describe the purpose of this absence form..."
 msgstr "Describe the purpose of this absence form..."
 
-#: src/components/ui/app-header-menu.tsx
+#: src/components/ui/app-header-menu.tsx:
 msgid "Description"
 msgstr "Description"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "Description for row {0}"
 msgstr "Description for row {0}"
 
-#: src/app/docs/[lang]/[[...slug]]/page.tsx
+#: src/app/docs/[lang]/[[...slug]]/page.tsx:
 msgid "Documentation"
 msgstr "Documentation"
 
-#: src/app/auth/login/page.tsx
+#: src/app/auth/login/page.tsx:
 msgid "Don't have an account yet? {createAccountLink}"
 msgstr "Don't have an account yet? {createAccountLink}"
 
-#: src/app/app/[id]/calendar/calendar.tsx
+#: src/app/app/[id]/calendar/calendar.tsx:
 msgid "Download example CSV"
 msgstr "Download example CSV"
 
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
 msgid "Edit"
 msgstr "Edit"
 
-#: src/components/club-config/roles-manager.tsx
+#: src/components/club-config/roles-manager.tsx:
 msgid "Edit details for {editName}"
 msgstr "Edit details for {editName}"
 
-#: src/app/app/[id]/config/roles/role-dialog.tsx
+#: src/app/app/[id]/config/roles/role-dialog.tsx:
 msgid "Edit details for {name}"
 msgstr "Edit details for {name}"
 
-#: src/app/app/[id]/calendar/event-detail-drawer.tsx
+#: src/app/app/[id]/calendar/event-detail-drawer.tsx:
 msgid "Edit Event"
 msgstr "Edit Event"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "Edit imported calendar rows before saving them."
 msgstr "Edit imported calendar rows before saving them."
 
-#: src/app/app/[id]/config/roles/roles-graph.tsx
+#: src/app/app/[id]/config/roles/roles-graph.tsx:
 msgid "Edit role"
 msgstr "Edit role"
 
-#: src/app/app/[id]/config/roles/role-dialog.tsx
-#: src/components/club-config/roles-manager.tsx
+#: src/app/app/[id]/config/roles/role-dialog.tsx:
+#: src/components/club-config/roles-manager.tsx:
 msgid "Edit Role"
 msgstr "Edit Role"
 
-#: src/app/app/[id]/config/roles/role-dialog.tsx
-#: src/components/club-config/roles-manager.tsx
+#: src/app/app/[id]/config/roles/role-dialog.tsx:
+#: src/components/club-config/roles-manager.tsx:
 msgid "Edit template"
 msgstr "Edit template"
 
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
 msgid "Edit with Gravatar"
 msgstr "Edit with Gravatar"
 
-#: src/components/profile-editor.tsx
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
+#: src/components/profile-editor.tsx:
 msgid "Edit your profile picture on Gravatar."
 msgstr "Edit your profile picture on Gravatar."
 
-#: src/components/auth/signup-form.tsx
+#: src/components/forgot-password-form.tsx:80
 msgid "Email"
 msgstr "Email"
 
-#: src/app/app/[id]/calendar/create-event-card.tsx
+#: src/app/app/[id]/calendar/create-event-card.tsx:
 #~ msgid "End date and time"
 #~ msgstr "End date and time"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "End time"
 msgstr "End time"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "End time for row {0}"
 msgstr "End time for row {0}"
 
-#: src/app/auth/error/page.tsx
+#: src/app/auth/error/page.tsx:
 msgid "Error code:"
 msgstr "Error code:"
 
-#: src/components/auth/login-auth-providers-settings.tsx
+#: src/components/auth/login-auth-providers-settings.tsx:
 msgid "Error linking identity: {0}"
 msgstr "Error linking identity: {0}"
 
-#: src/components/auth/login-auth-providers-settings.tsx
+#: src/components/auth/login-auth-providers-settings.tsx:
 msgid "Error unlinking identity: {0}"
 msgstr "Error unlinking identity: {0}"
 
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
 msgid "Error updating from Gravatar: {0}"
 msgstr "Error updating from Gravatar: {0}"
 
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
 msgid "Error updating from Gravatar: {message}"
 msgstr "Error updating from Gravatar: {message}"
 
-#: src/components/auth/login-auth-providers-settings.tsx
+#: src/components/auth/login-auth-providers-settings.tsx:
 msgid "Error updating password: {0}"
 msgstr "Error updating password: {0}"
 
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
 msgid "Error updating profile."
 msgstr "Error updating profile."
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:
 msgid "Event"
 msgstr "Event"
 
-#: src/app/app/[id]/absences/create/form.tsx
+#: src/app/app/[id]/absences/create/form.tsx:
 msgid "Event Absence"
 msgstr "Event Absence"
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:
 msgid "Event date"
 msgstr "Event date"
 
-#: src/app/app/[id]/calendar/event-detail-drawer.tsx
+#: src/app/app/[id]/calendar/event-detail-drawer.tsx:
 msgid "Event details for {0}"
 msgstr "Event details for {0}"
 
-#: src/app/app/[id]/calendar/event-form.tsx
+#: src/app/app/[id]/calendar/event-form.tsx:
 msgid "Event name"
 msgstr "Event name"
 
-#: src/app/app/[id]/calendar/[year]/[month]/Month.tsx
+#: src/app/app/[id]/calendar/[year]/[month]/Month.tsx:
 msgid "Event spans {multiDayTotal} days (day {multiDayNumber})"
 msgstr "Event spans {multiDayTotal} days (day {multiDayNumber})"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "Event title for row {0}"
 msgstr "Event title for row {0}"
 
-#: src/app/app/[id]/calendar/calendar.tsx
+#: src/app/app/[id]/calendar/calendar.tsx:
 msgid "example-calendar-events.csv"
 msgstr "example-calendar-events.csv"
 
-#: src/components/club-config/absence-form-editor.tsx
+#: src/components/club-config/absence-form-editor.tsx:
 msgid "Expand all"
 msgstr "Expand all"
 
-#: src/components/club-config/invite.tsx
+#: src/components/club-config/invite.tsx:
 msgid "expired"
 msgstr "expired"
 
-#: src/components/club-config/invite.tsx
+#: src/components/club-config/invite.tsx:
 msgid "Expires at: {0}"
 msgstr "Expires at: {0}"
 
-#: src/app/app/club/invite/[id]/page.tsx
+#: src/app/app/club/invite/[id]/page.tsx:
 msgid "Expires at: <0>{0}</0>"
 msgstr "Expires at: <0>{0}</0>"
 
-#: src/components/club-config/members-manager.tsx
+#: src/components/club-config/members-manager.tsx:
 msgid "Failed to change member role. Please try again later."
 msgstr "Failed to change member role. Please try again later."
 
-#: src/components/user-share-actions.tsx
+#: src/components/user-share-actions.tsx:
 msgid "Failed to copy to clipboard: {message}"
 msgstr "Failed to copy to clipboard: {message}"
 
-#: src/app/app/[id]/config/roles/roles-view.tsx
-#: src/components/club-config/roles-manager.tsx
+#: src/app/app/[id]/config/roles/roles-view.tsx:
+#: src/components/club-config/roles-manager.tsx:
 msgid "Failed to create role. Please try again later."
 msgstr "Failed to create role. Please try again later."
 
-#: src/components/club-config/invite.tsx
+#: src/components/club-config/invite.tsx:
 msgid "Failed to delete invite. Please try again."
 msgstr "Failed to delete invite. Please try again."
 
-#: src/app/app/[id]/config/roles/roles-view.tsx
-#: src/components/club-config/roles-manager.tsx
+#: src/app/app/[id]/config/roles/roles-view.tsx:
+#: src/components/club-config/roles-manager.tsx:
 msgid "Failed to delete role. Please try again later."
 msgstr "Failed to delete role. Please try again later."
 
-#: src/components/club-config/absence-form-detail.tsx
+#: src/components/club-config/absence-form-detail.tsx:
 msgid "Failed to delete template."
 msgstr "Failed to delete template."
 
-#: src/app/app/[id]/absences/(list)/report-detail.tsx
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:
 msgid "Failed to delete the report. Please try again."
 msgstr "Failed to delete the report. Please try again."
 
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
 msgid "Failed to fetch user information. Please try again."
 msgstr "Failed to fetch user information. Please try again."
 
-#: src/components/club-config/invite.tsx
+#: src/components/club-config/invite.tsx:
 msgid "Failed to generate invite. Please try again."
 msgstr "Failed to generate invite. Please try again."
 
-#: src/app/app/club/invite/[id]/page.tsx
+#: src/app/app/club/invite/[id]/page.tsx:
 msgid "Failed to join club"
 msgstr "Failed to join club"
 
-#: src/components/club-config/members-manager.tsx
+#: src/components/club-config/members-manager.tsx:
 msgid "Failed to load members data. Please try again later."
 msgstr "Failed to load members data. Please try again later."
 
-#: src/components/club-config/members-manager.tsx
+#: src/components/club-config/members-manager.tsx:
 msgid "Failed to remove member. Please try again later."
 msgstr "Failed to remove member. Please try again later."
 
-#: src/components/club-config/metadata-form.tsx
+#: src/components/club-config/metadata-form.tsx:
 msgid "Failed to save club metadata. Please try again later."
 msgstr "Failed to save club metadata. Please try again later."
 
-#: src/app/app/[id]/config/roles/roles-view.tsx
-#: src/components/club-config/roles-manager.tsx
+#: src/app/app/[id]/config/roles/roles-view.tsx:
+#: src/components/club-config/roles-manager.tsx:
 msgid "Failed to save role. Please try again later."
 msgstr "Failed to save role. Please try again later."
 
-#: src/components/club-config/absence-form-detail.tsx
+#: src/components/club-config/absence-form-detail.tsx:
 msgid "Failed to save template."
 msgstr "Failed to save template."
 
-#: src/components/user-share-actions.tsx
+#: src/components/user-share-actions.tsx:
 msgid "Failed to share profile: {message}"
 msgstr "Failed to share profile: {message}"
 
-#: src/app/app/[id]/absences/create/form.tsx
+#: src/app/app/[id]/absences/create/form.tsx:
 msgid "Failed to submit absence report. Please try again."
 msgstr "Failed to submit absence report. Please try again."
 
-#: src/components/feedback-form.tsx
+#: src/components/feedback-form.tsx:
 msgid "Failed to submit feedback. Please try again later."
 msgstr "Failed to submit feedback. Please try again later."
 
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
 msgid "Failed to update profile with Gravatar. Please try again."
 msgstr "Failed to update profile with Gravatar. Please try again."
 
-#: src/app/app/[id]/config/roles/role-dialog.tsx
-#: src/components/club-config/roles-manager.tsx
+#: src/app/app/[id]/config/roles/role-dialog.tsx:
+#: src/components/club-config/roles-manager.tsx:
 msgid "Fill in the details for the new role."
 msgstr "Fill in the details for the new role."
 
-#: src/app/page.tsx
+#: src/app/page.tsx:
 msgid "Find your shared documents easily"
 msgstr "Find your shared documents easily"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "First row contains headers"
 msgstr "First row contains headers"
 
-#: src/app/page.tsx
+#: src/app/page.tsx:
 msgid "For any club, any team, any group"
 msgstr "For any club, any team, any group"
 
-#: src/app/auth/login/page.tsx
+#: src/app/auth/login/page.tsx:
 msgid "Forgot password"
 msgstr "Forgot password"
 
-#: src/components/club-config/absence-form-editor.tsx
+#: src/components/club-config/absence-form-editor.tsx:
 msgid "Form description"
 msgstr "Form description"
 
-#: src/app/app/[id]/absences/(list)/report-detail.tsx
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:
 msgid "Form Responses"
 msgstr "Form Responses"
 
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
 msgid "Full Name"
 msgstr "Full Name"
 
-#: src/app/app/users/me/page.tsx
-#: src/app/app/users/me/tabs.tsx
+#: src/app/app/users/me/page.tsx:
+#: src/app/app/users/me/tabs.tsx:
 msgid "General"
 msgstr "General"
 
-#: src/app/app/[id]/absences/create/form.tsx
-#: src/app/app/[id]/absences/create/form.tsx
+#: src/app/app/[id]/absences/create/form.tsx:
+#: src/app/app/[id]/absences/create/form.tsx:
 msgid "General Absence"
 msgstr "General Absence"
 
-#: src/components/club-config/invite.tsx
+#: src/components/club-config/invite.tsx:
 msgid "Generate a new invitation link for your club. You can choose the role that new members will have when they join using this link."
 msgstr "Generate a new invitation link for your club. You can choose the role that new members will have when they join using this link."
 
-#: src/components/club-config/invite.tsx
-#: src/components/club-config/invite.tsx
-#: src/components/club-config/invite.tsx
-#: src/components/club-config/invite.tsx
+#: src/components/club-config/invite.tsx:
+#: src/components/club-config/invite.tsx:
+#: src/components/club-config/invite.tsx:
+#: src/components/club-config/invite.tsx:
 msgid "Generate invite"
 msgstr "Generate invite"
 
-#: src/components/club-config/invite.tsx
+#: src/components/club-config/invite.tsx:
 msgid "Generate invites to allow others to join your club."
 msgstr "Generate invites to allow others to join your club."
 
-#: src/app/page.tsx
+#: src/app/page.tsx:
 msgid "Get started"
 msgstr "Get started"
 
-#: src/components/auth/providers.tsx
+#: src/components/auth/providers.tsx:
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/app/app/[id]/calendar/CalendarNavigation.tsx
+#: src/app/app/[id]/calendar/CalendarNavigation.tsx:
 msgid "Go to today"
 msgstr "Go to today"
 
-#: src/components/auth/providers.tsx
+#: src/components/auth/providers.tsx:
 msgid "Google"
 msgstr "Google"
 
-#: src/app/app/[id]/config/roles/roles-view.tsx
+#: src/app/app/[id]/config/roles/roles-view.tsx:
 msgid "Graph"
 msgstr "Graph"
 
-#: src/components/auth/signup-form.tsx
+#: src/components/auth/signup-form.tsx:
 msgid "Great!"
 msgstr "Great!"
 
-#: src/components/ui/app-header-menu.tsx
+#: src/components/ui/app-header-menu.tsx:
 msgid "Help center"
 msgstr "Help center"
 
-#: src/app/page.tsx
+#: src/app/page.tsx:
 msgid "Help Center"
 msgstr "Help Center"
 
-#: src/components/ui/app-header-menu.tsx
+#: src/components/ui/app-header-menu.tsx:
 msgid "Hide"
 msgstr "Hide"
 
-#: src/components/club-config/absence-form-editor.tsx
+#: src/components/club-config/absence-form-editor.tsx:
 msgid "Hide options"
 msgstr "Hide options"
 
-#: src/components/ui/app-header-menu.tsx
+#: src/components/ui/app-header-menu.tsx:
 msgid "Highlight"
 msgstr "Highlight"
 
-#: src/components/ui/app-header-menu.tsx
+#: src/components/ui/app-header-menu.tsx:
 msgid "Home"
 msgstr "Home"
 
-#: src/components/ui/app-header.tsx
+#: src/components/ui/app-header.tsx:
 msgid "Horenso SPACE"
 msgstr "Horenso SPACE"
 
-#: src/components/ui/app-header.tsx
+#: src/components/ui/app-header.tsx:
 msgid "Horenso SPACE 🥬"
 msgstr "Horenso SPACE 🥬"
 
-#: src/components/club-create-form.tsx
+#: src/components/club-create-form.tsx:
 msgid "If this is a public club, anyone can find it online and view the information you've provided here."
 msgstr "If this is a public club, anyone can find it online and view the information you've provided here."
 
-#: src/components/forgot-password-form.tsx
+#: src/components/forgot-password-form.tsx:55
 msgid "If you registered using your email and password, you will receive a password reset email."
 msgstr "If you registered using your email and password, you will receive a password reset email."
 
-#: src/app/maintenance/page.tsx
-#: src/app/not-found.tsx
+#: src/app/maintenance/page.tsx:
+#: src/app/not-found.tsx:
 msgid "Image by {sawaratsukiLink}"
 msgstr "Image by {sawaratsukiLink}"
 
-#: src/app/not-found.tsx
+#: src/app/not-found.tsx:
 #~ msgid "Image by <0>SAWARATSUKI</0>"
 #~ msgstr "Image by <0>SAWARATSUKI</0>"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "Import events"
 msgstr "Import events"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "Import events from CSV"
 msgstr "Import events from CSV"
 
-#: src/app/app/[id]/calendar/create-event-card.tsx
+#: src/app/app/[id]/calendar/create-event-card.tsx:
 msgid "Import from CSV"
 msgstr "Import from CSV"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "Import valid rows"
 msgstr "Import valid rows"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "Imported"
 msgstr "Imported"
 
-#: src/app/app/[id]/calendar/calendar.tsx
+#: src/app/app/[id]/calendar/calendar.tsx:
 msgid "Importing CSV"
 msgstr "Importing CSV"
 
-#: src/app/app/[id]/calendar/calendar.tsx
+#: src/app/app/[id]/calendar/calendar.tsx:
 msgid "Importing CSV file, please wait..."
 msgstr "Importing CSV file, please wait..."
 
-#: src/app/app/club/invite/[id]/page.tsx
+#: src/app/app/club/invite/[id]/page.tsx:
 msgid "Invalid or expired invite link"
 msgstr "Invalid or expired invite link"
 
-#: src/components/club-config/invite.tsx
+#: src/components/club-config/invite.tsx:
 msgid "Invite for role \"{0}\""
 msgstr "Invite for role \"{0}\""
 
-#: src/components/club-config/invite.tsx
+#: src/components/club-config/invite.tsx:
 msgid "Invite link copied to clipboard."
 msgstr "Invite link copied to clipboard."
 
-#: src/components/club-config/invite.tsx
+#: src/components/club-config/invite.tsx:
 msgid "Invites"
 msgstr "Invites"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "Issues detected in {issueRowCount} out of {rowCount} row(s). You may need to adjust the columns by clicking the headers in the table below or edit your CSV."
 msgstr "Issues detected in {issueRowCount} out of {rowCount} row(s). You may need to adjust the columns by clicking the headers in the table below or edit your CSV."
 
-#: src/components/ui/club-card.tsx
+#: src/components/ui/club-card.tsx:
 msgid "Join club"
 msgstr "Join club"
 
-#: src/app/app/club/invite/[id]/page.tsx
+#: src/app/app/club/invite/[id]/page.tsx:
 msgid "Join Club"
 msgstr "Join Club"
 
-#: src/components/ui/user-profile.tsx
+#: src/components/ui/user-profile.tsx:
 msgid "Joined"
 msgstr "Joined"
 
-#: src/app/app/users/me/general/GeneralSettingsForm.tsx
-#: src/app/app/users/me/general/GeneralSettingsForm.tsx
+#: src/app/app/users/me/general/GeneralSettingsForm.tsx:
+#: src/app/app/users/me/general/GeneralSettingsForm.tsx:
 msgid "Language"
 msgstr "Language"
 
-#: src/app/docs/[lang]/[[...slug]]/page.tsx
+#: src/app/docs/[lang]/[[...slug]]/page.tsx:
 msgid "Languages"
 msgstr "Languages"
 
-#: src/components/auth/login-auth-providers-settings.tsx
+#: src/components/auth/login-auth-providers-settings.tsx:
 msgid "Last used {0}"
 msgstr "Last used {0}"
 
-#: src/app/auth/login/page.tsx
+#: src/app/auth/login/page.tsx:
 msgid "Let's get you logged in to your account"
 msgstr "Let's get you logged in to your account"
 
-#: src/components/auth/login-auth-providers-settings.tsx
+#: src/components/auth/login-auth-providers-settings.tsx:
 msgid "Link <0/> account"
 msgstr "Link <0/> account"
 
-#: src/app/app/[id]/config/roles/roles-view.tsx
+#: src/app/app/[id]/config/roles/roles-view.tsx:
 msgid "List"
 msgstr "List"
 
-#: src/app/app/[id]/absences/(list)/report-detail.tsx
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:
 msgid "Loading approval status..."
 msgstr "Loading approval status..."
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:
 msgid "Loading report status..."
 msgstr "Loading report status..."
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:
 msgid "Loading..."
 msgstr "Loading..."
 
-#: src/app/app/[id]/calendar/event-form.tsx
+#: src/app/app/[id]/calendar/event-form.tsx:
 msgid "Location"
 msgstr "Location"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "Location for row {0}"
 msgstr "Location for row {0}"
 
-#: src/app/auth/sign-up/page.tsx
+#: src/app/auth/sign-up/page.tsx:
 msgid "Log in"
 msgstr "Log in"
 
-#: src/components/ui/app-header-menu.tsx
+#: src/components/ui/app-header-menu.tsx:
 msgid "Log out"
 msgstr "Log out"
 
-#: src/components/ui/app-header.tsx
+#: src/components/ui/app-header.tsx:
 msgid "Login"
 msgstr "Login"
 
-#: src/app/app/users/me/page.tsx
-#: src/app/app/users/me/tabs.tsx
-#: src/components/auth/login-auth-providers-settings.tsx
+#: src/app/app/users/me/page.tsx:
+#: src/app/app/users/me/tabs.tsx:
+#: src/components/auth/login-auth-providers-settings.tsx:
 msgid "Login methods"
 msgstr "Login methods"
 
-#: src/components/permission-text.tsx
+#: src/components/permission-text.tsx:
 msgid "Manage club"
 msgstr "Manage club"
 
-#: src/app/app/[id]/page.tsx
+#: src/app/app/[id]/page.tsx:
 msgid "Manage club metadata, roles, and members"
 msgstr "Manage club metadata, roles, and members"
 
-#: src/components/club-config/members-manager.tsx
+#: src/components/club-config/members-manager.tsx:
 msgid "Manage members"
 msgstr "Manage members"
 
-#: src/app/app/[id]/config/roles/roles-view.tsx
-#: src/components/club-config/roles-manager.tsx
+#: src/app/app/[id]/config/roles/roles-view.tsx:
+#: src/components/club-config/roles-manager.tsx:
 msgid "Manage roles"
 msgstr "Manage roles"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "Map columns from your CSV, optionally combine date and time columns, and review warning rows before importing."
 msgstr "Map columns from your CSV, optionally combine date and time columns, and review warning rows before importing."
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "Map your CSV columns and review each event before importing."
 msgstr "Map your CSV columns and review each event before importing."
 
-#: src/components/ui/user-link.tsx
+#: src/components/ui/user-link.tsx:
 msgid "Member of \"{0}\""
 msgstr "Member of \"{0}\""
 
-#: src/components/ui/user-link.tsx
+#: src/components/ui/user-link.tsx:
 msgid "Member of \"{0}\"\""
 msgstr "Member of \"{0}\"\""
 
-#: src/components/ui/user-link.tsx
+#: src/components/ui/user-link.tsx:
 msgid "Member of {0}"
 msgstr "Member of {0}"
 
-#: src/app/app/[id]/config/tabs.tsx
+#: src/app/app/[id]/config/tabs.tsx:
 msgid "Members"
 msgstr "Members"
 
-#: src/app/app/[id]/config/tabs.tsx
+#: src/app/app/[id]/config/tabs.tsx:
 msgid "Metadata"
 msgstr "Metadata"
 
-#: src/app/app/[id]/calendar/ModePicker.tsx
+#: src/app/app/[id]/calendar/ModePicker.tsx:
 msgid "Month"
 msgstr "Month"
 
-#: src/components/club-config/absence-form-editor.tsx
+#: src/components/club-config/absence-form-editor.tsx:
 msgid "Multiple choice"
 msgstr "Multiple choice"
 
-#: src/app/app/[id]/absences/(list)/tab-nav.tsx
+#: src/app/app/[id]/absences/(list)/tab-nav.tsx:
 msgid "My absences"
 msgstr "My absences"
 
-#: src/components/ui/app-header-menu.tsx
+#: src/components/ui/app-header-menu.tsx:
 msgid "Name"
 msgstr "Name"
 
-#: src/components/auth/login-auth-providers-settings.tsx
+#: src/components/auth/login-auth-providers-settings.tsx:
 msgid "Never used"
 msgstr "Never used"
 
-#: src/app/app/[id]/calendar/create-event-card.tsx
+#: src/app/app/[id]/calendar/create-event-card.tsx:
 #~ msgid "New event name"
 #~ msgstr "New event name"
 
-#: src/components/auth/login-auth-providers-settings.tsx
+#: src/components/auth/login-auth-providers-settings.tsx:
 msgid "New Password"
 msgstr "New Password"
 
-#: src/components/club-config/absence-form-editor.tsx
-#: src/components/club-config/absence-form-editor.tsx
+#: src/components/club-config/absence-form-editor.tsx:
+#: src/components/club-config/absence-form-editor.tsx:
 msgid "New question"
 msgstr "New question"
 
-#: src/app/docs/[lang]/[[...slug]]/doc-navigation.tsx
+#: src/app/docs/[lang]/[[...slug]]/doc-navigation.tsx:
 msgid "Next"
 msgstr "Next"
 
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
 msgid "Nickname"
 msgstr "Nickname"
 
-#: src/app/app/[id]/config/absence-forms/sidebar.tsx
+#: src/app/app/[id]/config/absence-forms/sidebar.tsx:
 msgid "No absence report templates found."
 msgstr "No absence report templates found."
 
-#: src/app/app/[id]/calendar/[year]/[month]/[day]/Day.tsx
+#: src/app/app/[id]/calendar/[year]/[month]/[day]/Day.tsx:
 msgid "No absence reports"
 msgstr "No absence reports"
 
-#: src/app/app/[id]/calendar/day.tsx
+#: src/app/app/[id]/calendar/day.tsx:
 #~ msgid "No absence reports for this day."
 #~ msgstr "No absence reports for this day."
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:
 msgid "No additional data"
 msgstr "No additional data"
 
-#: src/app/app/page.tsx
+#: src/app/app/page.tsx:
 msgid "No clubs found. You need an invite link to join a club."
 msgstr "No clubs found. You need an invite link to join a club."
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "No data rows found."
 msgstr "No data rows found."
 
-#: src/app/app/[id]/absences/(list)/assigned/list.tsx
+#: src/app/app/[id]/absences/(list)/assigned/list.tsx:
 msgid "No date"
 msgstr "No date"
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:
 msgid "No event"
 msgstr "No event"
 
-#: src/app/app/[id]/calendar/[year]/[month]/[day]/Day.tsx
+#: src/app/app/[id]/calendar/[year]/[month]/[day]/Day.tsx:
 msgid "No events for today."
 msgstr "No events for today."
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "No file selected yet"
 msgstr "No file selected yet"
 
-#: src/app/app/[id]/absences/(list)/report-detail.tsx
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:
 msgid "No form associated with this report"
 msgstr "No form associated with this report"
 
-#: src/app/app/[id]/absences/(list)/assigned/[reportId]/report-detail-with-review.tsx
+#: src/app/app/[id]/absences/(list)/assigned/[reportId]/report-detail-with-review.tsx:
 msgid "No form attached"
 msgstr "No form attached"
 
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
 msgid "No Gravatar found for the email associated with your account. You will need to first upload a profile picture to Gravatar using that email before updating your profile picture on Horenso SPACE."
 msgstr "No Gravatar found for the email associated with your account. You will need to first upload a profile picture to Gravatar using that email before updating your profile picture on Horenso SPACE."
 
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
 msgid "No Gravatar found for your email. First upload a profile picture to Gravatar using that email before updating your profile picture on Horenso SPACE."
 msgstr "No Gravatar found for your email. First upload a profile picture to Gravatar using that email before updating your profile picture on Horenso SPACE."
 
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
 msgid "No Gravatar found for your email. Upload a profile picture to Gravatar using that email then try again."
 msgstr "No Gravatar found for your email. Upload a profile picture to Gravatar using that email then try again."
 
-#: src/components/club-config/invite.tsx
+#: src/components/club-config/invite.tsx:
 msgid "No invites yet"
 msgstr "No invites yet"
 
-#: src/app/docs/[lang]/[[...slug]]/docs-search.tsx
+#: src/app/docs/[lang]/[[...slug]]/docs-search.tsx:
 msgid "No matching docs"
 msgstr "No matching docs"
 
-#: src/components/club-config/members-manager.tsx
+#: src/components/club-config/members-manager.tsx:
 msgid "No members yet."
 msgstr "No members yet."
 
-#: src/app/app/[id]/page.tsx
+#: src/app/app/[id]/page.tsx:
 msgid "No notifications. Notifications are not finished yet but will appear here."
 msgstr "No notifications. Notifications are not finished yet but will appear here."
 
-#: src/app/app/[id]/absences/(list)/assigned/list.tsx
+#: src/app/app/[id]/absences/(list)/assigned/list.tsx:
 msgid "No reports assigned to you"
 msgstr "No reports assigned to you"
 
-#: src/app/app/[id]/absences/(list)/assigned/list.tsx
+#: src/app/app/[id]/absences/(list)/assigned/list.tsx:
 msgid "No reports assigned to you."
 msgstr "No reports assigned to you."
 
-#: src/app/app/[id]/absences/(list)/list.tsx
+#: src/app/app/[id]/absences/(list)/list.tsx:
 msgid "No reports found."
 msgstr "No reports found."
 
-#: src/components/club-config/members-manager.tsx
+#: src/components/club-config/members-manager.tsx:
 msgid "No role"
 msgstr "No role"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "No source"
 msgstr "No source"
 
-#: src/app/app/[id]/config/absence-forms/page.tsx
+#: src/app/app/[id]/config/absence-forms/page.tsx:
 msgid "No templates yet"
 msgstr "No templates yet"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "No valid rows are ready to import."
 msgstr "No valid rows are ready to import."
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "Not mapped"
 msgstr "Not mapped"
 
-#: src/app/app/[id]/calendar/event-form.tsx
+#: src/app/app/[id]/calendar/event-form.tsx:
 msgid "Notes"
 msgstr "Notes"
 
-#: src/app/app/[id]/calendar/calendar.tsx
+#: src/app/app/[id]/calendar/calendar.tsx:
 msgid "One or more rows in the CSV file are invalid. Each row must have at least title, start_time, and end_time."
 msgstr "One or more rows in the CSV file are invalid. Each row must have at least title, start_time, and end_time."
 
-#: src/app/app/[id]/config/roles/role-dialog.tsx
-#: src/components/club-config/roles-manager.tsx
+#: src/app/app/[id]/config/roles/role-dialog.tsx:
+#: src/components/club-config/roles-manager.tsx:
 msgid "Open template editor"
 msgstr "Open template editor"
 
-#: src/components/club-config/absence-form-editor.tsx
-#: src/components/club-config/absence-form-editor.tsx
+#: src/components/club-config/absence-form-editor.tsx:
+#: src/components/club-config/absence-form-editor.tsx:
 msgid "Option {0}"
 msgstr "Option {0}"
 
-#: src/app/app/[id]/calendar/calendar.tsx
+#: src/app/app/[id]/calendar/calendar.tsx:
 msgid "Optional description"
 msgstr "Optional description"
 
-#: src/app/app/[id]/calendar/calendar.tsx
+#: src/app/app/[id]/calendar/calendar.tsx:
 msgid "Optional room"
 msgstr "Optional room"
 
-#: src/components/club-config/absence-form-editor.tsx
+#: src/components/club-config/absence-form-editor.tsx:
 msgid "Options"
 msgstr "Options"
 
-#: src/app/not-found.tsx
+#: src/app/not-found.tsx:
 msgid "Page not found"
 msgstr "Page not found"
 
-#: src/components/auth/signup-form.tsx
+#: src/components/auth/signup-form.tsx:
 msgid "Password"
 msgstr "Password"
 
-#: src/components/auth/login-auth-providers-settings.tsx
+#: src/components/auth/login-auth-providers-settings.tsx:
 msgid "Password and login"
 msgstr "Password and login"
 
-#: src/components/auth/login-auth-providers-settings.tsx
+#: src/components/auth/login-auth-providers-settings.tsx:
 msgid "Password updated successfully."
 msgstr "Password updated successfully."
 
-#: src/components/auth/login-auth-providers-settings.tsx
+#: src/components/auth/login-auth-providers-settings.tsx:
 msgid "Passwords do not match."
 msgstr "Passwords do not match."
 
-#: src/components/ui/absence-report-card.tsx
+#: src/components/ui/absence-report-card.tsx:
 msgid "Pending"
 msgstr "Pending"
 
-#: src/app/app/[id]/config/roles/role-dialog.tsx
-#: src/components/club-config/roles-manager.tsx
+#: src/app/app/[id]/config/roles/role-dialog.tsx:
+#: src/components/club-config/roles-manager.tsx:
 msgid "Permissions"
 msgstr "Permissions"
 
-#: src/components/club-config/invite.tsx
+#: src/components/club-config/invite.tsx:
 msgid "Please create roles before generating invites."
 msgstr "Please create roles before generating invites."
 
-#: src/components/feedback-form.tsx
+#: src/components/feedback-form.tsx:
 msgid "Please provide as much detail as possible to help us address your issue. A minimum of 15 characters is required."
 msgstr "Please provide as much detail as possible to help us address your issue. A minimum of 15 characters is required."
 
-#: src/components/feedback-form.tsx
+#: src/components/feedback-form.tsx:
 msgid "Please provide more detailed feedback."
 msgstr "Please provide more detailed feedback."
 
-#: src/app/app/[id]/calendar/calendar.tsx
+#: src/app/app/[id]/calendar/calendar.tsx:
 msgid "Please select one valid CSV file for import."
 msgstr "Please select one valid CSV file for import."
 
-#: src/app/docs/[lang]/[[...slug]]/doc-navigation.tsx
+#: src/app/docs/[lang]/[[...slug]]/doc-navigation.tsx:
 msgid "Previous"
 msgstr "Previous"
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:
 msgid "Previous Reviews"
 msgstr "Previous Reviews"
 
-#: src/components/club-config/metadata-form.tsx
+#: src/components/club-config/metadata-form.tsx:
 msgid "Private"
 msgstr "Private"
 
-#: src/app/app/users/me/page.tsx
-#: src/app/app/users/me/tabs.tsx
+#: src/app/app/users/me/page.tsx:
+#: src/app/app/users/me/tabs.tsx:
 msgid "Profile"
 msgstr "Profile"
 
-#: src/components/ui/app-header-menu.tsx
+#: src/components/ui/app-header-menu.tsx:
 msgid "Profile and settings"
 msgstr "Profile and settings"
 
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
 msgid "Profile Picture"
 msgstr "Profile Picture"
 
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
 msgid "Profile picture of {0}"
 msgstr "Profile picture of {0}"
 
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
 msgid "Profile pictures from Google accounts with the \"only show my profile picture to people I interact with\" setting enabled may not be visible."
 msgstr "Profile pictures from Google accounts with the \"only show my profile picture to people I interact with\" setting enabled may not be visible."
 
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
 msgid "Profile pictures on Horenso SPACE are managed with Gravatar. Update your profile picture on Gravatar then click \"Use Gravatar\". If you created your account with certain SNS services <0><1>such as Google</1></0>, your profile picture is may be been set automatically."
 msgstr "Profile pictures on Horenso SPACE are managed with Gravatar. Update your profile picture on Gravatar then click \"Use Gravatar\". If you created your account with certain SNS services <0><1>such as Google</1></0>, your profile picture is may be been set automatically."
 
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
 msgid "Profile pictures on Horenso SPACE are managed with Gravatar. Update your profile picture on Gravatar then click \"Use Gravatar\". If you created your account with certain SNS services <0><1>such as Google</1></0>, your profile picture is set automatically. Otherwise,"
 msgstr "Profile pictures on Horenso SPACE are managed with Gravatar. Update your profile picture on Gravatar then click \"Use Gravatar\". If you created your account with certain SNS services <0><1>such as Google</1></0>, your profile picture is set automatically. Otherwise,"
 
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
 msgid "Profile pictures on Horenso SPACE are managed with Gravatar. Update your profile picture on Gravatar then click \"Use Gravatar\". If you created your account with certain SNS services <0><1>such as Google</1></0>, your profile picture may be been set automatically."
 msgstr "Profile pictures on Horenso SPACE are managed with Gravatar. Update your profile picture on Gravatar then click \"Use Gravatar\". If you created your account with certain SNS services <0><1>such as Google</1></0>, your profile picture may be been set automatically."
 
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
 msgid "Profile pictures on Horenso SPACE are managed with Gravatar. Update your profile picture on Gravatar then click \"Use Gravatar\". If you created your account with certain SNS services <0><1>such as Google</1></0>, your profile picture may have been set automatically."
 msgstr "Profile pictures on Horenso SPACE are managed with Gravatar. Update your profile picture on Gravatar then click \"Use Gravatar\". If you created your account with certain SNS services <0><1>such as Google</1></0>, your profile picture may have been set automatically."
 
-#: src/components/club-config/metadata-form.tsx
+#: src/components/club-config/metadata-form.tsx:
 msgid "Public"
 msgstr "Public"
 
-#: src/components/club-config/absence-form-editor.tsx
+#: src/components/club-config/absence-form-editor.tsx:
 msgid "Questions"
 msgstr "Questions"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "Reading CSV file..."
 msgstr "Reading CSV file..."
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "Ready"
 msgstr "Ready"
 
-#: src/app/app/[id]/page.tsx
+#: src/app/app/[id]/page.tsx:
 msgid "Recent notifications"
 msgstr "Recent notifications"
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:
 msgid "Reject"
 msgstr "Reject"
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:
 msgid "Rejected"
 msgstr "Rejected"
 
-#: src/components/club-config/members-manager.tsx
+#: src/components/club-config/members-manager.tsx:
 msgid "Remove"
 msgstr "Remove"
 
-#: src/components/ui/app-header-menu.tsx
+#: src/components/ui/app-header-menu.tsx:
 msgid "Remove screenshot"
 msgstr "Remove screenshot"
 
-#: src/components/ui/app-header-menu.tsx
+#: src/components/ui/app-header-menu.tsx:
 msgid "Report a bug"
 msgstr "Report a bug"
 
-#: src/app/app/[id]/page.tsx
+#: src/app/app/[id]/page.tsx:
 msgid "Report absence"
 msgstr "Report absence"
 
-#: src/app/app/[id]/absences/(list)/report-detail.tsx
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:
 msgid "Report accepted"
 msgstr "Report accepted"
 
-#: src/app/app/[id]/absences/create/page.tsx
+#: src/app/app/[id]/absences/create/page.tsx:
 msgid "Report an absence"
 msgstr "Report an absence"
 
-#: src/components/ui/app-header-menu.tsx
+#: src/components/ui/app-header-menu.tsx:
 msgid "Report bug"
 msgstr "Report bug"
 
-#: src/app/app/[id]/absences/(list)/report-detail.tsx
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:
 msgid "Report details"
 msgstr "Report details"
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:
 msgid "Report Details"
 msgstr "Report Details"
 
-#: src/app/app/[id]/absences/(list)/report-detail.tsx
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:
 msgid "Report is approved"
 msgstr "Report is approved"
 
-#: src/app/app/[id]/absences/(list)/report-detail.tsx
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:
 msgid "Report is pending approval"
 msgstr "Report is pending approval"
 
-#: src/app/app/[id]/absences/(list)/report-detail.tsx
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:
 msgid "Report is rejected"
 msgstr "Report is rejected"
 
-#: src/app/app/[id]/absences/(list)/assigned/[reportId]/report-detail-with-review.tsx
+#: src/app/app/[id]/absences/(list)/assigned/[reportId]/report-detail-with-review.tsx:
 msgid "Report not found"
 msgstr "Report not found"
 
-#: src/app/app/[id]/absences/(list)/report-detail.tsx
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:
 msgid "Report pending review"
 msgstr "Report pending review"
 
-#: src/app/app/[id]/absences/(list)/report-detail.tsx
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:
 msgid "Report rejected"
 msgstr "Report rejected"
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:
 msgid "Report Review"
 msgstr "Report Review"
 
-#: src/components/forgot-password-form.tsx
+#: src/components/forgot-password-form.tsx:64
 msgid "Reset your password"
 msgstr "Reset your password"
 
-#: src/components/permission-text.tsx
+#: src/components/permission-text.tsx:
 msgid "Review and respond to absence reports"
 msgstr "Review and respond to absence reports"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "Review calendar CSV import"
 msgstr "Review calendar CSV import"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "Review CSV data before importing it into the calendar."
 msgstr "Review CSV data before importing it into the calendar."
 
-#: src/app/app/[id]/absences/(list)/assigned/[reportId]/page.tsx
+#: src/app/app/[id]/absences/(list)/assigned/[reportId]/page.tsx:
 msgid "Review Report"
 msgstr "Review Report"
 
-#: src/app/app/[id]/absences/(list)/assigned/[reportId]/report-detail-with-review.tsx
+#: src/app/app/[id]/absences/(list)/assigned/[reportId]/report-detail-with-review.tsx:
 msgid "Review submitted successfully"
 msgstr "Review submitted successfully"
 
-#: src/app/app/[id]/absences/(list)/assigned/list.tsx
+#: src/app/app/[id]/absences/(list)/assigned/list.tsx:
 msgid "Reviewed"
 msgstr "Reviewed"
 
-#: src/app/app/[id]/config/roles/role-dialog.tsx
-#: src/components/club-config/roles-manager.tsx
+#: src/app/app/[id]/config/roles/role-dialog.tsx:
+#: src/components/club-config/roles-manager.tsx:
 msgid "Reviewer role"
 msgstr "Reviewer role"
 
-#: src/app/app/[id]/absences/(list)/report-detail.tsx
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:
 msgid "Reviews"
 msgstr "Reviews"
 
-#: src/app/app/[id]/config/roles/role-dialog.tsx
-#: src/components/club-config/roles-manager.tsx
+#: src/app/app/[id]/config/roles/role-dialog.tsx:
+#: src/components/club-config/roles-manager.tsx:
 msgid "Role description"
 msgstr "Role description"
 
-#: src/app/app/[id]/config/roles/role-dialog.tsx
-#: src/components/club-config/roles-manager.tsx
+#: src/app/app/[id]/config/roles/role-dialog.tsx:
+#: src/components/club-config/roles-manager.tsx:
 msgid "Role name"
 msgstr "Role name"
 
-#: src/app/app/[id]/config/roles/role-dialog.tsx
+#: src/app/app/[id]/config/roles/role-dialog.tsx:
 msgid "Role name required"
 msgstr "Role name required"
 
-#: src/components/club-config/members-manager.tsx
+#: src/components/club-config/members-manager.tsx:
 msgid "Role: {currentRoleLabel}"
 msgstr "Role: {currentRoleLabel}"
 
-#: src/components/club-config/members-manager.tsx
+#: src/components/club-config/members-manager.tsx:
 msgid "Role: {role}"
 msgstr "Role: {role}"
 
-#: src/app/app/[id]/config/tabs.tsx
+#: src/app/app/[id]/config/tabs.tsx:
 msgid "Roles"
 msgstr "Roles"
 
-#: src/app/app/users/me/general/GeneralSettingsForm.tsx
+#: src/app/app/users/me/general/GeneralSettingsForm.tsx:
 msgid "Save"
 msgstr "Save"
 
-#: src/components/club-config/absence-form-detail.tsx
+#: src/components/club-config/absence-form-detail.tsx:
 msgid "Save changes"
 msgstr "Save changes"
 
-#: src/components/club-config/absence-form-detail.tsx
+#: src/components/club-config/absence-form-detail.tsx:
 msgid "Saved"
 msgstr "Saved"
 
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
 msgid "Saved!"
 msgstr "Saved!"
 
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
 msgid "Saving..."
 msgstr "Saving..."
 
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
 msgid "School"
 msgstr "School"
 
-#: src/app/docs/[lang]/[[...slug]]/docs-search.tsx
+#: src/app/docs/[lang]/[[...slug]]/docs-search.tsx:
 msgid "Search"
 msgstr "Search"
 
-#: src/app/docs/[lang]/[[...slug]]/docs-search.tsx
+#: src/app/docs/[lang]/[[...slug]]/docs-search.tsx:
 msgid "Search docs"
 msgstr "Search docs"
 
-#: src/components/ui/app-header-menu.tsx
+#: src/components/ui/app-header-menu.tsx:
 msgid "Select a club"
 msgstr "Select a club"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "Select a CSV file to preview its rows."
 msgstr "Select a CSV file to preview its rows."
 
-#: src/app/app/[id]/absences/(list)/assigned/list.tsx
+#: src/app/app/[id]/absences/(list)/assigned/list.tsx:
 msgid "Select a report to review"
 msgstr "Select a report to review"
 
-#: src/app/app/users/me/page.tsx
+#: src/app/app/users/me/page.tsx:
 #~ msgid "Select a setting to change"
 #~ msgstr "Select a setting to change"
 
-#: src/app/app/[id]/config/roles/role-dialog.tsx
-#: src/components/club-config/roles-manager.tsx
+#: src/app/app/[id]/config/roles/role-dialog.tsx:
+#: src/components/club-config/roles-manager.tsx:
 msgid "Select a template first"
 msgstr "Select a template first"
 
-#: src/app/app/[id]/config/absence-forms/sidebar.tsx
+#: src/app/app/[id]/config/absence-forms/sidebar.tsx:
 msgid "Select absence form"
 msgstr "Select absence form"
 
-#: src/app/app/[id]/config/absence-forms/sidebar.tsx
+#: src/app/app/[id]/config/absence-forms/sidebar.tsx:
 msgid "Select an absence form template"
 msgstr "Select an absence form template"
 
-#: src/app/app/[id]/absences/create/form.tsx
+#: src/app/app/[id]/absences/create/form.tsx:
 msgid "Select event"
 msgstr "Select event"
 
-#: src/components/club-config/invite.tsx
+#: src/components/club-config/invite.tsx:
 msgid "Select role for new members"
 msgstr "Select role for new members"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "Select source CSV column for {label}"
 msgstr "Select source CSV column for {label}"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "Select source CSV column(s)"
 msgstr "Select source CSV column(s)"
 
-#: src/app/app/[id]/config/absence-forms/sidebar.tsx
+#: src/app/app/[id]/config/absence-forms/sidebar.tsx:
 msgid "Select template"
 msgstr "Select template"
 
-#: src/components/ui/app-header-menu.tsx
+#: src/components/ui/app-header-menu.tsx:
 msgid "Send bug report"
 msgstr "Send bug report"
 
-#: src/components/feedback-form.tsx
+#: src/components/feedback-form.tsx:
 msgid "Send feedback"
 msgstr "Send feedback"
 
-#: src/components/ui/app-header-menu.tsx
-#: src/components/ui/app-header-menu.tsx
+#: src/components/ui/app-header-menu.tsx:
+#: src/components/ui/app-header-menu.tsx:
 msgid "Send Feedback"
 msgstr "Send Feedback"
 
-#: src/components/forgot-password-form.tsx
+#: src/components/forgot-password-form.tsx:87
 msgid "Send reset email"
 msgstr "Send reset email"
 
-#: src/components/feedback-form.tsx
+#: src/components/feedback-form.tsx:
 msgid "Sending your club information will help us better understand your problem to resolve it faster."
 msgstr "Sending your club information will help us better understand your problem to resolve it faster."
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "Separate date/time columns"
 msgstr "Separate date/time columns"
 
-#: src/app/maintenance/page.tsx
+#: src/app/maintenance/page.tsx:
 msgid "Service Unavailable"
 msgstr "Service Unavailable"
 
-#: src/components/user-share-actions.tsx
+#: src/components/user-share-actions.tsx:
 msgid "Share profile"
 msgstr "Share profile"
 
-#: src/components/club-config/absence-form-editor.tsx
+#: src/components/club-config/absence-form-editor.tsx:
 msgid "Show"
 msgstr "Show"
 
-#: src/components/club-config/absence-form-editor.tsx
+#: src/components/club-config/absence-form-editor.tsx:
 msgid "Show options"
 msgstr "Show options"
 
-#: src/components/auth/login-form.tsx
+#: src/components/auth/login-form.tsx:
 msgid "Sign in with <0/>"
 msgstr "Sign in with <0/>"
 
-#: src/components/login-form.tsx
+#: src/components/login-form.tsx:
 #~ msgid "Sign in with GitHub"
 #~ msgstr "Sign in with GitHub"
 
-#: src/components/login-form.tsx
+#: src/components/login-form.tsx:
 #~ msgid "Sign in with Google"
 #~ msgstr "Sign in with Google"
 
-#: src/components/auth/signup-form.tsx
+#: src/components/auth/signup-form.tsx:
 msgid "Sign up"
 msgstr "Sign up"
 
-#: src/app/auth/sign-up/page.tsx
+#: src/app/auth/sign-up/page.tsx:
 msgid "Sign up to get started"
 msgstr "Sign up to get started"
 
-#: src/components/auth/signup-form.tsx
+#: src/components/auth/signup-form.tsx:
 msgid "Sign up with <0/>"
 msgstr "Sign up with <0/>"
 
-#: src/components/signup-form.tsx
+#: src/components/signup-form.tsx:
 #~ msgid "Sign up with GitHub"
 #~ msgstr "Sign up with GitHub"
 
-#: src/components/signup-form.tsx
+#: src/components/signup-form.tsx:
 #~ msgid "Sign up with Google"
 #~ msgstr "Sign up with Google"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "Single date/time column"
 msgstr "Single date/time column"
 
-#: src/app/auth/error/page.tsx
+#: src/app/auth/error/page.tsx:
 msgid "Something went wrong"
 msgstr "Something went wrong"
 
-#: src/app/page.tsx
+#: src/app/page.tsx:
 msgid "Sponsored by the Sapporo Kosei Junior & Senior High School Brass Band club and produced by the Christian Academy in Japan Robotics club (VEX team 99484)."
 msgstr "Sponsored by the Sapporo Kosei Junior & Senior High School Brass Band club and produced by the Christian Academy in Japan Robotics club (VEX team 99484)."
 
-#: src/app/app/[id]/calendar/create-event-card.tsx
+#: src/app/app/[id]/calendar/create-event-card.tsx:
 #~ msgid "Start date and time"
 #~ msgstr "Start date and time"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "Start time"
 msgstr "Start time"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "Start time for row {0}"
 msgstr "Start time for row {0}"
 
-#: src/components/club-config/absence-form-editor.tsx
+#: src/components/club-config/absence-form-editor.tsx:
 msgid "Static text"
 msgstr "Static text"
 
-#: src/components/club-config/absence-form-editor.tsx
+#: src/components/club-config/absence-form-editor.tsx:
 msgid "Static text content"
 msgstr "Static text content"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "Status"
 msgstr "Status"
 
-#: src/components/permission-text.tsx
+#: src/components/permission-text.tsx:
 msgid "Submit absence reports"
 msgstr "Submit absence reports"
 
-#: src/components/ui/absence-report-card.tsx
+#: src/components/ui/absence-report-card.tsx:
 msgid "Submitted at {0}"
 msgstr "Submitted at {0}"
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:
 msgid "Submitted by"
 msgstr "Submitted by"
 
-#: src/components/ui/absence-report-card.tsx
+#: src/components/ui/absence-report-card.tsx:
 msgid "Submitted by <0>{0}</0>"
 msgstr "Submitted by <0>{0}</0>"
 
-#: src/components/ui/absence-report-card.tsx
+#: src/components/ui/absence-report-card.tsx:
 msgid "Submitted by <0></0>"
 msgstr "Submitted by <0></0>"
 
-#: src/app/app/[id]/absences/(list)/list.tsx
+#: src/app/app/[id]/absences/(list)/list.tsx:
 #~ msgid "Submitted on {0}"
 #~ msgstr "Submitted on {0}"
 
-#: src/components/club-config/absence-form-editor.tsx
+#: src/components/club-config/absence-form-editor.tsx:
 msgid "Text"
 msgstr "Text"
 
-#: src/components/ui/app-header-menu.tsx
+#: src/components/ui/app-header-menu.tsx:
 msgid "Thank you for your report!"
 msgstr "Thank you for your report!"
 
-#: src/app/app/[id]/calendar/calendar.tsx
+#: src/app/app/[id]/calendar/calendar.tsx:
 msgid "The CSV file header is invalid. Expected columns: title, start_time, end_time, [location], [description]."
 msgstr "The CSV file header is invalid. Expected columns: title, start_time, end_time, [location], [description]."
 
-#: src/app/app/[id]/calendar/calendar.tsx
+#: src/app/app/[id]/calendar/calendar.tsx:
 msgid "The CSV file is empty or invalid."
 msgstr "The CSV file is empty or invalid."
 
-#: src/components/user-share-actions.tsx
+#: src/components/user-share-actions.tsx:
 msgid "The profile URL has been copied to your clipboard."
 msgstr "The profile URL has been copied to your clipboard."
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:
 msgid "The report is pending review"
 msgstr "The report is pending review"
 
-#: src/app/app/[id]/absences/(list)/report-detail.tsx
+#: src/app/app/[id]/absences/(list)/report-detail.tsx:
 msgid "The report pending review"
 msgstr "The report pending review"
 
-#: src/app/app/[id]/calendar/[year]/[month]/[day]/Day.tsx
+#: src/app/app/[id]/calendar/[year]/[month]/[day]/Day.tsx:
 msgid "There are no reported absences for this day."
 msgstr "There are no reported absences for this day."
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:
 msgid "This report has been accepted"
 msgstr "This report has been accepted"
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:
 #~ msgid "This report has been accepted."
 #~ msgstr "This report has been accepted."
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:
 msgid "This report has been rejected"
 msgstr "This report has been rejected"
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:
 msgid "This report has not been reviewed yet."
 msgstr "This report has not been reviewed yet."
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:
 #~ msgid "This report is has not been accepted."
 #~ msgstr "This report is has not been accepted."
 
-#: src/components/club-config/absence-form-editor.tsx
+#: src/components/club-config/absence-form-editor.tsx:
 msgid "Time"
 msgstr "Time"
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "Title"
 msgstr "Title"
 
-#: src/components/club-config/absence-form-editor.tsx
+#: src/components/club-config/absence-form-editor.tsx:
 msgid "Type"
 msgstr "Type"
 
-#: src/components/forgot-password-form.tsx
+#: src/components/forgot-password-form.tsx:67
 msgid "Type in your email and we'll send you a link to reset your password"
 msgstr "Type in your email and we'll send you a link to reset your password"
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:
 msgid "Unassigned"
 msgstr "Unassigned"
 
-#: src/app/page.tsx
+#: src/app/page.tsx:
 msgid "Understand quickly who's where and when"
 msgstr "Understand quickly who's where and when"
 
-#: src/app/app/[id]/absences/(list)/assigned/detail.tsx
+#: src/app/app/[id]/absences/(list)/assigned/detail.tsx:
 msgid "Unknown"
 msgstr "Unknown"
 
-#: src/components/club-config/members-manager.tsx
+#: src/components/club-config/members-manager.tsx:
 msgid "Unknown user"
 msgstr "Unknown user"
 
-#: src/components/auth/login-auth-providers-settings.tsx
+#: src/components/auth/login-auth-providers-settings.tsx:
 msgid "Unlink account"
 msgstr "Unlink account"
 
-#: src/app/app/[id]/config/absence-forms/new/page.tsx
+#: src/app/app/[id]/config/absence-forms/new/page.tsx:
 msgid "Untitled form"
 msgstr "Untitled form"
 
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
 msgid "Update from Gravatar"
 msgstr "Update from Gravatar"
 
-#: src/components/auth/login-auth-providers-settings.tsx
+#: src/components/auth/login-auth-providers-settings.tsx:
 msgid "Update password"
 msgstr "Update password"
 
-#: src/app/app/[id]/config/absence-forms/sidebar.tsx
+#: src/app/app/[id]/config/absence-forms/sidebar.tsx:
 msgid "Updated at: {0}"
 msgstr "Updated at: {0}"
 
-#: src/components/permission-text.tsx
+#: src/components/permission-text.tsx:
 msgid "Upload and manage club files"
 msgstr "Upload and manage club files"
 
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
 msgid "Use Gravatar for {0}"
 msgstr "Use Gravatar for {0}"
 
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
 msgid "Use my Gravatar"
 msgstr "Use my Gravatar"
 
-#: src/components/club-config/invite.tsx
+#: src/components/club-config/invite.tsx:
 #~ msgid "Used {0} times"
 #~ msgstr "Used {0} times"
 
-#: src/app/app/users/me/layout.tsx
+#: src/app/app/users/me/layout.tsx:
 msgid "User settings"
 msgstr "User settings"
 
-#: src/components/permission-text.tsx
+#: src/components/permission-text.tsx:
 msgid "View all absence reports"
 msgstr "View all absence reports"
 
-#: src/components/permission-text.tsx
+#: src/components/permission-text.tsx:
 msgid "View club calendar events"
 msgstr "View club calendar events"
 
-#: src/components/ui/user-link.tsx
+#: src/components/ui/user-link.tsx:
 msgid "View profile"
 msgstr "View profile"
 
-#: src/components/ui/app-header-menu.tsx
+#: src/components/ui/app-header-menu.tsx:
 msgid "We appreciate your feedback to help us improve. Every message is read and considered."
 msgstr "We appreciate your feedback to help us improve. Every message is read and considered."
 
-#: src/components/forgot-password-form.tsx
+#: src/components/forgot-password-form.tsx:52
 msgid "We emailed you a password reset link"
 msgstr "We emailed you a password reset link"
 
-#: src/components/auth/signup-form.tsx
+#: src/components/auth/signup-form.tsx:
 msgid "We found your Gravatar!"
 msgstr "We found your Gravatar!"
 
-#: src/components/auth/signup-form.tsx
+#: src/components/auth/signup-form.tsx:
 msgid "We found your Gravatar! This will be used as your profile picture."
 msgstr "We found your Gravatar! This will be used as your profile picture."
 
-#: src/components/club-config/metadata-form.tsx
-#: src/components/club-create-form.tsx
+#: src/components/club-config/metadata-form.tsx:
+#: src/components/club-create-form.tsx:
 msgid "Website"
 msgstr "Website"
 
-#: src/app/auth/login/page.tsx
+#: src/app/auth/login/page.tsx:
 msgid "Welcome back"
 msgstr "Welcome back"
 
-#: src/components/auth/signup-form.tsx
+#: src/components/auth/signup-form.tsx:
 msgid "Welcome, {fullName}!"
 msgstr "Welcome, {fullName}!"
 
-#: src/app/auth/sign-up/page.tsx
+#: src/app/auth/sign-up/page.tsx:
 msgid "Welcome!"
 msgstr "Welcome!"
 
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
 msgid "What people call you"
 msgstr "What people call you"
 
-#: src/components/ui/app-header-menu.tsx
+#: src/components/ui/app-header-menu.tsx:
 msgid "What's the bug? What did you expect?"
 msgstr "What's the bug? What did you expect?"
 
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
 msgid "When you create your account with certain SNS services <0><1>such as Google</1></0>, your profile picture is set automatically. However, if you wish to change it, profile pictures on Horenso SPACE are managed through Gravatar. First, upload your profile picture to Gravatar using the same email as your Horenso SPACE account. Then, click the \"Update\" button below to update your profile picture on Horenso SPACE."
 msgstr "When you create your account with certain SNS services <0><1>such as Google</1></0>, your profile picture is set automatically. However, if you wish to change it, profile pictures on Horenso SPACE are managed through Gravatar. First, upload your profile picture to Gravatar using the same email as your Horenso SPACE account. Then, click the \"Update\" button below to update your profile picture on Horenso SPACE."
 
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
 msgid "When you create your account with certain SNS services <0><1>such as Google</1></0>, your profile picture is set automatically. Otherwise, to change your profile picture, update your Gravatar with the email you use for Horenso SPACE and click \"Update from Gravatar\"."
 msgstr "When you create your account with certain SNS services <0><1>such as Google</1></0>, your profile picture is set automatically. Otherwise, to change your profile picture, update your Gravatar with the email you use for Horenso SPACE and click \"Update from Gravatar\"."
 
-#: src/app/app/[id]/calendar/ModePicker.tsx
+#: src/app/app/[id]/calendar/ModePicker.tsx:
 msgid "Year"
 msgstr "Year"
 
-#: src/app/app/club/invite/[id]/page.tsx
+#: src/app/app/club/invite/[id]/page.tsx:
 msgid "You are invited to join a club"
 msgstr "You are invited to join a club"
 
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
 msgid "You are not authorized to perform this action."
 msgstr "You are not authorized to perform this action."
 
-#: src/components/club-config/members-manager.tsx
+#: src/components/club-config/members-manager.tsx:
 msgid "You cannot remove yourself from the club."
 msgstr "You cannot remove yourself from the club."
 
-#: src/app/app/[id]/absences/create/page.tsx
+#: src/app/app/[id]/absences/create/page.tsx:
 msgid "You do not have a configured absence report form. Please contact a club manager."
 msgstr "You do not have a configured absence report form. Please contact a club manager."
 
-#: src/components/profile-editor.tsx
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
+#: src/components/profile-editor.tsx:
 msgid "You don't have an email with your account. Add one in your login settings first."
 msgstr "You don't have an email with your account. Add one in your login settings first."
 
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
 msgid "You don't have an email with your account. Please add one before updating from your Gravatar."
 msgstr "You don't have an email with your account. Please add one before updating from your Gravatar."
 
-#: src/app/app/[id]/absences/(list)/my/list.tsx
+#: src/app/app/[id]/absences/(list)/my/list.tsx:
 msgid "You don't have any absence reports"
 msgstr "You don't have any absence reports"
 
-#: src/components/club-config/absence-form-detail.tsx
+#: src/components/club-config/absence-form-detail.tsx:
 msgid "You have unsaved changes"
 msgstr "You have unsaved changes"
 
-#: src/app/app/[id]/absences/create/page.tsx
+#: src/app/app/[id]/absences/create/page.tsx:
 msgid "You may be signed out. Please refresh the page and sign in again"
 msgstr "You may be signed out. Please refresh the page and sign in again"
 
-#: src/app/app/[id]/calendar/create-event-card.tsx
+#: src/app/app/[id]/calendar/create-event-card.tsx:
 msgid "You may be signed out. Please refresh the page and sign in again."
 msgstr "You may be signed out. Please refresh the page and sign in again."
 
-#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx
+#: src/app/app/[id]/calendar/calendar-csv-import-sheet.tsx:
 msgid "You must be signed in to import events."
 msgstr "You must be signed in to import events."
 
-#: src/app/app/[id]/config/roles/role-dialog.tsx
+#: src/app/app/[id]/config/roles/role-dialog.tsx:
 msgid "You must set a reviewer for the role in order to require approval for absence reports. Note that if no reviewer is set, no reviews will be required for approval of this role's reports."
 msgstr "You must set a reviewer for the role in order to require approval for absence reports. Note that if no reviewer is set, no reviews will be required for approval of this role's reports."
 
-#: src/app/app/club/invite/[id]/page.tsx
+#: src/app/app/club/invite/[id]/page.tsx:
 msgid "You will be joining as: <0>{0}</0>."
 msgstr "You will be joining as: <0>{0}</0>."
 
-#: src/app/app/club/invite/[id]/page.tsx
+#: src/app/app/club/invite/[id]/page.tsx:
 msgid "You will be joining as: <0>{0}</0>. Expires at: <1>{1}</1>"
 msgstr "You will be joining as: <0>{0}</0>. Expires at: <1>{1}</1>"
 
-#: src/components/club-create-form.tsx
+#: src/components/club-create-form.tsx:
 msgid "Your club"
 msgstr "Your club"
 
-#: src/components/feedback-form.tsx
+#: src/components/feedback-form.tsx:
 msgid "Your feedback"
 msgstr "Your feedback"
 
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
 msgid "Your full name"
 msgstr "Your full name"
 
-#: src/components/auth/signup-form.tsx
+#: src/components/auth/signup-form.tsx:
 msgid "Your full name will not be shared with people outside of your clubs unless you choose to at a later time."
 msgstr "Your full name will not be shared with people outside of your clubs unless you choose to at a later time."
 
-#: src/components/ui/app-header-menu.tsx
+#: src/components/ui/app-header-menu.tsx:
 msgid "Your name"
 msgstr "Your name"
 
-#: src/components/auth/signup-form.tsx
+#: src/components/auth/signup-form.tsx:
 msgid "Your profile picture"
 msgstr "Your profile picture"
 
-#: src/components/club-create-form.tsx
+#: src/components/club-create-form.tsx:
 msgid "Your school"
 msgstr "Your school"
 
-#: src/components/profile-editor.tsx
+#: src/components/profile-editor.tsx:
 msgid "Your school name"
 msgstr "Your school name"
 
-#: src/components/user-share-actions.tsx
+#: src/components/user-share-actions.tsx:
 msgid "Your system share dialog should have opened."
 msgstr "Your system share dialog should have opened."
 
-#: src/components/ui/app-header-menu.tsx
+#: src/components/ui/app-header-menu.tsx:
 msgid "your.email@example.org"
 msgstr "your.email@example.org"
