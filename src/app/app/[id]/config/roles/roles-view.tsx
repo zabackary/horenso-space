@@ -1,40 +1,95 @@
 "use client";
 
+import { useSuspenseQuery } from "@apollo/client/react";
 import { Trans, useLingui } from "@lingui/react/macro";
 import { Flex, Heading, SegmentedControl, Skeleton } from "@radix-ui/themes";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import {
-  lazy,
-  Suspense,
-  use,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import { lazy, Suspense, use, useCallback, useEffect, useState } from "react";
 import type { Database } from "@/@types/database.types";
 import PaginationControls from "@/components/ui/pagination-controls";
+import { gql } from "@/gql";
 import { createClient } from "@/lib/supabase/client";
-import { DEFAULT_PAGE_SIZE } from "@/lib/useCursorPagination";
+import {
+  DEFAULT_PAGE_SIZE,
+  useCursorPagination,
+} from "@/lib/useCursorPagination";
 import RoleDialog, { type Role } from "./role-dialog";
 import RolesManager from "./roles-manager";
 
 const RolesGraph = lazy(() => import("./roles-graph"));
 
+// Caps the unpaginated fetch used for the graph view and the reviewer-role
+// dropdown, which both need every role in the club rather than one page.
+const ALL_ROLES_CAP = 100;
+
+const clubRolesViewQuery = gql(`
+  query ClubRolesView($clubId: UUID!, $first: Int!, $after: Cursor, $allFirst: Int!) {
+    page: rolesCollection(
+      filter: { clubId: { eq: $clubId } }
+      orderBy: { createdAt: AscNullsLast }
+      first: $first
+      after: $after
+    ) {
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+      edges {
+        node {
+          id
+          name
+          description
+          permissions
+          absenceReportReviewerRole
+          absenceReportApprovalRequired
+          absenceReportForm
+        }
+      }
+    }
+    all: rolesCollection(
+      filter: { clubId: { eq: $clubId } }
+      orderBy: { createdAt: AscNullsLast }
+      first: $allFirst
+    ) {
+      edges {
+        node {
+          id
+          name
+          description
+          permissions
+          absenceReportReviewerRole
+          absenceReportApprovalRequired
+          absenceReportForm
+        }
+      }
+    }
+  }
+`);
+
+type RoleNode = {
+  id: string;
+  name: string;
+  description?: string | null;
+  permissions: string;
+  absenceReportReviewerRole?: string | null;
+  absenceReportApprovalRequired: boolean;
+  absenceReportForm?: string | null;
+};
+
+function toRole(node: RoleNode): Role {
+  return {
+    id: node.id,
+    name: node.name,
+    description: node.description,
+    permissions: parseGraphQLPermissions(node.permissions),
+    absenceReportReviewerRole: node.absenceReportReviewerRole ?? null,
+    absenceReportApprovalRequired: node.absenceReportApprovalRequired,
+    absenceReportFormId: node.absenceReportForm ?? null,
+  };
+}
+
 type RolesViewProps = {
   clubId: string;
-  rolesPromise: PromiseLike<
-    Pick<
-      Database["public"]["Tables"]["roles"]["Row"],
-      | "id"
-      | "name"
-      | "description"
-      | "permissions"
-      | "absence_report_reviewer_role"
-      | "absence_report_approval_required"
-      | "absence_report_form"
-    >[]
-  >;
   formsPromise: PromiseLike<
     Pick<
       Database["public"]["Tables"]["absence_report_forms"]["Row"],
@@ -43,25 +98,9 @@ type RolesViewProps = {
   >;
 };
 
-export default function RolesView({
-  clubId,
-  rolesPromise,
-  formsPromise,
-}: RolesViewProps) {
+export default function RolesView({ clubId, formsPromise }: RolesViewProps) {
   const { t } = useLingui();
-  const initial = use(rolesPromise) ?? [];
   const formsInitial = use(formsPromise) ?? [];
-  const [roles, setRoles] = useState<Role[]>(() =>
-    (initial ?? []).map((r) => ({
-      id: r.id,
-      name: r.name,
-      description: r.description,
-      permissions: normalizePermissions(r.permissions),
-      absenceReportReviewerRole: r.absence_report_reviewer_role ?? null,
-      absenceReportApprovalRequired: r.absence_report_approval_required,
-      absenceReportFormId: r.absence_report_form ?? null,
-    })),
-  );
   const [forms] = useState<{ id: string; name: string }[]>(() =>
     (formsInitial ?? []).map((f) => ({ id: f.id, name: f.name })),
   );
@@ -69,31 +108,33 @@ export default function RolesView({
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
+  const search = searchParams.toString();
   const viewParam = searchParams.get("view") ?? "list";
   const [view, setView] = useState<"list" | "graph">(
     viewParam === "graph" ? "graph" : "list",
   );
 
   useEffect(() => {
-    const params = new URLSearchParams(searchParams.toString());
+    const params = new URLSearchParams(search);
     params.set("view", view);
     router.replace(`${pathname}?${params.toString()}`);
-  }, [view, router, pathname, searchParams.toString()]);
+  }, [view, router, pathname, search]);
 
   const [dialogOpen, setDialogOpen] = useState(false);
   const [dialogMode, setDialogMode] = useState<"new" | "edit">("new");
   const [selectedRole, setSelectedRole] = useState<Role | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const [page, setPage] = useState(0);
-  const pageCount = Math.max(Math.ceil(roles.length / DEFAULT_PAGE_SIZE), 1);
-  useEffect(() => {
-    setPage((p) => Math.min(p, pageCount - 1));
-  }, [pageCount]);
-  const pagedRoles = useMemo(
-    () => roles.slice(page * DEFAULT_PAGE_SIZE, (page + 1) * DEFAULT_PAGE_SIZE),
-    [roles, page],
-  );
+  const { after, first, hasPrevious, goToNext, goToPrevious } =
+    useCursorPagination(DEFAULT_PAGE_SIZE);
+
+  const { data, refetch: refetchRoles } = useSuspenseQuery(clubRolesViewQuery, {
+    variables: { clubId, first, after, allFirst: ALL_ROLES_CAP },
+  });
+
+  const pagedRoles = (data?.page?.edges ?? []).map((e) => toRole(e.node));
+  const pageInfo = data?.page?.pageInfo;
+  const allRoles = (data?.all?.edges ?? []).map((e) => toRole(e.node));
 
   function openCreate() {
     setSelectedRole(null);
@@ -102,12 +143,15 @@ export default function RolesView({
   }
   const openEdit = useCallback(
     (roleId: string) => {
-      const r = roles.find((x) => x.id === roleId) ?? null;
+      const r =
+        allRoles.find((x) => x.id === roleId) ??
+        pagedRoles.find((x) => x.id === roleId) ??
+        null;
       setSelectedRole(r);
       setDialogMode("edit");
       setDialogOpen(true);
     },
-    [roles],
+    [allRoles, pagedRoles],
   );
 
   async function onSave(
@@ -130,22 +174,7 @@ export default function RolesView({
         })
         .eq("id", roleId)
         .throwOnError();
-      setRoles((prev) =>
-        prev.map((r) =>
-          r.id === roleId
-            ? {
-                ...r,
-                name: payload.name,
-                description: payload.description,
-                permissions: payload.permissions,
-                absenceReportReviewerRole: payload.absenceReportReviewerRole,
-                absenceReportApprovalRequired:
-                  payload.absenceReportApprovalRequired,
-                absenceReportFormId: payload.absenceReportFormId,
-              }
-            : r,
-        ),
-      );
+      await refetchRoles();
       setDialogOpen(false);
     } catch (e) {
       console.error("Error saving role:", e);
@@ -157,7 +186,7 @@ export default function RolesView({
     setError(null);
     const supabase = createClient();
     try {
-      const { data } = await supabase
+      await supabase
         .from("roles")
         .insert({
           club_id: clubId,
@@ -169,25 +198,8 @@ export default function RolesView({
             payload.absenceReportApprovalRequired,
           absence_report_form: payload.absenceReportFormId,
         })
-        .throwOnError()
-        .select()
-        .single();
-      if (data) {
-        setRoles((prev) => [
-          ...prev,
-          {
-            id: data.id,
-            name: data.name,
-            description: data.description,
-            permissions: normalizePermissions(data.permissions),
-            absenceReportReviewerRole:
-              data.absence_report_reviewer_role ?? null,
-            absenceReportApprovalRequired:
-              data.absence_report_approval_required,
-            absenceReportFormId: data.absence_report_form ?? null,
-          },
-        ]);
-      }
+        .throwOnError();
+      await refetchRoles();
       setDialogOpen(false);
     } catch (e) {
       console.error("Error creating role:", e);
@@ -206,7 +218,7 @@ export default function RolesView({
     const supabase = createClient();
     try {
       await supabase.from("roles").delete().eq("id", roleId).throwOnError();
-      setRoles(roles.filter((r) => r.id !== roleId));
+      await refetchRoles();
     } catch (e: unknown) {
       console.error("Error deleting role:", e);
       setError(t`Failed to delete role. Please try again later.`);
@@ -241,16 +253,16 @@ export default function RolesView({
             onDeleteRole={deleteRole}
           />
           <PaginationControls
-            hasPrevious={page > 0}
-            hasNext={page < pageCount - 1}
-            onPrevious={() => setPage((p) => Math.max(p - 1, 0))}
-            onNext={() => setPage((p) => Math.min(p + 1, pageCount - 1))}
+            hasPrevious={hasPrevious}
+            hasNext={pageInfo?.hasNextPage ?? false}
+            onPrevious={goToPrevious}
+            onNext={() => goToNext(pageInfo?.endCursor)}
           />
         </Flex>
       ) : (
         <Suspense fallback={<Skeleton height="100%" />}>
           <RolesGraph
-            roles={roles}
+            roles={allRoles}
             onEditRole={openEdit}
             onCreateRole={openCreate}
             onDeleteRole={deleteRole}
@@ -263,7 +275,7 @@ export default function RolesView({
         open={dialogOpen}
         mode={dialogMode}
         role={selectedRole}
-        roles={roles}
+        roles={allRoles}
         forms={forms}
         error={error}
         onClose={() => setDialogOpen(false)}
@@ -272,6 +284,14 @@ export default function RolesView({
       />
     </Flex>
   );
+}
+
+function parseGraphQLPermissions(raw: string): Record<string, boolean> {
+  try {
+    return normalizePermissions(JSON.parse(raw));
+  } catch {
+    return {};
+  }
 }
 
 export function normalizePermissions(
