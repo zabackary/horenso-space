@@ -1,23 +1,17 @@
 "use server";
 
-import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
+import { requireUser } from "@/lib/auth/requireUser";
+import { createClient } from "@/lib/supabase/server";
 
 export async function submitReview(
   clubId: string,
   reportId: string,
   accepted: boolean,
-  comments: string | null
+  comments: string | null,
 ) {
   const supabase = await createClient();
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user) {
-    throw new Error("User not authenticated");
-  }
+  const user = await requireUser(supabase);
 
   const { error } = await supabase.from("absence_report_reviews").insert({
     absence_report_id: reportId,
