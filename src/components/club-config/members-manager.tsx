@@ -1,7 +1,5 @@
 "use client";
 
-import { gql } from "@/gql";
-import { createClient } from "@/lib/supabase/client";
 import { useMutation, useSuspenseQuery } from "@apollo/client/react";
 import { Trans, useLingui } from "@lingui/react/macro";
 import { CrossCircledIcon, TrashIcon } from "@radix-ui/react-icons";
@@ -18,16 +16,27 @@ import {
 } from "@radix-ui/themes";
 import Link from "next/link";
 import { useState } from "react";
+import { gql } from "@/gql";
+import { createClient } from "@/lib/supabase/client";
+import { useCursorPagination } from "@/lib/useCursorPagination";
+import PaginationControls from "../ui/pagination-controls";
 import { UserLink } from "../ui/user-link";
 import styles from "./members-manager.module.css";
 
+const PAGE_SIZE = 20;
+
 const MembersManagerQuery = gql(`
-  query MembersManager($clubId: UUID!) {
+  query MembersManager($clubId: UUID!, $first: Int!, $after: Cursor) {
     clubMembersCollection(
       orderBy: { joinedAt: DescNullsLast }
-      first: 100
+      first: $first
+      after: $after
       filter: { clubId: { eq: $clubId } }
     ) {
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
       edges {
         node {
           user {
@@ -83,9 +92,11 @@ const RemoveMemberMutation = gql(`
 
 export default function MembersManager({ clubId }: { clubId: string }) {
   const [error, setError] = useState<string | null>(null);
+  const { after, first, hasPrevious, goToNext, goToPrevious } =
+    useCursorPagination(PAGE_SIZE);
 
   const { data, error: queryError } = useSuspenseQuery(MembersManagerQuery, {
-    variables: { clubId },
+    variables: { clubId, first, after },
   });
 
   if (queryError) {
@@ -102,7 +113,9 @@ export default function MembersManager({ clubId }: { clubId: string }) {
     );
   }
 
-  const members = data?.clubMembersCollection?.edges.map((e) => e.node) ?? [];
+  const membersCollection = data?.clubMembersCollection;
+  const members = membersCollection?.edges.map((e) => e.node) ?? [];
+  const pageInfo = membersCollection?.pageInfo;
   const roles = data?.rolesCollection?.edges.map((e) => e.node) ?? [];
 
   const { t } = useLingui();
@@ -222,6 +235,12 @@ export default function MembersManager({ clubId }: { clubId: string }) {
             );
           })
         )}
+        <PaginationControls
+          hasPrevious={hasPrevious}
+          hasNext={pageInfo?.hasNextPage ?? false}
+          onPrevious={goToPrevious}
+          onNext={() => goToNext(pageInfo?.endCursor)}
+        />
       </Flex>
     </Flex>
   );
