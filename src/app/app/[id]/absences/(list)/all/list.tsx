@@ -8,9 +8,10 @@ import AbsenceReportCard from "@/components/ui/absence-report-card";
 import EmptyState from "@/components/ui/empty-state";
 import PaginationControls from "@/components/ui/pagination-controls";
 import { gql } from "@/gql";
-import { useCursorPagination } from "@/lib/useCursorPagination";
-
-const PAGE_SIZE = 20;
+import {
+  DEFAULT_PAGE_SIZE,
+  useCursorPagination,
+} from "@/lib/useCursorPagination";
 
 const allReportsQuery = gql(`
   query AllAbsenceReports($clubId: UUID!, $first: Int!, $after: Cursor) {
@@ -39,7 +40,7 @@ const allReportsQuery = gql(`
 export function AllReportsList({ clubId }: { clubId: string }) {
   const { t } = useLingui();
   const { after, first, hasPrevious, goToNext, goToPrevious } =
-    useCursorPagination(PAGE_SIZE);
+    useCursorPagination(DEFAULT_PAGE_SIZE);
   const { data } = useSuspenseQuery(allReportsQuery, {
     variables: {
       clubId: clubId,

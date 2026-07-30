@@ -18,12 +18,13 @@ import Link from "next/link";
 import { useState } from "react";
 import { gql } from "@/gql";
 import { createClient } from "@/lib/supabase/client";
-import { useCursorPagination } from "@/lib/useCursorPagination";
+import {
+  DEFAULT_PAGE_SIZE,
+  useCursorPagination,
+} from "@/lib/useCursorPagination";
 import PaginationControls from "../ui/pagination-controls";
 import { UserLink } from "../ui/user-link";
 import styles from "./members-manager.module.css";
-
-const PAGE_SIZE = 20;
 
 const MembersManagerQuery = gql(`
   query MembersManager($clubId: UUID!, $first: Int!, $after: Cursor) {
@@ -93,7 +94,7 @@ const RemoveMemberMutation = gql(`
 export default function MembersManager({ clubId }: { clubId: string }) {
   const [error, setError] = useState<string | null>(null);
   const { after, first, hasPrevious, goToNext, goToPrevious } =
-    useCursorPagination(PAGE_SIZE);
+    useCursorPagination(DEFAULT_PAGE_SIZE);
 
   const { data, error: queryError } = useSuspenseQuery(MembersManagerQuery, {
     variables: { clubId, first, after },

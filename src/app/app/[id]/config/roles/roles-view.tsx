@@ -15,11 +15,11 @@ import {
 import type { Database } from "@/@types/database.types";
 import PaginationControls from "@/components/ui/pagination-controls";
 import { createClient } from "@/lib/supabase/client";
+import { DEFAULT_PAGE_SIZE } from "@/lib/useCursorPagination";
 import RoleDialog, { type Role } from "./role-dialog";
 import RolesManager from "./roles-manager";
 
 const RolesGraph = lazy(() => import("./roles-graph"));
-const PAGE_SIZE = 20;
 
 type RolesViewProps = {
   clubId: string;
@@ -86,12 +86,12 @@ export default function RolesView({
   const [error, setError] = useState<string | null>(null);
 
   const [page, setPage] = useState(0);
-  const pageCount = Math.max(Math.ceil(roles.length / PAGE_SIZE), 1);
+  const pageCount = Math.max(Math.ceil(roles.length / DEFAULT_PAGE_SIZE), 1);
   useEffect(() => {
     setPage((p) => Math.min(p, pageCount - 1));
   }, [pageCount]);
   const pagedRoles = useMemo(
-    () => roles.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE),
+    () => roles.slice(page * DEFAULT_PAGE_SIZE, (page + 1) * DEFAULT_PAGE_SIZE),
     [roles, page],
   );
 
