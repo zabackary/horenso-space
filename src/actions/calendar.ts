@@ -1,7 +1,8 @@
 "use server";
 
-import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
+import { requireUser } from "@/lib/auth/requireUser";
+import { createClient } from "@/lib/supabase/server";
 
 /**
  * Delete a calendar event
@@ -10,14 +11,7 @@ import { revalidatePath } from "next/cache";
  */
 export async function deleteCalendarEvent(clubId: string, eventId: string) {
   const supabase = await createClient();
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user) {
-    throw new Error("User not authenticated");
-  }
+  await requireUser(supabase);
 
   const { error } = await supabase
     .from("calendar_events")
@@ -51,14 +45,7 @@ export async function updateCalendarEvent(
   },
 ) {
   const supabase = await createClient();
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user) {
-    throw new Error("User not authenticated");
-  }
+  await requireUser(supabase);
 
   const { error } = await supabase
     .from("calendar_events")
