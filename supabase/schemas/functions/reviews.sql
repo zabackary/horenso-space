@@ -43,40 +43,47 @@ create function public.handle_review_creation()
   security definer -- runs with max privileges, so we need to validate inputs
   set search_path to ''
   as $$
+declare
+  v_club_id uuid;
+  v_reviewer_role_id uuid;
+  v_approval_required boolean;
+  v_reviewer_role uuid;
 begin
   if(new.accepted) then
-    if(
+    select
+      club_id into v_club_id
+    from
+      public.absence_reports
+    where
+      id = new.absence_report_id;
+    -- Scope the reviewer's role lookup to the report's club, since a
+    -- reviewer may belong to more than one club (and hence have more than
+    -- one club_members row)
+    select
+      cm.role_id into v_reviewer_role_id
+    from
+      public.club_members cm
+    where
+      cm.user_id = new.reviewer_id
+      and cm.club_id = v_club_id
+      and cm.accepted = true;
+    if v_reviewer_role_id is not null then
       select
-        r.absence_report_approval_required
+        r.absence_report_approval_required,
+        r.absence_report_reviewer_role into v_approval_required,
+        v_reviewer_role
       from
         public.roles r
       where
-        r.id =(
-        select
-          cm.role_id
-        from
-          public.club_members cm
-        where
-          cm.user_id = new.reviewer_id and cm.accepted = true)) then
-      update
-        public.absence_reports
-      set
-        assigned_to_role =(
-          select
-            r.absence_report_reviewer_role
-          from
-            public.roles r
-          where
-            r.id =(
-              select
-                cm.role_id
-              from
-                public.club_members cm
-              where
-                cm.user_id = new.reviewer_id
-                and cm.accepted = true))
+        r.id = v_reviewer_role_id;
+      if v_approval_required then
+        update
+          public.absence_reports
+        set
+          assigned_to_role = v_reviewer_role
         where
           id = new.absence_report_id;
+      end if;
     end if;
   end if;
   return new;
