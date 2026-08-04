@@ -111,10 +111,13 @@ declare
   v_current_approved boolean;
   v_approval_required boolean;
   v_reviewer_role_id uuid;
+  v_club_id uuid;
 begin
-  -- Get the report creator's role
+  -- Get the report creator's role and club
   select
-    cm.role_id into v_current_role_id
+    cm.role_id,
+    ar.club_id into v_current_role_id,
+    v_club_id
   from
     public.absence_reports ar
     join public.club_members cm on cm.user_id = ar.user_id
@@ -149,7 +152,11 @@ begin
     if v_reviewer_role_id is null then
       return true;
     end if;
-    -- Check if someone with the reviewer role has a review for this report
+    -- Check if someone with the reviewer role has a review for this report.
+    -- Scope the reviewer lookup to the report's club, since a reviewer may
+    -- belong to more than one club (and hence have more than one
+    -- club_members row); limit 1 because more than one member may hold the
+    -- reviewer role and have reviewed the report.
     select
       cm.role_id,
       arr.accepted into v_current_role_id,
@@ -157,6 +164,7 @@ begin
     from
       public.absence_report_reviews arr
       join public.club_members cm on cm.user_id = arr.reviewer_id
+        and cm.club_id = v_club_id
         and cm.accepted = true
     where
       arr.absence_report_id = p_report_id
